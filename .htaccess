@@ -100,7 +100,7 @@ SetEnvIf REAL_ADDR "^69\.176\.172\.6$" AllowAccess
 SetEnvIf REAL_ADDR "^69\.176\.163\.134$" AllowAccess
 
 #Dominykas Canada
-SetEnvIf REAL_ADDR "^209\.145\.120\.145$" AllowAccess
+SetEnvIf REAL_ADDR "^82\.140\.135\.125$" AllowAccess
 
 #-> Manila
 
