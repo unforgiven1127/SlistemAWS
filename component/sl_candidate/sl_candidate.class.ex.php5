@@ -5119,7 +5119,8 @@ class CSl_candidateEx extends CSl_candidate
             $asOldData = $asPrevious[$asData['sl_contactpk']];
 
             if($asOldData['value'] != $asData['value'] || $asOldData['description'] != $asData['description']
-            || $asOldData['visibility'] != $asData['visibility'] || $asOldData['loginfk'] != $asData['userfk'])
+            || $asOldData['visibility'] != $asData['visibility'] || $asOldData['loginfk'] != $asData['userfk']
+            || $asOldData['type'] != $asData['type'])
             {
               logUserHistory($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$asData['sl_contactpk'], $asData, true);
 
