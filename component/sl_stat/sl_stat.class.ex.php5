@@ -1084,24 +1084,28 @@ class CSl_statEx extends CSl_stat
       $nDay = date('j');
       $month_total_days = date('t');
 
+      $target_met = $asStatData['target'][$user_id]['target_met'];
+      $target_play = $asStatData['target'][$user_id]['target_play'];
+      $target_position = $asStatData['target'][$user_id]['target_position'];
+
       $nMet = $asStatData['met'][$user_id][$sMonth];
       $nPlay = $asStatData['play'][$user_id][$sMonth];
       $nPos = $asStatData['position'][$user_id][$sMonth];
 
-      $nMetToDate = ceil((27/$month_total_days) * $nDay);
-      $nPlayToDate = ceil((7/$month_total_days) * $nDay);
-      $nPosToDate = ceil((5/$month_total_days) * $nDay);
+      $nMetToDate = ceil(($target_met/$month_total_days) * $nDay);
+      $nPlayToDate = ceil(($target_play/$month_total_days) * $nDay);
+      $nPosToDate = ceil(($target_position/$month_total_days) * $nDay);
 
       $nMetRatio = $nPlayRatio = $nPosRatio = 0;
 
       if (!empty($nMet))
-        $nMetRatio = round(($nMet/27)*100);
+        $nMetRatio = round(($nMet/$target_met)*100);
 
       if (!empty($nPlay))
-        $nPlayRatio = round(($nPlay/7)*100);
+        $nPlayRatio = round(($nPlay/$target_play)*100);
 
       if (!empty($nPos))
-        $nPosRatio = round(($nPos/5)*100);
+        $nPosRatio = round(($nPos/$target_position)*100);
 
       $sMetClass = $this->_getClassFromValue($nMet, $nMetToDate);
       $sPlayClass = $this->_getClassFromValue($nPlay, $nPlayToDate);
@@ -1112,15 +1116,15 @@ class CSl_statEx extends CSl_stat
           <div class="obj-row obj-header">
             <div class="obj-desc"></div>
             <div class="obj-value">Met *</div>
-            <div class="obj-value">In play **</div>
-            <div class="obj-value">Positions ***</div>
+            <div class="obj-value">In play</div>
+            <div class="obj-value">Positions **</div>
           </div>
 
           <div class="obj-row">
             <div class="obj-desc">Month target</div>
-            <div class="obj-value">27</div>
-            <div class="obj-value">7</div>
-            <div class="obj-value">5</div>
+            <div class="obj-value">'.$target_met.'</div>
+            <div class="obj-value">'.$target_play.'</div>
+            <div class="obj-value">'.$target_position.'</div>
           </div>
 
           <div class="obj-row">
@@ -1147,8 +1151,7 @@ class CSl_statEx extends CSl_stat
 
         <div class="portal-legend">
           <span style="color: #888; font-style: italic; font-size: 11px;">* Meeting created with the new meeting feature. </span><br />
-          <span style="color: #888; font-style: italic; font-size: 11px;">** Phone assessed are counted up to the 5 first calls only. </span><br />
-          <span style="color: #888; font-style: italic; font-size: 11px;">*** Newly active positions, having their first CCM this month. </span>
+          <span style="color: #888; font-style: italic; font-size: 11px;">** Newly active positions, having their first CCM. </span>
         </div>
         </div>
       ';
