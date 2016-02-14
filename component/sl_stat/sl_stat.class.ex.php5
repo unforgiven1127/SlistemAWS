@@ -1092,9 +1092,17 @@ class CSl_statEx extends CSl_stat
       $nPlay = $asStatData['play'][$user_id][$sMonth];
       $nPos = $asStatData['position'][$user_id][$sMonth];
 
-      $nMetToDate = ceil(($target_met/$month_total_days) * $nDay);
-      $nPlayToDate = ceil(($target_play/$month_total_days) * $nDay);
-      $nPosToDate = ceil(($target_position/$month_total_days) * $nDay);
+      $nMetToDate = ceil(($target_met/$month_total_days) * $nDay) - $nMet;
+      if ($nMetToDate < 0)
+        $nMetToDate = 0;
+
+      $nPlayToDate = ceil(($target_play/$month_total_days) * $nDay) - $nPlay;
+      if ($nPlayToDate < 0)
+        $nPlayToDate = 0;
+
+      $nPosToDate = ceil(($target_position/$month_total_days) * $nDay) - $nPos;
+      if ($nPosToDate < 0)
+        $nPosToDate = 0;
 
       $nMetRatio = $nPlayRatio = $nPosRatio = 0;
 
