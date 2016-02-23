@@ -508,6 +508,8 @@
 
 			$(this).val(formated_value);
 		});
+
+		check_dom_change();
 	});
 
 	function toggle_tabs(menu_dom, tab_id)
@@ -546,4 +548,18 @@
 
 		return false;
 	});
+
+	function check_dom_change()
+	{
+		if ($('.token-input-list-mac .token-input-token-mac p').is(":visible"))
+		{
+			var element_height = $('.token-input-list-mac .token-input-token-mac').height();
+			var element_text_length = $('.token-input-list-mac .token-input-token-mac p').text().length;
+
+			if (element_text_length > 29 && element_height < 33)
+				$('.token-input-list-mac .token-input-token-mac').css('height', '33');
+		}
+
+		setTimeout(check_dom_change, 1000);
+	}
 </script>
