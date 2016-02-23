@@ -94,7 +94,7 @@
 			<?php echo $value['ccm1']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm1_info'] as $stat_info): ?>
+			<?php foreach ($value['ccm1_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
@@ -120,7 +120,7 @@
 			<?php echo $value['ccm2']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm2_info'] as $stat_info): ?>
+			<?php foreach ($value['ccm2_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
@@ -146,7 +146,7 @@
 			<?php echo $value['mccm']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['mccm_info'] as $stat_info): ?>
+			<?php foreach ($value['mccm_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
