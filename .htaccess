@@ -71,8 +71,7 @@ SetEnvIf REAL_ADDR "^183\.77\.226\.168$" AllowAccess
 SetEnvIf REAL_ADDR "^221\.113\.50\.237$" AllowAccess
 
 ## 2011-03-18 dt#td Mitch Moir Home
-SetEnvIf REAL_ADDR "^126\.9\.185\.98$" AllowAccess
-SetEnvIf REAL_ADDR "^203\.109\.204\.181$" AllowAccess
+SetEnvIf REAL_ADDR "^125\.14\.40\.78$" AllowAccess
 
 ## 2016-01-06 requested by Mitch
 SetEnvIf REAL_ADDR "^203\.109\.172\.209$" AllowAccess
