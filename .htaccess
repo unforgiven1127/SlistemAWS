@@ -32,16 +32,16 @@ require valid-user
 
 SetEnvIf REAL_ADDR "^127\.0\.0\.1$" AllowAccess
 
-# aws public ip
+## aws public ip
 SetEnvIf REAL_ADDR "^52\.26\.201\.56$" AllowAccess
 SetEnvIf REAL_ADDR "^54\.69\.68\.210$" AllowAccess
 
 
-# aws private ip
+## aws private ip
 SetEnvIf REAL_ADDR "^172\.31\.6\.173$" AllowAccess
 SetEnvIf REAL_ADDR "^172\.31\.0\.31$" AllowAccess
 
-# KHVH servers
+## KHVH servers
 SetEnvIf REAL_ADDR "^203\.167\.38\.11$" AllowAccess
 SetEnvIf REAL_ADDR "^203\.167\.38\.10$" AllowAccess
 SetEnvIf REAL_ADDR "^203\.167\.38\.1$" AllowAccess
@@ -49,24 +49,23 @@ SetEnvIf REAL_ADDR "^203\.167\.38\.2$" AllowAccess
 SetEnvIf REAL_ADDR "^210\.167\.116\.219$" AllowAccess
 SetEnvIf REAL_ADDR "^210\.167\.116\.220$" AllowAccess
 
-# aws LB NOT ALLOWED
-#allow from 172.31.28.127
+## Edit after this comment
 
 #-> Japan
 
-#BC office
+## BC office
 SetEnvIf REAL_ADDR "^183\.77\.248\.83$" AllowAccess
 
-#Slate Akasaka Office
+## Slate Akasaka Office
 SetEnvIf REAL_ADDR "^118\.243\.81\.245$" AllowAccess
 
-#Slate Akasaka Office
+## Slate Akasaka Office
 SetEnvIf REAL_ADDR "^118\.243\.81\.246$" AllowAccess
 
-#Slate Aoyaoma Office
+## Slate Aoyaoma Office
 SetEnvIf REAL_ADDR "^118\.243\.81\.248$" AllowAccess
 
-#aoyama 3rd floor
+## aoyama 3rd floor
 SetEnvIf REAL_ADDR "^183\.77\.226\.168$" AllowAccess
 SetEnvIf REAL_ADDR "^221\.113\.50\.237$" AllowAccess
 
@@ -95,10 +94,10 @@ SetEnvIf REAL_ADDR "^69\.176\.182\.221$" AllowAccess
 ## 2010-09-30 dt#td  Ray and Pam home
 SetEnvIf REAL_ADDR "^69\.176\.172\.6$" AllowAccess
 
-#John Canada
+## John Canada
 SetEnvIf REAL_ADDR "^69\.176\.163\.134$" AllowAccess
 
-#Dominykas Canada
+## Dominykas Canada
 SetEnvIf REAL_ADDR "^82\.140\.135\.125$" AllowAccess
 
 #-> Manila
@@ -118,10 +117,10 @@ SetEnvIf REAL_ADDR "^202\.21\.227\.84$" AllowAccess
 ## 2010-09-30 dt#td for Ryan home
 SetEnvIf REAL_ADDR "^218\.103\.34\.37$" AllowAccess
 
-##2010-11-15 dt#td for SRC_11_15
+## 2010-11-15 dt#td for SRC_11_15
 SetEnvIf REAL_ADDR "^202\.138\.130\.186$" AllowAccess
 
-##2010-11-17 dt#td for SCR_11_17
+## 2010-11-17 dt#td for SCR_11_17
 SetEnvIf REAL_ADDR "^202\.138\.130\.185$" AllowAccess
 
 ## 2013-02-13 dt#td SRC
@@ -153,7 +152,7 @@ SetEnvIf REAL_ADDR "^70\.72\.234\.11$" AllowAccess
 
 #-> Hong Kong
 
-# Hong Kong
+## Hong Kong
 SetEnvIf REAL_ADDR "^101\.78\.237\.101$" AllowAccess
 
 Allow from env=AllowAccess

@@ -441,6 +441,7 @@ define('CONST_TYPE_SETTING_USRIGHT','stgusrt');
 define('CONST_TYPE_SETTING_RIGHTUSR','stgusrht');
 define('CONST_TYPE_SETTING_RIGHTGRP','stggrpht');
 define('CONST_TYPE_SETTING_MENU','stgmnu');
+define('CONST_TYPE_SETTING_IP','ipconf');
 define('CONST_TYPE_SETTING_FOOTER','stgft');
 define('CONST_TYPE_SETTING_BLACKLIST','stgblk');
 define('CONST_TYPE_SETTING_CRON','stgcrn');

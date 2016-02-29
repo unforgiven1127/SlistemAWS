@@ -226,6 +226,20 @@ class CSettingsEx extends CSettings
           }
           break;
 
+      case CONST_TYPE_SETTING_IP:
+
+          switch($this->csAction)
+          {
+            case CONST_ACTION_EDIT:
+              return json_encode($this->get_ip_manager());
+              break;
+
+            case CONST_ACTION_ADD:
+              return json_encode($this->save_htaccess());
+              break;
+          }
+          break;
+
       case CONST_TYPE_SETTING_FOOTER:
 
           switch($this->csAction)
@@ -1161,6 +1175,7 @@ class CSettingsEx extends CSettings
     $sUserGrpUrl   = $oPage->getAjaxUrl('login', CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_GROUP);
     $sUserRightUrl = $oPage->getAjaxUrl('settings',CONST_ACTION_ADD, CONST_TYPE_SETTING_USRIGHT);
     $sMenuUrl      = $oPage->getAjaxUrl('settings',CONST_ACTION_ADD, CONST_TYPE_SETTING_MENU);
+    $ip_config_url = $oPage->getAjaxUrl('settings',CONST_ACTION_EDIT, CONST_TYPE_SETTING_IP);
     $sFooterUrl    = $oPage->getAjaxUrl('settings',CONST_ACTION_ADD, CONST_TYPE_SETTING_FOOTER);
     $sBlackListUrl = $oPage->getAjaxUrl('settings',CONST_ACTION_ADD, CONST_TYPE_SETTING_BLACKLIST);
     $sCronJobUrl   = $oPage->getAjaxUrl('settings',CONST_ACTION_ADD, CONST_TYPE_SETTING_CRON);
@@ -1208,6 +1223,11 @@ class CSettingsEx extends CSettings
     //Third tab:  no sub tab
     $asMainTab[] = array('title' => 'Menus', 'label' => 'menus', 'content' => $oHTML->getBloc('area_menus'), 'options' => array('link' => $sMenuUrl));
 
+
+    //-----------------------------------------
+    //Third tab:  no sub tab
+    $asMainTab[] = array('title' => 'IP control', 'label' => 'ip_manager',
+      'content' => $oHTML->getBloc('area_ip_manager'), 'options' => array('link' => $ip_config_url));
 
     //-----------------------------------------
     //Forth tab: will contain a sub tab
@@ -2176,6 +2196,74 @@ class CSettingsEx extends CSettings
     }
 
     return array('data' => $data, 'reload' => $reload, 'error' => $error, 'action' => $ajax_action);
+  }
+
+  private function get_ip_manager()
+  {
+    $display_obj = CDependency::getCpHtml();
+    $page_obj = CDependency::getCpPage();
+    $html = '';
+    $data = array();
+
+    $file = $_SERVER['DOCUMENT_ROOT'].'/.htaccess';
+
+    $file_contents = file_get_contents($file);
+    $form_url = $page_obj->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_TYPE_SETTING_IP,
+          0, array('action' => 'save'));
+
+    $data = array('file_contents' => $file_contents, 'form_url' => $form_url);
+
+    $html = $display_obj->render('ip_manager', $data);
+
+    return array('data' => $html);
+  }
+
+  private function save_htaccess()
+  {
+    $display_obj = CDependency::getCpHtml();
+    $page_obj = CDependency::getCpPage();
+    $data = '';
+    $error = false;
+
+    $redirect_url = $page_obj->getUrl('settings', CONST_ACTION_ADD, CONST_TYPE_SETTINGS);
+
+    $action = getValue('action', '');
+    $htaccess_contents = getValue('htaccess_contents', '');
+    // $htaccess_version = getValue('htaccess_version', '');
+
+    $file = $_SERVER['DOCUMENT_ROOT'].'/.htaccess';
+
+    switch ($action)
+    {
+      case 'save':
+        $md5_hash = md5(base64_encode($htaccess_contents));
+        $htaccess_contents_encoded = base64_encode($htaccess_contents);
+
+        $where = 'md5_hash = "'.$md5_hash.'"';
+
+        $entry = $this->_getModel()->getByWhere('htaccess_change_log', $where);
+
+        $num_rows = $entry->numRows();
+
+        if ($num_rows == 0)
+        {
+          $file_write = file_put_contents($file, $htaccess_contents);
+
+          if ($file_write)
+          {
+            $values = array('create_date' => date('Y-m-d H:i:s'), 'content' => $htaccess_contents_encoded,
+              'md5_hash' => $md5_hash);
+
+            $this->_getModel()->add($values, 'htaccess_change_log');
+          }
+        }
+        break;
+
+      case 'load':
+        break;
+    }
+
+    return $display_obj->getRedirection($redirect_url);
   }
 
 }
