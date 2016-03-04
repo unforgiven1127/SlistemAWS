@@ -2224,6 +2224,7 @@ class CSettingsEx extends CSettings
     $page_obj = CDependency::getCpPage();
     $data = '';
     $error = false;
+    $existing_hash_id = 0;
 
     $redirect_url = $page_obj->getUrl('settings', CONST_ACTION_ADD, CONST_TYPE_SETTINGS);
 
@@ -2241,21 +2242,21 @@ class CSettingsEx extends CSettings
 
         $where = 'md5_hash = "'.$md5_hash.'"';
 
-        $entry = $this->_getModel()->getByWhere('htaccess_change_log', $where);
+        $entry = $this->_getModel()->getByWhere('htaccess_change_log', $where, '*', 'create_date DESC');
 
         $num_rows = $entry->numRows();
 
-        if ($num_rows == 0)
+        if ($num_rows > 0)
+          $existing_hash_id = $entry->getFieldValue('id');
+
+        $file_write = file_put_contents($file, $htaccess_contents);
+
+        if ($file_write)
         {
-          $file_write = file_put_contents($file, $htaccess_contents);
+          $values = array('create_date' => date('Y-m-d H:i:s'), 'content' => $htaccess_contents_encoded,
+            'md5_hash' => $md5_hash, 'existing_hash_id' => $existing_hash_id);
 
-          if ($file_write)
-          {
-            $values = array('create_date' => date('Y-m-d H:i:s'), 'content' => $htaccess_contents_encoded,
-              'md5_hash' => $md5_hash);
-
-            $this->_getModel()->add($values, 'htaccess_change_log');
-          }
+          $this->_getModel()->add($values, 'htaccess_change_log');
         }
         break;
 
