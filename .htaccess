@@ -97,8 +97,8 @@ SetEnvIf REAL_ADDR "^69\.176\.172\.6$" AllowAccess
 ## John Canada
 SetEnvIf REAL_ADDR "^69\.176\.163\.134$" AllowAccess
 
-## Dominykas Canada
-SetEnvIf REAL_ADDR "^82\.140\.135\.125$" AllowAccess
+## Dominykas Nether lands
+SetEnvIf REAL_ADDR "^213\.247\.120\.136$" AllowAccess
 
 #-> Manila
 

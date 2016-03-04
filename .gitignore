@@ -1,4 +1,4 @@
 #Symbolic link folders
 /tmp
 common/upload
-.htaccess
+/.htaccess
