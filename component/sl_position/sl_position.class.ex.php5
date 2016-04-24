@@ -3879,7 +3879,7 @@ class CSl_positionEx extends CSl_position
 
               $posistion_data['position_description'] = addslashes($posistion_data['position_description']);
               // $posistion_data['responsabilities'] = addslashes($posistion_data['responsabilities']);
-              $posistion_data['requirements'] = addslashes($posistion_data['requirements']);
+              $posistion_data['requirements'] = base64_encode(addslashes($posistion_data['requirements']));
 
               if(!empty($posistion_data['age_from']))
                 $position_details->addChild('age', $posistion_data['age_from'].' - '.$posistion_data['age_to']);
@@ -3894,8 +3894,8 @@ class CSl_positionEx extends CSl_position
                 if(!empty($posistion_data['responsabilities']))
                   $position_description .= " \n".$posistion_data['responsabilities'];
 
-                $position_details->addChild('position_desc', cleanXmlString($position_description));
-                $position_details->addChild('meta_desc', cleanXmlString(substr($posistion_data['position_description'], 0, 200).'...'));
+                $position_details->addChild('position_desc', cleanXmlString(base64_encode($position_description)));
+                $position_details->addChild('meta_desc', cleanXmlString(base64_encode($position_description)));
               }
 
               $position_details->addChild('display_age', $posistion_data['display_age']);
@@ -3931,7 +3931,10 @@ class CSl_positionEx extends CSl_position
       }
 
 
-      //https://slistem.devserv.com/index.php5?pg=cron&cronSilent=1&hashCron=1&custom_uid=555-005&export_position=1&position_to_check=5600,3215,4523,6520,3569,5412
+      /*
+        https://slistem.devserv.com/index.php5?pg=cron&cronSilent=1&hashCron=1&custom_uid=555-
+        005&export_position=1&position_to_check=5600,3215,4523,6520,3569,5412
+      */
       $positions_to_check = getValue('position_to_check');
       if(!empty($positions_to_check))
       {
