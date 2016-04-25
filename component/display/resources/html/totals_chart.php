@@ -176,7 +176,7 @@
 			</div>
 		</td>
 		<td>
-			0
+			00
 		</td>
 		<td>
 			<div class="stat_holder">
