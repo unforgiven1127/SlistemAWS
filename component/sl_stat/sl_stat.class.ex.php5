@@ -4352,7 +4352,7 @@ class CSl_statEx extends CSl_stat
 
         if (!empty($temp_new_candidate_met[$id]))
         {
-          $count = count($temp_new_candidate_met[$id]) + 1;
+          $count = count($temp_new_candidate_met[$id]);
 
           $stats_data['consultant'][$id]['new_candidate_met_count'] = $count;
           $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
@@ -4384,6 +4384,7 @@ class CSl_statEx extends CSl_stat
       $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
       $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
+      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date);
 
       foreach ($researcher_ids as $id)
       {
@@ -4504,6 +4505,19 @@ class CSl_statEx extends CSl_stat
         {
           $stats_data['researcher'][$id]['offers_sent'] = 0;
           $stats_data['researcher'][$id]['offer_info'] = array();
+        }
+
+        if (!empty($temp_new_candidate_met[$id]))
+        {
+          $count = count($temp_new_candidate_met[$id]);
+
+          $stats_data['researcher'][$id]['new_candidate_met_count'] = $count;
+          $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
+        }
+        else
+        {
+          $stats_data['researcher'][$id]['new_candidate_met_count'] = 0;
+          $stats_data['researcher'][$id]['new_candidate_met_info'] = array();
         }
 
         $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
