@@ -425,7 +425,7 @@ order by m.candidatefk
 
     while($read)
     {
-      $temp = $db_result->getData();
+      $temp = $oDbResult->getData();
       if($temp['min_date'] == $temp['sl_meetingpk'])
       {
         $asData[(int)$oDbResult->getFieldValue('sl_meetingpk')] = $oDbResult->getData();
