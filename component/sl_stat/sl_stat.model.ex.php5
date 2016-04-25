@@ -432,7 +432,8 @@ order by m.candidatefk
       }
       $bRead = $oDbResult->readNext();
     }
-
+var_dump($asData);
+exit;
     return $asData;
   }
 

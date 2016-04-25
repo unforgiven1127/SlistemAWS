@@ -4350,8 +4350,6 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['offer_info'] = array();
         }
 
-var_dump($temp_new_candidate_met[$id]);
-exit;
         if (!empty($temp_new_candidate_met[$id]))
         {
           $count = count($temp_new_candidate_met[$id]);
