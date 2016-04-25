@@ -427,7 +427,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      if($temp['min_date'] == $temp['sl_meetingpk'])
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
         if(isset($asData[$temp['created_by']]))
         {
