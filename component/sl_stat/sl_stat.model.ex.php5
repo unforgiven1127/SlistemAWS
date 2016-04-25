@@ -393,6 +393,49 @@ class CSl_statModelEx extends CSl_statModel
     return $asData;
   }
 
+  public function get_new_candidate_met($user_ids, $start_date, $end_date, $group = 'researcher')
+  {
+    $asData = array();
+
+/*
+
+SELECT m.sl_meetingpk, m.created_by, m.candidatefk, min(m2.sl_meetingpk)
+FROM sl_meeting m
+INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
+WHERE m.created_by = '332'
+AND m.date_created > '2012-02-01 00:00:00'
+AND m.date_created < '2016-02-30 00:00:00'
+group by m.sl_meetingpk
+order by m.candidatefk
+
+ */
+  $data = array();
+  $sQuery = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        group by m.sl_meetingpk
+        order by m.candidatefk';
+
+    $db_result = array();
+
+    $db_result = $this->oDB->executeQuery($query);
+    $read = $db_result->readFirst();
+
+    while($read)
+    {
+      $temp = $db_result->getData();
+      if($temp['min_date'] == $temp['sl_meetingpk'])
+      {
+        $asData[(int)$oDbResult->getFieldValue('sl_meetingpk')] = $oDbResult->getData();
+      }
+      $bRead = $oDbResult->readNext();
+    }
+
+    return $asData;
+  }
 
   public function getKpiSetVsMet($user_ids, $start_date, $end_date, $group = 'researcher')
   {
