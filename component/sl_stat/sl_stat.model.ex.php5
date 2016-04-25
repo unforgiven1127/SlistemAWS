@@ -421,7 +421,7 @@ order by m.candidatefk
 
     $db_result = array();
 
-    $db_result = $this->oDB->executeQuery($query);
+    $oDbResult = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
 
     while($read)
