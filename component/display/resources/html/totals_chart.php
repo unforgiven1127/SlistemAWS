@@ -19,7 +19,7 @@
 <?php foreach ($stats_data as $key => $stat): ?>
 <table class="totals_table">
 	<tr>
-		<th colspan="14"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
+		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
 	<tr>
 		<th class="name_column">Name</th>
@@ -232,7 +232,7 @@
 
 	<?php $row_number_rank += 1; ?>
 	<?php endforeach ?>
-	<tr class="totals_table_footer"><td colspan="14">&nbsp;</td></tr>
+	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
 </table>
 
 <div class="general_form_row" style="height: 20px;"></div>
