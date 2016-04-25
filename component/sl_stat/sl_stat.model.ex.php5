@@ -410,7 +410,7 @@ order by m.candidatefk
 
  */
   $data = array();
-  $sQuery = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
+  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
         WHERE m.created_by IN ('.implode(',', $user_ids).')
