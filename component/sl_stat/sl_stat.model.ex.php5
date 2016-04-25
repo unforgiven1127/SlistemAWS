@@ -422,19 +422,27 @@ order by m.candidatefk
 
     $oDbResult = $this->oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
-var_dump($oDbResult);
-exit;
+
     while($read)
     {
       $temp = $oDbResult->getData();
+
       if($temp['min_date'] == $temp['sl_meetingpk'])
       {
-        $asData[(int)$oDbResult->getFieldValue('sl_meetingpk')] = $oDbResult->getData();
+        if(isset($asData[$temp['created_by']]))
+        {
+          array_push($asData[$temp['created_by']], $temp);
+        }
+        else
+        {
+          $asData[$temp['created_by']] = array();
+          array_push($asData[$temp['created_by']], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
       }
-      $bRead = $oDbResult->readNext();
+      $read = $oDbResult->readNext();
     }
-var_dump($asData);
-exit;
+
     return $asData;
   }
 
