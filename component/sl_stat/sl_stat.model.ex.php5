@@ -409,7 +409,6 @@ group by m.sl_meetingpk
 order by m.candidatefk
 
  */
-  $data = array();
   $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
@@ -419,10 +418,10 @@ order by m.candidatefk
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-    $db_result = array();
+    $oDbResult = array();
 
     $oDbResult = $this->oDB->executeQuery($query);
-    $read = $db_result->readFirst();
+    $read = $oDbResult->readFirst();
 
     while($read)
     {
