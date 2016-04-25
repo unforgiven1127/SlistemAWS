@@ -422,7 +422,8 @@ order by m.candidatefk
 
     $oDbResult = $this->oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
-
+var_dump($read);
+exit;
     while($read)
     {
       $temp = $oDbResult->getData();
