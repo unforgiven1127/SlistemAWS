@@ -5,10 +5,26 @@ class CDbSessionHandler
 
   function _session_open()
   {
-    if($this->coSessDb = mysqli_connect('127.0.0.1', 'slistem', 'THWj8YerbMWfK3yW'))
-    //if($this->coSessDb = mysqli_connect('172.31.29.60', 'slistem', 'THWj8YerbMWfK3yW'))
+    if(trim($_SERVER['SERVER_NAME']) == "slistemlocal.com")
     {
-      return (bool)mysqli_select_db($this->coSessDb, 'php_session');
+      if ($this->coSessDb = mysqli_connect('localhost', 'slistem', '7088762')) // MCA ADDED FOR LOCAL VERSION !!!!!
+      {
+        return (bool)mysqli_select_db($this->coSessDb, 'php_session');
+      }
+
+      exit('error - session unavailable');
+      return false;
+    }
+    else
+    {
+      if($this->coSessDb = mysqli_connect('127.0.0.1', 'slistem', 'THWj8YerbMWfK3yW'))
+      //if($this->coSessDb = mysqli_connect('172.31.29.60', 'slistem', 'THWj8YerbMWfK3yW'))
+      {
+        return (bool)mysqli_select_db($this->coSessDb, 'php_session');
+      }
+
+      exit('error - session unavailable');
+      return false;
     }
 
     exit('error - session unavailable');

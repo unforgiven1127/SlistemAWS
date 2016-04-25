@@ -112,7 +112,7 @@ class CDbResult
   {
     if($this->cnNumRows == 0 || empty($this->coSQLResult))
       return array();
-
+    ini_set('memory_limit', '-1');
     //remove all the spaces at the end of characters fields
     foreach($this->coSQLCurrentResult as $sKey => $vValue)
     {
