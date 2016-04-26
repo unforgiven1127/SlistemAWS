@@ -1321,7 +1321,7 @@ order by m.candidatefk
     {
       $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.created_by, sl_position_link.status, sl_position_link.date_created, sl_meeting.meeting_done ';
       $query .= ' FROM sl_position_link';
-      $query .= ' INNER JOIN sl_meeting ON sl_meeting.candidatefk = sl_position_link.candidatefk AND sl_meeting.positionfk = sl_position_link.positionfk';
+      $query .= ' INNER JOIN sl_meeting ON sl_meeting.candidatefk = sl_position_link.candidatefk';
       $query .= ' WHERE sl_position_link.status = 51 AND sl_position_link.active != 1 AND sl_meeting.meeting_done = 1';
       //$query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
     }
