@@ -97,7 +97,7 @@ class CCandi_row extends CTemplate
             break;
         }
       }
-      elseif($pasData['_pos_status'] == 101)
+      elseif($pasData['_pos_status'] == 1011)
       {
         $asOption['class'].= ' tplCandi_status_placed';
         //$sValue = ' placed';
