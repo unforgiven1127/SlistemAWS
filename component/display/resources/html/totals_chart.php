@@ -195,8 +195,8 @@
 			<div class="stat_candi_info">
 			<?php foreach ($value['new_candidate_info'] as $stat_info): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidatefk']); ?>
+					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidatefk']; ?></a>
 				</div>
 			<?php endforeach ?>
 			</div>
