@@ -1319,9 +1319,10 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by, status, date_created';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.created_by, sl_position_link.status, sl_position_link.date_created';
       $query .= ' FROM sl_position_link';
-      $query .= ' WHERE status = 51 AND active != 1';
+      $query .= ' INNER JOIN sl_meeting ON sl_meeting.candidatefk = sl_position_link.candidatefk';
+      $query .= ' WHERE sl_position_link.status = 51 AND sl_position_link.active != 1 AND sl_meeting.meeting_done = 1';
     }
     else
     {
