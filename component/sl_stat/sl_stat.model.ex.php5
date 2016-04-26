@@ -1319,10 +1319,11 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT pl.positionfk, pl.candidatefk, pl.created_by, pl.status, pl.date_created';
-      $query .= ' FROM sl_position_link pl';
-      $query .= ' INNER JOIN sl_meeting m ON m.candidatefk = pl.candidatefk AND pl.status = 51 AND m.meeting_done = 1';
-      $query .= ' WHERE pl.status = 51 AND pl.active != 1';
+      $query = 'SELECT pl.positionfk, pl.candidatefk, pl.created_by, pl.status, pl.date_created, min(pl2.sl_position_linkpk) as min_date, pl.sl_position_linkpk';
+      $query .= ' FROM sl_position_link pl INNER JOIN sl_position_link pl2 on pl2.positionfk = pl.positionfk AND pl2.status = 51 AND pl.active != 1';
+      $query .= ' WHERE pl.status = 51 AND pl.active != 1 GROUP BY pl.sl_position_linkpk ORDER BY pl.candidatefk
+                AND pl.date_created >= "'.$start_date.'"
+                AND pl.date_created < "'.$end_date.'"';
     }
     else
     {
@@ -1335,13 +1336,45 @@ order by m.candidatefk
       // $query .= ' WHERE sl_meeting.created_by IN ('.implode(",", $user_ids).')';
       $query .= ' WHERE sl_meeting.meeting_done = 1';
     }
-    
+
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
-
+//var_dump($query);    
+//var_dump($db_result->getData());
+//exit;
     $temp_new_candidate = $temp_new_position = array();
 
     while ($read)
+    {
+      $row = $db_result->getData();
+
+      if($row['min_date'] == $row['sl_position_linkpk'])
+      {
+        if(isset($temp_new_candidate[$row['candidatefk']]))
+        {
+          array_push($temp_new_candidate[$row['candidatefk']], $row);
+        }
+        else
+        {
+          $temp_new_candidate[$row['candidatefk']] = array();
+          array_push($temp_new_candidate[$row['candidatefk']], $row);
+        }
+
+        if(isset($temp_new_candidate[$row['positionfk']]))
+        {
+          array_push($temp_new_candidate[$row['positionfk']], $row);
+        }
+        else
+        {
+          $temp_new_candidate[$row['positionfk']] = array();
+          array_push($temp_new_candidate[$row['positionfk']], $row);
+        }
+      }
+
+      $read = $db_result->readNext();
+    }
+
+    /*while ($read)
     {
       $row = $db_result->getData();
 
@@ -1360,7 +1393,7 @@ order by m.candidatefk
       }
 
       $read = $db_result->readNext();
-    }
+    }*/
 
     foreach ($temp_new_candidate as $key => $value)
     {
@@ -1368,10 +1401,15 @@ order by m.candidatefk
       {
         $new_in_play_info[$value['created_by']]['new_candidates'] = 0;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'] = array();
+
+        $new_in_play_info[$value['created_by']]['new_candidates'] += 1;
+        $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'][] = array('candidate' => $key,
+        'date' => $value['date_created']);
       }
 
-      if (strtotime($value['date_created']) >= strtotime($start_date)
-        && strtotime($value['date_created']) <= strtotime($end_date))
+      //if (strtotime($value['date_created']) >= strtotime($start_date)
+       // && strtotime($value['date_created']) <= strtotime($end_date))
+      else
       {
         $new_in_play_info[$value['created_by']]['new_candidates'] += 1;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'][] = array('candidate' => $key,
@@ -1385,10 +1423,15 @@ order by m.candidatefk
       {
         $new_in_play_info[$value['created_by']]['new_positions'] = 0;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_positions'] = array();
+
+        $new_in_play_info[$value['created_by']]['new_positions'] += 1;
+        $new_in_play_info[$value['created_by']]['in_play_info']['new_positions'][] = array('candidate' => $key,
+        'date' => $value['date_created']);
       }
 
-      if (strtotime($value['date_created']) >= strtotime($start_date)
-        && strtotime($value['date_created']) <= strtotime($end_date))
+      //if (strtotime($value['date_created']) >= strtotime($start_date)
+       // && strtotime($value['date_created']) <= strtotime($end_date))
+      else
       {
         $new_in_play_info[$value['created_by']]['new_positions'] += 1;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_positions'][] = array('candidate' => $key,
