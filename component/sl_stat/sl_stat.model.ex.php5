@@ -1337,8 +1337,6 @@ order by m.candidatefk
       $query .= ' WHERE sl_meeting.meeting_done = 1';
     }
 
-var_dump($query);
-exit;
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
