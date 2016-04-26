@@ -1359,7 +1359,7 @@ order by m.candidatefk
 
     // gets new_positions_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
-        min(pl2.sl_position_linkpk) as min_date_position
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
@@ -1383,7 +1383,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      if($temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
         {
