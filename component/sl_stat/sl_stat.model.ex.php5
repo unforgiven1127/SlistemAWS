@@ -1266,17 +1266,17 @@ order by m.candidatefk
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND status = 2';
+      $query .= ' AND (status = 2 OR status = 51) GROUP BY candidatefk, positionfk';
     }
     else
     {
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk,';
       $query .= ' sl_position_link.date_created as resume_sent_date, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
-      $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND sl_position_link.status = 2';
+      $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND (sl_position_link.status = 2 OR sl_position_link.status = 51)';
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND sl_meeting.meeting_done = 1';
+      $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
     }
 
     $db_result = $this->oDB->executeQuery($query);
