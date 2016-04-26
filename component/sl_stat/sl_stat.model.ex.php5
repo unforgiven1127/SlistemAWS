@@ -1333,7 +1333,7 @@ order by m.candidatefk
       $query .= ' AND sl_position_link.status = 51 AND sl_position_link.active != 1';
       // $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       // $query .= ' WHERE sl_meeting.created_by IN ('.implode(",", $user_ids).')';
-      $query .= ' WHERE sl_meeting.meeting_done = 1';
+      $query .= ' WHERE sl_meeting.meeting_done = 1 AND sl_position_link.status = 51 AND sl_position_link.active != 1';
     }
 
     $db_result = $this->oDB->executeQuery($query);
