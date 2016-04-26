@@ -1319,11 +1319,10 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.created_by, sl_position_link.status, sl_position_link.date_created, sl_meeting.meeting_done ';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.created_by, sl_position_link.status, sl_position_link.date_created';
       $query .= ' FROM sl_position_link';
-      $query .= ' INNER JOIN sl_meeting ON sl_meeting.candidatefk = sl_position_link.candidatefk';
-      $query .= ' WHERE sl_position_link.status = 51 AND sl_position_link.active != 1 AND sl_meeting.meeting_done = 1';
-      //$query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' INNER JOIN sl_meeting ON sl_meeting.candidatefk = sl_position_link.candidatefk AND sl_position_link.status = 51';
+      $query .= ' WHERE sl_position_link.status = 51 AND sl_position_link.active != 1';
     }
     else
     {
@@ -1336,7 +1335,6 @@ order by m.candidatefk
       // $query .= ' WHERE sl_meeting.created_by IN ('.implode(",", $user_ids).')';
       $query .= ' WHERE sl_meeting.meeting_done = 1';
     }
-
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
