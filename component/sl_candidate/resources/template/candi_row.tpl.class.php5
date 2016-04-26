@@ -25,7 +25,8 @@ class CCandi_row extends CTemplate
 
   public function getDisplay($pasData, $pasField, $pasColumnParam = array(), $pasHeader = array())
   {
-
+var_dump($pasData);
+exit;
     $oPage = CDependency::getCpPage();
     $oDisplay = CDependency::getCpHtml();
     $oLogin = CDependency::getCpLogin();
@@ -97,7 +98,7 @@ class CCandi_row extends CTemplate
             break;
         }
       }
-      elseif($pasData['_pos_status'] == 1011)
+      elseif($pasData['_pos_status'] == 101)
       {
         $asOption['class'].= ' tplCandi_status_placed';
         //$sValue = ' placed';
