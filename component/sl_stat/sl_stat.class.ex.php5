@@ -4305,6 +4305,8 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['mccm_done'] = 0;
           $stats_data['consultant'][$id]['mccm_info'] = array();
         }
+        echo $id."------";
+var_dump($temp_in_play[$id]['new_candidates']);echo "<br><br><br>";
 
         if (!empty($temp_in_play[$id]['new_candidates']))
         {
@@ -4365,7 +4367,7 @@ class CSl_statEx extends CSl_stat
 
         $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
       }
-
+exit;
       $temp_set_vs_met = $temp_resume_sent = $temp_ccm = array();
 
       // generate researcher data

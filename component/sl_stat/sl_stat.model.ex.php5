@@ -1347,7 +1347,7 @@ order by m.candidatefk
     while ($read)
     {
       $row = $db_result->getData();
-
+      
       if($row['min_date'] == $row['sl_position_linkpk'])
       {
         if(isset($temp_new_candidate[$row['candidatefk']]))
@@ -1397,7 +1397,19 @@ order by m.candidatefk
 
     foreach ($temp_new_candidate as $key => $value)
     {
-      if (empty($new_in_play_info[$value['created_by']]['new_candidates']))
+
+      if(isset($new_in_play_info[$value['created_by']]['new_candidates']))
+      {
+        $new_in_play_info[$value['created_by']]['new_candidates'] += 1;
+        array_push($new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'], $value);
+      }
+      else
+      {
+        $new_in_play_info[$value['created_by']]['new_candidates'] = 1;
+        $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'] = array();
+        array_push($new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'], $value);
+      }
+      /*if (empty($new_in_play_info[$value['created_by']]['new_candidates']))
       {
         $new_in_play_info[$value['created_by']]['new_candidates'] = 0;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'] = array();
@@ -1414,9 +1426,9 @@ order by m.candidatefk
         $new_in_play_info[$value['created_by']]['new_candidates'] += 1;
         $new_in_play_info[$value['created_by']]['in_play_info']['new_candidates'][] = array('candidate' => $key,
         'date' => $value['date_created']);
-      }
+      }*/
     }
-
+//var_dump($new_in_play_info);
     foreach ($temp_new_position as $key => $value)
     {
       if (empty($new_in_play_info[$value['created_by']]['new_positions']))
