@@ -1088,7 +1088,7 @@ order by m.candidatefk
     }
     else
     {
-      $query = 'SELECT sl_position_link.active as active, sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
+      $query = 'SELECT sl_position_link.active as pl_active, sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
       $query .= ' sl_position_link.date_created as ccm_create_date, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk';
@@ -1147,6 +1147,9 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+
+          $ccm_data[$row['created_by']]['ccm1_done'] += 1;
+          $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
       else if ($row['status'] == 52)
