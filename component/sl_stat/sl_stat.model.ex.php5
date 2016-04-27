@@ -1079,10 +1079,12 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by, status, date_created as ccm_create_date';
+      $query = 'SELECT positionfk, candidatefk, created_by, status, date_created as ccm_create_date, active';
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND status >= 51';
+      $query .= ' AND status >= 51
+                  AND date_created >= "'.$start_date.'"
+                  AND date_created < "'.$end_date.'"';
     }
     else
     {
@@ -1136,12 +1138,18 @@ order by m.candidatefk
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-        if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
-          strtotime($row['ccm_create_date']) <= $end_date_stamp)
+        //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
+        //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
+        if($row['active'] == 1)
         {
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+        }
+        else
+        {
+            $ccm_data[$row['created_by']]['ccm1_done'] += 1;
+            $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
       else if ($row['status'] == 52)
@@ -1153,14 +1161,14 @@ order by m.candidatefk
         {
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-          if (!empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]) &&
+          /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
-            
+
           {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
+          }*/
 
           $ccm_data[$row['created_by']]['ccm2'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
