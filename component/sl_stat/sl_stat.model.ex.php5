@@ -1107,7 +1107,7 @@ order by m.candidatefk
     {
       $row = $db_result->getData();
 
-      if ($row['status'] >= 51)
+      /*if ($row['status'] >= 51)
       {
         $status = $row['status'];
 
@@ -1118,7 +1118,7 @@ order by m.candidatefk
         }
         else
           $repeating_info[$row['created_by']][$status][$row['candidatefk']] = '';
-      }
+      }*/
 
       if (!isset($ccm_data[$row['created_by']]['ccm1']))
       {
