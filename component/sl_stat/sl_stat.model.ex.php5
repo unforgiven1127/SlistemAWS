@@ -1182,7 +1182,7 @@ order by m.candidatefk
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61)
+      else if ($row['status'] == 53 || $row['status'] > 52 && $row['status'] <= 61)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
@@ -1231,8 +1231,8 @@ order by m.candidatefk
           }*/
         //}
       }
-      else
-      {
+      //else
+      //{
        // if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
         //{
@@ -1256,18 +1256,18 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
+          //$previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
           //if (empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][100]) &&
           //  isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
            // strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
-          if($row['active'] == 0)
-          {
-            $ccm_data[$row['created_by']]['mccm_done'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][100] = $row['candidatefk'];
-          }
+          //if($row['active'] == 0)
+          //{
+          //  $ccm_data[$row['created_by']]['mccm_done'] += 1;
+         //   $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][100] = $row['candidatefk'];
+          //}
         //}
-      }
+      //}
 
       if (!empty($array_key))
         $ccm_keys[$array_key] = $row['ccm_create_date'];
