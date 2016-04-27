@@ -322,13 +322,13 @@ class CCandidate_sl3 extends CTemplate
             $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
           }
 
-          if($pasCandidateData['sl_position_status'] == 101)
+          if(isset($pasCandidateData['sl_position_status']))
           {
             $sStatusLabel = 'Placed';
           }
           else
           {
-            $sStatusLabel .= ' --- '.$pasCandidateData['sl_position_status'];
+            $sStatusLabel .= ' --- NOP';
           }
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
