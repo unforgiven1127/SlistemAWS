@@ -1084,7 +1084,7 @@ order by m.candidatefk
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')
       AND date_created >= "'.$start_date.'"
       AND date_created < "'.$end_date.'"';
-      $query .= ' AND status >= 51';
+      $query .= ' AND status >= 51 GROUP BY candidatefk, positionfk';
     }
     else
     {
@@ -1096,7 +1096,7 @@ order by m.candidatefk
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1
       AND sl_meeting.date_created >= "'.$start_date.'"
-      AND sl_meeting.date_created < "'.$end_date.'"';
+      AND sl_meeting.date_created < "'.$end_date.'" GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
     }
 
     $query .= ' ORDER BY ccm_create_date ASC';
