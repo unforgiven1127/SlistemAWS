@@ -322,25 +322,6 @@ class CCandidate_sl3 extends CTemplate
             $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
           }
 
-          //--------------------------------------------
-          $candidate_id = (int)$pasCandidateData['sl_candidatepk'];
-
-          $query = 'SELECT *
-          FROM sl_position_link pl
-          WHERE pl.candidatefk = "'.$candidate_id.'"
-          ORDER BY pl.sl_position_linkpk DESC';
-
-          $oDbResult = array();
-
-          $oDbResult = $this->oDB->executeQuery($query);
-
-          $temp = $oDbResult->getData();
-
-          $extraStatusNew = $temp['status']
-
-          //--------------------------------------------
-
-$sStatusLabel = $extraStatusNew;
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
           $sHTML.= $this->coDisplay->getFloatHack();
