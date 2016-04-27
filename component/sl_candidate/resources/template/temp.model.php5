@@ -2,7 +2,7 @@
 
 require_once('common/lib/model.class.php5');
 
-class CSl_templateModel extends CModel
+class CSl_tempModel extends CModel
 {
   public function __construct()
   {

@@ -1,7 +1,8 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/component/display/resources/class/template/template.tpl.class.php5');
-require_once('component/sl_candidate/template/template.model.ex.php5');
+require_once('component/sl_candidate/resources/temp.model.php5');
+require_once('component/sl_candidate/resources/temp.model.ex.php5');
 
 class CCandidate_sl3 extends CTemplate
 {
@@ -19,11 +20,6 @@ class CCandidate_sl3 extends CTemplate
     $oPage->addCssFile('/component/sl_candidate/resources/css/sl_candidate.css');
 
     parent::__construct($poTplManager, $psUid, $pasParams, $pnTemplateNumber);
-  }
-
-  public function getModel()
-  {
-    return $this->_getModel();
   }
 
   public function getTemplateType()
@@ -46,7 +42,7 @@ class CCandidate_sl3 extends CTemplate
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
 
 
-    $oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
+    //$oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
     //$read = $oDbResult->readFirst();
     //$temp = $oDbResult->getData();
     //$sl_position_status = $temp['status'];
