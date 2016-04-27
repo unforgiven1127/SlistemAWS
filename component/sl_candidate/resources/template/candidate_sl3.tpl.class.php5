@@ -39,6 +39,7 @@ class CCandidate_sl3 extends CTemplate
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
 
+
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
     $asLanguage = $oCandidate->getVars()->getlanguageList();*/
