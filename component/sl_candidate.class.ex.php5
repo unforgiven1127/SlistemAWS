@@ -1013,6 +1013,25 @@ class CSl_candidateEx extends CSl_candidate
 
       //----------------------------------------------------------------------
 
+
+      //--------------------------------------------
+      $candidate_id = (int)$asCandidate['sl_candidatepk'];
+
+      $query = 'SELECT *
+      FROM sl_position_link pl
+      WHERE pl.candidatefk = "'.$candidate_id.'"
+      ORDER BY pl.sl_position_linkpk DESC';
+
+      $oDbResult = array();
+
+      $oDbResult = $this->oDB->executeQuery($query);
+
+      $temp = $oDbResult->getData();
+
+      $extraStatusNew = $temp['status'];
+
+      //--------------------------------------------
+
       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTopSectLeft'));
       $sHTML.= $this->_getCandidateProfile($asCandidate);
 
