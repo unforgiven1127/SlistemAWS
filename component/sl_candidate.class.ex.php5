@@ -1063,7 +1063,7 @@ class CSl_candidateEx extends CSl_candidate
       $read = $oDbResult->readFirst();
       $temp = $oDbResult->getData();
       $pasCandidateData['sl_position_status'] = $temp['status'];
-      $pasCandidateData['statusfk'] = $temp['status'];
+      //$pasCandidateData['statusfk'] = $temp['status'];
 
       return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
     }
