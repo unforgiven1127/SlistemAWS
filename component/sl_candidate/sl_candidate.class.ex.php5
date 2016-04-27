@@ -2967,8 +2967,7 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.= $this->_oDisplay->getBlocEnd();
         foreach($asData as $key => $value)
         {
-          print_r($value);
-          echo "<br><br>";
+          $asData[$key]['status'] = 101;
         }
         //Add the list template to the html
         $sHTML.= $oTemplate->getDisplay($asData, 1, 5, 'safdassda');
