@@ -1,4 +1,3 @@
-
 <?php
 
 require_once('component/sl_candidate/sl_candidate.class.php5');
@@ -156,7 +155,9 @@ class CSl_candidateEx extends CSl_candidate
     if($this->csAction == CONST_ACTION_LIST || $this->csAction == CONST_ACTION_SEARCH)
     {
       if(!getValue('searchId') || getValue('clear_search'))
+      {
         $this->csSearchId = manageSearchHistory($this->csUid, $this->csType, true);
+      }
       else
       {
         /*dump('load search from id: '.getValue('searchId'));
@@ -276,9 +277,22 @@ class CSl_candidateEx extends CSl_candidate
 
           case CONST_ACTION_LIST:
             //list and search
-            $asHTML = $this->_getCompanyList();
+            /*$asHTML = $this->_getCompanyList();
             $asHTML['data'] = convertToUtf8($asHTML['data']);
-            return json_encode($oPage->getAjaxExtraContent($asHTML));
+            return json_encode($oPage->getAjaxExtraContent($asHTML));*/
+            $oQB = $this->_getModel()->getQueryBuilder();
+
+            require_once('component/sl_candidate/resources/search/quick_search.class.php5');
+            $oQS = new CQuickSearch($oQB);
+            $sError = $oQS->buildQuickSearch();
+
+            if(!empty($sError))
+              return json_encode(array('alert' => $sError));
+
+            $asHTML = $this->_getCompanyList($oQB);
+
+            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($asHTML['data']),
+                'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
 
           case CONST_ACTION_SEARCH:
@@ -460,9 +474,6 @@ class CSl_candidateEx extends CSl_candidate
             return $this->_getCandidateAddForm($this->cnPk);
             break;
 
-          case CONST_ACTION_FASTEDIT:
-            return $this->_getCandidateFastEdit($this->cnPk);
-            break;
 
           case CONST_ACTION_VIEW:
             /*//load an empty tab with a js to load the candidate
@@ -970,9 +981,11 @@ class CSl_candidateEx extends CSl_candidate
       $asPlayFor = $oPosition->getApplication($pnPk, false, true);
 
       $asCandidate['in_play'] = count($asPlayFor['active']);
+      set_array($asPlayFor['inactive'], 0);
+
       if(empty($asCandidate['in_play']))
       {
-        $asCandidate['in_play'] = 0 - count($asPlayFor['history']);
+        $asCandidate['in_play'] = 0 - count($asPlayFor['inactive']);
       }
       if(empty($asCandidate['in_play']))
       {
@@ -982,7 +995,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $asCandidate['nb_meeting'] = 0;
       $asCandidate['date_meeting'] = '';
-      $asCandidate['last_meeting'] = '';
+      $asCandidate['last_meeting'] = array('date' => '', 'status' => '');
 
       $oDbResult = $this->_getModel()->getByFk($pnPk, 'sl_meeting', 'candidate', '*', 'meeting_done, date_meeting');
       $bRead = $oDbResult->readFirst();
@@ -992,21 +1005,20 @@ class CSl_candidateEx extends CSl_candidate
         $sMeetingDate = $oDbResult->getFieldValue('date_met');
         $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
 
-        if($nStatus >= 0)
+        if($nStatus > 0)
         {
-          if($nStatus > 0)
-          {
-            if(empty($asCandidate['last_meeting']) || $asCandidate['last_meeting'] < $sMeetingDate)
-              $asCandidate['last_meeting'] = $sMeetingDate;
-          }
-          else
-          {
-            if(empty($asCandidate['date_meeting']) || $asCandidate['date_meeting'] > $sMeetingDate)
-              $asCandidate['date_meeting'] = $sMeetingDate;
-          }
-
-          $asCandidate['nb_meeting']++;
+          if(empty($asCandidate['last_meeting']['date']) || $asCandidate['last_meeting']['date'] < $sMeetingDate)
+            $asCandidate['last_meeting'] = array('date' => $sMeetingDate);
         }
+        else
+        {
+          if(empty($asCandidate['date_meeting']) || $asCandidate['date_meeting'] > $sMeetingDate)
+            $asCandidate['date_meeting'] = $sMeetingDate;
+        }
+
+        $asCandidate['last_meeting']['status'] = $nStatus;
+
+        $asCandidate['nb_meeting']++;
 
         $bRead = $oDbResult->readNext();
       }
@@ -1017,10 +1029,11 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_getCandidateProfile($asCandidate);
 
       //store a description of the current item for later use in javascript
+      $sLabel = preg_replace('/[^a-z0-9 \.&]/i', ' ', $asCandidate['lastname'].' '.$asCandidate['firstname']);
       $sHTML.= $this->_oDisplay->getBloc('', '', array('class' => 'itemDataDescription hidden',
           'data-type' => 'candi',
           'data-pk' => $pnPk,
-          'data-label' => $asCandidate['lastname'].' '.$asCandidate['firstname'],
+          'data-label' => $sLabel,
           'data-cp_item_selector' => '555-001|@|ppav|@|candi|@|'.$pnPk));
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
@@ -1421,6 +1434,10 @@ class CSl_candidateEx extends CSl_candidate
       $nPriority = 0;
       $sHTML = '';
       $bRmMasked = false;
+      $is_creator = false;
+
+      if ($pasCandidateData['creatorfk'] == $this->casUserData['loginpk'])
+        $is_creator = true;
 
       //if there's a RM, we hide contact details
       if(!empty($pasCandidateData['rm']) && !isset($pasCandidateData['rm'][$this->casUserData['loginpk']])
@@ -1452,6 +1469,12 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+
       if($bRead)
       {
         $sAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
@@ -1463,7 +1486,7 @@ class CSl_candidateEx extends CSl_candidate
             (empty($pasCandidateData['date_added']))? 0: strtotime($pasCandidateData['date_created']),
             (empty($pasCandidateData['date_updated']))? 0: strtotime($pasCandidateData['date_updated']),
             (empty($pasCandidateData['date_met']))? 0: strtotime($pasCandidateData['date_met']),
-            (empty($pasCandidateData['last_meeting']))? 0: strtotime($pasCandidateData['last_meeting'])
+            (empty($pasCandidateData['last_meeting']['date']))? 0: strtotime($pasCandidateData['last_meeting']['date'])
         );
 
         $sLastUpdate = date('Y-m-d', max($asDate));
@@ -1471,18 +1494,17 @@ class CSl_candidateEx extends CSl_candidate
         {
           if($pasCandidateData['date_added'] > $sAMonthAgo)
           {
-            $sHTML.= '<div class="contact_warning">Achtung !! Candidate created on the '.$sLastUpdate.' </div>';
+            $sHTML.= '<div class="contact_warning">Candidate created on the '.$sLastUpdate.' </div>';
           }
           elseif($pasCandidateData['date_updated'] > $sAMonthAgo)
           {
-            $sHTML.= '<div class="contact_warning">Achtung !! Candidate updated on the '.$sLastUpdate.' </div>';
+            $sHTML.= '<div class="contact_warning">Candidate updated on the '.$sLastUpdate.' </div>';
           }
           else
-            $sHTML.= '<div class="contact_warning">Achtung !! Candidate met on the '.$sLastUpdate.' </div>';
+            $sHTML.= '<div class="contact_warning">Candidate met on the '.$sLastUpdate.' </div>';
 
 
         }
-
 
         while($bRead)
         {
@@ -1523,9 +1545,10 @@ class CSl_candidateEx extends CSl_candidate
             $sUser = '';
 
           $sItem = $this->_oDisplay->getBloc('', '&nbsp;', array('class' => 'contactIcon contact_type'.$asData['type'], 'title' => $asTypeTitle[$asData['type']]));
-          $bVisible = (bool)$asData['visible'];
 
-          if(!$bRmMasked && $bVisible)
+          $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+
+          if(!$bRmMasked && $bVisible || $asData['visibility'] == 1)
           {
             switch($asData['type'])
             {
@@ -1589,7 +1612,7 @@ class CSl_candidateEx extends CSl_candidate
               var oConf = goPopup.getConfig();
               oConf.height = 500;
               oConf.width = 850;
-              goPopup.setLayerFromAjax(oConf, \'https://slistem.devserv.com/index.php5?uid=333-333&ppa=ppaa&ppt=msg&ppk=0&loginfk='.$nLoginFk.'&pg=ajx\'); " >'.$sUserName.'</a> if you need to access this.</em>', array('class' => 'contactDescription'));
+              goPopup.setLayerFromAjax(oConf, \''.CONST_CRM_DOMAIN.'/index.php5?uid=333-333&ppa=ppaa&ppt=msg&ppk=0&loginfk='.$nLoginFk.'&pg=ajx\'); " >'.$sUserName.'</a> if you need to access this.</em>', array('class' => 'contactDescription'));
 
 
           $sHTML.= $this->_oDisplay->getListItem($sItem);
@@ -1599,17 +1622,44 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $sHTML = '<div class="entry"><div class="note_content"><em>No contact details.</em></div></div>';
+        $sHTML .= '<div class="entry"><div class="note_content"><em>No contact details.</em></div></div>';
       }
 
-      $sHTML.= $this->_oDisplay->getFloatHack();
-      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
-      $sHTML.= $this->_oDisplay->getBlocEnd();
-
       return array('content' => $sHTML, 'nb_result' => $nCount, 'priority' => $nPriority);
+    }
+
+    private function check_contact_info_visibility($candidate_contact, $current_user_data, $is_creator)
+    {
+
+      $visible = false;
+
+      if ($current_user_data['admin'])
+      {
+        $visible = true;
+      }
+      else if ($is_creator)
+      {
+        $visible = true;
+      }
+      else if ($candidate_contact['visibility'] == 1)
+      {
+        $visible = true;
+      }
+      else if ($candidate_contact['creatorfk'] == $current_user_data['pk'])
+      {
+        $visible = true;
+      }
+      else if (!empty($candidate_contact['custom_visibility']))
+      {
+        $user_list = explode(',', $candidate_contact['custom_visibility']);
+
+        if (in_array($current_user_data['pk'], $user_list))
+        {
+          $visible = true;
+        }
+      }
+
+      return $visible;
     }
 
     /** return the lastest update feed obout the candidate company
@@ -1696,6 +1746,11 @@ class CSl_candidateEx extends CSl_candidate
         return array();
 
       $nActivityToDisplay = 25;
+      $skip_activity = array('upd sl_candidate_profile', 'upd sl_candidate', 'upd sl_position_link', 'upd sl_candidate_rm',
+        'upd settings_user', 'upd sl_contact', 'upd notification', 'upd notification_action', 'upd sl_meeting', 'upd notification_link',
+        'upd document_link', 'upd sl_attribute', 'upd event_link', 'upd document', 'upd sl_company', 'upd folder', 'upd folder_link',
+        'upd sl_position', 'upd sl_position_detail', 'upd login', 'upd document_file', 'upd revenue', 'upd login_activity',
+        'upd login_system_history', 'upd sl_position_credit');
 
       //request 1 more activity than what is displayed to know if everything is displayed
       if($pnPage < 2)
@@ -1727,6 +1782,9 @@ class CSl_candidateEx extends CSl_candidate
       {
         foreach($asHistory as $asHistoryData)
         {
+          if (in_array($asHistoryData['action'], $skip_activity))
+            continue;
+
           $sHTML.= '<div class="entry">';
             $sHTML.= '<div class="note_header">';
             $sHTML.= '&rarr;&nbsp;&nbsp;<span class="note_date">'.$asHistoryData['date'].'</span>';
@@ -1810,6 +1868,23 @@ class CSl_candidateEx extends CSl_candidate
       $nDocument = count($asDocument);
       $nPriority = 0;
 
+      $asItem['document_title'] = $sTitle;
+      $asItem['callback'] = $sCallback;
+
+      $sHTML.= '<div class="tab_bottom_link">';
+
+      $sURL = $oPage->getAjaxUrl('sharedspace', CONST_ACTION_ADD, CONST_SS_TYPE_DOCUMENT, 0, $asItem);
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'"> Upload a document</a>';
+
+      $sHTML.= '&nbsp;&nbsp;-&nbsp;&nbsp;';
+
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
+      $sHTML.= '</div>';
+
+
       if($nDocument == 0)
         $sHTML.= '<div class="entry"><div class="note_content"><em>No document found.</em></div></div>';
       else
@@ -1845,30 +1920,10 @@ class CSl_candidateEx extends CSl_candidate
                  '.$asDocData['title'].'<br />'.$asDocData['initial_name'].'
               </a>
               </div>
-
-            <div class="floatHack" />
             </div>
           </div>';
         }
       }
-
-
-      $sHTML.= '<div class="floathack" />';
-      $sHTML.= '<div class="tab_bottom_link">';
-
-      $asItem['document_title'] = $sTitle;
-      $asItem['callback'] = $sCallback;
-
-      $sURL = $oPage->getAjaxUrl('sharedspace', CONST_ACTION_ADD, CONST_SS_TYPE_DOCUMENT, 0, $asItem);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'"> Upload a document</a>';
-
-      $sHTML.= '&nbsp;&nbsp;-&nbsp;&nbsp;';
-
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
-      $sHTML.= '</div>';
 
       return array('content' => $sHTML, 'nb_result' => $nDocument, 'priority' => $nPriority);
     }
@@ -1887,15 +1942,18 @@ class CSl_candidateEx extends CSl_candidate
       $nPosition = $nPriority = 0;
       $sHTML = '';
 
-      if(empty($asPosition['active']) && empty($asPosition['history']))
-      {
-        $sHTML = '<div class="tab_bottom_link">
-            <em>No application found.</em>
-            <br /><a href="javascript:;" onclick="
+      $sHTML.= '<div class="tab_bottom_link">
+            <a href="javascript:;" onclick="
             oConf = goPopup.getConfig();
-            oConf.height = 600;
+            oConf.height = 500;
             oConf.width = 900;
-            goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');">pitch to new position</a>
+            goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');">Pitch to new position</a>
+        </div>';
+
+      if(empty($asPosition['active']) && empty($asPosition['inactive']))
+      {
+        $sHTML .= '<div class="entry">
+            <em>No application found.</em>
          </div>';
       }
       else
@@ -1917,19 +1975,19 @@ class CSl_candidateEx extends CSl_candidate
 
 
         //separator
-        if(!empty($asPosition['history']))
+        if(!empty($asPosition['inactive']))
         {
 
           $sHistory = '';
-          foreach($asPosition['history'] as $asJdData)
+          foreach($asPosition['inactive'] as $asJdData)
           {
             //not display twice a position that has been re-opened
-            if(!in_array($asJdData[0]['sl_positionpk'], $asDisplayLink))
+            if(!in_array($asJdData['sl_positionpk'], $asDisplayLink))
             {
-              $asJdData[0]['link_date'] = substr($asJdData[0]['link_date'], 0, 10);
-              $asJdData[0]['link_creator'] = $oLogin->getUserLink((int)$asJdData[0]['link_creator'], true);
+              $asJdData['link_date'] = substr($asJdData['link_date'], 0, 10);
+              $asJdData['link_creator'] = $oLogin->getUserLink((int)$asJdData['link_creator'], true);
 
-              $sHistory.= $this->_getPositionTabRow($asJdData[0], $pasCandidateData['sl_candidatepk']);
+              $sHistory.= $this->_getPositionTabRow($asJdData, $pasCandidateData['sl_candidatepk']);
               $nPosition++;
             }
           }
@@ -1940,19 +1998,10 @@ class CSl_candidateEx extends CSl_candidate
               $sHTML.= $this->_oDisplay->getBloc('', 'Inactive & expired positions', array('class' => 'position_separator'));
 
 
-            $sHTML.= $this->_oDisplay->getFloatHack();  //to keep the odd/par colors in order
+
             $sHTML.= $sHistory;
           }
         }
-
-
-        $sHTML.= '<div class="tab_bottom_link">
-            <a href="javascript:;" onclick="
-            oConf = goPopup.getConfig();
-            oConf.height = 500;
-            oConf.width = 900;
-            goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');">pitch to new position</a>
-         </div>';
 
       }
 
@@ -2377,6 +2426,7 @@ class CSl_candidateEx extends CSl_candidate
       $asListMsg = array();
       $sTemplate = getValue('tpl');
       $bHeavyJoin = false;
+      $bDisplayPositionField = false;
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
@@ -2441,8 +2491,9 @@ class CSl_candidateEx extends CSl_candidate
       $sNow = date('Y-m-d H:i:s');
       $poQB->addSelect('scan.*,
           scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
-          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play, scpr._pos_status, scpr.department,
-          sind.label as industry, socc.label as occupation, TIMESTAMPDIFF(YEAR, scan.date_birth, "'.$sNow.'") AS age,
+          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
+          scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
+          TIMESTAMPDIFF(YEAR, scan.date_birth, "'.$sNow.'") AS age,
           scan.sl_candidatepk as PK');
 
       $poQB->addCountSelect('count(DISTINCT scan.sl_candidatepk) as nCount');
@@ -2482,7 +2533,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if(getValue('pipe_filter'))
       {
-        $this->_addPipeFilter($asListMsg, $poQB);
+        $this->_addPipeFilter($asListMsg, $poQB, $bDisplayPositionField);
       }
 
       if($sTemplate == 'name_collect' || 'display' == 'last notes' || 'dba' == 'tools')
@@ -2504,31 +2555,40 @@ class CSl_candidateEx extends CSl_candidate
       if(!$poQB->hasLimit())
         $poQB->addLimit('0, 50');
 
+      // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
+      // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
       if(!empty($sSortField))
       {
-        if($sSortField == 'salary')
-          $sSortField = 'full_salary';
+        if($sSortField == '_in_play')
+        {
+          $sSortOrder = getValue('sortorder', 'DESC');
+          $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+          $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+        }
+        else
+        {
+          $sort_order = getValue('sortorder', 'DESC');
 
-        $poQB->setOrder($sSortField.' '.getValue('sortorder', 'DESC'));
+          if ($sSortField == 'salary')
+            $sSortField = 'full_salary';
+          else if ($sSortField == 'date_birth')
+            $sSortField = 'age';
+
+          $ordering = $sSortField.' '.$sort_order.$secondary_order;
+
+          $poQB->setOrder($ordering);
+        }
       }
+      else
+        $poQB->addOrder('scan.firstname DESC');
 
-      if(!$poQB->hasOrder())
-        $poQB->addOrder('sl_candidatepk DESC');
 
       if(empty($sGroupBy))
-        $poQB->addGroup('sl_candidatepk', false);
+        $poQB->addGroup('scan.sl_candidatepk', false);
       else
         $poQB->addGroup($sGroupBy, false);
-
-
-      /*if(!$poQB->hasWhere())
-      {
-        $asListMsg[] = 'My most recent candidates';
-        $sLastMonth = date('Y-m-d', strtotime('-6 month'));
-        $poQB->addWhere('scan.date_created >= "'.$sLastMonth.'" AND scan.created_by = '.$this->casUserData['loginpk']);
-      }*/
 
 
       $sMessage = $poQB->getTitle();
@@ -2540,7 +2600,7 @@ class CSl_candidateEx extends CSl_candidate
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      //echo $sQuery;
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
@@ -2554,7 +2614,17 @@ class CSl_candidateEx extends CSl_candidate
       $sQuery = $poQB->getSql();
       //dump($sQuery);
 
+      if ($nPagerOffset)
+      {
+        $record_start = $nPagerOffset*$nLimit;
 
+        if ($record_start > $nResult)
+        {
+          $poQB->addLimit('0, '.$nLimit);
+          $sQuery = $poQB->getSql();
+          $oPager->setOffset(1);
+        }
+      }
 
       //Some joins are too heavy to make (notes, contacts...)
       //So we put the main query in a subquery, and join with the filtered / size-limited result
@@ -2574,7 +2644,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      //echo $sQuery;
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
@@ -2615,8 +2685,32 @@ class CSl_candidateEx extends CSl_candidate
 
         $asCandidate['n'] = $asCandidate['title'];
 
+        if($bDisplayPositionField)
+        {
+          if($asCandidate['_in_play'] == 1)
+          {
+            $asCandidate['activity'] = '#'.$asCandidate['position_play'].' - '.$asCandidate['position_play_name'];
+          }
+          elseif($asCandidate['_in_play'] > 1)
+          {
+            $asCandidate['activity'] = $asCandidate['_in_play'].' positions: #'.$asCandidate['position_play_name'].'...';
+          }
+          else
+          {
+            if(!empty($asCandidate['position_play']))
+            {
+              $asCandidate['activity'] = '<em> positions: #'.$asCandidate['position_play_name'].'</em>';
+            }
+            else
+              $asCandidate['activity'] = '';
+          }
+        }
+
         $asPk[] = (int)$asCandidate['sl_candidatepk'];
         $asData[(int)$asCandidate['sl_candidatepk']] = $asCandidate;
+
+
+
         $bRead = $oDbResult->readNext();
       }
 
@@ -2684,8 +2778,10 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $sActionLink = $this->_oDisplay->getLink($sPic, 'javascript:;', array('onclick' => $sJavascript));
-      $oConf->addColumn($sActionLink, 'a', array('id' => 'aaaaaa', 'width' => '20'));
-      $oConf->addColumn('ID', 'sl_candidatepk', array('id' => 'bbbbbb', 'width' => '43', 'style' => 'margin: 0;', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn($sActionLink, 'a', array('id' => 'aaaaaa', 'width' => '20', 'class' => 'column_static_20'));
+      $oConf->addColumn('ID', 'sl_candidatepk', array('id' => 'bbbbbb', 'width' => '43', 'style' => 'margin: 0;',
+        'class' => 'column_static_43',
+        'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
 
       switch($sTemplate)
@@ -2698,38 +2794,85 @@ class CSl_candidateEx extends CSl_candidate
           break;
 
         default:
-          $oConf->addColumn('C', 'cp_client', array('id' => '', 'width' => '16', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Status', '_in_play', array('id' => '', 'width' => '40', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('G', 'grade', array('id' => '', 'width' => '16', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('R', '_has_doc', array('id' => '', 'width' => '16', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Lastname', 'lastname', array('id' => '', 'width' => '13.5%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Firstname', 'firstname', array('id' => '', 'width' => '13%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Company', 'company_name', array('id' => '', 'width' => '20%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          //if we need to display play data, we shrink other columns
+          if($bDisplayPositionField)
+          {
+            $sFistnameW = '10%'; $sLastnameW = '10%'; $sCompanyW = '14%';
+            $sTitleW = '10%'; $sDeptW = '9%';
+
+            $firstname_class = 'column_10'; $lastname_class = 'column_10'; $company_class = 'column_14';
+            $title_class = 'column_10'; $dept_class = 'column_9';
+          }
+          else
+          {
+            $sFistnameW = '13%'; $sLastnameW = '13%'; $sCompanyW = '18%';
+            $sTitleW = '11%'; $sDeptW = '10%';
+
+            $firstname_class = 'column_13'; $lastname_class = 'column_13'; $company_class = 'column_18';
+            $title_class = 'column_11'; $dept_class = 'column_10';
+          }
+
+          $oConf->addColumn('C', 'cp_client', array('id' => '', 'width' => '16', 'class' => 'column_static_16',
+            'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('Status', '_in_play', array('id' => '', 'width' => '40', 'class' => 'column_static_40',
+            'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('G', 'grade', array('id' => '', 'width' => '16', 'class' => 'column_static_16',
+            'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('R', '_has_doc', array('id' => '', 'width' => '16', 'class' => 'column_static_16',
+            'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('Lastname', 'lastname', array('id' => '', 'width' => $sFistnameW, 'class' => $firstname_class,
+            'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('Firstname', 'firstname', array('id' => '', 'width' => $sLastnameW, 'class' => $lastname_class,
+            'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
+          $oConf->addColumn('Company', 'company_name', array('id' => '', 'width' => $sCompanyW, 'class' => $company_class,
+            'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
 
-          //~150px
-          if(in_array('title', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Title', 'title', array('id' => '', 'width' => '11.5%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+          if($bDisplayPositionField)
+          {
+            $oConf->addColumn('In play at', 'position_play_company', array('id' => '', 'width' => '10%',
+              'class' => 'column_10'));
+            $oConf->addColumn('In play for', 'activity', array('id' => '', 'width' => '15%',
+              'class' => 'column_15'));
+          }
+          else
+          {
+            //~150px
+            if(in_array('title', $this->casSettings['candi_list_field']))
+              $oConf->addColumn('Title', 'title', array('id' => '', 'width' => $sTitleW, 'class' => $title_class,
+                'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+          }
 
           if(in_array('department', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Department', 'department', array('id' => '', 'width' => '11%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+            $oConf->addColumn('Department', 'department', array('id' => '', 'width' => $sDeptW, 'class' => $dept_class,
+              'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
           if(in_array('note', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Note', 'lastNote', array('id' => '', 'width' => '35', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+            $oConf->addColumn('Note', 'lastNote', array('id' => '', 'width' => '35', 'class' => 'column_static_35',
+              'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
           if(in_array('date_birth', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Age', 'date_birth', array('id' => '', 'width' => '30', 'sortable' => array($sSortJs => 'integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+            $oConf->addColumn('Age', 'date_birth', array('id' => '', 'width' => '30', 'class' => 'column_static_30',
+              'sortable' => array($sSortJs => 'integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
           if(in_array('salary', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Salary', 'salary', array('id' => '', 'width' => '42', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+            $oConf->addColumn('Salary', 'salary', array('id' => '', 'width' => '42', 'class' => 'column_static_42',
+              'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
           if(in_array('manager', $this->casSettings['candi_list_field']))
-            $oConf->addColumn('Managed by', 'manager', array('id' => '', 'width' => '105')); //108px
+            $oConf->addColumn('Managed by', 'manager', array('id' => '', 'width' => '105', 'class' => 'column_static_105',)); //108px
 
           break;
       }
 
-      $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array('style' => 'cursor: crossair'), 'title');
+      $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
 
       //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
@@ -2757,7 +2900,7 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.= $this->_oDisplay->getBlocStart($sActionContainerId, array('class' => 'hidden'));
         $sHTML.= '
           <div><input type="checkbox"
-          onchange="if($(this).is(\':checked\')){ listSelectBox(\''.$sListId.'\', true); }else{ listSelectBox(\''.$sListId.'\', false); }"/> all</div>';
+          onchange="if($(this).is(\':checked\')){ listSelectBox(\''.$sListId.'\', true); }else{ listSelectBox(\''.$sListId.'\', false); }"/>Select all</div>';
 
         $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_FOLDER, 0, array('item_type' => CONST_CANDIDATE_TYPE_CANDI));
         $sHTML.= '<div>Create a folder from [<a href="javascript:;" onclick="
@@ -2766,12 +2909,12 @@ class CSl_candidateEx extends CSl_candidate
           if(!sIds)
             return alert(\'Nothing selected\');
 
-          goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected items</a>]';
+          goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected items</a>] OR';
 
-        if($nResult <= 1000)
-          $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">'.$nResult.' results</a>]';
+        if($nResult <= 80000)
+          $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">All '.$nResult.' results</a>]';
         else
-          $sHTML.= ' [<span title="Too many results. Can\'t save more than 1000 results." style="font-style: italic">all</span> ]';
+          $sHTML.= ' [<span title="Too many results. Can\'t save more than 50000 results." style="font-style: italic">all</span> ]';
 
         $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_ITEM, 0, array('item_type' => CONST_CANDIDATE_TYPE_CANDI));
         $sHTML.= '</div><div>Move into a folder [<a href="javascript:;" onclick="
@@ -2780,26 +2923,46 @@ class CSl_candidateEx extends CSl_candidate
           if(!sIds)
             return alert(\'Nothing selected\');
 
-          goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected ones</a>]';
+          goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected items</a>] OR';
 
-        if($nResult <= 1000)
-          $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">'.$nResult.' results</a>]';
+        if($nResult <= 80000)
+          $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">All '.$nResult.' results</a>]';
         else
-          $sHTML.= ' [<span title="Too many results. Can\'t save more than 1000 results." style="font-style: italic">all</span> ]';
+          $sHTML.= ' [<span title="Too many results. Can\'t save more than 50000 results." style="font-style: italic">all</span> ]';
 
         $sHTML.= '</div>';
 
+        if ($nResult > 1 && empty($nFolderPk))
+        {
+          $sURL = $this->_oPage->getAjaxUrl('settings', CONST_ACTION_SAVEEDIT, CONST_TYPE_SAVED_SEARCHES, 0,
+            array('action' => 'add', 'activity_id' => $nHistoryPk));
+
+          $sHTML.= '<div><a href="javascript:;" onclick="ajaxLayer(\''.$sURL.'\', 370, 150);">Save this search</a></div>';
+        }
+
         if(!empty($nFolderPk))
         {
-          $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_DELETE, CONST_FOLDER_TYPE_ITEM, 0, array('folderpk' => $nFolderPk, 'item_type' => CONST_CANDIDATE_TYPE_CANDI));
-          $sHTML.= '<div>Remove from folder [<a href="javascript:;" onclick="listBoxClicked($(\'#'.$sListId.' ul li:first\'));
-          sIds = $(\'.multi_drag\').attr(\'data-ids\');
-          if(!sIds)
-            return alert(\'Nothing selected\');
+          $folder_obj = CDependency::getComponentByName('sl_folder');
+          $folder_db = $folder_obj->getFolder((int)$nFolderPk);
 
-           AjaxRequest(\''.$sURL.'&ids=\'+sIds);
-          ">selected</a>]
-          [<a href="javascript:;" onclick="AjaxRequest(\''.$sURL.'&searchId='.$this->csSearchId.'\');">'.$nResult.' results</a>]</div>';
+          $read = $folder_db->readFirst();
+
+          $folder_owner = $folder_db->getFieldValue('ownerloginfk');
+          $current_user = $this->_oLogin->getUserPk();
+
+          if ($folder_owner == $current_user || $this->_oLogin->isAdmin())
+          {
+            $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_DELETE, CONST_FOLDER_TYPE_ITEM,
+              0, array('folderpk' => $nFolderPk, 'item_type' => CONST_CANDIDATE_TYPE_CANDI));
+            $sHTML.= '<div>Remove from folder [<a href="javascript:;" onclick="listBoxClicked($(\'#'.$sListId.' ul li:first\'));
+            sIds = $(\'.multi_drag\').attr(\'data-ids\');
+            if(!sIds)
+              return alert(\'Nothing selected\');
+
+             AjaxRequest(\''.$sURL.'&ids=\'+sIds);
+            ">selected</a>]
+            [<a href="javascript:;" onclick="AjaxRequest(\''.$sURL.'&searchId='.$this->csSearchId.'\');">'.$nResult.' results</a>]</div>';
+          }
         }
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
@@ -2826,6 +2989,14 @@ class CSl_candidateEx extends CSl_candidate
           $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
             <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
         }
+
+        $sHTML .= '<script>
+          $(function(){
+            var list_container = document.getElementById(\''.$this->csSearchId.'\');
+            $(\'.fixedListheader\').remove();
+            list_container.scrollTop = 0;
+          });
+        </script>';
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
@@ -2862,7 +3033,7 @@ class CSl_candidateEx extends CSl_candidate
       return logUserHistory('555-002', CONST_ACTION_VIEW, CONST_FOLDER_TYPE_FOLDER, $nFolderPk, array('text' => 'folder #'.$nFolderPk.':  '.$sFolderName, 'link' => $sLink, 'data' => array('qb' => $poQB)), false);
     }
 
-    private function _addPipeFilter(&$asListMsg, &$poQB)
+    private function _addPipeFilter(&$asListMsg, &$poQB, &$pbPosField)
     {
       $sFilter = getValue('pipe_filter');
 
@@ -2885,33 +3056,44 @@ class CSl_candidateEx extends CSl_candidate
 
           $asListMsg[] = $sBy.' [ in_play ] candidates';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 0 AND spli.status < 101  AND spli.created_by = '.$nLoginfk.'');
-          $poQB->addWhere('(scpr._in_play = 1 AND spli.created_by = '.$nLoginfk.')');
+          $poQB->addWhere('(scpr._in_play > 0 AND spli.created_by = '.$nLoginfk.')');
+          $pbPosField = true;
           break;
 
         case 'pitched':
         case 'resume_sent':
-        case 'placed':
 
           $asListMsg[] = $sBy.' [ '.str_replace('_', ' ', $sFilter).' ] candidates';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
+          break;
+
+        case 'placed':
+
+          $asListMsg[] = $sBy.' [ '.str_replace('_', ' ', $sFilter).' ] candidates';
+          $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
           break;
 
         case 'ccm':
 
           $asListMsg[] = $sBy.' [ CCM ] candidates ';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 50 AND spli.status < 100 AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
           break;
 
         case 'fallen_off':
 
           $asListMsg[] = $sBy.' [ fallen - not interested ] candidates ';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (200,201) AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
           break;
 
         case 'expired':
 
           $asListMsg[] = $sBy.' [ stalled - expired ] candidates ';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (150,151) AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
           break;
 
         case 'met':
@@ -2931,6 +3113,7 @@ class CSl_candidateEx extends CSl_candidate
         case 'offer':
           $asListMsg[] = $sBy.' [ Offer ] candidates ';
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status = 100 AND spli.created_by = '.$nLoginfk.'');
+          $pbPosField = true;
           break;
 
         case 'meeting':
@@ -2954,6 +3137,7 @@ class CSl_candidateEx extends CSl_candidate
 
           $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status <= 100 ');
+          $pbPosField = true;
           break;
 
         case 'all':
@@ -2966,6 +3150,16 @@ class CSl_candidateEx extends CSl_candidate
 
           $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
           break;
+      }
+
+      if($pbPosField)
+      {
+        $poQB->addSelect('spli.positionfk as position_play, spli.created_by as playing_for,
+          spd.title as position_play_name, scom_2.name as position_play_company ');
+
+        $poQB->addJoin('left', 'sl_position_detail', 'spd', 'spd.positionfk = spli.positionfk');
+        $poQB->addJoin('left', 'sl_position', 'spos', 'spos.sl_positionpk = spli.positionfk');
+        $poQB->addJoin('left', 'sl_company', 'scom_2', 'scom_2.sl_companypk = spos.companyfk');
       }
 
       return true;
@@ -3095,10 +3289,10 @@ class CSl_candidateEx extends CSl_candidate
       //If launched manually, we try an accurate search.
       //If no result, the function will be launched a second time
       //can't use as_epq= anymore, google is getting rid of RSS feeds
-      if($pbManual && $pnAttempt == 0)
+      /*if($pbManual && $pnAttempt == 0)
         $sNewsUrl = 'http://news.google.com/news/search?output=rss&gl=jp&geo=jp&q='.$pasCompanyData['name'];
-      else
-        $sNewsUrl = 'http://news.google.com/news/search?output=rss&gl=jp&q='.urlencode($pasCompanyData['name']);
+      else*/
+        $sNewsUrl = 'https://news.google.com/news/feeds?pz=1&cf=all&&output=rss&q='.urlencode($pasCompanyData['name']);
 
       try
       {
@@ -3198,7 +3392,11 @@ class CSl_candidateEx extends CSl_candidate
         return $this->_updateCompanyFeed($pasCompanyData, true, 1);
       }
 
-      $asInsert['content'] = $sNews;
+      $dom_class = new DOMDocument();
+      $dom_class->loadHTML($sNews);
+      $fixed_html = $dom_class->saveHTML();
+
+      $asInsert['content'] = $fixed_html;
 
       $this->_getModel()->deleteByFk($asInsert['companyfk'], 'sl_company_rss', 'companyfk');
       $nPk = $this->_getModel()->add($asInsert, 'sl_company_rss');
@@ -3471,7 +3669,8 @@ class CSl_candidateEx extends CSl_candidate
       else
         $sJavascript = 'if($(this).val() != \''.$sPickerDate.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
 
-      $oForm->addField('input', 'date_meeting', array('type' => 'datetime', 'label'=> 'Meeting date', 'value' => $sPickerDate, 'onchange' => $sJavascript));
+      $oForm->addField('input', 'date_meeting', array('type' => 'datetime', 'label'=> 'Meeting date',
+        'value' => $sPickerDate, 'onchange' => $sJavascript, 'minDate' => 'now'));
 
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
@@ -3481,7 +3680,8 @@ class CSl_candidateEx extends CSl_candidate
       if(empty($nAttendee))
         $nAttendee = $oLogin->getUserPk();
 
-      $sJavascript = 'if($(this).val() == '.$oLogin->getUserPk().'){ $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').removeProp(\'checked\', \'\'); } ';
+      $sJavascript = 'if($(this).val() != '.$oLogin->getUserPk().'){ $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').attr(\'checked\', \'checked\'); } ';
+      $sJavascript.= 'else { $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').removeProp(\'checked\'); } ';
 
       if(!empty($pnMeetingPk))
         $sJavascript.= ' if($(this).val() != \''.$nAttendee.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
@@ -3494,10 +3694,10 @@ class CSl_candidateEx extends CSl_candidate
 
       $oForm->addField('textarea', 'description', array('label'=> 'Description', 'value' => $oDbMeeting->getFieldValue('description')));
 
-      $oForm->addField('checkbox', 'notify_attendee', array('label' => 'Send a notification to attendee when saving', 'checked' => 'checked'));
-      $oForm->addField('checkbox', 'add_reminder1', array('label' => 'Set a reminder  - the day of the meeting', 'checked' => 'checked'));
+      $oForm->addField('checkbox', 'notify_attendee', array('label' => 'Send a notification to attendee when saving'));
+      $oForm->addField('checkbox', 'add_reminder1', array('label' => 'Set a reminder  - the day of the meeting'));
       $oForm->addField('checkbox', 'add_reminder2', array('label' => 'Set a reminder  - 2 hours before the meeting'));
-      $oForm->addField('checkbox', 'add_reminder3', array('label' => 'Set a reminder  - after the meeting (to update the candidate)', 'checked' => 'checked'));
+      $oForm->addField('checkbox', 'add_reminder3', array('label' => 'Set a reminder  - after the meeting (to update the candidate)'));
 
       if(!empty($pnMeetingPk))
       {
@@ -3559,7 +3759,19 @@ class CSl_candidateEx extends CSl_candidate
 
 
       // A section to quickly create a note !!
-      $oForm->addField('textarea', 'meeting_note', array('label' => 'add a note'));
+      $nType = (int)$oDbMeeting->getFieldValue('type');
+      $oForm->addField('select', 'meeting_type', array('label' => 'Meeting type'));
+
+      $default_date = date('Y-m-d H:i');
+      $oForm->addField('input', 'date_met', array('type' => 'datetime', 'label'=> 'Meeting date',
+        'value' => $default_date, 'minDate' => '-4 day', 'maxDate' => 'now'));
+
+      $oForm->addOption('meeting_type', array('label' => 'In person', 'value' => 1), ($nType === 1));
+      $oForm->addOption('meeting_type', array('label' => 'By phone', 'value' => 2), ($nType === 2));
+      $oForm->addOption('meeting_type', array('label' => 'Video Chat', 'value' => 3), ($nType === 3));
+      $oForm->addOption('meeting_type', array('label' => 'Other', 'value' => 4), ($nType === 4));
+
+      $oForm->addField('textarea', 'meeting_note', array('label' => 'add a character note'));
 
 
       return $oForm->getDisplay().'<br /><span style="float: right; font-style:italic; color: #777; font-size: 85%;" >
@@ -3845,8 +4057,8 @@ class CSl_candidateEx extends CSl_candidate
       if(empty($asTmp['attendeefk']))
         return array('error' => 'Attendee is not valid.');
 
-      $asTmp['location'] = getValue('where');
-      $asTmp['description'] = getValue('description');
+      $asTmp['location'] = filter_var(getValue('where'), FILTER_SANITIZE_STRING);
+      $asTmp['description'] = purify_html(getValue('description'));
       $asTmp['date_created'] = date('Y-m-d H:i:s');
 
 
@@ -4013,9 +4225,10 @@ class CSl_candidateEx extends CSl_candidate
           if((int)$asMeeting['meeting_done'] !== 0 && !getValue('force_update', 0))
           {
             $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $pnMeetingPk, array('status' => $nStatus, 'fast_edit' => 1));
-            return array('error' => '<h3>Warning</h3><br />This meeting status has already been updated.
+            return array('error' => '<div id="meeting_upd_error">
+             <h3>Warning</h3><br />This meeting status has already been updated.
              Are you sure you want to change this meeting status to "<strong>'.(($nStatus===1)? 'done': 'cancelled').'</strong>" ?<br /><br />
-             <a href="javascript:;" onclick="AjaxRequest(\''.$sURL.'&force_update=1\'); goPopup.removeActive(true);">Yes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="goPopup.removeActive(true);">No</a>');
+             <a href="javascript:;" onclick="AjaxRequest(\''.$sURL.'&force_update=1\'); goPopup.removeActive(true);">Yes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onclick="goPopup.removeActive(true);">No</a></div>');
           }
 
           $asUpdate = array('meeting_done' => $nStatus, 'date_updated' => date('Y-m-d H:i:s'));
@@ -4024,19 +4237,24 @@ class CSl_candidateEx extends CSl_candidate
 
           $bUpdated = $this->_getModel()->update($asUpdate, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
           if(!$bUpdated)
-            return array('error' => __LINE__.' - Sorry couldn\'t update the meeting.');
+            return array('error' => __LINE__.' - Sorry couldn\'t update the meeting status.');
 
 
           // Update candidate status if needed    - - - - - - - - -
           $this->_meetingUpdateCandiStatus($nStatus, $asCandidate, $asMeeting);
 
 
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $asMeeting['candidatefk']);
-          return array('data' => $pnMeetingPk.' - Meeting status updated successfully to "<strong>'.(($nStatus===1)? 'done': 'cancelled').'</strong>".',
-              'action' => '
-                refresh_candi('.(int)$asMeeting['candidatefk'].');
+          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asMeeting['candidatefk']);
+          $sMeetingURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $asMeeting['candidatefk']);
+
+          $sAction = '$(\'#meeting_upd_error\').html(\'Meeting updated successfully.\');
+                view_candi(\''.$sURL.'\');
                 goPopup.removeByType(\'layer\');
-                goPopup.setLayerFromAjax(\'\', \''.$sURL.'\');');
+                goPopup.setLayerFromAjax(\'\', \''.$sMeetingURL.'\'); ';
+
+          //page loaded pg=normal, but come again in ajax if need confirm
+          return array('data' => $pnMeetingPk.' - Meeting status updated successfully to "<strong>'.(($nStatus===1)? 'done': 'cancelled').'</strong>".
+            <script>'.$sAction.'</script>', 'action' => $sAction);
         }
       }
       //========================================================================
@@ -4049,7 +4267,10 @@ class CSl_candidateEx extends CSl_candidate
       $asNewMeeting['date_updated'] = date('Y-m-d H:i:s');
       $asNewMeeting['meeting_done'] = (int)$asNewMeeting['meeting_done'];
 
-      $asNewMeeting['date_meeting'] = getValue('date_meeting');
+      $asNewMeeting['date_meeting'] = trim(getValue('date_meeting'));
+      if(strlen($asNewMeeting['date_meeting']) < 16)
+        return array('error' => __LINE__.' - Meeting date seems incomplete.');
+
       if(strlen($asNewMeeting['date_meeting']) < 19)
         $asNewMeeting['date_meeting'].= ':00';
 
@@ -4067,8 +4288,8 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => __LINE__.' - You need to select an attendee.');
 
       $asNewMeeting['type'] = (int)getValue('meeting_type', 1);
-      $asNewMeeting['description'] = getValue('description');
-      $asNewMeeting['location'] = getValue('where');
+      $asNewMeeting['description'] = purify_html(getValue('description'));
+      $asNewMeeting['location'] = filter_var(getValue('where'), FILTER_SANITIZE_STRING);
 
 
       //================================================================================================================
@@ -4115,7 +4336,7 @@ class CSl_candidateEx extends CSl_candidate
 
         //Notify attendee right  now ?
         $sNotify = getValue('notify_attendee');
-        $nTimeMeeting = strtotime($asMeeting['date_meeting']);
+        $nTimeMeeting = strtotime($asNewMeeting['date_meeting']);
 
         //Notification the day before the reminder
         $sReminder = getValue('add_reminder1');
@@ -4133,7 +4354,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
         //Naggy notification once the meeting date is passed
-        $sReminder = getValue('add_reminder2');
+        $sReminder = getValue('add_reminder3');
         if(empty($sReminder))
           $asNewMeeting['reminder_update'] = null;
         else
@@ -4147,6 +4368,16 @@ class CSl_candidateEx extends CSl_candidate
 
       //================================================================================================================
       //================================================================================================================
+
+      //if nothing opf the above, meeting comes straight from DTA: need to check date format
+      if($asNewMeeting['date_reminder1'] == '0000-00-00 00:00:00')
+        $asNewMeeting['date_reminder1'] = null;
+
+      if($asNewMeeting['date_reminder2'] == '0000-00-00 00:00:00')
+        $asNewMeeting['date_reminder2'] = null;
+
+      if($asNewMeeting['reminder_update'] == '0000-00-00 00:00:00')
+        $asNewMeeting['reminder_update'] = null;
 
       $bUpdated = $this->_getModel()->update($asNewMeeting, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
       if(!$bUpdated)
@@ -4164,10 +4395,12 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _meetingUpdateCandiStatus($pnStatus, $pasCandidate, $pasMeetingData)
     {
+      $bChanged = false;
+
       //Meeting all saved (done)  ==> update candidate status if needed
       if($pnStatus === 1 && $pasCandidate['statusfk'] < 4)
       {
-        dump($pasMeetingData);
+        //dump($pasMeetingData);
 
         if($pasMeetingData['type'] == 1)
           $nStatus = 6;
@@ -4184,7 +4417,7 @@ class CSl_candidateEx extends CSl_candidate
         $this->_getModel()->_logChanges(array('statusfk' => '4'), 'user_history', 'Interview done.<br /> &rarr; Candidate status changed to [ Met ]', '',
               array('cp_uid' =>$this->csUid, 'cp_action' => 'ppae', 'cp_type' => CONST_CANDIDATE_TYPE_CANDI, 'cp_pk' => $pasCandidate['sl_candidatepk']));
 
-        return true;
+        $bChanged = true;
       }
 
       //Meeting all saved (cancelled)  ==> update candidate status if needed
@@ -4203,6 +4436,16 @@ class CSl_candidateEx extends CSl_candidate
 
         $this->_getModel()->_logChanges(array('statusfk' => '4'), 'user_history', 'Meeting cancelled.<br /> &rarr; status changed to [ contacted ]', '',
               array('cp_uid' =>$this->csUid, 'cp_action' => 'ppae', 'cp_type' => CONST_CANDIDATE_TYPE_CANDI, 'cp_pk' => $pasCandidate['sl_candidatepk']));
+
+        $bChanged = true;
+      }
+
+
+      if($bChanged && is_key($pasMeetingData['sl_meetingpk']))
+      {
+        // remove reminders linked to the meeting
+        $oNotification = CDependency::getComponentByName('notification');
+        $oNotification->cancelNotification(array('cp_uid' => '555-001', 'cp_action' => 'ppav', 'cp_type' => 'meet','cp_pk' => $pasMeetingData['sl_meetingpk']));
       }
 
       return true;
@@ -4222,6 +4465,7 @@ class CSl_candidateEx extends CSl_candidate
       $nCandidatefk = (int)getValue('candidatefk');
       if(!assert('is_key($nCandidatefk)'))
         return array('error' => __LINE__.' - Could not find the candidate data');
+
       $sNotify = getValue('notify_meeting_done');
       $sNote = trim(getValue('meeting_note'));
       $nCreator = 0;
@@ -4238,11 +4482,30 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => __LINE__.' - Could not find the candidate data');
 
       //field tested, time for update, email and note
-      $asData = array('meeting_done' => 1, 'date_met' => date('Y-m-d H:i:s'));
-      $bUpdate = $this->_getModel()->update($asData, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
+      $oMeeting = $this->_getModel()->getByPk($pnMeetingPk, 'sl_meeting');
+      $bRead = $oMeeting->readFirst();
+      if(!$bRead)
+        return array('error' => __LINE__.' - Could not find the meeting data');
+
+
+      $asMeetingData = array();
+      $asMeetingData['meeting_done']= 1;
+      $asMeetingData['date_met'] = getValue('date_met', date('Y-m-d H:i:s'));
+
+      if(getValue('meeting_type'))
+        $asMeetingData['type'] = (int)getValue('meeting_type');
+
+
+      $bUpdate = $this->_getModel()->update($asMeetingData, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
       if(!$bUpdate)
         return array('error' => __LINE__.' - Could not update the meeting');
 
+      $asMeetingData['sl_meetingpk'] = $pnMeetingPk;
+      foreach($oMeeting->getData() as $sField => $vValue)
+      {
+        if(!isset($asMeetingData[$sField]))
+          $asMeetingData[$sField] = $vValue;
+      }
 
       $oLogin = CDependency::getCpLogin();
       $nCurrentUser = $oLogin->getUserPk();
@@ -4258,12 +4521,12 @@ class CSl_candidateEx extends CSl_candidate
           $sLink = $this->_oDisplay->getLink('#'.$nCandidatefk, $sURL);
 
           $sContent = 'Dear '.$asUserData['firstname'].',<br /><br />';
-          $sContent.= $oLogin->getUserLink($nCurrentUser).' has met the candidate '.$sLink.' through the meeting you\'ve set for him.<br />';
+          $sContent.= $oLogin->getUserLink($nCurrentUser).' has met the candidate '.$sLink.' thanks to the meeting you\'ve set for him.<br />';
           $sContent.= 'This meeting has been credited to your KPI stats.' ;
 
           if(!empty($sNote))
           {
-            $sContent.= '<br /><br />A note has been created at the occasion:<br /><br />';
+            $sContent.= '<br /><br />A character note has been created at this occasion:<br /><br />';
             $sContent.= $sNote;
           }
 
@@ -4279,13 +4542,17 @@ class CSl_candidateEx extends CSl_candidate
       if(!empty($sNote))
       {
         $oNote = CDependency::getComponentByName('sl_event');
-        $asResult = $oNote->addNote($nCandidatefk, 'meeting', $sNote, $nCurrentUser);
+        $asResult = $oNote->addNote($nCandidatefk, 'character', $sNote, $nCurrentUser);
 
         if(isset($asResult['error']))
           return $asResult;
       }
 
-      $this->_meetingUpdateCandiStatus(1, $asCandidate);
+      $this->_meetingUpdateCandiStatus(1, $asCandidate, $asMeetingData);
+
+      // remove reminders
+      $oNotification = CDependency::getComponentByName('notification');
+      $oNotification->cancelNotification(array('cp_uid' => '555-001', 'cp_action' => 'ppav', 'cp_type' => 'meet', 'cp_pk' => $pnMeetingPk));
 
       return array('notice' => 'Meeting updated.', 'action' => 'goPopup.removeByType(\'layer\'); refresh_candi('.$nCandidatefk.'); ');
     }
@@ -4326,8 +4593,7 @@ class CSl_candidateEx extends CSl_candidate
         $sReminderText.= '<br />Meeting\'s description:<br /><br />'.$pasMeetingData['description'];
 
         $nReminder = $oNotify->addItemReminder($sId, $pasMeetingData['attendeefk'], $asItem, $sReminderText, 'Meeting notification', date('Y-m-d H:i:s'));
-        if(!assert('is_key($nReminder)'))
-          return false;
+        assert('is_key($nReminder)');
       }
 
       //Notification the day before the reminder
@@ -4337,8 +4603,7 @@ class CSl_candidateEx extends CSl_candidate
         $sReminderText.= '<br />Meeting\'s description:<br /><br />'.$pasMeetingData['description'];
 
         $nReminder = $oNotify->addItemReminder($sId, $pasMeetingData['attendeefk'], $asItem, $sReminderText, 'Meeting tomorrow', $pasMeetingData['date_reminder1']);
-        if(!assert('is_key($nReminder)'))
-          return false;
+        assert('is_key($nReminder)');
       }
 
       //Notification 2 hours before before the reminder
@@ -4349,8 +4614,7 @@ class CSl_candidateEx extends CSl_candidate
         $sReminderText.= '<br />Meeting\'s description:<br /><br />'.$pasMeetingData['description'];
 
         $nReminder = $oNotify->addItemReminder($sId, $pasMeetingData['attendeefk'], $asItem, $sReminderText, 'Meeting soon', $pasMeetingData['date_reminder2']);
-        if(!assert('is_key($nReminder)'))
-          return false;
+        assert('is_key($nReminder)');
       }
 
 
@@ -4359,21 +4623,23 @@ class CSl_candidateEx extends CSl_candidate
         //need the meeting pk to create the link
         $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $pasMeetingData['candidatefk'], array('meeting' => 'met'));
         $sReminderText = 'A meeting was supposed to happen on the '.$pasMeetingData['date_meeting'].' with candidate #'.$pasMeetingData['candidatefk'];
-        $sReminderText.= '<br />Please remember to <a href="'.$sURL.'">update the candidate</a> profile and status.';
+        $sReminderText.= '<br />Please remember to update <a href="'.$sURL.'">the candidate profile</a> and status.';
 
+        /* Updateing meeting --> automatically change candidate status
         $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_FASTEDIT, CONST_CANDIDATE_TYPE_CANDI, $pasMeetingData['candidatefk'], array('meeting' => 'met'));
         $sReminderText.= '<br /><br /> - You can simply change the candidate status to "assessed" by clicking <a href="'.$sURL.'&meetingpk='.$pasMeetingData['sl_meetingpk'].'&meeting_status=1">here</a>.';
+        */
 
         $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $pasMeetingData['sl_meetingpk']);
-        $sReminderText.= '<br /> - If you have already updated the candidate, you can update the meeting status :
-          <a href="'.$sURL.'&status=1">done</a> - <a href="'.$sURL.'&status=-1">cancelled</a> ';
+        $sReminderText.= '<br />Update the meeting status:<br /><br />
+          - to <a href="'.$sURL.'&status=1">done</a> (will update the candidate status automatically)<br />
+          - to <a href="'.$sURL.'&status=-1">cancelled</a> ';
 
         $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_MEETING, $pasMeetingData['sl_meetingpk']);
-        $sReminderText.= '- <a href="'.$sURL.'&status=0">postponed</a>.';
+        $sReminderText.= '- <a href="'.$sURL.'&status=0">postpone the meeting</a>.';
 
-        $nReminder = $oNotify->addItemReminder($sId, $pasMeetingData['attendeefk'], $asItem, $sReminderText, 'Update candidate', $pasMeetingData['reminder_update'], 3, '3d');
-        if(!assert('is_key($nReminder)'))
-          return false;
+        $nReminder = $oNotify->addItemReminder($sId, $pasMeetingData['attendeefk'], $asItem, $sReminderText, 'Update candidate', $pasMeetingData['reminder_update']);
+        assert('is_key($nReminder)');
       }
 
       return true;
@@ -4406,6 +4672,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
+      $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
+
       $oDbResult = $this->_getModel()->getContact($pnCandiPk, 'candi', $this->casUserData['pk'], array_keys($this->casUserData['group']), !$bIsAdmin);
       $bRead = $oDbResult->readFirst();
 
@@ -4413,6 +4681,11 @@ class CSl_candidateEx extends CSl_candidate
       $nNewFields = 4 - $nContact;
       if($nNewFields <= 0)
         $nNewFields = 1;
+
+      $is_creator = false;
+
+      if ($candidate_information['created_by'] == $this->casUserData['loginpk'])
+        $is_creator = true;
 
       $oPage = CDependency::getCpPage();
 
@@ -4434,7 +4707,10 @@ class CSl_candidateEx extends CSl_candidate
       while($bRead)
       {
         $asData = $oDbResult->getData();
-        if($asData['visible'])
+
+        $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+
+        if($bVisible)
         {
           $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData);
           $nCount++;
@@ -4455,11 +4731,15 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData)
     {
+      $oLogin = CDependency::getCpLogin();
+
       if(!empty($pasData))
-        $asDefaultparam = array('readonly' => 'readonly', 'style' => 'background-color: #eee;border-color: #e6e6e6; font-style: italic; color: #777;');
+      {
+        $asDefaultparam = array('readonly' => '',
+          'style' => 'background-color: #eee;border-color: #e6e6e6; font-style: italic; color: #777;');
+      }
       else
         $asDefaultparam = array();
-
 
       set_array($pasData['sl_contactpk'], 0);
       set_array($pasData['type'], '');
@@ -4467,7 +4747,6 @@ class CSl_candidateEx extends CSl_candidate
       set_array($pasData['description'], '');
       set_array($pasData['visibility'], 0);
 
-      $oLogin = CDependency::getCpLogin();
       if($oLogin->isAdmin())
       {
         //admin can always edit
@@ -4491,11 +4770,11 @@ class CSl_candidateEx extends CSl_candidate
       {
         switch($nCount)
         {
-          case 0: $pasData['type'] = 1; break;
-          case 1: $pasData['type'] = 2; break;
-          case 2: $pasData['type'] = 8; break;
+          case 0: $pasData['type'] = 2; break;
+          case 1: $pasData['type'] = 5; break;
+          case 2: $pasData['type'] = 6; break;
           default:
-            $pasData['type'] = 5; break;
+            $pasData['type'] = 8; break;
         }
       }
 
@@ -4587,7 +4866,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $asParam = array();
-      $asParam['label']= 'Description';
+      $asParam['label']= 'Notes';
       $asParam['value'] = $pasData['description'];
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
@@ -4770,8 +5049,10 @@ class CSl_candidateEx extends CSl_candidate
 
           $asTmp = array('sl_contactpk' => $_POST['sl_contactpk'][$nRow],
                 'type' => $_POST['contact_type'][$nRow], 'item_type' => 'candi', 'itemfk' => $nCandidatePk,
-                'date_create' => date('Y-m-d H:i:s'), 'loginfk' => $nUserPk, 'value' => $_POST['contact_value'][$nRow],
-                'description' => $_POST['contact_description'][$nRow], 'visibility' => $_POST['contact_visibility'][$nRow],
+                'date_create' => date('Y-m-d H:i:s'), 'loginfk' => $nUserPk,
+                'value' => filter_var($_POST['contact_value'][$nRow], FILTER_SANITIZE_STRING),
+                'description' => filter_var($_POST['contact_description'][$nRow], FILTER_SANITIZE_STRING),
+                'visibility' => $_POST['contact_visibility'][$nRow],
                 'groupfk' => 0, 'userfk' => $_POST['contact_userfk'][$nRow]);
 
           if(!empty($_POST['sl_contactpk'][$nRow]))
@@ -4838,7 +5119,8 @@ class CSl_candidateEx extends CSl_candidate
             $asOldData = $asPrevious[$asData['sl_contactpk']];
 
             if($asOldData['value'] != $asData['value'] || $asOldData['description'] != $asData['description']
-            || $asOldData['visibility'] != $asData['visibility'] || $asOldData['loginfk'] != $asData['userfk'])
+            || $asOldData['visibility'] != $asData['visibility'] || $asOldData['loginfk'] != $asData['userfk']
+            || $asOldData['type'] != $asData['type'])
             {
               logUserHistory($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$asData['sl_contactpk'], $asData, true);
 
@@ -4913,6 +5195,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $bDisplayAllTabs = true;
       $asAttribute = array();
+      $parameters = array();
+
       if(empty($pnCandidatePk))
       {
 
@@ -4968,12 +5252,17 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-
-
       $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
-      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
+      $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
+      $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
+        '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
 
-      $sHTML = '';
+      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/form.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
+
+
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
@@ -4981,422 +5270,219 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
-      $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
-      $oForm->addField('input', 'check_duplicate', array('id' => 'dup_checked', 'type' => 'hidden', 'value' => 0));
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
-
       if($bDisplayAllTabs)
       {
-        $sTab = '<ul class="candidate_form_tabs"><li onclick="toggleFormTabs(this, \'candi_data\');" class="selected"><div>Candidate data</div></li>';
-        $sTab.= '<li onclick="toggleFormTabs(this, \'candi_contact\');"><div>Contact details</div></li>';
-        $sTab.= '<li onclick="toggleFormTabs(this, \'candi_note\');"><div>Notes</div></li>';
-        $sTab.= '<li onclick="toggleFormTabs(this, \'candi_resume\');"><div>Resume</div></li>';
-        $sTab.= '<li onclick="toggleFormTabs(this, \'candi_duplicate\');" class="hidden tab_duplicate"><div>Duplicates</div></li>';
-        $sTab.= '</ul>';
-        $oForm->addField('misc', 'tabs_row', array('type' => 'text', 'text' => $sTab));
-        $oForm->setFieldDisplayparams('tabs_row', array('style' => 'width: 100%;'));
+        ini_set('upload_tmp_dir', CONST_PATH_UPLOAD_DIR);
       }
 
+      $contact_details_form = '';
 
-      // =======================================================================
-      //candidate data section
-      $oForm->addSection('', array('id' => 'candi_data'));
+      if(empty($pnCandidatePk) || $this->_oLogin->isAdmin())
+        $readonly_name = '';
+      else
+        $readonly_name = 'readonly';
 
-        $oForm->addField('misc', 'title1', array('type' => 'text', 'text'=> 'Candidate details'));
-        $oForm->setFieldDisplayParams('title1', array('class' => 'formSectionTitle'));
+      $nSex = (int)$oDbResult->getFieldValue('sex');
 
-        $oForm->addSection('', array('class' => 'candidate_inner_section'));
+      $sDate = $oDbResult->getFieldValue('date_birth');
+      $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
+      $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
 
-          $nSex = (int)$oDbResult->getFieldValue('sex');
-          $oForm->addField('select', 'sex', array('label' => 'gender', 'onchange' => 'toggleGenderPic(this);'));
-          $oForm->addOption('sex', array('label' => 'female', 'value' => 2));
-          if($nSex === 1)
-            $oForm->addOption('sex', array('label' => 'male', 'value' => 1, 'selected' => 'selected'));
-          else
-            $oForm->addOption('sex', array('label' => 'male', 'value' => 1));
+      $calendar_icon = '//'.CONST_CRM_HOST.'/component/form/resources/pictures/date-icon.png';
 
-          $oForm->setFieldDisplayParams('sex', array('class' => 'genderField'));
+      $bEstimated = (bool)$oDbResult->getFieldValue('is_birth_estimation');
+      $nAge = date('Y') - date('Y', strtotime($sDate));
 
-          $sGender = '
-            <span class="genderPic">
-            <span href="javascript:;" onclick="toggleGenderPic(false, 1);" class="woman '.(($nSex != 1)? '':'hidden').'" ><img src="/common/pictures/slistem/woman_16.png"/></span>
-            <span href="javascript:;" onclick="toggleGenderPic(false, 2);" class="man '.(($nSex == 1)? '':'hidden').'" ><img src="/common/pictures/slistem/man_16.png"/></span>
-            </span>';
+      $asCurrency = $this->getVars()->getCurrencies();
 
+      $add_company_url = $this->_oPage->getAjaxUrl(
+        $this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_COMP, 0, array('update_field' => '#company',));
 
-          $oForm->addField('misc', '', array('type' => 'text', 'text'=> $sGender));
-          //$oForm->addField('misc', '', array('type' => 'text', 'text'=> ''));
-          $oForm->addField('misc', '', array('type' => 'text', 'text'=> ''));
+      $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
 
-          if(empty($pnCandidatePk) || $this->_oLogin->isAdmin())
-          {
-            $oForm->addField('input', 'lastname', array('label' => 'lastname', 'value' => $oDbResult->getFieldValue('lastname')));
-            $oForm->addField('input', 'firstname', array('label' => 'firstname', 'value' => $oDbResult->getFieldValue('firstname')));
-          }
-          else
-          {
-            $oForm->addField('input', 'lastname', array('readonly' => 'readonly', 'class' => 'disabled', 'label' => 'lastname', 'value' => $oDbResult->getFieldValue('lastname')));
-            $oForm->addField('input', 'firstname', array('readonly' => 'readonly', 'class' => 'disabled', 'label' => 'firstname', 'value' => $oDbResult->getFieldValue('firstname')));
-          }
+      if($oDbResult->getFieldValue('companyfk'))
+      {
+        $company_token = '[{id:"'.$oDbResult->getFieldValue('companyfk').'",
+          name:"#'.$oDbResult->getFieldValue('companyfk').' - '.$oDbResult->getFieldValue('company_name').'"}]';
+      }
+      else
+        $company_token = array();
 
-          $sDate = $oDbResult->getFieldValue('date_birth');
-          $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
-          $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
+      $occupation_tree = $oForm->getField('paged_tree', 'occupationpk', array('text' => '-- Occupation --',
+        'label' => '', 'value' => $oDbResult->getFieldValue('occupationfk'), 'style' => 'width: 165px; min-width: 145px;'));
+      $occupation_tree->addOption($this->_getTreeData('occupation'));
 
-          $bEstimated = (bool)$oDbResult->getFieldValue('is_birth_estimation');
-          if($bEstimated)
-          {
-            $nAge = date('Y') - date('Y', strtotime($sDate));
-            $sLabel = ' <a href="javascript:;" onclick="toggleApproxAge(this);">birth</a> / <a href="javascript:;" onclick="toggleApproxAge(this, \'age\');">age</a>';
-            $oForm->addField('input', 'birth_date', array('label' => $sLabel, 'type' => 'date', 'value' => $sDate, 'defaultDate' => $sDefaultDate, 'yearRange' => $sYearRange,
-                'class' => 'hidden',
-                'legend' => '<input type="text" name="age" value="'.$nAge.'" class="ageField" jsControl="jsFieldTypeIntegerPositive|jsFieldMaxValue@100" />'));
+      $industry_tree = $oForm->getField('paged_tree', 'industrypk', array('text' => '-- Industry --',
+        'label' => '', 'value' => $oDbResult->getFieldValue('industryfk'), 'style' => 'width: 165px; min-width: 145px;'));
+      $industry_tree->addOption($this->_getTreeData('industry'));
 
-            $oForm->setFieldDisplayParams('birth_date', array('class' => 'age_field_container'));
-          }
-          else
-          {
-            $sLabel = '<a href="javascript:;" onclick="toggleApproxAge(this);">birth</a> / <a href="javascript:;" onclick="toggleApproxAge(this, \'age\');">age</a>';
-            $oForm->addField('input', 'birth_date', array('label' => $sLabel, 'type' => 'date', 'value' => $sDate, 'defaultDate' => $sDefaultDate, 'yearRange' => $sYearRange));
-          }
+      $candidate_salary = formatNumber(round($oDbResult->getFieldValue('salary')), $this->casSettings['candi_salary_format']);
+      $candidate_salary_bonus = formatNumber(round($oDbResult->getFieldValue('bonus')), $this->casSettings['candi_salary_format']);
 
+      $target_low = formatNumber(round($oDbResult->getFieldValue('target_low')), $this->casSettings['candi_salary_format']);
+      $target_high = formatNumber(round($oDbResult->getFieldValue('target_hig')), $this->casSettings['candi_salary_format']);
 
-          $oForm->addField('select', 'language', array('label' => 'language'));
-          $oForm->addOptionHtml('language', $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')));
+      $nStatus = 0;
+      $bInPlay = false;
+      $sDatePlayed = '';
+      $asDateMeeting = array('meeting' => '', 'met' => '');
 
-          $oForm->addField('select', 'nationality', array('label' => 'nationality'));
-          $oForm->addOptionHtml('nationality', $this->getVars()->getNationalityOption($oDbResult->getFieldValue('nationalityfk')));
+      if(!empty($pnCandidatePk))
+      {
+        $nStatus = (int)$oDbResult->getFieldValue('statusfk');
 
-          $oForm->addField('select', 'location', array('label' => 'location'));
-          $oForm->addOptionHtml('location', $this->getVars()->getLocationOption($oDbResult->getFieldValue('locationfk')));
+        $bInPlay = (bool)$oDbResult->getFieldValue('_in_play');
 
-       $oForm->closeSection();
-
-
-       $asCurrency = $this->getVars()->getCurrencies();
-
-       $oForm->addField('misc', 'title2', array('type' => 'text', 'text'=> 'Occupation'));
-       $oForm->setFieldDisplayParams('title2', array('class' => 'formSectionTitle'));
-
-       $oForm->addSection('', array('class' => 'candidate_inner_section'));
-
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
-          $oForm->addField('selector', 'companypk', array('label' => 'company', 'url' => $sURL));
-          $oForm->setFieldDisplayParams('companypk', array('class' => 'cpAutoComplete', 'style' => 'width: 468px; min-width: 468px;'));
-
-          if($oDbResult->getFieldValue('companyfk'))
-            $oForm->addOption('companypk', array('label' => '#'.$oDbResult->getFieldValue('companyfk').' - '.$oDbResult->getFieldValue('company_name'), 'value' => $oDbResult->getFieldValue('companyfk')));
-
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_COMP, 0, array('update_field' => '#companypkId',));
-          $oForm->addField('misc', 'addCp', array('type' => 'text', 'text'=> '<a href="javascript:;"
-            onclick="
-            var oConf = goPopup.getConfig(); oConf.height = 600; oConf.width = 900;
-            goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');">+ add a new company</a>', 'style' => 'float: right; padding-right: 45px; '));
-          $oForm->setFieldDisplayParams('addCp', array('style' => 'width: 190px; min-width: 190px;'));
-
-          $oForm->addField('input', 'title', array('label' => 'title', 'value' => $oDbResult->getFieldValue('title')));
-
-          $oForm->addField('paged_tree', 'occupationpk', array('text' => '-- Occupation --', 'label' => 'occupation', 'value' => $oDbResult->getFieldValue('occupationfk')));
-          $oForm->addoption( 'occupationpk', $this->_getTreeData('occupation'));
-
-
-          $oForm->addField('paged_tree', 'industrypk', array('text' => ' -- Industry --', 'label' => 'industry', 'value' => $oDbResult->getFieldValue('industryfk')));
-          $oForm->addoption( 'industrypk', $this->_getTreeData('industry'));
-
-          $oForm->addField('input', 'department', array('label' => 'department', 'value' => $oDbResult->getFieldValue('department')));
-
-          $sAmount = formatNumber(round($oDbResult->getFieldValue('salary')), $this->casSettings['candi_salary_format']);
-          $oForm->addField('currency', 'salary', array('label' => 'salary', 'value' => $sAmount, 'currency_list' => $asCurrency, 'with_unit' => true, 'with_currency' => true, 'default_unit' => $this->casSettings['candi_salary_format']));
-
-          $sAmount = formatNumber(round($oDbResult->getFieldValue('bonus')), $this->casSettings['candi_salary_format']);
-          $oForm->addField('currency', 'bonus', array('label' => 'bonus', 'value' => $sAmount,  'currency_list' => $asCurrency, 'with_unit' => true, 'with_currency' => true, 'default_unit' => $this->casSettings['candi_salary_format'], 'linked_to' => 'salary' ));
-          //$oForm->addField('slider', 'target_salary', array('label' => 'target salary', 'range' => 1, 'values' => array('min' => 2, 'max' => 8), 'min' => 1, 'max' => 10));
-          $oForm->addField('misc', '', array('type' => 'text', 'text'=> ''));
-
-          $sAmount = formatNumber(round($oDbResult->getFieldValue('target_low')), $this->casSettings['candi_salary_format']);
-          $oForm->addField('currency', 'target_low', array('label' => 'target sal. from', 'value' => $sAmount, 'currency_list' => $asCurrency, 'with_unit' => true, 'with_currency' => true, 'default_unit' => $this->casSettings['candi_salary_format'], 'linked_to' => 'salary'));
-
-          $sAmount = formatNumber(round($oDbResult->getFieldValue('target_hig')), $this->casSettings['candi_salary_format']);
-          $oForm->addField('currency', 'target_high', array('label' => 'to', 'value' => $sAmount,  'currency_list' => $asCurrency, 'with_unit' => true, 'with_currency' => true, 'default_unit' => $this->casSettings['candi_salary_format'], 'linked_to' => 'salary' ));
-
-       $oForm->closeSection();
-
-
-       $oForm->addField('misc', 'title3', array('type' => 'text', 'text'=> 'Profile'));
-       $oForm->setFieldDisplayParams('title3', array('class' => 'formSectionTitle'));
-       $oForm->addSection('', array('id' => 'candidate_skill_section', 'class' => 'candidate_inner_section'));
-
-
-          $oForm->addField('select', 'grade', array('label' => 'grade'));
-          $oForm->addOptionHtml('grade', $this->getVars()->getCandidateGradeOption($oDbResult->getFieldValue('grade')));
-
-          $oForm->addField('select', 'status', array('label' => 'status', 'onchange' => 'manageFormStatus(this, '.$pnCandidatePk.'); '));
-          //$oForm->addOptionHtml('status', $this->getVars()->getCandidateStatusOption($oDbResult->getFieldValue('statusfk')));
-
-
-          $nStatus = 0;
-          $bInPlay = false;
-          $sDatePlayed = '';
-          $asDateMeeting = array('meeting' => '', 'met' => '');
-
-          if(!empty($pnCandidatePk))
-          {
-            $nStatus = (int)$oDbResult->getFieldValue('statusfk');
-
-            $bInPlay = (bool)$oDbResult->getFieldValue('_in_play');
-
-            if(!$bInPlay)
-            {
-              $sDatePlayed = (bool)$this->_getModel()->getLastPositionPlayed($pnCandidatePk);
-
-              if(empty($sDatePlayed))
-                $asDateMeeting = $this->_getModel()->getLastInterview($pnCandidatePk);
-            }
-
-            /*dump($nStatus);
-            dump($bInPlay);
-            dump($sDatePlayed);
-            dump($asDateMeeting);*/
-          }
-
-          // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-          // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-          // manage status field
-
-          if(CDependency::getCpLogin()->isAdmin())
-          {
-            $asStatus = '<option value="0"> - </option>
-              <option value="1" '.(($nStatus === 1)? ' selected="selected" ':'').'> Name Collect </option>
-              <option value="2" '.(($nStatus === 2)? ' selected="selected" ':'').'> Contacted </option>
-              <option value="3" '.(($nStatus === 3)? ' selected="selected" ':'').' class="unavailable"> Interview set</option>
-              <option value="5" '.(($nStatus === 5)? ' selected="selected" ':'').'> Phone assessed </option>
-              <option value="6" '.(($nStatus === 6)? ' selected="selected" ':'').'> Assessed in person </option>';
-          }
-          elseif($bInPlay)
-          {
-            $asStatus = '
-              <option value="2"> Contacted </option>
-              <option value="3" class="unavailable"> Interview set</option>
-              <option value="5"> Phone assessed </option>
-              <option value="6" selected="selected"> Assessed - [ in play ] </option>';
-          }
-          elseif(!empty($sDatePlayed) || !empty($asDateMeeting['met']))
-          {
-            if(!empty($sDatePlayed))
-              $sLegend = ' previously in play';
-            else
-              $sLegend = ' candidates met';
-
-            $asStatus = '
-              <option value="2"> Contacted </option>
-              <option value="3" class="unavailable"> Interview set</option>
-              <option value="5"> Phone assessed </option>
-              <option value="6" selected="selected"> Assessed - [ '.$sLegend.' ] </option>';
-          }
-          else
-          {
-            if(!empty($asDateMeeting['meeting']) && $nStatus < 3)
-            {
-              $nStatus = 3;
-              $sLegend = ' [ for '.$asDateMeeting['meeting'].' ]';
-              $sClass = '';
-            }
-            else
-            {
-              $sLegend = '';
-              $sClass = ' class="unavailable" ';
-            }
-
-            $asStatus = '
-              <option value="1" '.(($nStatus === 1)? ' selected="selected" ':'').'> Name Collect </option>
-              <option value="2" '.(($nStatus === 2)? ' selected="selected" ':'').'> Contacted </option>
-              <option value="3" '.(($nStatus === 3)? ' selected="selected" ':'').' '.$sClass.'> Interview set '.$sLegend.'</option>
-              <option value="5" '.(($nStatus === 5)? ' selected="selected" ':'').'> Phone assessed </option>
-              <option value="6" '.(($nStatus === 6)? ' selected="selected" ':'').'> Assessed in person </option>';
-          }
-          $oForm->addOptionHtml('status', $asStatus);
-
-          $oForm->addField('select', 'diploma', array('label' => 'MBA/CPA'));
-          $oForm->addOption('diploma', array('value' => '', 'label' => 'none'));
-
-          if($oDbResult->getFieldValue('cpa'))
-            $oForm->addOption('diploma', array('value' => 'cpa', 'label' => 'CPA', 'selected' => 'selected'));
-          else
-            $oForm->addOption('diploma', array('value' => 'cpa', 'label' => 'CPA'));
-
-          if($oDbResult->getFieldValue('mba'))
-            $oForm->addOption('diploma', array('value' => 'mba', 'label' => 'MBA', 'selected' => 'selected'));
-          else
-            $oForm->addOption('diploma', array('value' => 'mba', 'label' => 'MBA'));
-
-          if($oDbResult->getFieldValue('cpa') && $oDbResult->getFieldValue('mba'))
-            $oForm->addOption('diploma', array('value' => 'both', 'label' => 'both', 'selected' => 'selected'));
-          else
-            $oForm->addOption('diploma', array('value' => 'both', 'label' => 'both'));
-
-
-          $oForm->addField('input', 'keyword', array('label' => 'keyword', 'value' => $oDbResult->getFieldValue('keyword')));
-
-          //candidate or company
-          $nClient = (int)$oDbResult->getFieldValue('client') + (int)$oDbResult->getFieldValue('is_client');
-          if($nClient > 0)
-            $oForm->addField('checkbox', 'client', array('legend' => 'Is client', 'value' => 1, 'checked' => 'checked'));
-          else
-            $oForm->addField('checkbox', 'client', array('legend' => 'Is client', 'value' => 1));
-
-
-
-          $oForm->addField('misc', '', array('type' => 'br'));
-
-          $sOption = '';
-          for($nCount = 1; $nCount < 10; $nCount++)
-          {
-            if($nCount == 5)
-              $sOption.= '<option value="'.$nCount.'" selected="selected">'.$nCount.'</option>';
-            else
-              $sOption.= '<option value="'.$nCount.'">'.$nCount.'</option>';
-          }
-
-          $sHTML.= '<script>
-              $(\'#candidate_skill_section .skill_field input\').spinner(
-              {
-                min:-1, max: 10,
-                spin: function(event, ui)
-                {
-                  if(ui.value > 9) { $(this).spinner("value", 0); return false; }
-                  else if (ui.value < 0) { $(this).spinner("value", 9); return false; }
-                }
-              });
-
-            $(\'#candidate_skill_section .skill_field input\').focus(function()
-            {
-              if($(this).hasClass(\'emptySpinner\'))
-              {
-                $(this).val(5).removeClass(\'emptySpinner\').unbind(\'focus\');
-              }
-            });
-            </script>';
-
-          if((int)$oDbResult->getFieldValue('skill_ag') == 0)
-          {
-            $oDbResult->setFieldValue('skill_ag', '-');
-            $oDbResult->setFieldValue('skill_ap', '-');
-            $oDbResult->setFieldValue('skill_am', '-');
-            $oDbResult->setFieldValue('skill_mp', '-');
-            $oDbResult->setFieldValue('skill_in', '-');
-            $oDbResult->setFieldValue('skill_ex', '-');
-            $oDbResult->setFieldValue('skill_fx', '-');
-            $oDbResult->setFieldValue('skill_ch', '-');
-            $oDbResult->setFieldValue('skill_ed', '-');
-            $oDbResult->setFieldValue('skill_pl', '-');
-            $oDbResult->setFieldValue('skill_e', '-');
-            $sClass = ' emptySpinner';
-          }
-          else
-            $sClass = '';
-
-          $oForm->addField('input', 'skill_ag', array('label' => 'AG', 'value' => $oDbResult->getFieldValue('skill_ag'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_ag', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_ap', array('label' => 'AP', 'value' => $oDbResult->getFieldValue('skill_ap'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_ap', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_am', array('label' => 'AM', 'value' => $oDbResult->getFieldValue('skill_am'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_am', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_mp', array('label' => 'MP', 'value' => $oDbResult->getFieldValue('skill_mp'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_mp', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_in', array('label' => 'IN', 'value' => $oDbResult->getFieldValue('skill_in'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_in', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_ex', array('label' => 'EX', 'value' => $oDbResult->getFieldValue('skill_ex'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_ex', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_fx', array('label' => 'FX', 'value' => $oDbResult->getFieldValue('skill_fx'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_fx', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_ch', array('label' => 'CH', 'value' => $oDbResult->getFieldValue('skill_ch'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_ch', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_ed', array('label' => 'ED', 'value' => $oDbResult->getFieldValue('skill_ed'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_ed', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_pl', array('label' => 'PL', 'value' => $oDbResult->getFieldValue('skill_pl'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_pl', array('class' => 'skill_field'));
-
-          $oForm->addField('input', 'skill_e', array('label' => 'E', 'value' => $oDbResult->getFieldValue('skill_e'), 'class' => $sClass));
-          $oForm->setFieldDisplayParams('skill_e', array('class' => 'skill_field'));
-
-        $oForm->closeSection();
-
-
-
-
-
-        //section for extra attribute
-        $oForm->addField('misc', '', array('type' => 'text', 'text' => '<div style="margin-top: 5px;" class="bold italic">Additional data ?</div>', 'onclick' => '$(\'#candidate_more_section\').fadeToggle(function(){ $(this).closest(\'.ui-dialog-content\').scrollTop(5000); });', 'style' => 'cursor: pointer;'));
-        $oForm->addSection('', array('id' => 'candidate_more_section', 'class' => 'candidate_inner_section hidden'));
-
-        $oForm->addField('misc', 'more_notice', array('type' => 'text', 'text' => '
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiple industries ? Speak different languages? Fully and accuratly describing the candidates is a key for '.CONST_APP_NAME.'.
-          <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It will improve the search functions and increase the candidate profile quality.
-          &nbsp;Use this section to add alternative / secondary information about the candidate.<br /><br />', 'onclick' => '$(\'#candidate_more_section\').fadeToggle();'));
-        $oForm->setFieldDisplayParams('more_notice', array('class' => 'full_width_msg'));
-
-
-        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
-        $oForm->addField('selector', 'alt_occupationpk', array('label' => 'alt. occupation', 'url' => $sURL, 'nbresult' => 5));
-        if(isset($asAttribute['candi_occu']))
+        if(!$bInPlay)
         {
-          foreach($asAttribute['candi_occu'] as $sValue => $sLabel)
-          $oForm->addoption('alt_occupationpk', array('label' => $sLabel, 'value' => $sValue));
+          $sDatePlayed = (bool)$this->_getModel()->getLastPositionPlayed($pnCandidatePk);
+
+          if(empty($sDatePlayed))
+            $asDateMeeting = $this->_getModel()->getLastInterview($pnCandidatePk);
         }
+      }
 
-        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
-        $oForm->addField('selector', 'alt_industrypk', array('label' => 'alt. industry', 'url' => $sURL, 'nbresult' => 5));
-        if(isset($asAttribute['candi_indus']))
-        {
-          foreach($asAttribute['candi_indus'] as $sValue => $sLabel)
-          $oForm->addoption('alt_industrypk', array('label' => $sLabel, 'value' => $sValue));
-        }
+      // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+      // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+      // manage status field
 
-        //$oForm->addField('misc', '', array('type' => 'text', 'text' => '&nbsp;'));
-
-
-        $oForm->addField('select', 'alt_language[]', array('label' => 'language', 'multiple' => 5));
-
-        if(isset($asAttribute['candi_lang']))
-          $oForm->addOptionHtml('alt_language[]', $this->getVars()->getLanguageOption($asAttribute['candi_lang']));
+      if(CDependency::getCpLogin()->isAdmin())
+      {
+        $asStatus = '<option value="0"> - </option>
+          <option value="1" '.(($nStatus === 1)? ' selected ':'').'> Name Collect </option>
+          <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
+          <option value="3" '.(($nStatus === 3)? ' selected ':'').' class="unavailable"> Interview set</option>
+          <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
+          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>';
+      }
+      elseif($bInPlay)
+      {
+        $asStatus = '
+          <option value="2"> Contacted </option>
+          <option value="3" class="unavailable"> Interview set</option>
+          <option value="5"> Phone assessed </option>
+          <option value="6" selected="selected"> Assessed - [ in play ] </option>';
+      }
+      elseif(!empty($sDatePlayed) || !empty($asDateMeeting['met']))
+      {
+        if(!empty($sDatePlayed))
+          $sLegend = ' previously in play';
         else
-          $oForm->addOptionHtml('alt_language[]', $this->getVars()->getLanguageOption());
+          $sLegend = ' candidates met';
 
-
-        if((int)$oDbResult->getFieldValue('_sys_status') > 0 && CDependency::getCpLogin()->isAdmin())
+        $asStatus = '
+          <option value="2"> Contacted </option>
+          <option value="3" class="unavailable"> Interview set</option>
+          <option value="5"> Phone assessed </option>
+          <option value="6" selected="selected"> Assessed - [ '.$sLegend.' ] </option>';
+      }
+      else
+      {
+        if(!empty($asDateMeeting['meeting']) && $nStatus < 3)
         {
-          $oForm->addField('misc', '', array('type' => 'title', 'title' => 'DBA'));
-          $oForm->addField('misc', '', array('type' => 'br', 'text' => ''));
-
-          $oForm->addField('select', '_sys_status', array('label' => 'Deleted ?'));
-          $oForm->addoption('_sys_status', array('label' => 'Keep deleted', 'value' => $oDbResult->getFieldValue('_sys_status')));
-          $oForm->addoption('_sys_status', array('label' => 'Restore candidate', 'value' => 0));
-
-          $oForm->addField('input', '_sys_redirect', array('label' => 'Merged with', 'value' => (int)$oDbResult->getFieldValue('_sys_redirect')));
-
-          $oForm->addField('misc', '', array('type' => 'text', 'text' => '<br /><br />'));
+          $nStatus = 3;
+          $sLegend = ' [ for '.$asDateMeeting['meeting'].' ]';
+          $sClass = '';
+        }
+        else
+        {
+          $sLegend = '';
+          $sClass = ' class="unavailable" ';
         }
 
+        $asStatus = '
+          <option value="1" '.(($nStatus === 1)? ' selected ':'').'> Name Collect </option>
+          <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
+          <option value="3" '.(($nStatus === 3)? ' selected ':'').' '.$sClass.'> Interview set '.$sLegend.'</option>
+          <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
+          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>';
+      }
 
+      $is_client = (int)$oDbResult->getFieldValue('client') + (int)$oDbResult->getFieldValue('is_client');
 
-        $oForm->closeSection();
+      if((int)$oDbResult->getFieldValue('skill_ag') == 0)
+      {
+        $oDbResult->setFieldValue('skill_ag', '-');
+        $oDbResult->setFieldValue('skill_ap', '-');
+        $oDbResult->setFieldValue('skill_am', '-');
+        $oDbResult->setFieldValue('skill_mp', '-');
+        $oDbResult->setFieldValue('skill_in', '-');
+        $oDbResult->setFieldValue('skill_ex', '-');
+        $oDbResult->setFieldValue('skill_fx', '-');
+        $oDbResult->setFieldValue('skill_ch', '-');
+        $oDbResult->setFieldValue('skill_ed', '-');
+        $oDbResult->setFieldValue('skill_pl', '-');
+        $oDbResult->setFieldValue('skill_e', '-');
+        $spinner_class = ' empty_spinner';
+      }
+      else
+        $spinner_class = '';
 
+      if ($oDbResult->getFieldValue('cpa') && $oDbResult->getFieldValue('mba'))
+      {
+        $diploma_options = '
+          <option value="cpa">CPA</option>
+          <option value="mba">MBA</option>
+          <option value="both" selected>both</option>
+          ';
+      }
+      else if ($oDbResult->getFieldValue('cpa'))
+      {
+        $diploma_options = '
+          <option value="cpa" selected>CPA</option>
+          <option value="mba">MBA</option>
+          <option value="both">both</option>
+          ';
+      }
+      else if ($oDbResult->getFieldValue('mba'))
+      {
+        $diploma_options = '
+          <option value="cpa">CPA</option>
+          <option value="mba" selected>MBA</option>
+          <option value="both">both</option>
+          ';
+      }
+      else
+      {
+        $diploma_options = '
+          <option value="cpa">CPA</option>
+          <option value="mba">MBA</option>
+          <option value="both">both</option>
+          ';
+      }
 
-      $oForm->closeSection();
+      if (isset($asAttribute['candi_lang']))
+        $alt_language = $this->getVars()->getLanguageOption($asAttribute['candi_lang']);
+      else
+        $alt_language = $this->getVars()->getLanguageOption();
 
+      $alt_occupation_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
+      $alt_industry_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
+
+      $alt_occupation_token = $alt_industry_token = '';
+
+      if(isset($asAttribute['candi_occu']))
+      {
+        foreach($asAttribute['candi_occu'] as $sValue => $sLabel)
+        {
+          $alt_temp_array[] = '{id: "'.$sValue.'", name: "'.$sLabel.'"}';
+          $alt_occupation_token = '['.implode(',', $alt_occupation_array).']';
+
+          $alt_temp_array = '';
+        }
+      }
+
+      if(isset($asAttribute['candi_indus']))
+      {
+        foreach($asAttribute['candi_indus'] as $sValue => $sLabel)
+        {
+          $alt_temp_array[] = '{id: "'.$sValue.'", name: "'.$sLabel.'"}';
+          $alt_industry_token = '['.implode(',', $alt_occupation_array).']';
+        }
+      }
 
       if($bDisplayAllTabs)
       {
-        $oForm->addSection('candi_contact', array('class' => 'hidden', 'id' => 'candi_contact'));
           $oForm->addSection('', array('class' => 'candidate_inner_section'));
 
           //reuse what ha sbeen done for the standalone form
@@ -5407,86 +5493,52 @@ class CSl_candidateEx extends CSl_candidate
           }
 
           $oForm->closeSection();
-        $oForm->closeSection();
+
+          $contact_details_form = $oForm->getDisplay(true);
       }
 
+      $currency_code = 'jpy';
 
-
-      // =======================================================================
-      //note section
-      if($bDisplayAllTabs)
+      if (!empty($oDbResult->getFieldValue('currency')))
       {
-        $oForm->addSection('candi_note', array('class' => 'hidden', 'id' => 'candi_note'));
-          $oForm->addSection('', array('class' => 'candidate_inner_section'));
-
-          $oForm->addField('misc', '', array('type' => 'br'));
-          $oForm->addField('misc', 'note_legend', array('type' => 'text', 'text' => '<span style="font-size: 10px; color: blue;">* If the candidate has been "assessed", the character note is required.<br/>
-  * In the other case, one of those fields is required.</span>', 'style' => 'text-align: right;'));
-          $oForm->setFieldDisplayparams('note_legend', array('style' => 'width: 100%;'));
-
-          $oForm->addField('misc', '', array('type' => 'br'));
-
-          $oForm->addField('textarea', 'character_note', array('label' => 'character note', 'style' => 'width: 550px;'));
-          $oForm->setFieldDisplayparams('character_note', array('style' => 'width: 800px;', 'class' => 'note_field'));
-
-          $oForm->addField('textarea', 'note', array('label' => 'note', 'style' => 'width: 550px;'));
-          $oForm->setFieldDisplayparams('note', array('style' => 'width: 800px;', 'class' => 'note_field'));
-
-          $oForm->addField('misc', '', array('type' => 'text', 'text' => '
-            <a href="javascript:;"
-            onclick="$(this).closest(\'.candidate_inner_section\').find(\'textarea\').each(function()
-            {
-              initMce($(this).attr(\'name\'));
-            });
-
-            $(this).closest(\'.candidate_inner_section\').find(\'#character_html\').val(1);
-
-          ">Advanced editor</a>'));
-
-          $oForm->addField('input', 'character_html', array('type' => 'hidden', 'value' => 0, 'id' => 'character_html'));
-          $oForm->closeSection();
-
-        $oForm->closeSection();
+        $tmp_currency_code = $oDbResult->getFieldValue('currency');
+        if (isset($asCurrency[$tmp_currency_code]))
+          $currency_code = $tmp_currency_code;
       }
 
+      $data = array('form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name,
+        'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
+        'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
+        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,
+        'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
+        'nationality' => $this->getVars()->getNationalityOption($oDbResult->getFieldValue('nationalityfk')),
+        'location' => $this->getVars()->getLocationOption($oDbResult->getFieldValue('locationfk')),
+        'add_company_url' => $add_company_url, 'company_token' => $company_token,
+        'calendar_icon' => $calendar_icon, 'title' => $oDbResult->getFieldValue('title'),
+        'department' => $oDbResult->getFieldValue('department'), 'company_token_url' => $company_token_url,
+        'company' => $oDbResult->getFieldValue('companyfk'), 'occupation_tree' => $occupation_tree->getDisplay(),
+        'industry_tree' => $industry_tree->getDisplay(), 'candidate_salary' => $candidate_salary,
+        'money_unit' => $this->casSettings['candi_salary_format'], 'currency_code' => $currency_code,
+        'currency_list' => $asCurrency, 'candidate_salary_bonus' => $candidate_salary_bonus, 'target_low' => $target_low,
+        'target_high' => $target_high, 'candidate_id' => $pnCandidatePk, 'status_options' => $asStatus,
+        'is_client' => $is_client, 'grade' => $this->getVars()->getCandidateGradeOption($oDbResult->getFieldValue('grade')),
+        'diploma_options' => $diploma_options, 'keyword' => $oDbResult->getFieldValue('keyword'), 'spinner_class' => $spinner_class,
+        'skill_ag' => $oDbResult->getFieldValue('skill_ag'), 'skill_ap' => $oDbResult->getFieldValue('skill_ap'),
+        'skill_am' => $oDbResult->getFieldValue('skill_am'), 'skill_mp' => $oDbResult->getFieldValue('skill_mp'),
+        'skill_in' => $oDbResult->getFieldValue('skill_in'), 'skill_ex' => $oDbResult->getFieldValue('skill_ex'),
+        'skill_fx' => $oDbResult->getFieldValue('skill_fx'), 'skill_ch' => $oDbResult->getFieldValue('skill_ch'),
+        'skill_ed' => $oDbResult->getFieldValue('skill_ed'), 'skill_pl' => $oDbResult->getFieldValue('skill_pl'),
+        'skill_e' => $oDbResult->getFieldValue('skill_e'), 'alt_language' => $alt_language,
+        'alt_occupation_token_url' => $alt_occupation_token_url, 'alt_industry_token_url' => $alt_industry_token_url,
+        'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
+        'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
+        'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
+        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
+      );
 
+      $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
-      // =======================================================================
-      //resume section
-      if($bDisplayAllTabs)
-      {
-        $oForm->addSection('candi_resume', array('class' => 'hidden', 'id' => 'candi_resume'));
-          $oForm->addSection('', array('class' => 'candidate_inner_section'));
-
-          $oForm->addField('misc', '', array('type' => 'br'));
-          $oForm->addField('misc', '', array('type' => 'br'));
-
-          $oForm->addField('input', 'doc_title', array('label' => 'doc title', 'value' => '', 'style' => 'width: 385px;'));
-          $oForm->setFieldDisplayparams('doc_title', array('style' => 'width: 575px;'));
-
-          $oForm->addField('misc', '', array('type' => 'br'));
-
-
-
-          $oForm->addField('textarea', 'doc_description', array('label' => 'description', 'style' => 'width: 385px; height: 120px;'));
-          $oForm->setFieldDisplayparams('doc_description', array('style' => 'width: 575px;'));
-
-          $oForm->addField('input', 'document', array('type' => 'file', 'style' => 'height: 50px; width: 400px;'));
-          $oForm->setFieldDisplayparams('document', array('style' => 'width: 425px;'));
-
-          $oForm->closeSection();
-        $oForm->closeSection();
-      }
-
-
-
-      // =======================================================================
-      //duplicate section
-      $oForm->addSection('candi_duplicate', array('class' => 'hidden', 'id' => 'candi_duplicate'));
-
-      $oForm->closeSection();
-
-      return $sHTML. $oForm->getDisplay();
+      return $sHTML;
     }
 
 
@@ -5551,8 +5603,8 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', 'selected' => (($asCompanyData['level'] == 3)? 'selected':'')));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
-       $oForm->addoption('is_client', array('label' => 'No', 'value' => '0'));
-       $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', 'selected' => (($asCompanyData['is_client'] == 1)? 'selected':'')));
+       $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', 'selected' => ''));
+       $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1'));
 
        $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
@@ -5574,7 +5626,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('textarea', 'description', array('label'=> 'Description', 'value' => $asCompanyData['description']));
 
 
-      $oForm->addField('misc', '', array('type'=> 'title', 'title' => 'Structure & employees'));
+      $oForm->addSection('', array('folded' => 1), 'Structure & employees');
 
       $oForm->addField('input', 'revenue', array('label'=> 'Annual revenue', 'value' => $asCompanyData['revenue']));
       $oForm->setFieldControl('revenue', array('jsFieldMinSize' => '2'));
@@ -5595,7 +5647,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oForm->addField('input', 'num_branch_japan', array('label'=> '# branch(es) in japan', 'value' => $asCompanyData['num_branch_japan']));
       $oForm->setFieldControl('num_branch_japan', array('jsFieldTypeIntegerPositive' => '1'));
-
+      $oForm->closeSection();
 
 
        $oForm->addSection('', array('folded' => 1), 'Contact details');
@@ -5617,20 +5669,20 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => 'bad parameters.');
 
       $asData = array();
-      $asData['name'] = getValue('company_name');
-      $asData['corporate_name'] = getValue('corporate_name');
-      $asData['description'] = getValue('description');
+      $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
+      $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
+      $asData['description'] = filter_var(getValue('description'), FILTER_SANITIZE_STRING);
       $asData['level'] = (int)getValue('level');
       $asData['is_client'] = (int)getValue('is_client');
 
-      $asData['phone'] = getValue('phone', null);
-      $asData['fax'] = getValue('fax', null);
-      $asData['email'] = getValue('email', null);
-      $asData['website'] = getValue('website', null);
+      $asData['phone'] = filter_var(getValue('phone', null), FILTER_SANITIZE_STRING);
+      $asData['fax'] = filter_var(getValue('fax', null), FILTER_SANITIZE_STRING);
+      $asData['email'] = filter_var(getValue('email', null), FILTER_SANITIZE_EMAIL);
+      $asData['website'] = filter_var(getValue('website', null), FILTER_SANITIZE_URL);
 
       $asData['revenue'] = getValue('revenue');
-      $asData['hq'] = getValue('hq', null);
-      $asData['hq_japan'] = getValue('hq_japan', null);
+      $asData['hq'] = filter_var(getValue('hq', null), FILTER_SANITIZE_STRING);
+      $asData['hq_japan'] = filter_var(getValue('hq_japan', null), FILTER_SANITIZE_STRING);
 
       $asData['num_employee_world'] = (int)getValue('num_employee', 0);
       $asData['num_branch_world'] = (int)getValue('num_branch_world', 0);
@@ -5718,6 +5770,30 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyList($poQB = null)
     {
+      global $gbNewSearch;
+
+      $oLogin = CDependency::getCpLogin();
+
+      $asListMsg = array();
+      $bFilteredList = (bool)getValue('__filtered');
+
+      $nHistoryPk = (int)getValue('replay_search');
+      if($nHistoryPk > 0)
+      {
+        $this->csSearchId = getValue('searchId');
+        //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
+
+        $asHistoryData = $oLogin->getUserActivityByPk($nHistoryPk);
+        $oQb = $asHistoryData['data']['qb'];
+        if(!$oQb || !is_object($oQb))
+        {
+          //dump($poQB);
+          $oQb = $this->_getModel()->getQueryBuilder();
+          $oQb->addWhere(' (false) ');
+          $asListMsg[] = ' Error, could not reload the search. ';
+        }
+      }
+
       //$poQB comes when doing a complex search
       if(empty($poQB))
       {
@@ -5726,42 +5802,67 @@ class CSl_candidateEx extends CSl_candidate
 
         require_once('component/sl_candidate/resources/search/quick_search.class.php5');
         $oQS = new CQuickSearch($oQb);
-        $oQS->buildQuickSearch();
+        $oQS->buildQuickSearch(CONST_CANDIDATE_TYPE_COMP);
       }
       else
         $oQb = $poQB;
 
-      $oQb->addSelect('*, sind.label as industry_list');
-      $oQb->setTable('sl_company', 'scom');
-      $oQb->addJoin('left', 'sl_attribute', 'satt', 'satt.`type` = \'cp_indus\' AND satt.itemfk = scom.sl_companypk');
-      $oQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = satt.attributefk');
-      $oQb->addGroup('scom.sl_companypk');
-      $oQb->addOrder('scom.sl_companypk DESC');
-
-
-      // =============================================================
-
-       $asListMsg = array();
-
       // ============================================
       // search management
-      if(empty($this->csSearchId))
+
+      if(empty($this->csSearchId) && empty($nHistoryPk))
       {
+        //$asListMsg[] = ' new search id [empty sId or history]. ';
         $this->csSearchId = manageSearchHistory($this->csUid, CONST_CANDIDATE_TYPE_COMP);
         $oQb->addLimit('0, 50');
+        $nLimit = 50;
       }
       else
       {
-        $nPagerNbResult = getValue('nbresult', 50);
-        if($nPagerNbResult < 10)
-          $nPagerNbResult = 50;
+        //$asListMsg[] = ' just apply pager to reloaded search. ';
+        $oPager = CDependency::getComponentByName('pager');
+        $oPager->initPager();
+        $nLimit = $oPager->getLimit();
+        $nPagerOffset = $oPager->getOffset();
 
-        $nPagerOffset = getValue('pageoffset', 0);
-        if($nPagerOffset < 1)
-          $nPagerOffset = 1;
-
-        $oQb->addLimit((($nPagerOffset-1)*$nPagerNbResult).' ,'. $nPagerNbResult);
+        $oQb->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
       }
+
+      $oQb->setTable('sl_company', 'scom');
+
+      if ($poQB->hasSelect())
+        $oQb->addSelect('GROUP_CONCAT(sind.label) as industry_list');
+      else
+        $oQb->addSelect('*, GROUP_CONCAT(sind.label) as industry_list');
+
+      $oQb->addJoin('left', 'sl_attribute', 'satt', 'satt.type = \'cp_indus\' AND satt.itemfk = scom.sl_companypk');
+      $oQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = satt.attributefk');
+      $oQb->addGroup('scom.sl_companypk');
+
+
+      $sQuery = "SELECT *, GROUP_CONCAT(sind.label) as industry_list
+          FROM sl_company as scom
+          LEFT JOIN sl_attribute as satt ON (satt.type = 'cp_indus' AND satt.itemfk = scom.sl_companypk)
+          LEFT JOIN sl_industry as sind ON (sind.sl_industrypk = satt.attributefk)
+          GROUP BY scom.sl_companypk
+          ORDER BY scom.sl_companypk DESC
+          ";
+
+      $sSortField = getValue('sortfield');
+      $sSortOrder = getValue('sortorder', 'DESC');
+      if(!empty($sSortField))
+      {
+        if ($sSortField == 'industry_list')
+        {
+          $oQb->addOrder("sind.label $sSortOrder");
+        }
+        else
+        {
+          $oQb->addOrder("scom.$sSortField $sSortOrder");
+        }
+      }
+      else
+        $oQb->addOrder('scom.name DESC');
 
 
       // multi industries --> we need to group by companypk --> number result = numrows
@@ -5778,6 +5879,13 @@ class CSl_candidateEx extends CSl_candidate
         return array('data' => $this->_oDisplay->getBlocMessage('no company found for '.$oQb->getTitle()), 'nb_result' => $nResult, 'action' => 'goPopup.removeLastByType(\'layer\'); ');
 
 
+      if(empty($nHistoryPk) /*&& !$bLogged*/)
+      {
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_COMP, 0, array('searchId' => $this->csSearchId));
+        $sLink = 'javascript: loadAjaxInNewTab(\''.$sURL.'\', \'comp\', \'company\');';
+        $nHistoryPk = logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => implode(', ', $asListMsg).' (#'.$nResult.' results)', 'link' => $sLink, 'data' => array('qb' => $oQb)), false);
+      }
+
       $oDbResult = $this->_getModel()->executeQuery($oQb->getSql());
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
@@ -5786,7 +5894,6 @@ class CSl_candidateEx extends CSl_candidate
         return array('data' => 'no company found.', 'sql' => $oQb->getSql());
       }
 
-      $oLogin = CDependency::getCpLogin();
       $asRow = array();
 
       while($bRead)
@@ -5799,7 +5906,7 @@ class CSl_candidateEx extends CSl_candidate
         $bRead = $oDbResult->readNext();
       }
 
-
+      $sListId = uniqid();
       $asParam = array('sub_template' => array('CTemplateList' => array(0 => array('row' => array('class' => 'CComp_row', 'path' => $_SERVER['DOCUMENT_ROOT'].self::getResourcePath().'template/comp_row.tpl.class.php5')))));
       $oTemplate = $this->_oDisplay->getTemplate('CTemplateList', $asParam);
       $oConf = $oTemplate->getTemplateConfig('CTemplateList');
@@ -5821,35 +5928,161 @@ class CSl_candidateEx extends CSl_candidate
           $('div.list_action_container', oCurrentLi).append(oAction).fadeIn();
         }";
 
+      //Template related -- #2
+      if($nResult <= $nLimit)
+      {
+        $sSortJs = 'javascript';
+        $sURL = '';
+        $nAjax = 0;
+      }
+      else
+      {
+        $sSortJs = '-';
+        $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_COMP, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_COMP, 'replay_search' => $nHistoryPk));
+        $nAjax = 1;
+      }
+
       $sActionLink = $this->_oDisplay->getLink($sPic, 'javascript:;', array('onclick' => $sJavascript));
       $oConf->addColumn($sActionLink, 'a', array('id' => 'aaaaaa', 'width' => '20'));
-      $oConf->addColumn('ID', 'sl_companypk', array('width' => '43', 'sortable'=> array('javascript' => 'text'), 'style' => 'margin: 0;'));
+      $oConf->addColumn('ID', 'sl_companypk', array('width' => '43', 'sortable'=> array($sSortJs => 'text',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId), 'style' => 'margin: 0;'));
 
 
-      $oConf->addColumn('C', 'is_client', array('id' => '', 'width' => '20', 'sortable'=> array('javascript' => 'value_integer')));
-      $oConf->addColumn('NC', 'is_nc_ok', array('id' => '', 'width' => '20', 'sortable'=> array('javascript' => 'value_integer')));
-      $oConf->addColumn('L', 'level', array('id' => '', 'width' => '20', 'sortable'=> array('javascript' => 'value_integer')));
-      $oConf->addColumn('Company name', 'name', array('id' => '', 'width' => '31%', 'sortable'=> array('javascript' => 'value_integer')));
-      $oConf->addColumn('Industry', 'industry_list', array('id' => '', 'width' => '18%', 'sortable'=> array('javascript' => 'text')));
-      $oConf->addColumn('Description', 'description', array('id' => '', 'width' => '22%', 'sortable'=> array('javascript' => 'text')));
-      //$oConf->addColumn('Contact', 'contact', array('id' => '', 'width' => '15%', 'sortable'=> array('javascript' => 'text')));
-      $oConf->addColumn('Created by', 'created_by', array('id' => '', 'width' => '10%', 'sortable'=> array('javascript' => 'text')));
+      $oConf->addColumn('C', 'is_client', array('id' => '', 'width' => '20', 'sortable'=> array($sSortJs => 'value_integer',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn('NC', 'is_nc_ok', array('id' => '', 'width' => '20', 'sortable'=> array($sSortJs => 'value_integer',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn('L', 'level', array('id' => '', 'width' => '20', 'sortable'=> array($sSortJs => 'value_integer',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn('Company name', 'name', array('id' => '', 'width' => '31%', 'sortable'=> array($sSortJs => 'text',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn('Industry', 'industry_list', array('id' => '', 'width' => '18%', 'sortable'=> array($sSortJs => 'text',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      $oConf->addColumn('Description', 'description', array('id' => '', 'width' => '22%', 'sortable'=> array($sSortJs => 'text',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+      //$oConf->addColumn('Contact', 'contact', array('id' => '', 'width' => '15%', 'sortable'=> array($sSortJs => 'text')));
+      $oConf->addColumn('Created by', 'created_by', array('id' => '', 'width' => '10%', 'sortable'=> array($sSortJs => 'text',
+        'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
       $sTitle = $oQb->getTitle();
       if(!empty($sTitle))
         $asListMsg[] = $sTitle;
 
-      $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array('style' => 'cursor: crossair'), 'title');
+      $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-
-      $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_COMP, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
       $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
+      //===========================================
+      //===========================================
+      //start building the HTML
+      $sHTML = '';
 
-      $sHTML = $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
-      $sHTML.= $oTemplate->getDisplay($asRow);
+      /* debug
+       *
+      if(!$bFilteredList)
+        $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer')).' new list';
+      else
+        $sHTML.= 'replay a search, pager offset '.$nPagerOffset.', container/search ID '.$this->csSearchId;*/
+
+      if(!$bFilteredList)
+        $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
+
+      $sHTML.= $this->_oDisplay->getBlocStart($sActionContainerId, array('class' => 'hidden'));
+/*        var_dump(
+  $sHTML
+  );
+die();*/
+      $sHTML.= '
+        <div><input type="checkbox"
+        onchange="if($(this).is(\':checked\')){ listSelectBox(\''.$sListId.'\', true); }else{ listSelectBox(\''.$sListId.'\', false); }"/>Select all</div>';
+
+      $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_FOLDER, 0, array('item_type' => CONST_CANDIDATE_TYPE_COMP));
+      $sHTML.= '<div>Create a folder from [<a href="javascript:;" onclick="
+        listBoxClicked($(\'#'.$sListId.' ul li:first\'));
+        sIds = $(\'.multi_drag\').attr(\'data-ids\');
+        if(!sIds)
+          return alert(\'Nothing selected\');
+
+        goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected items</a>] OR';
+
+      if($nResult <= 80000)
+        $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">All '.$nResult.' results</a>]';
+      else
+        $sHTML.= ' [<span title="Too many results. Can\'t save more than 50000 results." style="font-style: italic">all</span> ]';
+
+      $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_ITEM, 0, array('item_type' => CONST_CANDIDATE_TYPE_COMP));
+      $sHTML.= '</div><div>Move into a folder [<a href="javascript:;" onclick="
+        listBoxClicked($(\'#'.$sListId.' ul li:first\'));
+        sIds = $(\'.multi_drag\').attr(\'data-ids\');
+        if(!sIds)
+          return alert(\'Nothing selected\');
+
+        goPopup.setLayerFromAjax(\'\', \''.$sURL.'&ids=\'+sIds);">selected ones</a>] OR';
+
+      if($nResult <= 80000)
+        $sHTML.= ' [<a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'&searchId='.$this->csSearchId.'\');">All '.$nResult.' results</a>]';
+      else
+        $sHTML.= ' [<span title="Too many results. Can\'t save more than 50000 results." style="font-style: italic">all</span> ]';
+
+      $sHTML.= '</div>';
+
+      if ($nResult > 1)
+      {
+        /*$sURL = $this->_oPage->getAjaxUrl('settings', CONST_ACTION_SAVEEDIT, CONST_TYPE_SAVED_SEARCHES, 0,
+          array('action' => 'add', 'activity_id' => $nHistoryPk));
+
+        $sHTML.= '<div><a href="javascript:;" onclick="ajaxLayer(\''.$sURL.'\', 370, 150);">Save this search</a></div>';*/
+      }
+
+      if(!empty($nFolderPk))
+      {
+        $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_DELETE, CONST_FOLDER_TYPE_ITEM, 0, array('folderpk' => $nFolderPk, 'item_type' => CONST_CANDIDATE_TYPE_COMP));
+        $sHTML.= '<div>Remove from folder [<a href="javascript:;" onclick="listBoxClicked($(\'#'.$sListId.' ul li:first\'));
+        sIds = $(\'.multi_drag\').attr(\'data-ids\');
+        if(!sIds)
+          return alert(\'Nothing selected\');
+
+         AjaxRequest(\''.$sURL.'&ids=\'+sIds);
+        ">selected</a>]
+        [<a href="javascript:;" onclick="AjaxRequest(\''.$sURL.'&searchId='.$this->csSearchId.'\');">'.$nResult.' results</a>]</div>';
+      }
+
       $sHTML.= $this->_oDisplay->getBlocEnd();
+
+      //Add the list template to the html
+      $sHTML.= $oTemplate->getDisplay($asRow, 1, 5, 'safdassda');
+
+
+      //---------------------------------------------
+      //manage javascript action
+      $sURL = $this->_oPage->getAjaxUrl('sl_folder', CONST_ACTION_SAVEADD, CONST_FOLDER_TYPE_ITEM, 0);
+      $sHTML.='<script> initDragAndDrop(\''.$sURL.'\'); </script>';
+
+      if(count($asRow) == 1)
+      {
+        $asRow = current($asRow);
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asRow['sl_companypk']);
+        $sHTML.='<script> view_comp(\''.$sURL.'\'); </script>';
+      }
+
+      //DEBUG: Dropp the query at the end
+      if($oLogin->getUserPk() == 367 || isDevelopment() )
+      {
+        $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
+          <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
+      }
+
+      $sHTML .= '<script>
+          $(function(){
+            var list_container = document.getElementById(\''.$this->csSearchId.'\');
+            $(\'.fixedListheader\').remove();
+            list_container.scrollTop = 0;
+          });
+        </script>';
+
+      if($gbNewSearch)
+        $sHTML.= $this->_oDisplay->getBlocEnd();
 
       return array('data' => $sHTML, 'action' => ' initHeaderManager(); goPopup.removeLastByType(\'layer\'); ');
     }
@@ -5874,6 +6107,12 @@ class CSl_candidateEx extends CSl_candidate
         if(empty($asData))
           return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
 
+
+        if (!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
+          return array('popupError' => 'Normal user cannot change candidate name');
+
+        if (!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
+          return array('popupError' => 'Normal user cannot change candidate name');
 
         //Date created is use and overwritten everywhere... so we're using an alias
         $asData['date_created'] = $asData['date_added'];
@@ -5921,7 +6160,7 @@ class CSl_candidateEx extends CSl_candidate
       if(!empty($asError))
       {
         if(isset($this->casCandidateData['dup_tab']))
-          return array('popupError' => implode("\n", $asError),  'data' => $this->casCandidateData['dup_tab'], 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
+          return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
 
         return array('popupError' => implode("\n", $asError));
       }
@@ -6009,8 +6248,8 @@ class CSl_candidateEx extends CSl_candidate
       {
         //First form section
         $asData['sex'] = (int)getValue('sex');
-        $asData['firstname'] = getValue('firstname');
-        $asData['lastname'] = getValue('lastname');
+        $asData['firstname'] = filter_var(getValue('firstname'), FILTER_SANITIZE_STRING);
+        $asData['lastname'] = filter_var(getValue('lastname'), FILTER_SANITIZE_STRING);
 
         $asData['date_birth'] = trim(getValue('birth_date'));
         $nAge = (int)getValue('age', 0);
@@ -6060,10 +6299,10 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $asData['companyfk'] = $nNewCompanyFk;
-        $asData['title'] = getValue('title');
+        $asData['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
-        $asData['department'] = getValue('department');
+        $asData['department'] = filter_var(getValue('department'), FILTER_SANITIZE_STRING);
 
         if(isset($_POST['client']))
           $asData['is_client'] = 1;
@@ -6086,6 +6325,9 @@ class CSl_candidateEx extends CSl_candidate
 
         if(empty($asData['industryfk']))
           $asError[] = 'Industry field is required.';
+
+        if(empty($asData['occupationfk']))
+          $asError[] = 'Occupation field is required.';
 
         if(empty($asData['companyfk']) || !is_key($asData['companyfk']))
           $asError[] = 'Company field is required.';
@@ -6115,7 +6357,7 @@ class CSl_candidateEx extends CSl_candidate
         if(!empty($asBonus['value']) && ($asBonus['yen'] > 100000000 || $asBonus['yen'] < 10000))
          $asError[] = 'Bonus value is not a valid number. ['.$asBonus['yen'].' '.$asBonus['currency'].']';
 
-        $asData['salary'] = $asSalary['yen'];
+        $asData['salary'] = $asSalary['value'];
         $asData['currency'] = $asSalary['currency'];
         $asData['currency_rate'] = $asSalary['rate'];
         $asData['bonus'] = $asBonus['value'];
@@ -6128,10 +6370,10 @@ class CSl_candidateEx extends CSl_candidate
         $this->_getSalaryInYen($asTargetHigh);
 
         if(!empty($asTargetLow['value']) && ($asTargetLow['yen'] > 100000000 || $asTargetLow['yen'] < 10000))
-          $asError[] = 'Salary value is not a valid number. ['.$asTargetLow['yen'].' '.$asTargetLow['currency'].']';
+          $asError[] = 'Target salary low value is not a valid number. ['.$asTargetLow['yen'].' '.$asTargetLow['currency'].']';
 
         if(!empty($asTargetHigh['value']) && ($asTargetHigh['yen'] > 100000000 || $asTargetHigh['yen'] < 10000))
-          $asError[] = 'Bonus value is not a valid number. ['.$asTargetHigh['yen'].' '.$asTargetHigh['currency'].']';
+          $asError[] = 'Target salary high value is not a valid number. ['.$asTargetHigh['yen'].' '.$asTargetHigh['currency'].']';
 
         $asData['target_low'] = $asTargetLow['value'];
         $asData['target_high'] = $asTargetHigh['value'];
@@ -6173,7 +6415,7 @@ class CSl_candidateEx extends CSl_candidate
         if($sDiploma == 'mba' || $sDiploma == 'both')
           $asData['mba'] = 1;
 
-        $asData['keyword'] = getValue('keyword');
+        $asData['keyword'] = filter_var(getValue('keyword'), FILTER_SANITIZE_STRING);
         $asData['play_for'] = (int)getValue('play_for');
         $asData['play_date'] = null;
 
@@ -6392,55 +6634,91 @@ class CSl_candidateEx extends CSl_candidate
       return $asError;
     }
 
-    private function _checkDuplicate($pasData)
+    private function _checkDuplicate($candidate_info)
     {
 
-      $oDbResult = $this->_getModel()->getDuplicate($pasData, 0, true);
-      $bRead = $oDbResult->readFirst();
-      if(!$bRead)
+      $duplicate_array = $this->_getModel()->getDuplicate($candidate_info);
+
+      if(empty($duplicate_array['company']) && empty($duplicate_array['other']))
         return '';
 
-      $sHTML = $this->_oDisplay->getCR();
-      $asDuplicate = array();
-      while($bRead)
-      {
-        $asData = $oDbResult->getData();
-        $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$oDbResult->getFieldValue('sl_candidatepk'));
-        $asData['candidate'] = '<a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$oDbResult->getFieldValue('lastname').' '.$oDbResult->getFieldValue('firstname').'</a>';
+      $html = $this->_oDisplay->getCR();
 
-        $asDuplicate[] = $asData;
-        $bRead = $oDbResult->readNext();
+      foreach ($duplicate_array['company'] as $key => $value)
+      {
+        $url = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI,
+          (int)$value['sl_candidatepk']);
+        $duplicate_array['company'][$key]['candidate'] = '<a href="javascript:;" onclick="popup_candi(this, \''.$url.'\');">';
+        $duplicate_array['company'][$key]['candidate'] .= $value['lastname'].' '.$value['firstname'].'</a>';
+
+        $duplicate_array['company'][$key]['ratio'] = number_format($value['ratio'], 1).'%';
       }
 
+      foreach ($duplicate_array['other'] as $key => $value)
+      {
+        $url = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI,
+          (int)$value['sl_candidatepk']);
+        $duplicate_array['other'][$key]['candidate'] = '<a href="javascript:;" onclick="popup_candi(this, \''.$url.'\');">';
+        $duplicate_array['other'][$key]['candidate'] .= $value['lastname'].' '.$value['firstname'].'</a>';
 
-      $asParam = array('sub_template' => array('CTemplateList' => array(0 => array('row' => 'CTemplateRow'))));
-      $oTemplate = $this->_oDisplay->getTemplate('CTemplateList', $asParam);
+        $duplicate_array['other'][$key]['ratio'] = number_format($value['ratio'], 1).'%';
+      }
+
+      if (!empty($duplicate_array['company']))
+      {
+        $other_duplicates_visibility = 'style="display: none;"';
+        $company_duplicates_visibility = '';
+      }
+      else
+      {
+        $other_duplicates_visibility = '';
+        $company_duplicates_visibility = 'style="display: none;"';
+      }
+
+      $params = array('sub_template' => array('CTemplateList' => array(0 => array('row' => 'CTemplateRow'))));
+      $template_obj = $this->_oDisplay->getTemplate('CTemplateList', $params);
 
       //get the config object for a specific template (contains default value so it works without config)
-      $oConf = $oTemplate->getTemplateConfig('CTemplateList');
-      $oConf->setRenderingOption('full', 'full', 'full');
-      $oConf->setPagerTop(false);
-      $oConf->setPagerBottom(false);
+      $template = $template_obj->getTemplateConfig('CTemplateList');
+      $template->setRenderingOption('full', 'full', 'full');
+      $template->setPagerTop(false);
+      $template->setPagerBottom(false);
 
-      $oConf->addColumn('refId', 'sl_candidatepk', array('width' => 45, 'sortable'=> array('javascript' => 1)));
-      $oConf->addColumn('Candidate', 'candidate', array('width' => 210, 'sortable'=> array('javascript' => 1)));
-      $oConf->addColumn('Company', 'company_name', array('width' => 250, 'sortable'=> array('javascript' => 1)));
-      $oConf->addColumn('Industry', 'industry', array('width' => 150, 'sortable'=> array('javascript' => 1)));
-      $oConf->addColumn('Occupation', 'occupation', array('width' => 150, 'sortable'=> array('javascript' => 1)));
-      $oConf->addColumn('Contacts', 'contacts', array('width' => 170, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('Matching', 'ratio', array('width' => 65, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('refId', 'sl_candidatepk', array('width' => 50, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('Candidate', 'candidate', array('width' => 210, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('Company', 'company', array('width' => 250, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('Industry', 'industry', array('width' => 150, 'sortable'=> array('javascript' => 1)));
+      $template->addColumn('Occupation', 'occupation', array('width' => 150, 'sortable'=> array('javascript' => 1)));
 
-      $sHTML.= $oTemplate->getDisplay($asDuplicate);
+      $html .= '<div '.$company_duplicates_visibility.'>'.'<div class="general_form_row">Duplicates in same company</div>';
 
+      $html .= $template_obj->getDisplay($duplicate_array['company']).'</div>';
 
-      $sDupString = $pasData['lastname'].'_'.$pasData['firstname'];
+      $html .= '
+        <div id="other_duplicates_button" class="general_form_row add_margin_top_10 fake_link">
+          Duplicates in other companies
+        </div>';
 
-      $sHTML.= $this->_oDisplay->getCR(2);
-      $sLink = '>>&nbsp;&nbsp;&nbsp;&nbsp;Click here if none of the above is a duplicate !&nbsp;&nbsp;&nbsp;&nbsp;<< &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Not a duplicate"/>';
+      $html .= '<div id="other_duplicates" '.$other_duplicates_visibility.'>'.$template_obj->getDisplay($duplicate_array['other']).'</div>';
 
-      $sHTML.= $this->_oDisplay->getLink($sLink, 'javascript:;', array( 'style' => 'font-weight: bold; color: #CC7161; font-size: 14px; ',
-          'onclick' => '$(\'#dup_checked\').val(\''.$sDupString.'\'); $(\'.tab_duplicate\').hide(); $(\'.candidate_form_tabs li:first\').click();'));
+      $duplicate_name = $candidate_info['lastname'].'_'.$candidate_info['firstname'];
 
-      return $sHTML;
+      $html.= $this->_oDisplay->getCR(2);
+      $link = '>>&nbsp;&nbsp;&nbsp;&nbsp;Click here if none of the above is a duplicate !&nbsp;&nbsp;&nbsp;&nbsp;<< &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="Not a duplicate"/>';
+
+      $html.= $this->_oDisplay->getLink($link, 'javascript:;', array( 'style' => 'font-weight: bold; color: #CC7161; font-size: 14px; ',
+          'onclick' => '$(\'#dup_checked\').val(\''.$duplicate_name.'\'); $(\'.tab_duplicate\').hide(); $(\'.candidate_form_tabs li:first\').click();'));
+
+      $html .= '
+        <script>
+          $("#other_duplicates_button").click(function()
+          {
+            $("#other_duplicates").toggle();
+          });
+        </script>';
+
+      return $html;
     }
 
     /* a pickle ?
@@ -6497,15 +6775,7 @@ class CSl_candidateEx extends CSl_candidate
       $asError = array();
 
       $sCharacter = getValue('character_note');
-      $nCharacterHtml = getValue('character_html');
-
-      if(!$nCharacterHtml)
-        $sCharacter = strip_tags($sCharacter);
-
       $sNote = getValue('note');
-
-      if(!$nCharacterHtml)
-        $sNote = strip_tags($sNote);
 
       if(empty($sCharacter) && empty($sNote))
         $asError[] = 'You have to input at least a note or a character note.';
@@ -6577,11 +6847,15 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getSalaryInYen(&$pasSalaryData)
     {
+      //dump($pasSalaryData);
       if(!assert('is_array($pasSalaryData) && !empty($pasSalaryData)'))
         return -1;
 
-      if(!assert('isset($pasSalaryData[\'value\']) && isset($pasSalaryData[\'currency\']) && !empty($pasSalaryData[\'currency\'])'))
+      if(!isset($pasSalaryData['value']) || !isset($pasSalaryData['currency']))
+      {
+        assert('false; // invalid salary data ');
         return -1;
+      }
 
       $pasSalaryData['yen'] = 0;
       $pasSalaryData['rate'] = 1;
@@ -6865,15 +7139,6 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-    private function _getCandidateFastEdit($pnCandidatePk, $pbAjax = false)
-    {
-      if(!assert('is_key($pnCandidatePk) && is_bool($pbAjax)'))
-        return '';
-
-      return 'gaaaaaa fast edit';
-    }
-
-
     public function _getTreeData($psType)
     {
       if(!assert('$psType == \'occupation\' || $psType == \'industry\' '))
@@ -7068,9 +7333,22 @@ class CSl_candidateEx extends CSl_candidate
     {
       // check form, create a html file from it
       $sTitle = trim(getValue('title'));
-      $sContent = getValue('content');
+      $sContent = purify_html(getValue('content'));
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
+
+      $head = '
+        <html>
+          <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+          </head>
+          <body>';
+
+      $footer = '
+          </body>
+        </html>';
+
+      $sContent = $head.$sContent.$footer;
 
       $asCpLink = array();
       $asCpLink['cp_uid'] = getValue('cp_uid');
@@ -7349,9 +7627,9 @@ class CSl_candidateEx extends CSl_candidate
         if($nWord == 1)
         {
           //must be the lastname
-          $poQB->addSelect('scan.*, IF(scan.lastname LIKE '.$this->_getModel()->dbEscapeString($asWords[0]).', 1, 0) as exact_lastname ');
+          $poQB->addSelect('scan.*, levenshtein("'.$this->_getModel()->dbEscapeString($asWords[0]).'", LOWER(scan.lastname)) AS lastname_lev ');
           $poQB->addWhere('scan.lastname LIKE '.$this->_getModel()->dbEscapeString($asWords[0].'%'));
-          $poQB->addOrder('exact_lastname DESC, scan.lastname ASC, scan.firstname ASC');
+          $poQB->addOrder('lastname_lev ASC, scan.firstname ASC');
         }
         else
         {
@@ -7419,12 +7697,15 @@ class CSl_candidateEx extends CSl_candidate
         exit('['.implode(',', $asJson).']');
       }
 
+      require_once('component/sl_candidate/resources/search/quick_search.class.php5');
+
       $poQB = $this->_getModel()->getQueryBuilder();
       $poQB->setTable('sl_company', 'scom');
 
 
-      $sRefId = preg_replace('/[^0-9]/i', '', $sSearchString);
-      if((int)$sRefId == (int)$sSearchString && (int)$sRefId > 0)
+
+      $sRefId = CQuickSearch::_fetchRefIdFromString($sSearchString);
+      if((string)$sRefId == $sSearchString || ('#' . $sRefId) == $sSearchString)
       {
         $poQB->addSelect('scom.*');
         $poQB->addWhere('scom.sl_companypk = '.(int)$sRefId);
@@ -7436,7 +7717,7 @@ class CSl_candidateEx extends CSl_candidate
 
         foreach($asWords as $nKey => $sWord)
         {
-          if(empty($sWord) || strlen($sWord) < 2)
+          if(empty($sWord))
             unset($asWords[$nKey]);
         }
 
@@ -7477,7 +7758,7 @@ class CSl_candidateEx extends CSl_candidate
         $asCandidate = $oDbResult->getData();
         $asEntry = array();
 
-        $asCandidate['name'] = preg_replace('/[^a-z0-9\.,#\'" ]/i', '', $asCandidate['name']);
+        $asCandidate['name'] = preg_replace('/[^a-z0-9\.,#\'" &]/i', '', $asCandidate['name']);
 
         $asEntry['id'] = $asCandidate['sl_companypk'];
         $asEntry['name'] = '  #'.$asCandidate['sl_companypk'].' - '.mb_strimwidth($asCandidate['name'], 0, 38, '...');
@@ -7515,6 +7796,13 @@ class CSl_candidateEx extends CSl_candidate
       while($bRead)
       {
         $asCpData = $oDbResult->getData();
+
+        if (empty($asLetter[$asCpData['level']]))
+        {
+          $bRead = $oDbResult->readNext();
+          continue;
+        }
+
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
         $sFirstLetter = strtoupper(substr($asCpData['name'], 0, 1));
         if(is_numeric($sFirstLetter))
@@ -7884,36 +8172,37 @@ class CSl_candidateEx extends CSl_candidate
 
       $nManualTarget = (int)getValue('target');
 
-      $sHTML = $this->_oDisplay->getTitle('Duplicates for candidate of #'.$pnCandidatePk, 'h3', true);
+      $sHTML = $this->_oDisplay->getTitle('Duplicates for candidate #'.$pnCandidatePk, 'h3', true);
       $sHTML.= $this->_oDisplay->getCR(2);
 
 
-      $oDbResult = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget);
+      $duplicate_array = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget, true, true);
 
-
-      $bRead = $oDbResult->readFirst();
-      if(!$bRead)
+      if(empty($duplicate_array['other']))
       {
         $sHTML.= '<span style="font-size: 15px; color: green; ">&rarr; No duplicate found for this candidate.</span><br /><br />';
       }
       else
       {
-        while($bRead)
+        foreach ($duplicate_array['other'] as $key => $value)
         {
-          $asData = $oDbResult->getData();
+          if ($key == $pnCandidatePk)
+          {
+            unset($duplicate_array['other'][$key]);
+            continue;
+          }
 
           $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
-          $sHTML.= '#<a href="javascript:;"  onclick="popup_candi(this, \''.$sURL.'\');" >'.$asData['sl_candidatepk'].' - '.$asData['lastname'].' '.$asData['firstname'].'</a><br />';
-          $sHTML.= 'Working at '.$asData['company_name'].'';
+          $sHTML.= '#<a href="javascript:;"  onclick="popup_candi(this, \''.$sURL.'\');" >'.$value['sl_candidatepk'].' - '.$value['lastname'].' '.$value['firstname'].'</a><br />';
+          $sHTML.= 'Working at '.$value['company'].'';
 
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_TRANSFER, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk, array('merge_to' => $asData['sl_candidatepk']));
+          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_TRANSFER, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk, array('merge_to' => $value['sl_candidatepk']));
           $sHTML.= '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="javascript:;" onclick="if(window.confirm(\'Are you sure you want to merge #'.$pnCandidatePk.' data to this profile (#'.$asData['sl_candidatepk'].') ?\'))
+            <a href="javascript:;" onclick="if(window.confirm(\'Are you sure you want to merge #'.$pnCandidatePk.' data to this profile (#'.$value['sl_candidatepk'].') ?\'))
             {
               AjaxRequest(\''.$sURL.'\');
             }
             ">-=[ Merge on this candidate profile ]=-</a><br /><br />';
-          $bRead = $oDbResult->readNext();
         }
       }
 
@@ -7955,38 +8244,28 @@ class CSl_candidateEx extends CSl_candidate
     }
 
 
-    private function _mergeDeleteCandidate($pnCandidatePk)
+    private function _mergeDeleteCandidate($candidate_id)
     {
-      if(!assert('is_key($pnCandidatePk)'))
+      if(!assert('is_key($candidate_id)'))
         return array('error' => __LINE__.' - Wrong parameters');
 
-      $asCandidate = $this->_getModel()->getCandidateData($pnCandidatePk, true);
+      $asCandidate = $this->_getModel()->getCandidateData($candidate_id, true);
       if(empty($asCandidate))
         return array('error' => __LINE__.' - Could not find the candidate.');
 
-      if($asCandidate['_in_play'])
-        return array('error' => __LINE__.' - The candidate is in play. Update position(s) status before deleting.');
 
-
-      $nTarget = (int)getValue('merge_to');
-      if(!empty($nTarget))
-      {
-        $asTarget = $this->_getModel()->getCandidateData($nTarget, true);
-        if(empty($asTarget))
-          return array('error' => __LINE__.' - Could not find the target candidate.');
-      }
-
+      $target_candidate_id = (int)getValue('merge_to');
 
       // - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - --
       // - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - -- - -- - - - --
       //merge with nothing ==> simple delete
 
-      if(empty($nTarget))
+      if(empty($target_candidate_id))
       {
         $asData = array('_sys_status' => 1, '_sys_redirect' => NULL, '_date_updated' => date('Y-md H:i:s'));
-        $this->_getModel()->update($asData, 'sl_candidate', 'sl_candidatepk = '.$pnCandidatePk);
+        $this->_getModel()->update($asData, 'sl_candidate', 'sl_candidatepk = '.$candidate_id);
 
-        $sUrl = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
+        $sUrl = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $candidate_id);
         return array('notice' => 'Candidate has been deleted.', 'action' => 'goPopup.removeLastByType(\'layer\'); view_candi(\''.$sUrl.'\');');
       }
 
@@ -7997,74 +8276,99 @@ class CSl_candidateEx extends CSl_candidate
 
 
       //load a genric model to update multi component
-      $oModel = new CModel(true);
-      $asSummary = array();
+      $model_object = new CModel(true);
+      $summary = array();
 
-      //1. move reminders / dba req / notifications
-      $asData = array('cp_pk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'notification_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$pnCandidatePk, true);
-      $asSummary['reminders'] = $oDbResult->getFieldValue('_affected_rows');
+      //1. merge profile data
+      $adjusted_candidate_ids = $this->merge_candidate_profiles($candidate_id, $target_candidate_id);
 
-      //2. move meetings
-      $asData = array('candidatefk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'sl_meeting', 'candidatefk = '.$pnCandidatePk, true);
-      $asSummary['meetings'] = $oDbResult->getFieldValue('_affected_rows');
+      /*$asTarget = $this->_getModel()->getCandidateData($adjusted_candidate_ids['target'], true);
+      if(empty($asTarget))
+        return array('error' => __LINE__.' - Could not find the target candidate.');*/
 
+      // Swap ids if necessary for preserving older candidate info
+      $target_candidate_id = $adjusted_candidate_ids['target'];
+      $candidate_id = $adjusted_candidate_ids['origin'];
 
-      //3. move positions_link (for history)
-      $asData = array('candidatefk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'sl_position_link', 'candidatefk = '.$pnCandidatePk, true);
-      $asSummary['positions'] = $oDbResult->getFieldValue('_affected_rows');
+      //2. move reminders / dba req / notifications
+      $asData = array('cp_pk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'notification_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$candidate_id, true);
+      $summary['reminders'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //4. documents
-      $asData = array('cp_pk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'document_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$pnCandidatePk, true);
-      $asSummary['documents'] = $oDbResult->getFieldValue('_affected_rows');
+      //3. move meetings
+      $asData = array('candidatefk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_meeting', 'candidatefk = '.$candidate_id, true);
+      $summary['meetings'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //5. contact
-      $asData = array('itemfk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'sl_contact', 'item_type = "candi" AND itemfk = '.$pnCandidatePk, true);
-      $asSummary['contacts'] = $oDbResult->getFieldValue('_affected_rows');
+      //4.1 move positions_link (for history)
+      $asData = array('candidatefk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_position_link', 'candidatefk = '.$candidate_id, true);
+      $summary['positions'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //6. attribute
-      $asData = array('itemfk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'sl_attribute', 'type LIKE "candi%" AND itemfk = '.$pnCandidatePk, true);
-      $asSummary['attributes'] = $oDbResult->getFieldValue('_affected_rows');
+      //4.2 move sl_position_credit (for history and placement manager)
+      $asData = array('candidatefk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_position_credit', 'candidatefk = '.$candidate_id, true);
+      $summary['position_credit'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //7. RM
-      $asData = array('candidatefk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'sl_candidate_rm', 'candidatefk = '.$pnCandidatePk, true);
-      $asSummary['rm'] = $oDbResult->getFieldValue('_affected_rows');
+      //5. move revenue (for placement manager)
+      $asData = array('candidate' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'revenue', 'candidate = '.$candidate_id, true);
+      $summary['revenue'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //8. notes
-      $asData = array('cp_pk' => $nTarget);
-      $oDbResult = $oModel->update($asData, 'event_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$pnCandidatePk, true);
-      $asSummary['notes'] = $oDbResult->getFieldValue('_affected_rows');
+      //6. documents
+      $asData = array('cp_pk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'document_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$candidate_id, true);
+      $summary['documents'] = $oDbResult->getFieldValue('_affected_rows');
 
-      //9. add note summura, copy UID
+      //7. contact
+      $asData = array('itemfk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_contact', 'item_type = "candi" AND itemfk = '.$candidate_id, true);
+      $summary['contacts'] = $oDbResult->getFieldValue('_affected_rows');
+
+      //8. attribute
+      $asData = array('itemfk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_attribute', 'type LIKE "candi%" AND itemfk = '.$candidate_id, true);
+      $summary['attributes'] = $oDbResult->getFieldValue('_affected_rows');
+
+      //9. RM
+      $asData = array('candidatefk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'sl_candidate_rm', 'candidatefk = '.$candidate_id, true);
+      $summary['rm'] = $oDbResult->getFieldValue('_affected_rows');
+
+      //10. notes
+      $asData = array('cp_pk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'event_link', 'cp_uid = "555-001" AND cp_action = "ppav" AND cp_type = "candi" AND cp_pk = '.$candidate_id, true);
+      $summary['notes'] = $oDbResult->getFieldValue('_affected_rows');
+
+      //11. user activity
+      $asData = array('cp_pk' => $target_candidate_id);
+      $oDbResult = $model_object->update($asData, 'login_system_history', 'cp_uid = "555-001" AND cp_type = "candi" AND cp_pk = '.$candidate_id, true);
+      $summary['activity'] = $oDbResult->getFieldValue('_affected_rows');
+
+      //12. add note summary, copy UID
       $oEvent = CDependency::getComponentByName('sl_event');
-      $sNote = 'The candidate #'.$pnCandidatePk.' has been merge on this candidate profile.<br />';
-      $sNote.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
+      $note = 'The candidate #'.$candidate_id.' has been merge on this candidate profile.<br />';
+      $note.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
 
-      foreach($asSummary as $sType => $nUpdate)
-        $sNote.= '-> #'.$nUpdate.' '.$sType.' transfered<br />';
+      foreach($summary as $type => $update)
+        $note.= '-> #'.$update.' '.$type.' transfered<br />';
 
-      $oEvent->addNote($nTarget, 'merge_summary', $sNote);
+      $oEvent->addNote($target_candidate_id, 'merge_summary', $note);
 
 
-      $asData = array('_sys_status' => 2, '_sys_redirect' => $nTarget, '_date_updated' => date('Y-md H:i:s'));
-      $this->_getModel()->update($asData, 'sl_candidate', 'sl_candidatepk = '.$pnCandidatePk);
+      $asData = array('_sys_status' => 2, '_sys_redirect' => $target_candidate_id, '_date_updated' => date('Y-md H:i:s'));
+      $this->_getModel()->update($asData, 'sl_candidate', 'sl_candidatepk = '.$candidate_id);
 
-      $sUrl = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $nTarget);
-      return array('notice' => 'Candidate has been merged with #'.$pnCandidatePk.'.', 'action' => 'goPopup.removeLastByType(\'layer\'); view_candi(\''.$sUrl.'\');');
+      $sUrl = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $target_candidate_id);
+      return array('notice' => 'Candidate has been merged with #'.$candidate_id.'.', 'action' => 'goPopup.removeLastByType(\'layer\'); view_candi(\''.$sUrl.'\');');
     }
 
     private function _customLogUpdate($pasOldData, $pasNewData)
     {
-      $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', '	date_created', '_sys_status', '_sys_redirect',
-          'currency', 'currency_rate', 'salary_search', '	_has_doc', '	_in_play', '	_date_updated', 'uid', 'rating');
+      $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
+          'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
 
-      $asProfessional = array('companyfk' => 'company', 'industryfk' => 'industry', '	occupationfk' => 'occupation',
+      $asProfessional = array('companyfk' => 'company', 'industryfk' => 'industry', ' occupationfk' => 'occupation',
           'title' => 'title', 'department' => 'department', 'salary' => 'salary', 'bonus' => 'bonus', 'target_low' => 'target salary from'
           , 'target_high' => 'target salary to');
 
@@ -8084,6 +8388,7 @@ class CSl_candidateEx extends CSl_candidate
         //ignore black listed fields
         if(!in_array($sField, $asBLFields))
         {
+
           if($vValue === 'null' || $vValue == '0000-00-00 00:00:00')
             $vValue = null;
 
@@ -8116,16 +8421,36 @@ class CSl_candidateEx extends CSl_candidate
                 $sLabel = ' - ';
             }
 
+            if (empty($this->coSlateVars))
+              $this->getVars();
 
             if(empty($vValue) && !empty($pasNewData[$sField]))
             {
-              //dump('new data added [prev: '.var_export($vValue, true).']--> '.$sField.' = '.var_export($pasNewData[$sField], true));
-              $asLog[$sType][] = '['.$sLabel.'] has been added : '.$pasNewData[$sField];
+              $added_variable = $this->coSlateVars->get_var_info_by_label($sLabel, $pasNewData[$sField]);
+
+              if (empty($added_variable))
+                $added_variable = $pasNewData[$sField];
+
+              $asLog[$sType][] = '['.$sLabel.'] has been added : '.$added_variable;
             }
             else
             {
-              //dump('edit data [prev: '.var_export($vValue, true).']--> '.$sField.' = '.var_export($pasNewData[$sField], true));
-              $asLog[$sType][] = '['.$sLabel.'] changed from '.$vValue.' -> to: '.$pasNewData[$sField];
+              $old_variable = $this->coSlateVars->get_var_info_by_label($sLabel, $vValue);
+              $new_variable = $this->coSlateVars->get_var_info_by_label($sLabel, $pasNewData[$sField]);
+
+              if (empty($old_variable))
+                $old_variable = $vValue;
+
+              if (empty($new_variable))
+                $new_variable = $pasNewData[$sField];
+
+              if (is_array($old_variable))
+                $old_variable = $old_variable['label'];
+
+              if (is_array($new_variable))
+                $new_variable = $new_variable['label'];
+
+              $asLog[$sType][] = '['.$sLabel.'] changed from '.$old_variable.' -> to: '.$new_variable;
             }
           }
         }
@@ -8146,5 +8471,204 @@ class CSl_candidateEx extends CSl_candidate
         $sTitle = 'candidate #'.$pasOldData['sl_candidatepk'].' has been updated.';
         $this->_getModel()->_logChanges($pasOldData, 'sl_candidate', $sTitle);
       }
+    }
+
+    private function merge_candidate_profiles($origin_id, $target_id)
+    {
+      $model_object = new CModel(true);
+      $candidate_data = array();
+      $false_name_array = array('mr', 'ms', 'mr.', 'ms.', 'mrs', 'mrs.');
+      $newer_company_info = 'target';
+      $newer_candidate_info = 'target';
+      $swap = false;
+
+      // origin cadidate info
+      $query = 'SELECT sl_candidate.*, sl_position_link.date_created AS link_date,';
+      $query .= ' sl_candidate_profile.date_updated';
+      $query .= ' FROM sl_candidate';
+      $query .= ' LEFT JOIN  sl_position_link';
+      $query .= ' ON sl_position_link.candidatefk = '.$origin_id.' AND status = 101';
+      $query .= ' LEFT JOIN  sl_candidate_profile';
+      $query .= ' ON sl_candidate_profile.candidatefk = '.$origin_id;
+      $query .= ' WHERE sl_candidate.sl_candidatepk = '.$origin_id;
+
+      $result = $this->_getModel()->executeQuery($query);
+      $read = $result->readFirst();
+
+      $raw_data = $result->getData();
+
+      $candidate_data['origin'] = $raw_data;
+
+      // target cadidate info
+      $query = 'SELECT sl_candidate.*, sl_position_link.date_created AS link_date,';
+      $query .= ' sl_candidate_profile.date_updated';
+      $query .= ' FROM sl_candidate';
+      $query .= ' LEFT JOIN sl_position_link';
+      $query .= ' ON sl_position_link.candidatefk = '.$target_id.' AND status = 101';
+      $query .= ' LEFT JOIN sl_candidate_profile';
+      $query .= ' ON sl_candidate_profile.candidatefk = '.$target_id;
+      $query .= ' WHERE sl_candidate.sl_candidatepk = '.$target_id;
+
+      $result = $this->_getModel()->executeQuery($query);
+      $read = $result->readFirst();
+
+      $raw_data = $result->getData();
+
+      $candidate_data['target'] = $raw_data;
+
+      $adjusted_candidate_ids = array('target' => $candidate_data['target']['sl_candidatepk'],
+        'origin' => $candidate_data['origin']['sl_candidatepk']);
+
+      if (strtotime($candidate_data['target']['date_created']) > strtotime($candidate_data['origin']['date_created']))
+      {
+        $adjusted_candidate_ids = array('target' => $candidate_data['origin']['sl_candidatepk'],
+          'origin' => $candidate_data['target']['sl_candidatepk']);
+
+        $temp = array();
+        $temp = $candidate_data['target'];
+
+        $candidate_data['target'] = $candidate_data['origin'];
+        $candidate_data['origin'] = $temp;
+
+        unset($temp);
+
+        $temp = $target_id;
+
+        $target_id = $origin_id;
+        $origin_id = $temp;
+      }
+
+      if (strtotime($candidate_data['origin']['date_updated']) > strtotime($candidate_data['target']['date_updated']))
+        $newer_candidate_info = 'origin';
+
+
+      if (!empty($candidate_data['origin']['link_date']) || !empty($candidate_data['target']['link_date']))
+      {
+        if (strtotime($candidate_data['origin']['link_date']) > strtotime($candidate_data['target']['link_date']))
+          $newer_company_info = 'origin';
+      }
+      else
+        $newer_company_info = $newer_candidate_info;
+
+      // merge sl_candidate part
+      $skip_columns = array('sl_candidatepk', '_sys_status', '_sys_redirect', 'link_date',
+        'date_updated', 'date_created', 'created_by');
+
+      foreach ($candidate_data['target'] as $key => $value)
+      {
+        if (in_array($key, $skip_columns))
+          unset($candidate_data['target'][$key]);
+        else
+        {
+          $skip_general_overwrite = false;
+
+          switch ($key)
+          {
+            case 'firstname':
+              if (in_array(strtolower($candidate_data['target']['firstname']), $false_name_array))
+              {
+                $candidate_data['target']['firstname'] = $candidate_data['origin']['firstname'];
+                $skip_general_overwrite = true;
+              }
+              break;
+
+            case 'date_birth':
+              if (strpos($candidate_data['target']['date_birth'], '-02-02')
+                || $candidate_data['target']['date_birth'] == '0000-00-00'
+                || empty($candidate_data['target']['date_birth']))
+              {
+                if (!empty($candidate_data['origin']['date_birth'])
+                  && $candidate_data['origin']['date_birth'] != '0000-00-00')
+                {
+                  $candidate_data['target']['date_birth'] = $candidate_data['origin']['date_birth'];
+                }
+                $skip_general_overwrite = true;
+              }
+              else if (strpos($candidate_data['origin']['date_birth'], '-02-02')
+                || $candidate_data['origin']['date_birth'] == '0000-00-00'
+                || empty($candidate_data['origin']['date_birth']))
+                $skip_general_overwrite = true;
+
+              break;
+          }
+
+          if (!$skip_general_overwrite)
+          {
+            if (empty($candidate_data['target'][$key]) && !empty($candidate_data['origin'][$key]))
+              $candidate_data['target'][$key] = $candidate_data['origin'][$key];
+            else if (!empty($candidate_data[$newer_candidate_info][$key]))
+              $candidate_data['target'][$key] = $candidate_data[$newer_candidate_info][$key];
+
+            if ($key == 'is_birth_estimation'
+              && (!strpos($candidate_data['target']['date_birth'], '-02-02')
+              || $candidate_data['target']['date_birth'] != '0000-00-00'))
+              $candidate_data['target']['is_birth_estimation'] = 0;
+          }
+        }
+      }
+
+     $sl_candidate_object = $model_object->update($candidate_data['target'], 'sl_candidate', 'sl_candidatepk = '.$target_id, true);
+
+      // merge sl_candidate_profile part
+      $where = "candidatefk IN ($origin_id, $target_id)";
+
+      $result = $model_object->getByWhere('sl_candidate_profile', $where);
+      $read = $result->readFirst();
+
+      $candidate_data = array();
+
+      while($read)
+      {
+        $raw_data = $result->getData();
+
+        if ($raw_data['candidatefk'] == $origin_id)
+          $candidate_data['origin'] = $raw_data;
+        else if ($raw_data['candidatefk'] == $target_id)
+          $candidate_data['target'] = $raw_data;
+
+        $read = $result->readNext();
+      }
+
+      $skip_columns = array('sl_candidate_profilepk', 'candidatefk', 'uid');
+      $newer_fields = array('companyfk', 'department', 'title', 'industryfk', 'occupationfk',
+        'salary', 'bonus', 'salary_search', 'target_low', 'target_high');
+
+      foreach ($candidate_data['target'] as $key => $value)
+      {
+        $skip_general_overwrite = false;
+
+        if (in_array($key, $newer_fields))
+        {
+          if (empty($candidate_data['target'][$key]) && !empty($candidate_data['origin'][$key]))
+            $candidate_data['target'][$key] = $candidate_data['origin'][$key];
+          else if (!empty($candidate_data[$newer_company_info][$key]))
+            $candidate_data['target'][$key] = $candidate_data[$newer_company_info][$key];
+
+          continue;
+        }
+
+        if ($key == 'grade')
+        {
+          if ((int)$candidate_data['origin']['grade'] > (int)$candidate_data['target']['grade'])
+          {
+            $candidate_data['target']['grade'] = $candidate_data['origin']['grade'];
+            $skip_general_overwrite = true;
+          }
+        }
+
+        if (in_array($key, $skip_columns))
+          unset($candidate_data['target'][$key]);
+        else if (!$skip_general_overwrite)
+        {
+          if (empty($candidate_data['target'][$key]) && !empty($candidate_data['origin'][$key]))
+            $candidate_data['target'][$key] = $candidate_data['origin'][$key];
+          else if (!empty($candidate_data[$newer_candidate_info][$key]))
+            $candidate_data['target'][$key] = $candidate_data[$newer_candidate_info][$key];
+        }
+      }
+
+      $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
+
+      return $adjusted_candidate_ids;
     }
 }
