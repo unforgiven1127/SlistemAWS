@@ -1084,7 +1084,7 @@ order by m.candidatefk
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51
                   AND date_created >= "'.$start_date.'"
-                  AND date_created <= "'.$end_date.'" GROUP BY  candidatefk, positionfk, status';
+                  AND date_created <= "'.$end_date.'"';
     }
     else
     {
@@ -1183,7 +1183,7 @@ order by m.candidatefk
 
         //}
       }
-      else if ($row['status'] == 53 || $row['status'] > 52 && $row['status'] <= 61)
+      else if ($row['status'] > 52 && $row['status'] <= 61)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
