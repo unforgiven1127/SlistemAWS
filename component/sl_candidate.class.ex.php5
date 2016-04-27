@@ -1058,7 +1058,7 @@ class CSl_candidateEx extends CSl_candidate
 
       //params for the sub-templates when required
       $oTemplate = $this->_oDisplay->getTemplate($sTemplate);
-      //return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
+      return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
     }
 
     private function _getCandidateRightTabs($pasCandidateData)

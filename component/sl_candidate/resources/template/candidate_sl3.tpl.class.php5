@@ -1,6 +1,8 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/component/display/resources/class/template/template.tpl.class.php5');
+require_once('component/sl_candidate/sl_candidate.model.php5');
+require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 
 class CCandidate_sl3 extends CTemplate
 {
@@ -18,6 +20,11 @@ class CCandidate_sl3 extends CTemplate
     $oPage->addCssFile('/component/sl_candidate/resources/css/sl_candidate.css');
 
     parent::__construct($poTplManager, $psUid, $pasParams, $pnTemplateNumber);
+  }
+
+  public function getModel()
+  {
+    return $this->_getModel();
   }
 
   public function getTemplateType()
@@ -39,7 +46,11 @@ class CCandidate_sl3 extends CTemplate
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
 
-
+    $oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
+    $read = $oDbResult->readFirst();
+    $temp = $oDbResult->getData();
+    $pasCandidateData['sl_position_status'] = $temp['status'];
+    
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
     $asLanguage = $oCandidate->getVars()->getlanguageList();*/
