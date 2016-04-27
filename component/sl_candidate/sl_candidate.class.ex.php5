@@ -2965,7 +2965,7 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
-        foreach($asData as $key => $value)
+        foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
         {
           $pipe_filter = getValue('pipe_filter');
           if($pipe_filter == "placed")
