@@ -1065,6 +1065,8 @@ class CSl_candidateEx extends CSl_candidate
       $pasCandidateData['sl_position_status'] = $temp['status'];
       //$pasCandidateData['statusfk'] = $temp['status'];
 
+var_dump($pasCandidateData);exit;
+
       return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
     }
 
