@@ -1060,21 +1060,6 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateProfile($pasCandidateData)
     {
 
-      //--------------------------------------------
-      $candidate_id = (int)$pasCandidateData['sl_candidatepk'];
-
-      $query = 'select * from sl_position_link pl where pl.candidatefk = 83';
-
-      $oDbResult = array();
-
-      $oDbResult = $this->oDB->executeQuery($query);
-
-      $temp = $oDbResult->getData();
-
-      $extraStatusNew = $temp['status']
-
-      //--------------------------------------------
-
       if(!assert('is_array($pasCandidateData) && !empty($pasCandidateData)'))
         return '';
 
