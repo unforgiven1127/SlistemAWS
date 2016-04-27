@@ -322,12 +322,6 @@ class CCandidate_sl3 extends CTemplate
             $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
           }
 
-$sStatusLabel = '';
-foreach($pasCandidateData as $key => $value)
-{
-  $sStatusLabel .= $key.': '.$value.'<br>';
-}
-
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
           $sHTML.= $this->coDisplay->getFloatHack();
