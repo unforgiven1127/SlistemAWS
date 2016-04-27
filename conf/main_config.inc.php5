@@ -114,7 +114,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('DB_SERVER', '127.0.0.1');
     //define('DB_SERVER', '172.31.29.60');
     define('DB_USER', 'slistem');
-    define('DB_PASSWORD', 'THWj8YerbMWfK3yW');
+    define('DB_PASSWORD', 'smwXN2RTDm6Zz3hR');
 
     define('CONST_WEBSITE', 'slistem');
     define('CONST_APP_NAME', 'Sl[i]stem');
@@ -185,7 +185,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('DB_NAME', 'slistem');
     define('DB_SERVER', '127.0.0.1');
     define('DB_USER', 'slistem');
-    define('DB_PASSWORD', 'THWj8YerbMWfK3yW');
+    define('DB_PASSWORD', 'smwXN2RTDm6Zz3hR');
 
     define('CONST_WEBSITE', 'slistem');
     define('CONST_APP_NAME', 'Sl[i]stem');
