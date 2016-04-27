@@ -1063,10 +1063,7 @@ class CSl_candidateEx extends CSl_candidate
       //--------------------------------------------
       $candidate_id = (int)$pasCandidateData['sl_candidatepk'];
 
-      $query = 'SELECT *
-      FROM sl_position_link pl
-      WHERE pl.candidatefk = "'.$candidate_id.'"
-      ORDER BY pl.sl_position_linkpk DESC';
+      $query = 'select * from sl_position_link pl where pl.candidatefk = 83';
 
       $oDbResult = array();
 
