@@ -291,7 +291,8 @@ class CCandidate_sl3 extends CTemplate
         if(isset($pasCandidateData['attribute']['candi_occu']))
         {
           $pasCandidateData['occupation'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_occu']).'</span>';
-          $pasCandidateData['occupation'] .= '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
+          $pasCandidateData['occupation'].= '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">';
+          $pasCandidateData['occupation'].='</div>';
         }
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
           $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label'));
