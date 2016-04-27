@@ -321,7 +321,7 @@ class CCandidate_sl3 extends CTemplate
             //$sStatusLabel= '<span class="text_alert">In play</span>&nbsp;&nbsp;|&nbsp;&nbsp;'.$sStatusLabel;
             $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
           }
-$sStatusLabel = $pasCandidateData['statusfk'];
+$sStatusLabel = $sExtraStatus;
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
           $sHTML.= $this->coDisplay->getFloatHack();
