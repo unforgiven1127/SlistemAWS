@@ -1161,14 +1161,14 @@ order by m.candidatefk
         {
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-          if (!empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]) &&
+          /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
 
           {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
+          }*/
 
           $ccm_data[$row['created_by']]['ccm2'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
