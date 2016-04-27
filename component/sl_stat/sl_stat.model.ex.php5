@@ -1326,7 +1326,7 @@ order by m.candidatefk
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         AND m.meeting_done = 1
-        AND pl.status = 51
+        AND pl.status > 51
         AND pl.active != 1
         group by m.sl_meetingpk
         order by m.candidatefk';
