@@ -1079,14 +1079,14 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by, status, date_created as ccm_create_date';
+      $query = 'SELECT active, positionfk, candidatefk, created_by, status, date_created as ccm_create_date';
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
     }
     else
     {
-      $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
+      $query = 'SELECT sl_meeting.active, sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
       $query .= ' sl_position_link.date_created as ccm_create_date, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk';
@@ -1136,8 +1136,9 @@ order by m.candidatefk
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-        if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
-          strtotime($row['ccm_create_date']) <= $end_date_stamp)
+        //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
+         // strtotime($row['ccm_create_date']) <= $end_date_stamp)
+        if($row['active'] != 1)
         {
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
@@ -1156,6 +1157,7 @@ order by m.candidatefk
           if (!empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
+
           {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
