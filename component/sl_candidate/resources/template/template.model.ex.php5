@@ -1,6 +1,6 @@
 <?php
 
-class CSl_candidateModelEx extends CSl_candidateModel
+class CSl_templateModelEx extends CSl_templateModel
 {
   private $casAttribute = array(
       'candi' => array('candi_lang', 'candi_indus', 'candi_occu'),
