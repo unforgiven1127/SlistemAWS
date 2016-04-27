@@ -1107,7 +1107,7 @@ order by m.candidatefk
     {
       $row = $db_result->getData();
 
-      if ($row['status'] > 51)
+      if ($row['status'] >= 51)
       {
         $status = $row['status'];
 
