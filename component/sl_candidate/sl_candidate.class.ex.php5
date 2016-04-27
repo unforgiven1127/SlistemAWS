@@ -2644,6 +2644,8 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+var_dump($sQuery);
+exit;
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
