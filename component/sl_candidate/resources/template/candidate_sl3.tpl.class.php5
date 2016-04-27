@@ -46,11 +46,13 @@ class CCandidate_sl3 extends CTemplate
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
 
+    /*
     $oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
     $read = $oDbResult->readFirst();
     $temp = $oDbResult->getData();
     $pasCandidateData['sl_position_status'] = $temp['status'];
-    
+    */
+
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
     $asLanguage = $oCandidate->getVars()->getlanguageList();*/
