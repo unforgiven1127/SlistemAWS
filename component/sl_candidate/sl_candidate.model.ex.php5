@@ -15,19 +15,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
     return true;
   }
 
-  public function getSlPositionLink($candidatefk)
-  {
-    $sQuery= 'SELECT * FROM sl_position_link WHERE candidatefk = '.$candidatefk.' ORDER BY sl_position_link DESC';
-    $oDbResult = $this->oDB->ExecuteQuery($sQuery);
-
-    $bRead = $oDbResult->readFirst();
-
-    if(!$bRead)
-      return new CDbResult();
-
-    return $oDbResult;
-  }
-
   public function getCandidateData($pvPk, $pbFullProfile = false, $pbForceArray = false)
   {
     if(!assert('(is_key($pvPk) || is_arrayOfInt($pvPk)) && is_bool($pbFullProfile)'))

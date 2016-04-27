@@ -334,19 +334,6 @@ class CModel
     return $oDbResult;
   }
 
-  public function getSlPositionLink($candidatefk)
-  {
-    $sQuery= 'SELECT * FROM sl_position_link WHERE candidatefk = '.$candidatefk.' ORDER BY sl_position_link DESC';
-    $oDbResult = $this->oDB->ExecuteQuery($sQuery);
-
-    $bRead = $oDbResult->readFirst();
-
-    if(!$bRead)
-      return new CDbResult();
-
-    return $oDbResult;
-  }
-
   public function getByPk($pnPk, $psTable, $psField='*')
   {
     if(!assert('is_key($pnPk)'))
