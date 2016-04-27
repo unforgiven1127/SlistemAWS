@@ -1058,6 +1058,13 @@ class CSl_candidateEx extends CSl_candidate
 
       //params for the sub-templates when required
       $oTemplate = $this->_oDisplay->getTemplate($sTemplate);
+
+      $oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
+      $read = $oDbResult->readFirst();
+      $temp = $oDbResult->getData();
+      $pasCandidateData['sl_position_status'] = $temp['status'];
+      $pasCandidateData['statusfk'] = $temp['status'];
+
       return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
     }
 
