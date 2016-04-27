@@ -1147,9 +1147,6 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-
-          $ccm_data[$row['created_by']]['ccm1_done'] += 1;
-          $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
       else if ($row['status'] == 52)
