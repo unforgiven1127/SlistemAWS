@@ -1084,7 +1084,7 @@ order by m.candidatefk
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51
                   AND date_created >= "'.$start_date.'"
-                  AND date_created <= "'.$end_date.'"';
+                  AND date_created <= "'.$end_date.'" GROUP BY  candidatefk, positionfk, status';
     }
     else
     {
