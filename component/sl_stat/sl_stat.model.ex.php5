@@ -1084,7 +1084,7 @@ order by m.candidatefk
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51
                   AND date_created >= "'.$start_date.'"
-                  AND date_created <= "'.$end_date.'"  GROUP BY  candidatefk, positionfk';
+                  AND date_created <= "'.$end_date.'"';
     }
     else
     {
@@ -1098,6 +1098,7 @@ order by m.candidatefk
     }
 
     $query .= ' ORDER BY ccm_create_date DESC';
+
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
@@ -1214,7 +1215,7 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['mccm'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-          
+
           if($row['active'] == 0)
           {
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
