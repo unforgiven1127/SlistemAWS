@@ -1099,7 +1099,6 @@ order by m.candidatefk
 
     $query .= ' ORDER BY ccm_create_date DESC';
 
-
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
 
@@ -1147,10 +1146,10 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
         //}
-        if($row['active'] != 1)
+        if($row['active'] == 0)
         {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
+            $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
       else if ($row['status'] == 52)
