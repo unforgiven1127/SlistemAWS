@@ -1186,10 +1186,10 @@ order by m.candidatefk
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
-        if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
-          strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        {
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
+        //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
+         // strtotime($row['ccm_create_date']) <= $end_date_stamp)
+        //{
+          //$previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
 
           /*if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate']) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
@@ -1199,7 +1199,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_52';
+          //$previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_52';
 
           /*if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate']) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
@@ -1214,17 +1214,22 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['mccm'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+          
+          if($row['active'] == 0)
+          {
+            $ccm_data[$row['created_by']]['mccm_done'] += 1;
+            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+          }
 
-
-          if (!empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]) &&
+          /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]) &&
             empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']]) &&
             isset($ccm_keys[$previous_ccm_key]) && $row['status'] > 53 && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
           {
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
-          }
-        }
+          }*/
+        //}
       }
       else
       {
