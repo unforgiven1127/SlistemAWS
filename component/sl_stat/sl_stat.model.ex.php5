@@ -1097,7 +1097,8 @@ order by m.candidatefk
       $query .= ' AND sl_meeting.meeting_done = 1';
     }
 
-    $query .= ' ORDER BY ccm_create_date ASC';
+    $query .= ' ORDER BY ccm_create_date DESC';
+
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
@@ -1184,13 +1185,13 @@ order by m.candidatefk
         {
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-          if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate']) &&
+          /*if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate']) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
           {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
+          }*/
 
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_52';
 
@@ -1226,13 +1227,13 @@ order by m.candidatefk
         {
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_51';
 
-          if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate']) &&
+          /*if (empty($ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate']) &&
             isset($ccm_keys[$previous_ccm_key]) && strtotime($ccm_keys[$previous_ccm_key]) >= $start_date_stamp &&
             strtotime($ccm_keys[$previous_ccm_key]) <= $end_date_stamp)
           {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
+          }*/
 
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_52';
 
