@@ -1210,7 +1210,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          //$previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
+          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
           $ccm_data[$row['created_by']]['mccm'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
@@ -1218,8 +1218,11 @@ order by m.candidatefk
 
           if($row['active'] == 0)
           {
+            //$ccm_data[$row['created_by']]['mccm_done'] += 1;
+            //$ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
           }
 
           /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]) &&
