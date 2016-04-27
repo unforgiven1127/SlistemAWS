@@ -321,14 +321,6 @@ class CCandidate_sl3 extends CTemplate
             $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
           }
 
-          if(isset($sl_position_status))
-          {
-            $sStatusLabel = 'Placed';
-          }
-          else
-          {
-            $sStatusLabel .= ' --- NOP';
-          }
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
           $sHTML.= $this->coDisplay->getFloatHack();
