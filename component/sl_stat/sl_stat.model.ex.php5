@@ -1086,7 +1086,7 @@ order by m.candidatefk
     }
     else
     {
-      $query = 'SELECT sl_meeting.active, sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
+      $query = 'SELECT sl_position_link.active as active, sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
       $query .= ' sl_position_link.date_created as ccm_create_date, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk';
