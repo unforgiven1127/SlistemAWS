@@ -1059,8 +1059,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateProfile($pasCandidateData)
     {
-      echo 'test';
-      exit;
+      
       
       if(!assert('is_array($pasCandidateData) && !empty($pasCandidateData)'))
         return '';
