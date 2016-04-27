@@ -1142,7 +1142,7 @@ order by m.candidatefk
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
          // strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        if($row['active'] != 1)
+        if($row['pl_active'] != 1)
         {
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
