@@ -1084,7 +1084,7 @@ order by m.candidatefk
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51
                   AND date_created >= "'.$start_date.'"
-                  AND date_created < "'.$end_date.'"';
+                  AND date_created <= "'.$end_date.'"';
     }
     else
     {
@@ -1140,13 +1140,13 @@ order by m.candidatefk
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        if($row['active'] == 1)
-        {
+        //if($row['active'] == 1)
+        //{
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-        }
-        else
+        //}
+        if($row['active'] != 1)
         {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
