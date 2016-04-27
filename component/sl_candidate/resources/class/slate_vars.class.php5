@@ -327,7 +327,7 @@ class CSlateVars
     $asStatus[3] = 'Interview set';
     $asStatus[4] = 'Met'; //Pre-screened
     $asStatus[5] = 'Phone assessed';
-    $asStatus[6] = 'Assessed in Person';
+    $asStatus[6] = 'Assessed in person';
     $asStatus[7] = 'Placed';
     $asStatus[8] = 'Lost';
 
