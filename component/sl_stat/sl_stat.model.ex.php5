@@ -1081,7 +1081,9 @@ order by m.candidatefk
     {
       $query = 'SELECT active, positionfk, candidatefk, created_by, status, date_created as ccm_create_date';
       $query .= ' FROM sl_position_link';
-      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')
+      AND m.date_created >= "'.$start_date.'"
+      AND m.date_created < "'.$end_date.'"';
       $query .= ' AND status >= 51';
     }
     else
@@ -1092,7 +1094,9 @@ order by m.candidatefk
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk';
       $query .= ' AND sl_position_link.status >= 51';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND sl_meeting.meeting_done = 1';
+      $query .= ' AND sl_meeting.meeting_done = 1
+      AND m.date_created >= "'.$start_date.'"
+      AND m.date_created < "'.$end_date.'"';
     }
 
     $query .= ' ORDER BY ccm_create_date ASC';
