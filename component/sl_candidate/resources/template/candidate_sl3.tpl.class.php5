@@ -1,8 +1,7 @@
 <?php
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/component/display/resources/class/template/template.tpl.class.php5');
-require_once('component/sl_candidate/sl_candidate.model.php5');
-require_once('component/sl_candidate/sl_candidate.model.ex.php5');
+require_once('component/sl_candidate/template/template.model.ex.php5');
 
 class CCandidate_sl3 extends CTemplate
 {
@@ -48,9 +47,9 @@ class CCandidate_sl3 extends CTemplate
 
 
     $oCandidateData = $this->_getModel()->getSlPositionLink($pasCandidateData['sl_candidatepk']);
-    $read = $oDbResult->readFirst();
-    $temp = $oDbResult->getData();
-    $sl_position_status = $temp['status'];
+    //$read = $oDbResult->readFirst();
+    //$temp = $oDbResult->getData();
+    //$sl_position_status = $temp['status'];
 
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
