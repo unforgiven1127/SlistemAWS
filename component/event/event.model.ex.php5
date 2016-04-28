@@ -71,7 +71,7 @@ class CEventModelEx extends CEventModel
 
     $this->oDB = CDependency::getComponentByName('database');
     $sQuery = 'SELECT *
-    FROM `event_link` as elin ';
+    FROM `event_link` as elin';
 
     if($pasValues[CONST_CP_TYPE] == CONST_AB_TYPE_COMPANY)
     {
@@ -123,7 +123,8 @@ class CEventModelEx extends CEventModel
     if(!$bRead)
       return array();
 
-    return $oResult->getAll();
+    $return['all'] = $oResult->getAll();
+    return $return;
   }
 
 
