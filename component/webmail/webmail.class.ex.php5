@@ -210,7 +210,7 @@ class CWebMailEx extends CWebMail
 
     $oForm->addField('input', 'receiver_bcc', array('label' => 'bcc',  'value' => '', 'style' => 'width:100%;'));
     $oForm->setFieldControl('receiver_bcc', array( 'jsFieldTypeEmail' => ''));
-    $oForm->setFieldDisplayparams('receiver_bcc', array('class' => 'bcc'));
+    $oForm->setFieldDisplayparams('receiver_bcc', array('class' => 'hiddenField hidden bcc'));
 
     $oForm->addField('input', 'subject', array('label' => 'Subject', 'value' => '','style'=> 'width:100%;'));
     $oForm->setFieldControl('subject', array('jsFieldNotEmpty' => '', 'jsFieldNotEmpty' => ''));

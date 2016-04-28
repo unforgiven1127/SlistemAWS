@@ -2920,12 +2920,13 @@ class CSl_candidateEx extends CSl_candidate
 
           $nMonth = (int)str_replace('met', '', $sFilter);
           if(empty($nMonth))
-            $nMonth = 3;
-
+            //$nMonth = 3;
+          $nMonth = 6;
           $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
           $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months | since'.$sDate.')';
 
-          $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$sDate.'"');
+
+          $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$sDate.'"'); // $sDate vardi $searchDateStart yaptik MCA
           break;
 
         case 'offer':

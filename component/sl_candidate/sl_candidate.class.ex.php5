@@ -3119,7 +3119,11 @@ class CSl_candidateEx extends CSl_candidate
           $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
           $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months | since'.$sDate.')';
 
-          $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$sDate.'"');
+          $dateNow = date('Y-m-j');
+          $searchDateStart = strtotime ( '-3 month' , strtotime ( $dateNow ) ) ;
+          $searchDateStart = date ( 'Y-m-j' , $searchDateStart );
+
+          $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
           break;
 
         case 'offer':
