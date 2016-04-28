@@ -2726,6 +2726,8 @@ class CSl_candidateEx extends CSl_candidate
           if(in_array('manager', $this->casSettings['candi_list_field']))
             $oConf->addColumn('Managed by', 'manager', array('id' => '', 'width' => '105')); //108px
 
+          $oConf->addColumn('Date met', 'company_name', array('id' => '', 'width' => '20%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+
           break;
       }
 
