@@ -109,7 +109,7 @@ class CEventModelEx extends CEventModel
     else
       $sQuery.= ' ORDER BY '.$psOrder;
 
-    //dump($sQuery);
+    dump($sQuery);
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
     if(!$bRead)

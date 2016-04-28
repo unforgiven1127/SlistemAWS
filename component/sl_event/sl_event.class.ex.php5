@@ -131,7 +131,7 @@ class CSl_eventEx extends CSl_event
       foreach($asNotes as $asNote)
       {
         if (strpos($asNote['content'], 'Status changed to') !== false) {
-          $asNote['content'] = '<b><i>'.$asNote['companyName'].'</i></b>';
+          $asNote['content'] = '<b><i>'.$asNote['content'].'</i></b>';
         }
 
         if($asNote['date_display'] > $dTwoMonthAgo)
