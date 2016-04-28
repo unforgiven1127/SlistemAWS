@@ -85,6 +85,7 @@ class CSl_eventEx extends CSl_event
       return array();
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+    $asNotes = $asNotes['all'];
 
     $oPage = CDependency::getCpPage();
     $oHTML = CDependency::getCpHtml();
