@@ -3112,8 +3112,7 @@ class CSl_candidateEx extends CSl_candidate
         case 'met12':
 
           $nMonth = (int)str_replace('met', '', $sFilter);
-          if(empty($nMonth))
-            //$nMonth = 3; // mitch asked to be 6 months
+          if(empty($nMonth)) //$nMonth = 3; // mitch asked to be 6 months
             $nMonth = 6;
 
           $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
@@ -3124,6 +3123,10 @@ class CSl_candidateEx extends CSl_candidate
           $searchDateStart = date ( 'Y-m-j' , $searchDateStart );
 
           $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
+
+          var_dump($poQB);
+          exit;
+          
           break;
 
         case 'offer':
@@ -3167,9 +3170,6 @@ class CSl_candidateEx extends CSl_candidate
           $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
           break;
 
-          
-          var_dump($poQB);
-          exit;
       }
 
       if($pbPosField)
