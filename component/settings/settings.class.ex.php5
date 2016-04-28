@@ -2236,9 +2236,7 @@ class CSettingsEx extends CSettings
 
     switch ($action)
     {
-      
       case 'save':
-
         $md5_hash = md5(base64_encode($htaccess_contents));
         $htaccess_contents_encoded = base64_encode($htaccess_contents);
 
@@ -2255,15 +2253,11 @@ class CSettingsEx extends CSettings
 
         if ($file_write)
         {
-          echo 'OK';
           $values = array('create_date' => date('Y-m-d H:i:s'), 'content' => $htaccess_contents_encoded,
             'md5_hash' => $md5_hash, 'existing_hash_id' => $existing_hash_id);
 
           $this->_getModel()->add($values, 'htaccess_change_log');
         }
-        else
-          echo 'SOMETHING WRONG';
-exit;
         break;
 
       case 'load':

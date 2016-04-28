@@ -3167,8 +3167,6 @@ class CSl_candidateEx extends CSl_candidate
           $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
           break;
 
-          var_dump($poQB);
-          exit;
       }
 
       if($pbPosField)
