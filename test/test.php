@@ -58,7 +58,7 @@ switch($sSize)
 
     case 'sql':
 
-      $mysqli = new mysqli("127.0.0.1", "slistem", "THWj8YerbMWfK3yW", "slistem");
+      $mysqli = new mysqli("127.0.0.1", "slistem", "smwXN2RTDm6Zz3hR", "slistem");
       if ($mysqli->connect_errno)
       {
         echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;

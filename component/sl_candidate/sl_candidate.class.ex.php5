@@ -2644,6 +2644,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
@@ -2976,6 +2977,7 @@ class CSl_candidateEx extends CSl_candidate
               $asData[$key]['_pos_status'] = 101;
           }
         }
+
         //Add the list template to the html
         $sHTML.= $oTemplate->getDisplay($asData, 1, 5, 'safdassda');
 

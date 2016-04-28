@@ -15,6 +15,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     return true;
   }
 
+
+
   public function getCandidateData($pvPk, $pbFullProfile = false, $pbForceArray = false)
   {
     if(!assert('(is_key($pvPk) || is_arrayOfInt($pvPk)) && is_bool($pbFullProfile)'))
