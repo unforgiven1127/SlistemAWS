@@ -2969,13 +2969,13 @@ class CSl_candidateEx extends CSl_candidate
 
         $test_value = getValue('pipe_filter');
 
-        foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
+        if($test_value == "placed")
         {
-          /*$pipe_filter = getValue('pipe_filter');
-          if($pipe_filter == "placed")
+          // when add new candidate foreach does not work...
+          foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
           {
-            $asData[$key]['_pos_status'] = 101;
-          }*/
+              $asData[$key]['_pos_status'] = 101;
+          }
         }
 
         //Add the list template to the html
