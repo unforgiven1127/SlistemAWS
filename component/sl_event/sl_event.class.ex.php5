@@ -168,7 +168,7 @@ class CSl_eventEx extends CSl_event
 
           if(!empty($asNote['title']) && !empty($asNote['content']))
           {
-            $sHTML.= $oHTML->getBloc('', '<span class="note_innerTitle">'.$asNote['title'].'</span><br /><span style="font-weight: bold;"class="note_innerContent">'.
+            $sHTML.= $oHTML->getBloc('', '<span class="note_innerTitle">'.$asNote['title'].'</span><br /><span class="note_innerContent">test: '.
                     $asNote['content'].'</span>', array('class' => 'note_content'));
           }
           else
