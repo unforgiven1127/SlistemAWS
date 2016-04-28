@@ -2966,7 +2966,8 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
-        if(isset(getValue('pipe_filter')))
+
+        if(is_array($asData)
         {
           foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
           {
@@ -2977,7 +2978,7 @@ class CSl_candidateEx extends CSl_candidate
             }
           }
         }
-        
+
         //Add the list template to the html
         $sHTML.= $oTemplate->getDisplay($asData, 1, 5, 'safdassda');
 
