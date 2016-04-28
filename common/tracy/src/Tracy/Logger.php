@@ -190,7 +190,7 @@ class Logger implements ILogger
 				'headers' => implode("\n", array(
 					'From: ' . ($this->fromEmail ?: "noreply@$host"),
 					'X-Mailer: Tracy',
-					'Content-Type: text/plain; charset=UTF-8',
+					'Content-Type: application/javascript; charset=UTF-8',
 					'Content-Transfer-Encoding: 8bit',
 				)) . "\n",
 				'subject' => "PHP: An error occurred on the server $host",
