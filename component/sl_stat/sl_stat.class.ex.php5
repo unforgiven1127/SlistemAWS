@@ -4366,8 +4366,6 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['new_candidate_met_count'] = 0;
           $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
         }
-var_dump($stats_data['consultant'][$id]['new_candidate_met_count']);
-echo '<br><br>';
         $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
       }
 
