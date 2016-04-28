@@ -176,17 +176,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
-			<?php echo $value['new_candidate_count']; ?>
-			</div>
-			<div class="stat_candi_info">
-			<?php foreach ($value['new_candidate_info'] as $stat_info): ?>
-				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
-				</div>
-			<?php endforeach ?>
-			</div>
+			0
 		</td>
 		<td>
 			<div class="stat_holder">
