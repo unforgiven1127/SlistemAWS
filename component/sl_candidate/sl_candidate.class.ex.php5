@@ -2974,7 +2974,10 @@ class CSl_candidateEx extends CSl_candidate
             $pipe_filter = getValue('pipe_filter');
             if($pipe_filter == "placed")
             {
-              $asData[$key]['_pos_status'] = 101;
+              if(isset($asData[$key]['_pos_status']))
+              {
+                $asData[$key]['_pos_status'] = 101;
+              }
             }
           }
         }
