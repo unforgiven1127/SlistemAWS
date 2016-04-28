@@ -2967,7 +2967,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
-        if(is_array($asData)
+        if(is_array($asData))
         {
           foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
           {
