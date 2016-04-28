@@ -3113,7 +3113,8 @@ class CSl_candidateEx extends CSl_candidate
 
           $nMonth = (int)str_replace('met', '', $sFilter);
           if(empty($nMonth))
-            $nMonth = 3;
+            //$nMonth = 3; // mitch asked to be 6 months
+            $nMonth = 6;
 
           $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
           $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months | since'.$sDate.')';
