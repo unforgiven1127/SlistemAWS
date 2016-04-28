@@ -3124,8 +3124,6 @@ class CSl_candidateEx extends CSl_candidate
 
           $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
 
-          var_dump($poQB);
-
           break;
 
         case 'offer':
