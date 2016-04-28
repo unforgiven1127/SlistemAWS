@@ -2971,12 +2971,15 @@ class CSl_candidateEx extends CSl_candidate
         {
           foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
           {
-            $pipe_filter = getValue('pipe_filter');
-            if($pipe_filter == "placed")
+            if(isset(getValue('pipe_filter')))
             {
-              if(isset($asData[$key]['_pos_status']))
+              $pipe_filter = getValue('pipe_filter');
+              if($pipe_filter == "placed")
               {
-                $asData[$key]['_pos_status'] = 101;
+                if(isset($asData[$key]['_pos_status']))
+                {
+                  $asData[$key]['_pos_status'] = 101;
+                }
               }
             }
           }
