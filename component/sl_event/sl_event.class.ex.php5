@@ -112,7 +112,7 @@ class CSl_eventEx extends CSl_event
 
     if(empty($asNotes))
     {
-      $sHTML.= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
+      $sHTML.= '<div class="entry"><div class="note_content"><em><b>No entry found.</b></em></div></div>';
     }
     else
     {
