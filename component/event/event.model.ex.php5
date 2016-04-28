@@ -70,7 +70,8 @@ class CEventModelEx extends CEventModel
       return array();
 
     $this->oDB = CDependency::getComponentByName('database');
-    $sQuery = 'SELECT * FROM `event_link` as elin ';
+    $sQuery = 'SELECT elin.*, slc.name as companyNameSlc
+    FROM `event_link` as elin ';
 
     if($pasValues[CONST_CP_TYPE] == CONST_AB_TYPE_COMPANY)
     {
@@ -111,12 +112,12 @@ class CEventModelEx extends CEventModel
 
     //dump($sQuery);
     
-if($oLogin->getUserPk() == 101 || isDevelopment() )
+/*if($oLogin->getUserPk() == 101 || isDevelopment() )
         {
           $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
             <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
         }
-
+*/
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
     if(!$bRead)
