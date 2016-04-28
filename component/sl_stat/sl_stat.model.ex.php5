@@ -1367,7 +1367,7 @@ exit;
     {
       $temp = $oDbResult->getData();
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] != 1)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
         {
