@@ -4903,7 +4903,12 @@ class CSl_candidateEx extends CSl_candidate
 
       $nUserPk = (int)getValue('userfk', 0);
       if(empty($nUserPk))
-        $nUserPk = (int)$this->casCandidateData['loginpk'];
+      {
+        if(isset($this->casCandidateData['loginpk']))
+        {
+          $nUserPk = (int)$this->casCandidateData['loginpk'];
+        }
+      }
 
       if(empty($nCandidatePk) || empty($nUserPk))
         return array('error' => __LINE__.' - Missing required data.');
