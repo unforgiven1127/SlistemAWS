@@ -1733,7 +1733,7 @@ class CSl_candidateEx extends CSl_candidate
             $sHTML.= ' - <span> by '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).'</span>';
             $sHTML.= '</div>';
 
-            $sHTML.= ' <div class="note_content">'.$asHistoryData['action'];
+            $sHTML.= ' <div style="font-style: italic;" class="note_content">'.$asHistoryData['action'];
 
             if(!empty($asHistoryData['description']))
                $sHTML.= '<br />'.$asHistoryData['description'];
