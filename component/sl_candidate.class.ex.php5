@@ -2693,7 +2693,7 @@ class CSl_candidateEx extends CSl_candidate
         case 'name_collect':
           $oConf->addColumn('Lastname', 'lastname', array('id' => '', 'width' => '12%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
           $oConf->addColumn('Firstname', 'firstname', array('id' => '', 'width' => '12%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Company', 'h', array('id' => '', 'width' => '21%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+          $oConf->addColumn('Companyy', 'h', array('id' => '', 'width' => '21%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
           $oConf->addColumn('Contact details', 'contact', array('id' => '', 'width' => '46%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
           break;
 
@@ -2704,7 +2704,7 @@ class CSl_candidateEx extends CSl_candidate
           $oConf->addColumn('R', '_has_doc', array('id' => '', 'width' => '16', 'sortable'=> array($sSortJs => 'value_integer', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
           $oConf->addColumn('Lastname', 'lastname', array('id' => '', 'width' => '13.5%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
           $oConf->addColumn('Firstname', 'firstname', array('id' => '', 'width' => '13%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
-          $oConf->addColumn('Company-', 'company_name', array('id' => '', 'width' => '20%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
+          $oConf->addColumn('Company2', 'company_name', array('id' => '', 'width' => '20%', 'sortable'=> array($sSortJs => 'text', 'ajax' => $nAjax, 'url' => $sURL, 'ajax_target' => $this->csSearchId)));
 
 
           //~150px
