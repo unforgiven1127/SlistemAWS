@@ -130,6 +130,7 @@ class CSl_eventEx extends CSl_event
 
       foreach($asNotes as $asNote)
       {
+        $asNote['content'] = 'Hello World';
         if($asNote['date_display'] > $dTwoMonthAgo)
           $nPriotity = 2;
         elseif($asNote['date_display'] > $dAMonthAgo)
@@ -168,7 +169,7 @@ class CSl_eventEx extends CSl_event
 
           if(!empty($asNote['title']) && !empty($asNote['content']))
           {
-            $sHTML.= $oHTML->getBloc('', '<span class="note_innerTitle">'.$asNote['title'].'</span><br /><span class="note_innerContent">test: '.
+            $sHTML.= $oHTML->getBloc('', '<span class="note_innerTitle">'.$asNote['title'].'</span><br /><span class="note_innerContent">'.
                     $asNote['content'].'</span>', array('class' => 'note_content'));
           }
           else
