@@ -3117,7 +3117,7 @@ class CSl_candidateEx extends CSl_candidate
             $nMonth = 6;
 
           $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
-          $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months | since'.$sDate.')';
+          $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months || since'.$sDate.')';
 
           $dateNow = date('Y-m-j');
           $searchDateStart = strtotime ( '-3 month' , strtotime ( $dateNow ) ) ;
@@ -3167,6 +3167,9 @@ class CSl_candidateEx extends CSl_candidate
           $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
           break;
 
+          
+          var_dump($poQB);
+          exit;
       }
 
       if($pbPosField)
