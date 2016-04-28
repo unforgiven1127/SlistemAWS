@@ -4901,6 +4901,7 @@ class CSl_candidateEx extends CSl_candidate
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
+
       $nUserPk = (int)getValue('userfk', 0);
       if(empty($nUserPk))
         $nUserPk = (int)$this->casCandidateData['loginpk'];
