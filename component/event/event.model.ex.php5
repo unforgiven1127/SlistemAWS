@@ -109,7 +109,12 @@ class CEventModelEx extends CEventModel
     else
       $sQuery.= ' ORDER BY '.$psOrder;
 
-    var_dump($sQuery);
+    //dump($sQuery);
+    
+$sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
+          <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
+        return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
+    
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
     if(!$bRead)
