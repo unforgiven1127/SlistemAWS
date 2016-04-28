@@ -123,6 +123,7 @@ class CEventModelEx extends CEventModel
     if(!$bRead)
       return array();
 
+    $return['query'] = $sQuery;
     $return['all'] = $oResult->getAll();
     return $return;
   }

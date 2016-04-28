@@ -84,8 +84,9 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
-    $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
-    $asNotes = $asNotes['all'];
+    $return = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+    $asNotes = $return['all'];
+    $query = $return['query'];
 
     $oPage = CDependency::getCpPage();
     $oHTML = CDependency::getCpHtml();
@@ -93,6 +94,12 @@ class CSl_eventEx extends CSl_event
     $nPriotity = 0;
     $bAddLink = false;
     $sHTML = '';
+
+    if($oLogin->getUserPk() == 101 || isDevelopment() )
+        {
+          $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">SQLquery... </a>
+            <span class="hidden query"><br />'.$query.'</span><br /><br /><br />';
+        }
 
     if ($psNoteType != 'cp_history' || $oLogin->isAdmin())
     {
