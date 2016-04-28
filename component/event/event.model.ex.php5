@@ -79,6 +79,9 @@ class CEventModelEx extends CEventModel
       else
         $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk)';
 
+      $sQuery.= ' INNER JOIN sl_candidate_profile as cp ON (cp.sl_candidate_profilepk = elin.cp_pk)';
+      $sQuery.= ' INNER JOIN sl_company as slc ON (slc.sl_companypk = cp.companyfk)';
+
       $oAB = CDependency::getComponentByName('addressbook');
       $asSQL = $oAB->getSharedSQL('event_profile', $pasValues[CONST_CP_PK]);
 
