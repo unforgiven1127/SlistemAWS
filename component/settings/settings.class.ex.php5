@@ -2236,6 +2236,8 @@ class CSettingsEx extends CSettings
 
     switch ($action)
     {
+      var_dump($htaccess_contents));
+exit;
       case 'save':
         $md5_hash = md5(base64_encode($htaccess_contents));
         $htaccess_contents_encoded = base64_encode($htaccess_contents);
