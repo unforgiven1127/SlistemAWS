@@ -4353,8 +4353,7 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['offers_sent'] = 0;
           $stats_data['consultant'][$id]['offer_info'] = array();
         }
-var_dump($temp_new_candidate_met[$id]);
-echo '<br><br>';
+
         if (!empty($temp_new_candidate_met[$id]))
         {
           $count = count($temp_new_candidate_met[$id]);
@@ -4367,7 +4366,8 @@ echo '<br><br>';
           $stats_data['consultant'][$id]['new_candidate_met_count'] = 0;
           $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
         }
-
+var_dump($stats_data['consultant'][$id]['new_candidate_met_count']);
+echo '<br><br>';
         $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
       }
 
