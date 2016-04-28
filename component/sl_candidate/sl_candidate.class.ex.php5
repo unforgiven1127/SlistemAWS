@@ -4896,6 +4896,9 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateContactSave($pbSave = true, $nCandidatePk = 0)
     {
+var_dump($this->casCandidateData);
+exit;
+
       if(!empty($nCandidatePk))
         $nCandidatePk = $nCandidatePk;
       else
