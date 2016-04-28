@@ -1356,7 +1356,8 @@ order by m.candidatefk
         AND pl.active != 1
         group by m.sl_meetingpk
         order by m.candidatefk';
-
+var_dump($query);
+exit;
     $oDbResult = array();
 
     $oDbResult = $this->oDB->executeQuery($query);
