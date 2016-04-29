@@ -84,9 +84,10 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
-    $return = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
-    $asNotes = $return['all'];
-    $query = $return['query'];
+    $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+
+    //$asNotes = $return['all'];
+    //$query = $return['query'];
 
     $oPage = CDependency::getCpPage();
     $oHTML = CDependency::getCpHtml();
@@ -136,10 +137,12 @@ class CSl_eventEx extends CSl_event
       $dAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
       $dTwoMonthAgo = date('Y-m-d H:i:s', strtotime('-2 month'));
 
+      // array gelmezse patliyo... duzelt... MCA
       foreach($asNotes as $asNote)
       {
-        // array gelmezse patliyo... duzelt... MCA
-        
+        if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
+          $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
+        }
 
         if($asNote['date_display'] > $dTwoMonthAgo)
           $nPriotity = 2;
