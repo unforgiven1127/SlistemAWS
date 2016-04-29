@@ -4797,7 +4797,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
-      $asParam['label']= 'Type';
+      $asParam['label']= 'Typeee';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
       foreach($asTypes as $nType => $asType)
