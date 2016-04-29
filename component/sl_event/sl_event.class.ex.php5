@@ -136,16 +136,10 @@ class CSl_eventEx extends CSl_event
       $dAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
       $dTwoMonthAgo = date('Y-m-d H:i:s', strtotime('-2 month'));
 
-      
       foreach($asNotes as $asNote)
       {
         // array gelmezse patliyo... duzelt... MCA
-        if(isset($asNote) && !empty($asNote) && isset($asNote['content']))
-        {
-          if (strpos($asNote['content'], 'Status changed to') !== false) {
-            $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
-          }
-        }
+        
 
         if($asNote['date_display'] > $dTwoMonthAgo)
           $nPriotity = 2;
