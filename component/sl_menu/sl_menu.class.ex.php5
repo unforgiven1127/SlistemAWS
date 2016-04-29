@@ -332,8 +332,8 @@ class CSl_menuEx extends CSl_menu
       <input type="hidden" id="qs_pos_status" name="position_status" value=""/>
       </div></div>
 
-      <div><div class="label '.$sLabelClass.'">department</div><div class="field">
-      <input type="text" name="department" '.$KeywordField.'/></div></div>
+      <div><div class="label '.$sLabelClass.'">keyword</div><div class="field">
+      <input type="text" name="keyword" '.$KeywordField.'/></div></div>
 
 
       <div class="hidden option">Search options</div>

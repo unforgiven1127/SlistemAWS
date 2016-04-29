@@ -306,6 +306,34 @@ class CQuickSearch
         }
       }
 
+//---------------------Keyword Search Starts---------------------------
+
+  $sKeyword = trim(getValue('keyword'));
+      if($sKeyword == 'Keyword')
+        $sKeyword = '';
+
+      if(!empty($sKeyword))
+      {
+        if($sKeyword == '__no_keyword__')
+        {
+          $this->coQb->addWhere(' (scpr.keyword IS NULL OR scpr.keyword = "") ');
+          $asTitle[] = ' keyword is empty';
+        }
+        else
+        {
+          $bExactMatch = (bool)getValue('qs_exact_match', 0);
+          if($bExactMatch)
+            $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'" ');
+          else
+            $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
+
+          $asTitle[] = ' department = '.$sKeyword;
+        }
+      }
+
+//---------------------Keyword Search ENDS-------------------------
+
+
       $sPosition = trim(getValue('position'));
       if($sPosition == 'Position ID or title')
         $sPosition = '';
