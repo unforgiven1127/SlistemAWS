@@ -4817,28 +4817,28 @@ class CSl_candidateEx extends CSl_candidate
       $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam,array('type' => 'hidden'));
 
       if($pasData['visibility'] == 1)
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public', 'selected' => 'selected'));
       else
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public'));
 
       if($pasData['visibility'] == 2)
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private', 'selected' => 'selected'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private', 'selected' => 'selected'));
       else
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private'));
 
       if($pasData['visibility'] == 3)
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'My team', 'selected' => 'selected'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team', 'selected' => 'selected'));
       else
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'My team'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team'));
 
       if($pasData['visibility'] == 4)
       {
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom', 'selected' => 'selected'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom', 'selected' => 'selected'));
         $sClass = '';
       }
       else
       {
-        $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom'));
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom'));
         $sClass = ' hidden ';
       }
 
