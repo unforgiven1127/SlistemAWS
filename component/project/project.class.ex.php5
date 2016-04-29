@@ -1673,7 +1673,7 @@ class CProjectEx extends CProject
     $oForm->setFieldControl('date_end', array('jsFieldDate' => '', 'jsFieldGreaterThan' => 'form[name=date_start]'));
 
     $asVisibility = array(0 =>array('label'=>'Private'),1=>array('label'=>'Public'),2=>array('label'=>'Custom'));
-    $oForm->addField('select', 'visibility', array('label' => 'Visibility ','onchange'=>'showHideUserList(this.value);'));
+    //$oForm->addField('select', 'visibility', array('label' => 'Visibility ','onchange'=>'showHideUserList(this.value);'));
 
     if(isset($asFieldValue['is_public']))
       $nPublic = $asFieldValue['is_public'];
