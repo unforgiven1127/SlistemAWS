@@ -4509,7 +4509,7 @@ class CSl_candidateEx extends CSl_candidate
       foreach($asTypes as $nType => $asType)
       {
         if($pasData['type'] == $nType)
-          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected'));
+          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected', 'hidden'));
         else
           $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label']));
       }
@@ -4517,7 +4517,7 @@ class CSl_candidateEx extends CSl_candidate
       $asParam = $asDefaultparam;
       $asParam['label']= 'Visibility';
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
-      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam, 'hidden');
+      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
 
       if($pasData['visibility'] == 1)
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
