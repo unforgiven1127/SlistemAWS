@@ -327,7 +327,7 @@ class CQuickSearch
           else
             $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
 
-          $asTitle[] = ' department = '.$sKeyword;
+          $asTitle[] = ' keyword = '.$sKeyword;
         }
       }
 
@@ -378,8 +378,10 @@ class CQuickSearch
     }
 
     //if search Id, i may just be filtering or sorting the results... no need to check params
-    if(empty($skeyword) && empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
+    if(empty($sKeyword) && empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
+    {
       return 'You need to input a refId, a name, a contact detail, a company or a keyword.'.' kw:'.$sKeyword;
+    }
 
     $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
 
