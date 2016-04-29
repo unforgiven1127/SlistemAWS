@@ -138,7 +138,7 @@ class CSl_eventEx extends CSl_event
 
       foreach($asNotes as $asNote)
       {
-        if (isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
+        if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
           $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
         }
 
