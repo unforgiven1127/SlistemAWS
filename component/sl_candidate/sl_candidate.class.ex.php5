@@ -4795,7 +4795,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      $pasData['visibility'] = (int)$pasData['visibility'];
+      /*$pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
       $asParam['label']= 'Type';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
@@ -4811,14 +4811,14 @@ class CSl_candidateEx extends CSl_candidate
       $asParam = $asDefaultparam;
       $asParam['label']= 'Visibility';
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
-      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
+      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);*/
 
-      if($pasData['visibility'] == 1)
+      /*if($pasData['visibility'] == 1)
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
       else
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public'));
 
-      /*if($pasData['visibility'] == 2)
+      if($pasData['visibility'] == 2)
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private', 'selected' => 'selected'));
       else
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private'));
