@@ -4803,7 +4803,7 @@ class CSl_candidateEx extends CSl_candidate
       foreach($asTypes as $nType => $asType)
       {
         if($pasData['type'] == $nType)
-          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected', 'hidden'));
+          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected', 'type' => 'hidden'));
         else
           $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label']));
       }
