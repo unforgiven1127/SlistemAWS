@@ -4800,6 +4800,12 @@ class CSl_candidateEx extends CSl_candidate
       $asParam['label']= 'Type';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
+      $asParam = $asDefaultparam;
+      $asParam['label']= 'Value';
+      $asParam['style']= 'padding-left:-500px';
+      $asParam['value']= $pasData['value'];
+      $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
+
       foreach($asTypes as $nType => $asType)
       {
         if($pasData['type'] == $nType)
@@ -4844,12 +4850,6 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
-
-      $asParam = $asDefaultparam;
-      $asParam['label']= 'Value';
-      $asParam['style']= 'padding-left:-500px';
-      $asParam['value']= $pasData['value'];
-      $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
 
 
       //Group management
