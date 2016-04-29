@@ -4795,7 +4795,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      $pasData['visibility'] = (int)$pasData['visibility'];
+      /*$pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
       $asParam['label']= 'Type';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
@@ -4813,12 +4813,7 @@ class CSl_candidateEx extends CSl_candidate
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
       $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
 
-      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
-      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Public'));
-      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'Public'));
-      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Public'));
-
-      /*if($pasData['visibility'] == 1)
+      if($pasData['visibility'] == 1)
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
       else
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public'));
@@ -4842,7 +4837,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom'));
         $sClass = ' hidden ';
-      }*/
+      }
 
 
       $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
@@ -4851,7 +4846,7 @@ class CSl_candidateEx extends CSl_candidate
       $asParam['label']= 'Value';
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
-
+*/
 
       //Group management
       $asParam = $asDefaultparam;
