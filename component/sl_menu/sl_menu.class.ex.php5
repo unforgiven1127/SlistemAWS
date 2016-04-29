@@ -277,6 +277,7 @@ class CSl_menuEx extends CSl_menu
       $sCompanyField = 'class="defaultText" data-default="Company" value="Company" '.$sFieldJs;
       $sDepartmentField = 'class="defaultText" data-default="Department" value="Department" '.$sFieldJs;
       $sPositionField = 'class="defaultText" data-default="Position ID or title" value="Position ID or title" '.$sFieldJs;
+      $KeywordField = 'class="defaultText" data-default="Keyword" value="Keyword" '.$sFieldJs;
       $sLabelClass = ' hidden';
     }
     else
@@ -330,6 +331,9 @@ class CSl_menuEx extends CSl_menu
       <input type="text" name="position" '.$sPositionField.' onchange="$(\'#qs_pos_status\').val(\'\'); "/>
       <input type="hidden" id="qs_pos_status" name="position_status" value=""/>
       </div></div>
+
+      <div><div class="label '.$sLabelClass.'">department</div><div class="field">
+      <input type="text" name="department" '.$KeywordField.'/></div></div>
 
 
       <div class="hidden option">Search options</div>
