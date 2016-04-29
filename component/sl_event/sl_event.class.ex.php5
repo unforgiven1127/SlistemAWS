@@ -95,11 +95,11 @@ class CSl_eventEx extends CSl_event
     $bAddLink = false;
     $sHTML = '';
 
-    if($oLogin->getUserPk() == 101 || isDevelopment() )
+    /*if($oLogin->getUserPk() == 101 || isDevelopment() )
         {
           $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">SQLquery... </a>
             <span class="hidden query"><br />'.$query.'</span><br /><br /><br />';
-        }
+        }*/
 
     if ($psNoteType != 'cp_history' || $oLogin->isAdmin())
     {
@@ -136,10 +136,15 @@ class CSl_eventEx extends CSl_event
       $dAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
       $dTwoMonthAgo = date('Y-m-d H:i:s', strtotime('-2 month'));
 
+      
       foreach($asNotes as $asNote)
       {
-        if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
-          $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
+        // array gelmezse patliyo... duzelt... MCA
+        if(isset($asNote) && !empty($asNote) && isset($asNote['content']))
+        {
+          if (strpos($asNote['content'], 'Status changed to') !== false) {
+            $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
+          }
         }
 
         if($asNote['date_display'] > $dTwoMonthAgo)
