@@ -569,7 +569,7 @@ class CPageEx extends CPage
       $sHTML.= $psComponentHtml;
       $sHTML.= $oMenu->getMenuNav('right');
       $sHTML.= $oMenu->getMenuAction('right');
-      $sHTML.= $oHTML->getFooterl();
+      //$sHTML.= $oHTML->getFooter();
     }
 
     if($this->cbTestMode)

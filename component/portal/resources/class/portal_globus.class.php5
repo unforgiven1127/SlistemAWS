@@ -114,7 +114,7 @@ class CPortalGlobusEx extends CPortalEx
       $sHTML.= $this->_displayMenu($pbIsLogged);
       $sHTML.= $psComponentHtml;
     $sHTML .= $oHTML->getBlocEnd();
-    $sHTML.= $oHTML->getFooterl();
+    //$sHTML.= $oHTML->getFooter();
 
     return $sHTML;
   }
