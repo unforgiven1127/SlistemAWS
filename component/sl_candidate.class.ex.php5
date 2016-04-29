@@ -4515,7 +4515,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $asParam = $asDefaultparam;
-      $asParam['label']= 'Visibility';
+      //$asParam['label']= 'Visibility';
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
       $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
 
