@@ -4888,7 +4888,7 @@ class CSl_candidateEx extends CSl_candidate
       $asParam = array();
       $asParam['label']= 'Notes';
       $asParam['value'] = $pasData['description'];
-      $asParam['witdh'] = '500px;';
+      $asParam['style'] = 'width:500px';
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
