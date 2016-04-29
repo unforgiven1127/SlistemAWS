@@ -378,8 +378,8 @@ class CQuickSearch
     }
 
     //if search Id, i may just be filtering or sorting the results... no need to check params
-    if(empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
-      return 'You need to input a refId, a name, a contact detail or a company.';
+    if(empty($skeyword) && empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
+      return 'You need to input a refId, a name, a contact detail, a company or a keyword.';
 
     $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
 
