@@ -4517,45 +4517,27 @@ class CSl_candidateEx extends CSl_candidate
       $asParam = $asDefaultparam;
       $asParam['label']= 'Visibility';
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
-      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
+      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam , array('class' => 'hidden'));
 
       if($pasData['visibility'] == 1)
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
-        $sClass = ' hidden ';
-      }
       else
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public'));
-        $sClass = ' hidden ';
-      }
 
       if($pasData['visibility'] == 2)
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private', 'selected' => 'selected'));
-        $sClass = ' hidden ';
-      }
       else
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Private'));
-        $sClass = ' hidden ';
-      }
 
       if($pasData['visibility'] == 3)
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'My team', 'selected' => 'selected'));
-        $sClass = ' hidden ';
-      }
       else
-      {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'My team'));
-        $sClass = ' hidden ';
-      }
 
       if($pasData['visibility'] == 4)
       {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom', 'selected' => 'selected'));
-        $sClass = ' hidden ';
+        $sClass = '';
       }
       else
       {
