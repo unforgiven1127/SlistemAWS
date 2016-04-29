@@ -4520,6 +4520,9 @@ class CSl_candidateEx extends CSl_candidate
       $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
 
       $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
+      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 2, 'label' => 'Public'));
+      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 3, 'label' => 'Public'));
+      $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Public'));
 
       /*if($pasData['visibility'] == 1)
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 1, 'label' => 'Public', 'selected' => 'selected'));
