@@ -73,8 +73,8 @@ class CEventModelEx extends CEventModel
     $sQuery = 'SELECT elin.*, even.*, slc.name as companyName
     FROM `event_link` as elin';
 
-    $sQuery.= ' INNER JOIN sl_candidate_profile as cp ON (cp.candidatefk = elin.cp_pk)';
-    $sQuery.= ' INNER JOIN sl_company as slc ON (slc.sl_companypk = cp.companyfk)';
+    $sQuery.= ' LEFT JOIN sl_candidate_profile as cp ON (cp.candidatefk = elin.cp_pk)';
+    $sQuery.= ' LEFT JOIN sl_company as slc ON (slc.sl_companypk = cp.companyfk)';
 
     if($pasValues[CONST_CP_TYPE] == CONST_AB_TYPE_COMPANY)
     {
