@@ -4762,7 +4762,7 @@ class CSl_candidateEx extends CSl_candidate
       set_array($pasData['type'], '');
       set_array($pasData['value'], '');
       set_array($pasData['description'], '');
-      set_array($pasData['visibility'], 0);
+      //set_array($pasData['visibility'], 0);
 
       if($oLogin->isAdmin())
       {

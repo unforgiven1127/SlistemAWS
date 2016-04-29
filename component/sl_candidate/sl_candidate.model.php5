@@ -109,7 +109,7 @@ class CSl_candidateModel extends CModel
     $this->_tableMap['sl_contact']['updated_by'] = array('controls' => array('is_null(%) || is_key(%)'));
     $this->_tableMap['sl_contact']['value'] = array('controls' => array('!empty(%)'));
     $this->_tableMap['sl_contact']['description'] = array('controls' => array());
-    $this->_tableMap['sl_contact']['visibility'] = array('controls' => array('is_key(%)'));
+    //$this->_tableMap['sl_contact']['visibility'] = array('controls' => array('is_key(%)'));
     $this->_tableMap['sl_contact']['groupfk'] = array('controls' => array('is_integer(%)'));
 
 
