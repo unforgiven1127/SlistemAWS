@@ -4515,7 +4515,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $asParam = $asDefaultparam;
-      $asParam['label']= 'Visibility';
+      /*$asParam['label']= 'Visibility';
       $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
       $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam);
 
@@ -4543,7 +4543,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom'));
         $sClass = ' hidden ';
-      }
+      }*/
 
 
       $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
@@ -8049,7 +8049,7 @@ class CSl_candidateEx extends CSl_candidate
       $sNote.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
 
       foreach($asSummary as $sType => $nUpdate)
-        $sNote.= '-> #'.$nUpdate.' '.$sType.' transfered<br />';
+        //$sNote.= '-> #'.$nUpdate.' '.$sType.' transfered<br />'; // adayin notlarina yapilan islemle ilgili ekleme yapiyordu istemediler kaldirdik
 
       $oEvent->addNote($nTarget, 'merge_summary', $sNote);
 

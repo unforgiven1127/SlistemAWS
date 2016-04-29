@@ -86,7 +86,7 @@ class CSl_eventEx extends CSl_event
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
-    //$asNotes = $return['all'];
+    //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
     $oPage = CDependency::getCpPage();
