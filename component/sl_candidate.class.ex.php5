@@ -4467,7 +4467,7 @@ class CSl_candidateEx extends CSl_candidate
       set_array($pasData['type'], '');
       set_array($pasData['value'], '');
       set_array($pasData['description'], '');
-      //set_array($pasData['visibility'], 0);
+      set_array($pasData['visibility'], 0);
 
       $oLogin = CDependency::getCpLogin();
       if($oLogin->isAdmin())
@@ -4501,7 +4501,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      /*$pasData['visibility'] = (int)$pasData['visibility'];
+      $pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
       $asParam['label']= 'Type';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
@@ -4543,7 +4543,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $poForm->addOption('contact_visibility['.$nCount.']', array('value' => 4, 'label' => 'Custom'));
         $sClass = ' hidden ';
-      }*/
+      }
 
 
       $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
