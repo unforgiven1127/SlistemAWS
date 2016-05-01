@@ -894,8 +894,8 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/candi_grade_top_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_top_16.png') no-repeat center 5px;
-  -webkit-filter: brightness(110%); /* Chrome, Safari, Opera */
-    filter: brightness(110%)
+  -webkit-filter: brightness(100%); /* Chrome, Safari, Opera */
+    filter: brightness(100%)
 }
 
 .tplCandi_resume
