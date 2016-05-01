@@ -873,25 +873,29 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/candi_grade_low_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_met_16.png') no-repeat center 5px;
-  opacity: 0.8;
+  background-color: black;
+  opacity: 0.5;
 }
 .tplCandi_grade_low
 {
   background: transparent url('/common/pictures/slistem/candi_grade_low_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_low_16.png') no-repeat center 5px;
-  opacity: 0.8;
+  background-color: black;
+  opacity: 0.5;
 }
 .tplCandi_grade_high
 {
   background: transparent url('/common/pictures/slistem/candi_grade_high_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_high_16.png') no-repeat center 5px;
-  opacity: 0.8;
+  background-color: black;
+  opacity: 0.5;
 }
 .tplCandi_grade_top
 {
   background: transparent url('/common/pictures/slistem/candi_grade_top_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_top_16.png') no-repeat center 5px;
-  opacity: 0.8;
+  background-color: black;
+  opacity: 0.5;
 }
 
 .tplCandi_resume
