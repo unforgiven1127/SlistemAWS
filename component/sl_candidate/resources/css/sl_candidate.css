@@ -889,9 +889,7 @@ div.list_action_container > div > div:first-child
 }
 .tplCandi_grade_top
 {
-  background: transparent url('/common/pictures/slistem/candi_grade_top_16.png') no-repeat center 5px;
-  background: transparent url('/common/pictures/slistem/grade_top_16.png') no-repeat center 5px;
-  filter: brightness(50%);
+  
 }
 
 .tplCandi_resume
