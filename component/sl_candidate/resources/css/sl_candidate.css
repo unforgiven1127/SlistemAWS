@@ -873,29 +873,29 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/candi_grade_low_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_met_16.png') no-repeat center 5px;
-  -webkit-filter: brightness(80%); /* Chrome, Safari, Opera */
-    filter: brightness(80%);
+  -webkit-filter: brightness(90%); /* Chrome, Safari, Opera */
+    filter: brightness(90%);
 }
 .tplCandi_grade_low
 {
   background: transparent url('/common/pictures/slistem/candi_grade_low_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_low_16.png') no-repeat center 5px;
-  -webkit-filter: brightness(80%); /* Chrome, Safari, Opera */
-    filter: brightness(80%);;
+  -webkit-filter: brightness(90%); /* Chrome, Safari, Opera */
+    filter: brightness(90%);
 }
 .tplCandi_grade_high
 {
   background: transparent url('/common/pictures/slistem/candi_grade_high_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_high_16.png') no-repeat center 5px;
-  -webkit-filter: brightness(80%); /* Chrome, Safari, Opera */
-    filter: brightness(80%);
+  -webkit-filter: brightness(90%); /* Chrome, Safari, Opera */
+    filter: brightness(90%);
 }
 .tplCandi_grade_top
 {
   background: transparent url('/common/pictures/slistem/candi_grade_top_16.png') no-repeat center 5px;
   background: transparent url('/common/pictures/slistem/grade_top_16.png') no-repeat center 5px;
-  -webkit-filter: brightness(80%); /* Chrome, Safari, Opera */
-    filter: brightness(80%);
+  -webkit-filter: brightness(90%); /* Chrome, Safari, Opera */
+    filter: brightness(90%);
 }
 
 .tplCandi_resume
