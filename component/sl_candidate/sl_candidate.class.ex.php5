@@ -377,13 +377,22 @@ class CSl_candidateEx extends CSl_candidate
           case CONST_ACTION_SAVEADD:
             return json_encode($this->_getCandidateContactSave($this->cnPk));
             break;
+
+          case CONST_ACTION_OLD:
+            return json_encode($this->_getCandidateContactSave($this->cnPk,0,true));
+            break;
         }
         break;
 
         case CONST_CANDIDATE_TYPE_CONTACT_SHOW:
 
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactFormOldData($this->cnPk))));
+        switch($this->csAction)
+        {
+          case CONST_ACTION_ADD:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
+        }
+        break;
 
       case CONST_CANDIDATE_TYPE_DOC:
 
@@ -4686,86 +4695,6 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // Start CONTACT section
 
-    private function _getCandidateContactFormOldData($pnCandiPk, $showOld = false))
-    {
-        if(!assert('is_key($pnCandiPk)'))
-        return array('error' => 'Sorry, an error occured.');
-
-      $bIsAdmin = (bool)$this->casUserData['is_admin'];
-
-      $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
-
-      $oDbResult = $this->_getModel()->getContact($pnCandiPk, 'candi', $this->casUserData['pk'], array_keys($this->casUserData['group']), !$bIsAdmin);
-      $bRead = $oDbResult->readFirst();
-
-      $nContact = $oDbResult->numRows();
-      $nNewFields = 4 - $nContact;
-      if($nNewFields <= 0)
-        $nNewFields = 1;
-
-      $nNewFields = 4; // more field needed so we fixed 4 MCA
-
-      $is_creator = false;
-
-      if ($candidate_information['created_by'] == $this->casUserData['loginpk'])
-        $is_creator = true;
-
-      $oPage = CDependency::getCpPage();
-
-      $oForm = $this->_oDisplay->initForm('contactAddForm');
-      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
-
-      $oForm->setFormParams('addcont', true, array('action' => $sURL, 'class' => 'ContactForm', 'submitLabel'=>'Save contact details'));
-      $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 2));
-      $oForm->addField('input', 'candidatepk', array('type' => 'hidden','value'=> $pnCandiPk));
-      $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
-
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
-      //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
-
-      //$sHTML = $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-      //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pnCandiPk);
-      //$sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      //$sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
-      //$sHTML.= $this->_oDisplay->getBlocEnd();
-
-//$sURL = $this->getResourcePath().'/resume/resume_template.html';
-$showURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, $pnCandiPk);
-//$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
-$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
-$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$showJavascript.'"><button type="button">Click for old contact data</button></a>'));
-
-      //$oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
-
-      $asTypes = getContactTypes();
-
-      $nCount = 0;
-
-      if($showOld)
-      {
-        while($bRead)
-        {
-          $asData = $oDbResult->getData();
-
-          //$bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
-          $bVisible = true;
-          if($bVisible)
-          {
-            $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData, $class);
-            $nCount++;
-          }
-
-          $bRead = $oDbResult->readNext();
-        }
-      }
-
-      for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
-      {
-        $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
-      }
-
-      return $oForm->getDisplay();
-    }
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
     {
@@ -4794,7 +4723,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
       $oPage = CDependency::getCpPage();
 
       $oForm = $this->_oDisplay->initForm('contactAddForm');
-      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
+      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_OLD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
 
       $oForm->setFormParams('addcont', true, array('action' => $sURL, 'class' => 'ContactForm', 'submitLabel'=>'Save contact details'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 2));
