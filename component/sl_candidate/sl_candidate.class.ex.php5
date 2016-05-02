@@ -4682,7 +4682,7 @@ class CSl_candidateEx extends CSl_candidate
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4723,21 +4723,24 @@ class CSl_candidateEx extends CSl_candidate
 
       $asTypes = getContactTypes();
 
-      $class = 'closeMCA, hidden';
       $nCount = 0;
-      while($bRead)
+
+      if($showOld)
       {
-        $asData = $oDbResult->getData();
-
-        //$bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
-        $bVisible = true;
-        if($bVisible)
+        while($bRead)
         {
-          $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData, $class);
-          $nCount++;
-        }
+          $asData = $oDbResult->getData();
 
-        $bRead = $oDbResult->readNext();
+          //$bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+          $bVisible = true;
+          if($bVisible)
+          {
+            $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData, $class);
+            $nCount++;
+          }
+
+          $bRead = $oDbResult->readNext();
+        }
       }
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
@@ -4772,14 +4775,13 @@ class CSl_candidateEx extends CSl_candidate
       {
         //admin can always edit
         $asDefaultparam = array();
-        $asDefaultparam['class'] = $class;
 
         //if edition, add delete box
-        /*if(!empty($pasData['sl_contactpk']))
+        if(!empty($pasData['sl_contactpk']))
         {
-          $poForm->addField('checkbox', 'delete['.$nCount.']', array('class' => $class,'textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
-          $poForm->addField('misc', '', array('class' => $class, 'type' => 'text', 'text' => '&nbsp;'));
-        }*/
+          $poForm->addField('checkbox', 'delete['.$nCount.']', array('textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
+          $poForm->addField('misc', '', array('type' => 'text', 'text' => '&nbsp;'));
+        }
       }
 
       if(empty($this->casActiveUser))
@@ -4800,34 +4802,13 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      $asDefaultparam['class'] = $class;
-
       $pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
-      if($class == '')
-      {
-        $asParam['label']= 'Type';
-      }
-      else
-      {
-        $asParam['visibility']= 'hidden';
-        $asParam['type']= 'hidden';
-        $asParam['style'] = 'height:0px';
-      }
-
+      $asParam['label']= 'Type';
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
       $asParam = $asDefaultparam;
-      if($class == '')
-      {
-        $asParam['label']= 'Value';
-      }
-      else
-      {
-        $asParam['visibility']= 'hidden';
-        $asParam['type']= 'hidden';
-        $asParam['style'] = 'height:0px';
-      }
+      $asParam['label']= 'Value';
       $asParam['style']= 'padding-left:-500px';
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
@@ -4913,17 +4894,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $asParam = array();
-      $asParam = $asDefaultparam;
-      if($class == '')
-      {
-        $asParam['label']= 'Notes';
-      }
-      else
-      {
-        $asParam['visibility']= 'hidden';
-        $asParam['type']= 'hidden';
-        $asParam['style'] = 'height:0px';
-      }
+      $asParam['label']= 'Notes';
       $asParam['value'] = $pasData['description'];
       $asParam['style'] = 'width:510px';
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
