@@ -4753,7 +4753,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
 
       $nCount = 0;
 
-      if($showOld)
+      if(true)
       {
         while($bRead)
         {
