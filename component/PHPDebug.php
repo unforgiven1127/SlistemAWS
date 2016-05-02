@@ -77,3 +77,4 @@ function debug($name, $var = null, $type = LOG) {
     echo '</script>'.NL;
 }
 }
+?>

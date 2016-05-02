@@ -4716,7 +4716,7 @@ class CSl_candidateEx extends CSl_candidate
       }*/
 
       $debug = new PHPDebug();
-      $debug->debug("A very simple message");
+      //$debug->debug("A very simple message");
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
