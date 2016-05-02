@@ -4723,7 +4723,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $asTypes = getContactTypes();
 
-      $class = 'close';
+      $class = 'closeMCA';
       $nCount = 0;
       while($bRead)
       {
