@@ -4705,6 +4705,19 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
+
+$name = 'sarfraz';
+$fruits = array("banana", "apple", "strawberry", "pineaple");
+
+$user = new stdClass;
+$user->name = "Sarfraz";
+$user->desig = "Sr. Software Engineer";
+$user->lang = "PHP";
+
+logConsole('$name var', $name, true);
+logConsole('An array of fruits', $fruits, true);
+logConsole('$user object', $user, true);
+
       /*$seperate = explode('_',$pnCandiPk);
       if(isset($seperate[0]))
       {
@@ -4714,9 +4727,6 @@ class CSl_candidateEx extends CSl_candidate
       {
         $showOld = $seperate[1];
       }*/
-
-      $debug = new PHPDebug();
-      //$debug->debug("A very simple message");
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 

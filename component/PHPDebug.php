@@ -1,80 +1,53 @@
 <?php
-class PHPDebug{
-     
-function __construct() {
-    if (!defined("LOG"))    define("LOG",1);
-    if (!defined("INFO"))   define("INFO",2);
-    if (!defined("WARN"))   define("WARN",3);
-    if (!defined("ERROR"))  define("ERROR",4);
- 
-    define("NL","\r\n");
-    echo '<script type="text/javascript">'.NL;
-     
-    /// this is for IE and other browsers w/o console
-    echo 'if (!window.console) console = {};';
-    echo 'console.log = console.log || function(){};';
-    echo 'console.warn = console.warn || function(){};';
-    echo 'console.error = console.error || function(){};';
-    echo 'console.info = console.info || function(){};';
-    echo 'console.debug = console.debug || function(){};';
-    echo '</script>';
-    /// end of IE    
-}
- 
-function debug($name, $var = null, $type = LOG) {
-    echo '<script type="text/javascript">'.NL;
-    switch($type) {
-        case LOG:
-            echo 'console.log("'.$name.'");'.NL;    
-        break;
-        case INFO:
-            echo 'console.info("'.$name.'");'.NL;    
-        break;
-        case WARN:
-            echo 'console.warn("'.$name.'");'.NL;    
-        break;
-        case ERROR:
-            echo 'console.error("'.$name.'");'.NL;    
-        break;
-    }
-     
-    if (!empty($var)) {
-        if (is_object($var) || is_array($var)) {
-            $object = json_encode($var);
-            echo 'var object'.preg_replace('~[^A-Z|0-9]~i',"_",$name).' = \''.str_replace("'","\'",$object).'\';'.NL;
-            echo 'var val'.preg_replace('~[^A-Z|0-9]~i',"_",$name).' = eval("(" + object'.preg_replace('~[^A-Z|0-9]~i',"_",$name).' + ")" );'.NL;
-            switch($type) {
-                case LOG:
-                    echo 'console.debug(val'.preg_replace('~[^A-Z|0-9]~i',"_",$name).');'.NL;    
-                break;
-                case INFO:
-                    echo 'console.info(val'.preg_replace('~[^A-Z|0-9]~i',"_",$name).');'.NL;
-                break;
-                case WARN:
-                    echo 'console.warn(val'.preg_replace('~[^A-Z|0-9]~i',"_",$name).');'.NL;        
-                break;
-                case ERROR:
-                    echo 'console.error(val'.preg_replace('~[^A-Z|0-9]~i',"_",$name).');'.NL;    
-                break;
-            }
-        } else {
-            switch($type) {
-                case LOG:
-                    echo 'console.debug("'.str_replace('"','\\"',$var).'");'.NL;
-                break;
-                case INFO:
-                    echo 'console.info("'.str_replace('"','\\"',$var).'");'.NL;
-                break;
-                case WARN:
-                    echo 'console.warn("'.str_replace('"','\\"',$var).'");'.NL;    
-                break;
-                case ERROR:
-                    echo 'console.error("'.str_replace('"','\\"',$var).'");'.NL;
-                break;
-            }
-        }
-    }
-    echo '</script>'.NL;
-}
-}
-?>
+/**
+ * Logs messages/variables/data to browser console from within php
+ *
+ * @param $name: message to be shown for optional data/vars
+ * @param $data: variable (scalar/mixed) arrays/objects, etc to be logged
+ * @param $jsEval: whether to apply JS eval() to arrays/objects
+ *
+ * @return none
+ * @author Sarfraz
+ */
+ function logConsole($name, $data = NULL, $jsEval = FALSE)
+ {
+      if (! $name) return false;
+
+      $isevaled = false;
+      $type = ($data || gettype($data)) ? 'Type: ' . gettype($data) : '';
+
+      if ($jsEval && (is_array($data) || is_object($data)))
+      {
+           $data = 'eval(' . preg_replace('#[\s\r\n\t\0\x0B]+#', '', json_encode($data)) . ')';
+           $isevaled = true;
+      }
+      else
+      {
+           $data = json_encode($data);
+      }
+
+      # sanitalize
+      $data = $data ? $data : '';
+      $search_array = array("#'#", '#""#', "#''#", "#\n#", "#\r\n#");
+      $replace_array = array('"', '', '', '\\n', '\\n');
+      $data = preg_replace($search_array,  $replace_array, $data);
+      $data = ltrim(rtrim($data, '"'), '"');
+      $data = $isevaled ? $data : ($data[0] === "'") ? $data : "'" . $data . "'";
+
+$js = <<<JSCODE
+\n<script>
+ // fallback - to deal with IE (or browsers that don't have console)
+ if (! window.console) console = {};
+ console.log = console.log || function(name, data){};
+ // end of fallback
+
+ console.log('$name');
+ console.log('------------------------------------------');
+ console.log('$type');
+ console.log($data);
+ console.log('\\n');
+</script>
+JSCODE;
+
+      echo $js;
+ } # end logConsole
