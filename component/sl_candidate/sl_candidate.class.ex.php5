@@ -4812,6 +4812,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $asParam['visibility']= 'hidden';
         $asParam['type']= 'hidden';
+        $asParam['style'] = 'height:0px';
       }
 
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
@@ -4825,6 +4826,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $asParam['visibility']= 'hidden';
         $asParam['type']= 'hidden';
+        $asParam['style'] = 'height:0px';
       }
       $asParam['style']= 'padding-left:-500px';
       $asParam['value']= $pasData['value'];
@@ -4920,6 +4922,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $asParam['visibility']= 'hidden';
         $asParam['type']= 'hidden';
+        $asParam['style'] = 'height:0px';
       }
       $asParam['value'] = $pasData['description'];
       $asParam['style'] = 'width:510px';
