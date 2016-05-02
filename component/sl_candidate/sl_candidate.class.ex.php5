@@ -4719,7 +4719,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
-      $oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'title', 'title'=> 'Click for old contact data'));
+      $oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
 
       $asTypes = getContactTypes();
 
