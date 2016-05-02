@@ -4703,10 +4703,7 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
-var_dump($pnCandiPk);
-exit;
-
-      $seperate = explode('_',$pnCandiPk);
+      /*$seperate = explode('_',$pnCandiPk);
       if(isset($seperate[0]))
       {
         $pnCandiPk = $seperate [0];
@@ -4714,7 +4711,7 @@ exit;
       if(isset($seperate[1]))
       {
         $showOld = $seperate[1];
-      }
+      }*/
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
