@@ -371,7 +371,7 @@ class CSl_candidateEx extends CSl_candidate
         switch($this->csAction)
         {
           case CONST_ACTION_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,false))));
             break;
 
           case CONST_ACTION_SAVEADD:
@@ -4696,10 +4696,13 @@ class CSl_candidateEx extends CSl_candidate
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
+
+      if(!assert('is_key($showOld)'))
+        return array('error' => 'show old yok.');
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
