@@ -4721,7 +4721,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $asTypes = getContactTypes();
 
-      $oForm .= "<div>";
+
       $nCount = 0;
       while($bRead)
       {
@@ -4743,9 +4743,7 @@ class CSl_candidateEx extends CSl_candidate
         $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
       }
 
-      $oForm .= $oForm->getDisplay();
-      $oForm .= "</div>";
-      return $oForm;
+      return $oForm->getDisplay();
     }
 
 
