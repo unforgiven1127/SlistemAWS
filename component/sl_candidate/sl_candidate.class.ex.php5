@@ -4719,21 +4719,21 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
-      $oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'title', 'title'=> 'Show old contact data'));
+      $oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'title', 'title'=> 'Click for old contact data'));
 
       $asTypes = getContactTypes();
 
-
+      $class = 'close';
       $nCount = 0;
       while($bRead)
       {
         $asData = $oDbResult->getData();
 
-        $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
-
+        //$bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+        $bVisible = true;
         if($bVisible)
         {
-          $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData);
+          $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData, $class);
           $nCount++;
         }
 
@@ -4750,13 +4750,13 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData)
+    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
     {
       $oLogin = CDependency::getCpLogin();
 
       if(!empty($pasData))
       {
-        $asDefaultparam = array('readonly' => '',
+        $asDefaultparam = array('class' => $class,'readonly' => '',
           'style' => 'background-color: #eee;border-color: #e6e6e6; font-style: italic; color: #777;');
       }
       else
