@@ -4,7 +4,7 @@ require_once('component/sl_candidate/sl_candidate.class.php5');
 require_once('component/sl_candidate/sl_candidate.model.php5');
 require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 require_once('component/sl_candidate/resources/class/slate_vars.class.php5');
-require_once('component/PHPDebug.php5');
+//require_once('component/PHPDebug.php5');
 
 class CSl_candidateEx extends CSl_candidate
 {
