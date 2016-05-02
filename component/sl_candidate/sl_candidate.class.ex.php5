@@ -4719,10 +4719,16 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
+      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pnCandiPk);
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+
 //$sURL = $this->getResourcePath().'/resume/resume_template.html';
-$sURL = json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,true))));
-$sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
-$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'"><button>Click for old contact data</button></a>'));
+//$sURL = json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+//$sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
+//$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'"><button>Click for old contact data</button></a>'));
 
       //$oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
 
