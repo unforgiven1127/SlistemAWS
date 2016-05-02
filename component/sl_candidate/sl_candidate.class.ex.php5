@@ -4702,7 +4702,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
-
+print_r($pnCandiPk);
       /*$seperate = explode('_',$pnCandiPk);
       if(isset($seperate[0]))
       {
