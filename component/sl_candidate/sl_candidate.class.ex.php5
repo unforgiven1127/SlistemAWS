@@ -4756,7 +4756,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if(!empty($pasData))
       {
-        $asDefaultparam = array('class' => $class,'readonly' => '',
+        $asDefaultparam = array('readonly' => '',
           'style' => 'background-color: #eee;border-color: #e6e6e6; font-style: italic; color: #777;');
       }
       else
@@ -4799,9 +4799,12 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+      $asDefaultparam['class'] = $class;
+
       $pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
       $asParam['label']= 'Type';
+
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
       $asParam = $asDefaultparam;
