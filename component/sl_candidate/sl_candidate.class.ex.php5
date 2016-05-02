@@ -4776,8 +4776,8 @@ class CSl_candidateEx extends CSl_candidate
         //if edition, add delete box
         if(!empty($pasData['sl_contactpk']))
         {
-          $poForm->addField('checkbox', 'delete['.$nCount.']', array('class' => $class,'textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
-          $poForm->addField('misc', '', array('class' => $class, 'type' => 'text', 'text' => '&nbsp;'));
+          $poForm->addField('checkbox', 'delete['.$nCount.']', array('class' => '"'.$class.'"','textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
+          $poForm->addField('misc', '', array('class' => '"'.$class.'"', 'type' => 'text', 'text' => '&nbsp;'));
         }
       }
 
