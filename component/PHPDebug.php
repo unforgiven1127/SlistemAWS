@@ -1,4 +1,4 @@
-class PHPDebug {
+class PHPDebug{
      
 function __construct() {
     if (!defined("LOG"))    define("LOG",1);
