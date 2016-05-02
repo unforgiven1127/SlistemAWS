@@ -4714,6 +4714,9 @@ class CSl_candidateEx extends CSl_candidate
         $showOld = $seperate[1];
       }*/
 
+      $debug = new PHPDebug();
+      $debug->debug("A very simple message");
+
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
       $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
