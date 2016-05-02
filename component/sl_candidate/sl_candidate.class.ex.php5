@@ -385,7 +385,7 @@ class CSl_candidateEx extends CSl_candidate
         switch($this->csAction)
         {
           case CONST_ACTION_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactFormOldData($this->cnPk))));
             break;
         }
         break;
@@ -4691,6 +4691,10 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // Start CONTACT section
 
+    private function _getCandidateContactFormOldData($pnCandiPk)
+    {
+        $this->_getCandidateContactForm($pnCandiPk,0,true);
+    }
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
     {
