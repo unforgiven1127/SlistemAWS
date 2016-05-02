@@ -4775,11 +4775,11 @@ class CSl_candidateEx extends CSl_candidate
         $asDefaultparam['class'] = $class;
 
         //if edition, add delete box
-        if(!empty($pasData['sl_contactpk']))
+        /*if(!empty($pasData['sl_contactpk']))
         {
           $poForm->addField('checkbox', 'delete['.$nCount.']', array('class' => $class,'textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
           $poForm->addField('misc', '', array('class' => $class, 'type' => 'text', 'text' => '&nbsp;'));
-        }
+        }*/
       }
 
       if(empty($this->casActiveUser))
@@ -4808,6 +4808,11 @@ class CSl_candidateEx extends CSl_candidate
       {
         $asParam['label']= 'Type';
       }
+      else
+      {
+        $asParam['visibility']= 'hidden';
+        $asParam['type']= 'hidden';
+      }
 
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
@@ -4815,6 +4820,11 @@ class CSl_candidateEx extends CSl_candidate
       if($class == '')
       {
         $asParam['label']= 'Value';
+      }
+      else
+      {
+        $asParam['visibility']= 'hidden';
+        $asParam['type']= 'hidden';
       }
       $asParam['style']= 'padding-left:-500px';
       $asParam['value']= $pasData['value'];
@@ -4905,6 +4915,11 @@ class CSl_candidateEx extends CSl_candidate
       if($class == '')
       {
         $asParam['label']= 'Notes';
+      }
+      else
+      {
+        $asParam['visibility']= 'hidden';
+        $asParam['type']= 'hidden';
       }
       $asParam['value'] = $pasData['description'];
       $asParam['style'] = 'width:510px';
