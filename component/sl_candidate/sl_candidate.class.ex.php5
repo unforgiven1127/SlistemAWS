@@ -4,7 +4,7 @@ require_once('component/sl_candidate/sl_candidate.class.php5');
 require_once('component/sl_candidate/sl_candidate.model.php5');
 require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 require_once('component/sl_candidate/resources/class/slate_vars.class.php5');
-require_once('component/PHPDebug.php');
+
 
 class CSl_candidateEx extends CSl_candidate
 {
@@ -4701,6 +4701,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'false')
     {
+      require_once('component/PHPDebug.php');
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
