@@ -4701,22 +4701,10 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'false')
     {
-      require_once('component/PHPDebug.php');
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
-
-$name = 'sarfraz';
-$fruits = array("banana", "apple", "strawberry", "pineaple");
-
-$user = new stdClass;
-$user->name = "Sarfraz";
-$user->desig = "Sr. Software Engineer";
-$user->lang = "PHP";
-
-logConsole('$name var', $name, true);
-logConsole('An array of fruits', $fruits, true);
-logConsole('$user object', $user, true);
+console.log('test');
 
       /*$seperate = explode('_',$pnCandiPk);
       if(isset($seperate[0]))
