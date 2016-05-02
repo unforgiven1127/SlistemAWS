@@ -379,7 +379,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CONST_ACTION_OLD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,true))));
             break;
         }
         break;
