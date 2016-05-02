@@ -60,6 +60,7 @@
   define('CONST_CANDIDATE_TYPE_POS', 'pos');
 
   define('CONST_CANDIDATE_TYPE_CONTACT', 'cont');
+  define('CONST_CANDIDATE_TYPE_CONTACT_SHOW', 'cont_show');
   define('CONST_CANDIDATE_TYPE_DOC', 'doc');
   define('CONST_CANDIDATE_TYPE_FEED', 'cprss');
   define('CONST_CANDIDATE_TYPE_LOGS', 'logs');
