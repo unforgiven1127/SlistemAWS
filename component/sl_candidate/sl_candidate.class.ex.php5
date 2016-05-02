@@ -4803,12 +4803,18 @@ class CSl_candidateEx extends CSl_candidate
 
       $pasData['visibility'] = (int)$pasData['visibility'];
       $asParam = $asDefaultparam;
-      $asParam['label']= 'Type';
+      if($class == '')
+      {
+        $asParam['label']= 'Type';
+      }
 
       $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
 
       $asParam = $asDefaultparam;
-      $asParam['label']= 'Value';
+      if($class == '')
+      {
+        $asParam['label']= 'Value';
+      }
       $asParam['style']= 'padding-left:-500px';
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
@@ -4894,6 +4900,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $asParam = array();
+      $asParam = $asDefaultparam;
       $asParam['label']= 'Notes';
       $asParam['value'] = $pasData['description'];
       $asParam['style'] = 'width:510px';
