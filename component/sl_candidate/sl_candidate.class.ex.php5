@@ -379,7 +379,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CONST_ACTION_OLD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactFormOLdData($this->cnPk))));
             break;
         }
         break;
@@ -4694,7 +4694,10 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // ====================================================================================
     // Start CONTACT section
-
+    private function _getCandidateContactFormOLdData($pnCandiPk, $pnContactpk = 0, $showOld = false))
+    {
+      $this->_getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true);
+    }
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
     {
