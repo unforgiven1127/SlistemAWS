@@ -4699,6 +4699,8 @@ class CSl_candidateEx extends CSl_candidate
       if($nNewFields <= 0)
         $nNewFields = 1;
 
+      $nNewFields = 4; // more field needed so we fixed 4 MCA
+
       $is_creator = false;
 
       if ($candidate_information['created_by'] == $this->casUserData['loginpk'])
@@ -4772,7 +4774,7 @@ class CSl_candidateEx extends CSl_candidate
         //if edition, add delete box
         if(!empty($pasData['sl_contactpk']))
         {
-          $poForm->addField('checkbox', 'delete['.$nCount.']', array('textbefore' => 1, 'label' => 'Delete this row ??', 'value' => (int)$pasData['sl_contactpk']));
+          $poForm->addField('checkbox', 'delete['.$nCount.']', array('textbefore' => 1, 'label' => 'Delete this row ?', 'value' => (int)$pasData['sl_contactpk']));
           $poForm->addField('misc', '', array('type' => 'text', 'text' => '&nbsp;'));
         }
       }
