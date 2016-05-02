@@ -379,7 +379,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CONST_ACTION_OLD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,1,true))));
             break;
         }
         break;
@@ -4723,7 +4723,7 @@ class CSl_candidateEx extends CSl_candidate
       $oPage = CDependency::getCpPage();
 
       $oForm = $this->_oDisplay->initForm('contactAddForm');
-      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_OLD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
+      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
 
       $oForm->setFormParams('addcont', true, array('action' => $sURL, 'class' => 'ContactForm', 'submitLabel'=>'Save contact details'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 2));
