@@ -382,13 +382,8 @@ class CSl_candidateEx extends CSl_candidate
 
         case CONST_CANDIDATE_TYPE_CONTACT_SHOW:
 
-        switch($this->csAction)
-        {
-          case CONST_ACTION_ADD:
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactFormOldData($this->cnPk))));
             break;
-        }
-        break;
 
       case CONST_CANDIDATE_TYPE_DOC:
 
@@ -4691,7 +4686,7 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // Start CONTACT section
 
-    private function _getCandidateContactFormOldData($pnCandiPk, $pnContactpk = 0, $showOld = true))
+    private function _getCandidateContactFormOldData($pnCandiPk, $showOld = false))
     {
         if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
