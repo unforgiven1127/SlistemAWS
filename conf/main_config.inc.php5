@@ -349,7 +349,7 @@ define('CONST_ACTION_FASTEDIT', 'ppafe');
 define('CONST_ACTION_EDIT', 'ppae');
 define('CONST_ACTION_ADD', 'ppaa');
 define('CONST_ACTION_SAVEADD', 'ppasa');
-define('CONST_ACTION_OLD', 'ppaao');
+define('CONST_ACTION_OLD', 'ppaa');
 define('CONST_ACTION_SAVEEDIT', 'ppase');
 define('CONST_ACTION_VALIDATE', 'ppava');
 define('CONST_ACTION_DELETE', 'ppad');
