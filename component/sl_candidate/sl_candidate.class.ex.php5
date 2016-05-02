@@ -4728,7 +4728,7 @@ class CSl_candidateEx extends CSl_candidate
 //$sURL = $this->getResourcePath().'/resume/resume_template.html';
 $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pnCandiPk);
 $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';;
-$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'"><button>Click for old contact data</button></a>'));
+$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'"><button type="button">Click for old contact data</button></a>'));
 
       //$oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
 
