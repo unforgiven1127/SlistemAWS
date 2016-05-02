@@ -4719,7 +4719,11 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
-      $oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
+$sURL = $this->getResourcePath().'/resume/resume_template.html';
+$sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
+$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'">Click for old contact data</a>'));
+
+      //$oForm->addField('misc', '', array('style'=> 'text-align: center', 'type' => 'button', 'title'=> 'Click for old contact data'));
 
       $asTypes = getContactTypes();
 
