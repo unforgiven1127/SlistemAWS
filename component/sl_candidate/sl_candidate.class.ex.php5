@@ -371,7 +371,7 @@ class CSl_candidateEx extends CSl_candidate
         switch($this->csAction)
         {
           case CONST_ACTION_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,false))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
 
           case CONST_ACTION_SAVEADD:
@@ -4701,9 +4701,6 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
-      if(!assert('is_key($showOld)'))
-        return array('error' => 'show old yok.');
-
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
       $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
@@ -4743,7 +4740,7 @@ class CSl_candidateEx extends CSl_candidate
       //$sHTML.= $this->_oDisplay->getBlocEnd();
 
 //$sURL = $this->getResourcePath().'/resume/resume_template.html';
-$showURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_OLD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
+$showURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_OLD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk,1,true);
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 $showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$showJavascript.'"><button type="button">Click for old contact data</button></a>'));
