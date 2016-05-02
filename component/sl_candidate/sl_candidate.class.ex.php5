@@ -4719,10 +4719,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       $oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
-      $oForm->addField('register', 'button', array(
-                        'value' => Mage::helper('module')->__('Button Caption'),
-                        'onclick' => 'test()'
-                      ));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Show old contact data'));
 
       $asTypes = getContactTypes();
 
