@@ -4704,7 +4704,10 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => 'Sorry, an error occured.');
 
       $seperate = explode('_',$pnCandiPk);
-      $pnCandiPk = $seperate [0];
+      if(isset($seperate[0]))
+      {
+        $pnCandiPk = $seperate [0];
+      }
       if(isset($seperate[1]))
       {
         $showOld = $seperate[1];
