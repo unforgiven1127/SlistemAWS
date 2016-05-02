@@ -4698,10 +4698,17 @@ class CSl_candidateEx extends CSl_candidate
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'false')
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
+
+      $seperate = explode('_',$pnCandiPk);
+      $pnCandiPk = $seperate [0];
+      if(isset($seperate[1]))
+      {
+        $showOld = $seperate[1];
+      }
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
@@ -4753,7 +4760,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
 
       $nCount = 0;
 
-      if(true)
+      if($showOld != 'false')
       {
         while($bRead)
         {
