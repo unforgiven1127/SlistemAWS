@@ -4400,10 +4400,6 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // Start CONTACT section
 
-private function _getCandidateContactFormOLdData($pnCandiPk, $pnContactpk = 0, $showOld = false))
-    {
-      $this->_getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true);
-    }
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
     {
       if(!assert('is_key($pnCandiPk)'))
