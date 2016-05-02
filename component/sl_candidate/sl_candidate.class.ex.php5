@@ -4724,7 +4724,7 @@ class CSl_candidateEx extends CSl_candidate
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
       $sHTML.= $this->_oDisplay->getBlocEnd();
-
+$oForm->addField($sHTML);
 //$sURL = $this->getResourcePath().'/resume/resume_template.html';
 //$sURL = json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
 //$sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
