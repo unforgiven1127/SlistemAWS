@@ -4701,7 +4701,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'false')
     {
-      require_once('component/dependency.inc.php5');
+      require_once('component/PHPDebug.php');
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 

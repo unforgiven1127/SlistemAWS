@@ -1,3 +1,4 @@
+<?php
 class PHPDebug{
      
 function __construct() {
