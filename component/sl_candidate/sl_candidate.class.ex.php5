@@ -4717,6 +4717,8 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('input', 'candidatepk', array('type' => 'hidden','value'=> $pnCandiPk));
       $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
 
+$oForm->addField('input', 'candidatepk', array('value'=> $pnCandiPk)); // MCA
+
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
