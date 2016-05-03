@@ -4698,7 +4698,7 @@ class CSl_candidateEx extends CSl_candidate
       if($nNewFields <= 0)
         $nNewFields = 1;
 
-      $nNewFields = 4; // more field needed so we fixed 4 MCA
+      $nNewFields = 5; // more field needed so we fixed 5 MCA
 
       $is_creator = false;
 
