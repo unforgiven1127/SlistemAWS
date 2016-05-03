@@ -4718,13 +4718,6 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
-$this->addCustomJs(
-    '
-        function testMunir()
-        {
-          alert("test");
-        }
-    ');
 
       $asTypes = getContactTypes();
 
