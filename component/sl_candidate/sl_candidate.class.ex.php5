@@ -380,7 +380,9 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CONST_ACTION_OLD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->testContact($this->cnPk))));
+            $test = $this->cnPk;
+            $test .= '_true';
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($test,1,true))));
             break;
         }
         break;
@@ -4695,13 +4697,9 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // ====================================================================================
     // Start CONTACT section
-    private function testContact($pnCandiPk)
-    {
-      $showOld = true;
-      $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
-    }
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true)
+
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'true')
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4767,7 +4765,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
 
       $nCount = 0;
 
-      if($showOld != false)
+      if($showOld != 'false')
       {
         while($bRead)
         {
