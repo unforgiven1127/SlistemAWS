@@ -4697,14 +4697,17 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // ====================================================================================
     // Start CONTACT section
-
+    private function testContact($pnCandiPk)
+    {
+      $showOld = "true"
+      $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
+    }
 
     private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = 'false')
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
 
-console.log('test');
 
       /*$seperate = explode('_',$pnCandiPk);
       if(isset($seperate[0]))
