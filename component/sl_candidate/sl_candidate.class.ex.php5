@@ -4682,24 +4682,16 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     // ====================================================================================
     // ====================================================================================
     // Start CONTACT section
+    private function testContact($pnCandiPk)
+    {
+      $showOld = true;
+      $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
+    }
 
-
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4715,6 +4707,8 @@ class CSl_candidateEx extends CSl_candidate
       $nNewFields = 4 - $nContact;
       if($nNewFields <= 0)
         $nNewFields = 1;
+
+      $nNewFields = 4; // more field needed so we fixed 4 MCA
 
       $is_creator = false;
 
@@ -4738,19 +4732,21 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $nCount = 0;
-      while($bRead)
-      {
-        $asData = $oDbResult->getData();
-
-        $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
-
-        if($bVisible)
+      if($showOld){
+        while($bRead)
         {
-          $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData);
-          $nCount++;
-        }
+          $asData = $oDbResult->getData();
 
-        $bRead = $oDbResult->readNext();
+          $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+
+          if($bVisible)
+          {
+            $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData);
+            $nCount++;
+          }
+
+          $bRead = $oDbResult->readNext();
+        }
       }
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
