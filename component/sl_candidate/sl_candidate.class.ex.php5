@@ -4701,7 +4701,7 @@ class CSl_candidateEx extends CSl_candidate
       $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
     }
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
