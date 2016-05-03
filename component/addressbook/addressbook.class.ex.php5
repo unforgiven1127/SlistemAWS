@@ -236,8 +236,7 @@ class CAddressbookEx extends CAddressbook
   }
 
   public function getPageActions($psAction = '', $psType = '', $pnPk = 0)
-  {echo 'test';
-  exit;
+  {
     $oRight = CDependency::getComponentByName('right');
 
     $asActions = array();
