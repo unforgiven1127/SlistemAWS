@@ -8,7 +8,7 @@
 		<th class="text_center"></th>
 		<th class="text_center">Signed</th>
 		<th class="text_center">Paid</th>
-		<th class="text_center">Team</th>
+		<!--<th class="text_center">Team</th>-->
 		<th class="text_center">Placed</th>
 	</tr>
 
@@ -37,7 +37,7 @@
 		<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 		<td class="text_right">&yen;<?php echo number_format($value['signed'], $decimals, '.', ','); ?></td>
 		<td class="text_right">&yen;<?php echo number_format($value['paid'], $decimals, '.', ','); ?></td>
-		<td class="text_center"><?php echo $value['team']; ?></td>
+		<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 		<td class="text_right"><?php echo $value['placed']; ?></td>
 	</tr>
 
