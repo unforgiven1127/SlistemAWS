@@ -4689,7 +4689,7 @@ class CSl_candidateEx extends CSl_candidate
       $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
     }
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4724,7 +4724,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
 
       $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
-      $oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
+      //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
 
       $asTypes = getContactTypes();
 
