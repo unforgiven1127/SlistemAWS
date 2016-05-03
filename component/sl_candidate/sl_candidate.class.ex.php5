@@ -4681,7 +4681,7 @@ class CSl_candidateEx extends CSl_candidate
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4728,7 +4728,7 @@ $showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.hei
 $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`asdasd`)">Click Me</a>'));
 
       $nCount = 0;
-      if($showOld === true){
+
         while($bRead)
         {
           $asData = $oDbResult->getData();
@@ -4743,7 +4743,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
 
           $bRead = $oDbResult->readNext();
         }
-      }
+
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
       {
