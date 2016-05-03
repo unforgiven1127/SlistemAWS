@@ -4683,13 +4683,7 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // ====================================================================================
     // Start CONTACT section
-    private function testContact($pnCandiPk)
-    {
-      $showOld = true;
-      $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
-    }
-
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = true)
+    private function testContact($pnCandiPk, $pnContactpk = 0, $showOld = true)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
@@ -4735,7 +4729,78 @@ $showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.hei
 $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$showJavascript.'"><button type="button">Click for old contact data</button></a>'));
 
       $nCount = 0;
-      if($showOld){
+      if($showOld === true){
+        while($bRead)
+        {
+          $asData = $oDbResult->getData();
+
+          $bVisible = $this->check_contact_info_visibility($asData, $this->casUserData, $is_creator);
+
+          if($bVisible)
+          {
+            $this->_getContactFormRow($oForm, $nCount, $asTypes, $asData);
+            $nCount++;
+          }
+
+          $bRead = $oDbResult->readNext();
+        }
+      }
+
+      for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
+      {
+        $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
+      }
+
+      return $oForm->getDisplay();
+    }
+
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $showOld = false)
+    {
+      if(!assert('is_key($pnCandiPk)'))
+        return array('error' => 'Sorry, an error occured.');
+
+      $bIsAdmin = (bool)$this->casUserData['is_admin'];
+
+      $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
+
+      $oDbResult = $this->_getModel()->getContact($pnCandiPk, 'candi', $this->casUserData['pk'], array_keys($this->casUserData['group']), !$bIsAdmin);
+      $bRead = $oDbResult->readFirst();
+
+      $nContact = $oDbResult->numRows();
+      $nNewFields = 4 - $nContact;
+      if($nNewFields <= 0)
+        $nNewFields = 1;
+
+      $nNewFields = 4; // more field needed so we fixed 4 MCA
+
+      $is_creator = false;
+
+      if ($candidate_information['created_by'] == $this->casUserData['loginpk'])
+        $is_creator = true;
+
+      $oPage = CDependency::getCpPage();
+
+      $oForm = $this->_oDisplay->initForm('contactAddForm');
+      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
+
+      $oForm->setFormParams('addcont', true, array('action' => $sURL, 'class' => 'ContactForm', 'submitLabel'=>'Save contact details'));
+      $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 2));
+      $oForm->addField('input', 'candidatepk', array('type' => 'hidden','value'=> $pnCandiPk));
+      $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
+
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit contact details'));
+      //$oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
+
+      $asTypes = getContactTypes();
+
+//$sURL = $this->getResourcePath().'/resume/resume_template.html';
+$showURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_OLD, CONST_CANDIDATE_TYPE_CONTACT, $pnCandiPk);
+//$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
+$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
+$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$showJavascript.'"><button type="button">Click for old contact data</button></a>'));
+
+      $nCount = 0;
+      if($showOld === true){
         while($bRead)
         {
           $asData = $oDbResult->getData();
