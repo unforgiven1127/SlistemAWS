@@ -4728,7 +4728,8 @@ $showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.hei
 $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`asdasd`)">Click Me</a>'));
 
       $nCount = 0;
-
+      if(CDependency::getCpLogin()->isAdmin())
+      {
         while($bRead)
         {
           $asData = $oDbResult->getData();
@@ -4743,6 +4744,7 @@ $oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'tex
 
           $bRead = $oDbResult->readNext();
         }
+      }
 
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
