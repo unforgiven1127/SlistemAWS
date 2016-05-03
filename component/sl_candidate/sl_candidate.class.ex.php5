@@ -4699,7 +4699,7 @@ class CSl_candidateEx extends CSl_candidate
     // Start CONTACT section
     private function testContact($pnCandiPk)
     {
-      $showOld = "true"
+      $showOld = "true";
       $this->_getCandidateContactForm($pnCandiPk,0,$showOld);
     }
 
