@@ -25,7 +25,7 @@
 
 			if (empty($value['nationality']))
 				$flag_pic = 'world_32.png';
-			else if($value['nationality'] == "pl")
+			else if($value['nationality'] == "PK")
 				$flag_pic = 'MNG_32.png';
 			else
 				$flag_pic = $value['nationality'].'_32.png';
