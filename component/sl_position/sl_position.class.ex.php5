@@ -3194,8 +3194,7 @@ class CSl_positionEx extends CSl_position
     private function _getPlacementFilter()
     {
       $consultant = (int)getValue('loginpk', 0);
-      var_dump($consultant);
-      exit;
+
       $candidate = (int)getValue('candidate', 0);
 
       $position = getValue('cp_jd_key');
