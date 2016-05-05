@@ -59,6 +59,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     else
       $oQB->addSelect('scan.*');
 
+var_dump($oQB);
 
     if(is_integer($pvPk))
       $oQB->addWhere('scan.sl_candidatepk = '.$pvPk);

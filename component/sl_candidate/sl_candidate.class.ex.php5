@@ -6678,10 +6678,6 @@ die();*/
 
       $html = $this->_oDisplay->getCR();
 
-
-var_dump($duplicate_array['company']);
-exit;
-
       foreach ($duplicate_array['company'] as $key => $value)
       {
         $url = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI,
