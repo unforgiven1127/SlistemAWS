@@ -913,7 +913,7 @@ order by m.candidatefk
       $read = $db_result->readFirst();
 
       $revenue_data['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined');
+        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
       while($read)
       {
@@ -955,6 +955,9 @@ order by m.candidatefk
 
             if (empty($revenue_data[$user_id]['nationality']))
               $revenue_data[$user_id]['nationality'] = $row['nationality'];
+
+            if (empty($revenue_data[$user_id]['userPosition']))
+              $revenue_data[$user_id]['userPosition'] = $row['userPosition'];
 
             if (empty($revenue_data[$user_id]['placed']))
             {
