@@ -6498,7 +6498,7 @@ die();*/
             $sDuplicate = $this->_checkDuplicate($asData);
             if(!empty($sDuplicate))
             {
-              $asError[] = 'There may be duplicates. Please check the duplicate tab.';
+              $asError[] = 'There may be DUPLICATES. Please check the duplicate tab.';
               $this->casCandidateData['dup_tab'] = $sDuplicate;
             }
           }
