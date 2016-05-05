@@ -7,13 +7,13 @@
 					<th class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 				</tr>
 				<tr>
-					<th style="width: 170px;" class="text_center">Rank</th>
-					<th style="width: 170px;" class="text_center">Name</th>
-					<th class="text_center"></th>
-					<th class="text_center">Signed</th>
-					<th class="text_center">Paid</th>
+					<th style="width: 170px; height: 39px;" class="text_center">Rank</th>
+					<th style="width: 170px; height: 39px;" class="text_center">Name</th>
+					<th style="height: 39px;" class="text_center"></th>
+					<th style="height: 39px;" class="text_center">Signed</th>
+					<th style="height: 39px;" class="text_center">Paid</th>
 					<!--<th class="text_center">Team</th>-->
-					<th style="width: 230px;" class="text_center">Placed</th>
+					<th style="width: 230px; height: 39px;" class="text_center">Placed</th>
 				</tr>
 
 				<?php
@@ -69,13 +69,13 @@
 					<th class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 				</tr>
 				<tr>
-					<th style="width: 170px;" class="text_center">Rank</th>
-					<th style="width: 170px;" class="text_center">Name</th>
-					<th class="text_center"></th>
-					<th class="text_center">Signed</th>
-					<th class="text_center">Paid</th>
+					<th style="width: 170px; height: 39px;" class="text_center">Rank</th>
+					<th style="width: 170px; height: 39px;" class="text_center">Name</th>
+					<th style="height: 39px;" class="text_center"></th>
+					<th style="height: 39px;" class="text_center">Signed</th>
+					<th style="height: 39px;" class="text_center">Paid</th>
 					<!--<th class="text_center">Team</th>-->
-					<th style="width: 230px;" class="text_center">Placed</th>
+					<th style="width: 230px; height: 39px;" class="text_center">Placed</th>
 				</tr>
 
 				<?php
@@ -128,12 +128,12 @@
 					for ($i=0; $i < $total_consultant_count ; $i++) { 
 						echo "
 						<tr>
-							<td><center>-</center></td>
-							<td><center>-</center></td>
-							<td><center>-</center></td>
-							<td><center>-</center></td>
-							<td><center>-</center></td>
-							<td><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
+							<td style='height: 39px;'><center>-</center></td>
 						</tr>
 						";
 					}
