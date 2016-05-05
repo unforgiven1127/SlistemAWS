@@ -33,24 +33,24 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-				
-				<tr class="hover_row<?php echo $even; ?>">
-					<td class="text_right"><?php echo $row_number_rank; ?></td>
-					<td class="text_center"><?php echo $value['name']; ?></td>
-					<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
-					<td class="text_right">&yen;<?php echo number_format($value['signed'], $decimals, '.', ','); ?></td>
-					<td class="text_right">&yen;<?php echo number_format($value['paid'], $decimals, '.', ','); ?></td>
-					<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-					<td class="text_right"><?php echo $value['placed']; ?></td>
-				</tr>
+				<?php if($userPosition == "Consultant"){ ?>
+					<tr class="hover_row<?php echo $even; ?>">
+						<td class="text_right"><?php echo $row_number_rank; ?></td>
+						<td class="text_center"><?php echo $value['name']; ?></td>
+						<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
+						<td class="text_right">&yen;<?php echo number_format($value['signed'], $decimals, '.', ','); ?></td>
+						<td class="text_right">&yen;<?php echo number_format($value['paid'], $decimals, '.', ','); ?></td>
+						<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
+						<td class="text_right"><?php echo $value['placed']; ?></td>
+					</tr>
 
-				<?php
-					$row_number_rank += 1;
+					<?php
+						$row_number_rank += 1;
 
-					$total_paid += $value['paid'];
-					$total_signed += $value['signed'];
-					$total_placed += $value['placed'];
-
+						$total_paid += $value['paid'];
+						$total_signed += $value['signed'];
+						$total_placed += $value['placed'];
+				}
 					endforeach;
 				?>
 
