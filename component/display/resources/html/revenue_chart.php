@@ -8,7 +8,7 @@
 				</tr>
 				<tr>
 					<th style="width: 170px;" class="text_center">Rank</th>
-					<th class="text_center">Name</th>
+					<th style="width: 170px;" class="text_center">Name</th>
 					<th class="text_center"></th>
 					<th class="text_center">Signed</th>
 					<th class="text_center">Paid</th>
@@ -70,7 +70,7 @@
 				</tr>
 				<tr>
 					<th style="width: 170px;" class="text_center">Rank</th>
-					<th class="text_center">Name</th>
+					<th style="width: 170px;" class="text_center">Name</th>
 					<th class="text_center"></th>
 					<th class="text_center">Signed</th>
 					<th class="text_center">Paid</th>
