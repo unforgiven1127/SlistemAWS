@@ -904,9 +904,10 @@ order by m.candidatefk
 
       $array_for_printing = $revenue_data_raw;
 // Researcher position will be included MCA
+//LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
       $query .= 'FROM revenue_member ';
-      $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")';
+      $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk ';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
 
       $db_result = $this->oDB->executeQuery($query);
@@ -975,7 +976,8 @@ order by m.candidatefk
           if (empty($revenue_data[$user_id]['team']))
             $revenue_data[$user_id]['team'] = $this->get_user_team($user_id);
 
-          if (strtolower($row['user_position']) == 'consultant')
+          //if (strtolower($row['user_position']) == 'consultant')
+          if(1) // did not calculate researchers so changed to 1
           {
             switch ($current_revenue_info['status'])
             {

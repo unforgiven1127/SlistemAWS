@@ -62,8 +62,6 @@
 				</tr>
 			</table>
 		</td>
-	</tr>
-	<tr>
 		<td>
 		<table class="revenue_table">
 				<tr>
@@ -97,7 +95,7 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-				<?php if($value['userPosition'] == "Researcher"){ ?>
+				<?php if($value['userPosition'] != "Consultant"){ ?>
 					<tr class="hover_row<?php echo $even; ?>">
 						<td class="text_right"><?php echo $row_number_rank; ?></td>
 						<td class="text_center"><?php echo $value['name']; ?></td>
