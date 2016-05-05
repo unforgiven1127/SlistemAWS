@@ -4022,8 +4022,8 @@ class CSl_statEx extends CSl_stat
 
     private function get_revenue_chart()
     {
-      echo 'test';
-      exit;
+      //echo 'test'; // mca MCA
+      //exit;
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
       $year = $next_year = getValue('year', date('Y'));

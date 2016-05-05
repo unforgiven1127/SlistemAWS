@@ -903,10 +903,10 @@ order by m.candidatefk
       }
 
       $array_for_printing = $revenue_data_raw;
-
-      $query = 'SELECT revenue_member.*, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
+// Researcher position will be included MCA
+      $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
       $query .= 'FROM revenue_member ';
-      $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk AND login.position LIKE "Consultant"';
+      $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
 
       $db_result = $this->oDB->executeQuery($query);

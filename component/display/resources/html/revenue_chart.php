@@ -33,7 +33,7 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-
+				
 				<tr class="hover_row<?php echo $even; ?>">
 					<td class="text_right"><?php echo $row_number_rank; ?></td>
 					<td class="text_center"><?php echo $value['name']; ?></td>
