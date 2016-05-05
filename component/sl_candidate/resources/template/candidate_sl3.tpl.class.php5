@@ -436,6 +436,10 @@ class CCandidate_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getBloc('', 'keyword', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['keyword'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
+          $sHTML.= $this->coDisplay->getBloc('', 'consultant', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last candi_detail_row_status'));
           $sHTML.= $this->coDisplay->getBloc('', 'Activity', array('class' => 'candi_detail_label', 'style' => 'height: 30px;'));
