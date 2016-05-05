@@ -3,7 +3,7 @@
 		<td>
 			<table class="revenue_table">
 				<tr>
-					<th class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Leaders <?php echo $year; ?></th>
+					<th class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Leaders <?php echo $year; ?></th>
 				</tr>
 				<tr>
 					<th style="width: 170px;" class="text_center">Rank</th>
