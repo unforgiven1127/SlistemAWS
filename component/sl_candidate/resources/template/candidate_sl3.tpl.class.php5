@@ -443,8 +443,6 @@ class CCandidate_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['keyword'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
-
-
         $sHTML.= $this->coDisplay->getFloatHack();
 
         $sHTML.= $this->coDisplay->getBlocEnd();
