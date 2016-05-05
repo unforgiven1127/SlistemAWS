@@ -58,7 +58,6 @@
 					<td class="text_center" colspan="3">Total</td>
 					<td class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
 					<td class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
-					<td></td>
 					<td class="text_right"><?php echo $total_placed; ?></td>
 				</tr>
 			</table>
