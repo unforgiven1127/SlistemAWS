@@ -6,13 +6,13 @@
 					<th class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Leaders <?php echo $year; ?></th>
 				</tr>
 				<tr>
-					<th class="text_center">Rank</th>
+					<th style="width: 200px;" class="text_center">Rank</th>
 					<th class="text_center">Name</th>
 					<th class="text_center"></th>
 					<th class="text_center">Signed</th>
 					<th class="text_center">Paid</th>
 					<!--<th class="text_center">Team</th>-->
-					<th class="text_center">Placed</th>
+					<th style="width: 270px;" class="text_center">Placed</th>
 				</tr>
 
 				<?php
