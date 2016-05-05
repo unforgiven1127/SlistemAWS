@@ -1,3 +1,4 @@
+<?php $total_consultant_count = 0 ?>
 <table>
 	<tr>
 		<td>
@@ -33,7 +34,7 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-				<?php if($value['userPosition'] == "Consultant"){ ?>
+				<?php if($value['userPosition'] == "Consultant"){ $total_consultant_count++;?>
 					<tr class="hover_row<?php echo $even; ?>">
 						<td class="text_right"><?php echo $row_number_rank; ?></td>
 						<td class="text_center"><?php echo $value['name']; ?></td>
@@ -99,7 +100,7 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-				<?php if($value['userPosition'] == "Researcher"){ ?>
+				<?php if($value['userPosition'] == "Researcher"){ $total_consultant_count--;?>
 					<tr class="hover_row<?php echo $even; ?>">
 						<td class="text_right"><?php echo $row_number_rank; ?></td>
 						<td class="text_center"><?php echo $value['name']; ?></td>
@@ -122,7 +123,21 @@
 				}
 					endforeach;
 				?>
-
+				<?php if($total_consultant_count>0)
+				{
+					for ($i=0; $i < $total_consultant_count ; $i++) { 
+						echo "
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+						";
+					}
+				} ?>
 				<tr class="revenue_table_footer">
 					<td class="text_center" colspan="3">Total</td>
 					<td class="text_right">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
