@@ -392,7 +392,7 @@ class CCandidate_sl3 extends CTemplate
         $sManager = '<a id="rm_link_id" href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
           oConf.width = 600;
-          oConf.height = 400;
+          oConf.height = 450;
           goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');" title="Follow activies for this candidate" >'.$sManager.'</a>';
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
