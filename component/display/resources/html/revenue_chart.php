@@ -128,12 +128,12 @@
 					for ($i=0; $i < $total_consultant_count ; $i++) { 
 						echo "
 						<tr>
-							<td>a</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><center>-</center></td>
+							<td><center>-</center></td>
+							<td><center>-</center></td>
+							<td><center>-</center></td>
+							<td><center>-</center></td>
+							<td><center>-</center></td>
 						</tr>
 						";
 					}
