@@ -133,7 +133,7 @@
 							<td style='height: 39px;'><center>-</center></td>
 							<td style='height: 39px;'><center>-</center></td>
 							<td style='height: 39px;'><center>-</center></td>
-							<td style='height: 39px;'><center>-</center></td>
+							<td align='right' style='height: 39px;'>-</td>
 						</tr>
 						";
 					}
