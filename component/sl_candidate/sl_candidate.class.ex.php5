@@ -6498,7 +6498,7 @@ die();*/
             $sDuplicate = $this->_checkDuplicate($asData);
             if(!empty($sDuplicate))
             {
-              $asError[] = 'There may be DUPLICATES. Please check the duplicate tab.';
+              $asError[] = 'There may be duplicates. Please check the duplicate tab.';
               $this->casCandidateData['dup_tab'] = $sDuplicate;
             }
           }
@@ -6667,6 +6667,7 @@ die();*/
       return $asError;
     }
 
+// candidate duplica control starts
     private function _checkDuplicate($candidate_info)
     {
 
@@ -6676,6 +6677,10 @@ die();*/
         return '';
 
       $html = $this->_oDisplay->getCR();
+
+
+var_dump($duplicate_array['company']);
+exit;
 
       foreach ($duplicate_array['company'] as $key => $value)
       {
@@ -6753,6 +6758,9 @@ die();*/
 
       return $html;
     }
+// candidate duplica control ends
+
+
 
     /* a pickle ?
      * private function _saveContactDetails($pbTest = true, $pbSave = false, $pasCandidate = array())
