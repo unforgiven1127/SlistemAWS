@@ -6220,6 +6220,8 @@ class CSl_candidateEx extends CSl_candidate
         if(empty($pasCandidate))
         {
           $sDuplicate = getValue('check_duplicate');
+          var_dump($sDuplicate);
+          exit;
           if(empty($sDuplicate) || $sDuplicate != $asData['lastname'].'_'.$asData['firstname'])
           {
             $sDuplicate = $this->_checkDuplicate($asData);
