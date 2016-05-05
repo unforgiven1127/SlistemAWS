@@ -1100,8 +1100,8 @@ order by m.candidatefk
       $query .= ' AND sl_position_link.status >= 51';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1
-                  AND date_created >= "'.$start_date.'"
-                  AND date_created <= "'.$end_date.'"';
+                  AND sl_position_link.date_created >= "'.$start_date.'"
+                  AND sl_position_link.date_created <= "'.$end_date.'"';
     }
 
     $query .= ' ORDER BY ccm_create_date DESC';
