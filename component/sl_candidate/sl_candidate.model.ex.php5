@@ -484,6 +484,11 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
   public function getDuplicate($candidate_info, $force_target = 0, $merge_data = false, $skip_company = false)
   {
+    include 'ChromePhp.php';
+ChromePhp::log('Hello console!');
+ChromePhp::log($_SERVER);
+ChromePhp::warn('something went wrong!');
+
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
