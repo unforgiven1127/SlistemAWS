@@ -1360,13 +1360,14 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function getUserInformaiton($user_id)
   {
+    $oDb = CDependency::getComponentByName('database');
+
     $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
 
     $db_result = $oDB->executeQuery($sQuery);
 
     $read = $db_result->readFirst();
 
-    $row = array();
     while ($read)
     {
       $row = $db_result->getData();
