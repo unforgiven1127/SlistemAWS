@@ -348,7 +348,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
 ChromePhp::log($sQuery);
     $result = $this->oDB->ExecuteQuery($sQuery);
-ChromePhp::log($result);
+ChromePhp::log($result->getData());
     return $result;
   }
 
