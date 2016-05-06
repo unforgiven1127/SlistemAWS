@@ -590,7 +590,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $query.= "cont.value = ".$value." OR ";
       }
       $query = substr($query, 0, -3);
-      $query.= ")";
+      $query.= ") AND";
     }
 
     if (!$skip_company)
@@ -600,7 +600,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     {
       $query.= ' ca.sl_candidatepk = '.$force_target.' ';
     }
-    else
+    els
     {
       $query.= ' ( (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower($lastname.'%')).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) ';
       $query.= ' OR (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower('%'.$lastname)).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) )';
