@@ -343,6 +343,13 @@ class CSl_candidateModelEx extends CSl_candidateModel
   /* ****************************************************** */
   //Common
 
+  public function getSlPositionLink($candidatefk)
+  {
+    $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
+
+    return $this->oDB->ExecuteQuery($sQuery);
+  }
+
   public function getIndustry($pbIncludeCategory = true, $pbIgnoreRights = false)
   {
     if(!assert('is_bool($pbIncludeCategory) && is_bool($pbIgnoreRights)'))

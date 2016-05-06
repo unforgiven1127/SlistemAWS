@@ -102,7 +102,12 @@ class CSlateVars
     return $this->casCurrency;
   }
 
+  public function getSlPositionLinkCandidate($candidatefk)
+  {
+    $oDbResult = $this->_getModel()->getSlPositionLink($candidatefk);
 
+    return $oDbResult;
+  }
 
   public function getIndustryList($pbIncludeCategory = true, $pbIgnoreRights = true, $ignore_session = false)
   {
