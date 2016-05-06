@@ -587,7 +587,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     {
       $query.= "(";
       foreach ($candidate_contact_info as $key => $value) {
-        $query.= "cont.value = ".$value." OR ";
+        $query.= "cont.value = '".$value."' OR ";
       }
       $query = substr($query, 0, -3);
       $query.= ") AND";
