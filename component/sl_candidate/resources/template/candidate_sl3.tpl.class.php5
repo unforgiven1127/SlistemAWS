@@ -39,7 +39,7 @@ class CCandidate_sl3 extends CTemplate
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
     $slPositionLinkResult = $oCandidate->getVars()->getSlPositionLinkCandidate($pasCandidateData['candidatefk']);
-ChromePhp::log($slPositionLinkResult);
+
 
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
@@ -315,10 +315,16 @@ ChromePhp::log($slPositionLinkResult);
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
 
-          $slPositionLinkStatus = $slPositionLinkResult['status'];
-          $sStatusLabel = $sExtraStatus.$activity[$slPositionLinkStatus];
-
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
+
+          ChromePhp::log($slPositionLinkResult['status']);
+          if(isset($slPositionLinkResult['status']))
+          {
+            $slPositionLinkStatus = $slPositionLinkResult['status'];
+            $sStatusLabel =getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
+            ChromePhp::log($sStatusLabel);
+          }
+
           if($pasCandidateData['_in_play'])
           {
             $sClass.= ' show_play';
