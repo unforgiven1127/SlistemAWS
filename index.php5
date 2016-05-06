@@ -4,6 +4,7 @@ use Tracy\Debugger;
 
 //if you want session to be handled in database
 require_once './common/lib/db_session.inc.php5';
+require_once './common/lib/ChromePhp.php';
 
 session_start();
 header('Cache-Control: no-cache');
