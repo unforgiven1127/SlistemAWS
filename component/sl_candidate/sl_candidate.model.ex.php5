@@ -347,16 +347,18 @@ class CSl_candidateModelEx extends CSl_candidateModel
   {
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
 //ChromePhp::log($sQuery);
+    $returnArray = array();
     $oDbResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
-ChromePhp::log($bRead);
+//ChromePhp::log($bRead);
     while($bRead)
     {
-      ChromePhp::log($oDbResult->getData());
+      array_push($returnArray,$oDbResult->getData());
+      //ChromePhp::log($oDbResult->getData());
       $bRead = $oDbResult->readNext();
     }
 //ChromePhp::log($result->getData());
-    return $oDbResult;
+    return $returnArray;
   }
 
   public function getIndustry($pbIncludeCategory = true, $pbIgnoreRights = false)
