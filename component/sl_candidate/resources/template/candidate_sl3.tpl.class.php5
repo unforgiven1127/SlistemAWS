@@ -315,10 +315,8 @@ ChromePhp::log($slPositionLinkResult);
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
 
-          if(empty($sExtraStatus))
-          {
-            $sExtraStatus = $slPositionLinkResult['status'];
-          }
+          $slPositionLinkStatus = $slPositionLinkResult['status'];
+          $sStatusLabel = $sExtraStatus.$activity[$slPositionLinkStatus];
 
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
           if($pasCandidateData['_in_play'])
