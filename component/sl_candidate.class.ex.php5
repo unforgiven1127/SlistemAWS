@@ -1058,8 +1058,7 @@ class CSl_candidateEx extends CSl_candidate
 
       //params for the sub-templates when required
       $oTemplate = $this->_oDisplay->getTemplate($sTemplate);
-      ChromePhp::log('data: ');
-      ChromePhp::log($pasCandidateData);
+
       return $oTemplate->getDisplay($pasCandidateData, $this->csTplSettings);
     }
 

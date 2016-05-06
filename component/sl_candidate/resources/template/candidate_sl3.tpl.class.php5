@@ -38,7 +38,7 @@ class CCandidate_sl3 extends CTemplate
     $sExtraStatus = '';
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
-
+ChromePhp::log($pasCandidateData);
 
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
