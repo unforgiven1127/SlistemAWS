@@ -4236,7 +4236,6 @@ class CSl_statEx extends CSl_stat
       {
         if (in_array($id, $consultant_skip_id))
           continue;
-ChromePhp::log($id);
         if($id != null)
         {
           $user_info = getUserInformaiton($id);
