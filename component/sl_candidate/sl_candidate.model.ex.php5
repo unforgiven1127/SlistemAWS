@@ -347,7 +347,9 @@ class CSl_candidateModelEx extends CSl_candidateModel
   {
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
 
-    return $this->oDB->ExecuteQuery($sQuery);
+    $result = $this->oDB->ExecuteQuery($sQuery);
+
+    return $result->getData();
   }
 
   public function getIndustry($pbIncludeCategory = true, $pbIgnoreRights = false)

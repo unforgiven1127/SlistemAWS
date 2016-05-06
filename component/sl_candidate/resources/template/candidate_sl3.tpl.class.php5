@@ -38,8 +38,8 @@ class CCandidate_sl3 extends CTemplate
     $sExtraStatus = '';
     $asStatus = $oCandidate->getVars()->getCandidateStatusList(true);
     $asGrade = $oCandidate->getVars()->getCandidateGradeList();
-    $slPositionLInk = $oCandidate->getVars()->getSlPositionLinkCandidate($pasCandidateData['candidatefk']);
-ChromePhp::log($slPositionLInk);
+    $slPositionLinkResult = $oCandidate->getVars()->getSlPositionLinkCandidate($pasCandidateData['candidatefk']);
+ChromePhp::log($slPositionLinkResult);
 
     /*$asLocation = $oCandidate->getVars()->getLocationList();
     $asNationality = $oCandidate->getVars()->getNationalityList();
