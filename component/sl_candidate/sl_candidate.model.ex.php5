@@ -353,7 +353,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
 //ChromePhp::log($bRead);
     while($bRead)
     {
-      array_push($returnArray,$oDbResult->getData());
+      $returnArray = $oDbResult->getData();// get the latest data
+      //array_push($returnArray,$oDbResult->getData());
       //ChromePhp::log($oDbResult->getData());
       $bRead = $oDbResult->readNext();
     }
