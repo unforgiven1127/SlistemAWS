@@ -16,7 +16,7 @@
 	</div>
 </form>
 
-<?php foreach ($stats_data as $key => $stat): ?>
+<?php foreach ($stats_data as $key => $stat): $arrayPosition = $key?>
 <table class="totals_table">
 	<tr>
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
@@ -48,7 +48,7 @@
 	else
 		$even = '';
 	?>
-
+	<?php if($arrayPosition == "Consultant " || $value['position'] = "Researcher"){ ?>
 	<tr class="hover_row<?php echo $even; ?>">
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
@@ -241,7 +241,7 @@
 			</div>
 		</td>
 	</tr>
-
+	<?php } ?>
 	<?php $row_number_rank += 1; ?>
 	<?php endforeach ?>
 	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
