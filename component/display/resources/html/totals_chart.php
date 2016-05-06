@@ -58,8 +58,8 @@
 	?>
 	<?php if($flag){ ?>
 	<tr class="hover_row<?php echo $even; ?>">
-	<td>$arrayPosition</td>
-	<td>$value['position']</td>
+	<td><?php echo $arrayPosition ?></td>
+	<td><?php echo $value['position'] ?></td>
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
 			<div class="stat_holder">
