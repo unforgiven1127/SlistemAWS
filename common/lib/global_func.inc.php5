@@ -1362,7 +1362,7 @@ function _live_dump($pvTrace, $psTitle = null)
   {
     $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
       ChromePhp::log($sQuery);
-    
+    exit;
 
   }
 
