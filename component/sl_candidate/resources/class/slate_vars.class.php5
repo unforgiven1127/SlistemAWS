@@ -106,7 +106,7 @@ class CSlateVars
   {
     $oDbResult = $this->_getModel()->getSlPositionLink($candidatefk);
 
-    return $oDbResult;
+    return $oDbResult->getData();
   }
 
   public function getIndustryList($pbIncludeCategory = true, $pbIgnoreRights = true, $ignore_session = false)
