@@ -600,7 +600,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     {
       $query.= ' ca.sl_candidatepk = '.$force_target.' ';
     }
-    els
+    else
     {
       $query.= ' ( (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower($lastname.'%')).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) ';
       $query.= ' OR (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower('%'.$lastname)).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) )';
