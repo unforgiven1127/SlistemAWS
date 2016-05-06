@@ -6488,6 +6488,8 @@ die();*/
         //save all the profile data
         $this->casCandidateData['profile'] = $asData;
 
+        $asData['contact'] = getValue('contact_value');
+
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // check duplicates when creating new candidate
         if(empty($pasCandidate))
