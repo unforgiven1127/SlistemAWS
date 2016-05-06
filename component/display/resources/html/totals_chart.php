@@ -43,12 +43,20 @@
 
 	<?php foreach ($stat as $key => $value): ?>
 	<?php
+	$flag = true;
+	if($arrayPosition == "Researcher")
+	{
+		if($value['position'] != "Researcher")
+		{
+			$flag = false;
+		}
+	}
 	if ($row_number_rank % 2 === 0)
 		$even = ' even_row';
 	else
 		$even = '';
 	?>
-	<?php if($arrayPosition == "Consultant " || $value['position'] = "Researcher"){ ?>
+	<?php if($flag){ ?>
 	<tr class="hover_row<?php echo $even; ?>">
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
