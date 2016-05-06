@@ -6672,7 +6672,7 @@ die();*/
 // candidate duplica control starts
     private function _checkDuplicate($candidate_info)
     {
-ChromePhp::log($candidate_info);
+//ChromePhp::log($candidate_info);
       $duplicate_array = $this->_getModel()->getDuplicate($candidate_info);
 
       if(empty($duplicate_array['company']) && empty($duplicate_array['other']))

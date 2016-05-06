@@ -485,6 +485,15 @@ class CSl_candidateModelEx extends CSl_candidateModel
   public function getDuplicate($candidate_info, $force_target = 0, $merge_data = false, $skip_company = false)
   {
 
+    $candidate_contact_info = array(); // will use for checking duplicates
+    foreach($candidate_info['contact'] as $contact)
+    {
+      if($contact != "")
+      {
+        array_push($candidate_contact_info, $contact);
+      }
+    }
+
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
@@ -513,10 +522,10 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     if (!empty($company_id) && !$skip_company)
     {
-      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target);
+      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info);
 
       // requested by Pam: check reversed lname/fname in the same company
-      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target);
+      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target,$candidate_contact_info);
 
       foreach ($duplicate_temp as $key => $value)
       {
@@ -527,7 +536,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       uasort($duplicate_array['company'], sort_multi_array_by_value('ratio', 'reverse'));
     }
 
-    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target);
+    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
 
     if ($merge_data)
     {
@@ -550,7 +559,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
   }
 
 
-  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0)
+  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0, $candidate_contact_info = "")
   {
     $minimum_ratio = 40;
     $duplicate_array = array();
@@ -571,7 +580,18 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query.= ' LEFT JOIN sl_occupation AS ocu ON (ocu.sl_occupationpk = cap.occupationfk)';
     $query.= ' LEFT JOIN sl_industry AS ind ON (ind.sl_industrypk = cap.industryfk)';
     $query.= ' LEFT JOIN sl_company AS com ON (com.sl_companypk = cap.companyfk)';
+    $query.= ' LEFT JOIN sl_contact AS cont ON (cont.itemfk = ca.sl_candidatepk)';
     $query.= ' WHERE ';
+
+    if($candidate_contact_info != "")
+    {
+      $query.= "(";
+      foreach ($candidate_contact_info as $key => $value) {
+        $query.= "cont.value = ".$value." OR ";
+      }
+      $query = substr($query, 0, -3);
+      $query.= ")";
+    }
 
     if (!$skip_company)
       $query.= ' cap.companyfk = '.$company_id.' AND ';
@@ -587,6 +607,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
       $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
     }
+
+ChromePhp::log($query);
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
