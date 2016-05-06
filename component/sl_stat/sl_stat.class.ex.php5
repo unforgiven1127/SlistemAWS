@@ -4237,6 +4237,9 @@ class CSl_statEx extends CSl_stat
         if (in_array($id, $consultant_skip_id))
           continue;
 
+        $user_info = getUserInformaiton($user_id);
+        ChromePhp::log($user_info);
+
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
         {
           $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];

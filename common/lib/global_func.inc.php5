@@ -1358,7 +1358,21 @@ function _live_dump($pvTrace, $psTitle = null)
   //========================================================================================================
 
 
+  function getUserInformaiton($user_id)
+  {
+    $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
+    $db_result = $oDb->ExecuteQuery($sQuery);
 
+    $read = $db_result->readFirst();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+    }
+
+    return $row;
+
+  }
 
   function addIndustry($pnPk, $psLabel, $pnStatus, $pnParentfk)
   {
