@@ -44,7 +44,7 @@
 	<?php foreach ($stat as $key => $value): ?>
 	<?php
 	$flag = true;
-	if($arrayPosition == "Researcher")
+	if($arrayPosition == "researcher")
 	{
 		if($value['position'] != "Researcher")
 		{
@@ -58,8 +58,8 @@
 	?>
 	<?php if($flag){ ?>
 	<tr class="hover_row<?php echo $even; ?>">
-	<td><?php echo $arrayPosition ?></td>
-	<td><?php echo $value['position'] ?></td>
+	<!--<td><?php echo $arrayPosition ?></td>-->
+	<!--<td><?php echo $value['position'] ?></td>-->
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
 			<div class="stat_holder">
