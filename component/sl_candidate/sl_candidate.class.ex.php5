@@ -4,7 +4,7 @@ require_once('component/sl_candidate/sl_candidate.class.php5');
 require_once('component/sl_candidate/sl_candidate.model.php5');
 require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 require_once('component/sl_candidate/resources/class/slate_vars.class.php5');
-
+require_once './common/lib/ChromePhp.php';
 
 class CSl_candidateEx extends CSl_candidate
 {
@@ -6672,6 +6672,7 @@ die();*/
 // candidate duplica control starts
     private function _checkDuplicate($candidate_info)
     {
+ChromePhp::log('Hello console!');
 
       $duplicate_array = $this->_getModel()->getDuplicate($candidate_info);
 
