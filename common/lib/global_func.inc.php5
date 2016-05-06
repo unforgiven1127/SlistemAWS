@@ -1361,9 +1361,18 @@ function _live_dump($pvTrace, $psTitle = null)
   function getUserInformaiton($user_id)
   {
     $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
-      ChromePhp::log($sQuery);
-      echo $sQuery;
-    exit;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+
+    $row = array();
+    while ($read)
+    {
+      $row = $db_result->getData();
+    }
+
+    return $row;
 
   }
 
