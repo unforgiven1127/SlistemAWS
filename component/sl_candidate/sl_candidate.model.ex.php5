@@ -608,7 +608,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
     }
 
-ChromePhp::log($query);
+//ChromePhp::log($query);
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
