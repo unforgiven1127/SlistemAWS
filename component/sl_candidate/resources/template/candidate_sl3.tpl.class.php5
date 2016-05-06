@@ -321,7 +321,7 @@ class CCandidate_sl3 extends CTemplate
           if(isset($slPositionLinkResult['status'])) // works
           {
             $slPositionLinkStatus = $slPositionLinkResult['status'];
-            $sStatusLabel = $oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
+            $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
             ChromePhp::log($sStatusLabel);
           }
 
