@@ -317,7 +317,7 @@ ChromePhp::log($slPositionLinkResult);
 
           if(empty($sExtraStatus))
           {
-            $sExtraStatus = $slPositionLinkResul['status'];
+            $sExtraStatus = $slPositionLinkResult['status'];
           }
 
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
