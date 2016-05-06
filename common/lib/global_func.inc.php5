@@ -1371,6 +1371,7 @@ function _live_dump($pvTrace, $psTitle = null)
     while ($read)
     {
       $row = $db_result->getData();
+      $read = $db_result->readNext();
     }
 
     return $row;
