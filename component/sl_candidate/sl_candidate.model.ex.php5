@@ -346,9 +346,16 @@ class CSl_candidateModelEx extends CSl_candidateModel
   public function getSlPositionLink($candidatefk)
   {
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
     $result = $this->oDB->ExecuteQuery($sQuery);
-ChromePhp::log($result->getData());
+    $bRead = $oDbResult->readFirst();
+ChromePhp::log($bRead);
+    while($bRead)
+    {
+      ChromePhp::log($result->getData());
+      $bRead = $oDbResult->readNext();
+    }
+//ChromePhp::log($result->getData());
     return $result;
   }
 
