@@ -346,10 +346,10 @@ class CSl_candidateModelEx extends CSl_candidateModel
   public function getSlPositionLink($candidatefk)
   {
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
-
+ChromePhp::log($sQuery);
     $result = $this->oDB->ExecuteQuery($sQuery);
-
-    return $result->getData();
+ChromePhp::log($result);
+    return $result;
   }
 
   public function getIndustry($pbIncludeCategory = true, $pbIgnoreRights = false)
