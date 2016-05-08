@@ -3502,8 +3502,15 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $oLogin->getUserLink($nAttendee, true);
 */
 //          $sLink = $oLogin->getUserLink($nAttendee, true);
-          $user_info = getUserInformaiton($nAttendee);
-          $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
+          if($nAttendee == -1)
+          {
+            $sLink = "Unknown";
+          }
+          else
+          {
+            $user_info = getUserInformaiton($nAttendee);
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
+          }
 
 //ChromePhp::log(getUserInformaiton($nAttendee));
 
@@ -3556,7 +3563,7 @@ class CSl_candidateEx extends CSl_candidate
           if($createdByFk == -1)
           {
             $sLink = "Unknown";
-            ChromePhp::log('icerde');
+            //ChromePhp::log('icerde');
           }
           else
           {
@@ -3564,8 +3571,8 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
           }
 
-ChromePhp::log($createdByFk);
-ChromePhp::log($sLink);
+//ChromePhp::log($createdByFk);
+//ChromePhp::log($sLink);
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'by', array('style' => 'width:20px;','class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:150px;','class' => 'meeting_row_creator'));
@@ -3588,7 +3595,7 @@ ChromePhp::log($sLink);
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:150px;', 'class' => 'meeting_row_first'));
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
-            //$sMeeting.= $this->_oDisplay->getBloc('', ' <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            $sMeeting.= $this->_oDisplay->getBloc('', ' <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
