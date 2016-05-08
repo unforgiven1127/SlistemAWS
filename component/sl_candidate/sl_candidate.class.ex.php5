@@ -3565,6 +3565,7 @@ class CSl_candidateEx extends CSl_candidate
           }
 
 ChromePhp::log($createdByFk);
+ChromePhp::log($sLink);
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'by', array('style' => 'width:20px;','class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:150px;','class' => 'meeting_row_creator'));
