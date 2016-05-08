@@ -3558,12 +3558,12 @@ class CSl_candidateEx extends CSl_candidate
             //----------------------------------------------------
             //second row
             $asDate = explode(' ',$oDbResult->getFieldValue('date_created'));
-/*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
+            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
-*/
-            $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
+
+            //$sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 ChromePhp::log(getUserInformaiton($sLink));
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
