@@ -3547,17 +3547,22 @@ class CSl_candidateEx extends CSl_candidate
 
           $sMeeting = $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row '.$sClass));
 
-            $sMeeting.= $this->_oDisplay->getBloc('', 'meeting set for ', array('class' => 'meeting_row_forth'));
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set for ', array('class' => 'meeting_row_forth'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_attendee'));
 
-
-            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
-            $sMeeting.= $this->_oDisplay->getFloathack();
 
           $createdByFk = (int)$oDbResult->getFieldValue('created_by');
           $user_info = getUserInformaiton($createdByFk);
           $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
 ChromePhp::log($createdByFk);
+
+            $sMeeting.= $this->_oDisplay->getBloc('', 'by', array('class' => 'meeting_row_first'));
+            $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
+
+            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            $sMeeting.= $this->_oDisplay->getFloathack();
+
+
             //----------------------------------------------------
             //second row
             $asDate = explode(' ',$oDbResult->getFieldValue('date_created'));
@@ -3568,9 +3573,11 @@ ChromePhp::log($createdByFk);
 */
 //ChromePhp::log($sLink);
 
-            $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
-            $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
-            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
+            //$sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('class' => 'meeting_row_first'));
+            //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
+            //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
+            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
