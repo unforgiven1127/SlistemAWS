@@ -3556,6 +3556,7 @@ class CSl_candidateEx extends CSl_candidate
           if($createdByFk == -1)
           {
             $sLink = "Unknown";
+            ChromePhp::log('icerde');
           }
           else
           {
