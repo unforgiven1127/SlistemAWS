@@ -3509,7 +3509,7 @@ class CSl_candidateEx extends CSl_candidate
           else
           {
             $user_info = getUserInformaiton($nAttendee);
-            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
 
 //ChromePhp::log(getUserInformaiton($nAttendee));
