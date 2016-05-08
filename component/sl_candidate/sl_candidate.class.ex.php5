@@ -3559,13 +3559,13 @@ ChromePhp::log($createdByFk);
             $sMeeting.= $this->_oDisplay->getBloc('', 'by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
 
-            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
             //----------------------------------------------------
             //second row
-            $asDate = explode(' ',$oDbResult->getFieldValue('date_created'));
+            //$asDate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
 /*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
@@ -3577,7 +3577,7 @@ ChromePhp::log($createdByFk);
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('class' => 'meeting_row_first'));
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
-            $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            $sMeeting.= $this->_oDisplay->getBloc('', ' <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
