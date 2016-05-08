@@ -3501,9 +3501,11 @@ class CSl_candidateEx extends CSl_candidate
           else
             $sLink = $oLogin->getUserLink($nAttendee, true);
 */
-          $sLink = $oLogin->getUserLink($nAttendee, true);
+//          $sLink = $oLogin->getUserLink($nAttendee, true);
+          $user_info = getUserInformaiton($nAttendee);
+          $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
 
-ChromePhp::log($nAttendee);
+//ChromePhp::log($nAttendee);
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
@@ -3545,7 +3547,7 @@ ChromePhp::log($nAttendee);
 
           $sMeeting = $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row '.$sClass));
 
-            $sMeeting.= $this->_oDisplay->getBloc('', 'MEETING SET FOR ', array('class' => 'meeting_row_forth'));
+            $sMeeting.= $this->_oDisplay->getBloc('', 'meeting set for ', array('class' => 'meeting_row_forth'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_attendee'));
 
 
