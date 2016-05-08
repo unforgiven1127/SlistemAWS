@@ -3558,10 +3558,15 @@ ChromePhp::log(getUserInformaiton($nAttendee));
             //----------------------------------------------------
             //second row
             $asDate = explode(' ',$oDbResult->getFieldValue('date_created'));
-            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
+/*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
+*/
+            $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
+
+            $user_info = getUserInformaiton($sLink);
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
