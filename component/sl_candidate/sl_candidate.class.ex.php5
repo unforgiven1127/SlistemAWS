@@ -3502,11 +3502,10 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $oLogin->getUserLink($nAttendee, true);
 */
 //          $sLink = $oLogin->getUserLink($nAttendee, true);
-
           $user_info = getUserInformaiton($nAttendee);
           $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
 
-//ChromePhp::log(getUserInformaiton($nAttendee));
+ChromePhp::log(getUserInformaiton($nAttendee));
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
@@ -3563,8 +3562,6 @@ class CSl_candidateEx extends CSl_candidate
             else
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 
-            //$sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
-ChromePhp::log(getUserInformaiton($sLink));
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
