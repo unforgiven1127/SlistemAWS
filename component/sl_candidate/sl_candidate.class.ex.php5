@@ -3552,8 +3552,17 @@ class CSl_candidateEx extends CSl_candidate
 
 
           $createdByFk = (int)$oDbResult->getFieldValue('created_by');
-          $user_info = getUserInformaiton($createdByFk);
-          $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
+
+          if($createdByFk == -1)
+          {
+            $sLink = "Unknown";
+          }
+          else
+          {
+            $user_info = getUserInformaiton($createdByFk);
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
+          }
+
 ChromePhp::log($createdByFk);
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'by', array('style' => 'width:20px;','class' => 'meeting_row_first'));
