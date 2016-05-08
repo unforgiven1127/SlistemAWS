@@ -3553,9 +3553,9 @@ class CSl_candidateEx extends CSl_candidate
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
-$sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 
-ChromePhp::log($sLink);
+$createdByFk = (int)$oDbResult->getFieldValue('created_by');
+ChromePhp::log($createdByFk);
             //----------------------------------------------------
             //second row
             $asDate = explode(' ',$oDbResult->getFieldValue('date_created'));
