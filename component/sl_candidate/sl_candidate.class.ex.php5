@@ -3502,10 +3502,11 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $oLogin->getUserLink($nAttendee, true);
 */
 //          $sLink = $oLogin->getUserLink($nAttendee, true);
+ChromePhp::log(getUserInformaiton($nAttendee));
           $user_info = getUserInformaiton($nAttendee);
           $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'];
 
-//ChromePhp::log($nAttendee);
+//ChromePhp::log(getUserInformaiton($nAttendee));
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
