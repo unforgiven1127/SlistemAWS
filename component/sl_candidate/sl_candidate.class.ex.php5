@@ -3564,7 +3564,7 @@ ChromePhp::log($sLink);
             else
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 
-ChromePhp::log($sLink);
+//ChromePhp::log($sLink);
 
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
