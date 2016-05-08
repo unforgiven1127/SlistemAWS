@@ -3496,10 +3496,14 @@ class CSl_candidateEx extends CSl_candidate
           $nAttendee = (int)$oDbResult->getFieldValue('attendeefk');
           $asButtons = array();
 
-          if($nCurrentUser == $nAttendee)
+/*          if($nCurrentUser == $nAttendee)
             $sLink = '- me -';
           else
             $sLink = $oLogin->getUserLink($nAttendee, true);
+*/
+          $sLink = $oLogin->getUserLink($nAttendee, true);
+
+ChromePhp::log($nAttendee);
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
