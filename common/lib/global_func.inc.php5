@@ -1357,6 +1357,18 @@ function _live_dump($pvTrace, $psTitle = null)
   //========================================================================================================
   //========================================================================================================
 
+  function countDays($year, $month, $ignore) {
+    $count = 0;
+    $counter = mktime(0, 0, 0, $month, 1, $year);
+    while (date("n", $counter) == $month) {
+        if (in_array(date("w", $counter), $ignore) == false) {
+            $count++;
+        }
+        $counter = strtotime("+1 day", $counter);
+    }
+    return $count;
+}
+
   function getMeetingInformation($meeting_id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -1511,6 +1523,8 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
+    $work_days = countDays(2016, 5, array(0, 6));
+
     $table = "<div style='height: 240px; width: 450px;  margin: 0 auto;'>
         <div class='obj-container'>
           <div class='obj-row obj-header'>
@@ -1529,9 +1543,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
           <div class='obj-row'>
             <div class='obj-desc'>Target to date</div>
-            <div class='obj-value'>8</div>
-            <div class='obj-value'>3</div>
-            <div class='obj-value'>2</div>
+            <div class='obj-value'>".$work_days."</div>
+            <div class='obj-value'>".$work_days."</div>
+            <div class='obj-value'>".$work_days."</div>
           </div>
 
           <div class='obj-row'>
