@@ -1467,6 +1467,47 @@ function _live_dump($pvTrace, $psTitle = null)
     return $new_in_play_info;
   }
 
+  function get_objectives_new_candidate_met($user_ids, $start_date, $end_date)
+  {
+    $asData = array();
+
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
+        WHERE m.created_by = "'.$user_id.'"
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        group by m.sl_meetingpk
+        order by m.candidatefk';
+
+    $oDbResult = array();
+
+    $oDbResult = $this->oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
+      {
+        if(isset($asData[$temp['created_by']]))
+        {
+          array_push($asData[$temp['created_by']], $temp);
+        }
+        else
+        {
+          $asData[$temp['created_by']] = array();
+          array_push($asData[$temp['created_by']], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+
+    return $asData;
+  }
+
   function get_objectives($user_id)
   {
     $start_date = (new DateTime('first day of this month'))->format("Y-m-d");
@@ -1476,6 +1517,10 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date .= ' 23:59:59';
 
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
+    
+    $in_play_candidate = $in_play[$user_id]['new_candidates'];
+    $in_play_position = $in_play[$user_id]['new_positions'];
+    $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
 
     return $in_play;
     //$start_date = start month;
