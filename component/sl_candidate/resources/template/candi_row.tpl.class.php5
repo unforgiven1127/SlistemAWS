@@ -329,6 +329,7 @@ class CCandi_row extends CTemplate
           $asOption['title'] = "<div class=\'list_note_title\'>Last entry on the <span>".$pasData["note_date"]."</span></div>". $pasData["note_content"];
           //$asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}).mouseenter(); ';
           $asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}); ';
+          $asOption['onmouseout'] = "alert('test')";
         }
 
         $sHTML.= $oDisplay->getBloc('', '', $asOption);
