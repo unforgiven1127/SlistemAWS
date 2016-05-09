@@ -1474,11 +1474,12 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date = (new DateTime('last day of this month'))->format("Y-m-d");
     $end_date .= ' 23:59:59';
 
-    return $start_date.' - '.$end_date;
+    $in_play = $this->get_objectives_in_play($user_id, $start_date, $end_date);
+
+    return $in_play;
     //$start_date = start month;
     //$end_date = end month;
 
-    //$objectives = $this->get_objectives_in_play($user_id, $start_date, $end_date);
   }
 
   function getUserInformaiton($user_id)
