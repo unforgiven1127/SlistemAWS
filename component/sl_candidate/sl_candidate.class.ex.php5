@@ -3604,7 +3604,7 @@ class CSl_candidateEx extends CSl_candidate
 
             //----------------------------------------------------
             //second row
-            //$asDate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
+            $asDateMeetingCreate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
 /*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
@@ -3627,7 +3627,8 @@ ChromePhp::log($meetingInfo);
             $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
             if($meetingDoneFlag)
             {
-              $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$meetingInfo['date_met'], array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_sixth'));
+              $updateDate = explode(' ',$meetingInfo['date_met']);
+              $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_sixth'));
             }
 
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
