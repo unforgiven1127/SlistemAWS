@@ -317,6 +317,7 @@ class CCandi_row extends CTemplate
       if(isset($pasHeader['lastNote']))
       {
         set_array($pasColumnParam[$nColNumber]['tag'], '');
+        set_array($pasColumnParam[$nColNumber]['tag'], '');
         $asOption = array('class' => $pasColumnParam[$nColNumber]['tag']);
         $asOption['sort_value'] = (int)$pasData['lastNote'];
         if(!empty($pasData['note_date']))
@@ -325,7 +326,7 @@ class CCandi_row extends CTemplate
           $pasData['note_content'] = str_replace(array('"', '\''), '&quot;', $pasData['note_content']);
 
           $asOption['class'].= ' tplCandi_note';
-          $asOption['title'] = "<div class=testclose \'list_note_title\'>Last entry on the <span>".$pasData["note_date"]."</span><button onclick='$(this).parent().remove();' type='button' style='float: right;'>x</button></div>". $pasData["note_content"];
+          $asOption['title'] = "<div class=\'list_note_title\'>Last entry on the <span>".$pasData["note_date"]."</span><button onclick='$('.closePopUp').parent().remove();' type='button' style='float: right;'>x</button></div>". $pasData["note_content"];
           $asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}).mouseenter(); ';
         }
 
