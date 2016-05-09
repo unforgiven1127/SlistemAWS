@@ -1536,9 +1536,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
           <div class='obj-row'>
             <div class='obj-desc'>Current</div>
-            <div class='obj-value obj-bad'>1</div>
-            <div class='obj-value obj-bad'>0</div>
-            <div class='obj-value obj-bad'>0</div>
+            <div class='obj-value obj-bad'>".$new_met."</div>
+            <div class='obj-value obj-bad'>".$in_play_candidate."</div>
+            <div class='obj-value obj-bad'>".$in_play_position."</div>
           </div>
 
           <div class='obj-row'>
@@ -1568,11 +1568,16 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
 
-    $in_play_candidate = $in_play[$user_id]['new_candidates'];
-    $in_play_position = $in_play[$user_id]['new_positions'];
-    $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
+    //$in_play_candidate = $in_play[$user_id]['new_candidates'];
+    $count_in_play_candidate = count($in_play[$user_id]['new_candidates']);
 
-    $table = create_objectives_table($in_play_candidate, $in_play_position, $new_met);
+    $count_in_play_position = count($in_play[$user_id]['new_positions']);
+    //$in_play_position = $in_play[$user_id]['new_positions'];
+
+    $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
+    $count_new_met = count($new_met[$user_id]);
+
+    $table = create_objectives_table($count_in_play_candidate, $count_in_play_position, $count_new_met);
 
     return $table;
     //$start_date = start month;
