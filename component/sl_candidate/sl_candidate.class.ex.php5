@@ -4876,22 +4876,22 @@ class CSl_candidateEx extends CSl_candidate
       $newparam = array();
 
       $pasData['visibility'] = (int)$pasData['visibility'];
-      $asParam = $newparam;
-      $asParam['label']= 'Type';
-      $asParam['style']= ' width: 300px;';
-      $poForm->addField('select', 'contact_type['.$nCount.']', $asParam);
+      $myParam = $newparam;
+      $myParam['label']= 'Type';
+      $myParam['style']= ' width: 300px;';
+      $poForm->addField('select', 'contact_type['.$nCount.']', $myParam);
 
-      $asParam = $newparam;
-      $asParam['label']= 'Value';
-      $asParam['style']= 'margin-left:-50px;';
-      $asParam['value']= $pasData['value'];
-      $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
+      $myParam = $newparam;
+      $myParam['label']= 'Value';
+      $myParam['style']= 'margin-left:-50px;';
+      $myParam['value']= $pasData['value'];
+      $poForm->addField('input', 'contact_value['.$nCount.']', $myParam);
 
-      $asParam = $newparam;
-      $asParam['label']= 'Notes';
-      $asParam['value'] = $pasData['description'];
-      $asParam['style'] = 'width:510px';
-      $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
+      $myParam = $newparam;
+      $myParam['label']= 'Notes';
+      $myParam['value'] = $pasData['description'];
+      $myParam['style'] = 'width:510px';
+      $poForm->addField('input', 'contact_description['.$nCount.']', $myParam);
 
       foreach($asTypes as $nType => $asType)
       {
