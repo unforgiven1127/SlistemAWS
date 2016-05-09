@@ -452,6 +452,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
 
     //charts refreshed every few minutes
+    //buraya girdigi icin degisiklikleri algilamiyor.
     /*if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
     {
       //ChromePhp::log('charts refreshed every few minutes');
@@ -476,7 +477,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
     if(!empty($objectives) && $asSettings['home_taregt_tbl'] > 0)
       $sTable.= '
       <div class="graph_bloc">
-        <div class="home_item_title">Objectivestest</div>
+        <div class="home_item_title">Objectives</div>
         '.$objectives.'
       </div>';
 
