@@ -1523,7 +1523,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
-    $work_days = countDays(2016, 6, array(0, 6));
+    $work_days = countDays(2016, 7, array(0, 6));
 
     $table = "<div style='height: 240px; width: 450px;  margin: 0 auto;'>
         <div class='obj-container'>
