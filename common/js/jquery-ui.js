@@ -113,10 +113,6 @@ function focusable( element, isTabIndexNotNaN ) {
 }
 
 
-$( ".popupcloser" ).click(function() {
-  alert( "test" );
-});
-
 function visible( element ) {
 	return $.expr.filters.visible( element ) &&
 		!$( element ).parents().addBack().filter(function() {
