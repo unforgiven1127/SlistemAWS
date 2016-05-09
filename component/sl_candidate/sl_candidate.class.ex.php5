@@ -3617,11 +3617,7 @@ ChromePhp::log($oDbResult->getData());
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
             $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
-            if($meetingDoneFlag)
-            {
-              $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
-              $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
-            }
+
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
@@ -3629,6 +3625,11 @@ ChromePhp::log($oDbResult->getData());
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
+            if($meetingDoneFlag)
+            {
+              $sMeeting.= $this->_oDisplay->getBloc('', 'updated', array('style' => 'width:auto;', 'class' => 'meeting_row_sixth'));
+              $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            }
 
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
             if($bManager || ($nStatus < 1 && ($nCurrentUser == $oDbResult->getFieldValue('created_by') || $nCurrentUser == $nAttendee)))
