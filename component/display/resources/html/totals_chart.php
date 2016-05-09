@@ -32,7 +32,7 @@
 		<th>CCM2 done</th>
 		<th>MCCM set</th>
 		<th>MCCM done</th>
-		<th>New candidates MET</th>
+		<th>New candidates met</th>
 		<th>New candidates<br>in play</th>
 		<th>New positions<br>in play</th>
 		<th>Offer</th>
