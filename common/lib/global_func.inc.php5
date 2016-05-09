@@ -1376,7 +1376,7 @@ function _live_dump($pvTrace, $psTitle = null)
     return $row;
   }
 
-  function get_objectives_in_play($user_ids, $start_date, $end_date)
+  function get_objectives_in_play($user_id, $start_date, $end_date)
   {
     $oDB = CDependency::getComponentByName('database');
     $new_in_play_info = array();
@@ -1386,7 +1386,7 @@ function _live_dump($pvTrace, $psTitle = null)
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        WHERE m.created_by = "'.$user_id.'"
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         AND m.meeting_done = 1
@@ -1430,7 +1430,7 @@ return $query;
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        WHERE m.created_by = "'.$user_id.'"
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         AND pl.status = 51
