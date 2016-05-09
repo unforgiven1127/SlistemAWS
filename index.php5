@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/common/js/my-js.js"></script>
 <?php
 require_once './common/tracy/src/tracy.php';
 use Tracy\Debugger;
