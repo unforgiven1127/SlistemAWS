@@ -1,9 +1,9 @@
-<script>
+
 	$(function() {
 		$( ".popupcloser" ).click(function() {
-  alert( "test" );
-});
+  			alert( "test" );
+		});
 
 	});
-</script>
+
 
