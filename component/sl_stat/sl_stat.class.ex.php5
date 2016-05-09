@@ -1073,7 +1073,7 @@ class CSl_statEx extends CSl_stat
 
       $sId = uniqid();
 
-      $sHTML = $oHTML->getTitle('Objectives', 'h3', true);
+      $sHTML = $oHTML->getTitle('Objectives-', 'h3', true);
       $sHTML.= $oHTML->getCR();
 
       if($this->cnHeight)
