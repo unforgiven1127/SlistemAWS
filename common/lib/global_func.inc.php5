@@ -1479,7 +1479,7 @@ function _live_dump($pvTrace, $psTitle = null)
     return $new_in_play_info;
   }
 
-  function get_objectives_new_candidate_met($user_ids, $start_date, $end_date)
+  function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
   {
     $oDB = CDependency::getComponentByName('database');
     $asData = array();
