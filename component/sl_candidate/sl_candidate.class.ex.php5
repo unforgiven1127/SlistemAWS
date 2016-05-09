@@ -3574,7 +3574,7 @@ class CSl_candidateEx extends CSl_candidate
 //ChromePhp::log($createdByFk);
 //ChromePhp::log($sLink);
 
-            $sMeeting.= $this->_oDisplay->getBloc('', ' by', array('style' => 'width:20px; margin-left:10px;','class' => 'meeting_row_first'));
+            $sMeeting.= $this->_oDisplay->getBloc('', ' by', array('style' => 'width:20px; margin-left:5px;','class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:auto;','class' => 'meeting_row_creator'));
 
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
@@ -3595,7 +3595,7 @@ class CSl_candidateEx extends CSl_candidate
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:150px;', 'class' => 'meeting_row_first'));
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
-            $sMeeting.= $this->_oDisplay->getBloc('', ' <span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
