@@ -3496,6 +3496,8 @@ class CSl_candidateEx extends CSl_candidate
           $nAttendee = (int)$oDbResult->getFieldValue('attendeefk');
           $asButtons = array();
 
+ChromePhp::log($oDbResult->getData());
+
 /*          if($nCurrentUser == $nAttendee)
             $sLink = '- me -';
           else
