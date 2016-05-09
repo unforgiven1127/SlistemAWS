@@ -1395,6 +1395,8 @@ function _live_dump($pvTrace, $psTitle = null)
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+return $query;exit;
+
     $oDbResult = array();
 
     $oDbResult = $oDB->executeQuery($query);
@@ -1477,7 +1479,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
 
-    return $in_play;
+    //return $in_play;
     //$start_date = start month;
     //$end_date = end month;
 
