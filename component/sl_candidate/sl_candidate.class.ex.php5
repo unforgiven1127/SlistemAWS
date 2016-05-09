@@ -3547,7 +3547,8 @@ class CSl_candidateEx extends CSl_candidate
             else
             {
               $sClass = '';
-              $sStatus = $this->_oDisplay->getText(' scheduled');
+              //$sStatus = $this->_oDisplay->getText(' scheduled');
+              $sStatus = $this->_oDisplay->getText('need update');
             }
           }
 
