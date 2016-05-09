@@ -1158,7 +1158,7 @@ class CSl_statEx extends CSl_stat
         </div>
 
         <div class="portal-legend">
-          <span style="color: #888; font-style: italic; font-size: 11px;">* AAAAAA Meeting created with the new meeting feature. </span><br />
+          <span style="color: #888; font-style: italic; font-size: 11px;">* Meeting created with the new meeting feature. </span><br />
           <span style="color: #888; font-style: italic; font-size: 11px;">** Newly active positions, having their first CCM. </span>
         </div>
         </div>
