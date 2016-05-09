@@ -1511,14 +1511,42 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
-    $table = "<table class='table' border='1'>
-                <tr>
-                  <th></th>
-                  <th>Met *</th>
-                  <th>In play</th>
-                  <th>Positions **</th>
-                </tr>
-              </table>";
+    $table = "<div class='obj-container'>
+          <div class='obj-row obj-header'>
+            <div class='obj-desc'></div>
+            <div class='obj-value'>Met *</div>
+            <div class='obj-value'>In play</div>
+            <div class='obj-value'>Positions **</div>
+          </div>
+
+          <div class='obj-row'>
+            <div class='obj-desc'>Month target</div>
+            <div class='obj-value'>27</div>
+            <div class='obj-value'>7</div>
+            <div class='obj-value'>5</div>
+          </div>
+
+          <div class='obj-row'>
+            <div class='obj-desc'>Target to date</div>
+            <div class='obj-value'>8</div>
+            <div class='obj-value'>3</div>
+            <div class='obj-value'>2</div>
+          </div>
+
+          <div class='obj-row'>
+            <div class='obj-desc'>Current</div>
+            <div class='obj-value obj-bad'>1</div>
+            <div class='obj-value obj-bad'>0</div>
+            <div class='obj-value obj-bad'>0</div>
+          </div>
+
+          <div class='obj-row'>
+            <div class='obj-desc'>%</div>
+            <div class='obj-value obj-bad'>4%</div>
+            <div class='obj-value obj-bad'>0%</div>
+            <div class='obj-value obj-bad'>0%</div>
+          </div>
+        </div>";
 
     return $table;
   }
