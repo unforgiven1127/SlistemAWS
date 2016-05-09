@@ -1511,7 +1511,8 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
-    $table = "<div class='obj-container'>
+    $table = "<div style='height: 240px; width: 450px;  margin: 0 auto;'>
+        <div class='obj-container'>
           <div class='obj-row obj-header'>
             <div class='obj-desc'></div>
             <div class='obj-value'>Met *</div>
@@ -1546,6 +1547,12 @@ function _live_dump($pvTrace, $psTitle = null)
             <div class='obj-value obj-bad'>0%</div>
             <div class='obj-value obj-bad'>0%</div>
           </div>
+        </div>
+
+        <div class='portal-legend'>
+          <span style='color: #888; font-style: italic; font-size: 11px;'>* Meeting created with the new meeting feature. </span><br>
+          <span style='color: #888; font-style: italic; font-size: 11px;'>** Newly active positions, having their first CCM. </span>
+        </div>
         </div>";
 
     return $table;
