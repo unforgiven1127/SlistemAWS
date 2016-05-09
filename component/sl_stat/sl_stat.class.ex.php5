@@ -1123,13 +1123,13 @@ class CSl_statEx extends CSl_stat
         <div class="obj-container">
           <div class="obj-row obj-header">
             <div class="obj-desc"></div>
-            <div class="obj-value">Mett *</div>
+            <div class="obj-value">Met *</div>
             <div class="obj-value">In play</div>
             <div class="obj-value">Positions **</div>
           </div>
 
           <div class="obj-row">
-            <div class="obj-desc">Month target</div>
+            <div class="obj-desc">M</div>
             <div class="obj-value">'.$target_met.'</div>
             <div class="obj-value">'.$target_play.'</div>
             <div class="obj-value">'.$target_position.'</div>
