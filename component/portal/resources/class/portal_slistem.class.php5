@@ -486,8 +486,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
     if(!empty($sMet))
       $sHTML.= '
       <div class="graph_bloc">
-        <div class="home_item_title">Meetingstest</div>
-        '.$sMet.'
+        <div class="home_item_title">Meetings</div>
+        '.$sMett.'
       </div>';
 
 
