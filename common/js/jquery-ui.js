@@ -112,8 +112,9 @@ function focusable( element, isTabIndexNotNaN ) {
 		visible( element );
 }
 
-$('.popupcloser').click(function(){
-	alert('test');
+
+$( ".popupcloser" ).click(function() {
+  alert( "test" );
 });
 
 function visible( element ) {
