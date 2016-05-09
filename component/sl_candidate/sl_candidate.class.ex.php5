@@ -3495,7 +3495,7 @@ class CSl_candidateEx extends CSl_candidate
           $asDate = explode(' ', $sMeetingDate);
           $nAttendee = (int)$oDbResult->getFieldValue('attendeefk');
           $asButtons = array();
-
+          $meetingDoneFlag = false;
 ChromePhp::log($oDbResult->getData());
 
 /*          if($nCurrentUser == $nAttendee)
@@ -3526,6 +3526,7 @@ ChromePhp::log($oDbResult->getData());
             }
             else
             {
+              $meetingDoneFlag = true;
               $sClass = 'meeting_done';
               $meetingInfo = getMeetingInformation((int)$oDbResult->getFieldValue('sl_meetingpk'));
               $meeting_type = $meetingInfo['type']; // 1:in person 2:by phone 3:video 4:other
@@ -3616,6 +3617,11 @@ ChromePhp::log($oDbResult->getData());
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
             //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
             $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            if($meetingDoneFlag)
+            {
+              $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
+              $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
+            }
             $sMeeting.= $this->_oDisplay->getFloathack();
 
 
