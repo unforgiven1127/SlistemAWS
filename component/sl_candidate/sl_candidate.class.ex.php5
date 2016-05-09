@@ -3512,8 +3512,6 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
 
-ChromePhp::log(getUserInformaiton($oDbResult));
-
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
           {
