@@ -1528,8 +1528,6 @@ function _live_dump($pvTrace, $psTitle = null)
     $day = date('j'); // 8 not with zero
     $work_days = countDays($year, $month, array(0, 6));
 
-    bcdiv(27, $work_days, 3)
-
     $met_temp = (bcdiv(27, $work_days, 3))*$day;
     $play_temp = (bcdiv(7, $work_days, 3))*$day;
     $position_temp = (bcdiv(5, $work_days, 3))*$day;
