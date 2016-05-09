@@ -1479,7 +1479,7 @@ return $query;
 
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
 
-    //return $in_play;
+    return $in_play;
     //$start_date = start month;
     //$end_date = end month;
 
