@@ -836,7 +836,7 @@ class CSl_statEx extends CSl_stat
                 visible: true
             }, {
                 type: "line",
-                name: "Objectives",
+                name: "Objectives-",
                 color: "#ff0000",
                 data: ['.implode(',', $asData['objective']).'],
                 showInLegend: true,
