@@ -3527,7 +3527,26 @@ ChromePhp::log($oDbResult->getData());
             else
             {
               $sClass = 'meeting_done';
-              $sStatus = $this->_oDisplay->getText('meeting done', array('class' => $sClass));
+              $meetingInfo = getMeetingInformation((int)$oDbResult->getFieldValue('sl_meetingpk'));
+              $meeting_type = $meetingInfo['type']; // 1:in person 2:by phone 3:video 4:other
+              if($meeting_type == 1)
+              {
+                $meeting_type = "In person";
+              }
+              else if($meeting_type == 2)
+              {
+                $meeting_type = "By phone";
+              }
+              else if($meeting_type == 3)
+              {
+                $meeting_type = "Video chat";
+              }
+              else
+              {
+                $meeting_type = "Other";
+              }
+              //$sStatus = $this->_oDisplay->getText('meeting done', array('class' => $sClass));
+              $sStatus = $this->_oDisplay->getText($meeting_type, array('class' => $sClass));
             }
           }
           else

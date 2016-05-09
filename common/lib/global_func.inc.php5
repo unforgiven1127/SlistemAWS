@@ -1357,6 +1357,24 @@ function _live_dump($pvTrace, $psTitle = null)
   //========================================================================================================
   //========================================================================================================
 
+  function getMeetingInformation($meeting_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_meeting l WHERE l.sl_meetingpk = ".$meeting_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+      $read = $db_result->readNext();
+    }
+
+    return $row;
+  }
 
   function getUserInformaiton($user_id)
   {
