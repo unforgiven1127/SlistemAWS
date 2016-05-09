@@ -2979,7 +2979,7 @@ class CSl_statEx extends CSl_stat
             {
                 type: "line",
                 color: "#D15727",
-                name: "Monthly test target",
+                name: "Monthly target",
                 data: ['.implode(',', $asChartData['target2']).'],
                 shadow: false
             },
