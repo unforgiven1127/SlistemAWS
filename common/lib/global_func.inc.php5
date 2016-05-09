@@ -1528,7 +1528,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $day = date('j'); // 8 not with zero
     $work_days = countDays($year, $month, array(0, 6));
 
-    $array['met_target'] = round(((27 / $work_days)*$day));
+    $array['met_target'] = round((11.045454545));
     $array['in_play_target'] = round(((7 / $work_days)*$day));
     $array['position_target'] = round(((5 / $work_days)*$day));
 
