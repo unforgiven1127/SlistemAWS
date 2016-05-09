@@ -1492,7 +1492,7 @@ function _live_dump($pvTrace, $psTitle = null)
         AND m.date_created < "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
-
+return $query;
     $oDbResult = array();
 
     $oDbResult = $oDB->executeQuery($query);
@@ -1619,6 +1619,7 @@ function _live_dump($pvTrace, $psTitle = null)
     //$in_play_position = $in_play[$user_id]['new_positions'];
 
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
+    return $new_met;
     $count_new_met = count($new_met[$user_id]);
 
     $table = create_objectives_table($count_in_play_candidate, $count_in_play_position, $count_new_met);
