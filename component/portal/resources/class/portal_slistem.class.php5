@@ -452,10 +452,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
 
     //charts refreshed every few minutes
-    if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
+    /*if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
     {
       return $_SESSION['HOME_PAGE_CHARTS'];
-    }
+    }*/
 
 
     $asSettings = CDependency::getComponentByName('settings')->getSettings(array('home_taregt_tbl'), false);
@@ -487,7 +487,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       $sHTML.= '
       <div class="graph_bloc">
         <div class="home_item_title">Meetings</div>
-        '.$sMett.'
+        '.$sMet.'
       </div>';
 
 
