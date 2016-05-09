@@ -1376,9 +1376,103 @@ function _live_dump($pvTrace, $psTitle = null)
     return $row;
   }
 
-  function get_objectives()
+  public function get_objectives_in_play($user_ids, $start_date, $end_date)
   {
-    
+    $new_in_play_info = array();
+
+    // gets new_candidates_in_play START
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        AND m.meeting_done = 1
+        AND pl.status > 51
+        AND pl.active != 1
+        group by m.sl_meetingpk
+        order by m.candidatefk';
+
+    $oDbResult = array();
+
+    $oDbResult = $this->oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
+      {
+        if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
+        {
+          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$temp['created_by']]['new_candidates'] = array();
+          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+    // gets new_candidates_in_play END
+
+    // gets new_positions_in_play START
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        AND pl.status = 51
+        AND pl.active != 1
+        AND pl2.status = 51
+        AND pl2.active != 1
+        group by m.sl_meetingpk
+        order by m.candidatefk';
+
+    $oDbResult = array();
+
+    $oDbResult = $this->oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      {
+        if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
+        {
+          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$temp['created_by']]['new_positions'] = array();
+          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+    // gets new_positions_in_play END
+
+    return $new_in_play_info;
+  }
+
+  function get_objectives($user_id)
+  {
+    return (new DateTime('first day of this month'))->format('jS, F Y');
+    //$start_date = start month;
+    //$end_date = end month;
+
+    //$objectives = $this->get_objectives_in_play($user_id, $start_date, $end_date);
   }
 
   function getUserInformaiton($user_id)

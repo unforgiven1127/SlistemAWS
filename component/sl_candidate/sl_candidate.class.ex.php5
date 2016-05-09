@@ -3623,7 +3623,7 @@ class CSl_candidateEx extends CSl_candidate
 
             $sMeeting.= $this->_oDisplay->getFloathack();
 
-ChromePhp::log($meetingInfo);
+//ChromePhp::log($meetingInfo);
             //----------------------------------------------------
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
