@@ -439,7 +439,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
   {
     if(!assert('is_key($pnUserPk)'))
       return '';
-ChromePhp::log('here'); // yazdi gitti !!!
+//ChromePhp::log('here'); // yazdi gitti !!!
     $oChart = CDependency::getComponentByName('charts');
     $oChart->includeChartsJs(true);
 
@@ -454,7 +454,7 @@ ChromePhp::log('here'); // yazdi gitti !!!
     //charts refreshed every few minutes
     if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
     {
-      ChromePhp::log('charts refreshed every few minutes');
+      //ChromePhp::log('charts refreshed every few minutes');
       return $_SESSION['HOME_PAGE_CHARTS'];
     }
 
@@ -469,6 +469,9 @@ ChromePhp::log('here'); // yazdi gitti !!!
     $sCandidate = '';
     $sPosition = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_position.html');
     $sPipeline = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_pipeline.html');
+
+
+    ChromePhp::log($objectives);
 
     if(!empty($objectives) && $asSettings['home_taregt_tbl'] > 0)
       $sTable.= '
