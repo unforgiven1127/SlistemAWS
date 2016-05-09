@@ -1542,8 +1542,8 @@ function _live_dump($pvTrace, $psTitle = null)
   function get_percent($in_play_candidate, $in_play_position, $new_met)
   {
     $array['met_percent'] = round($new_met * 100 / 27);
-    $array['play_percent'] = round($new_met * 100 / 7);
-    $array['position_percent'] = round($new_met * 100 / 5);
+    $array['play_percent'] = round($in_play_candidate * 100 / 7);
+    $array['position_percent'] = round($in_play_position * 100 / 5);
 
     return $array;
   }
