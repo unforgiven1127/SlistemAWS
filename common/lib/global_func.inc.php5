@@ -1376,6 +1376,11 @@ function _live_dump($pvTrace, $psTitle = null)
     return $row;
   }
 
+  function get_objectives()
+  {
+    
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');

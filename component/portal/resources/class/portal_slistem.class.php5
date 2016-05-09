@@ -478,7 +478,7 @@ ChromePhp::log('objectives bas');
       $sTable.= '
       <div class="graph_bloc">
         <div class="home_item_title">Objectives</div>
-        test
+        '.$objectives.'
       </div>';
 
     if(!empty($sPipeline))
