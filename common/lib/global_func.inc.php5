@@ -1528,9 +1528,9 @@ function _live_dump($pvTrace, $psTitle = null)
     $day = date('j'); // 8 not with zero
     $work_days = countDays($year, $month, array(0, 6));
 
-    $met_temp = (bcdiv(27, $work_days, 3))*$day;
-    $play_temp = (bcdiv(7, $work_days, 3))*$day;
-    $position_temp = (bcdiv(5, $work_days, 3))*$day;
+    $met_temp = (27 / $work_days)*$day;
+    $play_temp = (7 / $work_days)*$day;
+    $position_temp = (5 / $work_days)*$day;
 
     $array['met_target'] = round($met_temp);
     $array['in_play_target'] = round($play_temp);
@@ -1539,10 +1539,20 @@ function _live_dump($pvTrace, $psTitle = null)
     return $array;
   }
 
+  function get_percent($in_play_candidate, $in_play_position, $new_met)
+  {
+    $array['met_percent'] = $new_met * 100 / 27;
+    $array['play_percent'] = $new_met * 100 / 7;
+    $array['position_percent'] = $new_met * 100 / 5;
+
+    return $array;
+  }
+
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
 
     $targets = get_target_to_date();
+    $percents = get_percent($in_play_candidate, $in_play_position, $new_met);
 
     $table = "<div style='height: 240px; width: 450px;  margin: 0 auto;'>
         <div class='obj-container'>
@@ -1576,9 +1586,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
           <div class='obj-row'>
             <div class='obj-desc'>%</div>
-            <div class='obj-value obj-bad'>4%</div>
-            <div class='obj-value obj-bad'>0%</div>
-            <div class='obj-value obj-bad'>0%</div>
+            <div class='obj-value obj-bad'>".$percents['met_percent']."%</div>
+            <div class='obj-value obj-bad'>".$percents['play_percent']."%</div>
+            <div class='obj-value obj-bad'>".$percents['position_percent']."%</div>
           </div>
         </div>
 
