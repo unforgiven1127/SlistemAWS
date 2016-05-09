@@ -1376,7 +1376,7 @@ function _live_dump($pvTrace, $psTitle = null)
     return $row;
   }
 
-  public function get_objectives_in_play($user_ids, $start_date, $end_date)
+  function get_objectives_in_play($user_ids, $start_date, $end_date)
   {
     $new_in_play_info = array();
 
