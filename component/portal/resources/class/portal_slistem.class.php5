@@ -439,7 +439,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
   {
     if(!assert('is_key($pnUserPk)'))
       return '';
-
+ChromePhp::log('here');
     $oChart = CDependency::getComponentByName('charts');
     $oChart->includeChartsJs(true);
 

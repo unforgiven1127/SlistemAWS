@@ -1033,7 +1033,6 @@ class CSl_statEx extends CSl_stat
       //Time to merge all the different stats for each user
       $nStartTime = strtotime($sDateStart);
 
-ChromePhp::log('here');
       foreach($asUser['user_data'] as $user_id => $user_data)
       {
         (isset($asStatData['target'][$user_id]))? '': $asStatData['target'][$user_id] = $this->casDefaultTarget;
