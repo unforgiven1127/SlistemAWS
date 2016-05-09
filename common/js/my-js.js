@@ -1,4 +1,5 @@
 function closenote()
 {
-	alert( "test" );
+	//alert( "test" );
+	$('.closepopup').hide();
 };
