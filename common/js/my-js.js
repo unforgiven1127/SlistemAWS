@@ -1,9 +1,4 @@
-
-	$(function() {
-		$( ".popupcloser" ).click(function() {
-  			alert( "test" );
-		});
-
-	});
-
-
+function closenote()
+{
+	alert( "test" );
+};
