@@ -1521,9 +1521,24 @@ function _live_dump($pvTrace, $psTitle = null)
     return $asData;
   }
 
+  function get_target_to_date()
+  {
+    $year = date('Y'); // 2016
+    $month = date('n'); // 5 not with zero
+    $day = date('j'); // 8 not with zero
+    $work_days = countDays($year, $month, array(0, 6));
+
+    $array['met_target'] = round(((21 / $work_days)*$day),0);
+    $array['in_play_target'] = round(((7 / $work_days)*$day),0);
+    $array['position_target'] = round(((5 / $work_days)*$day),0);
+
+    return $array;
+  }
+
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
-    $work_days = countDays(2016, 7, array(0, 6));
+
+    $targets = get_target_to_date();
 
     $table = "<div style='height: 240px; width: 450px;  margin: 0 auto;'>
         <div class='obj-container'>
@@ -1543,9 +1558,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
           <div class='obj-row'>
             <div class='obj-desc'>Target to date</div>
-            <div class='obj-value'>".$work_days."</div>
-            <div class='obj-value'>".$work_days."</div>
-            <div class='obj-value'>".$work_days."</div>
+            <div class='obj-value'>".$targets['met_target']."</div>
+            <div class='obj-value'>".$targets['in_play_target']."</div>
+            <div class='obj-value'>".$targets['position_target']."</div>
           </div>
 
           <div class='obj-row'>
