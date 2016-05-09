@@ -3601,7 +3601,7 @@ class CSl_candidateEx extends CSl_candidate
 
             //----------------------------------------------------
             //Third row
-            $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('class' => 'meeting_row_sixth'));
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
 
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
