@@ -464,8 +464,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
     $asSettings['home_taregt_tbl'] = (int)$asSettings['home_taregt_tbl'];
     $sHTML = $sTable = '';
 
-    //$objectives = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_objectives.html');
-    $objectives = get_objectives($pnUserPk);
+    $objectives = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_objectives.html');
+    //$objectives = get_objectives($pnUserPk);
     $sMet = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_met.html');
     $sPlay = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_play.html');
     $sCandidate = '';
