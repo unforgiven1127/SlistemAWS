@@ -1395,7 +1395,7 @@ function _live_dump($pvTrace, $psTitle = null)
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-return $query;exit;
+return $query;
 
     $oDbResult = array();
 
