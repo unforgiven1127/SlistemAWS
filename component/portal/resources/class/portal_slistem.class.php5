@@ -472,7 +472,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
     if(!empty($objectives) && $asSettings['home_taregt_tbl'] > 0)
       $sTable.= '
       <div class="graph_bloc">
-        <div class="home_item_title">-Objectives-</div>
+        <div class="home_item_title">ObjectivesTest</div>
         '.$objectives.'
       </div>';
 
