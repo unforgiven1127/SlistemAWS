@@ -1129,7 +1129,7 @@ class CSl_statEx extends CSl_stat
           </div>
 
           <div class="obj-row">
-            <div class="obj-desc">M</div>
+            <div class="obj-desc">Month target TEST</div>
             <div class="obj-value">'.$target_met.'</div>
             <div class="obj-value">'.$target_play.'</div>
             <div class="obj-value">'.$target_position.'</div>
