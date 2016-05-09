@@ -4876,13 +4876,15 @@ class CSl_candidateEx extends CSl_candidate
       $newparam = array();
 
       $poForm->addField('select', 'contact_type['.$nCount.']', array('label' => 'Type'));
+      $poForm->addField('input', 'contact_value['.$nCount.']', array('label' => 'Value'));
+      $poForm->addField('input', 'contact_description['.$nCount.']', array('label' => 'Notes'));
 /*
       $pasData['visibility'] = (int)$pasData['visibility'];
       $myParam = $newparam;
       $myParam['label']= 'Type';
       $myParam['style']= 'width: 300px;';
       $poForm->addField('select', 'contact_type['.$nCount.']', $myParam);
-*/
+
       $myParam = $newparam;
       $myParam['label']= 'Value';
       $myParam['style']= 'width: 300px;';
@@ -4894,7 +4896,7 @@ class CSl_candidateEx extends CSl_candidate
       $myParam['value'] = $pasData['description'];
       $myParam['style'] = 'width:510px';
       $poForm->addField('input', 'contact_description['.$nCount.']', $myParam);
-
+*/
       foreach($asTypes as $nType => $asType)
       {
         if($pasData['type'] == $nType)
