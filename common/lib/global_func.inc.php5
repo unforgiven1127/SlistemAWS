@@ -1511,7 +1511,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
   {
-    $table = "<table>
+    $table = "<table class='table' border='1'>
                 <tr>
                   <th></th>
                   <th>Met *</th>
