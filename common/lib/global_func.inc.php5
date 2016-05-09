@@ -1468,7 +1468,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function get_objectives($user_id)
   {
-    return (new DateTime('first day of this month'))->format('jS, F Y');
+    $start_date = (new DateTime('first day of this month'))->format("Y-m-d");
+    $start_date.= ' 00:00:00';
+    return $start_date;
     //$start_date = start month;
     //$end_date = end month;
 
