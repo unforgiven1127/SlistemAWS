@@ -325,7 +325,7 @@ class CCandi_row extends CTemplate
           $pasData['note_content'] = str_replace(array('"', '\''), '&quot;', $pasData['note_content']);
 
           $asOption['class'].= ' tplCandi_note';
-          $asOption['title'] = '<div class=\'list_note_title\'>Last entry on the <span>'.$pasData['note_date'].'</span><span><button>x</button></span></div>'. $pasData['note_content'];
+          $asOption['title'] = '<div class=\'list_note_title\'>Last entry on the <span>'.$pasData['note_date'].'</span><span><button style='margin-left:5px;'>x</button></span></div>'. $pasData['note_content'];
           $asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}).mouseenter(); ';
         }
 
