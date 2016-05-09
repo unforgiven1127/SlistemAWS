@@ -1470,7 +1470,11 @@ function _live_dump($pvTrace, $psTitle = null)
   {
     $start_date = (new DateTime('first day of this month'))->format("Y-m-d");
     $start_date.= ' 00:00:00';
-    return $start_date;
+
+    $end_date = (new DateTime('last day of this month'))->format("Y-m-d");
+    $end_date = .' 23:59:59';
+
+    return $start_date.' - '.$end_date;
     //$start_date = start month;
     //$end_date = end month;
 
