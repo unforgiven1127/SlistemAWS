@@ -1137,7 +1137,7 @@ class CSl_statEx extends CSl_stat
 
           <div class="obj-row">
             <div class="obj-desc">Target to date</div>
-            <div class="obj-value">'.$nMetToDate.'</div>
+            <div class="obj-value">999</div>
             <div class="obj-value">'.$nPlayToDate.'</div>
             <div class="obj-value">'.$nPosToDate.'</div>
           </div>
