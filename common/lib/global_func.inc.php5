@@ -1603,7 +1603,7 @@ return $query;
 
   function get_objectives($user_id)
   {
-    $user_id = 314; // test Mitch
+    $user_id = '314'; // test Mitch
     $start_date = (new DateTime('first day of this month'))->format("Y-m-d");
     $start_date.= ' 00:00:00';
 
