@@ -3543,7 +3543,7 @@ ChromePhp::log($oDbResult->getData());
               }
               else
               {
-                $meeting_type = "Met by other";
+                $meeting_type = "Meeting done";
               }
               //$sStatus = $this->_oDisplay->getText('meeting done', array('class' => $sClass));
               $sStatus = $this->_oDisplay->getText($meeting_type, array('class' => $sClass));
