@@ -1509,6 +1509,20 @@ function _live_dump($pvTrace, $psTitle = null)
     return $asData;
   }
 
+  function create_objectives_table($in_play_candidate, $in_play_position, $new_met)
+  {
+    $table = "<table>
+                <tr>
+                  <th></th>
+                  <th>Met *</th>
+                  <th>In play</th>
+                  <th>Positions **</th>
+                </tr>
+              </table>";
+
+    return $table;
+  }
+
   function get_objectives($user_id)
   {
     $start_date = (new DateTime('first day of this month'))->format("Y-m-d");
@@ -1523,7 +1537,9 @@ function _live_dump($pvTrace, $psTitle = null)
     $in_play_position = $in_play[$user_id]['new_positions'];
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
 
-    return $in_play;
+    $table = create_objectives_table($in_play_candidate, $in_play_position, $new_met);
+
+    return $table;
     //$start_date = start month;
     //$end_date = end month;
 
