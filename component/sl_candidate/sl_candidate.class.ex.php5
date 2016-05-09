@@ -3512,7 +3512,7 @@ class CSl_candidateEx extends CSl_candidate
             $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
 
-//ChromePhp::log(getUserInformaiton($nAttendee));
+ChromePhp::log(getUserInformaiton($oDbResult->getValue()));
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
           if($nStatus != 0)
@@ -3548,7 +3548,7 @@ class CSl_candidateEx extends CSl_candidate
             {
               $sClass = '';
               //$sStatus = $this->_oDisplay->getText(' scheduled');
-              $sStatus = $this->_oDisplay->getText('need update');
+              $sStatus = $this->_oDisplay->getText('- need update -');
             }
           }
 
