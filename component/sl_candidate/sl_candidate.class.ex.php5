@@ -4875,9 +4875,9 @@ class CSl_candidateEx extends CSl_candidate
 
       $newparam = array();
 
-      $poForm->addField('select', 'contact_type['.$nCount.']', array('style'=>'width:300px;','label' => 'Type'));
-      $poForm->addField('input', 'contact_value['.$nCount.']', array('style'=>'width:300px;','label' => 'Value'));
-      $poForm->addField('input', 'contact_description['.$nCount.']', array('label' => 'Notes'));
+      $poForm->addField('input', 'contact_value['.$nCount.']', array('style'=>'width:350px;','label' => 'Value'));
+      $poForm->addField('select', 'contact_type['.$nCount.']', array('label' => 'Type'));
+      $poForm->addField('input', 'contact_description['.$nCount.']', array('style'=>'width:500px;','label' => 'Notes'));
 /*
       $pasData['visibility'] = (int)$pasData['visibility'];
       $myParam = $newparam;
