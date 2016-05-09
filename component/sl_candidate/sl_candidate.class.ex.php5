@@ -4883,7 +4883,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $asParam = $newparam;
       $asParam['label']= 'Value';
-      $asParam['style']= ' width: 500px;';
+      $asParam['style']= 'margin-left-100px; width: 500px;';
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
 
