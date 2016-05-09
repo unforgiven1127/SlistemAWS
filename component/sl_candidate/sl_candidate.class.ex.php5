@@ -3611,6 +3611,9 @@ class CSl_candidateEx extends CSl_candidate
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 */
 //ChromePhp::log($sLink);
+            $setDate = explode(' ',$meetingInfo['date_created']);
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled on', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
+            $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
 
             //$sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
