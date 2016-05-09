@@ -1469,6 +1469,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function get_objectives_new_candidate_met($user_ids, $start_date, $end_date)
   {
+    $oDB = CDependency::getComponentByName('database');
     $asData = array();
 
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
@@ -1482,7 +1483,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
-    $oDbResult = $this->oDB->executeQuery($query);
+    $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
     while($read)
@@ -1517,7 +1518,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date .= ' 23:59:59';
 
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
-    
+
     $in_play_candidate = $in_play[$user_id]['new_candidates'];
     $in_play_position = $in_play[$user_id]['new_positions'];
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
