@@ -1,0 +1,4 @@
+function closenote()
+{
+	alert( "test" );
+};
