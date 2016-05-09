@@ -452,11 +452,11 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
 
     //charts refreshed every few minutes
-    if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
+    /*if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
     {
       //ChromePhp::log('charts refreshed every few minutes');
       return $_SESSION['HOME_PAGE_CHARTS'];
-    }
+    }*/
 
 
     $asSettings = CDependency::getComponentByName('settings')->getSettings(array('home_taregt_tbl'), false);
