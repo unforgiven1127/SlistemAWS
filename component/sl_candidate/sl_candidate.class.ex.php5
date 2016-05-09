@@ -3496,7 +3496,7 @@ class CSl_candidateEx extends CSl_candidate
           $nAttendee = (int)$oDbResult->getFieldValue('attendeefk');
           $asButtons = array();
           $meetingDoneFlag = false;
-ChromePhp::log($oDbResult->getData());
+          $meetingInfo = array();
 
 /*          if($nCurrentUser == $nAttendee)
             $sLink = '- me -';
@@ -3620,7 +3620,7 @@ ChromePhp::log($oDbResult->getData());
 
             $sMeeting.= $this->_oDisplay->getFloathack();
 
-
+ChromePhp::log($meetingInfo);
             //----------------------------------------------------
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
