@@ -3531,19 +3531,19 @@ ChromePhp::log($oDbResult->getData());
               $meeting_type = $meetingInfo['type']; // 1:in person 2:by phone 3:video 4:other
               if($meeting_type == 1)
               {
-                $meeting_type = "In person";
+                $meeting_type = "Met in person";
               }
               else if($meeting_type == 2)
               {
-                $meeting_type = "By phone";
+                $meeting_type = "Met by phone";
               }
               else if($meeting_type == 3)
               {
-                $meeting_type = "Video chat";
+                $meeting_type = "Met by video chat";
               }
               else
               {
-                $meeting_type = "Other";
+                $meeting_type = "Met by other";
               }
               //$sStatus = $this->_oDisplay->getText('meeting done', array('class' => $sClass));
               $sStatus = $this->_oDisplay->getText($meeting_type, array('class' => $sClass));
