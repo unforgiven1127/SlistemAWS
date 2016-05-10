@@ -8287,7 +8287,7 @@ die();*/
 
 ChromePhp::log($pnCandidatePk);
       $duplicate_array = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget, true, true);
-
+ChromePhp::log($duplicate_array);
       if(empty($duplicate_array['other']))
       {
         $sHTML.= '<span style="font-size: 15px; color: green; ">&rarr; No duplicate found for this candidate.</span><br /><br />';

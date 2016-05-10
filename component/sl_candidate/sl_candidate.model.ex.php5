@@ -504,7 +504,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
   public function getDuplicate($candidate_info, $force_target = 0, $merge_data = false, $skip_company = false)
   {
 ChromePhp::log('test');
-ChromePhp::log($candidate_contact_info); // null geldi !!!
+ChromePhp::log($candidate_info); // null geldi !!!
     $candidate_contact_info = array(); // will use for checking duplicates
     foreach($candidate_info['contact'] as $contact)
     {
