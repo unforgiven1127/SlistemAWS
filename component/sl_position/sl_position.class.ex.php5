@@ -640,6 +640,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     public function getPositionList($poQb = null, $pbAllData = false, $afterAdd = false)
     {
+      ChromePhp::log('getPositionList');
       ChromePhp::log($afterAdd);
       if(empty($poQb))
         $poQb = $this->_getModel()->getQueryBuilder();
