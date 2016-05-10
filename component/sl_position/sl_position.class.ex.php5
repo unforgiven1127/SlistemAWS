@@ -2321,7 +2321,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       if($afterSaveID != false)
       {
-        _getPositionForm($afterSaveID);
+        $this->_getPositionForm($afterSaveID);
       }
 
       $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit,$afterSaveID);
