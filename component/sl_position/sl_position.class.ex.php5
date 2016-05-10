@@ -601,7 +601,8 @@ class CSl_positionEx extends CSl_position
           return array('error' => __LINE__.' - Error while saving the position.');
 
       }
-
+setValue('title', $asPosition['positionfk']);
+ChromePhp::log(getValue('title'));
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_LIST, CONST_POSITION_TYPE_JD);
       return array('notice' => 'Position successfully saved.', 'action' => '
         goPopup.removeLastByType(\'layer\');
