@@ -584,7 +584,6 @@ class CSl_positionEx extends CSl_position
         if(empty($nPositionPk))
           return array('error' => __LINE__.' - Error while saving the position.');
 
-        $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
       else
       {
@@ -603,7 +602,7 @@ class CSl_positionEx extends CSl_position
 
       }
 
-
+$GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 //setValue('title', $asPosition['positionfk']);
 //ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
 
@@ -2208,7 +2207,7 @@ class CSl_positionEx extends CSl_position
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
-      ChromePhp::log($afterSaveID);
+      //ChromePhp::log($afterSaveID);
 
       $bSplitted = empty($poQb);
       //ChromePhp::log($bSplitted);
@@ -2218,7 +2217,7 @@ class CSl_positionEx extends CSl_position
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
 
-        if(isset($afterSaveID) && $afterSaveID != "")
+        if($afterSaveID)
         {
           ChromePhp::log($afterSaveID);
           $sTitle = $afterSaveID;
@@ -2796,7 +2795,7 @@ class CSl_positionEx extends CSl_position
     private function _searchPosition()
     {
       $_SESSION['position_filter'] = array();
-
+ChromePhp::log('ekleme sonrasi search e geliyor');
       //get search param, load it in the querybuilder
       $oQb = $this->_getModel()->getQueryBuilder();
 
