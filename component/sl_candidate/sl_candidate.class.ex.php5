@@ -8355,6 +8355,7 @@ die();*/
 
     private function _mergeDeleteCandidate($candidate_id)
     {
+      ChromePhp::log('merge candidate section 1');
       if(!assert('is_key($candidate_id)'))
         return array('error' => __LINE__.' - Wrong parameters');
 

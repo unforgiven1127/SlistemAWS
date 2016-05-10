@@ -7960,6 +7960,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _mergeDeleteCandidate($pnCandidatePk)
     {
+      ChromePhp::log('merge candidate section 2');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => __LINE__.' - Wrong parameters');
 
