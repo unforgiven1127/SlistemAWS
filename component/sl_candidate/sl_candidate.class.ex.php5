@@ -1107,8 +1107,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
-      ChromePhp::log('_getRightTabsHalfed');
-
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -8356,7 +8354,7 @@ ChromePhp::log($duplicate_array);
 
     private function _mergeDeleteCandidate($candidate_id)
     {
-      //ChromePhp::log('merge candidate section 1');
+      ChromePhp::log('merge candidate section 1');
       if(!assert('is_key($candidate_id)'))
         return array('error' => __LINE__.' - Wrong parameters');
 
