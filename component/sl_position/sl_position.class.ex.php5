@@ -2447,7 +2447,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       if($afterSaveID != false)
       {
-        return $this->_getPositionForm($afterSaveID);
+        return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
+        //return $this->_getPositionForm($afterSaveID);
       }
 
       return array('data' => convertToUtf8($sHTML), 'action' => $sAction);
