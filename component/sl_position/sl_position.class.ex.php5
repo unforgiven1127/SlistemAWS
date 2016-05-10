@@ -2745,14 +2745,15 @@ public function viewPositionNew($pnPositionPk)
 
       /*if($afterSaveID != false)
       {
+        viewPositionNew($pnPositionPk)
         ChromePhp::log($afterSaveID);
         ChromePhp::log(array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction));
         return array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction);
         //return array('data' => convertToUtf8($this->_getPositionForm($afterSaveID)), 'action' => $sAction);
         //return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
         //return $this->_getPositionForm($afterSaveID);
-      }
-ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));*/
+      }*/
+ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));
       return array('data' => convertToUtf8($sHTML), 'action' => $sAction);
     }
 
