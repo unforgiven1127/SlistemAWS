@@ -2447,9 +2447,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML.= $this->_oDisplay->getBlocEnd();
       if($afterSaveID)
       {
-        $array = array();
         $array = $this->_viewPosition((int)$afterSaveID);
-        $array['action'] = $sAction;
+        //$array['action'] = $sAction;
         ChromePhp::log($array);
       }
       /*if($afterSaveID != false)
