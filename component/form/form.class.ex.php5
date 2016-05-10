@@ -591,6 +591,7 @@ class CFormEx extends CForm
       else if($afterSavePositionFlag)
       {
         $sHtml.= ' <input type="submit" class="searchAfterAddPosition" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
+        $GLOBALS['redis']->delete('savedPositionTitle');
       }
       else
         $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
