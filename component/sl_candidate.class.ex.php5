@@ -7882,6 +7882,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getMergeForm($pnCandidatePk)
     {
+      ChromePhp::log('merge form 1');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => 'Wrong parameters');
 

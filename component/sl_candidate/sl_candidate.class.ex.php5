@@ -8276,6 +8276,7 @@ die();*/
 
     private function _getMergeForm($pnCandidatePk)
     {
+      ChromePhp::log('merge form 2');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => 'Wrong parameters');
 
