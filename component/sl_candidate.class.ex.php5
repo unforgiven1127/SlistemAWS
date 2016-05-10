@@ -6849,6 +6849,8 @@ class CSl_candidateEx extends CSl_candidate
 
         if($nRating < 0)
           $nRating = 1;
+        else if($nRating > 100) // birlestirme sonrasi hesaplama icin MCA
+          $nRating = 100;
       }
 
       $asUpdate = array('_has_doc' => $nDocument, '_in_play' => $nPlay, '_pos_status' => $nMaxActiveStatus,
@@ -7961,7 +7963,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _mergeDeleteCandidate($pnCandidatePk)
     {
-      ChromePhp::log('merge candidate section 2');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => __LINE__.' - Wrong parameters');
 

@@ -8354,7 +8354,7 @@ ChromePhp::log($duplicate_array);
 
     private function _mergeDeleteCandidate($candidate_id)
     {
-      ChromePhp::log('merge candidate section 1');
+      //ChromePhp::log('merge candidate section 1'); // merge ederken buraya geliyor
       if(!assert('is_key($candidate_id)'))
         return array('error' => __LINE__.' - Wrong parameters');
 
