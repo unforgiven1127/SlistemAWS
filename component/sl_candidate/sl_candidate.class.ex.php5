@@ -4884,87 +4884,85 @@ class CSl_candidateEx extends CSl_candidate
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
 
-      if(CDependency::getCpLogin()->isAdmin())
+      foreach($asTypes as $nType => $asType)
       {
-        foreach($asTypes as $nType => $asType)
-        {
-          if($pasData['type'] == $nType)
-            $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected'));
-          else
-            $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label']));
-        }
-
-        $asParam = $asDefaultparam;
-        //$asParam['label']= 'Visibility';
-        $asParam['class']= 'hidden';
-        $asParam['visibility']= 'hidden';
-        $asParam['type']= 'hidden';
-        $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
-        $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam,array('type' => 'hidden'));
-
-        if($pasData['visibility'] == 1)
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public', 'selected' => 'selected'));
+        if($pasData['type'] == $nType)
+          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label'], 'selected' => 'selected'));
         else
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public'));
-
-        if($pasData['visibility'] == 2)
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private', 'selected' => 'selected'));
-        else
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private'));
-
-        if($pasData['visibility'] == 3)
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team', 'selected' => 'selected'));
-        else
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team'));
-
-        if($pasData['visibility'] == 4)
-        {
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom', 'selected' => 'selected'));
-          $sClass = '';
-        }
-        else
-        {
-          $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom'));
-          $sClass = ' hidden ';
-        }
-
-
-        $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
-
-
-        //Group management
-        $asParam = $asDefaultparam;
-        $asParam['label']= 'Quick select';
-        $asParam['onchange'] = '
-
-              $(\'#contact_userfk'.$nCount.'Id\').tokenInput(\'clear\');
-              $(\'#contact_userfk'.$nCount.'Id\').css(\'color\', \'red\');
-
-              var asCons = $(this).val().split(\'||\');
-              //console.log(asCons);
-              $(asCons).each(function(nIndex, sValue)
-              {
-                var asValue = sValue.split(\'@@\');
-                if(asValue.length == 2)
-                {
-                  //console.log(\'adding user \'+asValue[1]);
-                  $(\'#contact_userfk'.$nCount.'Id\').tokenInput(\'add\', {id: asValue[0], name: asValue[1]});
-                }
-              });  ';
-
-        $poForm->addField('select', 'groupfk'.$nCount, $asParam);
-        $poForm->setFieldDisplayParams('groupfk'.$nCount, array('class' => 'custom_vis'.$nCount.$sClass));
-
-        $poForm->addOption('groupfk'.$nCount, array('label' => '-', 'value' => $this->casUserData['loginpk'].'@@'.$this->casUserData['pseudo']));
-        foreach($this->casActiveUser as $asUData)
-        {
-          $asUserList = array();
-          foreach($asUData as $asUdetail)
-            $asUserList[] = $asUdetail['loginpk'].'@@'.$asUdetail['pseudo'];
-
-          $poForm->addOption('groupfk'.$nCount, array('label' => $asUdetail['group_label'], 'value' => implode('||', $asUserList)));
-        }
+          $poForm->addOption('contact_type['.$nCount.']', array('value' => $nType, 'label' => $asType['label']));
       }
+
+      $asParam = $asDefaultparam;
+      //$asParam['label']= 'Visibility';
+      $asParam['class']= 'hidden';
+      $asParam['visibility']= 'hidden';
+      $asParam['type']= 'hidden';
+      $asParam['onchange'] = 'if($(this).val() == 4){ $(\'.custom_vis'.$nCount.'\').fadeIn(); }else { $(\'.custom_vis'.$nCount.':visible\').fadeOut(); } ';
+      $poForm->addField('select', 'contact_visibility['.$nCount.']', $asParam,array('type' => 'hidden'));
+
+      if($pasData['visibility'] == 1)
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public', 'selected' => 'selected'));
+      else
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 1, 'label' => 'Public'));
+
+      if($pasData['visibility'] == 2)
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private', 'selected' => 'selected'));
+      else
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 2, 'label' => 'Private'));
+
+      if($pasData['visibility'] == 3)
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team', 'selected' => 'selected'));
+      else
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 3, 'label' => 'My team'));
+
+      if($pasData['visibility'] == 4)
+      {
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom', 'selected' => 'selected'));
+        $sClass = '';
+      }
+      else
+      {
+        $poForm->addOption('contact_visibility['.$nCount.']', array('style'=> 'width:5px','value' => 4, 'label' => 'Custom'));
+        $sClass = ' hidden ';
+      }
+
+
+      $poForm->addField('input', 'sl_contactpk['.$nCount.']', array('type' => 'hidden', 'value' => (int)$pasData['sl_contactpk']));
+
+
+      //Group management
+      $asParam = $asDefaultparam;
+      $asParam['label']= 'Quick select';
+      $asParam['onchange'] = '
+
+            $(\'#contact_userfk'.$nCount.'Id\').tokenInput(\'clear\');
+            $(\'#contact_userfk'.$nCount.'Id\').css(\'color\', \'red\');
+
+            var asCons = $(this).val().split(\'||\');
+            //console.log(asCons);
+            $(asCons).each(function(nIndex, sValue)
+            {
+              var asValue = sValue.split(\'@@\');
+              if(asValue.length == 2)
+              {
+                //console.log(\'adding user \'+asValue[1]);
+                $(\'#contact_userfk'.$nCount.'Id\').tokenInput(\'add\', {id: asValue[0], name: asValue[1]});
+              }
+            });  ';
+
+      $poForm->addField('select', 'groupfk'.$nCount, $asParam);
+      $poForm->setFieldDisplayParams('groupfk'.$nCount, array('class' => 'custom_vis'.$nCount.$sClass));
+
+      $poForm->addOption('groupfk'.$nCount, array('label' => '-', 'value' => $this->casUserData['loginpk'].'@@'.$this->casUserData['pseudo']));
+      foreach($this->casActiveUser as $asUData)
+      {
+        $asUserList = array();
+        foreach($asUData as $asUdetail)
+          $asUserList[] = $asUdetail['loginpk'].'@@'.$asUdetail['pseudo'];
+
+        $poForm->addOption('groupfk'.$nCount, array('label' => $asUdetail['group_label'], 'value' => implode('||', $asUserList)));
+      }
+
 
       $asParam = array();
       $asParam['label']= 'Notes';
