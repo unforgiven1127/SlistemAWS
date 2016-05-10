@@ -1890,6 +1890,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _viewPosition($pnPositionPk)
     {
+      ChromePhp::log('_viewPosition');
       if(!assert('is_key($pnPositionPk)'))
         return array('error' => __LINE__.' - bad parameter');
 
