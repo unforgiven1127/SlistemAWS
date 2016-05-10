@@ -588,7 +588,7 @@ class CFormEx extends CForm
       if($this->cbSubmitHidden)
         $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" class="hidden"/>';
       else
-        $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
+        $sHtml.= ' <input type="submit" class="searchAfterAdd" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
 
       if($this->cbFormCancelButton)
         $sHtml.= ' <input type="button" value="Cancel" onclick="window.history.go(-1)" />';
