@@ -2208,6 +2208,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
+
+
       //ChromePhp::log($afterSaveID);
 
       $bSplitted = empty($poQb);
@@ -2218,11 +2220,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
 
-        /*if($afterSaveID)
+        if($afterSaveID)
         {
-          //ChromePhp::log($afterSaveID);
-          $sTitle = $afterSaveID;
-        }*/
+          return $this->_viewPosition($afterSaveID);
+        }
 
         $nCompanyfk= (int)getValue('companyfk');
         $sPositionDate = getValue('pos_date');
