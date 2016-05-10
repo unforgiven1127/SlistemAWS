@@ -171,10 +171,10 @@ class CSl_positionModelEx extends CSl_positionModel
     $poQb->addJoin('left', 'sl_position_link', 'spli', 'spli.positionfk = spos.sl_positionpk AND spli.active = 1');
     $poQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
 
-    if($afterAdd != false)
+    /*if($afterAdd != false)
     {
       $poQB->addWhere('spos.sl_positionpk = 8810');
-    }
+    }*/
 
     $poQb->addGroup('spos.sl_positionpk');
 
