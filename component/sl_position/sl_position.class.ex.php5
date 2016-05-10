@@ -2745,7 +2745,7 @@ public function viewPositionNew($pnPositionPk)
 
       if($afterSaveID != false)
       {
-        $test = viewPositionNew($pnPositionPk);
+        $test = $this->viewPositionNew($afterSaveID);
         $test['action'] = $sAction;
         return $test;
         //ChromePhp::log($test);
