@@ -4827,7 +4827,7 @@ class CSl_candidateEx extends CSl_candidate
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
     {
       $oLogin = CDependency::getCpLogin();
-
+ChromePhp::log($poForm);
       if(!empty($pasData))
       {
         $asDefaultparam = array('readonly' => '',
