@@ -2205,16 +2205,23 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bFilteredList)
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
-      $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
+      //$afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
 
       $bSplitted = empty($poQb);
-      ChromePhp::log($bSplitted);
-      ChromePhp::log($afterSaveID);
+      //ChromePhp::log($bSplitted);
 
       if($bSplitted)
       {
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
+
+        if(isset($GLOBALS['redis']->get('savedPositionTitle')))
+        {
+          $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
+          ChromePhp::log($afterSaveID);
+          $sTitle = $afterSaveID;
+        }
+
         $nCompanyfk= (int)getValue('companyfk');
         $sPositionDate = getValue('pos_date');
         $nLoginfk = (int)getValue('loginfk');
