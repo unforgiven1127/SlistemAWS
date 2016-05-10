@@ -1106,8 +1106,12 @@ class CSl_candidateEx extends CSl_candidate
     }
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
-    {ChromePhp::log('_getRightTabsHalfed');
+    {
+      ChromePhp::log('_getRightTabsHalfed');
+
       $sCharSelected = $sNoteSelected = 'selected';
+      $sContactSelected = 'selected';
+
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
@@ -1115,7 +1119,7 @@ class CSl_candidateEx extends CSl_candidate
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
       $asCharNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
-      if(empty($asCharNotes['nb_result']))
+      /*if(empty($asCharNotes['nb_result']))
       {
         $sCharSelected = '';
         $sContactSelected = 'selected';
@@ -1133,7 +1137,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
         $asContact['nb_result'] = '<span class="tab_number tab_level_1">'.$asContact['nb_result'].'</span>';
-
+*/
 
       $asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
       if(empty($asNotes['nb_result']))
