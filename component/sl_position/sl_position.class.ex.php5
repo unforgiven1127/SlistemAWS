@@ -604,7 +604,7 @@ class CSl_positionEx extends CSl_position
 
 $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 //setValue('title', $asPosition['positionfk']);
-ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
+//ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_LIST, CONST_POSITION_TYPE_JD);
       return array('notice' => 'Position successfully saved.', 'action' => '
@@ -2205,7 +2205,12 @@ ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
       if(!$bFilteredList)
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
+      $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
+
       $bSplitted = empty($poQb);
+      ChromePhp::log($bSplitted);
+      ChromePhp::log($afterSaveID);
+
       if($bSplitted)
       {
         //dump($_SESSION['position_filter']);
