@@ -323,6 +323,7 @@ class CQuickSearch
         {
           //$sKeyword = explode(",", $sKeyword); // , ile multi search
           $myArray = explode(',', $sKeyword);
+          var_dump($myArray);
           ChromePhp::log($myArray);
           //foreach ($sKeyword as $key => $value) {
             # code...
