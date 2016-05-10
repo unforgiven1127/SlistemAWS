@@ -638,10 +638,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     }
 
 
-    public function getPositionList($poQb = null, $pbAllData = false, $afterAdd = false)
+    public function getPositionList($poQb = null, $pbAllData = false)
     {
-      ChromePhp::log('getPositionList');
-      ChromePhp::log($afterAdd);
       if(empty($poQb))
         $poQb = $this->_getModel()->getQueryBuilder();
 
@@ -657,10 +655,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $poQb->addJoin('inner', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
         $poQb->addJoin('inner', 'login', 'logi', 'logi.loginpk = spos.created_by');
 
-      }
-      if($afterAdd != false)
-      {
-        $poQB->addWhere('spos.sl_positionpk = '.$afterAdd);
       }
       $poQb->addOrder('positionfk DESC');
 

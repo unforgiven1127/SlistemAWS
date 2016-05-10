@@ -151,8 +151,10 @@ class CSl_positionModelEx extends CSl_positionModel
     return $this->oDB->executeQuery($sQuery);
   }
 
-  public function getPositionList($poQb = null, $pnLimit = 250)
+  public function getPositionList($poQb = null, $pnLimit = 250,$afterAdd = false)
   {
+    ChromePhp::log('getPositionList');
+    ChromePhp::log($afterAdd);
     if(empty($poQb))
       $poQb = $this->getQueryBuilder();
 
@@ -168,6 +170,11 @@ class CSl_positionModelEx extends CSl_positionModel
     $poQb->addJoin('inner', 'sl_company', 'scom', 'scom.sl_companypk = spos.companyfk');
     $poQb->addJoin('left', 'sl_position_link', 'spli', 'spli.positionfk = spos.sl_positionpk AND spli.active = 1');
     $poQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
+
+    if($afterAdd != false)
+    {
+      $poQB->addWhere('spos.sl_positionpk = '.$afterAdd);
+    }
 
     $poQb->addGroup('spos.sl_positionpk');
 
