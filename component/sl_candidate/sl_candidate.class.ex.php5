@@ -8279,7 +8279,7 @@ die();*/
       ChromePhp::log('merge form 2');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => 'Wrong parameters');
-ChromePhp::log('merge form 2 after Wrong parameters');
+
       $nManualTarget = (int)getValue('target');
 
       $sHTML = $this->_oDisplay->getTitle('Duplicates for candidate #'.$pnCandidatePk, 'h3', true);
@@ -8287,7 +8287,7 @@ ChromePhp::log('merge form 2 after Wrong parameters');
 
 
       $duplicate_array = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget, true, true);
-
+ChromePhp::log('merge form 2 after duplicate_array');
       if(empty($duplicate_array['other']))
       {
         $sHTML.= '<span style="font-size: 15px; color: green; ">&rarr; No duplicate found for this candidate.</span><br /><br />';
