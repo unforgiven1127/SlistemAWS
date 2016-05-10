@@ -321,12 +321,15 @@ class CQuickSearch
         }
         else
         {
-          $bExactMatch = (bool)getValue('qs_exact_match', 0);
-          if($bExactMatch)
-            $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'" ');
-          else
-            $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
-
+          $sKeyword = explode(",", $sKeyword); // , ile multi search
+          foreach ($sKeyword as $key => $value) {
+            # code...
+            $bExactMatch = (bool)getValue('qs_exact_match', 0);
+            if($bExactMatch)
+              $this->coQb->addWhere(' scpr.keyword LIKE "'.$value.'" ');
+            else
+              $this->coQb->addWhere(' scpr.keyword LIKE "'.$value.'%" ');
+          }
           $asTitle[] = ' keyword = '.$sKeyword;
         }
       }
