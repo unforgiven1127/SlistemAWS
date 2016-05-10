@@ -322,7 +322,8 @@ class CQuickSearch
         else
         {
           //$sKeyword = explode(",", $sKeyword); // , ile multi search
-          ChromePhp::log($sKeyword);
+          $myArray = explode(',', $sKeyword);
+          ChromePhp::log($myArray);
           //foreach ($sKeyword as $key => $value) {
             # code...
             $bExactMatch = (bool)getValue('qs_exact_match', 0);
