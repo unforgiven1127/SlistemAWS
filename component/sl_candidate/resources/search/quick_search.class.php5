@@ -321,7 +321,7 @@ class CQuickSearch
         }
         else
         {
-          $asWords = explode(' ', $sKeyword);
+          $asWords = explode(',', $sKeyword);
             foreach($asWords as $sWord)
               $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
 
