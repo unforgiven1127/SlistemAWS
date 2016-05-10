@@ -509,6 +509,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     {
       if($contact != "")
       {
+        ChromePhp::log($contact);
         array_push($candidate_contact_info, $contact);
       }
     }
