@@ -2449,7 +2449,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       {
         ChromePhp::log($afterSaveID);
         ChromePhp::log(array('data' => convertToUtf8($this->viewPositionNew((int)$afterSaveID)), 'action' => $sAction));
-        //return array('data' => convertToUtf8($this->viewPositionNew((int)$afterSaveID)), 'action' => $sAction);
+        return array('data' => convertToUtf8($this->viewPositionNew((int)$afterSaveID)), 'action' => $sAction);
         //return array('data' => convertToUtf8($this->_getPositionForm($afterSaveID)), 'action' => $sAction);
         //return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
         //return $this->_getPositionForm($afterSaveID);
