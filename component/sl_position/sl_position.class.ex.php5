@@ -2217,11 +2217,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
 
-        if($afterSaveID)
+        /*if($afterSaveID)
         {
           //ChromePhp::log($afterSaveID);
           $sTitle = $afterSaveID;
-        }
+        }*/
 
         $nCompanyfk= (int)getValue('companyfk');
         $sPositionDate = getValue('pos_date');
