@@ -155,7 +155,22 @@ class CSl_positionModelEx extends CSl_positionModel
   {
     ChromePhp::log('getPositionList');
     ChromePhp::log($afterAdd);
-    if(empty($poQb))
+
+    $sQuery = "SELECT spos.*, spde.*, scom.name, scom.sl_companypk,
+      spli.sl_position_linkpk, sind.label as industry,
+
+      COUNT(DISTINCT(spli.candidatefk)) as nb_play,
+      SUM(IF(spli.status < 101 AND spli.active = 1, 1, 0)) as nb_active
+      FROM `sl_position` as spos
+      INNER JOIN sl_position_detail as spde ON ((spde.positionfk = spos.sl_positionpk))
+      INNER JOIN sl_company as scom ON ((scom.sl_companypk = spos.companyfk))
+      LEFT JOIN sl_position_link as spli ON ((spli.positionfk = spos.sl_positionpk AND spli.active = 1))
+      LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = spos.industryfk))
+      where spos.sl_positionpk = 8810
+      GROUP BY spos.sl_positionpk
+      ORDER BY spos.sl_positionpk DESC LIMIT 0, 150";
+
+    /*if(empty($poQb))
       $poQb = $this->getQueryBuilder();
 
     $poQb->setTable('sl_position', 'spos');
@@ -185,7 +200,7 @@ class CSl_positionModelEx extends CSl_positionModel
       $poQb->addLimit('0, '.$pnLimit);
 ChromePhp::log($poQb);
     $sQuery = $poQb->getSql();
-    ChromePhp::log($sQuery);
+    ChromePhp::log($sQuery);*/
     //dump($sQuery);
     return $this->oDB->executeQuery($sQuery);
   }
