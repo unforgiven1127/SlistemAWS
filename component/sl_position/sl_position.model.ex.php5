@@ -165,16 +165,16 @@ class CSl_positionModelEx extends CSl_positionModel
       COUNT(DISTINCT(spli.candidatefk)) as nb_play,
       SUM(IF(spli.status < 101 AND spli.active = 1, 1, 0)) as nb_active');
 
-    if($afterAdd != false)
-    {
-      $poQB->addWhere('spos.sl_positionpk = '.$afterAdd.' ');
-    }
 
     $poQb->addJoin('inner', 'sl_position_detail', 'spde', 'spde.positionfk = spos.sl_positionpk');
     $poQb->addJoin('inner', 'sl_company', 'scom', 'scom.sl_companypk = spos.companyfk');
     $poQb->addJoin('left', 'sl_position_link', 'spli', 'spli.positionfk = spos.sl_positionpk AND spli.active = 1');
     $poQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
 
+    if($afterAdd != false)
+    {
+      $poQB->addWhere('spos.sl_positionpk = 8810');
+    }
 
     $poQb->addGroup('spos.sl_positionpk');
 
