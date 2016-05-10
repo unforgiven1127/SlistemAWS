@@ -2753,7 +2753,7 @@ public function viewPositionNew($pnPositionPk)
         //return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
         //return $this->_getPositionForm($afterSaveID);
       }*/
-ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));
+      //ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));
       return array('data' => convertToUtf8($sHTML), 'action' => $sAction);
     }
 
