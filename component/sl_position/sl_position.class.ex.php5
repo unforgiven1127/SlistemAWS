@@ -2319,6 +2319,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $oHTML->getBlocEnd();
       }
 
+      if($afterSaveID != false)
+      {
+        _getPositionForm($afterSaveID);
+      }
 
       $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit,$afterSaveID);
       $bRead = $oDbResult->readFirst();
