@@ -638,7 +638,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     }
 
 
-    public function getPositionList($poQb = null, $pbAllData = false)
+    public function getPositionList($poQb = null, $pbAllData = false, $afterAdd = false)
     {
       if(empty($poQb))
         $poQb = $this->_getModel()->getQueryBuilder();
@@ -655,6 +655,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $poQb->addJoin('inner', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
         $poQb->addJoin('inner', 'login', 'logi', 'logi.loginpk = spos.created_by');
 
+      }
+      if($afterAdd != false)
+      {
+        $poQB->addWhere('spos.sl_positionpk = '.$afterAdd);
       }
       $poQb->addOrder('positionfk DESC');
 
@@ -2320,7 +2324,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
 
 
-      $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit);
+      $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit,$afterSaveID);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
         return array('data' => 'Could not find any position.', 'sql' => $poQb->getSql());
@@ -2795,7 +2799,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _searchPosition()
     {
       $_SESSION['position_filter'] = array();
-ChromePhp::log('ekleme sonrasi search e geliyor');
       //get search param, load it in the querybuilder
       $oQb = $this->_getModel()->getQueryBuilder();
 
