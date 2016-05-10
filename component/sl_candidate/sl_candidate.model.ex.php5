@@ -515,7 +515,11 @@ class CSl_candidateModelEx extends CSl_candidateModel
         }
       }
     }
-ChromePhp::log('ok');
+    else
+    {
+      $candidate_contact_info = "";
+    }
+
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
