@@ -584,6 +584,7 @@ class CSl_positionEx extends CSl_position
         if(empty($nPositionPk))
           return array('error' => __LINE__.' - Error while saving the position.');
 
+        $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
       else
       {
@@ -602,7 +603,7 @@ class CSl_positionEx extends CSl_position
 
       }
 
-$GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
+
 //setValue('title', $asPosition['positionfk']);
 //ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
 
