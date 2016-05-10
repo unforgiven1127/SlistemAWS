@@ -1261,11 +1261,11 @@ class CSl_candidateEx extends CSl_candidate
       }*/
 
       $asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
-      if(empty($asNotes['nb_result']))
+      /*if(empty($asNotes['nb_result'])) // add note ve add character note alanlari hep ilk acilacak o nedenle kaldirdik
       {
         $sNoteSelected = '';
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
-      }
+      }*/
 
       $asContact = $this->_getContactTab($pasCandidateData);
       if(empty($asContact['nb_result']))
