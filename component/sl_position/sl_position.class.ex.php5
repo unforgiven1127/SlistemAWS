@@ -2743,16 +2743,16 @@ public function viewPositionNew($pnPositionPk)
       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
-      /*if($afterSaveID != false)
+      if($afterSaveID != false)
       {
-        viewPositionNew($pnPositionPk)
-        ChromePhp::log($afterSaveID);
-        ChromePhp::log(array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction));
-        return array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction);
+        $test = viewPositionNew($pnPositionPk);
+        ChromePhp::log($test);
+        //ChromePhp::log(array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction));
+        //return array('data' => $this->_getPositionForm((int)$afterSaveID), 'action' => $sAction);
         //return array('data' => convertToUtf8($this->_getPositionForm($afterSaveID)), 'action' => $sAction);
         //return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
         //return $this->_getPositionForm($afterSaveID);
-      }*/
+      }
       //ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));
       return array('data' => convertToUtf8($sHTML), 'action' => $sAction);
     }
