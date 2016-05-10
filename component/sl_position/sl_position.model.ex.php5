@@ -156,7 +156,9 @@ class CSl_positionModelEx extends CSl_positionModel
     ChromePhp::log('getPositionList');
     ChromePhp::log($afterAdd);
 
-    $sQuery = "SELECT spos.*, spde.*, scom.name, scom.sl_companypk,
+    if($afterAdd != false)
+    {
+      $sQuery = "SELECT spos.*, spde.*, scom.name, scom.sl_companypk,
       spli.sl_position_linkpk, sind.label as industry,
 
       COUNT(DISTINCT(spli.candidatefk)) as nb_play,
@@ -166,41 +168,44 @@ class CSl_positionModelEx extends CSl_positionModel
       INNER JOIN sl_company as scom ON ((scom.sl_companypk = spos.companyfk))
       LEFT JOIN sl_position_link as spli ON ((spli.positionfk = spos.sl_positionpk AND spli.active = 1))
       LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = spos.industryfk))
-      where spos.sl_positionpk = 8810
+      where spos.sl_positionpk = ".$afterAdd."
       GROUP BY spos.sl_positionpk
       ORDER BY spos.sl_positionpk DESC LIMIT 0, 150";
-
-    /*if(empty($poQb))
-      $poQb = $this->getQueryBuilder();
-
-    $poQb->setTable('sl_position', 'spos');
-    $poQb->addSelect('spos.*, spde.*, scom.name, scom.sl_companypk,
-      spli.sl_position_linkpk, sind.label as industry,
-
-      COUNT(DISTINCT(spli.candidatefk)) as nb_play,
-      SUM(IF(spli.status < 101 AND spli.active = 1, 1, 0)) as nb_active');
-
-
-    $poQb->addJoin('inner', 'sl_position_detail', 'spde', 'spde.positionfk = spos.sl_positionpk');
-    $poQb->addJoin('inner', 'sl_company', 'scom', 'scom.sl_companypk = spos.companyfk');
-    $poQb->addJoin('left', 'sl_position_link', 'spli', 'spli.positionfk = spos.sl_positionpk AND spli.active = 1');
-    $poQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
-
-    if($afterAdd != false)
+    }
+    else
     {
-      $poQB->addWhere('spos.sl_positionpk = 8810');
+      if(empty($poQb))
+        $poQb = $this->getQueryBuilder();
+
+      $poQb->setTable('sl_position', 'spos');
+      $poQb->addSelect('spos.*, spde.*, scom.name, scom.sl_companypk,
+        spli.sl_position_linkpk, sind.label as industry,
+
+        COUNT(DISTINCT(spli.candidatefk)) as nb_play,
+        SUM(IF(spli.status < 101 AND spli.active = 1, 1, 0)) as nb_active');
+
+
+      $poQb->addJoin('inner', 'sl_position_detail', 'spde', 'spde.positionfk = spos.sl_positionpk');
+      $poQb->addJoin('inner', 'sl_company', 'scom', 'scom.sl_companypk = spos.companyfk');
+      $poQb->addJoin('left', 'sl_position_link', 'spli', 'spli.positionfk = spos.sl_positionpk AND spli.active = 1');
+      $poQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = spos.industryfk');
+
+      if($afterAdd != false)
+      {
+        $poQB->addWhere('spos.sl_positionpk = 8810');
+      }
+
+      $poQb->addGroup('spos.sl_positionpk');
+
+      if(!$poQb->hasOrder())
+        $poQb->addOrder('spos.sl_positionpk DESC');
+
+      if($pnLimit > 0)
+        $poQb->addLimit('0, '.$pnLimit);
+      $sQuery = $poQb->getSql();
     }
 
-    $poQb->addGroup('spos.sl_positionpk');
-
-    if(!$poQb->hasOrder())
-      $poQb->addOrder('spos.sl_positionpk DESC');
-
-    if($pnLimit > 0)
-      $poQb->addLimit('0, '.$pnLimit);
-ChromePhp::log($poQb);
-    $sQuery = $poQb->getSql();
-    ChromePhp::log($sQuery);*/
+    ChromePhp::log($sQuery);
     //dump($sQuery);
     return $this->oDB->executeQuery($sQuery);
   }
