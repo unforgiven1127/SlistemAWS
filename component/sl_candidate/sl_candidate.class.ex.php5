@@ -1244,7 +1244,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
-
+ChromePhp::log('_getRightTabsFull');
       $sCharSelected =  'selected';
       $sNoteSelected = 'selected'; // sonradan ekledik MCA
 
