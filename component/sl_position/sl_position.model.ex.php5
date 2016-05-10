@@ -173,7 +173,7 @@ class CSl_positionModelEx extends CSl_positionModel
 
     if($afterAdd != false)
     {
-      $poQB->addWhere('spos.sl_positionpk = '.$afterAdd);
+      $poQB->addWhere('spos.sl_positionpk = '.$afterAdd.' ');
     }
 
     $poQb->addGroup('spos.sl_positionpk');
@@ -185,6 +185,7 @@ class CSl_positionModelEx extends CSl_positionModel
       $poQb->addLimit('0, '.$pnLimit);
 
     $sQuery = $poQb->getSql();
+    ChromePhp::log($sQuery);
     //dump($sQuery);
     return $this->oDB->executeQuery($sQuery);
   }
