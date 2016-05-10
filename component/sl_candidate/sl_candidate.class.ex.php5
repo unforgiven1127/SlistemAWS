@@ -4827,7 +4827,7 @@ class CSl_candidateEx extends CSl_candidate
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
     {
       $oLogin = CDependency::getCpLogin();
-ChromePhp::log($poForm);
+
       if(!empty($pasData))
       {
         $asDefaultparam = array('readonly' => '',
@@ -4883,12 +4883,6 @@ ChromePhp::log($poForm);
       $asParam['style']= 'padding-left:-500px';
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
-
-      $asParam = array();
-      $asParam['label']= 'Notes';
-      $asParam['value'] = $pasData['description'];
-      $asParam['style'] = 'width:510px';
-      $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
       foreach($asTypes as $nType => $asType)
       {
@@ -4968,6 +4962,13 @@ ChromePhp::log($poForm);
 
         $poForm->addOption('groupfk'.$nCount, array('label' => $asUdetail['group_label'], 'value' => implode('||', $asUserList)));
       }
+
+
+      $asParam = array();
+      $asParam['label']= 'Notes';
+      $asParam['value'] = $pasData['description'];
+      $asParam['style'] = 'width:510px';
+      $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
 
