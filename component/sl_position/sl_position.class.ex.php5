@@ -2206,6 +2206,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
+      $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
 
       $bSplitted = empty($poQb);
       //ChromePhp::log($bSplitted);
