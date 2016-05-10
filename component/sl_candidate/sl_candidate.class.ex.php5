@@ -4884,6 +4884,12 @@ class CSl_candidateEx extends CSl_candidate
       $asParam['value']= $pasData['value'];
       $poForm->addField('input', 'contact_value['.$nCount.']', $asParam);
 
+      $asParam = array();
+      $asParam['label']= 'Notes';
+      $asParam['value'] = $pasData['description'];
+      $asParam['style'] = 'width:510px';
+      $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
+
       foreach($asTypes as $nType => $asType)
       {
         if($pasData['type'] == $nType)
@@ -4962,13 +4968,6 @@ class CSl_candidateEx extends CSl_candidate
 
         $poForm->addOption('groupfk'.$nCount, array('label' => $asUdetail['group_label'], 'value' => implode('||', $asUserList)));
       }
-
-
-      $asParam = array();
-      $asParam['label']= 'Notes';
-      $asParam['value'] = $pasData['description'];
-      $asParam['style'] = 'width:510px';
-      $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
 
