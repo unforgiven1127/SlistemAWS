@@ -2756,7 +2756,7 @@ public function viewPositionNew($pnPositionPk)
         //return $this->_getPositionForm($afterSaveID);
       }
       $return = array('data' => convertToUtf8($sHTML), 'action' => $sAction);
-      ChromePhp::log('asdasd');
+      ChromePhp::log($return);
       return $return;
     }
 
