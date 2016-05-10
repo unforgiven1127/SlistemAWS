@@ -479,7 +479,7 @@ class CFormEx extends CForm
   {
     //-----------------------------------
     // Fetching form parameters
-    $afterSavePositionFlag = $GLOBALS['redis']->get('savedPositionTitle');
+    //$afterSavePositionFlag = $GLOBALS['redis']->get('savedPositionTitle');
     if($this->cbFormNoStyle)
     {
       if(isset($this->casFormParams['style']))
@@ -588,11 +588,6 @@ class CFormEx extends CForm
 
       if($this->cbSubmitHidden)
         $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" class="hidden"/>';
-      else if($afterSavePositionFlag)
-      {
-        $sHtml.= ' <input type="submit" id="searchAfterAddPosition" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
-        $GLOBALS['redis']->delete('savedPositionTitle');
-      }
       else
         $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
 

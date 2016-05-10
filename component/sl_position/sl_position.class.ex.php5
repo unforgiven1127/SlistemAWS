@@ -640,6 +640,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     public function getPositionList($poQb = null, $pbAllData = false, $afterAdd = false)
     {
+      ChromePhp::log($afterAdd);
       if(empty($poQb))
         $poQb = $this->_getModel()->getQueryBuilder();
 
@@ -2210,7 +2211,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
-      //$GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
+      $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
       //ChromePhp::log($afterSaveID);
 
       $bSplitted = empty($poQb);
@@ -2223,7 +2224,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         if($afterSaveID)
         {
-          ChromePhp::log($afterSaveID);
+          //ChromePhp::log($afterSaveID);
           $sTitle = $afterSaveID;
         }
 
