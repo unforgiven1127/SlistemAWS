@@ -321,16 +321,20 @@ class CQuickSearch
         }
         else
         {
-          $sKeyword = explode(",", $sKeyword); // , ile multi search
-          ChromePhp::log($sKeyword);
-          foreach ($sKeyword as $key => $value) {
+          $asWords = explode(' ', $sKeyword);
+            foreach($asWords as $sWord)
+              $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
+
+          //$sKeyword = explode(",", $sKeyword); // , ile multi search
+          //ChromePhp::log($sKeyword);
+          /*foreach ($sKeyword as $key => $value) {
             # code...
             $bExactMatch = (bool)getValue('qs_exact_match', 0);
             if($bExactMatch)
               $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'" ');
             else
               $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
-          }
+          }*/
           $asTitle[] = ' keyword = '.$sKeyword;
         }
       }
