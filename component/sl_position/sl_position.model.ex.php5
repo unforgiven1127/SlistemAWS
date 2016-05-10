@@ -153,8 +153,8 @@ class CSl_positionModelEx extends CSl_positionModel
 
   public function getPositionList($poQb = null, $pnLimit = 250,$afterAdd = false)
   {
-    ChromePhp::log('getPositionList');
-    ChromePhp::log($afterAdd);
+    //ChromePhp::log('getPositionList');
+    //ChromePhp::log($afterAdd);
 
     if($afterAdd != false)
     {
@@ -205,7 +205,7 @@ class CSl_positionModelEx extends CSl_positionModel
       $sQuery = $poQb->getSql();
     }
 
-    ChromePhp::log($sQuery);
+    //ChromePhp::log($sQuery);
     //dump($sQuery);
     return $this->oDB->executeQuery($sQuery);
   }

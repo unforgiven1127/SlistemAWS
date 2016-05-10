@@ -322,7 +322,7 @@ class CCandidate_sl3 extends CTemplate
           {
             $slPositionLinkStatus = $slPositionLinkResult['status'];
             $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
-            ChromePhp::log($sStatusLabel);
+            //ChromePhp::log($sStatusLabel);
           }
 
           if($pasCandidateData['_in_play'])
