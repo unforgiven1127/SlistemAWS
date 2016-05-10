@@ -584,7 +584,7 @@ class CSl_positionEx extends CSl_position
         if(empty($nPositionPk))
           return array('error' => __LINE__.' - Error while saving the position.');
 
-        //$GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
+        $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
       else
       {
@@ -2208,6 +2208,7 @@ class CSl_positionEx extends CSl_position
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
+      ChromePhp::log($afterSaveID);
 
       $bSplitted = empty($poQb);
       //ChromePhp::log($bSplitted);
