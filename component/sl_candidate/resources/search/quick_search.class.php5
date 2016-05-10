@@ -321,7 +321,7 @@ class CQuickSearch
         }
         else
         {
-          $sKeyword = explode(",", $sKeyword); // , ile multi search
+          //$sKeyword = explode(",", $sKeyword); // , ile multi search
           ChromePhp::log($sKeyword);
           foreach ($sKeyword as $key => $value) {
             # code...
