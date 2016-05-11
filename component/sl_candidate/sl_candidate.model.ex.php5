@@ -15,7 +15,15 @@ class CSl_candidateModelEx extends CSl_candidateModel
     return true;
   }
 
+  public function update_candidate_profile_rating($rating, $candidatefk)
+  {
+    $sQuery = "UPDATE sl_candidate_profile
+    SET profile_rating = ".$rating." WHERE candidatefk = ".$candidatefk;
 
+    $this->oDB->ExecuteQuery($sQuery);
+
+    return $candidatefk;
+  }
 
   public function getCandidateData($pvPk, $pbFullProfile = false, $pbForceArray = false)
   {
