@@ -110,12 +110,12 @@ ChromePhp::log('105');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
-
+ChromePhp::log('113');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_COMP, 'label' => 'Company', 'search_url' => $sURL);
         break;
-
+ChromePhp::log('123');
       default:
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
