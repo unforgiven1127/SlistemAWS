@@ -2572,7 +2572,7 @@ class CSl_candidateEx extends CSl_candidate
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
-      ChromePhp::log($sSortField);
+      //ChromePhp::log($sSortField);
       //if(!empty($sSortField))
       //{
         //$poQB->addOrder('scan.firstname DESC');
@@ -2660,8 +2660,32 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-$sQuery = explode("ORDER BY",$sQuery);
-$sQuery = $sQuery[0];
+      $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
+      $sQuery = $sQuery[0];
+
+      $sSortOrder = getValue('sortorder');
+
+      ChromePhp::log($sSortField." - ".$sSortOrder);
+
+      if(!empty($sSortField)){
+        if($sSortField == "sl_candidatepk")
+        {
+          $sQuery.= ' ORDER BY scan.sl_candidatepk DESC ';
+        }
+        else if($sSortField == "cp_client")
+        {
+          $sQuery.= ' ORDER BY scom.is_client ASC ';
+        }
+        else if($sSortField == "_in_play")
+        {
+          $sQuery.= ' ORDER BY scpr._in_play ASC ';
+        }
+        else if($sSortField == "grade")
+        {
+          $sQuery.= ' ORDER BY scpr.grade ASC ';
+        }
+      }
+
 ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
