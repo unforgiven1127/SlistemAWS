@@ -7218,7 +7218,7 @@ die();*/
 
       //dump($nPlay);
       //dump($nMaxActiveStatus);
-
+ChromePhp::log($nScore);
       if($nScore > 116)
         $nRating = 100;
       else
@@ -7227,8 +7227,10 @@ die();*/
 
         if($nRating < 0)
           $nRating = 1;
+        else if($nRating > 100)
+          $nRating = 100;
       }
-
+ChromePhp::log($nRating);
       $asUpdate = array('_has_doc' => $nDocument, '_in_play' => $nPlay, '_pos_status' => $nMaxActiveStatus,
           'profile_rating' => $nRating, '_date_updated' => date('Y-m-d H:i:s'));
       $bUpdated = $this->_getModel()->update($asUpdate, 'sl_candidate_profile', 'candidatefk = '.$pnCandidatePk);
