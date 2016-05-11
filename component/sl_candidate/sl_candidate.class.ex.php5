@@ -2655,8 +2655,8 @@ ChromePhp::log($sQuery);
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
 
           $asSql = $poQB->getSqlArray();
-          if(!empty($asSql['order']))
-            $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
+          /*if(!empty($asSql['order']))
+            $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);*/
         }
       }
 
