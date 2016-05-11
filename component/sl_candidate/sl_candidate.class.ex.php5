@@ -7057,12 +7057,11 @@ die();*/
       if(empty($asData))
         return array();
 
-      ChromePhp::log($asData);
       $nScore = 0;
       if(!empty($asData['languagefk']))
         $nScore+= 3;
 
-      if(!empty($asData['nattionalityfk']))
+      if(!empty($asData['nationalityfk']))
         $nScore+= 3;
 
       if(!empty($asData['locationfk']))
@@ -7192,7 +7191,7 @@ die();*/
       if(!empty($asData['languagefk']))
         $nScore+= 3;
 
-      if(!empty($asData['nattionalityfk']))
+      if(!empty($asData['nationalityfk']))
         $nScore+= 3;
 
       if(!empty($asData['locationfk']))
@@ -8912,6 +8911,16 @@ die();*/
       $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
 
       $recalculated_profile_rating = $this->calculate_profile_rating($target_id);
+
+      if($recalculated_profile_rating < $candidate_data['target']['profile_rating'])
+      {
+        $recalculated_profile_rating = $candidate_data['target']['profile_rating'];
+      }
+
+      if($recalculated_profile_rating < $candidate_data['origin']['profile_rating'])
+      {
+        $recalculated_profile_rating = $candidate_data['origin']['profile_rating'];
+      }
       //$candidate_data['target']['profile_rating'] = $recalculated_profile_rating;
       //$sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
       $candidate_id = $this->_getModel()->update_candidate_profile_rating($recalculated_profile_rating, $target_id);
