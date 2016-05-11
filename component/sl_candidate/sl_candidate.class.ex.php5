@@ -7048,6 +7048,136 @@ die();*/
       return true;
     }
 
+    public function calculate_profile_rating($pnCandidatePk)
+    {
+      if(!assert('is_key($pnCandidatePk)'))
+        return array();
+
+      $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
+      if(empty($asData))
+        return array();
+
+      $nScore = 0;
+      if(!empty($asData['languagefk']))
+        $nScore+= 3;
+
+      if(!empty($asData['nattionalityfk']))
+        $nScore+= 3;
+
+      if(!empty($asData['locationfk']))
+        $nScore+= 3;
+
+      if(!empty($asData['date_birth']))
+      {
+        if($asData['is_birth_estimation'])
+          $nScore+= 3;
+        else
+          $nScore+= 5;
+      }
+
+
+      if($asData['cpa'] != null || $asData['mba'] != null)
+        $nScore+= 3;
+
+      if(!empty($asData['skill_ag']))
+        $nScore+= 3;
+      if(!empty($asData['skill_ap']))
+        $nScore+= 3;
+      if(!empty($asData['skill_am']))
+        $nScore+= 3;
+      if(!empty($asData['skill_mp']))
+        $nScore+= 3;
+      if(!empty($asData['skill_in']))
+        $nScore+= 3;
+      if(!empty($asData['skill_ex']))
+        $nScore+= 3;
+      if(!empty($asData['skill_fx']))
+        $nScore+= 3;
+      if(!empty($asData['skill_ch']))
+        $nScore+= 3;
+      if(!empty($asData['skill_ed']))
+        $nScore+= 3;
+      if(!empty($asData['skill_pl']))
+        $nScore+= 3;
+      if(!empty($asData['skill_e']))
+        $nScore+= 3;
+
+      if(!empty($asData['title']))
+        $nScore+= 5;
+
+      if(!empty($asData['department']))
+        $nScore+= 5;
+
+      if(!empty($asData['keyword']))
+        $nScore+= 3;
+      if(!empty($asData['salary']))
+        $nScore+= 5;
+      if(!empty($asData['bonus']))
+        $nScore+= 5;
+      if(!empty($asData['target_low']))
+        $nScore+= 3;
+      if(!empty($asData['target_high']))
+        $nScore+= 3;
+
+
+      //Update _has_doc and used for quality ratio
+      $asItem = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, CONST_CP_PK => $pnCandidatePk);
+      $oShareSpace = CDependency::getComponentByName('sharedspace');
+      $asDocument = $oShareSpace->getDocuments(-1, $asItem);
+      //dump($asDocument);
+      $nDocument = (int)!empty($asDocument);
+      if($nDocument == 0)
+        $nScore+= -10;
+      else
+        $nScore+= 10;
+
+      //calculating ratio
+      $oNote = CDependency::getComponentByName('sl_event');
+      $asCharNote = $oNote->getNotes($pnCandidatePk, CONST_CANDIDATE_TYPE_CANDI, 'character');
+      //dump($asCharNote);
+      $asNote = $oNote->getNotes($pnCandidatePk, CONST_CANDIDATE_TYPE_CANDI, '', array('character'));
+      //dump($asNote);
+
+      $nCharNote = count($asCharNote);
+      if($nCharNote > 3)
+        $nCharNote = 3;
+
+      $nNote = count($asNote);
+      if($nNote > 3)
+        $nNote = 3;
+
+      if(empty($nCharNote) && empty($nNote))
+        $nScore-= 15;
+      else
+        $nScore+= ($nCharNote * 7) + ($nNote * 7);
+
+
+      $sWhere = ' item_type = "'.CONST_CANDIDATE_TYPE_CANDI.'" AND itemfk = "'.$pnCandidatePk.'" ';
+      $oDbResult = $this->_getModel()->getByWhere('sl_contact', $sWhere, 'count(*) as nb_contact');
+      $oDbResult->readFirst();
+      $nContact = (int)$oDbResult->getFieldValue('nb_contact');
+      if($nContact > 3)
+        $nContact = 3;
+      elseif($nContact == 0)
+        $nContact = -1;
+
+      $nScore+= ($nContact * 10);
+
+      if($nScore > 116)
+        $nRating = 100;
+      else
+      {
+        $nRating = round(($nScore / 116)*100, 2);
+
+        if($nRating < 0)
+          $nRating = 1;
+        else if($nRating > 100)
+          $nRating = 100;
+      }
+
+      return $nRating;
+    }
+
     public function updateCandidateProfile($pnCandidatePk)
     {
       if(!assert('is_key($pnCandidatePk)'))
@@ -8779,6 +8909,9 @@ die();*/
       }
 //ChromePhp::log($candidate_data['target']);
       $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
+
+      $recalculated_profile_rating = $this->calculate_profile_rating($target_id);
+      $candidate_data['target']['profile_rating'] = $recalculated_profile_rating;
 
       return $adjusted_candidate_ids;
     }
