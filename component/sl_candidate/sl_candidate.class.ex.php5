@@ -240,7 +240,6 @@ ChromePhp::log('240');
 ChromePhp::log(debug_backtrace());
 
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
-ChromePhp::log($return);
             return json_encode($return);
             break;
             case CONST_ACTION_MANAGE:
