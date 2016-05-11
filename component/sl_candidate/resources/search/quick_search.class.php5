@@ -47,6 +47,7 @@ class CQuickSearch
 
   public function _buildCandidateQuickSearch($pbStrict = true)
   {
+    ChromePhp::log('_buildCandidateQuickSearch');
     if($pbStrict)
       $sOperator = ' AND ';
     else
