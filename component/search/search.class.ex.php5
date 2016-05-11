@@ -133,7 +133,7 @@ class CSearchEx extends CSearch
 
     $oHTML = CDependency::getCpHtml();
     $oPage = CDependency::getCpPage();
-ChromePhp::log('136');
+
     $sUrl = $oPage->getUrl('search', CONST_ACTION_SEARCH, '', 0, array('formType'=>'global'));
     $sPic = $oHTML->getPicture(CONST_PICTURE_MENU_SEARCH, 'Search');
 

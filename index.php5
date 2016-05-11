@@ -13,9 +13,7 @@ header('Cache-Control: no-cache');
 $GLOBALS['redis'] = new Redis();
 $GLOBALS['redis']->pconnect('127.0.0.1');
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 //$nMemory = memory_get_usage();
 
 //prevent infinite loops if assert fires another assert (mailAssert) that is firing a new assert that ...

@@ -240,7 +240,7 @@ ChromePhp::log('212');
 ChromePhp::log('240');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
-
+ChromePhp::log('241');
             case CONST_ACTION_MANAGE:
               $asDuplicate = $this->_getMergeForm($this->cnPk);
 

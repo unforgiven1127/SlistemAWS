@@ -102,7 +102,7 @@ class CSl_candidateEx extends CSl_candidate
   public function getComponentPublicItems($psInterface = '')
   {
     $asItem = array();
-ChromePhp::log('105 - 2');
+
     switch($psInterface)
     {
       case 'notification_item':
@@ -669,7 +669,6 @@ ChromePhp::log('105 - 2');
 
   public function getSearchResultMeta($psType = '')
   {
-    ChromePhp::log('672 - 2');
     $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, $psType);
     $asResultMeta = array('custom_result_page' => $sURL,
     'onBeforeSubmit' =>
@@ -2216,7 +2215,7 @@ ChromePhp::log('105 - 2');
         $sPositionSelected = 'selected';
       }
 
-ChromePhp::log('2219 - 2');
+
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
@@ -3479,7 +3478,7 @@ ChromePhp::log('2219 - 2');
 
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
-ChromePhp::log('3482-2');
+
       $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
       if(empty($nAttendee))
@@ -3713,7 +3712,7 @@ ChromePhp::log('3482-2');
       $oForm = $this->_oDisplay->initForm();
       $oForm->setFormParams('filterMeeting', true, array('action' => $sURL, 'class' => 'filterMeeting', 'onBeforeSubmit' => 'event.preventDefault();'));
       $oForm->setFormDisplayParams(array('noButton' => true, 'columns' => 1));
-ChromePhp::log('3716 - 2');
+
         $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
         $oForm->addField('selector', 'user_list', array('label' => 'Consultant', 'url' => $sURL));
         if($pnLoginPk)
@@ -5083,7 +5082,7 @@ ChromePhp::log('3716 - 2');
        $oForm->setFieldDisplayParams('title2', array('class' => 'formSectionTitle'));
 
        $oForm->addSection('', array('class' => 'candidate_inner_section'));
-ChromePhp::log('5086 - 2');
+
           $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
           $oForm->addField('selector', 'companypk', array('label' => 'company', 'url' => $sURL));
           $oForm->setFieldDisplayParams('companypk', array('class' => 'cpAutoComplete', 'style' => 'width: 468px; min-width: 468px;'));
@@ -5348,7 +5347,7 @@ ChromePhp::log('5086 - 2');
           &nbsp;Use this section to add alternative / secondary information about the candidate.<br /><br />', 'onclick' => '$(\'#candidate_more_section\').fadeToggle();'));
         $oForm->setFieldDisplayParams('more_notice', array('class' => 'full_width_msg'));
 
-ChromePhp::log('5351 - 2');
+
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
         $oForm->addField('selector', 'alt_occupationpk', array('label' => 'alt. occupation', 'url' => $sURL, 'nbresult' => 5));
         if(isset($asAttribute['candi_occu']))
