@@ -976,7 +976,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
       if(empty($nCurrentStatus))
-      {
+      {ChromePhp::log('979');
         $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $oForm->addField('selector', 'candidatefk', array('label' => 'Candidate', 'url' => $sURL));
         if(!empty($nCandidatePk))
@@ -3454,7 +3454,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $date_filter_array = array('date_created' => 'Date created', 'date_signed' => 'Date signed',
         'date_due' => 'Date due', 'date_paid' => 'Date paid', 'date_start' => 'Date start work');
-
+ChromePhp::log('3457');
       $form_url = $this->_oPage->getUrl($this->csUid, CONST_ACTION_LIST, CONST_POSITION_TYPE_PLACEMENT, 0);
       $user_token_url = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $position_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_POSITION_TYPE_JD);

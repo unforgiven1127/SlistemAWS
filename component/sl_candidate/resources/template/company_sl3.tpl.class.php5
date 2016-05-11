@@ -144,7 +144,7 @@ class CCompany_sl3 extends CTemplate
         $sHTML.= $this->coDisplay->getFloatHack();
 
         if($pasData['nb_employee'] > 0)
-        {
+        {ChromePhp::log('147');
           $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('data_type' => 'candi', 'company' => $pasData['sl_companypk']));
           $sLink =  $this->coDisplay->getLink($pasData['nb_employee'].' employee(s)', 'javascript:;', array('onclick' => '
             var asContainer = goTabs.create(\'candi\');
