@@ -1200,7 +1200,7 @@ class CDisplayEx extends CDisplay
       $sHTML.= $this->getLink('Close', 'javascript:;', array('onclick' => "setCoverScreen(false); $('#ajaxErrorContainerId').hide();"));
       $sHTML.= $this->getBlocEnd();
 
-      $sHTML.= $this->getTitle('OOPS, an error occured', 'h2', true);
+      $sHTML.= $this->getTitle(var_dump(error_get_last()), 'h2', true);
       $sHTML.= $this->getCR();
       $sHTML.= $this->getText("An unknown error occured while executing your last action.");
       $sHTML.= $this->getCR();
@@ -1208,7 +1208,7 @@ class CDisplayEx extends CDisplay
       $sHTML.= $this->getCR();
       if(isDevelopment())
       {
-        $sHTML.= $this->getText(var_dump(error_get_last()));
+        $sHTML.= $this->getText();
         $sHTML.= $this->getCR();
       }
       $sHTML.= 'In the other case, please contact the administrator or report the problem using <a href="javascript:;" onclick=\' $("#dumpFormId").submit();\'>this form</a>.';
