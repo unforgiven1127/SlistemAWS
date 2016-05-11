@@ -102,7 +102,7 @@ class CSl_candidateEx extends CSl_candidate
   public function getComponentPublicItems($psInterface = '')
   {
     $asItem = array();
-
+ChromePhp::log('105');
     switch($psInterface)
     {
       case 'notification_item':
@@ -209,7 +209,7 @@ class CSl_candidateEx extends CSl_candidate
             $this->_accessRmContactDetails($this->cnPk);
             return json_encode(array('data' => 'ok'));
             break;
-
+ChromePhp::log('212');
           case CONST_ACTION_SEARCH:
 
             if(getValue('autocomplete'))
@@ -295,7 +295,7 @@ class CSl_candidateEx extends CSl_candidate
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($asHTML['data']),
                 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
-
+ChromePhp::log('298');
           case CONST_ACTION_SEARCH:
 
             if(getValue('complex_search'))
@@ -446,6 +446,7 @@ class CSl_candidateEx extends CSl_candidate
         switch($this->csAction)
         {
           case CONST_ACTION_SEARCH:
+            ChromePhp::log('449');
             return $this->_autocompleteSearch($this->csType);
             break;
         }
@@ -692,6 +693,7 @@ ChromePhp::log('2');
 
   public function getSearchResultMeta($psType = '')
   {
+    ChromePhp::log('696');
     $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, $psType);
     $asResultMeta = array('custom_result_page' => $sURL,
     'onBeforeSubmit' =>
@@ -4972,7 +4974,6 @@ ChromePhp::log('3');
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
-ChromePhp::log('burasi');
 
       $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('show_id' => 0, 'friendly' => 1, 'active_only' => 1));
       $poForm->addField('selector', 'contact_userfk['.$nCount.']', array('type' => 'text', 'label' => 'Users', 'nbresult' => 10, 'url' => $sURL));
@@ -5557,7 +5558,7 @@ ChromePhp::log('burasi');
         $alt_language = $this->getVars()->getLanguageOption($asAttribute['candi_lang']);
       else
         $alt_language = $this->getVars()->getLanguageOption();
-
+ChromePhp::log('5559');
       $alt_occupation_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
       $alt_industry_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
 
@@ -5715,7 +5716,7 @@ ChromePhp::log('burasi');
 
        //$oForm->addField('paged_tree', 'industrypk', array('text' => ' -- Industry --', 'label' => 'industry', 'value' => $oDbResult->getFieldValue('industryfk')));
        //$oForm->addoption('industrypk', $this->_getTreeData('industry'));
-
+ChromePhp::log('5717');
        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
        $oForm->addField('selector', 'industrypk', array('label' => 'Industries', 'url' => $sURL, 'nbresult' => 10));
        if(!empty($asCompanyData['industry']))
