@@ -236,9 +236,12 @@ class CSl_candidateEx extends CSl_candidate
               if(!empty($sError))
                 return json_encode(array('alert' => $sError));
             }
-//ChromePhp::log('240');
-
-            $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
+ChromePhp::log('240');
+//ChromePhp::log(debug_backtrace());
+            $candidateList = $this->_getCandidateList(true, $oQB);
+ChromePhp::log($candidateList);
+            $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($candidateList), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
+//ChromePhp::log($return);
             return json_encode($return);
             break;
             case CONST_ACTION_MANAGE:
@@ -2428,7 +2431,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-ChromePhp::log(debug_backtrace());
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
