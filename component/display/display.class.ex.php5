@@ -466,7 +466,7 @@ class CDisplayEx extends CDisplay
   {
     if(!assert('(is_string($psText) || is_float($psText) || is_integer($psText)) && is_array($pasOptions) && is_integer($pnShortenTo)'))
       return '';
-
+ChromePhp::log('getText');
     // maybe replace nl by <br /> ...
     $sHTML = '';
     $nLength = strlen($psText);
