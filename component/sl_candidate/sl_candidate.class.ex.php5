@@ -2670,7 +2670,7 @@ class CSl_candidateEx extends CSl_candidate
       //Query done, we've got results,  we're about to generate the HTML results
       // we save the query just before.
       $_SESSION['555-001']['query'][$this->csSearchId] = $sQuery;
-ChromePhp::log('here');
+
       //save search in history if it's a new search
       if(empty($nHistoryPk) /*&& !$bLogged*/)
       {
@@ -2685,7 +2685,7 @@ ChromePhp::log('here');
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
-
+ChromePhp::log($asCandidate);
         $asCandidate['g'] = $asCandidate['lastname'].' '.$asCandidate['firstname'];
         $asCandidate['h'] = $asCandidate['company_name'];
 
