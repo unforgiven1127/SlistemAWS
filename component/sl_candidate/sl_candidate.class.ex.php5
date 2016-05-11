@@ -707,7 +707,6 @@ class CSl_candidateEx extends CSl_candidate
     $oPage = CDependency::getCpPage();
     $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, $psDatatype);
 
-ChromePhp::log($sURL);
     $asResult = array();
     $asResult['custom_result']['script'] = '
       var asContainer = goTabs.create(\''.$psDatatype.'\', \'\', \'\', \'search result\');
@@ -2671,7 +2670,7 @@ ChromePhp::log($sURL);
       //Query done, we've got results,  we're about to generate the HTML results
       // we save the query just before.
       $_SESSION['555-001']['query'][$this->csSearchId] = $sQuery;
-
+ChromePhp::log('here');
       //save search in history if it's a new search
       if(empty($nHistoryPk) /*&& !$bLogged*/)
       {
