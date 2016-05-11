@@ -272,13 +272,8 @@ ChromePhp::log($candidateList);
           (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
           scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
           TIMESTAMPDIFF(YEAR, scan.date_birth, '2016-05-12 07:12:45') AS age,
-          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%test%' OR  scan.firstname LIKE '%test%' )  GROUP BY scan.sl_candidatepk ORDER BY  lastname_lev ASC, firstname_lev ASC , scan.firstname DESC LIMIT 0 ,25</span><br /><br /><br /><script>
-          $(function(){
-            var list_container = document.getElementById('search_5733ae5dead46');
-            $('.fixedListheader').remove();
-            list_container.scrollTop = 0;
-          });
-        </script>";
+          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%test%' OR  scan.firstname LIKE '%test%' )  GROUP BY scan.sl_candidatepk ORDER BY  lastname_lev ASC, firstname_lev ASC , scan.firstname DESC LIMIT 0 ,25</span><br /><br /><br />";
+          
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($test), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
 //ChromePhp::log($return);
             return json_encode($return);
