@@ -189,7 +189,7 @@ ChromePhp::log('105');
             break;
 
           case CONST_ACTION_LIST:
-            ChromePhp::log('4');
+            ChromePhp::log('192');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
 
@@ -237,7 +237,7 @@ ChromePhp::log('212');
               if(!empty($sError))
                 return json_encode(array('alert' => $sError));
             }
-
+ChromePhp::log('240');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
 
@@ -495,7 +495,7 @@ ChromePhp::log('298');
               <script>view_candi("'.$sURL.'");</script>';
             return addPageStructure($sHTML, 'candi');*/
             $_POST['candidate'] = $this->cnPk;
-ChromePhp::log('2');
+ChromePhp::log('498');
             return mb_convert_encoding($this->_getCandidateList(), 'utf8');
             break;
         }
@@ -876,7 +876,7 @@ ChromePhp::log('2');
 
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
 
-ChromePhp::log('3');
+ChromePhp::log('879');
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
           $sHTML.= $this->_getCandidateList($pbInAjax);
           //$sHTML.= $this->_oDisplay->getBlocEnd();
@@ -3025,7 +3025,7 @@ ChromePhp::log('2891');
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-ChromePhp::log($sHTML);
+//ChromePhp::log($sHTML);
       return $sHTML;
     }
 
