@@ -466,7 +466,7 @@ class CDisplayEx extends CDisplay
   {
     if(!assert('(is_string($psText) || is_float($psText) || is_integer($psText)) && is_array($pasOptions) && is_integer($pnShortenTo)'))
       return '';
-ChromePhp::log('getText');
+
     // maybe replace nl by <br /> ...
     $sHTML = '';
     $nLength = strlen($psText);
@@ -1166,7 +1166,7 @@ ChromePhp::log('getText');
     $oSettings = CDependency::getComponentByName('settings');
     $oMenu = CDependency::getComponentByInterface('display_menu');
 
-    $last_error = error_get_last();
+    //$last_error = error_get_last();
 
     $asFooter = $oSettings->getSettings('footer');
 
@@ -1202,17 +1202,12 @@ ChromePhp::log('getText');
       $sHTML.= $this->getLink('Close', 'javascript:;', array('onclick' => "setCoverScreen(false); $('#ajaxErrorContainerId').hide();"));
       $sHTML.= $this->getBlocEnd();
 
-      $sHTML.= $this->getTitle('OOPS, an error occured', 'h2', true);
+      $sHTML.= $this->getTitle(error_get_last(), 'h2', true);
       $sHTML.= $this->getCR();
       $sHTML.= $this->getText("An unknown error occured while executing your last action.");
       $sHTML.= $this->getCR();
       $sHTML.= $this->getText("If you're seeing this message for the first time, please try to reload the page or close your web browser before starting again.");
       $sHTML.= $this->getCR();
-      if(isDevelopment())
-      {
-        $sHTML.= $this->getText($last_error);
-        $sHTML.= $this->getCR();
-      }
       $sHTML.= 'In the other case, please contact the administrator or report the problem using <a href="javascript:;" onclick=\' $("#dumpFormId").submit();\'>this form</a>.';
       $sHTML.= '<form name="dumpForm" id="dumpFormId" target="_blank" method="post" action="/error_report.php5" class="hidden"
         onsubmit=" if(!$(this).attr(\'loaded\'))
