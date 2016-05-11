@@ -189,6 +189,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CONST_ACTION_LIST:
+            ChromePhp::log('4');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
 
@@ -237,6 +238,7 @@ class CSl_candidateEx extends CSl_candidate
                 return json_encode(array('alert' => $sError));
             }
 
+ChromePhp::log('1');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
 
@@ -493,6 +495,7 @@ class CSl_candidateEx extends CSl_candidate
               <script>view_candi("'.$sURL.'");</script>';
             return addPageStructure($sHTML, 'candi');*/
             $_POST['candidate'] = $this->cnPk;
+ChromePhp::log('2');
             return mb_convert_encoding($this->_getCandidateList(), 'utf8');
             break;
         }
@@ -856,7 +859,7 @@ class CSl_candidateEx extends CSl_candidate
     //------------------------------------------------------
 
     private function _displayCandidateList($pbInAjax = false)
-    {ChromePhp::log('sasasdasdasd');
+    {
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
@@ -872,6 +875,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
 
+ChromePhp::log('3');
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
           $sHTML.= $this->_getCandidateList($pbInAjax);
           //$sHTML.= $this->_oDisplay->getBlocEnd();
@@ -880,9 +884,6 @@ class CSl_candidateEx extends CSl_candidate
 
       $sHTML.=  $this->_oDisplay->getListEnd();
       $sHTML.=  $this->_oDisplay->getBlocEnd();
-
-ChromePhp::log($sHTML);
-
       return $sHTML;
     }
 
