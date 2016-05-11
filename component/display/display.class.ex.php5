@@ -1162,7 +1162,7 @@ class CDisplayEx extends CDisplay
   }
 
   public function getFooter()
-  {ChromePhp::log('asdadadasas');
+  {
     $oSettings = CDependency::getComponentByName('settings');
     $oMenu = CDependency::getComponentByInterface('display_menu');
 
@@ -1200,7 +1200,7 @@ class CDisplayEx extends CDisplay
       $sHTML.= $this->getLink('Close', 'javascript:;', array('onclick' => "setCoverScreen(false); $('#ajaxErrorContainerId').hide();"));
       $sHTML.= $this->getBlocEnd();
 
-      $sHTML.= $this->getTitle('Oops, an error occured', 'h2', true);
+      $sHTML.= $this->getTitle('OOPS, an error occured', 'h2', true);
       $sHTML.= $this->getCR();
       $sHTML.= $this->getText("An unknown error occured while executing your last action.");
       $sHTML.= $this->getCR();
