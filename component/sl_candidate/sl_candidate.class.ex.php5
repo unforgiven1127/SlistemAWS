@@ -692,7 +692,6 @@ ChromePhp::log('2');
 
   public function getSearchResultMeta($psType = '')
   {
-ChromePhp::log('getSearchResultMeta');
     $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, $psType);
     $asResultMeta = array('custom_result_page' => $sURL,
     'onBeforeSubmit' =>
@@ -2278,7 +2277,7 @@ ChromePhp::log('3');
         $sPositionSelected = 'selected';
       }
 
-
+ChromePhp::log('burasi');
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
