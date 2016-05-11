@@ -2685,7 +2685,6 @@ class CSl_candidateEx extends CSl_candidate
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
-ChromePhp::log($asCandidate);
         $asCandidate['g'] = $asCandidate['lastname'].' '.$asCandidate['firstname'];
         $asCandidate['h'] = $asCandidate['company_name'];
 
@@ -3023,6 +3022,7 @@ ChromePhp::log($asCandidate);
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
 
+ChromePhp::log($sHTML);
       return $sHTML;
     }
 
