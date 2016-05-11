@@ -2614,7 +2614,7 @@ class CSl_candidateEx extends CSl_candidate
 
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
-ChromePhp::log($sQuery);
+
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
@@ -2628,6 +2628,7 @@ ChromePhp::log($sQuery);
       $nResult = (int)$oDbResult->getFieldValue('nCount');
       $sQuery = $poQB->getSql();
       //dump($sQuery);
+ChromePhp::log($sQuery);
 
       if ($nPagerOffset)
       {
