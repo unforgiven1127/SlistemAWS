@@ -8777,7 +8777,7 @@ ChromePhp::log($duplicate_array);
             $candidate_data['target'][$key] = $candidate_data[$newer_candidate_info][$key];
         }
       }
-
+ChromePhp::log($candidate_data['target']);
       $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
 
       return $adjusted_candidate_ids;
