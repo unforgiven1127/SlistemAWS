@@ -7218,7 +7218,7 @@ die();*/
 
       //dump($nPlay);
       //dump($nMaxActiveStatus);
-ChromePhp::log($nScore);
+//ChromePhp::log($nScore);
       if($nScore > 116)
         $nRating = 100;
       else
@@ -7230,7 +7230,7 @@ ChromePhp::log($nScore);
         else if($nRating > 100)
           $nRating = 100;
       }
-ChromePhp::log($nRating);
+//ChromePhp::log($nRating);
       $asUpdate = array('_has_doc' => $nDocument, '_in_play' => $nPlay, '_pos_status' => $nMaxActiveStatus,
           'profile_rating' => $nRating, '_date_updated' => date('Y-m-d H:i:s'));
       $bUpdated = $this->_getModel()->update($asUpdate, 'sl_candidate_profile', 'candidatefk = '.$pnCandidatePk);
@@ -8285,9 +8285,9 @@ ChromePhp::log($nRating);
       $sHTML = $this->_oDisplay->getTitle('Duplicates for candidate #'.$pnCandidatePk, 'h3', true);
       $sHTML.= $this->_oDisplay->getCR(2);
 
-ChromePhp::log($pnCandidatePk);
+//ChromePhp::log($pnCandidatePk);
       $duplicate_array = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget, true, true);
-ChromePhp::log($duplicate_array);
+//ChromePhp::log($duplicate_array);
       if(empty($duplicate_array['other']))
       {
         $sHTML.= '<span style="font-size: 15px; color: green; ">&rarr; No duplicate found for this candidate.</span><br /><br />';
