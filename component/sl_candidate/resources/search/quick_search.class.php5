@@ -306,42 +306,13 @@ class CQuickSearch
           $asTitle[] = ' department = '.$sDepartment;
         }
       }
-/*
+
 //---------------------Keyword Search Starts---------------------------
 
-  $sKeyword = trim(getValue('keyword'));
-      if($sKeyword == 'Keyword')
-        $sKeyword = '';
-
-      if(!empty($sKeyword))
-      {
-        if($sKeyword == '__no_keyword__')
-        {
-          $this->coQb->addWhere(' (scpr.keyword IS NULL OR scpr.keyword = "") ');
-          $asTitle[] = ' keyword is empty';
-        }
-        else
-        {
-          $asWords = explode(',', $sKeyword);
-            foreach($asWords as $sWord)
-              $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
-
-          //$sKeyword = explode(",", $sKeyword); // , ile multi search
-          //ChromePhp::log($sKeyword);
-          /*foreach ($sKeyword as $key => $value) {
-            # code...
-            $bExactMatch = (bool)getValue('qs_exact_match', 0);
-            if($bExactMatch)
-              $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'" ');
-            else
-              $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
-          }*/
-          $asTitle[] = ' keyword = '.$sKeyword;
-        }
-      }
+  
 
 //---------------------Keyword Search ENDS-------------------------
-*/
+
 
       $sPosition = trim(getValue('position'));
       if($sPosition == 'Position ID or title')
