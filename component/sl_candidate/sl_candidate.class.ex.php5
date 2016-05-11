@@ -232,9 +232,7 @@ class CSl_candidateEx extends CSl_candidate
 
               require_once('component/sl_candidate/resources/search/quick_search.class.php5');
               $oQS = new CQuickSearch($oQB);
-              ChromePhp::log($oQS);
               $sError = $oQS->buildQuickSearch();
-ChromePhp::log($sError);
               if(!empty($sError))
                 return json_encode(array('alert' => $sError));
             }
@@ -2431,6 +2429,7 @@ ChromePhp::log($sError);
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
+      ChromePhp::log('_getCandidateList');
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
