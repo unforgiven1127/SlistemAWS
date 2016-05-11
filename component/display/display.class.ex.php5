@@ -1162,7 +1162,7 @@ class CDisplayEx extends CDisplay
   }
 
   public function getFooter()
-  {
+  {ChromePhp::log('asdadadasas');
     $oSettings = CDependency::getComponentByName('settings');
     $oMenu = CDependency::getComponentByInterface('display_menu');
 
@@ -1241,11 +1241,11 @@ class CDisplayEx extends CDisplay
           <img src="'.CONST_WEBSITE_LOADING_PICTURE.'"/>
         </div>
       </div>';
-ChromePhp::log('test');
+
     if(isDevelopment())
-    {ChromePhp::log('test2');
-      include __DIR__.'/resources/debugbar.inc.php5';
-      $sHTML.= getDebugBar();
+    {
+      /*include __DIR__.'/resources/debugbar.inc.php5';
+      $sHTML.= getDebugBar();*/
     }
 
     $sHTML.= '</body></html>';
