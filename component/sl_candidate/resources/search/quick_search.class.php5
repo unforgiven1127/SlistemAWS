@@ -47,7 +47,7 @@ class CQuickSearch
 
   public function _buildCandidateQuickSearch($pbStrict = true)
   {
-    ChromePhp::log('_buildCandidateQuickSearch');
+    //ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya geliyor ama patliyor
     if($pbStrict)
       $sOperator = ' AND ';
     else
@@ -306,7 +306,7 @@ class CQuickSearch
           $asTitle[] = ' department = '.$sDepartment;
         }
       }
-
+/*
 //---------------------Keyword Search Starts---------------------------
 
   $sKeyword = trim(getValue('keyword'));
@@ -341,7 +341,7 @@ class CQuickSearch
       }
 
 //---------------------Keyword Search ENDS-------------------------
-
+*/
 
       $sPosition = trim(getValue('position'));
       if($sPosition == 'Position ID or title')
