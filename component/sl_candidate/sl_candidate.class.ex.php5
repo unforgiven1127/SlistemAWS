@@ -236,8 +236,7 @@ class CSl_candidateEx extends CSl_candidate
               if(!empty($sError))
                 return json_encode(array('alert' => $sError));
             }
-ChromePhp::log('240');
-ChromePhp::log(debug_backtrace());
+//ChromePhp::log('240');
 
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
             return json_encode($return);
@@ -2429,6 +2428,7 @@ ChromePhp::log(debug_backtrace());
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
+ChromePhp::log(debug_backtrace());
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
