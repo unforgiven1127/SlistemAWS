@@ -2277,7 +2277,6 @@ ChromePhp::log('3');
         $sPositionSelected = 'selected';
       }
 
-ChromePhp::log('burasi');
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
@@ -3772,6 +3771,7 @@ ChromePhp::log('burasi');
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
 
+ChromePhp::log('burasi');
       $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
       if(empty($nAttendee))
