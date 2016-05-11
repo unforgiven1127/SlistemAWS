@@ -229,7 +229,7 @@ class CSl_candidateEx extends CSl_candidate
             else
             {
               $oQB = $this->_getModel()->getQueryBuilder();
-
+ChromePhp::log($oQB);
               require_once('component/sl_candidate/resources/search/quick_search.class.php5');
               $oQS = new CQuickSearch($oQB);
               $sError = $oQS->buildQuickSearch();
