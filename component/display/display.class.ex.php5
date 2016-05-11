@@ -1244,8 +1244,8 @@ class CDisplayEx extends CDisplay
 
     if(isDevelopment())
     {
-      /*include __DIR__.'/resources/debugbar.inc.php5';
-      $sHTML.= getDebugBar();*/
+      include __DIR__.'/resources/debugbar.inc.php5';
+      $sHTML.= getDebugBar();
     }
 
     $sHTML.= '</body></html>';
