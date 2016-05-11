@@ -2655,7 +2655,6 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
@@ -2686,6 +2685,8 @@ ChromePhp::log($sQuery);
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
+        
+ChromePhp::log($asCandidate);
         $asCandidate['g'] = $asCandidate['lastname'].' '.$asCandidate['firstname'];
         $asCandidate['h'] = $asCandidate['company_name'];
 
