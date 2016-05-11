@@ -238,7 +238,6 @@ class CSl_candidateEx extends CSl_candidate
                 return json_encode(array('alert' => $sError));
             }
 
-ChromePhp::log('1');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
 
@@ -693,6 +692,7 @@ ChromePhp::log('2');
 
   public function getSearchResultMeta($psType = '')
   {
+ChromePhp::log('getSearchResultMeta');
     $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, $psType);
     $asResultMeta = array('custom_result_page' => $sURL,
     'onBeforeSubmit' =>
