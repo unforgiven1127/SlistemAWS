@@ -7048,14 +7048,16 @@ die();*/
       return true;
     }
 
-    public function calculate_profile_rating($pnCandidatePk)
+    public function calculate_profile_rating($candidateInfo)
     {
-      if(!assert('is_key($pnCandidatePk)'))
+      /*if(!assert('is_key($pnCandidatePk)'))
         return array();
 
       $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
       if(empty($asData))
-        return array();
+        return array();*/
+
+        $asData = $candidateInfo;
 
       $nScore = 0;
       if(!empty($asData['languagefk']))
@@ -8907,12 +8909,13 @@ die();*/
             $candidate_data['target'][$key] = $candidate_data[$newer_candidate_info][$key];
         }
       }
+
+      $recalculated_profile_rating = $this->calculate_profile_rating($candidate_data['target']);
+      $candidate_data['target']['profile_rating'] = $recalculated_profile_rating;
 //ChromePhp::log($candidate_data['target']);
       $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
 
-      $recalculated_profile_rating = $this->calculate_profile_rating($target_id);
-      $candidate_data['target']['profile_rating'] = $recalculated_profile_rating;
-      $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
+      //$sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
 
       return $adjusted_candidate_ids;
     }
