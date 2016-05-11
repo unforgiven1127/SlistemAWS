@@ -1241,9 +1241,9 @@ class CDisplayEx extends CDisplay
           <img src="'.CONST_WEBSITE_LOADING_PICTURE.'"/>
         </div>
       </div>';
-
+ChromePhp::log('test');
     if(isDevelopment())
-    {
+    {ChromePhp::log('test2');
       include __DIR__.'/resources/debugbar.inc.php5';
       $sHTML.= getDebugBar();
     }
