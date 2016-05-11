@@ -878,6 +878,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.=  $this->_oDisplay->getListItemEnd();
 
+ChromePhp::log($sHTML);
       $sHTML.=  $this->_oDisplay->getListEnd();
       $sHTML.=  $this->_oDisplay->getBlocEnd();
       return $sHTML;
@@ -3023,7 +3024,6 @@ class CSl_candidateEx extends CSl_candidate
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
 
-ChromePhp::log($sHTML);
       return $sHTML;
     }
 
