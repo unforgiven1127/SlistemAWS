@@ -2670,19 +2670,19 @@ class CSl_candidateEx extends CSl_candidate
       if(!empty($sSortField)){
         if($sSortField == "sl_candidatepk")
         {
-          $sQuery.= ' ORDER BY scan.sl_candidatepk DESC ';
+          $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
         }
         else if($sSortField == "cp_client")
         {
-          $sQuery.= ' ORDER BY scom.is_client ASC ';
+          $sQuery.= ' ORDER BY scom.is_client '.$sSortOrder." ";
         }
         else if($sSortField == "_in_play")
         {
-          $sQuery.= ' ORDER BY scpr._in_play ASC ';
+          $sQuery.= ' ORDER BY scpr._in_play '.$sSortOrder." ";
         }
         else if($sSortField == "grade")
         {
-          $sQuery.= ' ORDER BY scpr.grade ASC ';
+          $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
         }
       }
 
