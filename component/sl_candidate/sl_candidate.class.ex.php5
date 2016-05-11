@@ -2573,7 +2573,7 @@ ChromePhp::log($oQB);
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
-      if(!empty($sSortField))
+      /*if(!empty($sSortField))
       {
         if($sSortField == '_in_play')
         {
@@ -2594,7 +2594,7 @@ ChromePhp::log($oQB);
 
           $poQB->setOrder($ordering);
         }
-      }
+      }*/
       else
         $poQB->addOrder('scan.firstname DESC');
 
