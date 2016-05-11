@@ -47,7 +47,7 @@ class CQuickSearch
 
   public function _buildCandidateQuickSearch($pbStrict = true)
   {
-    //ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya geliyor ama patliyor
+    //ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya  geliyor
     if($pbStrict)
       $sOperator = ' AND ';
     else
@@ -62,7 +62,7 @@ class CQuickSearch
       $sWildcard = '%';
     else
       $sWildcard = '';
-
+ChromePhp::log('1');
     switch($sNameFormat)
     {
       case 'none':
@@ -92,7 +92,7 @@ class CQuickSearch
 
     $sRefId = preg_replace('/[^0-9]/', '', $sCandidate);
 
-
+ChromePhp::log('2');
     /*dump($sCandidate);
     dump($sNameFormat);
     dump($sFirstField);
@@ -100,6 +100,7 @@ class CQuickSearch
 
     if(!empty($sRefId) && is_numeric($sRefId))
     {
+      ChromePhp::log('3');
       $nRefId = (int)$sRefId;
       if($nRefId != $sRefId || $nRefId < 1)
         return 'The refId must be a positive integer.';
@@ -109,6 +110,7 @@ class CQuickSearch
     }
     else
     {
+      ChromePhp::log('4');
       if(!empty($sCandidate))
       {
         //check if it's a comma separated sting
@@ -144,6 +146,7 @@ class CQuickSearch
         }
         else
         {
+          ChromePhp::log('5');
           //no comma, we split the string on space
           $asWords = explode(' ', $sCandidate);
           $nWord = count($asWords);
@@ -183,7 +186,7 @@ class CQuickSearch
             }
           }
           else
-          {
+          {ChromePhp::log('6');
             foreach($asWords as $sWord)
             {
               $this->coQb->addWhere(' scan.firstname LIKE "'.$sWildcard.trim($sWord).'%" '.$sOperator.' scan.lastname LIKE "'.$sWildcard.trim($sWord).'%" ');
@@ -199,7 +202,7 @@ class CQuickSearch
         $sCompany = '';
       else
         $sCompany = strtolower($sCompany);
-
+ChromePhp::log('7');
       if(!empty($sCompany))
       {
         $asTitle[] = ' company = '.$sCompany;
@@ -216,7 +219,7 @@ class CQuickSearch
             $this->coQb->addWhere(' even.content LIKE "%'.$sWord.'%" ');
         }
         else
-        {
+        {ChromePhp::log('8');
           $this->coQb->addJoin('left', 'sl_company', 'scom', 'scom.sl_companypk = scpr.companyfk');
 
           //Try to find a refId in the search string
@@ -237,7 +240,7 @@ class CQuickSearch
           }
         }
       }
-
+ChromePhp::log('9');
       $sContact = trim(getValue('contact'));
       if($sContact == 'Contact')
         $sContact = '';
@@ -246,7 +249,7 @@ class CQuickSearch
       {
         $sContact = trim(str_replace(';', '', $sContact));
         $this->coQb->addJoin('left', 'sl_contact', 'scon', 'scon.itemfk = scan.sl_candidatepk AND scon.item_type = "candi"');
-
+ChromePhp::log('10');
         if($this->_lookLikePhone($sContact))
         {
           $sNumeric = preg_replace('/[^0-9]/', '', $sContact);
@@ -255,7 +258,7 @@ class CQuickSearch
           $asTitle[] = ' phone = '.$sContact;
         }
         else
-        {
+        {ChromePhp::log('11');
           //if we find an @, and even if it's not a properly formated email adreesss we give a shot
           $nMatchEmail = $this->_lookLikeEmail($sContact);
           if($nMatchEmail == 2)
@@ -306,7 +309,7 @@ class CQuickSearch
           $asTitle[] = ' department = '.$sDepartment;
         }
       }
-
+ChromePhp::log('12');
 //---------------------Keyword Search Starts---------------------------
 
   $sKeyword = trim(getValue('keyword'));
@@ -342,7 +345,7 @@ class CQuickSearch
 
 //---------------------Keyword Search ENDS-------------------------
 
-
+ChromePhp::log('13');
       $sPosition = trim(getValue('position'));
       if($sPosition == 'Position ID or title')
         $sPosition = '';
@@ -367,7 +370,7 @@ class CQuickSearch
 
           $asTitle[] = ' position = '.$sPosition;
         }
-
+ChromePhp::log('14');
         $sStatus = getValue('position_status');
         if(!empty($sStatus))
         {
@@ -385,15 +388,15 @@ class CQuickSearch
         }
       }
     }
-
+ChromePhp::log('15');
     //if search Id, i may just be filtering or sorting the results... no need to check params
     if(empty($sKeyword) && empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
     {
       return 'You need to input a refId, a name, a contact detail, a company or a keyword.'.' kw:'.$sKeyword;
     }
-
+ChromePhp::log('16');
     $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
-
+ChromePhp::log('17');
     return '';
   }
 
