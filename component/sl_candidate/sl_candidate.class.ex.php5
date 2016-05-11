@@ -2661,6 +2661,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
+      ChromePhp::log($sQuery[1]);
       $sQuery = $sQuery[0];
 
       $sSortOrder = getValue('sortorder');
