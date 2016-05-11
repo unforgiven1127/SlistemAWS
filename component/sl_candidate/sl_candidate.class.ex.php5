@@ -237,7 +237,9 @@ class CSl_candidateEx extends CSl_candidate
                 return json_encode(array('alert' => $sError));
             }
 ChromePhp::log('240');
-            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
+            $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
+ChromePhp::log($return);
+            return json_encode($return);
             break;
             case CONST_ACTION_MANAGE:
               $asDuplicate = $this->_getMergeForm($this->cnPk);
@@ -2272,7 +2274,6 @@ ChromePhp::log('240');
         $sInPlaySelected = '';
         $sPositionSelected = 'selected';
       }
-      ChromePhp::log('2275');
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
@@ -2883,8 +2884,8 @@ ChromePhp::log('240');
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
 ChromePhp::log('2891');
-      $sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
-      //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'replay_search' => $nHistoryPk));
+      //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
+      $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'replay_search' => $nHistoryPk));
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
       $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
