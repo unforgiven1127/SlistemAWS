@@ -2575,7 +2575,8 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($sSortField);
       if(!empty($sSortField))
       {
-        if($sSortField == '_in_play')
+        $poQB->addOrder('scan.firstname DESC');
+        /*if($sSortField == '_in_play')
         {
           $sSortOrder = getValue('sortorder', 'DESC');
           $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
@@ -2593,7 +2594,7 @@ class CSl_candidateEx extends CSl_candidate
           $ordering = $sSortField.' '.$sort_order.$secondary_order;
 
           $poQB->setOrder($ordering);
-        }
+        }*/
       }
       else
         $poQB->addOrder('scan.firstname DESC');
@@ -2887,7 +2888,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-ChromePhp::log('2891');
+//ChromePhp::log('2891');
       //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
       $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'replay_search' => $nHistoryPk));
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
