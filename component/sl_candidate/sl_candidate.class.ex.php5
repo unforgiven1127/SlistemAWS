@@ -4018,7 +4018,6 @@ ChromePhp::log('3');
       $oForm->setFormParams('filterMeeting', true, array('action' => $sURL, 'class' => 'filterMeeting', 'onBeforeSubmit' => 'event.preventDefault();'));
       $oForm->setFormDisplayParams(array('noButton' => true, 'columns' => 1));
 
-ChromePhp::log('burasi');
         $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
         $oForm->addField('selector', 'user_list', array('label' => 'Consultant', 'url' => $sURL));
         if($pnLoginPk)
@@ -4973,6 +4972,7 @@ ChromePhp::log('burasi');
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
+ChromePhp::log('burasi');
 
       $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('show_id' => 0, 'friendly' => 1, 'active_only' => 1));
       $poForm->addField('selector', 'contact_userfk['.$nCount.']', array('type' => 'text', 'label' => 'Users', 'nbresult' => 10, 'url' => $sURL));
