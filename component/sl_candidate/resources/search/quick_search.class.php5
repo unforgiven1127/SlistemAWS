@@ -391,7 +391,7 @@ class CQuickSearch
     {
       return 'You need to input a refId, a name, a contact detail, a company or a keyword.'.' kw:'.$sKeyword;
     }
-
+$sQuerytEST = $this->coQb->getCountSql();
     $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
 
     return '';
