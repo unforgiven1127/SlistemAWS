@@ -2660,6 +2660,8 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+$sQuery = explode("ORDER BY",$sQuery);
+$sQuery = $sQuery[0];
 ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
