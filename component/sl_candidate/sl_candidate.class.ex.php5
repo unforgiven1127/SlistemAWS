@@ -2278,7 +2278,7 @@ ChromePhp::log('3');
         $sInPlaySelected = '';
         $sPositionSelected = 'selected';
       }
-
+ChromePhp::log('2281');
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
@@ -2888,7 +2888,7 @@ ChromePhp::log('3');
 
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-
+ChromePhp::log('2891');
       //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
       $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'replay_search' => $nHistoryPk));
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
@@ -3772,7 +3772,7 @@ ChromePhp::log('3');
 
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
-
+ChromePhp::log('3775');
       $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
       if(empty($nAttendee))
@@ -4019,7 +4019,7 @@ ChromePhp::log('3');
       $oForm = $this->_oDisplay->initForm();
       $oForm->setFormParams('filterMeeting', true, array('action' => $sURL, 'class' => 'filterMeeting', 'onBeforeSubmit' => 'event.preventDefault();'));
       $oForm->setFormDisplayParams(array('noButton' => true, 'columns' => 1));
-
+ChromePhp::log('4022');
         $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
         $oForm->addField('selector', 'user_list', array('label' => 'Consultant', 'url' => $sURL));
         if($pnLoginPk)
@@ -4974,7 +4974,7 @@ ChromePhp::log('3');
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
 
-
+ChromePhp::log('4977');
       $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('show_id' => 0, 'friendly' => 1, 'active_only' => 1));
       $poForm->addField('selector', 'contact_userfk['.$nCount.']', array('type' => 'text', 'label' => 'Users', 'nbresult' => 10, 'url' => $sURL));
       $poForm->setFieldDisplayParams('contact_userfk['.$nCount.']', array('id' => 'user_block_'.$nCount, 'class' => 'custom_vis'.$nCount.$sClass));
@@ -5400,7 +5400,7 @@ ChromePhp::log('3');
 
       $add_company_url = $this->_oPage->getAjaxUrl(
         $this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_COMP, 0, array('update_field' => '#company',));
-
+ChromePhp::log('5403');
       $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
 
       if($oDbResult->getFieldValue('companyfk'))
@@ -5558,7 +5558,7 @@ ChromePhp::log('3');
         $alt_language = $this->getVars()->getLanguageOption($asAttribute['candi_lang']);
       else
         $alt_language = $this->getVars()->getLanguageOption();
-ChromePhp::log('5559');
+ChromePhp::log('5561');
       $alt_occupation_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
       $alt_industry_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
 
@@ -5716,7 +5716,7 @@ ChromePhp::log('5559');
 
        //$oForm->addField('paged_tree', 'industrypk', array('text' => ' -- Industry --', 'label' => 'industry', 'value' => $oDbResult->getFieldValue('industryfk')));
        //$oForm->addoption('industrypk', $this->_getTreeData('industry'));
-ChromePhp::log('5717');
+ChromePhp::log('5719');
        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
        $oForm->addField('selector', 'industrypk', array('label' => 'Industries', 'url' => $sURL, 'nbresult' => 10));
        if(!empty($asCompanyData['industry']))
