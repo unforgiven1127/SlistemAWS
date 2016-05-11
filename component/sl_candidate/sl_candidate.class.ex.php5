@@ -3771,7 +3771,6 @@ ChromePhp::log('3');
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
 
-ChromePhp::log('burasi');
       $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
       if(empty($nAttendee))
@@ -4019,6 +4018,7 @@ ChromePhp::log('burasi');
       $oForm->setFormParams('filterMeeting', true, array('action' => $sURL, 'class' => 'filterMeeting', 'onBeforeSubmit' => 'event.preventDefault();'));
       $oForm->setFormDisplayParams(array('noButton' => true, 'columns' => 1));
 
+ChromePhp::log('burasi');
         $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
         $oForm->addField('selector', 'user_list', array('label' => 'Consultant', 'url' => $sURL));
         if($pnLoginPk)
