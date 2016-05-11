@@ -2573,9 +2573,9 @@ class CSl_candidateEx extends CSl_candidate
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
       ChromePhp::log($sSortField);
-      if(!empty($sSortField))
-      {
-        $poQB->addOrder('scan.firstname DESC');
+      //if(!empty($sSortField))
+      //{
+        //$poQB->addOrder('scan.firstname DESC');
         /*if($sSortField == '_in_play')
         {
           $sSortOrder = getValue('sortorder', 'DESC');
@@ -2595,9 +2595,9 @@ class CSl_candidateEx extends CSl_candidate
 
           $poQB->setOrder($ordering);
         }*/
-      }
-      else
-        $poQB->addOrder('scan.firstname DESC');
+      //}
+      //else
+        //$poQB->addOrder('scan.firstname DESC');
 
 
       if(empty($sGroupBy))
