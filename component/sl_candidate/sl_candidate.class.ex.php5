@@ -2732,6 +2732,8 @@ ChromePhp::log($limit);
         }
       }
 
+      $sQuery.= " ".$limit;
+
 ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
