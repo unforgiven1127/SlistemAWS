@@ -102,7 +102,6 @@ class CSl_candidateEx extends CSl_candidate
   public function getComponentPublicItems($psInterface = '')
   {
     $asItem = array();
-ChromePhp::log('105');
     switch($psInterface)
     {
       case 'notification_item':
@@ -110,12 +109,12 @@ ChromePhp::log('105');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
-ChromePhp::log('113');
+
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_COMP, 'label' => 'Company', 'search_url' => $sURL);
         break;
-ChromePhp::log('123');
+
       default:
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
@@ -189,7 +188,6 @@ ChromePhp::log('123');
             break;
 
           case CONST_ACTION_LIST:
-            ChromePhp::log('192');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
 
@@ -209,7 +207,6 @@ ChromePhp::log('123');
             $this->_accessRmContactDetails($this->cnPk);
             return json_encode(array('data' => 'ok'));
             break;
-ChromePhp::log('212');
           case CONST_ACTION_SEARCH:
 
             if(getValue('autocomplete'))
@@ -240,7 +237,6 @@ ChromePhp::log('212');
 ChromePhp::log('240');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true, $oQB)), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
-ChromePhp::log('241');
             case CONST_ACTION_MANAGE:
               $asDuplicate = $this->_getMergeForm($this->cnPk);
 
@@ -295,7 +291,7 @@ ChromePhp::log('241');
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($asHTML['data']),
                 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); ')));
             break;
-ChromePhp::log('298');
+
           case CONST_ACTION_SEARCH:
 
             if(getValue('complex_search'))
@@ -446,7 +442,6 @@ ChromePhp::log('298');
         switch($this->csAction)
         {
           case CONST_ACTION_SEARCH:
-            ChromePhp::log('449');
             return $this->_autocompleteSearch($this->csType);
             break;
         }
@@ -495,7 +490,6 @@ ChromePhp::log('298');
               <script>view_candi("'.$sURL.'");</script>';
             return addPageStructure($sHTML, 'candi');*/
             $_POST['candidate'] = $this->cnPk;
-ChromePhp::log('498');
             return mb_convert_encoding($this->_getCandidateList(), 'utf8');
             break;
         }
@@ -693,7 +687,6 @@ ChromePhp::log('498');
 
   public function getSearchResultMeta($psType = '')
   {
-    ChromePhp::log('696');
     $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, $psType);
     $asResultMeta = array('custom_result_page' => $sURL,
     'onBeforeSubmit' =>
@@ -876,7 +869,6 @@ ChromePhp::log('498');
 
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
 
-ChromePhp::log('879');
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
           $sHTML.= $this->_getCandidateList($pbInAjax);
           //$sHTML.= $this->_oDisplay->getBlocEnd();
@@ -2278,7 +2270,6 @@ ChromePhp::log('879');
         $sInPlaySelected = '';
         $sPositionSelected = 'selected';
       }
-ChromePhp::log('2281');
       $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('company' => $pasCompany['sl_companypk'], 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'qs_exact_match' => 1));
       $nDepartment = count($pasCompany['department']);
       $asDepartment = array('content' => 'No department found', 'nb_result' => $nDepartment);
@@ -3772,7 +3763,6 @@ ChromePhp::log('2891');
 
       $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
 
-ChromePhp::log('3775');
       $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
       $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
       if(empty($nAttendee))
@@ -4019,7 +4009,6 @@ ChromePhp::log('3775');
       $oForm = $this->_oDisplay->initForm();
       $oForm->setFormParams('filterMeeting', true, array('action' => $sURL, 'class' => 'filterMeeting', 'onBeforeSubmit' => 'event.preventDefault();'));
       $oForm->setFormDisplayParams(array('noButton' => true, 'columns' => 1));
-ChromePhp::log('4022');
         $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
         $oForm->addField('selector', 'user_list', array('label' => 'Consultant', 'url' => $sURL));
         if($pnLoginPk)
@@ -4973,8 +4962,6 @@ ChromePhp::log('4022');
       $asParam['style'] = 'width:510px';
       $poForm->addField('input', 'contact_description['.$nCount.']', $asParam);
 
-
-ChromePhp::log('4977');
       $sURL = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('show_id' => 0, 'friendly' => 1, 'active_only' => 1));
       $poForm->addField('selector', 'contact_userfk['.$nCount.']', array('type' => 'text', 'label' => 'Users', 'nbresult' => 10, 'url' => $sURL));
       $poForm->setFieldDisplayParams('contact_userfk['.$nCount.']', array('id' => 'user_block_'.$nCount, 'class' => 'custom_vis'.$nCount.$sClass));
@@ -5400,7 +5387,7 @@ ChromePhp::log('4977');
 
       $add_company_url = $this->_oPage->getAjaxUrl(
         $this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_COMP, 0, array('update_field' => '#company',));
-ChromePhp::log('5403');
+
       $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
 
       if($oDbResult->getFieldValue('companyfk'))
@@ -5558,7 +5545,7 @@ ChromePhp::log('5403');
         $alt_language = $this->getVars()->getLanguageOption($asAttribute['candi_lang']);
       else
         $alt_language = $this->getVars()->getLanguageOption();
-ChromePhp::log('5561');
+
       $alt_occupation_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
       $alt_industry_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
 
@@ -5716,7 +5703,7 @@ ChromePhp::log('5561');
 
        //$oForm->addField('paged_tree', 'industrypk', array('text' => ' -- Industry --', 'label' => 'industry', 'value' => $oDbResult->getFieldValue('industryfk')));
        //$oForm->addoption('industrypk', $this->_getTreeData('industry'));
-ChromePhp::log('5719');
+
        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
        $oForm->addField('selector', 'industrypk', array('label' => 'Industries', 'url' => $sURL, 'nbresult' => 10));
        if(!empty($asCompanyData['industry']))
@@ -7182,6 +7169,7 @@ die();*/
 
     public function updateCandidateProfile($pnCandidatePk)
     {
+      ChromePhp::log('7172');
       if(!assert('is_key($pnCandidatePk)'))
         return array();
 
@@ -8408,7 +8396,6 @@ die();*/
 
     private function _getMergeForm($pnCandidatePk)
     {
-      ChromePhp::log('merge form 2');
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => 'Wrong parameters');
 
