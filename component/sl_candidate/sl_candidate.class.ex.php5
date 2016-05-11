@@ -7057,6 +7057,7 @@ die();*/
       if(empty($asData))
         return array();
 
+      ChromePhp::log($asData);
       $nScore = 0;
       if(!empty($asData['languagefk']))
         $nScore+= 3;
