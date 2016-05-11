@@ -3025,7 +3025,7 @@ ChromePhp::log('2891');
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-
+ChromePhp::log($sHTML);
       return $sHTML;
     }
 
