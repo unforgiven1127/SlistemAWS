@@ -2684,6 +2684,46 @@ class CSl_candidateEx extends CSl_candidate
         {
           $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
         }
+        else if($sSortField == "_has_doc")
+        {
+          $sQuery.= ' ORDER BY scpr._has_doc '.$sSortOrder." ";
+        }
+        else if($sSortField == "lastname")
+        {
+          $sQuery.= ' ORDER BY scan.lastname '.$sSortOrder." ";
+        }
+        else if($sSortField == "firstname")
+        {
+          $sQuery.= ' ORDER BY scan.firstname '.$sSortOrder." ";
+        }
+        else if($sSortField == "company_name")
+        {
+          $sQuery.= ' ORDER BY scom.name '.$sSortOrder." ";
+        }
+        else if($sSortField == "title")
+        {
+          $sQuery.= ' ORDER BY scpr.title '.$sSortOrder." ";
+        }
+        else if($sSortField == "department")
+        {
+          $sQuery.= ' ORDER BY scpr.department '.$sSortOrder." ";
+        }
+        else if($sSortField == "lastnote")
+        {
+          $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
+        }
+        else if($sSortField == "lastnote")
+        {
+          $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
+        }
+        else if($sSortField == "date_birth")
+        {
+          $sQuery.= ' ORDER BY scan.date_birth '.$sSortOrder." ";
+        }
+        else if($sSortField == "salary")
+        {
+          $sQuery.= ' ORDER BY scpr.salary '.$sSortOrder." ";
+        }
       }
 
 ChromePhp::log($sQuery);
