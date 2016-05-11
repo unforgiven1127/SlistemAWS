@@ -707,6 +707,7 @@ class CSl_candidateEx extends CSl_candidate
     $oPage = CDependency::getCpPage();
     $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, $psDatatype);
 
+ChromePhp::log($sURL);
     $asResult = array();
     $asResult['custom_result']['script'] = '
       var asContainer = goTabs.create(\''.$psDatatype.'\', \'\', \'\', \'search result\');
@@ -878,7 +879,6 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.=  $this->_oDisplay->getListItemEnd();
 
-ChromePhp::log($sHTML);
       $sHTML.=  $this->_oDisplay->getListEnd();
       $sHTML.=  $this->_oDisplay->getBlocEnd();
       return $sHTML;
