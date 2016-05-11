@@ -258,7 +258,7 @@ class CSl_menuEx extends CSl_menu
 
 
   private function _getQuickSearchForm($pbInline = false, $pasSettings = array(), $pbHidden = false)
-  {ChromePhp::log('261');
+  {
     $oPage = CDependency::getComponentByName('page');
     $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI);
 
