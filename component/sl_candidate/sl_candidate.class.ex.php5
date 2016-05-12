@@ -2572,7 +2572,7 @@ $test = $poQB->getSql();
 
 $control = "sl_candidatepk =";
 $flag = strpos($test, $control);
-ChromePhp::log($flag);
+//ChromePhp::log($flag);
 
       // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
       // manage sort field / order
@@ -2668,7 +2668,7 @@ ChromePhp::log($flag);
       }
 
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
-        ChromePhp::log($sQuery[1]);
+        //ChromePhp::log($sQuery[1]);
 
         $limit = $sQuery[1];
         $limit = explode("LIMIT", $limit);
@@ -2678,7 +2678,7 @@ ChromePhp::log($flag);
 
         $sSortOrder = getValue('sortorder');
 
-        ChromePhp::log($sSortField." - ".$sSortOrder);
+        //ChromePhp::log($sSortField." - ".$sSortOrder);
 
         if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null){
           ChromePhp::log($sSortField);
@@ -2753,7 +2753,7 @@ ChromePhp::log($flag);
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
@@ -7292,7 +7292,7 @@ die();*/
 
     public function updateCandidateProfile($pnCandidatePk)
     {
-      ChromePhp::log('7172');
+      //ChromePhp::log('7172');
       if(!assert('is_key($pnCandidatePk)'))
         return array();
 

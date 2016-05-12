@@ -528,15 +528,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
-    if(isset($candidate_info['sex']))
-    {
-      $sex_control = $candidate_info['sex'];
-    }
-    else
-    {
-      $sex_control = "";
-    }
-
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
@@ -565,10 +556,10 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     if (!empty($company_id) && !$skip_company)
     {
-      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info, $sex_control);
+      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info);
 
       // requested by Pam: check reversed lname/fname in the same company
-      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target,$candidate_contact_info, $sex_control);
+      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target,$candidate_contact_info);
 
       foreach ($duplicate_temp as $key => $value)
       {
@@ -579,9 +570,9 @@ class CSl_candidateModelEx extends CSl_candidateModel
       uasort($duplicate_array['company'], sort_multi_array_by_value('ratio', 'reverse'));
     }
 
-    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info, $sex_control);
+    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
 
-    if ($merge_data)
+    if($merge_data)
     {
       foreach ($duplicate_array['company'] as $key => $value)
       {
@@ -602,7 +593,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
   }
 
 
-  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0, $candidate_contact_info = "", $sex_control = "")
+  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0, $candidate_contact_info = "")
   {
     $minimum_ratio = 40;
     $duplicate_array = array();
@@ -634,11 +625,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
       }
       $query = substr($query, 0, -3);
       $query.= ") AND";
-    }
-
-    if($sex_control != "")
-    {
-      $query.= " ca.sex = '".$sex_control."' AND ";
     }
 
     if (!$skip_company)
@@ -673,7 +659,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $read = $db_result->readNext();
       }
     }
-
+ChromePhp::log($duplicate_array);
     return $duplicate_array;
   }
 
