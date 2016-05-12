@@ -2453,7 +2453,6 @@ class CSl_candidateEx extends CSl_candidate
         //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
 
         $asHistoryData = $oLogin->getUserActivityByPk($nHistoryPk);
-        ChromePhp::log($asHistoryData);
         $poQB = $asHistoryData['data']['qb'];
         if(!$poQB || !is_object($poQB))
         {
@@ -2467,7 +2466,7 @@ class CSl_candidateEx extends CSl_candidate
       //Basic integration of the quick search tyhrough query builder
       if(!$poQB)
         $poQB = $this->_getModel()->getQueryBuilder();
-
+ChromePhp::log($poQB);
 
       // ============================================
       // search and pagination management
