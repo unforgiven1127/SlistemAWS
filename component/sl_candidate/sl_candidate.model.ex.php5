@@ -638,7 +638,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     if($sex_control != "")
     {
-      $query.= " ca.sex = '".$sex_control.' AND ';
+      $query.= " ca.sex = '".$sex_control."' AND ";
     }
 
     if (!$skip_company)
