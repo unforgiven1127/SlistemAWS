@@ -3715,7 +3715,7 @@ ChromePhp::log($sQuery);
               $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             }
 
-            if(isset($setDate) && isset($setDate[0]) && !empty($setDate[0]) && $setDate[0] != "")
+            if(isset($asDate) && isset($asDate[1]) && !empty($asDate[1]) && $asDate[1] != "")
             {
               //$sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
               $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
