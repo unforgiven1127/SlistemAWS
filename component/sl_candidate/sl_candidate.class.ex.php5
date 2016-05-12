@@ -2487,8 +2487,6 @@ class CSl_candidateEx extends CSl_candidate
       }
 
 
-$test = $poQB->getSql();
-ChromePhp::log($test);
 
       // =============================================================
       //TODO: to be moved when the search arrives
@@ -2567,6 +2565,10 @@ ChromePhp::log($test);
       //manage default options
       if(!$poQB->hasLimit())
         $poQB->addLimit('0, 50');
+
+
+$test = $poQB->getSql();
+ChromePhp::log($test);
 
       // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
       // manage sort field / order
