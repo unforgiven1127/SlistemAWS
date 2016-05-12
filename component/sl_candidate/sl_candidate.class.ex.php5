@@ -2573,31 +2573,33 @@ class CSl_candidateEx extends CSl_candidate
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
       ChromePhp::log($sSortField);
-      if(!empty($sSortField))
+      if(!empty($this->cnPk))
       {
-        if($sSortField == '_in_play')
+        if(!empty($sSortField))
         {
-          $sSortOrder = getValue('sortorder', 'DESC');
-          $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-          $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          if($sSortField == '_in_play')
+          {
+            $sSortOrder = getValue('sortorder', 'DESC');
+            $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+            $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          }
+          else
+          {
+            $sort_order = getValue('sortorder', 'DESC');
+
+            if ($sSortField == 'salary')
+              $sSortField = 'full_salary';
+            else if ($sSortField == 'date_birth')
+              $sSortField = 'age';
+
+            $ordering = $sSortField.' '.$sort_order.$secondary_order;
+
+            $poQB->setOrder($ordering);
+          }
         }
         else
-        {
-          $sort_order = getValue('sortorder', 'DESC');
-
-          if ($sSortField == 'salary')
-            $sSortField = 'full_salary';
-          else if ($sSortField == 'date_birth')
-            $sSortField = 'age';
-
-          $ordering = $sSortField.' '.$sort_order.$secondary_order;
-
-          $poQB->setOrder($ordering);
-        }
+          $poQB->addOrder('scan.firstname DESC');
       }
-      else
-        $poQB->addOrder('scan.firstname DESC');
-
 
       if(empty($sGroupBy))
         $poQB->addGroup('scan.sl_candidatepk', false);
@@ -2651,10 +2653,13 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
           $sQuery.= ' WHERE candidate.statusfk <= 3 ';
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
+          if(!empty($this->cnPk))
+          {
+            $asSql = $poQB->getSqlArray(); // burasi
+            if(!empty($asSql['order']))
+              $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
+          }
 
-          $asSql = $poQB->getSqlArray(); // burasi
-          if(!empty($asSql['order']))
-            $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
         }
       }
 
