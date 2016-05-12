@@ -570,6 +570,15 @@ class CSl_candidateModelEx extends CSl_candidateModel
       uasort($duplicate_array['company'], sort_multi_array_by_value('ratio', 'reverse'));
     }
 
+    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target);
+
+    $temp_name_lastname = $this->duplicate_finder(0, $firstname, $lastname, true, $force_target);
+    foreach ($temp_name_lastname as $key => $value)
+    {
+      if (!isset($duplicate_array['other'][$key]))
+        $duplicate_array['other'][$key] = $value;
+    }
+
     $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
 
     if($merge_data)
@@ -624,23 +633,26 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $query.= "cont.value = '".$value."' OR ";
       }
       $query = substr($query, 0, -3);
-      $query.= ") AND";
-    }
-
-    if (!$skip_company)
-      $query.= ' cap.companyfk = '.$company_id.' AND ';
-
-    if (!empty($force_target))
-    {
-      $query.= ' ca.sl_candidatepk = '.$force_target.' ';
+      $query.= ") ";
     }
     else
     {
-      $query.= ' ( (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower($lastname.'%')).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) ';
-      $query.= ' OR (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower('%'.$lastname)).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) )';
+      if (!$skip_company)
+        $query.= ' cap.companyfk = '.$company_id.' AND ';
 
-      $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
+      if (!empty($force_target))
+      {
+        $query.= ' ca.sl_candidatepk = '.$force_target.' ';
+      }
+      else
+      {
+        $query.= ' ( (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower($lastname.'%')).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) ';
+        $query.= ' OR (ca.lastname LIKE '.$this->oDB->dbEscapeString(strtolower('%'.$lastname)).' AND levenshtein('.$clean_firstname.', LOWER(ca.firstname)) < 3) )';
+
+      }
     }
+
+    $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
 
 //ChromePhp::log($query);
 
