@@ -2572,7 +2572,7 @@ class CSl_candidateEx extends CSl_candidate
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
-      ChromePhp::log($sSortField);
+      ChromePhp::log($this->cnPk);
       if(!empty($this->cnPk))
       {
         if(!empty($sSortField))
