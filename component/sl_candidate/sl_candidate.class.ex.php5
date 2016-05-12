@@ -2468,7 +2468,7 @@ class CSl_candidateEx extends CSl_candidate
         $poQB = $this->_getModel()->getQueryBuilder();
 ChromePhp::log($poQB);
       $array = (array)$poQB;
-      $array = (array)$array['CQueryBuildercasSQL'];
+      $array = $array['CQueryBuildercasSQL'];
       //$where = $poQB['casSQL']['where'];
 ChromePhp::log($array);
       // ============================================
