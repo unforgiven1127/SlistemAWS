@@ -2732,7 +2732,7 @@ ChromePhp::log($limit);
         }
       }
 
-      $sQuery.= " ".$limit;
+      $sQuery.= " LIMIT ".$limit;
 
 ChromePhp::log($sQuery);
 
