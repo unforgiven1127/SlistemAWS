@@ -3625,6 +3625,7 @@ ChromePhp::log($sQuery);
               $sClass = 'meeting_done';
               $meetingInfo = getMeetingInformation((int)$oDbResult->getFieldValue('sl_meetingpk'));
               $meeting_type = $meetingInfo['type']; // 1:in person 2:by phone 3:video 4:other
+              ChromePhp::log($meeting_type);
               if($meeting_type == 1)
               {
                 $meeting_type = "Met in person";
@@ -3783,7 +3784,6 @@ ChromePhp::log($sQuery);
           $sHTML.= implode('', $asMeeting['inactive']);
         }
       }
-ChromePhp::log($sHTML);
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
       return $sHTML;
