@@ -82,7 +82,7 @@
 					$total_paid_researcher = 0;
 					$total_signed_researcher = 0;
 					$total_placed_researcher = 0;
-
+					$researcher_rank = 0;
 					foreach ($revenue_data as $key => $value):
 
 						if ($key == 'former' && empty($value['signed']))
@@ -100,9 +100,11 @@
 						else
 							$flag_pic = $value['nationality'].'_32.png';
 				?>
-				<?php if($value['userPosition'] == "Researcher"){ $total_consultant_count--;?>
+				<?php if($value['userPosition'] == "Researcher"){
+					$researcher_rank ++;
+					$total_consultant_count--;?>
 					<tr class="hover_row<?php echo $even; ?>">
-						<td class="text_right"><?php echo $row_number_rank; ?></td>
+						<td class="text_right"><?php echo $researcher_rank; ?></td>
 						<td class="text_center"><?php echo $value['name']; ?></td>
 						<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 						<td class="text_right">&yen;<?php echo number_format($value['signed'], $decimals, '.', ','); ?></td>
