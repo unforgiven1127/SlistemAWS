@@ -2673,7 +2673,8 @@ ChromePhp::log($limit);
 
       ChromePhp::log($sSortField." - ".$sSortOrder);
 
-      if(!empty($sSortField)){
+      if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null){
+        ChromePhp::log($sSortField);
         if($sSortField == "sl_candidatepk")
         {
           $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
