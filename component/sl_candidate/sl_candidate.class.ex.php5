@@ -6443,19 +6443,29 @@ die();*/
         $asData['languagefk'] = (int)getValue('language');
         $asData['nationalityfk'] = (int)getValue('nationality');
         $asData['locationfk'] = (int)getValue('location');
+        $asData['occupationfk'] = (int)getValue('occupationpk');
+        $asData['industryfk'] = (int)getValue('industrypk');
 
+        $nNewCompanyFk = (int)getValue('companypk');
+        if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
+        {
+          $asData['previous_company'] = (int)$asData['companyfk'];
+          $asData['current_company'] = $nNewCompanyFk;
+        }
+
+        $asData['companyfk'] = $nNewCompanyFk;
 
         if(empty($asData['firstname']) || strlen($asData['firstname']) < 2)
           $asError[] = 'Firstname empty or too short.';
 
         if(empty($asData['lastname']) || strlen($asData['lastname']) < 2)
           $asError[] = 'Lastname empty or too short.';
-        if(empty(getValue('companyfk')))
-          $asError[] = 'Company is empty.';
-        if(empty(getValue('occupationfk')))
+        if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
-        if(empty(getValue('industryfk')))
+        if(empty($asData['industryfk']))
           $asError[] = 'Industry is empty.';
+        if(empty($nNewCompanyFk))
+          $asError[] = 'Company is empty.';
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
@@ -6472,17 +6482,9 @@ die();*/
           return $asError;
 
 
-        $nNewCompanyFk = (int)getValue('companypk');
-        if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
-        {
-          $asData['previous_company'] = (int)$asData['companyfk'];
-          $asData['current_company'] = $nNewCompanyFk;
-        }
-
-        $asData['companyfk'] = $nNewCompanyFk;
+        
         $asData['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
-        $asData['occupationfk'] = (int)getValue('occupationpk');
-        $asData['industryfk'] = (int)getValue('industrypk');
+        
         $asData['department'] = filter_var(getValue('department'), FILTER_SANITIZE_STRING);
 
         if(isset($_POST['client']))
