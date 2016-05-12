@@ -528,9 +528,9 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
-    if($candidate_info['contact'])
+    if($candidate_info['sex'])
     {
-      $sex_control = $candidate_info['contact'];
+      $sex_control = $candidate_info['sex'];
     }
     else
     {
