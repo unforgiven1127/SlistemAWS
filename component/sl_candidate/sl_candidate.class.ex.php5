@@ -239,6 +239,7 @@ class CSl_candidateEx extends CSl_candidate
 
 //ChromePhp::log(debug_backtrace());
             $candidateList = $this->_getCandidateList(true, $oQB);
+
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($candidateList), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
 //ChromePhp::log($return);
             return json_encode($return);
@@ -2571,11 +2572,10 @@ class CSl_candidateEx extends CSl_candidate
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
-      //ChromePhp::log($sSortField);
-      //if(!empty($sSortField))
-      //{
-        //$poQB->addOrder('scan.firstname DESC');
-        /*if($sSortField == '_in_play')
+      ChromePhp::log($sSortField);
+      if(!empty($sSortField))
+      {
+        if($sSortField == '_in_play')
         {
           $sSortOrder = getValue('sortorder', 'DESC');
           $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
@@ -2593,10 +2593,10 @@ class CSl_candidateEx extends CSl_candidate
           $ordering = $sSortField.' '.$sort_order.$secondary_order;
 
           $poQB->setOrder($ordering);
-        }*/
-      //}
-      //else
-        //$poQB->addOrder('scan.firstname DESC');
+        }
+      }
+      else
+        $poQB->addOrder('scan.firstname DESC');
 
 
       if(empty($sGroupBy))
@@ -2628,7 +2628,6 @@ class CSl_candidateEx extends CSl_candidate
       $sQuery = $poQB->getSql();
       //dump($sQuery);
 
-
       if ($nPagerOffset)
       {
         $record_start = $nPagerOffset*$nLimit;
@@ -2654,14 +2653,10 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
 
           $asSql = $poQB->getSqlArray();
-          /*if(!empty($asSql['order']))
-            $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);*/
+          if(!empty($asSql['order']))
+            $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
         }
       }
-
-      
-
-ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
@@ -3029,7 +3024,7 @@ ChromePhp::log($sQuery);
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-ChromePhp::log($sHTML);
+//ChromePhp::log($sHTML);
       return $sHTML;
     }
 
@@ -6370,29 +6365,14 @@ die();*/
         $asData['languagefk'] = (int)getValue('language');
         $asData['nationalityfk'] = (int)getValue('nationality');
         $asData['locationfk'] = (int)getValue('location');
-        $asData['occupationfk'] = (int)getValue('occupationpk');
-        $asData['industryfk'] = (int)getValue('industrypk');
 
-        $nNewCompanyFk = (int)getValue('companypk');
-        if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
-        {
-          $asData['previous_company'] = (int)$asData['companyfk'];
-          $asData['current_company'] = $nNewCompanyFk;
-        }
-
-        $asData['companyfk'] = $nNewCompanyFk;
 
         if(empty($asData['firstname']) || strlen($asData['firstname']) < 2)
           $asError[] = 'Firstname empty or too short.';
 
         if(empty($asData['lastname']) || strlen($asData['lastname']) < 2)
           $asError[] = 'Lastname empty or too short.';
-        if(empty($asData['occupationfk']))
-          $asError[] = 'Occupation is empty.';
-        if(empty($asData['industryfk']))
-          $asError[] = 'Industry is empty.';
-        if(empty($nNewCompanyFk))
-          $asError[] = 'Company is empty.';
+
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
@@ -6409,9 +6389,17 @@ die();*/
           return $asError;
 
 
-        
+        $nNewCompanyFk = (int)getValue('companypk');
+        if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
+        {
+          $asData['previous_company'] = (int)$asData['companyfk'];
+          $asData['current_company'] = $nNewCompanyFk;
+        }
+
+        $asData['companyfk'] = $nNewCompanyFk;
         $asData['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
-        
+        $asData['occupationfk'] = (int)getValue('occupationpk');
+        $asData['industryfk'] = (int)getValue('industrypk');
         $asData['department'] = filter_var(getValue('department'), FILTER_SANITIZE_STRING);
 
         if(isset($_POST['client']))
