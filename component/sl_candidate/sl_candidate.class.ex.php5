@@ -2568,6 +2568,8 @@ class CSl_candidateEx extends CSl_candidate
 
 
 $test = $poQB->getSql();
+ChromePhp::log($test);
+
 $control = "AND sl_candidatepk =";
 $flag = strpos($test, $control);
 ChromePhp::log($flag);
@@ -6493,8 +6495,6 @@ die();*/
         if(!empty($asError))
           return $asError;
 
-
-        
         if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
         {
           $asData['previous_company'] = (int)$asData['companyfk'];
