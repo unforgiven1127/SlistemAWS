@@ -307,6 +307,7 @@ $this->_tableMap['login']['aliasName'] = array();
 $this->_tableMap['login']['signature'] = array();
 $this->_tableMap['login']['date_passwd_changed'] = array('controls'=>array('is_datetime(%)'),'type'=>'datetime');
 $this->_tableMap['login']['otherloginfks'] = array();
+$this->_tableMap['login']['r_to_c_date'] = array('controls'=>array('is_datetime(%)'),'type'=>'datetime');
 $this->_tableMap['login_access_history']['login_access_historypk'] = array('controls'=>array('is_null(%) || is_key(%)'),'type'=>'int','index' => 'pk');
 $this->_tableMap['login_access_history']['history'] = array();
 $this->_tableMap['login_access_history']['ip_address'] = array();

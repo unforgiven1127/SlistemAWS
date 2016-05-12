@@ -1114,7 +1114,7 @@ class CLoginEx extends CLogin
       ChromePhp::log($user_info);
       if($user_info['position'] == "Researcher" && $asUpdate['position'] == "Consultant")
       {
-        $asUpdate['r_to_c_date'] = date('Y-m-d');
+        $asUpdate['r_to_c_date'] = date('Y-m-d').' 00:00:00';
         ChromePhp::log($asUpdate['r_to_c_date']);
       }
     }
