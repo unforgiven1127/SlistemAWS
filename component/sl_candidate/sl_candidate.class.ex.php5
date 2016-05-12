@@ -2572,32 +2572,34 @@ class CSl_candidateEx extends CSl_candidate
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield');
       //ChromePhp::log($sSortField);
-      //if(!empty($sSortField))
-      //{
-        //$poQB->addOrder('scan.firstname DESC');
-        /*if($sSortField == '_in_play')
+      if(!empty($this->cnPk))
+      {
+        if(!empty($sSortField))
         {
-          $sSortOrder = getValue('sortorder', 'DESC');
-          $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-          $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          //$poQB->addOrder('scan.firstname DESC');
+          if($sSortField == '_in_play')
+          {
+            $sSortOrder = getValue('sortorder', 'DESC');
+            $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+            $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          }
+          else
+          {
+            $sort_order = getValue('sortorder', 'DESC');
+
+            if ($sSortField == 'salary')
+              $sSortField = 'full_salary';
+            else if ($sSortField == 'date_birth')
+              $sSortField = 'age';
+
+            $ordering = $sSortField.' '.$sort_order.$secondary_order;
+
+            $poQB->setOrder($ordering);
+          }
         }
         else
-        {
-          $sort_order = getValue('sortorder', 'DESC');
-
-          if ($sSortField == 'salary')
-            $sSortField = 'full_salary';
-          else if ($sSortField == 'date_birth')
-            $sSortField = 'age';
-
-          $ordering = $sSortField.' '.$sort_order.$secondary_order;
-
-          $poQB->setOrder($ordering);
-        }*/
-      //}
-      //else
-        //$poQB->addOrder('scan.firstname DESC');
-
+          $poQB->addOrder('scan.firstname DESC');
+      }
 
       if(empty($sGroupBy))
         $poQB->addGroup('scan.sl_candidatepk', false);
@@ -2658,89 +2660,92 @@ class CSl_candidateEx extends CSl_candidate
             $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);*/
         }
       }
-
-      $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
-      ChromePhp::log($sQuery[1]);
-
-      $limit = $sQuery[1];
-      $limit = explode("LIMIT", $limit);
-      $limit = $limit[1];
-ChromePhp::log($limit);
-      $sQuery = $sQuery[0];
-
-      $sSortOrder = getValue('sortorder');
-
-      ChromePhp::log($sSortField." - ".$sSortOrder);
-
-      if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null){
-        ChromePhp::log($sSortField);
-        if($sSortField == "sl_candidatepk")
-        {
-          $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
-        }
-        else if($sSortField == "cp_client")
-        {
-          $sQuery.= ' ORDER BY scom.is_client '.$sSortOrder." ";
-        }
-        else if($sSortField == "_in_play")
-        {
-          $sQuery.= ' ORDER BY scpr._in_play '.$sSortOrder." ";
-        }
-        else if($sSortField == "grade")
-        {
-          $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
-        }
-        else if($sSortField == "_has_doc")
-        {
-          $sQuery.= ' ORDER BY scpr._has_doc '.$sSortOrder." ";
-        }
-        else if($sSortField == "lastname")
-        {
-          $sQuery.= ' ORDER BY scan.lastname '.$sSortOrder." ";
-        }
-        else if($sSortField == "firstname")
-        {
-          $sQuery.= ' ORDER BY scan.firstname '.$sSortOrder." ";
-        }
-        else if($sSortField == "company_name")
-        {
-          $sQuery.= ' ORDER BY scom.name '.$sSortOrder." ";
-        }
-        else if($sSortField == "title")
-        {
-          $sQuery.= ' ORDER BY scpr.title '.$sSortOrder." ";
-        }
-        else if($sSortField == "department")
-        {
-          $sQuery.= ' ORDER BY scpr.department '.$sSortOrder." ";
-        }
-        else if($sSortField == "lastnote")
-        {
-          $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
-        }
-        else if($sSortField == "lastnote")
-        {
-          $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
-        }
-        else if($sSortField == "date_birth")
-        {
-          $sQuery.= ' ORDER BY scan.date_birth '.$sSortOrder." ";
-        }
-        else if($sSortField == "salary")
-        {
-          $sQuery.= ' ORDER BY scpr.salary '.$sSortOrder." ";
-        }
-      }
-
-
-      if(!empty($limit))
-        $sQuery.= " LIMIT ".$limit;
-      else
+      if(empty($this->cnPk)
       {
-        $sQuery = explode('LIMIT', $sQuery);
+        $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
+        ChromePhp::log($sQuery[1]);
+
+        $limit = $sQuery[1];
+        $limit = explode("LIMIT", $limit);
+        $limit = $limit[1];
+  ChromePhp::log($limit);
         $sQuery = $sQuery[0];
-        $sQuery.= 'ORDER BY scan.firstname DESC';
+
+        $sSortOrder = getValue('sortorder');
+
+        ChromePhp::log($sSortField." - ".$sSortOrder);
+
+        if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null){
+          ChromePhp::log($sSortField);
+          if($sSortField == "sl_candidatepk")
+          {
+            $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
+          }
+          else if($sSortField == "cp_client")
+          {
+            $sQuery.= ' ORDER BY scom.is_client '.$sSortOrder." ";
+          }
+          else if($sSortField == "_in_play")
+          {
+            $sQuery.= ' ORDER BY scpr._in_play '.$sSortOrder." ";
+          }
+          else if($sSortField == "grade")
+          {
+            $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
+          }
+          else if($sSortField == "_has_doc")
+          {
+            $sQuery.= ' ORDER BY scpr._has_doc '.$sSortOrder." ";
+          }
+          else if($sSortField == "lastname")
+          {
+            $sQuery.= ' ORDER BY scan.lastname '.$sSortOrder." ";
+          }
+          else if($sSortField == "firstname")
+          {
+            $sQuery.= ' ORDER BY scan.firstname '.$sSortOrder." ";
+          }
+          else if($sSortField == "company_name")
+          {
+            $sQuery.= ' ORDER BY scom.name '.$sSortOrder." ";
+          }
+          else if($sSortField == "title")
+          {
+            $sQuery.= ' ORDER BY scpr.title '.$sSortOrder." ";
+          }
+          else if($sSortField == "department")
+          {
+            $sQuery.= ' ORDER BY scpr.department '.$sSortOrder." ";
+          }
+          else if($sSortField == "lastnote")
+          {
+            $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
+          }
+          else if($sSortField == "lastnote")
+          {
+            $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
+          }
+          else if($sSortField == "date_birth")
+          {
+            $sQuery.= ' ORDER BY scan.date_birth '.$sSortOrder." ";
+          }
+          else if($sSortField == "salary")
+          {
+            $sQuery.= ' ORDER BY scpr.salary '.$sSortOrder." ";
+          }
+        }
+
+
+        if(!empty($limit))
+          $sQuery.= " LIMIT ".$limit;
+        else
+        {
+          $sQuery = explode('LIMIT', $sQuery);
+          $sQuery = $sQuery[0];
+          $sQuery.= 'ORDER BY scan.firstname DESC';
+        }
       }
+      
 
 ChromePhp::log($sQuery);
 
