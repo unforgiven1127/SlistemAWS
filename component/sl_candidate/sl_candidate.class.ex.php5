@@ -3708,7 +3708,8 @@ ChromePhp::log($sQuery);
 */
 //ChromePhp::log($sLink);
             $setDate = explode(' ',$meetingInfo['date_created']);
-            ChromePhp::log($setDate);
+            ChromePhp::log('setDate: '.$setDate);
+            ChromePhp::log('asDate: '.$asDate);
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled on', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
 
