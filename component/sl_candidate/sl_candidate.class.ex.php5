@@ -2740,7 +2740,7 @@ ChromePhp::log($flag);
             {
               $newSOrt = 'asc';
             }
-            $sQuery.= ' ORDER BY scan.age '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY age '.$newSOrt." ";
           }
           else if($sSortField == "salary")
           {
