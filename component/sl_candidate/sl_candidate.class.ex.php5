@@ -2578,7 +2578,7 @@ ChromePhp::log($flag);
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
-
+ChromePhp::log($sSortField);
       if($flag != false)
       {
         if(!empty($sSortField))
