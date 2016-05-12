@@ -2741,7 +2741,7 @@ ChromePhp::log($flag);
         }
         else
         {
-            $sQuery.= ' ORDER BYscan.firstname DESC ';
+            $sQuery.= ' ORDER BY scan.firstname DESC ';
         }
 
         if(!empty($limit))
@@ -2750,7 +2750,7 @@ ChromePhp::log($flag);
         {
           $sQuery = explode('LIMIT', $sQuery);
           $sQuery = $sQuery[0];
-          $sQuery.= 'ORDER BY scan.firstname DESC';
+          //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
 ChromePhp::log($sQuery);
