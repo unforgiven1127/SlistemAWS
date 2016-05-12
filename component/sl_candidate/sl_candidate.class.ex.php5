@@ -2573,7 +2573,7 @@ class CSl_candidateEx extends CSl_candidate
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
       ChromePhp::log($this->cnPk);
-      if(!empty($this->cnPk) && $this->cnPk != 0)
+      if(!empty($this->cnPk))
       {
         if(!empty($sSortField))
         {
@@ -2653,7 +2653,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
           $sQuery.= ' WHERE candidate.statusfk <= 3 ';
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
-          if(!empty($this->cnPk) && $this->cnPk != 0 )
+          if(!empty($this->cnPk))
           {
             $asSql = $poQB->getSqlArray(); // burasi
             if(!empty($asSql['order']))
@@ -2663,7 +2663,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if(empty($this->cnPk) || $this->cnPk != 0)
+      if(empty($this->cnPk) && $this->cnPk != 0)
       {
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
         ChromePhp::log($sQuery[1]);
