@@ -2568,7 +2568,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
 $test = $poQB->getSql();
-ChromePhp::log($test);
+//ChromePhp::log($test);
 
 $control = "sl_candidatepk =";
 $flag = strpos($test, $control);
@@ -2754,7 +2754,7 @@ ChromePhp::log($sSortField);
           $sQuery.= 'ORDER BY scan.firstname DESC';
         }
       }
-
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
