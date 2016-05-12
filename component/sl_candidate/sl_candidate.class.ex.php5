@@ -3710,27 +3710,57 @@ ChromePhp::log($sQuery);
 */
 //ChromePhp::log($sLink);
             $setDate = explode(' ',$meetingInfo['date_created']);
-
-            if(isset($setDate) && isset($setDate[0]) && !empty($setDate[0]) && $setDate[0] != "")
-            {
-              $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled on', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
-              $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
-            }
-
-            if(isset($asDate) && isset($asDate[1]) && !empty($asDate[1]) && $asDate[1] != "")
-            {
-              //$sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
-              $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
-              //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
-              //$sMeeting.= $this->_oDisplay->getBloc('', 'on the <span>'.$asDate[0].'</span>', array('class' => 'meeting_row_date'));
-              $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
-            }
-            $sMeeting.= $this->_oDisplay->getFloathack();
 //DENEDIK
+            
+//BOZUK !!!!!
 //ChromePhp::log($meetingInfo);
             //----------------------------------------------------
             //Third row
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
+            $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
+            if($meetingDoneFlag && isset($meetingInfo['date_met']))
+            {
+              $updateDate = explode(' ',$meetingInfo['date_met']);
+              if(isset($updateDate[0]) && isset($updateDate[1]))
+              {
+                $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
+              }
+            }
+//ChromePhp::log($meetingInfo);
+            $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
+            if($bManager || ($nStatus < 1 && ($nCurrentUser == $oDbResult->getFieldValue('created_by') || $nCurrentUser == $nAttendee)))
+            {
 
+
+              if($nCurrentUser == $nAttendee)
+              {
+                $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_DONE, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
+                $asButtons[] = array('url' => '', 'label' => 'Meeting done', 'pic' => $this->getResourcePath().'pictures/done_16.png',
+                    'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 850; oConf.height = 450; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');');
+              }
+
+              $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
+              $asButtons[] = array('url' => '', 'label' => 'Edit meeting', 'pic' => $this->getResourcePath().'pictures/edit_16.png',
+                  'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\'); ');
+
+              $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $nMeetingPk, array('fast_edit' => 1, 'status' => -1));
+              $asButtons[] = array('url' => '', 'label' => 'Cancel meeting', 'pic' => $this->getResourcePath().'pictures/delete_16.png',
+                  'onclick' => 'if(window.confirm(\'Delete this meeting may affect user stats. Continue ?\')){ AjaxRequest(\''.$sUrl.'\'); } ');
+
+
+              $sMeeting.= $this->_oDisplay->getActionButtons($asButtons, 1, 'Manage meeting...');
+
+            }
+            else
+            {
+              $sMeeting.= '<em class="light italic"> - no action available - </em>';
+            }
+            $sMeeting.= $this->_oDisplay->getBlocEnd();
+
+          $sMeeting.= $this->_oDisplay->getFloatHack();
+          $sMeeting.= $this->_oDisplay->getBlocEnd();
+
+          $asMeeting[$sType][] = $sMeeting;
           $bRead = $oDbResult->readNext();
         }
 
