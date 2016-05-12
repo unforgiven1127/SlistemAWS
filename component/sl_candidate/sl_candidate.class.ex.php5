@@ -2467,10 +2467,9 @@ class CSl_candidateEx extends CSl_candidate
       if(!$poQB)
         $poQB = $this->_getModel()->getQueryBuilder();
 ChromePhp::log($poQB);
-      $array = (array)$poQB;
-      $array = $array['CQueryBuildercasSQL'];
+      $test = $poQB->casSQL->where[0];
       //$where = $poQB['casSQL']['where'];
-ChromePhp::log($array);
+ChromePhp::log($test);
       // ============================================
       // search and pagination management
       if(empty($this->csSearchId) && empty($nHistoryPk))
