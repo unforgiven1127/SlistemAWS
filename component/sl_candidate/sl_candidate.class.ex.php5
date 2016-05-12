@@ -2732,7 +2732,8 @@ ChromePhp::log($limit);
         }
       }
 
-      $sQuery.= " LIMIT ".$limit;
+      if(!empty($limit))
+        $sQuery.= " LIMIT ".$limit;
 
 ChromePhp::log($sQuery);
 
