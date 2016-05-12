@@ -3701,7 +3701,6 @@ ChromePhp::log($sQuery);
             //----------------------------------------------------
             //second row
             $asDateMeetingCreate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
-            ChromePhp::log($asDateMeetingCreate);
 /*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
@@ -3709,6 +3708,7 @@ ChromePhp::log($sQuery);
 */
 //ChromePhp::log($sLink);
             $setDate = explode(' ',$meetingInfo['date_created']);
+            ChromePhp::log($setDate);
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled on', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
 
