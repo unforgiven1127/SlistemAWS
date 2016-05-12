@@ -3688,7 +3688,7 @@ ChromePhp::log($sQuery);
           }
 
 //ChromePhp::log($createdByFk);
-ChromePhp::log($sLink);
+//ChromePhp::log($sLink);
 
             $sMeeting.= $this->_oDisplay->getBloc('', ' by', array('style' => 'width:20px; margin-left:5px;','class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:auto;','class' => 'meeting_row_creator'));
@@ -3718,7 +3718,7 @@ ChromePhp::log($sLink);
 
             $sMeeting.= $this->_oDisplay->getFloathack();
 
-ChromePhp::log($meetingInfo);
+//ChromePhp::log($meetingInfo);
             //----------------------------------------------------
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
@@ -3731,7 +3731,7 @@ ChromePhp::log($meetingInfo);
                 $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
               }
             }
-ChromePhp::log($meetingInfo);
+//ChromePhp::log($meetingInfo);
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
             if($bManager || ($nStatus < 1 && ($nCurrentUser == $oDbResult->getFieldValue('created_by') || $nCurrentUser == $nAttendee)))
             {
@@ -3783,7 +3783,7 @@ ChromePhp::log($meetingInfo);
           $sHTML.= implode('', $asMeeting['inactive']);
         }
       }
-
+ChromePhp::log($sHTML);
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
       return $sHTML;
