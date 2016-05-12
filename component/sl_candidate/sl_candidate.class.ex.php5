@@ -2660,7 +2660,7 @@ class CSl_candidateEx extends CSl_candidate
             $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);*/
         }
       }
-      if(empty($this->cnPk)
+      if(empty($this->cnPk))
       {
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
         ChromePhp::log($sQuery[1]);
