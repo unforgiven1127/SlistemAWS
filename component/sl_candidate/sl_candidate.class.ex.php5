@@ -2673,7 +2673,7 @@ ChromePhp::log($flag);
         $limit = $sQuery[1];
         $limit = explode("LIMIT", $limit);
         $limit = $limit[1];
-  ChromePhp::log($limit);
+
         $sQuery = $sQuery[0];
 
         $sSortOrder = getValue('sortorder');
