@@ -2664,8 +2664,8 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($sQuery[1]);
 
       $limit = $sQuery[1];
-      $limit = explode("ASC", $limit);
-      $limit = $limit[2];
+      $limit = explode("LIMIT", $limit);
+      $limit = $limit[1];
 ChromePhp::log($limit);
       $sQuery = $sQuery[0];
 
