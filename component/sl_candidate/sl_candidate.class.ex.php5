@@ -3608,10 +3608,86 @@ ChromePhp::log($sQuery);
             $user_info = getUserInformaiton($nAttendee);
             $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
+// DENEDIK
+          $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
+          if($nStatus != 0)
+          {
+            $sType = 'inactive';
+
+            if($nStatus < 0)
+            {
+              $sClass = 'meeting_cancelled';
+              $sStatus = $this->_oDisplay->getText('cancelled', array('class' => $sClass));
+            }
+            else
+            {
+              $meetingDoneFlag = true;
+              $sClass = 'meeting_done';
+              $meetingInfo = getMeetingInformation((int)$oDbResult->getFieldValue('sl_meetingpk'));
+              $meeting_type = $meetingInfo['type']; // 1:in person 2:by phone 3:video 4:other
+
+              if($meeting_type == 1)
+              {
+                $meeting_type = "Met in person";
+              }
+              else if($meeting_type == 2)
+              {
+                $meeting_type = "Met by phone";
+              }
+              else if($meeting_type == 3)
+              {
+                $meeting_type = "Met by video chat";
+              }
+              else
+              {
+                $meeting_type = "Meeting done";
+              }
+              //$sStatus = $this->_oDisplay->getText('meeting done', array('class' => $sClass));
+              $sStatus = $this->_oDisplay->getText($meeting_type, array('class' => $sClass));
+            }
+          }
+          else
+          {
+            $sType = 'active';
+            $sStatus = $this->_oDisplay->getText(' - need update -', array('class' => 'meeting_passed'));
+
+            if($sMeetingDate < $sAweekAgo)
+              $sClass = 'meeting_passed_late';
+            elseif($sMeetingDate < $sNow)
+              $sClass = 'meeting_passed';
+            elseif(substr($sMeetingDate, 0, 10) == $sToday)
+            {
+              $sClass = 'meeting_close';
+              $sStatus = $this->_oDisplay->getText('soon', array('class' => $sClass));
+            }
+            else
+            {
+              $sClass = '';
+              //$sStatus = $this->_oDisplay->getText(' scheduled');
+              $sStatus = $this->_oDisplay->getText('- need update -');
+            }
+          }
+
+
+          
+        }
+
+        if(!empty($asMeeting['active']))
+        {
+          $sHTML.= $this->_oDisplay->getTitle('Scheduled meetings', 'h3', true);
+          $sHTML.= implode('', $asMeeting['active']);
+          $sHTML.= $this->_oDisplay->getBloc('', '&nbsp;', array('style' => 'border-top: 1px solid #bbb; '));
+        }
+
+        if( !empty($asMeeting['inactive']))
+        {
+          $sHTML.= $this->_oDisplay->getCR();
+          $sHTML.= $this->_oDisplay->getTitle('Past meetings', 'h3', true);
+          $sHTML.= implode('', $asMeeting['inactive']);
         }
       }
-// DENEDIK
-          $sHTML = 'test';
+
+      $sHTML.= $this->_oDisplay->getBlocEnd();
       return $sHTML;
     }
 
