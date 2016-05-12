@@ -3605,8 +3605,9 @@ ChromePhp::log($sQuery);
           }
           else
           {
-            $user_info = getUserInformaiton($nAttendee);
-            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
+            $sLink = "TEST";
+            //$user_info = getUserInformaiton($nAttendee);
+            //$sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
