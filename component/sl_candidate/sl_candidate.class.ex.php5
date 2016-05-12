@@ -2732,27 +2732,11 @@ ChromePhp::log($flag);
           }
           else if($sSortField == "date_birth")
           {
-            if($sSortOrder == 'asc')
-            {
-              $newSOrt = 'desc';
-            }
-            else
-            {
-              $newSOrt = 'asc';
-            }
-            $sQuery.= ' ORDER BY age '.$newSOrt." ";
+            $sQuery.= ' ORDER BY age '.$sSortOrder." ";
           }
           else if($sSortField == "salary")
           {
-            if($sSortOrder == 'asc')
-            {
-              $newSOrt = 'desc';
-            }
-            else
-            {
-              $newSOrt = 'asc';
-            }
-            $sQuery.= ' ORDER BY scpr.salary '.$newSOrt." ";
+            $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
 
@@ -2765,7 +2749,7 @@ ChromePhp::log($flag);
           $sQuery = $sQuery[0];
           $sQuery.= 'ORDER BY scan.firstname DESC';
         }
-      
+
 ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
