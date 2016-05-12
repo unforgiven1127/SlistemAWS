@@ -1111,9 +1111,11 @@ class CLoginEx extends CLogin
     if(!empty($pnLoginPk) && $pnLoginPk != 0)
     {
       $user_info = getUserInformaiton($pnLoginPk);
+      ChromePhp::log($user_info);
       if($user_info['position'] == "Researcher" && $asUpdate['position'] == "Consultant")
       {
         $asUpdate['r_to_c_date'] = date('Y-m-d');
+        ChromePhp::log($asUpdate['r_to_c_date']);
       }
     }
 
