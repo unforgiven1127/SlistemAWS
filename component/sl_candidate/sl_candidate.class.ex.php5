@@ -2732,11 +2732,27 @@ ChromePhp::log($flag);
           }
           else if($sSortField == "date_birth")
           {
-            $sQuery.= ' ORDER BY scan.date_birth '.$sSortOrder." ";
+            if($sSortOrder == 'asc')
+            {
+              $newSOrt = 'desc';
+            }
+            else
+            {
+              $newSOrt = 'asc';
+            }
+            $sQuery.= ' ORDER BY scan.date_birth '.$newSOrt." ";
           }
           else if($sSortField == "salary")
           {
-            $sQuery.= ' ORDER BY scpr.salary '.$sSortOrder." ";
+            if($sSortOrder == 'asc')
+            {
+              $newSOrt = 'desc';
+            }
+            else
+            {
+              $newSOrt = 'asc';
+            }
+            $sQuery.= ' ORDER BY scpr.salary '.$newSOrt." ";
           }
         }
 
