@@ -579,7 +579,19 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $duplicate_array['other'][$key] = $value;
     }
 
-    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
+    $temp_name_lastname = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target);
+    foreach ($temp_name_lastname as $key => $value)
+    {
+      if (!isset($duplicate_array['other'][$key]))
+        $duplicate_array['other'][$key] = $value;
+    }
+
+    $temp_name_lastname = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
+    foreach ($temp_name_lastname as $key => $value)
+    {
+      if (!isset($duplicate_array['other'][$key]))
+        $duplicate_array['other'][$key] = $value;
+    }
 
     if($merge_data)
     {
