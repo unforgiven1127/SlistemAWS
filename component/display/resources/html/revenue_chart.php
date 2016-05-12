@@ -9,7 +9,7 @@
 					</tr>
 					<tr>
 						<th style="width: 100px; height: 39px;" class="text_center">Rank</th>
-						<th style="min-width: 180px; height: 39px;" class="text_center">Name</th>
+						<th style="min-width: 200px; height: 39px;" class="text_center">Name</th>
 						<th style="height: 39px;" class="text_center"></th>
 						<th style="height: 39px;" class="text_center">Signed</th>
 						<th style="height: 39px;" class="text_center">Paid</th>
@@ -71,7 +71,7 @@
 					</tr>
 					<tr>
 						<th style="width: 100px; height: 39px;" class="text_center">Rank</th>
-						<th style="width: 170px; height: 39px;" class="text_center">Name</th>
+						<th style="min-width: 200px; height: 39px;" class="text_center">Name</th>
 						<th style="height: 39px;" class="text_center"></th>
 						<th style="height: 39px;" class="text_center">Signed</th>
 						<th style="height: 39px;" class="text_center">Paid</th>
