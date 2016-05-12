@@ -2579,8 +2579,8 @@ ChromePhp::log($flag);
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
 ChromePhp::log($sSortField);
-      if($flag != false)
-      {
+      
+    
         if(!empty($sSortField))
         {
           if($sSortField == '_in_play')
@@ -2605,7 +2605,7 @@ ChromePhp::log($sSortField);
         }
         else
           $poQB->addOrder('scan.firstname DESC');
-      }
+      
 
       if(empty($sGroupBy))
         $poQB->addGroup('scan.sl_candidatepk', false);
