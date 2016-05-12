@@ -537,7 +537,7 @@
       ),
       'sql' => array
       (
-        'field' => 'scan.keyword',
+        'field' => 'scan.firstname',
         'join' => null,
         'fts' => false,
         'unmanageable' => null
@@ -568,7 +568,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       ),
       'sql' => array
       (
-        'field' => 'scan.firstname',
+        'field' => 'scpr.keyword',
         'join' => null,
         'fts' => false,
         'unmanageable' => null
