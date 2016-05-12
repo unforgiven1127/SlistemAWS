@@ -3676,7 +3676,7 @@ ChromePhp::log($sQuery);
 
 
           $createdByFk = (int)$oDbResult->getFieldValue('created_by');
-ChromePhp::log($createdByFk);
+
           if($createdByFk == -1)
           {
             $sLink = "Unknown";
@@ -3701,6 +3701,7 @@ ChromePhp::log($createdByFk);
             //----------------------------------------------------
             //second row
             $asDateMeetingCreate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
+            ChromePhp::log($asDateMeetingCreate);
 /*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
