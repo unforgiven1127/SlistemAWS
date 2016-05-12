@@ -1,6 +1,6 @@
 <?php $total_consultant_count = 0 ?>
 <div style="text-align: center;">
-	<table>
+	<table style="margin: 0 auto; text-align: left;">
 		<tr>
 			<td>
 				<table class="revenue_table">
