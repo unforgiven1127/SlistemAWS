@@ -3667,6 +3667,30 @@ ChromePhp::log($sQuery);
               $sStatus = $this->_oDisplay->getText('- need update -');
             }
           }
+//DENEDIK
+
+          $sMeeting = $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row '.$sClass));
+
+            $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set for ', array('style' => 'width:150px;','class' => 'meeting_row_forth'));
+            $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:auto;','class' => 'meeting_row_attendee'));
+
+
+          $createdByFk = (int)$oDbResult->getFieldValue('created_by');
+
+          if($createdByFk == -1)
+          {
+            $sLink = "Unknown";
+            //ChromePhp::log('icerde');
+          }
+          else
+          {
+            $user_info = getUserInformaiton($createdByFk);
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
+          }
+//DENEDIK
+//ChromePhp::log($createdByFk);
+//ChromePhp::log($sLink);
+
 
           $bRead = $oDbResult->readNext();
         }
