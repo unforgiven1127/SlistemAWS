@@ -2431,7 +2431,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-      ChromePhp::log($pbInAjax);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2466,9 +2465,8 @@ class CSl_candidateEx extends CSl_candidate
       //Basic integration of the quick search tyhrough query builder
       if(!$poQB)
         $poQB = $this->_getModel()->getQueryBuilder();
-ChromePhp::log($poQB);
-      $test = $poQB->casSQL;
-      //$where = $poQB['casSQL']['where'];
+
+$test = $poQB->getCountSql();
 ChromePhp::log($test);
       // ============================================
       // search and pagination management
