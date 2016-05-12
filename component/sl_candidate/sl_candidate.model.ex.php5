@@ -528,7 +528,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
-    if($candidate_info['sex'])
+    if(isset($candidate_info['sex']))
     {
       $sex_control = $candidate_info['sex'];
     }
