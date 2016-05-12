@@ -3709,6 +3709,8 @@ ChromePhp::log($sQuery);
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 */
 //ChromePhp::log($sLink);
+            $setDate = explode(' ',$meetingInfo['date_created']);
+
             
 
             if(isset($asDate) && isset($asDate[1]) && !empty($asDate[1]) && $asDate[1] != "")
