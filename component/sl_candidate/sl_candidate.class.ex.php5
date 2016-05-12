@@ -6450,11 +6450,11 @@ die();*/
 
         if(empty($asData['lastname']) || strlen($asData['lastname']) < 2)
           $asError[] = 'Lastname empty or too short.';
-        if(empty($getValue('companyfk')))
+        if(empty(getValue('companyfk')))
           $asError[] = 'Company is empty.';
-        if(empty($getValue('occupationfk')))
+        if(empty(getValue('occupationfk')))
           $asError[] = 'Occupation is empty.';
-        if(empty($getValue('industryfk')))
+        if(empty(getValue('industryfk')))
           $asError[] = 'Industry is empty.';
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
