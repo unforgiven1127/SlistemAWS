@@ -636,15 +636,10 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $query.= ") AND";
     }
 
-    /*if($sex_control != "")
+    if($sex_control != "")
     {
-      $query.= "(";
-      foreach ($sex_control as $key => $value) {
-        $query.= "cont.value = '".$value."' OR ";
-      }
-      $query = substr($query, 0, -3);
-      $query.= ") AND";
-    }*/
+      $query.= " ca.sex = '".$sex_control.' AND ';
+    }
 
     if (!$skip_company)
       $query.= ' cap.companyfk = '.$company_id.' AND ';
