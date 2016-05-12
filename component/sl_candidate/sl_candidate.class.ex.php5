@@ -2431,6 +2431,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
+      ChromePhp::log($pbInAjax);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2452,6 +2453,7 @@ class CSl_candidateEx extends CSl_candidate
         //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
 
         $asHistoryData = $oLogin->getUserActivityByPk($nHistoryPk);
+        ChromePhp::log($asHistoryData);
         $poQB = $asHistoryData['data']['qb'];
         if(!$poQB || !is_object($poQB))
         {
