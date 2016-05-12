@@ -2663,7 +2663,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if(empty($this->cnPk) || $this->cnPk == 0)
+      if(empty($this->cnPk) || $this->cnPk != 0)
       {
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
         ChromePhp::log($sQuery[1]);
