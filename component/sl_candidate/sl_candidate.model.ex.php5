@@ -528,6 +528,15 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
+    if($candidate_info['contact'])
+    {
+      $sex_control = $candidate_info['contact'];
+    }
+    else
+    {
+      $sex_control = "";
+    }
+
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
@@ -556,10 +565,10 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     if (!empty($company_id) && !$skip_company)
     {
-      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info);
+      $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info, $sex_control);
 
       // requested by Pam: check reversed lname/fname in the same company
-      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target,$candidate_contact_info);
+      $duplicate_temp = $this->duplicate_finder($company_id, $firstname, $lastname, false, $force_target,$candidate_contact_info, $sex_control);
 
       foreach ($duplicate_temp as $key => $value)
       {
@@ -570,7 +579,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       uasort($duplicate_array['company'], sort_multi_array_by_value('ratio', 'reverse'));
     }
 
-    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info);
+    $duplicate_array['other'] = $this->duplicate_finder(0, $lastname, $firstname, true, $force_target,$candidate_contact_info, $sex_control);
 
     if ($merge_data)
     {
@@ -593,7 +602,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
   }
 
 
-  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0, $candidate_contact_info = "")
+  private function duplicate_finder($company_id, $lastname, $firstname, $skip_company = false, $force_target = 0, $candidate_contact_info = "", $sex_control = "")
   {
     $minimum_ratio = 40;
     $duplicate_array = array();
@@ -627,6 +636,16 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $query.= ") AND";
     }
 
+    /*if($sex_control != "")
+    {
+      $query.= "(";
+      foreach ($sex_control as $key => $value) {
+        $query.= "cont.value = '".$value."' OR ";
+      }
+      $query = substr($query, 0, -3);
+      $query.= ") AND";
+    }*/
+
     if (!$skip_company)
       $query.= ' cap.companyfk = '.$company_id.' AND ';
 
@@ -642,7 +661,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
     }
 
-//ChromePhp::log($query);
+ChromePhp::log($query);
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
