@@ -239,7 +239,7 @@ class CSl_candidateEx extends CSl_candidate
 
 //ChromePhp::log(debug_backtrace());
             $candidateList = $this->_getCandidateList(true, $oQB);
-
+ChromePhp::log($candidateList);
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($candidateList), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
 //ChromePhp::log($return);
             return json_encode($return);
