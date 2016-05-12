@@ -6460,6 +6460,8 @@ die();*/
         $asData['languagefk'] = (int)getValue('language');
         $asData['nationalityfk'] = (int)getValue('nationality');
         $asData['locationfk'] = (int)getValue('location');
+
+        $nNewCompanyFk = (int)getValue('companypk');
         $asData['companyfk'] = $nNewCompanyFk;
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
@@ -6492,7 +6494,7 @@ die();*/
           return $asError;
 
 
-        $nNewCompanyFk = (int)getValue('companypk');
+        
         if(!empty($pnCandidatePk) && $asData['companyfk'] != $nNewCompanyFk)
         {
           $asData['previous_company'] = (int)$asData['companyfk'];
