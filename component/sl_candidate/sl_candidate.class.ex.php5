@@ -2741,7 +2741,7 @@ ChromePhp::log($flag);
         }
         else
         {
-            $sQuery.= ' ORDER BY scan.lastname DESC ';
+            $sQuery.= ' ORDER BY scan.lastname ASC ';
         }
 
         if(!empty($limit))
