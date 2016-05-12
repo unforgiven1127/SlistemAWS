@@ -1106,7 +1106,16 @@ class CLoginEx extends CLogin
     $asUpdate['phone'] = getValue('phone');
     $asUpdate['phone_ext'] = getValue('phone_ext');
     $asUpdate['position'] = getValue('position');
+// eski value ile karsilastir researcher to consultant ise tarihi update et
 
+    if(!empty($pnLoginPk) && $pnLoginPk != 0)
+    {
+      $user_info = getUserInformaiton($pnLoginPk);
+      if($user_info['position'] == "Researcher" && $asUpdate['position'] == "Consultant")
+      {
+        $asUpdate['r_to_c_date'] = date('Y-m-d');
+      }
+    }
 
     if(empty($pnLoginPk))
     {
