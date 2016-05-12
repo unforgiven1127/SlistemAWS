@@ -6460,6 +6460,9 @@ die();*/
         $asData['languagefk'] = (int)getValue('language');
         $asData['nationalityfk'] = (int)getValue('nationality');
         $asData['locationfk'] = (int)getValue('location');
+        $asData['companyfk'] = $nNewCompanyFk;
+        $asData['occupationfk'] = (int)getValue('occupationpk');
+        $asData['industryfk'] = (int)getValue('industrypk');
 
 
         if(empty($asData['firstname']) || strlen($asData['firstname']) < 2)
@@ -6467,7 +6470,12 @@ die();*/
 
         if(empty($asData['lastname']) || strlen($asData['lastname']) < 2)
           $asError[] = 'Lastname empty or too short.';
-
+        if(empty($asData['industryfk']))
+          $asError[] = 'Industry is empty.';
+        if(empty($asData['companyfk']))
+          $asError[] = 'Company is empty.';
+        if(empty($asData['industryfk']))
+          $asError[] = 'Occupation is empty.';
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
@@ -6491,10 +6499,7 @@ die();*/
           $asData['current_company'] = $nNewCompanyFk;
         }
 
-        $asData['companyfk'] = $nNewCompanyFk;
         $asData['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
-        $asData['occupationfk'] = (int)getValue('occupationpk');
-        $asData['industryfk'] = (int)getValue('industrypk');
         $asData['department'] = filter_var(getValue('department'), FILTER_SANITIZE_STRING);
 
         if(isset($_POST['client']))
