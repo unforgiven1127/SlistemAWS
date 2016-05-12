@@ -3668,8 +3668,7 @@ ChromePhp::log($sQuery);
             }
           }
 
-
-          
+          $bRead = $oDbResult->readNext();
         }
 
         if(!empty($asMeeting['active']))
