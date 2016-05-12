@@ -2576,8 +2576,8 @@ ChromePhp::log($flag);
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
-      ChromePhp::log($this->cnPk);
-      if(!empty($this->cnPk))
+
+      if($flag != false)
       {
         if(!empty($sSortField))
         {
@@ -2657,7 +2657,7 @@ ChromePhp::log($flag);
           $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
           $sQuery.= ' WHERE candidate.statusfk <= 3 ';
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
-          if(!empty($this->cnPk))
+          if($flag != false)
           {
             $asSql = $poQB->getSqlArray(); // burasi
             if(!empty($asSql['order']))
@@ -2667,7 +2667,7 @@ ChromePhp::log($flag);
         }
       }
 
-      if(empty($this->cnPk) && $this->cnPk != 0)
+      if($flag == false)
       {
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
         ChromePhp::log($sQuery[1]);
