@@ -2601,8 +2601,8 @@ ChromePhp::log($flag);
           $poQB->setOrder($ordering);
         }
       }
-      else
-        $poQB->addOrder('scan.firstname DESC');*/
+      else*/
+        $poQB->addOrder('scan.firstname DESC');
 
 
       if(empty($sGroupBy))
