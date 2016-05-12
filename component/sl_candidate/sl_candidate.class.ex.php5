@@ -2568,7 +2568,9 @@ class CSl_candidateEx extends CSl_candidate
 
 
 $test = $poQB->getSql();
-ChromePhp::log($test);
+$control = "AND sl_candidatepk =";
+$flag = strpos($test, $control);
+ChromePhp::log($flag);
 
       // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
       // manage sort field / order
