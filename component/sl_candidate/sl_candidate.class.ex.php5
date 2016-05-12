@@ -3730,8 +3730,9 @@ ChromePhp::log($sQuery);
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
-            if($meetingDoneFlag)
+            if($meetingDoneFlag && isset($meetingInfo['date_met']))
             {
+              ChromePhp::log($meetingInfo['date_met']);
               $updateDate = explode(' ',$meetingInfo['date_met']);
               if(isset($updateDate[0]))
               {
