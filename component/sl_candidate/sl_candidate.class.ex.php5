@@ -3726,7 +3726,10 @@ ChromePhp::log($sQuery);
             if($meetingDoneFlag)
             {
               $updateDate = explode(' ',$meetingInfo['date_met']);
-              $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
+              if(isset($updateDate[0]))
+              {
+                $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
+              }
             }
 
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
