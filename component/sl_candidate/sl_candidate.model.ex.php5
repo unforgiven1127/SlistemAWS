@@ -528,15 +528,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
-    if(isset($candidate_info['sex']))
-    {
-      $sex_control = $candidate_info['sex'];
-    }
-    else
-    {
-      $sex_control = "";
-    }
-
+    
+$sex_control = "";
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
