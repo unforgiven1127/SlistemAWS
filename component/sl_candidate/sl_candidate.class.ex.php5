@@ -3605,9 +3605,8 @@ ChromePhp::log($sQuery);
           }
           else
           {
-            $sLink = "TEST";
-            //$user_info = getUserInformaiton($nAttendee);
-            //$sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
+            $user_info = getUserInformaiton($nAttendee);
+            $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
 
           $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
@@ -3736,8 +3735,9 @@ ChromePhp::log($sQuery);
             if($meetingDoneFlag && isset($meetingInfo['date_met']))
             {
               $updateDate = explode(' ',$meetingInfo['date_met']);
-              if(isset($updateDate[0]))
-              {
+              if(isset($updateDate[0]) && isset($updateDate[1]))
+              {ChromePhp::log($updateDate[0]);
+                ChromePhp::log($updateDate[1]);
                 $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
               }
             }
