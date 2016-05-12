@@ -2739,7 +2739,10 @@ ChromePhp::log($flag);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-
+        else
+        {
+            $sQuery.= ' ORDER BYscan.firstname DESC ';
+        }
 
         if(!empty($limit))
           $sQuery.= " LIMIT ".$limit;
