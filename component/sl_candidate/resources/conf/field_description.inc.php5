@@ -537,7 +537,7 @@
       ),
       'sql' => array
       (
-        'field' => 'scan.firstname',
+        'field' => 'scan.keyword',
         'join' => null,
         'fts' => false,
         'unmanageable' => null
@@ -545,7 +545,35 @@
     );
 
 
-
+$asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
+      'display' => array
+      (
+        'fts_type'=> null,
+        'type' => array('input', 'text'),
+        'label' => 'Candidate keyword',
+        'group' => 'personal_data',
+        'operator' => $oSearch->getFieldOperators('string'),
+        'default_operator' => 'contains',
+        'option' => array(),
+        'value' => array(),
+        'default_value' => array(),
+        'multiple' => null,
+        'param' => array(),
+        'js_control' => 'jsFieldMinSize@2'
+      ),
+      'data' => array
+      (
+        'type' => 'text',
+        'control' => ''
+      ),
+      'sql' => array
+      (
+        'field' => 'scan.firstname',
+        'join' => null,
+        'fts' => false,
+        'unmanageable' => null
+      )
+    );
 
 
 
