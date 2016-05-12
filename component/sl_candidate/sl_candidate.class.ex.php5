@@ -2731,13 +2731,16 @@ ChromePhp::log($limit);
           $sQuery.= ' ORDER BY scpr.salary '.$sSortOrder." ";
         }
       }
-      else
-      {
-        $sQuery.= " scan.firstname DESC";
-      }
+
 
       if(!empty($limit))
         $sQuery.= " LIMIT ".$limit;
+      else
+      {
+        $sQuery = explode('LIMIT', $sQuery);
+        $sQuery = $sQuery[0];
+        $sQuery.= 'ORDER BY scan.firstname DESC';
+      }
 
 ChromePhp::log($sQuery);
 
