@@ -3708,15 +3708,13 @@ ChromePhp::log($sQuery);
 */
 //ChromePhp::log($sLink);
             $setDate = explode(' ',$meetingInfo['date_created']);
-            ChromePhp::log($setDate);
+
             if(isset($setDate) && isset($setDate[0]) && !empty($setDate[0]) && $setDate[0] != "")
             {
-              ChromePhp::log('icerde');
-              ChromePhp::log($setDate[0]);
               $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled on', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
               $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$setDate[0].'</span> at <span>'.substr($setDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             }
-            ChromePhp::log($asDate);
+
             //$sMeeting.= $this->_oDisplay->getBloc('', 'Meeting set by', array('class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', 'Meeting scheduled for', array('style' => 'width:140px;', 'class' => 'meeting_row_first'));
             //$sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('class' => 'meeting_row_creator'));
@@ -3732,8 +3730,9 @@ ChromePhp::log($sQuery);
             $sMeeting.= $this->_oDisplay->getBloc('', $sStatus, array('class' => 'meeting_row_status'));
             if($meetingDoneFlag && isset($meetingInfo['date_met']))
             {
-              ChromePhp::log($meetingInfo['date_met']);
               $updateDate = explode(' ',$meetingInfo['date_met']);
+
+              ChromePhp::log($updateDate[0]);
               if(isset($updateDate[0]))
               {
                 $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
