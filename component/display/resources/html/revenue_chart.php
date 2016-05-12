@@ -13,7 +13,7 @@
 					<th style="height: 39px;" class="text_center">Signed</th>
 					<th style="height: 39px;" class="text_center">Paid</th>
 					<!--<th class="text_center">Team</th>-->
-					<th style="width: 150px; height: 39px;" class="text_center">Placed</th>
+					<th style="width: 100px; height: 39px;" class="text_center">Placed</th>
 				</tr>
 
 				<?php
@@ -75,7 +75,7 @@
 					<th style="height: 39px;" class="text_center">Signed</th>
 					<th style="height: 39px;" class="text_center">Paid</th>
 					<!--<th class="text_center">Team</th>-->
-					<th style="width: 150px; height: 39px;" class="text_center">Placed</th>
+					<th style="width: 100px; height: 39px;" class="text_center">Placed</th>
 				</tr>
 
 				<?php
