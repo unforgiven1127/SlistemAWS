@@ -2659,12 +2659,12 @@ ChromePhp::log($sSortField);
           $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
           $sQuery.= ' WHERE candidate.statusfk <= 3 ';
           $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
-          if($flag != false)
-          {
+          //if($flag != false)
+          //{
             $asSql = $poQB->getSqlArray(); // burasi
             if(!empty($asSql['order']))
               $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
-          }
+          //}
 
         }
       }
