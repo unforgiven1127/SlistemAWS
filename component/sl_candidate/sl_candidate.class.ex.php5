@@ -2578,34 +2578,32 @@ ChromePhp::log($flag);
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
       $sSortField = getValue('sortfield'); // burasi
-ChromePhp::log($sSortField);
-      
-    
-        if(!empty($sSortField))
+
+      if(!empty($sSortField))
+      {
+        if($sSortField == '_in_play')
         {
-          if($sSortField == '_in_play')
-          {
-            $sSortOrder = getValue('sortorder', 'DESC');
-            $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-            $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
-          }
-          else
-          {
-            $sort_order = getValue('sortorder', 'DESC');
-
-            if ($sSortField == 'salary')
-              $sSortField = 'full_salary';
-            else if ($sSortField == 'date_birth')
-              $sSortField = 'age';
-
-            $ordering = $sSortField.' '.$sort_order.$secondary_order;
-
-            $poQB->setOrder($ordering);
-          }
+          $sSortOrder = getValue('sortorder', 'DESC');
+          $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+          $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
         }
         else
-          $poQB->addOrder('scan.firstname DESC');
-      
+        {
+          $sort_order = getValue('sortorder', 'DESC');
+
+          if ($sSortField == 'salary')
+            $sSortField = 'full_salary';
+          else if ($sSortField == 'date_birth')
+            $sSortField = 'age';
+
+          $ordering = $sSortField.' '.$sort_order.$secondary_order;
+
+          $poQB->setOrder($ordering);
+        }
+      }
+      else
+        $poQB->addOrder('scan.firstname DESC');
+
 
       if(empty($sGroupBy))
         $poQB->addGroup('scan.sl_candidatepk', false);
@@ -2669,8 +2667,6 @@ ChromePhp::log($sSortField);
         }
       }
 
-      if($flag == false)
-      {
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
         ChromePhp::log($sQuery[1]);
 
@@ -2753,7 +2749,7 @@ ChromePhp::log($sSortField);
           $sQuery = $sQuery[0];
           $sQuery.= 'ORDER BY scan.firstname DESC';
         }
-      }
+      
 ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
