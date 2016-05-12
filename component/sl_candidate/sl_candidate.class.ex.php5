@@ -3700,7 +3700,8 @@ ChromePhp::log($sQuery);
 
             //----------------------------------------------------
             //second row
-            $asDateMeetingCreate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
+            if(isset($oDbResult->getFieldValue('date_created')))
+              $asDateMeetingCreate = explode(' ',$oDbResult->getFieldValue('date_created')); // bu olusturulma saati o nedenle almadik MCA
 /*            if($nCurrentUser == $oDbResult->getFieldValue('created_by'))
               $sLink = '- me -';
             else
