@@ -413,7 +413,7 @@ class CSl_menuEx extends CSl_menu
 
     </div>
           </td>
-          <td>';
+          <td style="width:80%;">';
           $sHTML.= '<a id="alt_submit" href="javascript:;" class="floatRight" onclick="
           var asContainer = goTabs.create(\'candi\', \'\', \'\', \'Candidate QS\');
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
