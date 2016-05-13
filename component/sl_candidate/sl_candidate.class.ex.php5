@@ -2726,10 +2726,6 @@ $flag = strpos($test, $control);
           {
             $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
           }
-          else if($sSortField == "lastnote")
-          {
-            $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
-          }
           else if($sSortField == "date_birth")
           {
             $sQuery.= ' ORDER BY age '.$sSortOrder." ";
@@ -2753,7 +2749,7 @@ $flag = strpos($test, $control);
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
