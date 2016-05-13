@@ -323,10 +323,13 @@ class CSl_menuEx extends CSl_menu
                         </div>
                       </td>
                       <td>
-                    <div>
-
-      <div class="label '.$sLabelClass.'">contacts</div><div class="field">
-      <input type="text" name="contact" '.$sContactField.'/></div></div>
+                        <div class="label '.$sLabelClass.'">contacts</div>
+                      </td>
+                      <td>
+                        <div class="field">
+                          <input type="text" name="contact" '.$sContactField.'/>
+                        </div>
+                      </td>
 
       <div><div class="label '.$sLabelClass.'">company</div><div class="field">
       <input type="text" name="company" '.$sCompanyField.'/></div></div>
