@@ -944,7 +944,7 @@ order by m.candidatefk
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
               $revenue_data[$user_id]['placed'] += $temp_placed[$row['loginpk']]['placed'];
-              $revenue_data[$user_id]['candidates'] .= ','.$row['loginpk']['candidate'];
+              $revenue_data[$user_id]['candidates'] .= ','.$row['candidate'];
             }
 
             $revenue_data[$user_id]['do_not_count_placed'][$row['loginpk']] = '';
@@ -966,7 +966,7 @@ order by m.candidatefk
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
               $revenue_data[$user_id]['placed'] += $temp_placed[$user_id]['placed'];
-              $revenue_data[$user_id]['candidates'] .= $row['loginpk']['candidate'];
+              $revenue_data[$user_id]['candidates'] .= $row['candidate'];
             }
 
             if (empty($revenue_data[$user_id]['name']))
