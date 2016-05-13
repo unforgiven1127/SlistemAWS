@@ -289,41 +289,35 @@ class CSl_menuEx extends CSl_menu
     $sHTML.= '<form id="quickSearchForm" class="quickSearchForm" onsubmit="$(\'#alt_submit\', this).click(); return false;">';
     $sHTML.= '<input type="hidden" name="data_type" value="candi"/>';
 
+    //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
     $sHTML.= '<table>
                 <tr>
                   <td>
-                    <div><div class="label '.$sLabelClass.'">candidate</div><div class="field"
-                  </td>
-                  <td>
-                    <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
-                      onblur="if($(this).val().trim().length == 0)
-                      { $(this).val($(this).attr(\'data-default\'));}
-                      else
-                      {
-                        asValue = $(this).val().trim().split(\',\');
-                        if(asValue.length > 2)
-                          return alert(\'There should be only 1 comma to separate the lastname and the firstname.\');
+    <div><div class="label '.$sLabelClass.'">candidate</div><div class="field">
+      <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
+      onblur="if($(this).val().trim().length == 0)
+      { $(this).val($(this).attr(\'data-default\'));}
+      else
+      {
+        asValue = $(this).val().trim().split(\',\');
+        if(asValue.length > 2)
+          return alert(\'There should be only 1 comma to separate the lastname and the firstname.\');
 
-                        if(asValue.length == 2)
-                        return true;
+        if(asValue.length == 2)
+        return true;
 
-                        asWords = asValue[0].split(\' \');
-                        if(asWords.length > 1)
-                        {
-                          sValue = asWords[0]+\', \';
-                          delete(asWords[0]);
+        asWords = asValue[0].split(\' \');
+        if(asWords.length > 1)
+        {
+          sValue = asWords[0]+\', \';
+          delete(asWords[0]);
 
-                          sValue+= asWords.join(\' \');
-                          $(this).val(sValue);
-                        }
-                      }"
-                      />
-                  </td>
-                </tr>
-              </tatble>';
-
-    //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
-    $sHTML.= '
+          sValue+= asWords.join(\' \');
+          $(this).val(sValue);
+        }
+      }"
+      />
+      </div></div>
 
      <div>
 
@@ -348,7 +342,10 @@ class CSl_menuEx extends CSl_menu
       <div class="hidden option">Search options</div>
 
       <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
-      <input type="checkbox" name="qs_wide" ';
+      <input type="checkbox" name="qs_wide"
+          </td>
+        </tr>
+      </table>';
 
      if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
        $sHTML.= ' checked="checked" ';
