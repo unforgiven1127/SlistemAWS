@@ -293,7 +293,7 @@ class CSl_menuEx extends CSl_menu
     $sHTML.= '<table>
                 <tr>
                   <th>
-                      <div class="label '.$sLabelClass.'">candidate</div>
+                      <div class="label '.$sLabelClass.'"><b>Candidate</b></div>
                   </th>
                   <td>
                       <div class="field">
@@ -325,7 +325,7 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                   <tr>
                       <th>
-                        <div class="label '.$sLabelClass.'">contacts</div>
+                        <div class="label '.$sLabelClass.'"><b>Contacts</b></div>
                       </th>
                       <td>
                         <div class="field">
@@ -335,7 +335,7 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                   <tr>
                     <th>
-                      <div class="label '.$sLabelClass.'">company</div>
+                      <div class="label '.$sLabelClass.'"><b>Company</b></div>
                     </th>
                     <td>
                       <div class="field">
@@ -345,7 +345,7 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                   <tr>
                     <th>
-                      <div class="label '.$sLabelClass.'">department</div>
+                      <div class="label '.$sLabelClass.'"><b>Department</b></div>
                     </th>
                     <td>
                       <div class="field">
@@ -355,7 +355,7 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                   <tr>
                     <th>
-                      <div class="label '.$sLabelClass.'">position</div>
+                      <div class="label '.$sLabelClass.'"><b>Position</b></div>
                     </th>
                     <td>
                       <div class="field">
@@ -366,7 +366,7 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                   <tr>
                     <th>
-                      <div class="label '.$sLabelClass.'">keyword</div>
+                      <div class="label '.$sLabelClass.'"><b>Keyword</b></div>
                     </th>
                     <td>
                       <div class="field">
