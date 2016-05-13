@@ -297,31 +297,33 @@ class CSl_menuEx extends CSl_menu
                   </td>
                   <td>
                       <div class="field">
-                          <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
-                            onblur="if($(this).val().trim().length == 0)
-                            { $(this).val($(this).attr(\'data-default\'));}
-                            else
+                        <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
+                          onblur="if($(this).val().trim().length == 0)
+                          { $(this).val($(this).attr(\'data-default\'));}
+                          else
+                          {
+                            asValue = $(this).val().trim().split(\',\');
+                            if(asValue.length > 2)
+                              return alert(\'There should be only 1 comma to separate the lastname and the firstname.\');
+
+                            if(asValue.length == 2)
+                            return true;
+
+                            asWords = asValue[0].split(\' \');
+                            if(asWords.length > 1)
                             {
-                              asValue = $(this).val().trim().split(\',\');
-                              if(asValue.length > 2)
-                                return alert(\'There should be only 1 comma to separate the lastname and the firstname.\');
+                              sValue = asWords[0]+\', \';
+                              delete(asWords[0]);
 
-                              if(asValue.length == 2)
-                              return true;
-
-                              asWords = asValue[0].split(\' \');
-                              if(asWords.length > 1)
-                              {
-                                sValue = asWords[0]+\', \';
-                                delete(asWords[0]);
-
-                                sValue+= asWords.join(\' \');
-                                $(this).val(sValue);
-                              }
-                            }"
-                            />
-                        </div>
-                      </td>
+                              sValue+= asWords.join(\' \');
+                              $(this).val(sValue);
+                            }
+                          }"
+                          />
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
                       <td>
                         <div class="label '.$sLabelClass.'">contacts</div>
                       </td>
@@ -330,21 +332,50 @@ class CSl_menuEx extends CSl_menu
                           <input type="text" name="contact" '.$sContactField.'/>
                         </div>
                       </td>
-
-      <div><div class="label '.$sLabelClass.'">company</div><div class="field">
-      <input type="text" name="company" '.$sCompanyField.'/></div></div>
-
-      <div><div class="label '.$sLabelClass.'">department</div><div class="field">
-      <input type="text" name="department" '.$sDepartmentField.'/></div></div>
-
-      <div><div class="label '.$sLabelClass.'">position</div><div class="field">
-      <input type="text" name="position" '.$sPositionField.' onchange="$(\'#qs_pos_status\').val(\'\'); "/>
-      <input type="hidden" id="qs_pos_status" name="position_status" value=""/>
-      </div></div>
-
-      <div><div class="label '.$sLabelClass.'">keyword</div><div class="field">
-      <input type="text" name="keyword" '.$KeywordField.'/></div></div>
-
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="label '.$sLabelClass.'">company</div>
+                    </td>
+                    <td>
+                      <div class="field">
+                        <input type="text" name="company" '.$sCompanyField.'/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="label '.$sLabelClass.'">department</div>
+                    </td>
+                    <td>
+                      <div class="field">
+                        <input type="text" name="department" '.$sDepartmentField.'/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="label '.$sLabelClass.'">position</div>
+                    </td>
+                    <td>
+                      <div class="field">
+                        <input type="text" name="position" '.$sPositionField.' onchange="$(\'#qs_pos_status\').val(\'\'); "/>
+                        <input type="hidden" id="qs_pos_status" name="position_status" value=""/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="label '.$sLabelClass.'">keyword</div>
+                    </td>
+                    <td>
+                      <div class="field">
+                        <input type="text" name="keyword" '.$KeywordField.'/>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
 
       <div class="hidden option">Search options</div>
 
