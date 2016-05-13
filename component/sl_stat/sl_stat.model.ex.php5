@@ -967,6 +967,7 @@ order by m.candidatefk
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
               $revenue_data[$user_id]['placed'] += $temp_placed[$user_id]['placed'];
+              $revenue_data[$user_id]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
             if (empty($revenue_data[$user_id]['name']))
