@@ -374,6 +374,8 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
+                </table>
+                <table>
                   <tr>
                     <td>
 
