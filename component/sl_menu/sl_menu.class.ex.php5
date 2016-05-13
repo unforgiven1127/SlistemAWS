@@ -282,7 +282,7 @@ class CSl_menuEx extends CSl_menu
     }
     else
     {
-      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 230, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
+      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 220, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
       $sFieldJs = $sContactField = $sCompanyField = $sDepartmentField = $sPositionField = $sLabelClass = '';
     }
 
