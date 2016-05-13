@@ -2704,23 +2704,23 @@ $flag = strpos($test, $control);
           }
           else if($sSortField == "lastname")
           {
-            $sQuery.= ' ORDER BY scan.lastname '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY TRIM(scan.lastname) '.$sSortOrder." ";
           }
           else if($sSortField == "firstname")
           {
-            $sQuery.= ' ORDER BY scan.firstname '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY TRIM(scan.firstname) '.$sSortOrder." ";
           }
           else if($sSortField == "company_name")
           {
-            $sQuery.= ' ORDER BY scom.name '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY TRIM(scom.name) '.$sSortOrder." ";
           }
           else if($sSortField == "title")
           {
-            $sQuery.= ' ORDER BY scpr.title '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY TRIM(scpr.title) '.$sSortOrder." ";
           }
           else if($sSortField == "department")
           {
-            $sQuery.= ' ORDER BY scpr.department '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY TRIM(scpr.department) '.$sSortOrder." ";
           }
           else if($sSortField == "lastnote")
           {
