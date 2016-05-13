@@ -343,9 +343,7 @@ class CSl_menuEx extends CSl_menu
 
       <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
       <input type="checkbox" name="qs_wide"
-          </td>
-        </tr>
-      </table>';
+          ';
 
      if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
        $sHTML.= ' checked="checked" ';
@@ -378,7 +376,10 @@ class CSl_menuEx extends CSl_menu
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
           goTabs.select(asContainer[\'number\']);">&nbsp;<img src="/component/search/resources/pictures/search_24.png" /></a>
           <input type="submit" style="opacity:0; width: 0px; height: 0px;" />
-    </div>';
+    </div>
+          </td>
+        </tr>
+      </table>';
 
     $sHTML.= '<p class="floatHack" /></form>';
     $sHTML.= $this->_oDisplay->getBlocEnd();
