@@ -291,7 +291,7 @@ class CSl_menuEx extends CSl_menu
 
     //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
     $sHTML.= '<div><div class="label '.$sLabelClass.'">candidate</div><div class="field">
-      <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
+      <div><input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
       onblur="if($(this).val().trim().length == 0)
       { $(this).val($(this).attr(\'data-default\'));}
       else
@@ -313,7 +313,7 @@ class CSl_menuEx extends CSl_menu
           $(this).val(sValue);
         }
       }"
-      />
+      /></div>
       </div></div>
 
      <div>
