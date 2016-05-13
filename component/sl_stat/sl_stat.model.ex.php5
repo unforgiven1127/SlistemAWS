@@ -883,7 +883,7 @@ order by m.candidatefk
     $date_start = $request_date.'-01-01';
     $date_end = $request_date.'-12-31';
 
-    $query = 'SELECT id, amount, location, status, refund_amount, currency ';
+    $query = 'SELECT id, amount, location, status, refund_amount, currency, candidate ';
     $query .= 'FROM revenue ';
     $query .= 'WHERE date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
 
