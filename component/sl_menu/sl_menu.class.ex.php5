@@ -292,9 +292,9 @@ class CSl_menuEx extends CSl_menu
     //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
     $sHTML.= '<table>
                 <tr>
-                  <td>
+                  <th>
                       <div class="label '.$sLabelClass.'">candidate</div>
-                  </td>
+                  </th>
                   <td>
                       <div class="field">
                         <input type="text" name="candidate" placeholder="ID  or  lastname, firstname" value=""
@@ -324,9 +324,9 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                   <tr>
-                      <td>
+                      <th>
                         <div class="label '.$sLabelClass.'">contacts</div>
-                      </td>
+                      </th>
                       <td>
                         <div class="field">
                           <input type="text" name="contact" '.$sContactField.'/>
@@ -334,9 +334,9 @@ class CSl_menuEx extends CSl_menu
                       </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th>
                       <div class="label '.$sLabelClass.'">company</div>
-                    </td>
+                    </th>
                     <td>
                       <div class="field">
                         <input type="text" name="company" '.$sCompanyField.'/>
@@ -344,9 +344,9 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th>
                       <div class="label '.$sLabelClass.'">department</div>
-                    </td>
+                    </th>
                     <td>
                       <div class="field">
                         <input type="text" name="department" '.$sDepartmentField.'/>
@@ -354,9 +354,9 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th>
                       <div class="label '.$sLabelClass.'">position</div>
-                    </td>
+                    </th>
                     <td>
                       <div class="field">
                         <input type="text" name="position" '.$sPositionField.' onchange="$(\'#qs_pos_status\').val(\'\'); "/>
@@ -365,9 +365,9 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                   <tr>
-                    <td>
+                    <th>
                       <div class="label '.$sLabelClass.'">keyword</div>
-                    </td>
+                    </th>
                     <td>
                       <div class="field">
                         <input type="text" name="keyword" '.$KeywordField.'/>
