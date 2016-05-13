@@ -889,8 +889,7 @@ order by m.candidatefk
 
     if (!empty($location))
       $query = ' AND location = "'.$location.'"';
-var_dump($query);
-exit;
+
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
     if ($read)
@@ -945,6 +944,7 @@ exit;
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
               $revenue_data[$user_id]['placed'] += $temp_placed[$row['loginpk']]['placed'];
+              $revenue_data[$user_id]['candidates'] .= ','.$temp_placed[$row['loginpk']]['candidate'];
             }
 
             $revenue_data[$user_id]['do_not_count_placed'][$row['loginpk']] = '';
@@ -966,6 +966,7 @@ exit;
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
               $revenue_data[$user_id]['placed'] += $temp_placed[$user_id]['placed'];
+              $revenue_data[$user_id]['candidates'] .= $temp_placed[$user_id]['candidate'];
             }
 
             if (empty($revenue_data[$user_id]['name']))
@@ -1001,6 +1002,8 @@ exit;
 
       uasort($revenue_data, sort_multi_array_by_value('total_amount', 'reverse'));
     }
+    var_dump($revenue_data);
+    exit;
     return $revenue_data;
   }
 
