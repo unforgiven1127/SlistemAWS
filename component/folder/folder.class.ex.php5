@@ -956,6 +956,8 @@ class CFolderEx extends CFolder
 
   protected function _addToFolder($pnFolderFk, $pasItem = array(), $psCallback = '')
   {
+    ChromePhp::log('_addToFolder');
+    ChromePhp::log($pasItem);
     if(!assert('is_key($pnFolderFk) && is_array($pasItem)'))
       return array('error' => 'Item could not be added. Wrong folder given.');
 
@@ -1033,7 +1035,7 @@ class CFolderEx extends CFolder
   {
     if(!assert('is_integer($pnPk)'))
       return false;
-ChromePhp::log($pnPk);
+//ChromePhp::log($pnPk); 
     // Saving folder main table
     $aData['parentfolderfk'] = (int)$_POST['parentfolderfk'];
     $aData['label'] = addslashes($_POST['label']);
@@ -1059,7 +1061,7 @@ ChromePhp::log($pnPk);
 
       $nPk = $pnPk;
     }
-ChromePhp::log($aData);
+//ChromePhp::log($aData);
     // Saving folder type (link table)
     if(!empty($_POST['type']))
     {
