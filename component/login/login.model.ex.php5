@@ -289,7 +289,7 @@ class CLoginModelEx extends CLoginModel
   }
 
 
-  public function getSystemHistoryChromePhp::log($candidate_info);($pasParams, $psLimit = '')
+  public function getSystemHistory($pasParams, $psLimit = '')
   {
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
