@@ -50,7 +50,7 @@
 							<td style="font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['signed'], $decimals, '.', ','); ?></td>
 							<td style="font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-							<td class="text_right"><?php echo $value['placed']; ?></td>
+							<td style="font-size: 250%;" class="text_right"><?php echo $value['placed']; ?></td>
 						</tr>
 
 						<?php
@@ -74,7 +74,7 @@
 			<td>
 			<table class="revenue_table">
 					<tr>
-						<th style="font-size: xx-large;"  class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
+						<th style="font-size: 400%;"  class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
 						<th style="height: 39px; font-size: 300%;" class="text_center">Rank</th>
