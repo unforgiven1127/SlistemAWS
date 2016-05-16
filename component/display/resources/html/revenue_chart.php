@@ -1,11 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script>
+	var url = '<?php echo $url; ?>';
+	var swap_time = <?php echo $swap_time; ?>;
+
+	$('.scrollingContainer').css('overflow', 'auto');
+	/*setTimeout(function() {
+		window.location.replace(url);
+	}, (swap_time));*/
+</script>
+
 <style type="text/css">
-	table{
-		font-size: 9pt;
-	}
+	table, th, td {
+    border: 1px solid black;
+}
 </style>
 
-
+</head>
 <?php $total_consultant_count = 0 ?>
+<body>
 <div style="text-align: center;">
 	<table style="margin: 0 auto; text-align: left;">
 		<tr>
@@ -159,14 +174,7 @@
 		</tr>
 	</table>
 </div>
+</body>
 
 
-<script>
-	var url = '<?php echo $url; ?>';
-	var swap_time = <?php echo $swap_time; ?>;
-
-	$('.scrollingContainer').css('overflow', 'auto');
-	/*setTimeout(function() {
-		window.location.replace(url);
-	}, (swap_time));*/
-</script>
+</html>
