@@ -429,11 +429,6 @@ $sHTML.= '<a id="alt_submit" href="javascript:;" class="floatRight" onclick="
 </tr>
     </table>
     </div>
-          </td>
-          <td style="width:75%;">
-          
-          </td>
-        </tr>
       </table>';
 
     $sHTML.= '<p class="floatHack" /></form>';
