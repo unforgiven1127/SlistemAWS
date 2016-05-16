@@ -2727,7 +2727,7 @@ $flag = strpos($test, $control);
           }
           else if($sSortField == "lastnote")
           {
-            $sQuery.= ' ORDER BY elin.lastNote '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY lastNote '.$sSortOrder." ";
           }
           else if($sSortField == "date_birth")
           {
