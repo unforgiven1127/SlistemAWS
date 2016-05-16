@@ -4,7 +4,7 @@
 <style>
 .text_center {
     background-color: yellow;
-    font-size: medium;
+    font-size: small;
 }
 </style>
 </head>
