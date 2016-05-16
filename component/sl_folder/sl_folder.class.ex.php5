@@ -475,7 +475,7 @@ class CSl_FolderEx extends CSl_Folder
     //$sType = getValue('item_type');
     $asItem = array();
     $sHTML = '';
-ChromePhp::log($sSearchId);
+ChromePhp::log($sIds);
 
     if(!empty($sSearchId))
     {
@@ -508,7 +508,6 @@ ChromePhp::log($sSearchId);
         $asItem[$nId] = 'candidate #'.$nId;
       }
     }
-ChromePhp::log($asItem);
     $_SESSION['folder_save_action'] = array('notice' => 'Folder saved successfully', 'action' => ' goPopup.removeLastByType(\'layer\'); reloadFolders(); clearSelection();');
     //$sHTML.= $this->_formFolder($asItem, array('force_item_type' => true));
     $sHTML.= $this->_formFolder($asItem);
