@@ -2725,7 +2725,7 @@ $flag = strpos($test, $control);
           {
             $sQuery.= ' ORDER BY TRIM(scpr.department) '.$sSortOrder." ";
           }
-          else if($sSortField == "lastnote")
+          else if($sSortField == "lastNote")
           {
             $sQuery.= ' ORDER BY lastNote '.$sSortOrder." ";
           }
