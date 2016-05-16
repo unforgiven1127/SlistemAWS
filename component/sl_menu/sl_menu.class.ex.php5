@@ -418,8 +418,9 @@ class CSl_menuEx extends CSl_menu
 
     if(!$pbInline)
       $sHTML.= '<td valign="top" ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
-    </td>
-    <td>
+    </td>';
+
+$sHTML.= '<td>
     <a id="alt_submit" href="javascript:;" class="floatRight" onclick="
           var asContainer = goTabs.create(\'candi\', \'\', \'\', \'Candidate QS\');
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
@@ -429,10 +430,6 @@ class CSl_menuEx extends CSl_menu
 </tr>
     </table>
     </div>
-          </td>
-          <td style="width:75%;">';
-          $sHTML.= '
-          </td>
         </tr>
       </table>';
 
