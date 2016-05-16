@@ -13,7 +13,7 @@
 </script>
 
 <style type="text/css">
-	table, th, td {
+	.revenue_table {
     font-size: 7pt;
 }
 </style>
