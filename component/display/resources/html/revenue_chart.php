@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.text_center {
-    background-color: yellow;
-    font-size: 8pt;
-}
-</style>
+
 </head>
 <body>
 
