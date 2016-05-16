@@ -282,7 +282,7 @@ class CSl_menuEx extends CSl_menu
     }
     else
     {
-      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 222, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
+      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 232, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
       $sFieldJs = $sContactField = $sCompanyField = $sDepartmentField = $sPositionField = $sLabelClass = '';
     }
 
@@ -407,7 +407,7 @@ class CSl_menuEx extends CSl_menu
 
 
     <div class="qs_action_row">
-    <table style="margin-top:-20px; height:50px" valign="top">
+    <table style="margin-top:-15px; height:50px" valign="top">
       <tr valign="top">
         <td>
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
