@@ -1,3 +1,10 @@
+<style type="text/css">
+	table{
+		font-size: 9pt;
+	}
+</style>
+
+
 <?php $total_consultant_count = 0 ?>
 <div style="text-align: center;">
 	<table style="margin: 0 auto; text-align: left;">
