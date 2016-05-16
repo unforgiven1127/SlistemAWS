@@ -8710,20 +8710,21 @@ die();*/
       $note.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
 
       $merges = 'The candidate #'.$candidate_id.' has been merge on this candidate profile.<br />';
-      $merges.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
+      $merges.= 'All data have been moved accross to : '.$target_candidate_id.'<br />';
 
       foreach($summary as $type => $update)
       {
         $merges.= '-> #'.$update.' '.$type.' transfered<br />'; //adayin notlarina yapilan islemle ilgili ekleme yapiyordu istemediler kaldirdik
       }
       $pasOldData['log_detail'] = '';
-      $this->_getModel()->_logChanges($pasOldData, 'sl_candidate', $merges);
 
       $oEvent->addNote($target_candidate_id, 'merge_summary', $note);
 
 
       $asData = array('_sys_status' => 2, '_sys_redirect' => $target_candidate_id, '_date_updated' => date('Y-md H:i:s'));
       $this->_getModel()->update($asData, 'sl_candidate', 'sl_candidatepk = '.$candidate_id);
+
+      $this->_getModel()->_logChanges($pasOldData, 'sl_candidate', $merges);
 
       $sUrl = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $target_candidate_id);
       return array('notice' => 'Candidate has been merged with #'.$candidate_id.'.', 'action' => 'goPopup.removeLastByType(\'layer\'); view_candi(\''.$sUrl.'\');');
