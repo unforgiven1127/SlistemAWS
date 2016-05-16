@@ -2,8 +2,6 @@
 <html>
 <head>
 
-
-
 <script>
 	var url = '<?php echo $url; ?>';
 	var swap_time = <?php echo $swap_time; ?>;
@@ -28,7 +26,7 @@
 						<th class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="width: 100px; height: 39px;" class="text_center">Rank</th>
+						<th style="width: 100px; height: 39px; font-size: 5pt;" class="text_center">Rank</th>
 						<th style="min-width: 200px; height: 39px;" class="text_center">Name</th>
 						<th style="height: 39px;" class="text_center"></th>
 						<th style="height: 39px;" class="text_center">Signed</th>
