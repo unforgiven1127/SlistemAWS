@@ -2702,7 +2702,7 @@ $flag = strpos($test, $control);
             //$sSortOrder = getValue('sortorder', 'DESC');
             //$poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
             //$poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
-            $sQuery.= ' ORDER BY _in_play '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY _in_play '.$sSortOrder." ,sort_status".$sSortOrder.' ';
           }
           else if($sSortField == "grade")
           {
