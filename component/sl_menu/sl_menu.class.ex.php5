@@ -412,7 +412,7 @@ class CSl_menuEx extends CSl_menu
         <td valign="middle">
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
-        <td valign="middle">
+        <td valign="bottom">
     <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>
     </td>';
 
