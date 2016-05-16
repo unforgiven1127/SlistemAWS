@@ -328,12 +328,14 @@ class CFolderEx extends CFolder
 
     if($this->cnPk==0)
     {
+      ChromePhp::log('cnPK = 0');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD);
       $sTitle = "Add a new folder";
       $oResult = new CDbResult;
     }
     else
     {
+      ChromePhp::log('cnPK != 0');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, '', $this->cnPk);
       $sTitle = "Edit folder";
       $oResult = $this->_getModel()->getFolder($this->cnPk);
