@@ -409,10 +409,10 @@ class CSl_menuEx extends CSl_menu
     <div class="qs_action_row">
     <table style="margin-top:-15px; height:50px" valign="top">
       <tr valign="top">
-        <td>
+        <td valign="middle">
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
-        <td>
+        <td valign="middle">
     <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>
     </td>';
 
