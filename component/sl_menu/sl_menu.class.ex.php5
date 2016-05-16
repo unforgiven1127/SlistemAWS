@@ -381,8 +381,10 @@ class CSl_menuEx extends CSl_menu
 
       <div class="hidden option">Search options</div>
 
-      <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
-      <input type="checkbox" name="qs_wide"
+      <div class="hidden option">
+        <div class="label '.$sLabelClass.'">wide search</div>
+        <div class="field">
+          <input type="checkbox" name="qs_wide"
           ';
 
      if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
@@ -405,12 +407,20 @@ class CSl_menuEx extends CSl_menu
 
 
     <div class="qs_action_row">
-    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
-    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>';
+    <table>
+      <tr>
+        <td>
+<a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
+        </td>
+        <td>
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>
+    </td>';
 
     if(!$pbInline)
-      $sHTML.= '<a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
-
+      $sHTML.= '<td><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
+    </td>
+</tr>
+    </table>
     </div>
           </td>
           <td style="width:75%;">';
