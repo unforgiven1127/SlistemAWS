@@ -8709,8 +8709,15 @@ die();*/
       $note = 'The candidate #'.$candidate_id.' has been merge on this candidate profile.<br />';
       $note.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
 
+      $merges = 'The candidate #'.$candidate_id.' has been merge on this candidate profile.<br />';
+      $merges.= 'All data have been moved accross, previous UID : '.$asCandidate['uid'].'<br />';
+
       foreach($summary as $type => $update)
-        //$note.= '-> #'.$update.' '.$type.' transfered<br />'; //adayin notlarina yapilan islemle ilgili ekleme yapiyordu istemediler kaldirdik
+      {
+        $merges.= '-> #'.$update.' '.$type.' transfered<br />'; //adayin notlarina yapilan islemle ilgili ekleme yapiyordu istemediler kaldirdik
+      }
+      $pasOldData['log_detail'] = '';
+      $this->_getModel()->_logChanges($pasOldData, 'sl_candidate', $merges);
 
       $oEvent->addNote($target_candidate_id, 'merge_summary', $note);
 
