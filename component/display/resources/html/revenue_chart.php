@@ -14,7 +14,7 @@
 
 <style type="text/css">
 	table, th, td {
-    font-size: 10pt;
+    font-size: 7pt;
 }
 </style>
 
