@@ -289,7 +289,7 @@ class CLoginModelEx extends CLoginModel
   }
 
 
-  public function getSystemHistory($pasParams, $psLimit = '')
+  public function getSystemHistoryChromePhp::log($candidate_info);($pasParams, $psLimit = '')
   {
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
@@ -363,7 +363,7 @@ class CLoginModelEx extends CLoginModel
 
     if(!empty($psLimit))
       $sQuery.= ' LIMIT '.$psLimit;
-
+ChromePhp::log($sQuery);
     //echo $sQuery;
     return $this->oDB->ExecuteQuery($sQuery);
   }
