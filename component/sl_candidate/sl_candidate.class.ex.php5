@@ -2692,7 +2692,10 @@ $flag = strpos($test, $control);
           }
           else if($sSortField == "_in_play")
           {
-            $sQuery.= ' ORDER BY scpr._in_play '.$sSortOrder." ";
+            $sSortOrder = getValue('sortorder', 'DESC');
+            $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+            $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+            //$sQuery.= ' ORDER BY scpr._in_play '.$sSortOrder." ";
           }
           else if($sSortField == "grade")
           {
@@ -2724,7 +2727,7 @@ $flag = strpos($test, $control);
           }
           else if($sSortField == "lastnote")
           {
-            $sQuery.= ' ORDER BY elin.event_linkpk '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY elin.lastNote '.$sSortOrder." ";
           }
           else if($sSortField == "date_birth")
           {

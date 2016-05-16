@@ -554,7 +554,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $duplicate_temp = array();
 
 
-    if (!empty($company_id) && !$skip_company)
+    //if (!empty($company_id) && !$skip_company)
+    if (!empty($company_id)) // company e baksn
     {
       $duplicate_array['company'] = $this->duplicate_finder($company_id, $lastname, $firstname, false, $force_target,$candidate_contact_info);
 
