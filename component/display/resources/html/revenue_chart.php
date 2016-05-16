@@ -12,7 +12,7 @@
 			<td>
 				<table class="revenue_table">
 					<tr>
-						<th style="font-size:100% ;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
+						<th style="font-size:500% ;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
 						<th style="height: 39px; font-size: x-large;" class="text_center">Rank</th>
