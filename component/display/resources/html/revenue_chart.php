@@ -72,7 +72,7 @@
 				</table>
 			</td>
 			<td>
-			<table class="revenue_table">
+			<table valign="top" class="revenue_table">
 					<tr valign="top">
 						<th style="font-size: 400%; white-space: nowrap;"  class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
