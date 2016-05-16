@@ -139,11 +139,11 @@
 							echo "
 							<tr>
 								<td align='right' style='height: 39px;'>-</td>
-								<td style='height: 39px;'><center>-</center></td>
-								<td style='height: 39px;'><center>-</center></td>
-								<td style='height: 39px;'><center>-</center></td>
-								<td style='height: 39px;'><center>-</center></td>
-								<td align='right' style='height: 39px;'>-</td>
+								<td style='height: 50px;'><center>-</center></td>
+								<td style='height: 50px;'><center>-</center></td>
+								<td style='height: 50px;'><center>-</center></td>
+								<td style='height: 50px;'><center>-</center></td>
+								<td align='right' style='height: 50px;'>-</td>
 							</tr>
 							";
 						}
