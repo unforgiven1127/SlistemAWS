@@ -2,6 +2,21 @@
 <html>
 <head>
 
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover{background-color:#f5f5f5}
+</style>
+
 <script>
 	var url = '<?php echo $url; ?>';
 	var swap_time = <?php echo $swap_time; ?>;
@@ -12,11 +27,7 @@
 	}, (swap_time));*/
 </script>
 
-<style type="text/css">
-	.text_center {
-    font-size: 7pt;
-}
-</style>
+
 
 </head>
 <?php $total_consultant_count = 0 ?>
