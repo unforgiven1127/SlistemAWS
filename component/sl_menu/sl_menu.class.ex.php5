@@ -290,7 +290,7 @@ class CSl_menuEx extends CSl_menu
     $sHTML.= '<input type="hidden" name="data_type" value="candi"/>';
 
     //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
-    $sHTML.= '<table style="width:110%; margin-left:-5px;">
+    $sHTML.= '<table style="width:105%; margin-left:-5px;">
                 <tr>
                   <th>
                       <div class="label '.$sLabelClass.'"><b>Candidate</b></div>
