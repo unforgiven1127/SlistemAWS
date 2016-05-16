@@ -282,7 +282,7 @@ class CSl_menuEx extends CSl_menu
     }
     else
     {
-      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 250, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
+      $sHTML = $this->_oDisplay->getBlocStart('quickSearchContainer', array('class' => 'hidden', 'data-height' => 232, 'data-width' => 340, 'data-persistent' => 1, 'data-position' => '[15,85]', 'data-class' => 'noTitle','data-title' => 'Quick search...', 'data-draggable' => 0, 'data-resizable' => 0));
       $sFieldJs = $sContactField = $sCompanyField = $sDepartmentField = $sPositionField = $sLabelClass = '';
     }
 
@@ -409,26 +409,28 @@ class CSl_menuEx extends CSl_menu
     <div class="qs_action_row">
     <table style="margin-top:-15px; height:50px" valign="top">
       <tr valign="top">
-        <td valign="middle">
+        <td>
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
-        <td valign="bottom">
+        <td>
     <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>
     </td>';
 
     if(!$pbInline)
       $sHTML.= '<td valign="top" ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
     </td>
-    <td>
-          <a id="alt_submit" href="javascript:;" class="floatRight" onclick="
+</tr>
+    </table>
+    </div>
+          </td>
+          <td style="width:75%;">';
+          $sHTML.= '<a id="alt_submit" href="javascript:;" class="floatRight" onclick="
           var asContainer = goTabs.create(\'candi\', \'\', \'\', \'Candidate QS\');
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
           goTabs.select(asContainer[\'number\']);">&nbsp;<img src="/component/search/resources/pictures/search_24.png" /></a>
           <input type="submit" style="opacity:0; width: 0px; height: 0px;" />
-    </td>
-</tr>
-    </table>
-    </div>
+          </td>
+        </tr>
       </table>';
 
     $sHTML.= '<p class="floatHack" /></form>';
