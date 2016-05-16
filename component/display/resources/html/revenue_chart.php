@@ -15,13 +15,13 @@
 						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 40px; font-size: 300%;overflow:none;" class="text_center">Rank</th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Name</th>
-						<th style="height: 40px;" class="text_center"></th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Signed</th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Paid</th>
+						<th style="height: 45px; font-size: 300%;overflow:none;" class="text_center">Rank</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
+						<th style="height: 45px;" class="text_center"></th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
-						<th style="height: 40px; font-size: 300%;" class="text_center">Placed</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Placed</th>
 					</tr>
 
 					<?php
@@ -77,13 +77,13 @@
 						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Rank</th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Name</th>
-						<th style="height: 40px; font-size: 300%;" class="text_center"></th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Signed</th>
-						<th style="height: 40px; font-size: 300%;" class="text_center">Paid</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Rank</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center"></th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
-						<th style=" height: 40px; font-size: 300%;" class="text_center">Placed</th>
+						<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>
 					</tr>
 
 					<?php
