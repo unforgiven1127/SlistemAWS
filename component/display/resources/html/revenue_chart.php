@@ -2,21 +2,24 @@
 <html>
 <head>
 
-<script>
-	var url = '<?php echo $url; ?>';
-	var swap_time = <?php echo $swap_time; ?>;
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
 
-	$('.scrollingContainer').css('overflow', 'auto');
-	/*setTimeout(function() {
-		window.location.replace(url);
-	}, (swap_time));*/
-</script>
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-
+tr:hover{background-color:#f5f5f5}
+</style>
 
 </head>
-<?php $total_consultant_count = 0 ?>
 <body>
+<?php $total_consultant_count = 0 ?>
 <div style="text-align: center;">
 	<table style="margin: 0 auto; text-align: left;">
 		<tr>
@@ -26,7 +29,7 @@
 						<th class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="width: 100px; height: 39px; font-size: 5pt;" class="text_center">Rank</th>
+						<th style="width: 100px; height: 39px;" class="text_center">Rank</th>
 						<th style="min-width: 200px; height: 39px;" class="text_center">Name</th>
 						<th style="height: 39px;" class="text_center"></th>
 						<th style="height: 39px;" class="text_center">Signed</th>
@@ -172,5 +175,14 @@
 </div>
 </body>
 
+<script>
+	var url = '<?php echo $url; ?>';
+	var swap_time = <?php echo $swap_time; ?>;
+
+	$('.scrollingContainer').css('overflow', 'auto');
+	/*setTimeout(function() {
+		window.location.replace(url);
+	}, (swap_time));*/
+</script>
 
 </html>
