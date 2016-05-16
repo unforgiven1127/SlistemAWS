@@ -417,7 +417,7 @@ class CSl_menuEx extends CSl_menu
     </td>';
 
     if(!$pbInline)
-      $sHTML.= '<td valign="middle" ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
+      $sHTML.= '<td valign="top" ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
     </td>
 </tr>
     </table>
