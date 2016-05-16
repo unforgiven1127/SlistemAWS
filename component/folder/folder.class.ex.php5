@@ -340,7 +340,7 @@ class CFolderEx extends CFolder
       $asUserRights = $this->_getModel()->getUserRightsOnFolder($this->cnPk);
     }
 
-    $oForm->setFormParams('folderForm', true, array('action' => $sURL, 'submitLabel'=>'Save folder', 'noCancelButton' => 'noCancelButton'));
+    $oForm->setFormParams('folderForm', true, array('action' => $sURL, 'submitLabel'=>'Save Folder', 'noCancelButton' => 'noCancelButton'));
 
     //if elements are passed in parameter, we need to add those after the creation
     if(!empty($pasItems))
