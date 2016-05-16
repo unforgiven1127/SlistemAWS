@@ -475,7 +475,7 @@ class CSl_FolderEx extends CSl_Folder
     //$sType = getValue('item_type');
     $asItem = array();
     $sHTML = '';
-
+ChromePhp::log($sSearchId);
 
     if(!empty($sSearchId))
     {
