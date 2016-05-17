@@ -284,7 +284,25 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['industry'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_indus']).'</span>';
           $pasCandidateData['industry'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['industry']).'" onmouseover="tp(this);">'.$pasCandidateData['industry'].'</div>';
         }
-        
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last'));
+          $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['industry'], array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+        if(isset($pasCandidateData['attribute']['candi_occu']))
+        {
+          $pasCandidateData['occupation'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_occu']).'</span>';
+          $pasCandidateData['occupation'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
+        }
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
+          $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['occupation'], array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+
+      $sHTML.= $this->coDisplay->getBlocEnd();
+      //start third data section
+      
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $pasCandidateData['sl_candidatepk']);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width= 800; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');';
