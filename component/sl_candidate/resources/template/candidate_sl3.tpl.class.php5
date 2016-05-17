@@ -284,7 +284,59 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['industry'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_indus']).'</span>';
           $pasCandidateData['industry'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['industry']).'" onmouseover="tp(this);">'.$pasCandidateData['industry'].'</div>';
         }
-        
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last'));
+          $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['industry'], array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+        if(isset($pasCandidateData['attribute']['candi_occu']))
+        {
+          $pasCandidateData['occupation'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_occu']).'</span>';
+          $pasCandidateData['occupation'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
+        }
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
+          $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['occupation'], array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+
+      $sHTML.= $this->coDisplay->getBlocEnd();
+      //start third data section
+      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$sAdminClass));
+
+
+        $sHTML.= $this->coDisplay->getBloc('', 'Status & skills', array('class' => 'candi_detail_title'));
+        $sHTML.= $this->coDisplay->getFloatHack();
+
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
+          $sHTML.= $this->coDisplay->getBloc('', 'status', array('class' => 'candi_detail_label'));
+
+          $sClass = 'candi_detail_value';
+          if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
+            $sClass.= ' text_alert';
+
+          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
+ChromePhp::log('HERE HERE HERE ');
+          ChromePhp::log($slPositionLinkResult['status']);
+          if(isset($slPositionLinkResult['status'])) // works
+          {
+            $slPositionLinkStatus = $slPositionLinkResult['status'];
+            $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
+            //ChromePhp::log($sStatusLabel);
+          }
+
+          if($pasCandidateData['_in_play'])
+          {
+            $sClass.= ' show_play';
+            //$sStatusLabel= '<span class="text_alert">In play</span>&nbsp;&nbsp;|&nbsp;&nbsp;'.$sStatusLabel;
+            $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
+          }
+
+          $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
+
+          $sHTML.= $this->coDisplay->getFloatHack();
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $pasCandidateData['sl_candidatepk']);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width= 800; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');';
