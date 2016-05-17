@@ -318,7 +318,7 @@ class CCandidate_sl3 extends CTemplate
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
 
           ChromePhp::log($slPositionLinkResult['status']);
-          if(isset($slPositionLinkResult['status'])) // works
+          if(isset($slPositionLinkResult['status']) && !empty($slPositionLinkResult['status'])) // works
           {
             $slPositionLinkStatus = $slPositionLinkResult['status'];
             $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
