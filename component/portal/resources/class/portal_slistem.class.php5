@@ -399,6 +399,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       else
       {
         //Past messages
+        ChromePhp::log($asActivity);
         if($asActivity['log_date'] > $sAbit)
         {
           $nTime = ($nNow - strtotime($asActivity['log_date'])) / 60;
