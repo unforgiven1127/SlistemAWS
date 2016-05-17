@@ -537,9 +537,9 @@ class CNotificationEx extends CNotification
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-    ChromePhp::log($pasUsers);
-    ChromePhp::log($poMail);
-    ChromePhp::log($pasAction);
+ChromePhp::log($pasUsers);
+ChromePhp::log($poMail);
+ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
@@ -553,6 +553,7 @@ class CNotificationEx extends CNotification
     }
     $cc = rtrim($cc, ";");
 ChromePhp::log($cc);
+
     foreach ($pasAction as $id => $user_messages)
     {
 
@@ -690,6 +691,7 @@ ChromePhp::log($cc);
 ChromePhp::log($nSent);
       if ($nSent)
       {
+ChromePhp::log('gonderdik ya !!!');
         foreach ($user_messages as $message_info)
         {
           $sNagDate = $this->_getNextNagDate($message_info);
