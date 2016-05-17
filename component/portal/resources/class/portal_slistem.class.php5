@@ -377,7 +377,6 @@ Reminder linked to item', '2013-10-05 08:00:00');
           goTabs.select(asContainer["number"]);">'.$asActivity['text'].'</a><br />';
         else
           $Activity = '<a onclick="
-          var asContainer = goTabs.create("candi", "", "", "Candidate QS");
           AjaxRequest("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppasea&amp;ppt=candi&amp;ppk=0&amp;pg=ajx", "body", "quickSearchForm",  asContainer["id"], "", "", "initHeaderManager(); ");
           goTabs.select(asContainer["number"]);">'.$asActivity['text'].'</a><br />';
       }
