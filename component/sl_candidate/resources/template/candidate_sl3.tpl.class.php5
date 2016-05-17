@@ -316,8 +316,8 @@ class CCandidate_sl3 extends CTemplate
             $sClass.= ' text_alert';
 
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
-ChromePhp::log('HERE HERE HERE ');
-          ChromePhp::log($slPositionLinkResult['status']);
+
+          //ChromePhp::log($slPositionLinkResult['status']);
           if(isset($slPositionLinkResult['status'])) // works
           {
             $slPositionLinkStatus = $slPositionLinkResult['status'];
@@ -325,17 +325,7 @@ ChromePhp::log('HERE HERE HERE ');
             //ChromePhp::log($sStatusLabel);
           }
 
-          if($pasCandidateData['_in_play'])
-          {
-            $sClass.= ' show_play';
-            //$sStatusLabel= '<span class="text_alert">In play</span>&nbsp;&nbsp;|&nbsp;&nbsp;'.$sStatusLabel;
-            $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
-          }
-
-          $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
-
-          $sHTML.= $this->coDisplay->getFloatHack();
-        $sHTML.= $this->coDisplay->getBlocEnd();
+          
 
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $pasCandidateData['sl_candidatepk']);
