@@ -402,8 +402,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
         if(isset($asActivity['data']['get']['ppk']))
         {
           $candidateID = $asActivity['data']['get']['ppk'];
-          var_dump($Activity);
-          exit;
+          //var_dump($Activity);
+          //exit;
         }
         //exit;
         ChromePhp::log($asActivity);
