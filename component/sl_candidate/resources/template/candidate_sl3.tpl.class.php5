@@ -317,11 +317,6 @@ class CCandidate_sl3 extends CTemplate
 
           
 
-          $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
-
-          $sHTML.= $this->coDisplay->getFloatHack();
-        $sHTML.= $this->coDisplay->getBlocEnd();
-
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $pasCandidateData['sl_candidatepk']);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width= 800; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');';
