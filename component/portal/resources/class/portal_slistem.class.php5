@@ -372,7 +372,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
           $asActivity['log_link'] = preg_replace('/\&/', '&replay_search='.$asActivity['login_activitypk'].'&', $asActivity['log_link'], 1);
         }
 
-        $test = "<div class='col_573a97a2ba1aa tplCandiRow_continuous tpl_link_cell tplCandi_woman' href='view_candi('https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk=222128&amp;pg=ajx');'><a href='javascript:;'>Friday Again</a></div>";
+        $test = "<a class='col_573a97a2ba1aa tplCandiRow_continuous tpl_link_cell tplCandi_woman' href='view_candi('https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk=222128&amp;pg=ajx');'></a>";
 
         if(isset($asActivity['class']))
           $Activity = $test;
