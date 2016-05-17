@@ -451,10 +451,10 @@ class CCandidate_sl3 extends CTemplate
           $keyword = '-';
         }
 
-        /*$sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
           $sHTML.= $this->coDisplay->getBloc('', 'keyword', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', $keyword, array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();*/
+        $sHTML.= $this->coDisplay->getBlocEnd();
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_value'));
@@ -491,7 +491,7 @@ class CCandidate_sl3 extends CTemplate
 
 
 
-    if(!empty($pasCandidateData['redirected']))
+    /*if(!empty($pasCandidateData['redirected']))
     {
       $sHTML.= $this->coDisplay->getBloc('ctsc', '&nbsp;', array('class' => 'candiTopSectionCover'));
 
@@ -500,7 +500,7 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= '!! Candidate merged !!<br /> candidate <strong>#'.$pasCandidateData['redirected']['sl_candidatepk'].'</strong> is now under refId <strong>#'.$pasCandidateData['sl_candidatepk'].'</strong>.';
       $sHTML.= $this->coDisplay->getBlocEnd();
-    }
+    }*/
 
 
     return $sHTML;
