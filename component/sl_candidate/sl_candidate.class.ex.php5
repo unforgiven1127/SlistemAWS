@@ -2693,11 +2693,11 @@ $flag = strpos($test, $control);
           ChromePhp::log($sSortField);
           if($sSortField == "sl_candidatepk")
           {
-            $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ,cp_client ".$sSortOrder." ";
+            $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
           }
           else if($sSortField == "cp_client")
           {
-            $sQuery.= ' ORDER BY scan.is_client '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY scan.is_client '.$sSortOrder." ,cp_client ".$sSortOrder." ";
           }
           else if($sSortField == "_in_play")
           {
