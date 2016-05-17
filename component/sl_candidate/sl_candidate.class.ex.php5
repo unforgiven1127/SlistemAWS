@@ -2429,7 +2429,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-    private function _getCandidateList($pbInAjax = false, &$poQB = null)
+    function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
