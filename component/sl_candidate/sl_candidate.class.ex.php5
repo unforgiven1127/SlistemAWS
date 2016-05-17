@@ -2747,10 +2747,13 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        /*else
+        else
         {
-            $sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
-        }*/
+          $sort_order = getValue('sortorder', 'DESC');
+          $ordering = $sSortField.' '.$sort_order.$secondary_order;
+          ChromePhp::log($ordering);
+            //$sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
+        }
 
         if(!empty($limit))
           $sQuery.= " LIMIT ".$limit;
