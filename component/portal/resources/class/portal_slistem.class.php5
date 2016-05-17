@@ -1,7 +1,6 @@
 <?php
 
 require_once('component/portal/portal.class.ex.php5');
-require_once($_SERVER['DOCUMENT_ROOT'].'/component/display/resources/class/template/template.tpl.class.php5');
 
 class CPortalSlistemEx extends CPortalEx
 {
@@ -367,7 +366,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       $candidate_id = $asActivity['cp_pk'];
       $candidate_text = $asActivity['text'];
 
-      $sViewURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
       $onclick = 'view_candi(\''.$sURL.'\');';
 
       if(!empty($asActivity['log_link']))
