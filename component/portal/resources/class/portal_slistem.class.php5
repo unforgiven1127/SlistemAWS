@@ -399,7 +399,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       else
       {
         //Past messages
-        var_dump($asActivity['data']['get']);
+        var_dump($asActivity['data']['get']['ppk']);
         exit;
         ChromePhp::log($asActivity);
         if($asActivity['log_date'] > $sAbit)
