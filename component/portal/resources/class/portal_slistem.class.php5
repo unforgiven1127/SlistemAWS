@@ -362,7 +362,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
-      //dump($asActivity);
+      dump($asActivity);
+      exit;
       if(!empty($asActivity['log_link']))
       {
         if(isset($asActivity['data']['qb']))
