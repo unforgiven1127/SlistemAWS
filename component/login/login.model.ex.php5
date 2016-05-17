@@ -293,8 +293,9 @@ class CLoginModelEx extends CLoginModel
   {
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
-ChromePhp::log($pasParams->cp_key->cp_pk);
-    if(isset($pasParams->cp_key->cp_pk) && !empty($pasParams->cp_key->cp_pk))
+
+ChromePhp::log($pasParams['cp_key']);
+    if(isset($pasParams['cp_pk']) && !empty($pasParams['cp_pk']))
     {
       ChromePhp::log('icerde');
       return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
