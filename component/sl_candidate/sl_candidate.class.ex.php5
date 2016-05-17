@@ -960,7 +960,7 @@ ChromePhp::log($pasRedirected);
           <a href="javascript:;" class="candi-pop-link" onclick="goPopup.removeAll(true); view_candi(\''.$sViewURL.'\');">close <b>all</b> popops & view in page<img src="/component/sl_candidate/resources/pictures/goto_16.png" /></a>
           ', array('class' => 'close_preview'));
       }
-
+ChromePhp::log('1');
       $asCandidate = $this->_getModel()->getCandidateData($pnPk, true);
       if(!empty($asCandidate['_sys_redirect']))
       {
@@ -976,7 +976,7 @@ ChromePhp::log($pasRedirected);
         foreach($asCandidate['attribute']['candi_lang'] as $nKey => $nLanguageFk)
               $asCandidate['attribute']['candi_lang'][$nKey] = $asLanguage[$nLanguageFk];
       }
-
+ChromePhp::log('2');
       if(empty($asCandidate))
       {
         return $this->_oDisplay->getBlocMessage('<div class="no-candidate">
@@ -991,7 +991,7 @@ ChromePhp::log($pasRedirected);
       $asCandidate['rm'] = $this->_getModel()->getCandidateRm($pnPk);
       $asCandidate['redirected'] = $pasRedirected;
 
-
+ChromePhp::log('3');
 
       $oPosition = CDependency::getComponentByName('sl_position');
       $asPlayFor = $oPosition->getApplication($pnPk, false, true);
@@ -1007,7 +1007,7 @@ ChromePhp::log($pasRedirected);
       {
         $asCandidate['in_play'] = 0;
       }
-
+ChromePhp::log('4');
 
       $asCandidate['nb_meeting'] = 0;
       $asCandidate['date_meeting'] = '';
@@ -1064,12 +1064,12 @@ ChromePhp::log($pasRedirected);
       //a bit slow ?
       //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
 
-
+ChromePhp::log('5');
 
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
       logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$sName.' (#'.$pnPk.')', 'link' => $sLink));
-
+ChromePhp::log('6');
       return $sHTML;
     }
 
