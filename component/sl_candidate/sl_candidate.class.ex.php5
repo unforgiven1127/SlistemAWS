@@ -2750,7 +2750,7 @@ $flag = strpos($test, $control);
         else
         {
           $sort_order = getValue('sortorder', 'DESC');
-          $ordering = $sSortField.' '.$sort_order.$secondary_order;
+          $ordering = $sSortField.' '.$sort_order;
           ChromePhp::log($ordering);
             //$sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
         }
