@@ -294,14 +294,14 @@ class CLoginModelEx extends CLoginModel
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
 
-ChromePhp::log($pasParams['cp_key']);
+/*ChromePhp::log($pasParams['cp_key']);
     if(isset($pasParams['cp_key']['cp_pk']) && !empty($pasParams['cp_key']['cp_pk']))
     {
       ChromePhp::log('icerde');
       return $this->_getCandidateList(true);
       //$sQuery = 'SELECT * FROM login_system_history as lshi WHERE '.implode(' AND ', $asWhere);
       //return $this->oDB->ExecuteQuery($sQuery);
-    }
+    }*/
 
 ChromePhp::log($pasParams);
     $asWhere = array();
