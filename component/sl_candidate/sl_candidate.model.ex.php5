@@ -639,6 +639,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query.= ' LEFT JOIN sl_contact AS cont ON (cont.itemfk = ca.sl_candidatepk)';
     $query.= ' WHERE ';
 
+    $query.= ' cap.companyfk = '.$company_id.' OR ';
+
     if($candidate_contact_info != "")
     {
       $query.= "(";
@@ -651,7 +653,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
     else
     {
       //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik
-      $query.= ' cap.companyfk = '.$company_id.' AND ';
 
       if (!empty($force_target))
       {
