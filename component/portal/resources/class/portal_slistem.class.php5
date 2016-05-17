@@ -362,8 +362,9 @@ Reminder linked to item', '2013-10-05 08:00:00');
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
-      dump($asActivity);
-      exit;
+      $candidate_id = $asActivity['cp_pk'];
+      $candidate_text = $asActivity['text'];
+
       if(!empty($asActivity['log_link']))
       {
         if(isset($asActivity['data']['qb']))
@@ -372,9 +373,11 @@ Reminder linked to item', '2013-10-05 08:00:00');
         }
 
         if(isset($asActivity['class']))
-          $Activity = '<a href="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
+          //$Activity = '<a href="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<div class="'.$asActivity['class'].'" class="col_573a9306622b4 tplCandiRow_continuous tpl_link_cell tplCandi_woman" onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
         else
-          $Activity = '<a href="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
+          //$Activity = '<a href="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<div class="col_573a9306622b4 tplCandiRow_continuous tpl_link_cell tplCandi_woman" onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
       }
       else
       {
