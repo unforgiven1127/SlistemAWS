@@ -2749,7 +2749,7 @@ $flag = strpos($test, $control);
         }
         else
         {
-            $sQuery.= ' ORDER BY ratio_rev ASC ';
+            $sQuery.= ' ORDER BY ratio_rev DESC ';
         }
 
         if(!empty($limit))
