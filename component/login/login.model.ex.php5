@@ -293,7 +293,7 @@ class CLoginModelEx extends CLoginModel
   {
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
-
+ChromePhp::log($pasParams);
     $asWhere = array();
 
     if(isset($pasParams['date_start']) && !empty($pasParams['date_start']))
