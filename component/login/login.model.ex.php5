@@ -298,7 +298,7 @@ ChromePhp::log($pasParams['cp_key']);
     if(isset($pasParams['cp_key']['cp_pk']) && !empty($pasParams['cp_key']['cp_pk']))
     {
       ChromePhp::log('icerde');
-      return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
+      return $this->_getCandidateList(true);
       //$sQuery = 'SELECT * FROM login_system_history as lshi WHERE '.implode(' AND ', $asWhere);
       //return $this->oDB->ExecuteQuery($sQuery);
     }
