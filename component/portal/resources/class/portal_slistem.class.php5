@@ -375,9 +375,9 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $asActivity['log_link'] = str_replace("javascript:","", $asActivity['log_link']);
 
         if(isset($asActivity['class']))
-          $Activity = '<a onclick="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a onclick="'.$asActivity['log_link'].'" class="pointer '.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
         else
-          $Activity = '<a onclick="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a class="pointer" onclick="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
       }
       else
       {
