@@ -630,7 +630,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query = 'SELECT ca.sl_candidatepk, ca.lastname, ca.firstname, com.name AS company, ocu.label AS occupation,';
     $query.= ' ind.label AS industry, levenshtein('.$clean_lastname.', LOWER(ca.lastname)) AS lastname_lev,';
     $query.= ' levenshtein('.$clean_firstname.', LOWER(ca.firstname)) AS firstname_lev ';
-    $query.= ', 100-(levenshtein('.$this->oDB->dbEscapeString(strtolower($lastname)).', LOWER(CONCAT(ca.firstname)))*100/LENGTH(CONCAT(ca.lastname, ca.firstname))) AS ratio ';
+    $query.= ', 100-(levenshtein('.$this->oDB->dbEscapeString(strtolower($lastname.$firstname)).', LOWER(CONCAT(ca.lastname, ca.firstname)))*100/LENGTH(CONCAT(ca.lastname, ca.firstname))) AS ratio ';
     $query.= ' FROM sl_candidate AS ca ';
     $query.= ' LEFT JOIN sl_candidate_profile AS cap ON (cap.candidatefk = ca.sl_candidatepk)';
     $query.= ' LEFT JOIN sl_occupation AS ocu ON (ocu.sl_occupationpk = cap.occupationfk)';
@@ -650,8 +650,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     }
     else
     {
-      //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik
-      $query.= ' cap.companyfk = '.$company_id.' AND ';
+      if (!$skip_company)
+        $query.= ' cap.companyfk = '.$company_id.' AND ';
 
       if (!empty($force_target))
       {
@@ -667,7 +667,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
 
-ChromePhp::log($query);
+//ChromePhp::log($query);
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
