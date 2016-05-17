@@ -528,6 +528,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
+    ChromePhp::log($candidate_contact_info);
+
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
@@ -639,7 +641,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query.= ' LEFT JOIN sl_contact AS cont ON (cont.itemfk = ca.sl_candidatepk)';
     $query.= ' WHERE ';
 
-    $query.= ' cap.companyfk = '.$company_id.' OR ';
+    $query.= ' (cap.companyfk = '.$company_id.' AND LOWER(ca.firstname) = '.$clean_firstname.') OR ';
+    $query.= ' (cap.companyfk = '.$company_id.' AND LOWER(ca.lastname) = '.$clean_lastname.') OR ';
 
     if($candidate_contact_info != "")
     {
@@ -652,7 +655,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     }
     else
     {
-      //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik
+      //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik cap.companyfk = '.$company_id
 
       if (!empty($force_target))
       {
@@ -679,8 +682,8 @@ ChromePhp::log($query);
       {
         $temp = $db_result->getData();
 
-        if ($temp['ratio'] > $minimum_ratio || !empty($force_target))
-          $duplicate_array[$temp['sl_candidatepk']] = $db_result->getData();
+        //if ($temp['ratio'] > $minimum_ratio || !empty($force_target))
+        $duplicate_array[$temp['sl_candidatepk']] = $db_result->getData();
 
         $read = $db_result->readNext();
       }
