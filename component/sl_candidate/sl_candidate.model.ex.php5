@@ -528,8 +528,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $candidate_contact_info = "";
     }
 
-    ChromePhp::log($candidate_contact_info);
-
     if(!assert('(is_key($candidate_info) || is_array($candidate_info))'))
       return new CDbResult();
 
@@ -632,7 +630,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query = 'SELECT ca.sl_candidatepk, ca.lastname, ca.firstname, com.name AS company, ocu.label AS occupation,';
     $query.= ' ind.label AS industry, levenshtein('.$clean_lastname.', LOWER(ca.lastname)) AS lastname_lev,';
     $query.= ' levenshtein('.$clean_firstname.', LOWER(ca.firstname)) AS firstname_lev ';
-    $query.= ', 100-(levenshtein('.$this->oDB->dbEscapeString(strtolower($lastname.$firstname)).', LOWER(CONCAT(ca.lastname, ca.firstname)))*100/LENGTH(CONCAT(ca.lastname, ca.firstname))) AS ratio ';
+    $query.= ', 100-(levenshtein('.$this->oDB->dbEscapeString(strtolower($lastname)).', LOWER(CONCAT(ca.firstname)))*100/LENGTH(CONCAT(ca.lastname, ca.firstname))) AS ratio ';
     $query.= ' FROM sl_candidate AS ca ';
     $query.= ' LEFT JOIN sl_candidate_profile AS cap ON (cap.candidatefk = ca.sl_candidatepk)';
     $query.= ' LEFT JOIN sl_occupation AS ocu ON (ocu.sl_occupationpk = cap.occupationfk)';
@@ -640,9 +638,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $query.= ' LEFT JOIN sl_company AS com ON (com.sl_companypk = cap.companyfk)';
     $query.= ' LEFT JOIN sl_contact AS cont ON (cont.itemfk = ca.sl_candidatepk)';
     $query.= ' WHERE ';
-
-    $query.= ' (cap.companyfk = '.$company_id.' AND LOWER(ca.firstname) = '.$clean_firstname.') OR ';
-    $query.= ' (cap.companyfk = '.$company_id.' AND LOWER(ca.lastname) = '.$clean_lastname.') OR ';
 
     if($candidate_contact_info != "")
     {
@@ -655,7 +650,8 @@ class CSl_candidateModelEx extends CSl_candidateModel
     }
     else
     {
-      //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik cap.companyfk = '.$company_id
+      //if (!$skip_company) // company e hep bakmasi icin burayi kaldirdik
+      $query.= ' cap.companyfk = '.$company_id.' AND ';
 
       if (!empty($force_target))
       {
@@ -682,8 +678,8 @@ ChromePhp::log($query);
       {
         $temp = $db_result->getData();
 
-        //if ($temp['ratio'] > $minimum_ratio || !empty($force_target))
-        $duplicate_array[$temp['sl_candidatepk']] = $db_result->getData();
+        if ($temp['ratio'] > $minimum_ratio || !empty($force_target))
+          $duplicate_array[$temp['sl_candidatepk']] = $db_result->getData();
 
         $read = $db_result->readNext();
       }
