@@ -442,56 +442,10 @@ class CCandidate_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
-        if(isset($pasCandidateData['keyword']) && !empty($pasCandidateData['keyword']))
-        {
-          $keyword =$pasCandidateData['keyword'];
-        }
-        else
-        {
-          $keyword = '-';
-        }
-
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
-          $sHTML.= $this->coDisplay->getBloc('', 'keyword', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $keyword, array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
-          $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
-
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last candi_detail_row_status'));
-          $sHTML.= $this->coDisplay->getBloc('', 'Activity', array('class' => 'candi_detail_label', 'style' => 'height: 30px;'));
-          $sHTML.= $this->coDisplay->getBloc('', $this->_getStatusBar($pasCandidateData), array('class' => 'candi_detail_value', 'style' => 'height: 30px;'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
+   
 
 
-        $sHTML.= $this->coDisplay->getFloatHack();
-
-        $sHTML.= $this->coDisplay->getBlocEnd();
-
-
-      $sHTML.= $this->coDisplay->getBlocEnd();
-
-
-      //Not in a section // absolute at bottom
-      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_skill_bar candi_skill_bar_'.$pasCandidateData['grade']));
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="aggressiveness:  4 is push over 7 is super confident">AG: '.$pasCandidateData['skill_ag'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="flexibility: 4 is obstinate 7 is very open minded">FX: '.$pasCandidateData['skill_fx'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="physical appearance: good suit?  well presented?">AP: '.$pasCandidateData['skill_ap'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="character: 4 is bad 7 is excellent">CH: '.$pasCandidateData['skill_ch'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="ambition: got lots then 7 got none then 4">AM: '.$pasCandidateData['skill_am'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="education: none is 4 MBA is 7">ED: '.$pasCandidateData['skill_ed'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="move potential: 4 means will never change 9 means unemployed and will meet anyone">MP: '.$pasCandidateData['skill_mp'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="placability: 4 is no one would hire 7 is anyone would hire">PL: '.$pasCandidateData['skill_pl'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="intelligence: 4 means not very 7 means way smarter than you!">IN: '.$pasCandidateData['skill_in'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="English: 4 not much 8 native speaker ">E: '.$pasCandidateData['skill_e'].'</span>');
-        $sHTML.= $this->coDisplay->getBloc('', '<span title="experience: 4 means not much 7 means well rounded">EX: '.$pasCandidateData['skill_ex'].'</span>');
-      $sHTML.= $this->coDisplay->getBlocEnd();
-
-
-
-    /*if(!empty($pasCandidateData['redirected']))
+    if(!empty($pasCandidateData['redirected']))
     {
       $sHTML.= $this->coDisplay->getBloc('ctsc', '&nbsp;', array('class' => 'candiTopSectionCover'));
 
@@ -500,7 +454,7 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= '!! Candidate merged !!<br /> candidate <strong>#'.$pasCandidateData['redirected']['sl_candidatepk'].'</strong> is now under refId <strong>#'.$pasCandidateData['sl_candidatepk'].'</strong>.';
       $sHTML.= $this->coDisplay->getBlocEnd();
-    }*/
+    }
 
 
     return $sHTML;
