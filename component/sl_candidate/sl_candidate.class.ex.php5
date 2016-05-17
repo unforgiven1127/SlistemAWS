@@ -2749,10 +2749,7 @@ $flag = strpos($test, $control);
         }
         else
         {
-          $sort_order = getValue('sortorder', 'DESC');
-          $ordering = $sSortField.' '.$sort_order;
-          ChromePhp::log($ordering);
-            //$sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
+            $sQuery.= ' ORDER BY ratio_rev ASC ';
         }
 
         if(!empty($limit))
