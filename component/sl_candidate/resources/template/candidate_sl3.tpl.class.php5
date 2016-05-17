@@ -315,21 +315,10 @@ class CCandidate_sl3 extends CTemplate
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
 
-          if(!empty($sExtraStatus))
-          {
-            $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
-          }
-          else
-          {
-            $sStatusLabel =$asStatus[$pasCandidateData['statusfk']];
-          }
+          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
+
           //ChromePhp::log($slPositionLinkResult['status']);
-          if(isset($slPositionLinkResult['status'])) // works
-          {
-            $slPositionLinkStatus = $slPositionLinkResult['status'];
-            $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
-            //ChromePhp::log($sStatusLabel);
-          }
+          
 
           if($pasCandidateData['_in_play'])
           {
