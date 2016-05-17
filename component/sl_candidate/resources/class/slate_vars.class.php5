@@ -500,9 +500,13 @@ class CSlateVars
           $activity[200] = 'Fallen off';
           $activity[201] = 'Not interested';
           $activity[251] = 'Position filled';
+          $activity[151] = 'Expired';
 
           $info = $activity[$variable];
           break;
+
+        default:
+          $info = '';
       }
     }
 
