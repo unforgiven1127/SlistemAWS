@@ -374,10 +374,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
         if(isset($asActivity['class']))
           //$Activity = '<a href="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
-          $Activity = '<div class="'.$asActivity['class'].'" class="col_573a9306622b4 tplCandiRow_continuous tpl_link_cell tplCandi_woman" onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
+          $Activity = '<div class="'.$asActivity['class'].'" onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
         else
           //$Activity = '<a href="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
-          $Activity = '<div class="col_573a9306622b4 tplCandiRow_continuous tpl_link_cell tplCandi_woman" onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
+          $Activity = '<div onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");"><a href="javascript:;">'.$candidate_text.'/a></div>';
       }
       else
       {
