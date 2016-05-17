@@ -2747,7 +2747,7 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        else if(strpos($sQuery,"AND scan.sl_candidatepk IN") == false)
+        else if(strpos($sQuery,"ratio") !== false)
         {
             $sQuery.= ' ORDER BY ratio DESC ';
         }
