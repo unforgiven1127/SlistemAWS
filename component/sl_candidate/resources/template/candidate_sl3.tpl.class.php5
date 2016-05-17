@@ -314,9 +314,9 @@ class CCandidate_sl3 extends CTemplate
           $sClass = 'candi_detail_value';
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
-ChromePhp::log('HERE HERE HERE ');
-          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
 
+          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
+ChromePhp::log('HERE HERE HERE ');
           ChromePhp::log($slPositionLinkResult['status']);
           if(isset($slPositionLinkResult['status'])) // works
           {
