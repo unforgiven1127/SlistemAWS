@@ -2697,7 +2697,7 @@ $flag = strpos($test, $control);
           }
           else if($sSortField == "cp_client")
           {
-            $sQuery.= ' ORDER BY scom.is_client '.$sSortOrder." ";
+            $sQuery.= ' ORDER BY is_client '.$sSortOrder." ";
           }
           else if($sSortField == "_in_play")
           {
