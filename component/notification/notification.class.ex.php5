@@ -537,9 +537,9 @@ class CNotificationEx extends CNotification
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-    //ChromePhp::log($pasUsers);
-    //ChromePhp::log($poMail);
-    //ChromePhp::log($pasAction);
+    ChromePhp::log($pasUsers);
+    ChromePhp::log($poMail);
+    ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
