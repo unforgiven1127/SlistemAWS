@@ -178,54 +178,81 @@ class CCandidate_sl3 extends CTemplate
         $sHTML.= $this->coDisplay->getBlocEnd();
 
 
-       
+        $nCPA = (int)$pasCandidateData['cpa'];
+        $nMBA = (int)$pasCandidateData['mba'];
+        $sText = '';
 
-        $sSalary = (round($nSalary+$nBonus, 1)).$salary_unit.$currency_code;
-        $sSalary.= '&nbsp;&nbsp;('.$nSalary.$salary_unit.$currency_code.' + '.$nBonus.$salary_unit.$currency_code.')';
+        if($nMBA)
+          $sText.= '<div class="candi_status_icon low_priority" title="Own a MBA">MBA</div>';
+        else
+          $sText.= '<div class="candi_status_icon inactive" title="Doesn\'t own a MBA" >MBA</div>';
 
-        $asOption = array('class' => 'candi_detail_value');
-        if(!empty($pasCandidateData['target_low']))
+        if($nCPA)
+          $sText.= '<div class="candi_status_icon low_priority" title="Own a CPA" >CPA</div>';
+        else
+          $sText.= '<div class="candi_status_icon inactive" title="Doesn\'t own a MBA" >CPA</div>';
+
+        if($pasCandidateData['is_collaborator'])
+          $sText.= '<div class="candi_status_icon low_priority" title="Is a collborator" >Collab</div>';
+        else
+          $sText.= '<div class="candi_status_icon inactive" title="Isn\'t a collaborator" >Collab</div>';
+
+
+
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
+          $sHTML.= $this->coDisplay->getBloc('', 'Misc', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $sText, array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+
+      $sHTML.= $this->coDisplay->getBlocEnd();
+      //start second data section
+      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$sAdminClass));
+
+        $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));
+        $sHTML.= $this->coDisplay->getFloatHack();
+
+        $sValue = $this->_getShortenText($pasCandidateData['company_name'], 35);
+        if(!empty($sValue))
         {
-          $nLow = round($pasCandidateData['target_low'] /1000000, 2);
-          $nHigh = round($pasCandidateData['target_high'] /1000000, 2);
-
-          if ($nSalary < 1)
-          {
-            $nLow = round($pasCandidateData['target_low'] /1000, 2);
-            $nHigh = round($pasCandidateData['target_high'] /1000, 2);
-          }
-
-          $asOption['title'] = 'Targeted salary '.round($nLow, 1).$salary_unit.$currency_code;
-          $asOption['title'].= ' - '.round($nHigh, 1).$salary_unit.$currency_code;
-
-          $asOption['onmouseover'] = 'tp(this);';
+          $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$pasCandidateData['companyfk']);
+          $sValue = $this->coDisplay->getlink($sValue, 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\')'));
         }
+
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
+          $sHTML.= $this->coDisplay->getBloc('', 'company', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+        $sValue = $this->_getShortenText($pasCandidateData['department'], 24);//26, 25
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
-          $sHTML.= $this->coDisplay->getBloc('', 'salary', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $sSalary, $asOption);
+          $sHTML.= $this->coDisplay->getBloc('', 'department', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
+        $sValue = $this->_getShortenText($pasCandidateData['title'], 35);
 
-        if(isset($pasCandidateData['attribute']['candi_indus']))
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
+          $sHTML.= $this->coDisplay->getBloc('', 'title', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
+        $sHTML.= $this->coDisplay->getBlocEnd();
+
+        $currency_code = currency_html_code($pasCandidateData['currency']);
+
+        $nSalary = round($pasCandidateData['salary'] / 1000000, 2);
+        $nBonus = round($pasCandidateData['bonus'] / 1000000, 2);
+
+        $salary_unit = 'M ';
+
+        if ($nSalary < 1)
         {
-          $pasCandidateData['industry'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_indus']).'</span>';
-          $pasCandidateData['industry'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['industry']).'" onmouseover="tp(this);">'.$pasCandidateData['industry'].'</div>';
+          $nSalary = round($pasCandidateData['salary'] / 1000, 2);
+          $nBonus = round($pasCandidateData['bonus'] / 1000, 2);
+          $salary_unit = 'K ';
         }
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last'));
-          $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['industry'], array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
 
-        if(isset($pasCandidateData['attribute']['candi_occu']))
-        {
-          $pasCandidateData['occupation'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_occu']).'</span>';
-          $pasCandidateData['occupation'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
-        }
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
-          $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['occupation'], array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
+       
 
 
       $sHTML.= $this->coDisplay->getBlocEnd();
