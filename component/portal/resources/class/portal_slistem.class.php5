@@ -372,6 +372,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
           $asActivity['log_link'] = preg_replace('/\&/', '&replay_search='.$asActivity['login_activitypk'].'&', $asActivity['log_link'], 1);
         }
 
+        $asActivity['log_link'] = str_replace("javascript:","", $asActivity['log_link']);
+
         if(isset($asActivity['class']))
           $Activity = '<a onclick="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
         else
