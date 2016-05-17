@@ -91,7 +91,7 @@ if(!empty($_POST['mail']))
   $sMessage.= "\n\n";
 
 
-  $bSent = mail('dcepulis@slate-ghc.com', 'Error on Slistem ', $sMessage);
+  $bSent = mail('munir@slate-ghc.com', 'Error on Slistem ', $sMessage);
   if(!$bSent)
   {
     $oFs = @fopen($_SERVER['DOCUMENT_ROOT'].'/error_report.txt', 'a+');

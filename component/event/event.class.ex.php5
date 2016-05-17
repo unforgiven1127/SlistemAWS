@@ -1689,8 +1689,8 @@ class CEventEx extends CEvent
     $asEmail = array_flip($asEmail);
 
     // Developer filter exclusion
-    $asEmail['dcepulis@slate.co.jp'] = 468;
-    $asEmail['dcepulis@slate-ghc.com'] = 468;
+    //$asEmail['dcepulis@slate.co.jp'] = 468;
+    $asEmail['munir@slate-ghc.com'] = 468;
     // Fake researcher/consultant emails
     $asEmail['ewright@bcmj.biz'] = 1;
     $asEmail['rhayashi@bcmj.biz'] = 1;
