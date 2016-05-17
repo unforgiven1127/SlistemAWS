@@ -317,7 +317,7 @@ class CCandidate_sl3 extends CTemplate
 
           $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
 
-          ChromePhp::log($slPositionLinkResult['status']);
+          //ChromePhp::log($slPositionLinkResult['status']);
           if(isset($slPositionLinkResult['status']) && $slPositionLinkResult['status']!= null && !empty($slPositionLinkResult['status'])) // works
           {
             ChromePhp::log('ICERDE ICERDE ICERDE');
