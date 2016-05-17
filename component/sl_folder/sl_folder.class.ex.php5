@@ -756,6 +756,8 @@ ChromePhp::log($sQuery);
         return array('error' => 'Can not find the candidates.');
 
       $sQuery = preg_replace('/LIMIT [0-9]{1,6}[0-9, ]{0,6}/i', '', $sQuery);
+      $sQuery = explode('LIMIT',$sQuery);
+      $sQuery = $sQuery[0];
 
       $oDbResult = $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
