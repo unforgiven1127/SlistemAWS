@@ -2747,10 +2747,10 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        else
+        /*else
         {
             $sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
-        }
+        }*/
 
         if(!empty($limit))
           $sQuery.= " LIMIT ".$limit;
