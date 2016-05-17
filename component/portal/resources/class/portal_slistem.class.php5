@@ -329,6 +329,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
   private function _displayActivity($pasActivity, $psTitle = '')
   {
     $oDisplay = CDependency::getCpHtml();
+    $oPage = CDependency::getCpPage();
 
     if(!assert('is_array($pasActivity)') || empty($pasActivity))
     {
@@ -367,7 +368,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       $candidate_text = $asActivity['text'];
 
       $sViewURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
-      //$onclick = 'view_candi(\''.$sURL.'\');';
+      $onclick = 'view_candi(\''.$sURL.'\');';
 
       if(!empty($asActivity['log_link']))
       {
@@ -379,9 +380,9 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $asActivity['log_link'] = str_replace("javascript:","", $asActivity['log_link']);
 
         if(isset($asActivity['class']))
-          $Activity = '<a style="cursor:pointer;" onclick="'.$sViewURL.'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a style="cursor:pointer;" onclick="'.$onclick.'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
         else
-          $Activity = '<a style="cursor:pointer;" onclick="'.$sViewURL.'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a style="cursor:pointer;" onclick="'.$onclick.'">'.$asActivity['text'].'</a><br />';
       }
       else
       {
