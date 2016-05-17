@@ -941,9 +941,9 @@ class CSl_candidateEx extends CSl_candidate
     {
       if(!assert('is_key($pnPk)'))
         return '';
-ChromePhp::log('buraya geldi');
-ChromePhp::log($pnPk);
-ChromePhp::log($pasRedirected);
+//ChromePhp::log('buraya geldi');
+//ChromePhp::log($pnPk);
+//ChromePhp::log($pasRedirected);
       $sHTML = '';
 
       //-----------------------------------------------------------------------

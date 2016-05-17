@@ -33,6 +33,7 @@ class CCandidate_sl3 extends CTemplate
 
   public function getDisplay($pasCandidateData, $pasDisplayParams)
   {
+    ChromePhp::log($pasCandidateData['keyword']);
     $oCandidate = CDependency::getComponentByName('sl_candidate');
 
     $sExtraStatus = '';
