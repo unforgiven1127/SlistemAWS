@@ -597,6 +597,7 @@ ChromePhp::log($sQuery);
 
   private function _addItemToFolder()
   {
+    ChromePhp::log('_addItemToFolder');
     $nFolderPk = (int)getValue('folderpk', 0);
     if(!assert('is_key($nFolderPk) || $nFolderPk == -1'))
       return array('error' => 'Item could not be added. Wrong folder given.');
