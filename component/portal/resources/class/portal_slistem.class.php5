@@ -374,10 +374,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
         if(isset($asActivity['class']))
           //$Activity = '<a href="'.$asActivity['log_link'].'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
-          $Activity = '<a onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");" >'.$candidate_text.'/a>';
+          $Activity = '<a onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk=222128&amp;pg=ajx");" >NAME SURNAME BLA BLA</a>';
         else
           //$Activity = '<a href="'.$asActivity['log_link'].'">'.$asActivity['text'].'</a><br />';
-          $Activity = '<a onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk='.$candidate_id.'&amp;pg=ajx");" >'.$candidate_text.'/a>';
+          $Activity = '<a onclick="view_candi("https://beta1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppav&amp;ppt=candi&amp;ppk=222128&amp;pg=ajx");" >NAME SURNAME BLA BLA</a>';
       }
       else
       {
