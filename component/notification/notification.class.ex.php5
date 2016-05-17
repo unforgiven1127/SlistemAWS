@@ -537,9 +537,9 @@ class CNotificationEx extends CNotification
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-    ChromePhp::log($pasUsers);
-    ChromePhp::log($poMail);
-    ChromePhp::log($pasAction);
+    //ChromePhp::log($pasUsers);
+    //ChromePhp::log($poMail);
+    //ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
@@ -570,8 +570,7 @@ ChromePhp::log($cc);
         assert('false; //no correct recipient found. ['.$id.' / '.$sRecipient.' / '.$sEmail.']');
         return false;
       }
-ChromePhp::log($sRecipient);
-ChromePhp::log($sEmail);
+
       //--------------------------------------------------------
       //--------------------------------------------------------
       //start creating the mail content
@@ -685,9 +684,10 @@ ChromePhp::log($sEmail);
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
+      $poMail->addCCRecipient($cc);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
-
+ChromePhp::log($nSent);
       if ($nSent)
       {
         foreach ($user_messages as $message_info)
