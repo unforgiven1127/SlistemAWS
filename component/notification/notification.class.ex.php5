@@ -546,6 +546,13 @@ class CNotificationEx extends CNotification
 
     $sSubject = CONST_APP_NAME . ' daily reminders';
 
+    $cc = "";
+    foreach ($pasAction as $id => $user_messages)
+    {
+      $cc .= $pasUsers[$id]['email'].';';
+    }
+    $cc = rtrim($cc, ";");
+ChromePhp::log($cc);
     foreach ($pasAction as $id => $user_messages)
     {
 
