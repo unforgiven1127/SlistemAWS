@@ -688,10 +688,9 @@ ChromePhp::log($cc);
       $poMail->addCCRecipient($cc);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
-ChromePhp::log($nSent);
+ChromePhp::log($poMail);
       if ($nSent)
       {
-ChromePhp::log('gonderdik ya !!!');
         foreach ($user_messages as $message_info)
         {
           $sNagDate = $this->_getNextNagDate($message_info);
@@ -700,8 +699,6 @@ ChromePhp::log('gonderdik ya !!!');
             $bLastNaggy = true;
           else
             $bLastNaggy = false;
-
-
 
           if(!empty($message_info['naggy']) && $message_info['date_last_action'] != '0000-00-00 00:00:00')
           {
