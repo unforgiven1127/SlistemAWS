@@ -302,7 +302,7 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start third data section
-      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '));
+      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$sAdminClass));
 
 
         $sHTML.= $this->coDisplay->getBloc('', 'Status & skills', array('class' => 'candi_detail_title'));
@@ -315,8 +315,14 @@ class CCandidate_sl3 extends CTemplate
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
 
-          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
-
+          if(!empty($sExtraStatus))
+          {
+            $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
+          }
+          else
+          {
+            $sStatusLabel =$asStatus[$pasCandidateData['statusfk']];
+          }
           //ChromePhp::log($slPositionLinkResult['status']);
           if(isset($slPositionLinkResult['status'])) // works
           {
