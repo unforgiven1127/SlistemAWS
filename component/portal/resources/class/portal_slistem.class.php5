@@ -365,8 +365,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
       $candidate_id = $asActivity['cp_pk'];
       $candidate_text = $asActivity['text'];
 
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $candidate_id);
-      $onclick = 'view_candi(\''.$sURL.'\');';
+      $sViewURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
+      //$onclick = 'view_candi(\''.$sURL.'\');';
 
       if(!empty($asActivity['log_link']))
       {
@@ -378,9 +378,9 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $asActivity['log_link'] = str_replace("javascript:","", $asActivity['log_link']);
 
         if(isset($asActivity['class']))
-          $Activity = '<a style="cursor:pointer;" onclick="'.$onclick.'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a style="cursor:pointer;" onclick="'.$sViewURL.'" class="'.$asActivity['class'].'">'.$asActivity['text'].'</a><br />';
         else
-          $Activity = '<a style="cursor:pointer;" onclick="'.$onclick.'">'.$asActivity['text'].'</a><br />';
+          $Activity = '<a style="cursor:pointer;" onclick="'.$sViewURL.'">'.$asActivity['text'].'</a><br />';
       }
       else
       {
