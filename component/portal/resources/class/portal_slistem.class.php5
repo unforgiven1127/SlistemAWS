@@ -1,6 +1,7 @@
 <?php
 
 require_once('component/portal/portal.class.ex.php5');
+require_once($_SERVER['DOCUMENT_ROOT'].'/component/display/resources/class/template/template.tpl.class.php5');
 
 class CPortalSlistemEx extends CPortalEx
 {
