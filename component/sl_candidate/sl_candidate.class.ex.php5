@@ -2749,7 +2749,7 @@ $flag = strpos($test, $control);
         }
         else
         {
-            $sQuery.= ' ORDER BY scan.lastname,scan.firstname ASC ';
+            $sQuery.= ' ORDER BY scan.lastname,scan.firstname DESC ';
         }
 
         if(!empty($limit))
