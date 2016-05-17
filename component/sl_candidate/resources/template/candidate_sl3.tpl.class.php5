@@ -315,17 +315,7 @@ class CCandidate_sl3 extends CTemplate
           if($pasCandidateData['statusfk'] >= 101 || !empty($sExtraStatus))
             $sClass.= ' text_alert';
 
-          $sStatusLabel = $sExtraStatus.$asStatus[$pasCandidateData['statusfk']];
-
-          ChromePhp::log($slPositionLinkResult['status']);
-          
-
-          if($pasCandidateData['_in_play'])
-          {
-            $sClass.= ' show_play';
-            //$sStatusLabel= '<span class="text_alert">In play</span>&nbsp;&nbsp;|&nbsp;&nbsp;'.$sStatusLabel;
-            $sStatusLabel= 'In play&nbsp;&nbsp;&nbsp;<b>|</b>&nbsp;&nbsp;&nbsp;'.$sStatusLabel;
-          }
+         
 
           $sHTML.= $this->coDisplay->getBloc('', $sStatusLabel, array('class' => $sClass));
 
