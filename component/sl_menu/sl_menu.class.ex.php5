@@ -397,7 +397,7 @@ class CSl_menuEx extends CSl_menu
       </select>
       </div></div>
 
-      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
+      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
 
 
     <div class="qs_action_row">
