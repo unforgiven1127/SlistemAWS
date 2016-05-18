@@ -1148,6 +1148,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _savePositionLink($pnLinkPk = 0)
     {
+      ChromePhp::log($pnLinkPk);
       if(!assert('is_integer($pnLinkPk)'))
         return array('error' => 'Missing parameters.');
 
