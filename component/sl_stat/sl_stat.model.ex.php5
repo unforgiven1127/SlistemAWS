@@ -904,6 +904,34 @@ order by m.candidatefk
 
       $array_for_printing = $revenue_data_raw;
       $clear_data = $revenue_data_raw;
+
+      $year = date("Y");
+      $ccm1_start_date = $year."01-01 00:00:00";
+      $ccm1_end_date = $year."12-31 23:59:59";
+
+      $query = 'SELECT * ';
+      $query .= 'FROM sl_position_link ';
+      $query .= 'WHERE active = 0 AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
+
+      $db_result = $this->oDB->executeQuery($query);
+      $read = $db_result->readFirst();
+
+      while($read)
+      {
+        $row = $db_result->getData();
+
+        $read = $db_result->readNext();
+
+        if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
+        {
+          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
+        }
+        else
+        {
+          $revenue_data[$user_id][$row['userPosition']]['ccm1']++;
+        }
+      }
+
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
