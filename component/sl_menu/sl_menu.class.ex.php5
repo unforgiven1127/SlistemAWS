@@ -291,7 +291,7 @@ class CSl_menuEx extends CSl_menu
 
     //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
     $sHTML.= '<table style="width:105%; margin-left:-5px;">
-                <tr>
+                <tr class="closeTR">
                   <th>
                       <div class="label '.$sLabelClass.'"><b>Candidate</b></div>
                   </th>
@@ -323,7 +323,7 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr  class="closeTR">
                       <th>
                         <div class="label '.$sLabelClass.'"><b>Contacts</b></div>
                       </th>
@@ -333,7 +333,7 @@ class CSl_menuEx extends CSl_menu
                         </div>
                       </td>
                   </tr>
-                  <tr>
+                  <tr  class="closeTR">
                     <th>
                       <div class="label '.$sLabelClass.'"><b>Company</b></div>
                     </th>
@@ -343,7 +343,7 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr  class="closeTR">
                     <th>
                       <div class="label '.$sLabelClass.'"><b>Department</b></div>
                     </th>
@@ -353,7 +353,7 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr  class="closeTR">
                     <th>
                       <div class="label '.$sLabelClass.'"><b>Position</b></div>
                     </th>
@@ -364,7 +364,7 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr  class="closeTR">
                     <th>
                       <div class="label '.$sLabelClass.'"><b>Keyword</b></div>
                     </th>
@@ -397,11 +397,11 @@ class CSl_menuEx extends CSl_menu
       </select>
       </div></div>
 
-      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
+      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0); $(".closeTR").toggle(0);">&nbsp;apply&nbsp;</a></div>
 
 
     <div class="qs_action_row">
-    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0); $(".closeTR").toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
     <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>';
 
     if(!$pbInline)
