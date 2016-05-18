@@ -210,6 +210,13 @@ class CSl_positionModelEx extends CSl_positionModel
     return $this->oDB->executeQuery($sQuery);
   }
 
+  public function update_date_completed($pre_record_id,$date_completed)
+  {
+    $sQuery = "UPDATE sl_position_link SET date_completed = ".$date_completed." WHERE sl_position_linkpk = ".$pre_record_id;
+    $this->oDB->executeQuery($sQuery);
+    return true;
+  }
+
   public function getPositionByLinkPk($pnLinkPk)
   {
     if(!assert('is_key($pnLinkPk)'))

@@ -57,6 +57,7 @@ class CSl_positionModel extends CModel
     $this->_tableMap['sl_position_link']['comment'] = array();
     $this->_tableMap['sl_position_link']['date_expire'] = array('controls'=>array('is_datetime(%)'),'type'=>'datetime');
     $this->_tableMap['sl_position_link']['active'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
+    $this->_tableMap['sl_position_link']['date_completed'] = array();
 
     $this->_tableMap['sl_position_credit']['sl_position_creditpk'] = array('controls'=>array('is_null(%) || is_key(%)'),'type'=>'int','index' => 'pk');
     $this->_tableMap['sl_position_credit']['positionfk'] = array('controls'=>array('is_integer(%)'),'type'=>'int');

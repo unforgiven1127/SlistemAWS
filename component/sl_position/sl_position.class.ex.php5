@@ -1148,7 +1148,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _savePositionLink($pnLinkPk = 0)
     {
-      ChromePhp::log($pnLinkPk);
+      //ChromePhp::log($pnLinkPk); // bir onceki islemin id sini veriyor
+      $pre_record_id = $pnLinkPk;
       if(!assert('is_integer($pnLinkPk)'))
         return array('error' => 'Missing parameters.');
 
@@ -1325,6 +1326,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $asUpdate['active'] = 0;
           $asUpdate['date_expire'] = date('Y-m-d H:i:s');
           $bUpdate = $this->_getModel()->update($asUpdate, 'sl_position_link', 'positionfk = '.$asCurrentPhase['positionfk'].' AND candidatefk = '.$asCurrentPhase['candidatefk']);
+
+          $date_completed = date('Y-m-d H:i:s');
+          $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
 
           if(!$bUpdate)
             return array('error' => __LINE__.' - Unable to update the candidate status.');
