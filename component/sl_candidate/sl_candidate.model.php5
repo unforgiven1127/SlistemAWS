@@ -132,6 +132,7 @@ class CSl_candidateModel extends CModel
     $this->_tableMap['sl_meeting']['reminder_update'] = array('controls' => array('is_null(%) || is_datetime(%)'));
     $this->_tableMap['sl_meeting']['meeting_done'] = array('controls' => array('is_integer(%)'));
     $this->_tableMap['sl_meeting']['date_met'] = array('controls' => array());
+    $this->_tableMap['sl_meeting']['sl_position_linkpk'] = array('controls' => array());
 
 
     $this->_tableMap['sl_company']['sl_companypk'] = array('controls' => array());
