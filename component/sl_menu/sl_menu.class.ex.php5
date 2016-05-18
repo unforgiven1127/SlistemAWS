@@ -417,22 +417,22 @@ class CSl_menuEx extends CSl_menu
 
     if(!$pbInline)
       $sHTML.= '<td ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
-    ';
+    </td>';
 
-$sHTML.= '
+$sHTML.= '<td>
     <a id="alt_submit" href="javascript:;" class="floatRight" onclick="
           var asContainer = goTabs.create(\'candi\', \'\', \'\', \'Candidate QS\');
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
           goTabs.select(asContainer[\'number\']);">&nbsp;<img src="/component/search/resources/pictures/search_24.png" /></a>
           <input type="submit" style="opacity:0; width: 0px; height: 0px;" />
-    </td>
+    ';
+
+    $sHTML.= '<p class="floatHack" /></form></td>
 </tr>
     </table>
     </div>
         </tr>
       </table>';
-
-    $sHTML.= '<p class="floatHack" /></form>';
     $sHTML.= $this->_oDisplay->getBlocEnd();
     return $sHTML;
   }
