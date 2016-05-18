@@ -906,7 +906,7 @@ order by m.candidatefk
       $clear_data = $revenue_data_raw;
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
-      $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
+      $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality revenue_member.user_position as rm_userPosition';
       $query .= 'FROM revenue_member ';
       $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk ';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
@@ -955,28 +955,28 @@ order by m.candidatefk
           {
             $user_id = $row['loginpk'];
 
-            if (empty($revenue_data[$user_id]['placed']))
-              $revenue_data[$user_id]['placed'] = 0;
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
+              $revenue_data[$user_id][$row['user_position']]['placed'] = 0;
 
-            if (empty($revenue_data[$user_id]['nationality']))
-              $revenue_data[$user_id]['nationality'] = $row['nationality'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['nationality']))
+              $revenue_data[$user_id][$row['user_position']]['nationality'] = $row['nationality'];
 
-            if (empty($revenue_data[$user_id]['userPosition']))
-              $revenue_data[$user_id]['userPosition'] = $row['userPosition'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['userPosition']))
+              $revenue_data[$user_id][$row['user_position']]['userPosition'] = $row['userPosition'];
 
-            if (empty($revenue_data[$user_id]['placed']))
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
-              $revenue_data[$user_id]['placed'] += $temp_placed[$user_id]['placed'];
-              $revenue_data[$user_id]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id][$row['user_position']]['placed'] += $temp_placed[$user_id]['placed'];
+              $revenue_data[$user_id][$row['user_position']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
-            if (empty($revenue_data[$user_id]['name']))
-                $revenue_data[$user_id]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['name']))
+                $revenue_data[$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
           }
 
-          if (!isset($revenue_data[$user_id]['paid']))
-            $revenue_data[$user_id]['paid'] = $revenue_data[$user_id]['signed'] = $revenue_data[$user_id]['total_amount'] = 0;
+          if (!isset($revenue_data[$user_id][$row['user_position']]['paid']))
+            $revenue_data[$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']]['signed'] = $revenue_data[$user_id][$row['user_position']]['total_amount'] = 0;
 
           if (empty($revenue_data[$user_id]['team']))
             $revenue_data[$user_id]['team'] = $this->get_user_team($user_id);

@@ -44,12 +44,12 @@
 					<?php if($value['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined"){ $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
 							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $row_number_rank; ?></td>
-							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $value['name']; ?></td>
+							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $value['consultant']['name']; ?></td>
 							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $value['placed']; ?></td>
+							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $value['consultant']['placed']; ?></td>
 						</tr>
 
 						<?php
@@ -112,12 +112,12 @@
 						$total_consultant_count--;?>
 						<tr class="hover_row<?php echo $even; ?>">
 							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $researcher_rank; ?></td>
-							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $value['name']; ?></td>
+							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $value['researcher']['name']; ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $value['placed']; ?></td>
+							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $value['researcher']['placed']; ?></td>
 						</tr>
 
 						<?php
