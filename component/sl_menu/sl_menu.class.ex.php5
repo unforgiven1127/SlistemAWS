@@ -290,6 +290,18 @@ class CSl_menuEx extends CSl_menu
     $sHTML.= '<input type="hidden" name="data_type" value="candi"/>';
 
     //$sHTML.= '<div><div class="label">ref ID</div><div class="field"><input type="text" name="ref_id"/></div></div>';
+
+    //322. satirda bulunan if(asValue.length == 2) return true; nun altindan cikarttik
+    /*asWords = asValue[0].split(\' \');
+                            if(asWords.length > 1)
+                            {
+                              sValue = asWords[0]+\', \';
+                              delete(asWords[0]);
+
+                              sValue+= asWords.join(\' \');
+                              $(this).val(sValue);
+                            }*/
+
     $sHTML.= '<table style="width:105%; margin-left:-5px;">
                 <tr class="closeTR">
                   <th>
@@ -309,15 +321,6 @@ class CSl_menuEx extends CSl_menu
                             if(asValue.length == 2)
                             return true;
 
-                            asWords = asValue[0].split(\' \');
-                            if(asWords.length > 1)
-                            {
-                              sValue = asWords[0]+\', \';
-                              delete(asWords[0]);
-
-                              sValue+= asWords.join(\' \');
-                              $(this).val(sValue);
-                            }
                           }"
                           />
                       </div>
