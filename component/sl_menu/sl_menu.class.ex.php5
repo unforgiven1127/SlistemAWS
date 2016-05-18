@@ -375,17 +375,10 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                 </table>
-                <table>
-                  <tr>
-                    <td>
+                <div class="hidden option">Search options</div>
 
-      <div class="hidden option">Search options</div>
-
-      <div class="hidden option">
-        <div class="label '.$sLabelClass.'">wide search</div>
-        <div class="field">
-          <input type="checkbox" name="qs_wide"
-          ';
+      <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
+      <input type="checkbox" name="qs_wide" ';
 
      if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
        $sHTML.= ' checked="checked" ';
