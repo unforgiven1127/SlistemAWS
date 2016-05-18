@@ -107,7 +107,7 @@
 							else
 								$flag_pic = $value['Researcher']['nationality'].'_32.png';
 					?>
-					<?php if($value['Researcher']['userPosition'] == "Researcher"){
+					<?php if($value['Researcher']['userPosition'] == "Researcher" || $value['userPosition'] == "Not defined"){
 						$researcher_rank ++;
 						$total_consultant_count--;?>
 						<tr class="hover_row<?php echo $even; ?>">
