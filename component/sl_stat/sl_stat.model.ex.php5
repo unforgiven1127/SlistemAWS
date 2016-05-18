@@ -906,8 +906,8 @@ order by m.candidatefk
       $clear_data = $revenue_data_raw;
 
       $year = date("Y");
-      $ccm1_start_date = $year."01-01 00:00:00";
-      $ccm1_end_date = $year."12-31 23:59:59";
+      $ccm1_start_date = $year." 01-01 00:00:00";
+      $ccm1_end_date = $year." 12-31 23:59:59";
 
       $query = 'SELECT s.* ,l.position as userPosition ';
       $query .= 'FROM sl_position_link s ';
