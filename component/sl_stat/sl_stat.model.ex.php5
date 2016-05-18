@@ -922,13 +922,13 @@ var_dump('<br><br>');
       {
         $row = $db_result->getData();
         //var_dump($row);
-        $user_id = $row['created_by'];
+        $user_id = $row['loginpk'];
         //var_dump($user_id);
-        if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
-            $revenue_data[$user_id][$row['userPosition']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-        if (empty($revenue_data[$user_id][$row['userPosition']]['userPosition']))
-          $revenue_data[$user_id][$row['userPosition']]['userPosition'] = $row['userPosition'];
-        if (empty($revenue_data[$user_id][$row['userPosition']]['ccm1']))
+        if (empty($revenue_data[$user_id][$row['position']]['name']))
+            $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
+        if (empty($revenue_data[$user_id][$row['position']]['position']))
+          $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
+        if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
         }
