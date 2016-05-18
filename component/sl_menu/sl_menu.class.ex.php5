@@ -397,12 +397,12 @@ class CSl_menuEx extends CSl_menu
       </select>
       </div></div>
 
-      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
+      <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
 
 
     <div class="qs_action_row">
-    <a class="floatLeft" href="javascript:;" onclick="$(this).find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
-    <a class="floatLeft" href="javascript:;" onclick="$(this).find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>';
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'td\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>';
 
     if(!$pbInline)
       $sHTML.= '<a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>';
