@@ -981,8 +981,8 @@ order by m.candidatefk
           if (empty($revenue_data[$user_id]['team']))
             $revenue_data[$user_id]['team'] = $this->get_user_team($user_id);
 
-          //if (strtolower($row['user_position']) == 'consultant')
-          if(1) // did not calculate researchers so changed to 1
+          if (strtolower($row['user_position']) == 'consultant')
+          //if(1) // did not calculate researchers so changed to 1
           {
             switch ($current_revenue_info['status'])
             {
