@@ -989,11 +989,29 @@ order by m.candidatefk
               case 'paid':
               case 'refund':
               case 'retainer':
-                $revenue_data[$user_id]['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                $revenue_data[$user_id]['consultant']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
                 break;
             }
 
-            $revenue_data[$user_id]['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
+            $revenue_data[$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
+
+            if ($row['status'])
+              $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+          }
+
+          if (strtolower($row['user_position']) == 'researcher')
+          //if(1) // did not calculate researchers so changed to 1
+          {
+            switch ($current_revenue_info['status'])
+            {
+              case 'paid':
+              case 'refund':
+              case 'retainer':
+                $revenue_data[$user_id]['researcher']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                break;
+            }
+
+            $revenue_data[$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
               $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
