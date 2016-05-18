@@ -162,6 +162,13 @@ while(!$bError && !$bDone && $nPass < $nMaxPass)
       VALUES '.implode(' ,', $asMyInsert);
 
     $bInserted = mysql_query($sMyQuery);
+
+    $newMeeting = 'INSERT INTO `meetings` (date_created, created_by, candidatefk, attendeefk, `type`, date_meeting, meeting_done, date_met)
+      VALUES '.implode(' ,', $asMyInsert);
+
+    $cInserted = mysql_query($newMeeting);
+
+
     if(!$bInserted)
     {
       echo mysql_error();
