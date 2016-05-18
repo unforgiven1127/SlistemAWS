@@ -4318,8 +4318,9 @@ $flag = strpos($test, $control);
       //save the meeting && notify RM
       if(empty($pnMeetingPk))
       {
+        ChromePhp::log($asTmp);
         $nMeetingPk = $this->_getModel()->add($asTmp, 'sl_meeting');
-
+        $nMeetingPkNew = $this->_getModel()->add($asTmp, 'meetings');
 
         //Finally: notify people the candidate status has changed (remove the current user obviosuly)
         $asFollower = $this->_getmodel()->getCandidateRm($asTmp['candidatefk'] , true, false);
