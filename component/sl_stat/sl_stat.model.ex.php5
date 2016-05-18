@@ -909,10 +909,11 @@ order by m.candidatefk
       $ccm1_start_date = $year."-01-01 00:00:00";
       $ccm1_end_date = $year."-12-31 23:59:59";
 
-      $query = 'SELECT s.* ,l.position as userPosition, l.firstname, l.lastname ';
-      $query .= 'FROM sl_position_link s ';
+      $query = 'SELECT s.* ,log.position as userPosition, l.firstname, l.lastname ';
+      $query .= 'FROM login log ';
+      $query .= 'LEFT JOIN sl_position_link s ON s.created_by = log.loginpk';
       $query .= 'LEFT JOIN login l on l.loginpk = s.created_by ';
-      $query .= 'WHERE active = 0 AND l.position = "Researcher" AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
+      $query .= 'WHERE log.status = 1 AND active = 0 AND l.position = "Researcher" AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
