@@ -935,7 +935,7 @@ order by m.candidatefk
         {
           $current_revenue_info = $revenue_data_raw[$row['revenue_id']];
 
-          if (!$row['status'] && $row['userPosition'] == "Consultant")
+          if (!$row['status'])
           {
             $user_id = 'former';
 
