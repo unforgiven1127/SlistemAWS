@@ -906,7 +906,7 @@ order by m.candidatefk
       $clear_data = $revenue_data_raw;
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
-      $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality revenue_member.user_position as rm_userPosition';
+      $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
       $query .= 'FROM revenue_member ';
       $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk ';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
