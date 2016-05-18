@@ -57,7 +57,7 @@
 
 							$total_paid += $value['consultant']['paid'];
 							$total_signed += $value['consultant']['signed'];
-							$total_placed += $value['placed'];
+							$total_placed += $value['Consultant']['placed'];
 					}
 						endforeach;
 					?>
@@ -128,7 +128,7 @@
 							//$total_signed += $value['signed'];
 							$total_signed_researcher += $value['researcher']['signed'];
 							//$total_placed += $value['placed'];
-							$total_placed_researcher += $value['placed'];
+							$total_placed_researcher += $value['Researcher']['placed'];
 					}
 						endforeach;
 					?>
