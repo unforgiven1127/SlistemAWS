@@ -26,8 +26,7 @@
 
 					<?php
 						foreach ($revenue_data as $key => $value):
-var_dump($value['userPosition']);
-							if ($key == 'former' && empty($value['signed']))
+							if ($key == 'former' && empty($value['consultant']['signed']))
 								continue;
 
 							if ($row_number_rank % 2 === 0)
