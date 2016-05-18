@@ -404,16 +404,16 @@ class CSl_menuEx extends CSl_menu
       </div></div>
 
       <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
-<table style="margin-top:-15px; width:100%;" >
-<tr >
-<td>
-    <div class="qs_action_row">
 
-<a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
-        </td>
-        <td>
-    <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'input:visible\').val(\'\').blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);"/>&nbsp;</a>
-    </td>';
+
+    <div class="qs_action_row">
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest("form").find("> div:not(.option_link)").toggle(0);">&nbsp;<img src="/component/sl_menu/resources//pictures/qs_option.png">&nbsp;</a>
+    <a class="floatLeft" href="javascript:;" onclick="$(this).closest("form").find("input:visible").val("").blur();">&nbsp;<img src="/component/form/resources/pictures/tree_clear.png" title="Clear quick search form" onclick="tp(this);">&nbsp;</a><a id="alt_submit" href="javascript:;" class="floatRight" onclick="
+          var asContainer = goTabs.create("candi", "", "", "Candidate QS");
+          AjaxRequest("https://slistem1.slate.co.jp/index.php5?uid=555-001&amp;ppa=ppasea&amp;ppt=candi&amp;ppk=0&amp;pg=ajx", "body", "quickSearchForm",  asContainer["id"], "", "", "initHeaderManager(); ");
+          goTabs.select(asContainer["number"]);">&nbsp;<img src="/component/search/resources/pictures/search_24.png"></a>
+          <input type="submit" style="opacity:0; width: 0px; height: 0px;">
+    </div>';
 
     if(!$pbInline)
       $sHTML.= '<td ><a class="floatLeft" href="javascript:;" onclick="goPopup.remove(\'quickSearchContainer\');">&nbsp;<img src="/component/search/resources//pictures/delete_row_16.png" /></a>
@@ -425,14 +425,14 @@ $sHTML.= '<td>
           AjaxRequest(\''.$sURL.'\', \'body\', \'quickSearchForm\',  asContainer[\'id\'], \'\', \'\', \'initHeaderManager(); \');
           goTabs.select(asContainer[\'number\']);">&nbsp;<img src="/component/search/resources/pictures/search_24.png" /></a>
           <input type="submit" style="opacity:0; width: 0px; height: 0px;" />
-    ';
-
-    $sHTML.= '<p class="floatHack" /></form></td>
+    </td>
 </tr>
     </table>
     </div>
         </tr>
       </table>';
+
+    $sHTML.= '<p class="floatHack" /></form>';
     $sHTML.= $this->_oDisplay->getBlocEnd();
     return $sHTML;
   }
