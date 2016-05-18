@@ -911,7 +911,7 @@ order by m.candidatefk
 
       $query = 'SELECT s.* ,log.position as userPosition, l.firstname, l.lastname ';
       $query .= 'FROM login log ';
-      $query .= 'LEFT JOIN sl_position_link s ON s.created_by = log.loginpk';
+      $query .= 'LEFT JOIN sl_position_link s ON s.created_by = log.loginpk ';
       $query .= 'LEFT JOIN login l on l.loginpk = s.created_by ';
       $query .= 'WHERE log.status = 1 AND active = 0 AND l.position = "Researcher" AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
 
