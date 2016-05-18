@@ -374,8 +374,8 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr style="margin-left:20px;">
-                    <td>
+                  <tr >
+                    <td style="margin-left:20px;">
                 <div class="hidden option">Search options</div>
 
       <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
