@@ -919,7 +919,7 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
-        $user_id = $row['loginpk'];
+        $user_id = $row['created_by'];
         if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
