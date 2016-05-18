@@ -722,6 +722,7 @@ $this->_tableMap['sl_position_link']['status'] = array('controls'=>array('is_int
 $this->_tableMap['sl_position_link']['comment'] = array();
 $this->_tableMap['sl_position_link']['date_expire'] = array('controls'=>array('is_datetime(%)'),'type'=>'datetime');
 $this->_tableMap['sl_position_link']['active'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
+$this->_tableMap['sl_position_link']['date_completed'] = array();
 $this->_tableMap['sl_stat_setting']['sl_stat_settingpk'] = array('controls'=>array('is_null(%) || is_key(%)'),'type'=>'int','index' => 'pk');
 $this->_tableMap['sl_stat_setting']['loginfk'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
 $this->_tableMap['sl_stat_setting']['target_new'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
