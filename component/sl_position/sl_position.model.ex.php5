@@ -213,8 +213,7 @@ class CSl_positionModelEx extends CSl_positionModel
   public function update_date_completed($pre_record_id,$date_completed)
   {
     ChromePhp::log($pre_record_id);
-    //$sQuery = "UPDATE sl_position_link SET date_completed = '".$date_completed."' WHERE sl_position_linkpk = ".$pre_record_id;
-    $sQuery = "UPDATE sl_position_link SET date_completed = date_expired";
+    $sQuery = "UPDATE sl_position_link SET date_completed = '".$date_completed."' WHERE sl_position_linkpk = ".$pre_record_id;
     return $this->oDB->executeQuery($sQuery);
   }
 
