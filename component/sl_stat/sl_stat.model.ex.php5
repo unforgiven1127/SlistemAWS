@@ -921,6 +921,7 @@ order by m.candidatefk
       {
         $row = $db_result->getData();
         $user_id = $row['created_by'];
+        var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
                 $revenue_data[$user_id][$row['userPosition']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
         if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
