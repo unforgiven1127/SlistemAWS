@@ -42,7 +42,7 @@
 							else
 								$flag_pic = $value['nationality'].'_32.png';
 					?>
-					<?php if($value['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined"){ ChromePhp::log($value['userPosition']); $total_consultant_count++;?>
+					<?php if($value['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined"){ var_dump($value['userPosition']); $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
 							<td style="height: 50px; font-size: 250%;" class="text_right"><?php echo $row_number_rank; ?></td>
 							<td style="height: 50px; font-size: 250%;" class="text_center"><?php echo $value['name']; ?></td>
