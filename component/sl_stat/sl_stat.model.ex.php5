@@ -919,9 +919,7 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
-
-        $read = $db_result->readNext();
-
+        $user_id = $row['loginpk'];
         if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
@@ -930,6 +928,8 @@ order by m.candidatefk
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1']++;
         }
+
+        $read = $db_result->readNext();
       }
 
 // Researcher position will be included MCA
