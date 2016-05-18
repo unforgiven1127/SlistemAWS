@@ -948,7 +948,7 @@ order by m.candidatefk
               $revenue_data[$user_id]['Consultant']['placed'] += $temp_placed[$row['loginpk']]['placed'];
               $revenue_data[$user_id]['Consultant']['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
-
+            $revenue_data[$user_id]['Consultant']['name'] = "Former";
             $revenue_data[$user_id]['Consultant']['do_not_count_placed'][$row['loginpk']] = '';
           }
           else
