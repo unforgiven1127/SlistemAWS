@@ -684,7 +684,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $read = $db_result->readNext();
       }
     }
-ChromePhp::log($duplicate_array);
+//ChromePhp::log($duplicate_array);
     return $duplicate_array;
   }
 

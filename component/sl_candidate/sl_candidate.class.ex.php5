@@ -106,7 +106,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       case 'notification_item':
       case 'searchable':
-        ChromePhp::log('109');
+//        ChromePhp::log('109');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
@@ -117,7 +117,7 @@ class CSl_candidateEx extends CSl_candidate
         break;
 
       default:
-        ChromePhp::log('120');
+//        ChromePhp::log('120');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
@@ -2433,7 +2433,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-ChromePhp::log("test");
+//ChromePhp::log("test");
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -2763,7 +2763,7 @@ $flag = strpos($test, $control);
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 

@@ -303,7 +303,7 @@ class CLoginModelEx extends CLoginModel
       //return $this->oDB->ExecuteQuery($sQuery);
     }*/
 
-ChromePhp::log($pasParams);
+//ChromePhp::log($pasParams);
     $asWhere = array();
 
     if(isset($pasParams['date_start']) && !empty($pasParams['date_start']))
@@ -373,7 +373,7 @@ ChromePhp::log($pasParams);
 
     if(!empty($psLimit))
       $sQuery.= ' LIMIT '.$psLimit;
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
     //echo $sQuery;
     return $this->oDB->ExecuteQuery($sQuery);
   }
