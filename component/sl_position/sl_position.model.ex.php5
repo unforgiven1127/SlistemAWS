@@ -382,6 +382,7 @@ class CSl_positionModelEx extends CSl_positionModel
         $query .= 'FROM sl_candidate as scan'.$extra_query;
         $query .= 'WHERE scan.sl_candidatepk = '.$revenue['candidate'];
       }
+      ChromePhp::log($query);
       $raw_placement_data = $this->executeQuery($query);
       $read = $raw_placement_data->readFirst();
 
