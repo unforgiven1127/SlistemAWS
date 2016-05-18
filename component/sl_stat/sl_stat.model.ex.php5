@@ -909,9 +909,10 @@ order by m.candidatefk
       $ccm1_start_date = $year."-01-01 00:00:00";
       $ccm1_end_date = $year."-12-31 23:59:59";
 
-      $query = "SELECT l.*
+      $query = "SELECT l.*, sln.shortname as nationality
                 FROM login l
                 LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '2016-01-01 00:00:00' AND '2016-12-31 23:59:59'
+                LEFT JOIN sl_nationality sln ON l.nationalityfk = sln.sl_nationalitypk
                 WHERE l.position = 'Researcher' AND l.status = 1";
 
       $db_result = $this->oDB->executeQuery($query);
@@ -928,6 +929,8 @@ var_dump('<br><br>');
             $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
         if (empty($revenue_data[$user_id][$row['position']]['position']))
           $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
+        if (empty($revenue_data[$user_id][$row['position']]['nationality']))
+              $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
         if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
