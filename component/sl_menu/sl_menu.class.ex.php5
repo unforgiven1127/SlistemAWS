@@ -409,7 +409,7 @@ class CSl_menuEx extends CSl_menu
 
 
     <div class="qs_action_row">
-    
+
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
         <td>
@@ -431,9 +431,10 @@ $sHTML.= '<td>
     </table>
     </div>
         </tr>
+        <p class="floatHack" /></form>
       </table>';
 
-    $sHTML.= '<p class="floatHack" /></form>';
+    //$sHTML.= '<p class="floatHack" /></form>';
     $sHTML.= $this->_oDisplay->getBlocEnd();
     return $sHTML;
   }
