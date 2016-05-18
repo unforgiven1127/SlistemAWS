@@ -4243,7 +4243,7 @@ $flag = strpos($test, $control);
     private function _saveMeeting($pnMeetingPk = 0)
     {
       $asTmp = array();
-
+ChromePhp::log(getValue('sl_position_linkpk'));
       $asTmp['type'] = (int)getValue('meeting_type');
       $asTmp['created_by'] = (int)getValue('creatorfk');
       $asTmp['candidatefk'] = (int)getValue('candidatefk');
