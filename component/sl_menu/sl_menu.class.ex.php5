@@ -376,16 +376,23 @@ class CSl_menuEx extends CSl_menu
                   </tr>
                 </table>
       <div class="hidden option">Search options</div>
+      <table>
+        <tr>
+          <td>
+            <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
+          </td>
+          <td>
+            <input type="checkbox" name="qs_wide"';
+            if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
+              $sHTML.= ' checked="checked" ';
+            $sHTML.= ' /> (contains the string)</div></div>';
+      $sHTML.= '
+          </td>
+        </tr>
+      </table>';
 
-      <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
-      <input type="checkbox" name="qs_wide" ';
 
-     if(isset($pasSettings['qs_wide_search']) && !empty($pasSettings['qs_wide_search']))
-       $sHTML.= ' checked="checked" ';
-
-     $sHTML.= ' /> (contains the string)</div></div>
-
-      <div class="hidden option"><div class="label '.$sLabelClass.'">Get lucky</div><div class="field">
+      $sHTML.= ' <div class="hidden option"><div class="label '.$sLabelClass.'">Get lucky</div><div class="field">
       <input type="checkbox" name="qs_super_wide" /> (lastname OR firstname)</div></div>
 
       <div class="hidden option"><div class="label '.$sLabelClass.'">name format</div><div class="field">
