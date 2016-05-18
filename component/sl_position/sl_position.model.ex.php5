@@ -214,7 +214,7 @@ class CSl_positionModelEx extends CSl_positionModel
   {
     ChromePhp::log($pre_record_id);
     //$sQuery = "UPDATE sl_position_link SET date_completed = '".$date_completed."' WHERE sl_position_linkpk = ".$pre_record_id;
-    $sQuery = "UPDATE sl_position_link SET date_completed = date_expired WHERE sl_position_linkpk = sl_position_linkpk";
+    $sQuery = "UPDATE sl_position_link SET date_completed = date_expired";
     return $this->oDB->executeQuery($sQuery);
   }
 
