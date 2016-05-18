@@ -404,10 +404,10 @@ class CSl_menuEx extends CSl_menu
       </div></div>
 
       <div class="hidden option" style="margin-top: 15px;"><a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;apply&nbsp;</a></div>
+<table style="margin-top:-15px; width:100%;" >
 <tr >
 <td>
     <div class="qs_action_row">
-    <table style="margin-top:-15px; width:100%;" >
 
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
