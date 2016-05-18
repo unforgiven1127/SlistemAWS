@@ -939,7 +939,7 @@ order by m.candidatefk
           {
             $user_id = 'former';
 
-            if (empty($revenue_data[$user_id]['Consultant']['placed']))
+            if (empty($revenue_data['Consultant'][$user_id]['placed']))
               $revenue_data[$user_id]['Consultant']['placed'] = 0;
 
             if (!isset($revenue_data[$user_id]['Consultant']['do_not_count_placed'][$row['loginpk']]))
