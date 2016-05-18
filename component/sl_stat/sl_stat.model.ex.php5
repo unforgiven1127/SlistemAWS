@@ -911,7 +911,7 @@ order by m.candidatefk
 
       $query = 'SELECT s.* ,l.position as userPosition ';
       $query .= 'FROM sl_position_link s ';
-      $query .= 'LEFT JOIN login l on l.loginfk = s.created_by ';
+      $query .= 'LEFT JOIN login l on l.loginpk = s.created_by ';
       $query .= 'WHERE active = 0 AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
 
       $db_result = $this->oDB->executeQuery($query);
