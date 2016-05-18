@@ -4243,7 +4243,6 @@ $flag = strpos($test, $control);
     private function _saveMeeting($pnMeetingPk = 0)
     {
       $asTmp = array();
-ChromePhp::log(getValue('sl_position_linkpk'));
       $asTmp['type'] = (int)getValue('meeting_type');
       $asTmp['created_by'] = (int)getValue('creatorfk');
       $asTmp['candidatefk'] = (int)getValue('candidatefk');
@@ -4318,9 +4317,7 @@ ChromePhp::log(getValue('sl_position_linkpk'));
       //save the meeting && notify RM
       if(empty($pnMeetingPk))
       {
-        ChromePhp::log($asTmp);
         $nMeetingPk = $this->_getModel()->add($asTmp, 'sl_meeting');
-        $nMeetingPkNew = $this->_getModel()->add($asTmp, 'meetings');
 
         //Finally: notify people the candidate status has changed (remove the current user obviosuly)
         $asFollower = $this->_getmodel()->getCandidateRm($asTmp['candidatefk'] , true, false);
