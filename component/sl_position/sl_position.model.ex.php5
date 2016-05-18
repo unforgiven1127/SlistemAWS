@@ -382,7 +382,7 @@ ChromePhp::log($query);
         $query .= 'FROM sl_candidate as scan'.$extra_query;
         $query .= 'WHERE scan.sl_candidatepk = '.$revenue['candidate'];
       }
-      
+
       $raw_placement_data = $this->executeQuery($query);
       $read = $raw_placement_data->readFirst();
 
