@@ -158,16 +158,16 @@ while(!$bError && !$bDone && $nPass < $nMaxPass)
 
   if(!empty($asMyInsert))
   {
-    ChromePhp::log('EKLE');
+    ChromePhp::log($asMyInsert);
     $sMyQuery = 'INSERT INTO `sl_meeting` (date_created, created_by, candidatefk, attendeefk, `type`, date_meeting, meeting_done, date_met)
       VALUES '.implode(' ,', $asMyInsert);
 
     $bInserted = mysql_query($sMyQuery);
 
-    $newMeeting = 'INSERT INTO `meetings` (date_created, created_by, candidatefk, attendeefk, `type`, date_meeting, meeting_done, date_met)
+    /*$newMeeting = 'INSERT INTO `meetings` (date_created, created_by, candidatefk, attendeefk, `type`, date_meeting, meeting_done, date_met, sl_position_linkpk)
       VALUES '.implode(' ,', $asMyInsert);
 
-    $cInserted = mysql_query($newMeeting);
+    $cInserted = mysql_query($newMeeting);*/
 
 
     if(!$bInserted)
