@@ -909,9 +909,9 @@ order by m.candidatefk
       $ccm1_start_date = $year."01-01 00:00:00";
       $ccm1_end_date = $year."12-31 23:59:59";
 
-      $query = 'SELECT * ,login.position as userPosition';
-      $query .= 'FROM sl_position_link ';
-      $query .= 'LEFT JOIN login ON sl_position_link.created_by = login.loginpk ';
+      $query = 'SELECT s.* ,l.position as userPosition ';
+      $query .= 'FROM sl_position_link s ';
+      $query .= 'LEFT JOIN login l on l.loginfk = s.created_by ';
       $query .= 'WHERE active = 0 AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
 
       $db_result = $this->oDB->executeQuery($query);
