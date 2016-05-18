@@ -391,7 +391,9 @@ class CSl_menuEx extends CSl_menu
        $sHTML.= ' checked="checked" ';
 
      $sHTML.= ' /> (contains the string)</div></div>
-
+<table style="margin-top:-15px; width:100%;" >
+      <tr >
+        <td>
       <div class="hidden option"><div class="label '.$sLabelClass.'">Get lucky</div><div class="field">
       <input type="checkbox" name="qs_super_wide" /> (lastname OR firstname)</div></div>
 
@@ -407,9 +409,7 @@ class CSl_menuEx extends CSl_menu
 
 
     <div class="qs_action_row">
-    <table style="margin-top:-15px; width:100%;" >
-      <tr >
-        <td>
+    
 <a class="floatLeft" href="javascript:;" onclick="$(this).closest(\'form\').find(\'> div:not(.option_link)\').toggle(0);">&nbsp;<img src="'.self::getResourcePath().'/pictures/qs_option.png"/>&nbsp;</a>
         </td>
         <td>
