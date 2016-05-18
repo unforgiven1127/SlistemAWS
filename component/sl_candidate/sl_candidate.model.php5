@@ -134,6 +134,22 @@ class CSl_candidateModel extends CModel
     $this->_tableMap['sl_meeting']['date_met'] = array('controls' => array());
     $this->_tableMap['sl_meeting']['sl_position_linkpk'] = array('controls' => array());
 
+    $this->_tableMap['meetings']['sl_meetingpk'] = array('controls' => array());
+    $this->_tableMap['meetings']['date_created'] = array('controls' => array('is_datetime(%)'));
+    $this->_tableMap['meetings']['date_updated'] = array('controls' => array('is_null(%) || is_datetime(%)'));
+    $this->_tableMap['meetings']['date_meeting'] = array('controls' => array('is_datetime(%)'));
+    $this->_tableMap['meetings']['created_by'] = array('controls' => array('is_key(%)'));
+    $this->_tableMap['meetings']['candidatefk'] = array('controls' => array('is_key(%)'));
+    $this->_tableMap['meetings']['attendeefk'] = array('controls' => array('is_key(%)'));
+    $this->_tableMap['meetings']['type'] = array('controls' => array('is_key(%)'));
+    $this->_tableMap['meetings']['location'] = array('controls' => array());
+    $this->_tableMap['meetings']['description'] = array('controls' => array());
+    $this->_tableMap['meetings']['date_reminder1'] = array('controls' => array('is_null(%) || is_datetime(%)'));
+    $this->_tableMap['meetings']['date_reminder2'] = array('controls' => array('is_null(%) || is_datetime(%)'));
+    $this->_tableMap['meetings']['reminder_update'] = array('controls' => array('is_null(%) || is_datetime(%)'));
+    $this->_tableMap['meetings']['meeting_done'] = array('controls' => array('is_integer(%)'));
+    $this->_tableMap['meetings']['date_met'] = array('controls' => array());
+    $this->_tableMap['meetings']['sl_position_linkpk'] = array('controls' => array());
 
     $this->_tableMap['sl_company']['sl_companypk'] = array('controls' => array());
     $this->_tableMap['sl_company']['date_created'] = array('controls' => array());
