@@ -939,17 +939,17 @@ order by m.candidatefk
           {
             $user_id = 'former';
 
-            if (empty($revenue_data[$user_id]['placed']))
-              $revenue_data[$user_id]['placed'] = 0;
+            if (empty($revenue_data[$user_id]['Consultant']['placed']))
+              $revenue_data[$user_id]['Consultant']['placed'] = 0;
 
-            if (!isset($revenue_data[$user_id]['do_not_count_placed'][$row['loginpk']]))
+            if (!isset($revenue_data[$user_id]['Consultant']['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
-              $revenue_data[$user_id]['placed'] += $temp_placed[$row['loginpk']]['placed'];
-              $revenue_data[$user_id]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id]['Consultant']['placed'] += $temp_placed[$row['loginpk']]['placed'];
+              $revenue_data[$user_id]['Consultant']['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
-            $revenue_data[$user_id]['do_not_count_placed'][$row['loginpk']] = '';
+            $revenue_data[$user_id]['Consultant']['do_not_count_placed'][$row['loginpk']] = '';
           }
           else
           {
