@@ -920,9 +920,9 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
-        var_dump($row);
+        //var_dump($row);
         $user_id = $row['created_by'];
-        var_dump($user_id);
+        //var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
                 $revenue_data[$user_id][$row['userPosition']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
         if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
@@ -936,7 +936,7 @@ order by m.candidatefk
 
         $read = $db_result->readNext();
       }
-var_dump($revenue_data);
+//var_dump($revenue_data);
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
