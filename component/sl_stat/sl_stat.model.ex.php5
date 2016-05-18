@@ -920,6 +920,7 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
+        var_dump($row);
         $user_id = $row['created_by'];
         var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
