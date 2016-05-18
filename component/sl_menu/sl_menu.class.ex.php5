@@ -375,7 +375,10 @@ class CSl_menuEx extends CSl_menu
                     </td>
                   </tr>
                 </table>
-                <div class="hidden option">Search options</div>
+                <table>
+                <tr>
+                <td>
+      <div class="hidden option">Search options</div>
 
       <div class="hidden option"><div class="label '.$sLabelClass.'">wide search</div><div class="field">
       <input type="checkbox" name="qs_wide" ';
@@ -413,7 +416,9 @@ class CSl_menuEx extends CSl_menu
           <input type="submit" style="opacity:0; width: 0px; height: 0px;" />
     </div>';
 
-    $sHTML.= '<p class="floatHack" /></form>';
+    $sHTML.= '<p class="floatHack" /></table>
+                </tr>
+                </td></form>';
     $sHTML.= $this->_oDisplay->getBlocEnd();
     return $sHTML;
   }
