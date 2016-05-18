@@ -909,7 +909,7 @@ order by m.candidatefk
       $ccm1_start_date = $year." 01-01 00:00:00";
       $ccm1_end_date = $year." 12-31 23:59:59";
 
-      $query = 'SELECT s.* ,l.position as userPosition ';
+      $query = 'SELECT s.* ,l.position as userPosition, l.firstname, l.lastname ';
       $query .= 'FROM sl_position_link s ';
       $query .= 'LEFT JOIN login l on l.loginpk = s.created_by ';
       $query .= 'WHERE active = 0 AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
@@ -921,6 +921,8 @@ order by m.candidatefk
       {
         $row = $db_result->getData();
         $user_id = $row['created_by'];
+        if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
+                $revenue_data[$user_id][$row['userPosition']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
         if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
@@ -932,7 +934,7 @@ order by m.candidatefk
 
         $read = $db_result->readNext();
       }
-var_dump($query);
+var_dump($revenue_data);
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
