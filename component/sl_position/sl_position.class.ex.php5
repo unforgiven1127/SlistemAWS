@@ -1328,8 +1328,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $bUpdate = $this->_getModel()->update($asUpdate, 'sl_position_link', 'positionfk = '.$asCurrentPhase['positionfk'].' AND candidatefk = '.$asCurrentPhase['candidatefk']);
 
           $date_completed = date('Y-m-d H:i:s');
-          $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
+ChromePhp::log($date_completed);
 
+          $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
+ChromePhp::log($return);
           if(!$bUpdate)
             return array('error' => __LINE__.' - Unable to update the candidate status.');
         }
