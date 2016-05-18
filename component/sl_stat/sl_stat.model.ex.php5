@@ -925,7 +925,7 @@ order by m.candidatefk
         //var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['userPosition']]['name']))
                 $revenue_data[$user_id][$row['userPosition']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-        if (empty($revenue_data[$row['userPosition']][$user_id]['ccm1']))
+        if (empty($revenue_data[$user_id][$row['userPosition']]['ccm1']))
         {
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
         }
