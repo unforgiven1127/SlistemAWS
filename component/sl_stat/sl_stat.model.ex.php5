@@ -912,7 +912,7 @@ order by m.candidatefk
       $query = 'SELECT s.* ,l.position as userPosition, l.firstname, l.lastname ';
       $query .= 'FROM sl_position_link s ';
       $query .= 'LEFT JOIN login l on l.loginpk = s.created_by ';
-      $query .= 'WHERE active = 0 AND l.position = "Researcher" AND date_completed BETWEEN ("'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'")';
+      $query .= 'WHERE active = 0 AND l.position = "Researcher" AND date_completed BETWEEN "'.$ccm1_start_date.'" AND "'.$ccm1_end_date.'"';
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
