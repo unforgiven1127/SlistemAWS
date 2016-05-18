@@ -1347,7 +1347,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         // -=- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=-
         //last status is always the one active
         $asData['active'] = 1;
-
+ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
         $nLinkPk = $this->_getModel()->add($asData, 'sl_position_link');
         if(empty($nLinkPk))
           return array('error' => __LINE__.' - Could not link the candidate to the position.');
