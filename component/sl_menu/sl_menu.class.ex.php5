@@ -374,7 +374,7 @@ class CSl_menuEx extends CSl_menu
                       </div>
                     </td>
                   </tr>
-                  <tr>
+                  <tr style="margin-left:20px;">
                     <td>
                 <div class="hidden option">Search options</div>
 
