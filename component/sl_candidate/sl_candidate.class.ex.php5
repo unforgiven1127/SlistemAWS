@@ -2753,6 +2753,10 @@ $flag = strpos($test, $control);
         {
             $sQuery.= ' ORDER BY ratio DESC ';
         }
+        else
+        {
+          $sQuery.= ' ORDER BY TRIM(scan.lastname) ASC, ORDER BY TRIM(scan.firstname) ASC ';
+        }
 
         if(!empty($limit))
           $sQuery.= " LIMIT ".$limit;
