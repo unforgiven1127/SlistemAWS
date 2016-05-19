@@ -4911,7 +4911,7 @@ $flag = strpos($test, $control);
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 //$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
-
+      $newArea = 1;
       $nCount = 0;
       if(CDependency::getCpLogin()->isAdmin())
       {
@@ -4934,7 +4934,8 @@ $flag = strpos($test, $control);
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
       {
-        $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
+        $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
+        $newArea++;
       }
 
       return $oForm->getDisplay();
@@ -4942,7 +4943,7 @@ $flag = strpos($test, $control);
 
 
 
-    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
+    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '',$newArea = 5)
     {
       $oLogin = CDependency::getCpLogin();
 
@@ -4981,13 +4982,13 @@ $flag = strpos($test, $control);
 
       if(empty($pasData['type']))
       {
-        switch($nCount)
+        switch($newArea)
         {
-          case 0: $pasData['type'] = 2; break;
-          case 1: $pasData['type'] = 5; break;
-          case 2: $pasData['type'] = 6; break;
-          case 3: $pasData['type'] = 8; break;
-          case 4: $pasData['type'] = 3; break;
+          case 1: $pasData['type'] = 2; break;
+          case 2: $pasData['type'] = 5; break;
+          case 3: $pasData['type'] = 6; break;
+          case 4: $pasData['type'] = 8; break;
+          case 5: $pasData['type'] = 3; break;
           default:
             $pasData['type'] = 5; break;
         }
