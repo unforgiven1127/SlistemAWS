@@ -3,9 +3,9 @@
 <head>
 
 </head>
-<body valign="top">
+<body>
 <?php $total_consultant_count = 0 ?>
-	<table style="margin: 0 auto; text-align: left;">
+	<table >
 		<tr>
 			<td valign="top" >
 				<table class="revenue_table">
