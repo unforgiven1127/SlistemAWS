@@ -3,7 +3,7 @@
 <head>
 
 </head>
-<body>
+<body valign="top">
 <?php $total_consultant_count = 0 ?>
 	<table style="margin: 0 auto; text-align: left;">
 		<tr>
