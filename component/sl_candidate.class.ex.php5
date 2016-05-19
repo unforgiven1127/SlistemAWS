@@ -4447,7 +4447,6 @@ class CSl_candidateEx extends CSl_candidate
 
       for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
       {
-        ChromePhp::log($asTypes);
         $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
       }
 
@@ -4458,6 +4457,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData)
     {
+        ChromePhp::log($asTypes);
       if(!empty($pasData))
         $asDefaultparam = array('readonly' => 'readonly', 'style' => 'background-color: #eee;border-color: #e6e6e6; font-style: italic; color: #777;');
       else
