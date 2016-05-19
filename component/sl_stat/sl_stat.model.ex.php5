@@ -917,9 +917,9 @@ order by m.candidatefk
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
-var_dump($query);
+//var_dump($query);
 //var_dump('<br><br>');
-ChromePhp::log($query);
+//ChromePhp::log($query);
       while($read)
       {
         $row = $db_result->getData();
