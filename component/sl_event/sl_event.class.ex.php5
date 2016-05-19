@@ -137,6 +137,10 @@ class CSl_eventEx extends CSl_event
       $dAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
       $dTwoMonthAgo = date('Y-m-d H:i:s', strtotime('-2 month'));
 
+      $str = 'In My Cart : 11 12 items';
+      preg_match_all('!\d+!', $str, $matches);
+      ChromePhp::log($matches);
+
       // array gelmezse patliyo... duzelt... MCA
       foreach($asNotes as $asNote)
       {
