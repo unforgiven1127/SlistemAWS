@@ -6499,7 +6499,7 @@ die();*/
           $asError[] = 'Industry is empty.';
         if(empty($asData['companyfk']))
           $asError[] = 'Company is empty.';
-        if(empty($asData['occupationpk']))
+        if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
