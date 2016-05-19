@@ -4944,7 +4944,6 @@ $flag = strpos($test, $control);
 
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
     {
-      ChromePhp::log($pasData);
       $oLogin = CDependency::getCpLogin();
 
       if(!empty($pasData))
@@ -4987,8 +4986,10 @@ $flag = strpos($test, $control);
           case 0: $pasData['type'] = 2; break;
           case 1: $pasData['type'] = 5; break;
           case 2: $pasData['type'] = 6; break;
+          case 3: $pasData['type'] = 8; break;
+          case 4: $pasData['type'] = 3; break;
           default:
-            $pasData['type'] = 8; break;
+            $pasData['type'] = 5; break;
         }
       }
 
