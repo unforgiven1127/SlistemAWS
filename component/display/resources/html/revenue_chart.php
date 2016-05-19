@@ -142,7 +142,6 @@
 								<td style='height: 55px;'><center>-</center></td>
 								<td style='height: 55px;'><center>-</center></td>
 								<td style='height: 55px;'><center>-</center></td>
-								<td align='right' style='height: 55px;'>-</td>
 							</tr>
 							";
 						}
