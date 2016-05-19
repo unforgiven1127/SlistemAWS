@@ -12,7 +12,7 @@
 			<td valign="top" >
 				<table class="revenue_table">
 					<tr>
-						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
+						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
@@ -63,7 +63,7 @@
 					?>
 
 					<tr class="revenue_table_footer">
-						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="3">Total</td>
+						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="2">Total</td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>
@@ -73,7 +73,7 @@
 			<td valign="top" >
 			<table class="revenue_table">
 					<tr>
-						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
+						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
@@ -134,7 +134,7 @@
 					?>
 					<?php if($total_consultant_count>0)
 					{
-						for ($i=0; $i < $total_consultant_count ; $i++) { 
+						for ($i=0; $i < $total_consultant_count ; $i++) {
 							echo "
 							<tr>
 								<td align='right' style='height: 50px;'>-</td>
@@ -148,7 +148,7 @@
 						}
 					} ?>
 					<tr class="revenue_table_footer">
-						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="3">Total</td>
+						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="2">Total</td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>
