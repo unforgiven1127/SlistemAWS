@@ -15,8 +15,8 @@
 						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 45px;" class="text_center">Flag</th>
-						<th style="height: 45px; font-size: 300%;overflow:none;" class="text_center">Rank</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
+						<th style="height: 45px; font-size: 300%; overflow:none;" class="text_center">Rank</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
