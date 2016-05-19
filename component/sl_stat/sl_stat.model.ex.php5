@@ -919,6 +919,7 @@ order by m.candidatefk
       $read = $db_result->readFirst();
 //var_dump($query);
 //var_dump('<br><br>');
+ChromePhp::log($query);
       while($read)
       {
         $row = $db_result->getData();
