@@ -1630,6 +1630,27 @@ function _live_dump($pvTrace, $psTitle = null)
 
   }
 
+  function getPositionInformation($position_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_position slp
+    INNER JOIN sl_company slc on slc.sl_companypk = slp.companyfk
+    WHERE slp.sl_positionpk = ".$position_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+      $read = $db_result->readNext();
+    }
+
+    return $row;
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');

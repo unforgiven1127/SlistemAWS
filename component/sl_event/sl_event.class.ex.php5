@@ -137,9 +137,9 @@ class CSl_eventEx extends CSl_event
       $dAMonthAgo = date('Y-m-d H:i:s', strtotime('-1 month'));
       $dTwoMonthAgo = date('Y-m-d H:i:s', strtotime('-2 month'));
 
-      $str = 'In My Cart : 11 12 items';
-      preg_match_all('!\d+!', $str, $matches);
-      ChromePhp::log($matches);
+      //$str = 'In My Cart : 11 12 items';
+      //preg_match_all('!\d+!', $str, $matches);
+      //ChromePhp::log($matches);
 
       // array gelmezse patliyo... duzelt... MCA
       foreach($asNotes as $asNote)
@@ -148,8 +148,10 @@ class CSl_eventEx extends CSl_event
             $exploded = explode('for position #',$asNote['content']);
             $exploded = $exploded[1];
             preg_match_all('!\d+!', $exploded, $position);
-            ChromePhp::log($position);
-            ChromePhp::log($asNote['content']);
+            $position_id = $position[0][0];
+            //$companyInformation = getPositionInformation($position_id);
+            //ChromePhp::log($position); // pozisyonu aldik.....
+            ChromePhp::log($position[0][0]);
         }
         if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
           $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
