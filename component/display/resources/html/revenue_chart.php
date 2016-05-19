@@ -28,8 +28,6 @@
 
 							if (empty($value['Consultant']['nationality']))
 								$flag_pic = 'world_32.png';
-							else if($value['Consultant']['nationality'] == "PK")
-								$flag_pic = 'PK_32.png';
 							else
 								$flag_pic = $value['Consultant']['nationality'].'_32.png';
 					?>
