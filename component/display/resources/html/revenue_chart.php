@@ -21,7 +21,7 @@
 						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
-						<th style="height: 45px; font-size: 300%;" class="text_center">Placed</th>
+						<!--<th style="height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
 
 					<?php
@@ -49,7 +49,7 @@
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>
+							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>-->
 						</tr>
 
 						<?php
@@ -82,7 +82,7 @@
 						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
-						<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>
+						<!--<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
 
 					<?php
@@ -117,7 +117,7 @@
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
-							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>
+							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>-->
 						</tr>
 
 						<?php
