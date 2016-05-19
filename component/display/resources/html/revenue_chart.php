@@ -4,9 +4,7 @@
 
 </head>
 <body>
-
 <?php $total_consultant_count = 0 ?>
-<div style="text-align: center;">
 	<table style="margin: 0 auto; text-align: left;">
 		<tr>
 			<td valign="top" >
@@ -156,7 +154,7 @@
 			</td>
 		</tr>
 	</table>
-</div>
+
 </body>
 
 <script>
