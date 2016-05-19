@@ -7,8 +7,8 @@
 						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
 						<th style="height: 45px; font-size: 300%; overflow:none;" class="text_center">Rank</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
@@ -33,8 +33,8 @@
 					?>
 					<?php if($value['consultant']['signed'] != 0 && ($value['Consultant']['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined")){ $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
-							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $row_number_rank; ?></td>
+							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
@@ -66,8 +66,8 @@
 						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Rank</th>
+						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
 						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
@@ -101,8 +101,8 @@
 						$researcher_rank ++;
 						$total_consultant_count--;?>
 						<tr class="hover_row<?php echo $even; ?>">
-							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $researcher_rank; ?></td>
+							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>
