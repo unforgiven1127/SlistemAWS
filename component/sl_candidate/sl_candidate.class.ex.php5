@@ -4943,7 +4943,7 @@ $flag = strpos($test, $control);
 
 
 
-    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '',$newArea = 5)
+    private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '',$newArea = 0)
     {
       $oLogin = CDependency::getCpLogin();
 
@@ -4980,7 +4980,7 @@ $flag = strpos($test, $control);
         $this->casActiveUser = $oLogin->getGroupMembers(0, '', true, true);
       }
 
-      if(empty($pasData['type']))
+      if($newArea > 0)
       {
         switch($newArea)
         {
@@ -4989,6 +4989,19 @@ $flag = strpos($test, $control);
           case 3: $pasData['type'] = 6; break;
           case 4: $pasData['type'] = 8; break;
           case 5: $pasData['type'] = 3; break;
+          default:
+            $pasData['type'] = 5; break;
+        }
+      }
+      else if(empty($pasData['type']))
+      {
+        switch($nCount)
+        {
+          case 0: $pasData['type'] = 2; break;
+          case 1: $pasData['type'] = 5; break;
+          case 2: $pasData['type'] = 6; break;
+          case 3: $pasData['type'] = 8; break;
+          case 4: $pasData['type'] = 3; break;
           default:
             $pasData['type'] = 5; break;
         }
