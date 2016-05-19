@@ -913,7 +913,7 @@ order by m.candidatefk
                 FROM login l
                 LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '2016-01-01 00:00:00' AND '2016-12-31 23:59:59'
                 LEFT JOIN sl_nationality sln ON l.nationalityfk = sln.sl_nationalitypk
-                WHERE (l.position = 'Researcher' OR l.position = 'Consultant') AND l.status = 1";
+                ";
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
