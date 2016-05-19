@@ -33,7 +33,7 @@
 					?>
 					<?php if($value['consultant']['signed'] != 0 && ($value['Consultant']['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined")){ $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
-							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $row_number_rank; ?></td>
+							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $row_number_rank; ?></td>
 							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
@@ -101,7 +101,7 @@
 						$researcher_rank ++;
 						$total_consultant_count--;?>
 						<tr class="hover_row<?php echo $even; ?>">
-							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $researcher_rank; ?></td>
+							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $researcher_rank; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
