@@ -5128,6 +5128,12 @@ $flag = strpos($test, $control);
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
+      $contactValuesArray = array();
+
+      foreach($candidateContactInfoArray as $key => $value)
+      {
+        array_push($contactValuesArray, $value['value']);
+      }
 
       $nUserPk = (int)getValue('userfk', 0);
       if(empty($nUserPk))
@@ -5165,7 +5171,7 @@ $flag = strpos($test, $control);
         ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
 
-        if (!in_array($contact_info, $candidateContactInfoArray))
+        if (!in_array($contact_info, $contactValuesArray))
         {
           if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
             $sErrorType = 'dba';
@@ -5307,7 +5313,7 @@ $flag = strpos($test, $control);
       }
 
       if(empty($nValidRow))
-        return array('error' => 'No contact details to save... Please input contact details in the "value" field.');
+        return array('error' => 'No contact details to save or already exist... Please input contact details in the "value" field.');
 
       if(!empty($asError['display']))
         return array('error' => 'The forms contains '.count($asError['display']).' error(s).<br /> - '.implode('<br /> - ', $asError['display']));
