@@ -2767,7 +2767,7 @@ $flag = strpos($test, $control);
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
