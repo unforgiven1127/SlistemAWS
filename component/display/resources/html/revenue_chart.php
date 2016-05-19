@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-</head>
-<body>
 <?php $total_consultant_count = 0 ?>
 	<table >
 		<tr>
@@ -155,8 +149,6 @@
 		</tr>
 	</table>
 
-</body>
-
 <script>
 	var url = '<?php echo $url; ?>';
 	var swap_time = <?php echo $swap_time; ?>;
@@ -166,5 +158,3 @@
 		window.location.replace(url);
 	}, (swap_time));*/
 </script>
-
-</html>
