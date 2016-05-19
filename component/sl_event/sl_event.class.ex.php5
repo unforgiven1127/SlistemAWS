@@ -145,6 +145,8 @@ class CSl_eventEx extends CSl_event
       foreach($asNotes as $asNote)
       {
         if (strpos($asNote['content'], 'for position #') !== false) {
+            preg_match_all('!\d+!', $asNote['content'], $position);
+            ChromePhp::log($position);
             ChromePhp::log($asNote['content']);
         }
         if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
