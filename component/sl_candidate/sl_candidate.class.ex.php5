@@ -5127,6 +5127,8 @@ $flag = strpos($test, $control);
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
+      $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
+
       $nUserPk = (int)getValue('userfk', 0);
       if(empty($nUserPk))
         $nUserPk = (int)$this->casCandidateData['loginpk'];
@@ -5159,6 +5161,8 @@ $flag = strpos($test, $control);
 
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
+        $contact_info = $_POST['contact_value'][$nRow];
+        ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
         if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
           $sErrorType = 'dba';

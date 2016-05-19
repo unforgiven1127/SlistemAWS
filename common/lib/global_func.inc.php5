@@ -1630,6 +1630,28 @@ function _live_dump($pvTrace, $psTitle = null)
 
   }
 
+  function getCandidateContactInfo($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_contact slc
+    WHERE slc.itemfk = ".$candidate_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+    $contact_info = array();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+      array_push($contact_info, $row);
+      $read = $db_result->readNext();
+    }
+
+    return $contact_info;
+  }
+
   function getPositionInformation($position_id)
   {
     $oDB = CDependency::getComponentByName('database');
