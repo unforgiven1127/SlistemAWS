@@ -37,7 +37,7 @@
 							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $row_number_rank; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
-							<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>-->
+							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>-->
 						</tr>
@@ -56,7 +56,7 @@
 						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="2">Total</td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
-						<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>
+						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>-->
 					</tr>
 				</table>
 			</td>
@@ -105,7 +105,7 @@
 							<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $researcher_rank; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
-							<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>-->
+							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>-->
 						</tr>
@@ -140,7 +140,7 @@
 						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="2">Total</td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
 						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>
-						<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>
+						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>-->
 					</tr>
 				</table>
 			</td>
