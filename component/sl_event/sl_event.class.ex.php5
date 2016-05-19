@@ -140,7 +140,9 @@ class CSl_eventEx extends CSl_event
       // array gelmezse patliyo... duzelt... MCA
       foreach($asNotes as $asNote)
       {
-        ChromePhp::log($asNote);
+        if (strpos($asNote['content'], 'for position #') !== false) {
+            ChromePhp::log($asNote['content']);
+        }
         if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
           $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
         }
