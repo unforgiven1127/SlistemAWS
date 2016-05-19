@@ -5167,8 +5167,8 @@ $flag = strpos($test, $control);
 
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
-        $contact_info = $_POST['contact_value'][$nRow];
-        ChromePhp::log($contact_info);
+        $contact_info = trim($_POST['contact_value'][$nRow]);
+        //ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
 
         if (!in_array($contact_info, $contactValuesArray))
