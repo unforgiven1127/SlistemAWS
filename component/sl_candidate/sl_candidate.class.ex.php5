@@ -4944,6 +4944,7 @@ $flag = strpos($test, $control);
 
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '')
     {
+      ChromePhp::log($asTypes);
       $oLogin = CDependency::getCpLogin();
 
       if(!empty($pasData))
