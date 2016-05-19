@@ -5164,141 +5164,146 @@ $flag = strpos($test, $control);
         $contact_info = $_POST['contact_value'][$nRow];
         ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
-        if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
-          $sErrorType = 'dba';
-        else
-          $sErrorType = 'display';
 
-        $_POST['contact_value'][$nRow] = trim($_POST['contact_value'][$nRow]);
-
-        if(empty($sValue) || !empty($_POST['delete'][$nRow]))
+        if (!in_array($contact_info, $candidateContactInfoArray))
         {
-          if(isset($_POST['delete'][$nRow]) && !empty($_POST['delete'][$nRow]))
+          if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
+            $sErrorType = 'dba';
+          else
+            $sErrorType = 'display';
+
+          $_POST['contact_value'][$nRow] = trim($_POST['contact_value'][$nRow]);
+
+          if(empty($sValue) || !empty($_POST['delete'][$nRow]))
           {
-            $asContact['delete'][] = (int)$_POST['delete'][$nRow];
+            if(isset($_POST['delete'][$nRow]) && !empty($_POST['delete'][$nRow]))
+            {
+              $asContact['delete'][] = (int)$_POST['delete'][$nRow];
+              $nValidRow++;
+            }
+
+            unset($_POST['contact_value'][$nRow]);
+            unset($_POST['contact_sl_contactpk'][$nRow]);
+            unset($_POST['contact_description'][$nRow]);
+            unset($_POST['contact_type'][$nRow]);
+            unset($_POST['contact_visibility'][$nRow]);
+            unset($_POST['contact_userfk'][$nRow]);
+          }
+          else
+          {
             $nValidRow++;
-          }
 
-          unset($_POST['contact_value'][$nRow]);
-          unset($_POST['contact_sl_contactpk'][$nRow]);
-          unset($_POST['contact_description'][$nRow]);
-          unset($_POST['contact_type'][$nRow]);
-          unset($_POST['contact_visibility'][$nRow]);
-          unset($_POST['contact_userfk'][$nRow]);
-        }
-        else
-        {
-          $nValidRow++;
+            if(!isset($_POST['contact_type'][$nRow]))
+              $_POST['contact_type'][$nRow] = 0;
 
-          if(!isset($_POST['contact_type'][$nRow]))
-            $_POST['contact_type'][$nRow] = 0;
+            if(!isset($_POST['contact_visibility'][$nRow]))
+              $_POST['contact_visibility'][$nRow] = 0;
 
-          if(!isset($_POST['contact_visibility'][$nRow]))
-            $_POST['contact_visibility'][$nRow] = 0;
+            if(!isset($_POST['contact_userfk'][$nRow]))
+              $_POST['contact_userfk'][$nRow] = '';
 
-          if(!isset($_POST['contact_userfk'][$nRow]))
-            $_POST['contact_userfk'][$nRow] = '';
+            if(!isset($_POST['sl_contactpk'][$nRow]))
+              $_POST['sl_contactpk'][$nRow] = 0;
+            else
+              $_POST['sl_contactpk'][$nRow] = (int)$_POST['sl_contactpk'][$nRow];
 
-          if(!isset($_POST['sl_contactpk'][$nRow]))
-            $_POST['sl_contactpk'][$nRow] = 0;
-          else
-            $_POST['sl_contactpk'][$nRow] = (int)$_POST['sl_contactpk'][$nRow];
+            if(!isset($_POST['contact_description'][$nRow]))
+              $_POST['contact_description'][$nRow] = 0;
 
-          if(!isset($_POST['contact_description'][$nRow]))
-            $_POST['contact_description'][$nRow] = 0;
+            $_POST['contact_type'][$nRow] = (int)$_POST['contact_type'][$nRow];
+            $_POST['contact_visibility'][$nRow] = (int)$_POST['contact_visibility'][$nRow];
 
-          $_POST['contact_type'][$nRow] = (int)$_POST['contact_type'][$nRow];
-          $_POST['contact_visibility'][$nRow] = (int)$_POST['contact_visibility'][$nRow];
+            //1. controls values
+            switch($_POST['contact_type'][$nRow])
+            {
+              case 1:
+              case 2:
+              case 4:
+              case 6:
 
-          //1. controls values
-          switch($_POST['contact_type'][$nRow])
-          {
-            case 1:
-            case 2:
-            case 4:
-            case 6:
-
-              //cleaning data --> crap from [slistem postgresql]
-              $_POST['contact_value'][$nRow] = trim(str_replace(array("\n","\r", "\r\n", "\t"), '',  $_POST['contact_value'][$nRow]));
-              $sPhone = preg_replace('/[0-9\. \-+()]/', '', $_POST['contact_value'][$nRow]);
-              if(!empty($sPhone))
-              {
-                $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': phone number ['.$_POST['contact_value'][$nRow].'] contains invalid characters.['.$sPhone.']';
-              }
-              else
-              {
-                $sPhone = preg_replace('/[^0-9]/', '', $_POST['contact_value'][$nRow]);
-                if(strlen($sPhone) < 8)
-                  $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': phone number ['.$_POST['contact_value'][$nRow].']  too short.';
-              }
-
-              break;
-
-            case 5:
-
-              if(!isValidEmail($_POST['contact_value'][$nRow]))
-                $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  email ['.$_POST['contact_value'][$nRow].']  isn\'t valid.';
-
-              break;
-
-            case 3:
-            case 7:
-            case 8:
-
-              if(strtolower(substr($_POST['contact_value'][$nRow], 0, 4)) != 'http')
-                $_POST['contact_value'][$nRow] = 'http://'.$_POST['contact_value'][$nRow];
-
-              if(!isValidUrl($_POST['contact_value'][$nRow]) || !isValidUrl($_POST['contact_value'][$nRow], true))
-              {
-                $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  web url ['.$_POST['contact_value'][$nRow].']  isn\'t valid.';
-              }
-              else
-              {
-                if((int)$_POST['contact_type'][$nRow] == 7)
+                //cleaning data --> crap from [slistem postgresql]
+                $_POST['contact_value'][$nRow] = trim(str_replace(array("\n","\r", "\r\n", "\t"), '',  $_POST['contact_value'][$nRow]));
+                $sPhone = preg_replace('/[0-9\. \-+()]/', '', $_POST['contact_value'][$nRow]);
+                if(!empty($sPhone))
                 {
-                  if(stripos($_POST['contact_value'][$nRow], 'facebook') === false)
-                    $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  facebook url ['.$_POST['contact_value'][$nRow].']  must contain "facebook" in the url.['.$_POST['contact_value'][$nRow].'] ';
+                  $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': phone number ['.$_POST['contact_value'][$nRow].'] contains invalid characters.['.$sPhone.']';
+                }
+                else
+                {
+                  $sPhone = preg_replace('/[^0-9]/', '', $_POST['contact_value'][$nRow]);
+                  if(strlen($sPhone) < 8)
+                    $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': phone number ['.$_POST['contact_value'][$nRow].']  too short.';
                 }
 
-                if((int)$_POST['contact_type'][$nRow] == 8)
+                break;
+
+              case 5:
+
+                if(!isValidEmail($_POST['contact_value'][$nRow]))
+                  $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  email ['.$_POST['contact_value'][$nRow].']  isn\'t valid.';
+
+                break;
+
+              case 3:
+              case 7:
+              case 8:
+
+                if(strtolower(substr($_POST['contact_value'][$nRow], 0, 4)) != 'http')
+                  $_POST['contact_value'][$nRow] = 'http://'.$_POST['contact_value'][$nRow];
+
+                if(!isValidUrl($_POST['contact_value'][$nRow]) || !isValidUrl($_POST['contact_value'][$nRow], true))
                 {
-                  if(stripos($_POST['contact_value'][$nRow], 'linkedin') === false)
-                    $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  linkedin url ['.$_POST['contact_value'][$nRow].']  must contain "linkedin" in the url.['.$_POST['contact_value'][$nRow].'] ';
+                  $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  web url ['.$_POST['contact_value'][$nRow].']  isn\'t valid.';
                 }
-              }
-              break;
+                else
+                {
+                  if((int)$_POST['contact_type'][$nRow] == 7)
+                  {
+                    if(stripos($_POST['contact_value'][$nRow], 'facebook') === false)
+                      $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  facebook url ['.$_POST['contact_value'][$nRow].']  must contain "facebook" in the url.['.$_POST['contact_value'][$nRow].'] ';
+                  }
 
+                  if((int)$_POST['contact_type'][$nRow] == 8)
+                  {
+                    if(stripos($_POST['contact_value'][$nRow], 'linkedin') === false)
+                      $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  linkedin url ['.$_POST['contact_value'][$nRow].']  must contain "linkedin" in the url.['.$_POST['contact_value'][$nRow].'] ';
+                  }
+                }
+                break;
+
+            }
+
+
+            //2. check visibility
+            if($_POST['contact_visibility'][$nRow] == 4)
+            {
+              if(empty($_POST['contact_userfk'][$nRow]))
+                $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  if visibility is set to "custom", you need to select users.';
+            }
+
+
+            if(empty($_POST['contact_type'][$nRow]) || empty( $_POST['contact_visibility'][$nRow]))
+              $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': Contact type and/or visibility invalid.';
+
+
+            $asTmp = array('sl_contactpk' => $_POST['sl_contactpk'][$nRow],
+                  'type' => $_POST['contact_type'][$nRow], 'item_type' => 'candi', 'itemfk' => $nCandidatePk,
+                  'date_create' => date('Y-m-d H:i:s'), 'loginfk' => $nUserPk,
+                  'value' => filter_var($_POST['contact_value'][$nRow], FILTER_SANITIZE_STRING),
+                  'description' => filter_var($_POST['contact_description'][$nRow], FILTER_SANITIZE_STRING),
+                  'visibility' => $_POST['contact_visibility'][$nRow],
+                  'groupfk' => 0, 'userfk' => $_POST['contact_userfk'][$nRow]);
+
+            if(!empty($_POST['sl_contactpk'][$nRow]))
+            {
+                $anPk[] = $_POST['sl_contactpk'][$nRow];
+                $asContact['update'][] = $asTmp;
+            }
+            else
+              $asContact['insert'][] = $asTmp;
           }
-
-
-          //2. check visibility
-          if($_POST['contact_visibility'][$nRow] == 4)
-          {
-            if(empty($_POST['contact_userfk'][$nRow]))
-              $asError[$sErrorType][] = 'Contact row #'.($nRow+1).':  if visibility is set to "custom", you need to select users.';
-          }
-
-
-          if(empty($_POST['contact_type'][$nRow]) || empty( $_POST['contact_visibility'][$nRow]))
-            $asError[$sErrorType][] = 'Contact row #'.($nRow+1).': Contact type and/or visibility invalid.';
-
-
-          $asTmp = array('sl_contactpk' => $_POST['sl_contactpk'][$nRow],
-                'type' => $_POST['contact_type'][$nRow], 'item_type' => 'candi', 'itemfk' => $nCandidatePk,
-                'date_create' => date('Y-m-d H:i:s'), 'loginfk' => $nUserPk,
-                'value' => filter_var($_POST['contact_value'][$nRow], FILTER_SANITIZE_STRING),
-                'description' => filter_var($_POST['contact_description'][$nRow], FILTER_SANITIZE_STRING),
-                'visibility' => $_POST['contact_visibility'][$nRow],
-                'groupfk' => 0, 'userfk' => $_POST['contact_userfk'][$nRow]);
-
-          if(!empty($_POST['sl_contactpk'][$nRow]))
-          {
-              $anPk[] = $_POST['sl_contactpk'][$nRow];
-              $asContact['update'][] = $asTmp;
-          }
-          else
-            $asContact['insert'][] = $asTmp;
         }
+
       }
 
       if(empty($nValidRow))
