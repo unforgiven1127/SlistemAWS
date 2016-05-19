@@ -149,12 +149,12 @@ class CSl_eventEx extends CSl_event
             $exploded = $exploded[1];
             preg_match_all('!\d+!', $exploded, $position);
             $position_id = $position[0][0];
-            //$companyInformation = getPositionInformation($position_id);
+            $companyInformation = getPositionInformation($position_id);
             //ChromePhp::log($position); // pozisyonu aldik.....
-            ChromePhp::log($position[0][0]);
+            //ChromePhp::log($position[0][0]);
         }
         if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
-          $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$asNote['companyName'].'</i></b>';
+          $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$companyInformation['name'].'</i></b>';
         }
 
         if($asNote['date_display'] > $dTwoMonthAgo)
