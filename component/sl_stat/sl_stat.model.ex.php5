@@ -930,7 +930,7 @@ order by m.candidatefk
         $users = array($user_id);
         //array_push($users,$user_id);
         $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
-
+var_dump($ccms);
         $ccm1_count = $ccms['researcher'][$user_id]['ccm1_done'];
         $mccm_count = (int)$ccms['researcher'][$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
 
@@ -1168,7 +1168,7 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     //}
 
-//var_dump($query);
+var_dump($query);
     //exit;
     //else
     /*{
