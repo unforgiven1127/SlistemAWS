@@ -7,11 +7,11 @@
 						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 45px; font-size: 300%; overflow:none;" class="text_center">Rank</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
+						<th style="height: 85px; font-size: 250%; overflow:none;" class="text_center">Rank</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Flag</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Name</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Signed</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
 						<!--<th style="height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
@@ -63,14 +63,16 @@
 			<td valign="top" >
 			<table class="revenue_table">
 					<tr>
-						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
+						<th style="width:50%; font-size: 400%; white-space: nowrap;"  class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Rank</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Flag</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Name</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Signed</th>
-						<th style="height: 45px; font-size: 300%;" class="text_center">Paid</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Rank</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Flag</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Name</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">Revenue<br>(15%)</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center"># of <br>Placements</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">MCCM's</th>
+						<th style="height: 85px; font-size: 250%;" class="text_center">CCM1</th>
 						<!--<th class="text_center">Team</th>-->
 						<!--<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
@@ -105,7 +107,9 @@
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
-							<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($value['researcher']['paid'], $decimals, '.', ','); ?></td>
+							<td style="height: 55px; font-size: 250%;" class="text_right">1</td>
+							<td style="height: 55px; font-size: 250%;" class="text_center">2</td>
+							<td style="height: 55px; font-size: 250%;" class="text_center">4</td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>-->
 						</tr>
@@ -138,8 +142,8 @@
 					} ?>
 					<tr class="revenue_table_footer">
 						<td style="height: 55px; font-size: 250%;" class="text_center" colspan="3">Total</td>
-						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
-						<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>
+						<td style="height: 55px; font-size: 250%;" class="text_left" colspan="4">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
+						<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>-->
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>-->
 					</tr>
 				</table>

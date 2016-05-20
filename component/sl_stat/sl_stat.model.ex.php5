@@ -1149,7 +1149,7 @@ order by m.candidatefk
     $end_date_stamp = strtotime($end_date);
 
     //if ($group == 'consultant')
-    if (1)
+    if(1)
     {
       $query = 'SELECT positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
       $query .= ' FROM sl_position_link';
