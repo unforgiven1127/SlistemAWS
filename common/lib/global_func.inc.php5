@@ -1595,8 +1595,8 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $_month = date('m');
     $_day = date('m');
-    $_start_date = $year."-".$_month."-01 00:00:00";
-    $_end_date = $year."-".$_month."-".$_day." 23:59:59";
+    $_start_date = $year."-".$_month."-01";
+    $_end_date = $year."-".$_month."-".$_day;
 
     $totalDay = getWorkingDays($_start_date,$_end_date,"");
 
