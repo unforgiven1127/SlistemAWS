@@ -941,21 +941,21 @@ order by m.candidatefk
           $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
         if (empty($revenue_data[$user_id][$row['position']]['nationality']))
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
-        if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
+        if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
           echo $revenue_data[$user_id][$row['position']]['name'].'<br>';
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = $ccm1_count;
           var_dump($revenue_data[$user_id][$row['userPosition']]['ccm1']);
           echo "<br><br><br>";
         }
-        if (empty($revenue_data[$user_id][$row['position']]['mccm']))
+        if(empty($revenue_data[$user_id][$row['position']]['mccm']))
         {
           $revenue_data[$user_id][$row['userPosition']]['mccm'] = $mccm_count;
         }
 
         $read = $db_result->readNext();
       }
-//var_dump($revenue_data);
+var_dump($revenue_data);
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
