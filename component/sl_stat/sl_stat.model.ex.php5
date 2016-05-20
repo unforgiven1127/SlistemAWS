@@ -1024,11 +1024,11 @@ order by m.candidatefk
                 $revenue_data[$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
             if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
             {
-              $revenue_data[$user_id][$row['userPosition']]['ccm1'] = $ccm1_count;
+              $revenue_data[$user_id][$row['user_position']]['ccm1'] = $ccm1_count;
             }
             if(empty($revenue_data[$user_id][$row['position']]['mccm']))
             {
-              $revenue_data[$user_id][$row['userPosition']]['mccm'] = $mccm_count;
+              $revenue_data[$user_id][$row['user_position']]['mccm'] = $mccm_count;
             }
           }
 
