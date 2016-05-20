@@ -927,8 +927,8 @@ order by m.candidatefk
         //var_dump($row);
         $user_id = $row['loginpk'];
 
-        $users = array();
-        array_push($users,$user_id);
+        $users = array($user_id);
+        //array_push($users,$user_id);
         $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
 
         $ccm1_count = $ccms['researcher'][$id]['ccm1_done'];
