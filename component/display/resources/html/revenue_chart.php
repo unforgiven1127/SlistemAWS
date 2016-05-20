@@ -136,6 +136,8 @@
 								<td style='height: 55px;'><center>-</center></td>
 								<td style='height: 55px;'><center>-</center></td>
 								<td style='height: 55px;'><center>-</center></td>
+								<td style='height: 55px;'><center>-</center></td>
+								<td style='height: 55px;'><center>-</center></td>
 							</tr>
 							";
 						}
