@@ -875,6 +875,78 @@ order by m.candidatefk
 
   public function get_revenue_data($request_date = '', $location = '')
   {
+
+//kaybolan bilgiler icin
+
+$query = 'SELECT slp.candidatefk, slp.positionfk  FROM sl_position_link slp group by slp.candidatefk, slp.positionfk ';
+$candidates_positions = $this->oDB->executeQuery($query);
+$candidates_positions = $candidates_positions->getAll();
+
+/*$query = 'SELECT distinct(slp.positionfk) as position FROM sl_position_link slp ';
+$positions = $this->oDB->executeQuery($query);
+$positions = $positions->getAll();*/
+
+//var_dump($candidates);
+//
+//var_dump($positions);
+
+$allLinks = array();
+
+foreach ($candidates_positions as $key => $candidates_position)
+{
+  $candidate = $candidates_position['candidatefk'];
+  $position = $candidates_position['positionfk'];
+
+  $query = 'SELECT * FROM sl_position_link slp WHERE slp.candidatefk = '.$candidate.' AND positionfk = '.$position.' ORDER BY date_created DESC';
+
+  $link = $this->oDB->executeQuery($query);
+  $link = $link->getAll();
+
+  array_push($allLinks, $link);
+}
+
+$updatedLinks = array();
+
+foreach ($allLinks as $key => $link)
+{
+  $i = 0;
+  foreach ($link as $key => $item)
+  {
+    //echo $key.'<br><br>';
+    $next = $key+1;
+    //echo $next.'<br><br>';
+    if(isset($link[$next]))
+    {
+      array_push($updatedLinks,$link[$next]["sl_position_linkpk"]);
+      //var_dump($link);
+//echo '<br><br>';
+      //var_dump($link[$next]);
+//echo '<br><br>';
+      $query = "UPDATE sl_position_link SET date_completed = '".$item["date_created"]."' WHERE sl_position_linkpk = ".$link[$next]["sl_position_linkpk"];
+      //var_dump($query);
+      //exit;
+      $this->oDB->executeQuery($query);
+    }
+  }
+  //echo $i.' - ';
+  //echo '<br><br>';
+
+}
+
+echo 'Done';
+
+//var_dump($updatedLinks);
+exit;
+
+//kaybolan bilgiler icin
+
+
+
+
+
+
+
+
     $revenue_data = $revenue_data_raw = array();
 
     if (empty($request_date))
