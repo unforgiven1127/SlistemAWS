@@ -1599,7 +1599,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $_end_date = $year."-".$_month."-".$_day;
 
     $totalDay = getWorkingDays($_start_date,$_end_date,"");
-
+ChromePhp::log($totalDay);
     $met_temp = (27 / $work_days)*$totalDay;
     $play_temp = (7 / $work_days)*$totalDay;
     $position_temp = (5 / $work_days)*$totalDay;
