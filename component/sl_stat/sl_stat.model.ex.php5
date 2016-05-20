@@ -943,7 +943,7 @@ order by m.candidatefk
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
         if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
-          echo 'ccm1 icerde <br>';
+          echo $revenue_data[$user_id][$row['position']]['name'].'<br>';
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = $ccm1_count;
           var_dump($revenue_data[$user_id][$row['userPosition']]['ccm1']);
           echo "<br><br><br>";
@@ -1171,7 +1171,7 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     //}
 
-var_dump($query);
+//var_dump($query);
     //exit;
     //else
     /*{
