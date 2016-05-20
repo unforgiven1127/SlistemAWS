@@ -1031,7 +1031,7 @@ order by m.candidatefk
               $revenue_data[$user_id][$row['user_position']]['mccm'] = $mccm_count;
             }
           }
-
+var_dump($revenue_data);
           if (!isset($revenue_data[$user_id][$row['user_position']]['paid']))
             $revenue_data[$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']]['signed'] = $revenue_data[$user_id][$row['user_position']]['total_amount'] = 0;
 
