@@ -1604,8 +1604,8 @@ ChromePhp::log($totalDay);
     $play_temp = (7 / $work_days)*$totalDay;
     $position_temp = (5 / $work_days)*$totalDay;
 
-    $array['met_target'] = round($totalDay);
-    $array['in_play_target'] = round($play_temp);
+    $array['met_target'] = round($_start_date);
+    $array['in_play_target'] = round($_end_date);
     $array['position_target'] = round($position_temp);
 
     return $array;
