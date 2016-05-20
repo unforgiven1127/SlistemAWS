@@ -926,6 +926,11 @@ order by m.candidatefk
         $row = $db_result->getData();
         //var_dump($row);
         $user_id = $row['loginpk'];
+        $ccms = $this->get_ccm_data($user_id, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
+
+        $ccm1_count = $ccms['researcher'][$id]['ccm1_done'];
+        $mccm_count = (int)$ccms['researcher'][$id]['ccm2_done'] + (int)$ccms['researcher'][$id]['mccm_done'];
+
         //var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['position']]['name']))
             $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
@@ -935,11 +940,11 @@ order by m.candidatefk
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
         if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
-          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
+          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = $ccm1_count;
         }
-        else
+        if (empty($revenue_data[$user_id][$row['position']]['mccm']))
         {
-          $revenue_data[$user_id][$row['userPosition']]['ccm1']++;
+          $revenue_data[$user_id][$row['userPosition']]['mccm'] = $mccm_count;
         }
 
         $read = $db_result->readNext();
