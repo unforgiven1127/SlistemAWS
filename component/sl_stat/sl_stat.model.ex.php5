@@ -1151,25 +1151,25 @@ order by m.candidatefk
 
   public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher')
   {
-    var_dump($user_ids);
+    //var_dump($user_ids);
     $ccm_data = $repeating_info = $ccm_keys = array();
 
     $start_date_stamp = strtotime($start_date);
     $end_date_stamp = strtotime($end_date);
 
     //if ($group == 'consultant')
-    if(1)
-    {
+    //if(1)
+    //{
       $query = 'SELECT positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
-    }
+    //}
 
-var_dump($query);
-    exit;
+//var_dump($query);
+    //exit;
     //else
     /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
