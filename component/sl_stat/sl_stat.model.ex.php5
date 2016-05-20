@@ -1149,7 +1149,6 @@ order by m.candidatefk
   public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher')
   {
     //var_dump($user_ids);
-    exit;
     $ccm_data = $repeating_info = $ccm_keys = array();
 
     $start_date_stamp = strtotime($start_date);
