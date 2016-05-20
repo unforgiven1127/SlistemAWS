@@ -1072,7 +1072,7 @@ order by m.candidatefk
       uasort($revenue_data, sort_multi_array_by_value('total_amount', 'reverse'));
     }
     //echo "<br><br>";
-    //var_dump($revenue_data);//
+    var_dump($revenue_data);//
     return $revenue_data;
   }
 
