@@ -930,7 +930,7 @@ order by m.candidatefk
         $users = array($user_id);
         //array_push($users,$user_id);
         $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
-var_dump($ccms);
+//var_dump($ccms);
         $ccm1_count = $ccms[$user_id]['ccm1_done'];
         $mccm_count = (int)$ccms[$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
 
@@ -943,7 +943,10 @@ var_dump($ccms);
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
         if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
+          echo 'ccm1 icerde <br>';
           $revenue_data[$user_id][$row['userPosition']]['ccm1'] = $ccm1_count;
+          var_dump($revenue_data[$user_id][$row['userPosition']]['ccm1']);
+          echo "<br><br><br>";
         }
         if (empty($revenue_data[$user_id][$row['position']]['mccm']))
         {
