@@ -944,10 +944,18 @@ order by m.candidatefk
 
         if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
+          if($ccm1_count == null)
+          {
+            $ccm1_count = 0;
+          }
           $revenue_data[$user_id][$row['position']]['ccm1'] = $ccm1_count;
         }
         if(empty($revenue_data[$user_id][$row['position']]['mccm']))
         {
+          if($mccm_count == null)
+          {
+            $mccm_count = 0;
+          }
           $revenue_data[$user_id][$row['position']]['mccm'] = $mccm_count;
         }
 
