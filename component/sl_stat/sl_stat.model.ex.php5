@@ -941,13 +941,13 @@ order by m.candidatefk
           $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
         if (empty($revenue_data[$user_id][$row['position']]['nationality']))
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
-        if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
+        if(empty($revenue_data[$user_id][$row['user_position']]['ccm1']))
         {
-          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
+          $revenue_data[$user_id][$row['user_position']]['ccm1'] = $ccm1_count;
         }
-        if(empty($revenue_data[$user_id][$row['position']]['mccm']))
+        if(empty($revenue_data[$user_id][$row['user_position']]['mccm']))
         {
-          $revenue_data[$user_id][$row['userPosition']]['mccm'] = 0;
+          $revenue_data[$user_id][$row['user_position']]['mccm'] = $mccm_count;
         }
 
         $read = $db_result->readNext();
@@ -1022,16 +1022,8 @@ order by m.candidatefk
 
             if (empty($revenue_data[$user_id][$row['user_position']]['name']))
                 $revenue_data[$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-            if(empty($revenue_data[$user_id][$row['user_position']]['ccm1']))
-            {
-              $revenue_data[$user_id][$row['user_position']]['ccm1'] = $ccm1_count;
-            }
-            if(empty($revenue_data[$user_id][$row['user_position']]['mccm']))
-            {
-              $revenue_data[$user_id][$row['user_position']]['mccm'] = $mccm_count;
-            }
+
           }
-var_dump($revenue_data);
           if (!isset($revenue_data[$user_id][$row['user_position']]['paid']))
             $revenue_data[$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']]['signed'] = $revenue_data[$user_id][$row['user_position']]['total_amount'] = 0;
 
