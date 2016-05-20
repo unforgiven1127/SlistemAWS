@@ -1594,18 +1594,18 @@ function _live_dump($pvTrace, $psTitle = null)
     $work_days = countDays($year, $month, array(0, 6));
 
     $_month = date('m');
-    $_day = date('m');
+    $_day = date('d');
     $_start_date = $year."-".$_month."-01";
     $_end_date = $year."-".$_month."-".$_day;
 
     $totalDay = getWorkingDays($_start_date,$_end_date,"");
-ChromePhp::log($totalDay);
+
     $met_temp = (27 / $work_days)*$totalDay;
     $play_temp = (7 / $work_days)*$totalDay;
     $position_temp = (5 / $work_days)*$totalDay;
 
-    $array['met_target'] = ($_start_date);
-    $array['in_play_target'] = ($_end_date);
+    $array['met_target'] = round($met_temp);
+    $array['in_play_target'] = round($play_temp);
     $array['position_target'] = round($position_temp);
 
     return $array;
