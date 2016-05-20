@@ -941,13 +941,14 @@ order by m.candidatefk
           $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
         if (empty($revenue_data[$user_id][$row['position']]['nationality']))
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
-        if(empty($revenue_data[$user_id][$row['user_position']]['ccm1']))
+
+        if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
-          $revenue_data[$user_id][$row['user_position']]['ccm1'] = $ccm1_count;
+          $revenue_data[$user_id][$row['position']]['ccm1'] = $ccm1_count;
         }
-        if(empty($revenue_data[$user_id][$row['user_position']]['mccm']))
+        if(empty($revenue_data[$user_id][$row['position']]['mccm']))
         {
-          $revenue_data[$user_id][$row['user_position']]['mccm'] = $mccm_count;
+          $revenue_data[$user_id][$row['position']]['mccm'] = $mccm_count;
         }
 
         $read = $db_result->readNext();
