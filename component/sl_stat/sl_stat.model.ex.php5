@@ -1148,7 +1148,7 @@ order by m.candidatefk
 
   public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher')
   {
-    var_dump($user_ids);
+    //var_dump($user_ids);
     exit;
     $ccm_data = $repeating_info = $ccm_keys = array();
 
@@ -1165,7 +1165,10 @@ order by m.candidatefk
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
     }
-    else
+
+var_dump($query);
+    exit;
+    //else
     /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
       $query .= ' sl_position_link.date_created as ccm_create_date, sl_meeting.created_by';
