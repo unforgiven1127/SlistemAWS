@@ -108,8 +108,8 @@
 							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_right">1</td>
-							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['mccm']; ?></td>
-							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['ccm1']; ?></td>
+							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['researcher']['mccm']; ?></td>
+							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['researcher']['ccm1']; ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>-->
 						</tr>
