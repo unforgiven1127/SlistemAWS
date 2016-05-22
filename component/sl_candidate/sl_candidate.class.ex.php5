@@ -1394,7 +1394,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, $pasCandidateData['sl_candidatepk'], $asItem);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-        $sHTML.= '<li><a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/tabs/contact_24.png" title="Add/edit contact Details"/> Add contact details</a></li>';
+        $sHTML.= '<li><a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/tabs/contact_24.png" title="Add/edit contact details"/> Add contact details</a></li>';
 
         $sURL = $oPage->getAjaxUrl('sharedspace', CONST_ACTION_ADD, CONST_SS_TYPE_DOCUMENT, 0, $asItem);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
@@ -1489,7 +1489,7 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
+      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact Details</a>';
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       if($bRead)
