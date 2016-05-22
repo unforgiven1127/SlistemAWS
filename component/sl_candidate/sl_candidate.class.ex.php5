@@ -1490,10 +1490,6 @@ class CSl_candidateEx extends CSl_candidate
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add new contact</a>';
-
-      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Edit contacts</a>';
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
