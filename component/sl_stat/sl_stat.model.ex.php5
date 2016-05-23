@@ -1258,19 +1258,25 @@ if ($group == 'researcher'){
 
       $array_key = '';
 
+      $row_create_date = strtotime($row['ccm_create_date']);
+      $row_complete_date = strtotime($row['date_completed']);
+      $control_start_date = strtotime($start_date);
+      $control_end_date = strtotime($end_date);
+
+
       if ($row['status'] == 51)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        if($row['ccm_create_date'] >= $start_date && $row['ccm_create_date'] <= $end_date)
+        if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
         {
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
         }
-        if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date && $diff < 180)
+        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
         {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1293,14 +1299,14 @@ if ($group == 'researcher'){
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
-          if($row['ccm_create_date'] >= $start_date && $row['ccm_create_date'] <= $end_date)
+          if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
           {
             $ccm_data[$row['created_by']]['ccm2'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
 
-          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date && $diff < 180)
+          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
           {
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1337,14 +1343,14 @@ if ($group == 'researcher'){
 
           $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
-          if($row['ccm_create_date'] >= $start_date && $row['ccm_create_date'] <= $end_date)
+          if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
           {
             $ccm_data[$row['created_by']]['mccm'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
 
-          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date  && $diff < 180)
+          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
           {
             //$ccm_data[$row['created_by']]['mccm_done'] += 1;
             //$ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
