@@ -623,6 +623,8 @@ define('CONST_ACTION_VIEW_DETAILED', 'ppavd');
 define('CONST_ACTION_FASTEDIT', 'ppafe');
 define('CONST_ACTION_EDIT', 'ppae');
 define('CONST_ACTION_ADD', 'ppaa');
+define('CONTACT_ADD', 'cadd');
+define('CONTACT_EDIT', 'cedit');
 define('CONST_ACTION_SAVEADD', 'ppasa');
 define('CONST_ACTION_SAVEEDIT', 'ppase');
 define('CONST_ACTION_VALIDATE', 'ppava');
