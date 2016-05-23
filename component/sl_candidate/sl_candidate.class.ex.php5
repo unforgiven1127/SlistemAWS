@@ -5164,11 +5164,11 @@ ChromePhp::log("test");
 
 ChromePhp::log($_POST['sl_contactpk']);
 
-      $edit_flag = false;
+      $edit_flag = true;
       foreach ($_POST['sl_contactpk'] as $key => $value) {
         if($value == 0)
         {
-          $edit_flag = true;
+          $edit_flag = false;
         }
       }
 
