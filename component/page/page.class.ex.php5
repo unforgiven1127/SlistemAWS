@@ -234,6 +234,11 @@ class CPageEx extends CPage
     if(empty($this->csMode))
       $this->csMode = $psMode;
 
+ChromePhp::log($this->csUid);
+ChromePhp::log($this->csAction);
+ChromePhp::log($this->csType);
+ChromePhp::log($this->cnPk);
+
     $this->coSettings = CDependency::getComponentByName('settings');
     if(empty($this->coSettings))
       exit('Could not load settings component. Sorry, you can not go further.');
@@ -333,10 +338,7 @@ class CPageEx extends CPage
     //--------------------------------------------------------------------
     // CASE 1 : User don't have the right to access the page
     //--------------------------------------------------------------------
-ChromePhp::log($this->csUid);
-ChromePhp::log($this->csAction);
-ChromePhp::log($this->csType);
-ChromePhp::log($this->cnPk);
+
 
     if(!$this->coRight->canAccess($this->csUid, $this->csAction, $this->csType, $this->cnPk))
     {
