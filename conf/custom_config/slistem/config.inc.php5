@@ -59,6 +59,9 @@
   define('CONST_CANDIDATE_TYPE_COMP', 'comp');
   define('CONST_CANDIDATE_TYPE_POS', 'pos');
 
+  define('CONTACT_ADD', 'cadd');
+  define('CONTACT_EDIT', 'cedit');
+
   define('CONST_CANDIDATE_TYPE_CONTACT', 'cont');
   define('CONST_CANDIDATE_TYPE_CONTACT_SHOW', 'cont_show');
   define('CONST_CANDIDATE_TYPE_DOC', 'doc');
