@@ -5162,7 +5162,7 @@ ChromePhp::log("test");
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-
+ChromePhp::log($_POST['sl_contactpk']);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
@@ -5182,6 +5182,7 @@ ChromePhp::log("test");
 
       set_array($_POST['contact_value'], array());
       $asContact = array('update' => array(), 'insert' => array(), 'delete' => array());
+
 
       $bEmpty = true;
       foreach($_POST['contact_value'] as $nRow => $sValue)
