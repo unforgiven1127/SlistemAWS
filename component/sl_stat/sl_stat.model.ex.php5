@@ -1178,7 +1178,7 @@ order by m.candidatefk
 
     else if ($group == 'researcher')
     {
-      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
+      $query = 'SELECT slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active';
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
@@ -1275,11 +1275,24 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+
+          if($group == 'researcher')
+          {
+            $ccm_data[$row['meeting_created_by']]['ccm1'] += 1;
+            $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
+              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+          }
         }
         if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
         {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+
+            if($group == 'researcher')
+            {
+              $ccm_data[$row['meeting_created_by']]['ccm1_done'] += 1;
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+            }
         }
       }
       else if ($row['status'] == 52)
@@ -1304,12 +1317,25 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm2'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+
+            if($group == 'researcher')
+            {
+              $ccm_data[$row['meeting_created_by']]['ccm2'] += 1;
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
+                'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+            }
           }
 
           if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
           {
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+
+            if($group == 'researcher')
+            {
+              $ccm_data[$row['meeting_created_by']]['ccm2_done'] += 1;
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+            }
           }
 
         //}
@@ -1348,6 +1374,13 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['mccm'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+
+            if($group == 'researcher')
+            {
+              $ccm_data[$row['meeting_created_by']]['mccm'] += 1;
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
+                'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+            }
           }
 
           if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
@@ -1357,6 +1390,12 @@ order by m.candidatefk
 
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+
+            if($group == 'researcher')
+            {
+              $ccm_data[$row['meeting_created_by']]['mccm_done'] += 1;
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+            }
           }
 
           /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]) &&
