@@ -381,11 +381,11 @@ ChromePhp::log($this->csAction);
             break;
 
           case CONTACT_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"add"))));
             break;
 
           case CONTACT_EDIT:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"edit"))));
             break;
 
           case CONST_ACTION_SAVEADD:
@@ -4899,10 +4899,12 @@ ChromePhp::log($sQuery);
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $page_type = "add")
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
+
+ChromePhp::log($page_type);
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
@@ -5468,21 +5470,10 @@ ChromePhp::log($sQuery);
     // ====================================================================================
     // ====================================================================================
     // start CANDIDATE section
-    private function _getCandidateAddForm($pnCandidatePk = 0, $type ="add")
+    private function _getCandidateAddForm($pnCandidatePk = 0)
     {
       if(!assert('is_integer($pnCandidatePk)'))
         $pnCandidatePk = 0;
-
-ChromePhp::log($type);
-
-if($type == "add")
-{
-  ChromePhp::log('add');
-}
-else if($type == "edit")
-{
-  ChromePhp::log('edit');
-}
 
       $bDisplayAllTabs = true;
       $asAttribute = array();
