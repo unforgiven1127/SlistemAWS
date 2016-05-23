@@ -4488,7 +4488,7 @@ class CSl_statEx extends CSl_stat
           }
 
           $stats_data['researcher'][$id]['placedRevenue_info'] = $addArray;
-var_dump($finalArray);
+var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
           exit;
 
 /*echo $id.'<br><br><br>';
