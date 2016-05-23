@@ -239,10 +239,20 @@
 		</td>
 		<td>
 			<div class="stat_holder">
-			<?php echo $value['placed']; ?>
+			<?php
+				if($value['position'] == "Researcher")
+				{echo $value['placedRevenue']; }
+				else
+				{echo $value['placed'];}
+			 ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['placed_info'] as $stat_info): ?>
+			<?php
+			if($value['position'] == "Researcher")
+			{$foreachValue = $value['placedRevenue_info'];}
+			else
+			{$foreachValue = $value['placed_info'];}
+			foreach ($foreachValue as $stat_info): ?>
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
