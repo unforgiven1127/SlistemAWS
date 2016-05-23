@@ -5161,7 +5161,7 @@ ChromePhp::log("test");
         $nCandidatePk = $nCandidatePk;
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
-ChromePhp::log($pbSave);
+
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
@@ -5206,7 +5206,7 @@ ChromePhp::log($pbSave);
         //ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
 
-        if (!in_array($contact_info, $contactValuesArray))
+        if ($pbSave != true || !in_array($contact_info, $contactValuesArray))
         {
           if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
             $sErrorType = 'dba';
