@@ -1437,7 +1437,7 @@ order by m.candidatefk
               $ccm_data[$row['meeting_created_by']]['placedRevenue'] += 1;
               //$ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
 
-              arra_push($ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'],array('candidate' => $row['candidatefk'],
+              array_push($ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'],array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']));
 
               //$ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'] = array('candidate' => $row['candidatefk'],
