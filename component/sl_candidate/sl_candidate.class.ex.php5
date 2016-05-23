@@ -1488,16 +1488,18 @@ class CSl_candidateEx extends CSl_candidate
 
       $sHTML.= "<table>
                   <tr>
-                    <td style='width:350px; padding-left:100px;'>";
+                    <td style='width:300px; padding-left:100px;'>";
                       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
+                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk'],"add");
+                      ChromePhp::log($sURL);
                       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+                      ChromePhp::log($sJavascript);
                       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add new contact</a>';
                       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= "    </td>
-                    <td style='width:350px; padding-right:100px;'>";
+                    <td style='width:300px; padding-right:100px;'>";
                       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
+                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk'],"edit");
                       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
                       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Edit contacts</a>';
                       $sHTML.= $this->_oDisplay->getBlocEnd();
@@ -5455,10 +5457,21 @@ ChromePhp::log($sQuery);
     // ====================================================================================
     // ====================================================================================
     // start CANDIDATE section
-    private function _getCandidateAddForm($pnCandidatePk = 0)
+    private function _getCandidateAddForm($pnCandidatePk = 0, $type ="add")
     {
       if(!assert('is_integer($pnCandidatePk)'))
         $pnCandidatePk = 0;
+
+ChromePhp::log($type);
+
+if($type == "add")
+{
+  ChromePhp::log('add');
+}
+else if($type == "edit")
+{
+  ChromePhp::log('edit');
+}
 
       $bDisplayAllTabs = true;
       $asAttribute = array();
