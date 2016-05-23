@@ -401,14 +401,6 @@ ChromePhp::log($this->csAction);
           case CONST_ACTION_ADD:
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
-
-          case CONTACT_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"add"))));
-            break;
-
-          case CONTACT_EDIT:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"edit"))));
-            break;
         }
         break;
 
@@ -1503,9 +1495,7 @@ ChromePhp::log($this->csAction);
           $sHTML.= $this->_oDisplay->getFloatHack();
         }
       }
-
-      $param_add = "cont_add";
-      $param_edit = "cont_edit";
+ChromePhp::log('ekledik');
 
       $sHTML.= "<table>
                   <tr>
