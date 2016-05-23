@@ -5165,9 +5165,9 @@ ChromePhp::log("test");
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
-ChromePhp::log($asContact['update']);
+ChromePhp::log($asContact['update']);// yeni ekleniyorsa null geliyor
 
-      if($pbSave === true)
+      if(!isset($asContact['update']))
       {
         $flag = false;
       }
