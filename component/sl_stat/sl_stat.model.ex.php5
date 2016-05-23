@@ -949,7 +949,7 @@ order by m.candidatefk
           {
             $placed_count = 0;
           }
-          $revenue_data[$user_id][$row['position']]['placedRevenue'] = $placed_count;
+          $revenue_data[$user_id][$row['position']]['placedRevenue'] = $user_id.'_'.$placed_count;
         }
 //echo $revenue_data[$user_id][$row['position']]['name'].' - ';
 //var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
