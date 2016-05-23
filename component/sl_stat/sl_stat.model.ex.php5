@@ -1166,16 +1166,31 @@ order by m.candidatefk
     $start_date_stamp = strtotime($start_date);
     $end_date_stamp = strtotime($end_date);
 
-    //if ($group == 'consultant')
-    //if(1)
-    //{
+    if ($group == 'consultant')
+    {
       $query = 'SELECT sl_position_linkpk, positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
-    //}
+    }
+
+    if ($group == 'researcher')
+    {
+      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
+      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active';
+      $query .= ' FROM sl_meeting slm';
+      $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk AND slp.status >= 51';
+      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).')';
+
+      $query = 'SELECT sl_position_linkpk, positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
+      $query .= ' FROM sl_position_link';
+      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND status >= 51';
+                  //AND date_created >= "'.$start_date.'"
+                  //AND date_created <= "'.$end_date.'"';
+    }
 
 //var_dump($query);
     //exit;
