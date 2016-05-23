@@ -4474,6 +4474,17 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['mccm_done'] = 0;
           $stats_data['researcher'][$id]['mccm_info'] = array();
         }
+
+        if (!empty($temp_ccm[$id]['placedRevenue']))
+        {
+          $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm[$id]['placedRevenue'];
+          $stats_data['researcher'][$id]['placedRevenue_info'] = $temp_ccm[$id]['placedRevenue_info']['placedRevenue'];
+        }
+        else
+        {
+          $stats_data['researcher'][$id]['placedRevenue'] = 0;
+          $stats_data['researcher'][$id]['placedRevenue_info'] = array();
+        }
         //------------------------------------------------------------
         if (!empty($temp_in_play[$id]['new_candidates']))
         {

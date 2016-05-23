@@ -1408,6 +1408,22 @@ order by m.candidatefk
           }*/
         //}
       }
+      else if($row['status'] == 101) // revenue chart ve kpi da researcher lar icin yazdik
+      {
+        if($row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date)
+        {
+            $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_placed_revenue';
+
+            $ccm_data[$row['created_by']]['placedRevenue'] += 1;
+            $ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
+            {
+              $ccm_data[$row['meeting_created_by']]['placedRevenue'] += 1;
+              $ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
+            }
+        }
+      }
       //else
       //{
        // if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
