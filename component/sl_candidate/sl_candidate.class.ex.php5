@@ -5191,6 +5191,10 @@ ChromePhp::log("test");
         }
       }
 ChromePhp::log($pbSave);
+if ($pbSave != true)
+{
+  ChromePhp::log('girmesi lazim');
+}
       if($bEmpty)
         return array('error' => 'No contact details input in the form.');
 
