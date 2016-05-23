@@ -150,7 +150,8 @@ class CSl_candidateEx extends CSl_candidate
   {
     $this->_processUrl();
     $oPage = CDependency::getCpPage();
-
+ChromePhp::log($this->csAction);
+ChromePhp::log($this->csType);
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
 
@@ -380,14 +381,6 @@ class CSl_candidateEx extends CSl_candidate
 
           case CONST_ACTION_SAVEADD:
             return json_encode($this->_getCandidateContactSave($this->cnPk));
-            break;
-
-          case CONTACT_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0))));
-            break;
-
-          case CONTACT_EDIT:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0))));
             break;
         }
         break;
@@ -1495,13 +1488,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
-      $sHTML.= $this->_oDisplay->getBlocEnd();
-
-      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-      $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
       $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
       $sHTML.= $this->_oDisplay->getBlocEnd();
