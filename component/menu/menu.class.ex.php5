@@ -56,6 +56,8 @@ class CMenuEx extends CMenu
 
   private function _canAccessMenu($pasMenuItem)
   {
+ChromePhp::log($pasMenuItem);
+
     if(!assert('is_array($pasMenuItem) && !empty($pasMenuItem)'))
       return false;
 
