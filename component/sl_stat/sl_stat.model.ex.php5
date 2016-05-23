@@ -1169,7 +1169,7 @@ order by m.candidatefk
     //if ($group == 'consultant')
     //if(1)
     //{
-      $query = 'SELECT positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
+      $query = 'SELECT sl_position_linkpk, positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
       $query .= ' FROM sl_position_link';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
@@ -1208,13 +1208,14 @@ order by m.candidatefk
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24));
 
-      //$diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
-
+      if($diff > 90)
+      {
+        echo $row['sl_position_linkpk'].' : ';
         echo $create_date.' - ';
         echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
-      
+      }
 
       if ($row['status'] > 51)
       {
