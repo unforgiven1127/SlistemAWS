@@ -4487,10 +4487,10 @@ class CSl_statEx extends CSl_stat
             }
           }
 
-          var_dump($stats_data['researcher'][$id]['placedRevenue']);
+          /*var_dump($stats_data['researcher'][$id]['placedRevenue']);
           echo "<br><br>";
           var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
-          exit;
+          exit;*/
         }
         else
         {
