@@ -1501,7 +1501,8 @@ ChromePhp::log($this->csType);
         }
       }
 
-      $param = "CONST_ACTION_ADD";
+      $param_add = "const_add";
+      $param_edit = "const_edit";
 
       $sHTML.= "<table>
                   <tr>
