@@ -4484,12 +4484,13 @@ class CSl_statEx extends CSl_stat
           foreach ($temp_ccm[$id]['placedRevenue_info'] as $key1 => $first) {
             foreach ($first as $key => $second) {
               //var_dump($second);echo'<br>';
-              $ekle = $second['candidate'];
+              $ekle['candidate'] = $second['candidate'][$id];
+              array_push($array,$ekle);
               echo'<ekle - >';var_dump($ekle);echo'<br>';
-              array_push($stats_data['researcher'][$id]['placedRevenue_info'],$ekle);
+              //array_push($stats_data['researcher'][$id]['placedRevenue_info'],$ekle);
             }
           }
-
+          $stats_data['researcher'][$id]['placedRevenue_info'] = $array;
           var_dump($stats_data['researcher'][$id]['placedRevenue']);
           echo "<br><br>";
           var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
