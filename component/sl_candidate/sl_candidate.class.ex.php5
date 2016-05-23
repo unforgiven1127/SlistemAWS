@@ -5162,9 +5162,6 @@ ChromePhp::log("test");
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-      $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
-      $contactValuesArray = array();
-
 ChromePhp::log($asContact['update']);// yeni ekleniyorsa null geliyor
 
       if(!isset($asContact['update']))
@@ -5177,6 +5174,9 @@ ChromePhp::log($asContact['update']);// yeni ekleniyorsa null geliyor
       }
 
 ChromePhp::log($flag);
+
+      $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
+      $contactValuesArray = array();
 
       foreach($candidateContactInfoArray as $key => $value)
       {
