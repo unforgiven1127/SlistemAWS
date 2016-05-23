@@ -4339,6 +4339,12 @@ class CSl_statEx extends CSl_stat
         {
           $stats_data['consultant'][$id]['placed'] = $temp_placement[$id]['placed'];
           $stats_data['consultant'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
+
+          var_dump($stats_data['consultant'][$id]['placed']);
+          echo "<br><br>";
+          var_dump($stats_data['consultant'][$id]['placed_info']);
+
+          exit;
         }
         else
         {
