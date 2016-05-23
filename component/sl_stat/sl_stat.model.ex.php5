@@ -1276,7 +1276,7 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-          if($group == 'researcher')
+          if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
           {
             $ccm_data[$row['meeting_created_by']]['ccm1'] += 1;
             $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
@@ -1288,7 +1288,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
 
-            if($group == 'researcher')
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['ccm1_done'] += 1;
               $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1318,7 +1318,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-            if($group == 'researcher')
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['ccm2'] += 1;
               $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
@@ -1331,7 +1331,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
 
-            if($group == 'researcher')
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['ccm2_done'] += 1;
               $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1375,7 +1375,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-            if($group == 'researcher')
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['mccm'] += 1;
               $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
@@ -1391,7 +1391,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
 
-            if($group == 'researcher')
+            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['mccm_done'] += 1;
               $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
