@@ -4479,8 +4479,15 @@ class CSl_statEx extends CSl_stat
         if (!empty($temp_ccm[$id]['placedRevenue']))
         {
           $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm[$id]['placedRevenue'];
+          $array = $temp_ccm[$id]['placedRevenue_info'];
+
+          $addArray = array();
+          foreach ($array as $key => $first) {
+            # code...
+          }
+
           $stats_data['researcher'][$id]['placedRevenue_info'] = $temp_ccm[$id]['placedRevenue_info'];
-var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
+var_dump($array);
           exit;
 
 /*echo $id.'<br><br><br>';
