@@ -1206,16 +1206,16 @@ order by m.candidatefk
       $date_completed = strtotime($row['date_completed']);
 
       $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24));
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($diff > 90)
+      /*if($diff > 90)
       {
         echo $row['sl_position_linkpk'].' : ';
         echo $create_date.' - ';
         echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
-      }
+      }*/
 
       if ($row['status'] > 51)
       {
@@ -1245,7 +1245,7 @@ order by m.candidatefk
 
       $array_key = '';
 
-      if ($row['status'] == 51)
+      if ($row['status'] == 51 && $diff < 90)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
@@ -1263,7 +1263,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
-      else if ($row['status'] == 52)
+      else if ($row['status'] == 52 && $diff < 90)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_52';
 
@@ -1295,7 +1295,7 @@ order by m.candidatefk
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61)
+      else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 90)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm';
 
