@@ -1260,7 +1260,7 @@ if ($group == 'researcher'){
 
       if ($row['status'] == 51)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].'_51';
+        $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
@@ -1278,7 +1278,7 @@ if ($group == 'researcher'){
       }
       else if ($row['status'] == 52)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].'_52';
+        $array_key = $row['positionfk'].$row['candidatefk'].'_52_'.$row['sl_position_linkpk'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
           //strtotime($row['ccm_create_date']) <= $end_date_stamp)
@@ -1310,7 +1310,7 @@ if ($group == 'researcher'){
       }
       else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 90)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm';
+        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['sl_position_linkpk'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
          // strtotime($row['ccm_create_date']) <= $end_date_stamp)
