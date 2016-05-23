@@ -4966,14 +4966,14 @@ ChromePhp::log($page_type);
         }
       }
 
-      if($page_type == "add")
-      {
+      //if($page_type == "add")
+      //{
         for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
         {
           $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
           $newArea++;
         }
-      }
+      //}
 
       return $oForm->getDisplay();
     }
