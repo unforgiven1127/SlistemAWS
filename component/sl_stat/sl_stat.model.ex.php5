@@ -1429,7 +1429,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['placedRevenue'] += 1;
             //$ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
 
-            $ccm_data[$row['created_by']]['placedRevenue']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
+            $ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
             if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
@@ -1437,7 +1437,7 @@ order by m.candidatefk
               $ccm_data[$row['meeting_created_by']]['placedRevenue'] += 1;
               //$ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
 
-              $ccm_data[$row['meeting_created_by']]['placedRevenue']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
+              $ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
             }
         }
