@@ -1208,7 +1208,7 @@ order by m.candidatefk
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($diff > 90)
+      if($diff > 180)
       {
         echo $row['sl_position_linkpk'].' : ';
         echo $create_date.' - ';
@@ -1245,7 +1245,7 @@ order by m.candidatefk
 
       $array_key = '';
 
-      if ($row['status'] == 51 && $diff < 90)
+      if ($row['status'] == 51 && $diff < 180)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
