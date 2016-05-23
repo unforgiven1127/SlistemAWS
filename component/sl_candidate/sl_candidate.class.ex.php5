@@ -151,6 +151,8 @@ class CSl_candidateEx extends CSl_candidate
     $this->_processUrl();
     $oPage = CDependency::getCpPage();
 
+ChromePhp::log($this->csType);
+
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
 
