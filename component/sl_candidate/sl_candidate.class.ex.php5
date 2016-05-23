@@ -151,8 +151,6 @@ class CSl_candidateEx extends CSl_candidate
     $this->_processUrl();
     $oPage = CDependency::getCpPage();
 
-ChromePhp::log($this->csAction);
-
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
 
@@ -378,14 +376,6 @@ ChromePhp::log($this->csAction);
         {
           case CONST_ACTION_ADD:
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
-            break;
-
-          case CONTACT_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"add"))));
-            break;
-
-          case CONTACT_EDIT:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"edit"))));
             break;
 
           case CONST_ACTION_SAVEADD:
@@ -1495,29 +1485,12 @@ ChromePhp::log($this->csAction);
           $sHTML.= $this->_oDisplay->getFloatHack();
         }
       }
-ChromePhp::log('ekledik');
 
-      $sHTML.= "<table>
-                  <tr>
-                    <td style='width:300px; padding-left:100px;'>";
-                      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
-                      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-                      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add new contact</a>';
-                      $sHTML.= $this->_oDisplay->getBlocEnd();
-      $sHTML.= "    </td>
-                    <td style='width:300px; padding-right:100px;'>";
-                      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
-                      $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
-                      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-                      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Edit contacts</a>';
-                      $sHTML.= $this->_oDisplay->getBlocEnd();
-
-      $sHTML.= "    </td>
-                  </tr>
-                </table>";
-
-
+      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
+      $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add/edit contact details</a>';
+      $sHTML.= $this->_oDisplay->getBlocEnd();
 
       if($bRead)
       {
@@ -4897,11 +4870,10 @@ ChromePhp::log($sQuery);
     // Start CONTACT section
 
 
-    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0, $page_type = "add")
+    private function _getCandidateContactForm($pnCandiPk, $pnContactpk = 0)
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
-
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
@@ -4943,10 +4915,9 @@ ChromePhp::log($sQuery);
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 //$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
-ChromePhp::log("test");
       $newArea = 1;
       $nCount = 0;
-      if($page_type == "edit")
+      if(CDependency::getCpLogin()->isAdmin())
       {
         while($bRead)
         {
@@ -4964,13 +4935,11 @@ ChromePhp::log("test");
         }
       }
 
-      else
+
+      for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
       {
-        for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
-        {
-          $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
-          $newArea++;
-        }
+        $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
+        $newArea++;
       }
 
       return $oForm->getDisplay();
