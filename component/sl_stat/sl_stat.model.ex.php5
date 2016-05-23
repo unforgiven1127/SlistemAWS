@@ -1187,10 +1187,10 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-/*if ($group == 'researcher'){
+if ($group == 'researcher'){
   var_dump($query);
     exit;
-}*/
+}
 
     //else
     /*{
