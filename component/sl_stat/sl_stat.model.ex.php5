@@ -1187,7 +1187,7 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-//var_dump($query);
+var_dump($query);
     //exit;
     //else
     /*{
