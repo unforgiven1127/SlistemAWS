@@ -5166,14 +5166,14 @@ ChromePhp::log($asContact['update']);// yeni ekleniyorsa null geliyor
 
       if(!isset($asContact['update']))
       {
-        $flag = false;
+        $edit_flag = false;
       }
       else
       {
-        $flag = true;
+        $edit_flag = true;
       }
 
-ChromePhp::log($flag);
+ChromePhp::log($edit_flag);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
