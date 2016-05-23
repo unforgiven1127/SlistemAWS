@@ -5164,6 +5164,16 @@ ChromePhp::log("test");
 
 ChromePhp::log($_POST['sl_contactpk']);
 
+      $edit_flag = false;
+      foreach ($_POST['sl_contactpk'] as $key => $value) {
+        if($value == 0)
+        {
+          $edit_flag = true;
+        }
+      }
+
+ChromePhp::log($edit_flag);
+
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
