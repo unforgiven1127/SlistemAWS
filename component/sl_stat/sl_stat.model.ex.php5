@@ -1207,10 +1207,10 @@ order by m.candidatefk
 
       $diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
 
-      if($diff > 2)
+      if($diff > 1)
       {
         echo $create_date.' - ';
-        echo $date_completed.' - ';
+        echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
       }
