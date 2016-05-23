@@ -1176,7 +1176,7 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-    if ($group == 'researcher')
+    else if ($group == 'researcher')
     {
       $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active';
@@ -1187,8 +1187,11 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-var_dump($query);
+if ($group == 'researcher'){
+  var_dump($query);
     exit;
+}
+
     //else
     /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
