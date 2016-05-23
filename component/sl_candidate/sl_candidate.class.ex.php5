@@ -5165,7 +5165,7 @@ ChromePhp::log("test");
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
-ChromePhp::log($pbSave);
+ChromePhp::log($asContact['update']);
 
       if($pbSave === true)
       {
