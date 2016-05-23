@@ -933,6 +933,7 @@ order by m.candidatefk
 //var_dump($ccms);
         $ccm1_count = $ccms[$user_id]['ccm1_done'];
         $mccm_count = (int)$ccms[$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
+        $placed_count = $ccms[$user_id]['placedRevenue'];
 
         //var_dump($user_id);
         if (empty($revenue_data[$user_id][$row['position']]['name']))
@@ -941,6 +942,15 @@ order by m.candidatefk
           $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
         if (empty($revenue_data[$user_id][$row['position']]['nationality']))
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
+
+        if(empty($revenue_data[$user_id][$row['position']]['placedRevenue']))
+        {
+          if($placed_count == null)
+          {
+            $placed_count = 0;
+          }
+          $revenue_data[$user_id][$row['position']]['placedRevenue'] = $placed_count;
+        }
 
         if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
