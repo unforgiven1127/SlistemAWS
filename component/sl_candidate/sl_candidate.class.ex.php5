@@ -4906,6 +4906,7 @@ ChromePhp::log($sQuery);
 
 ChromePhp::log($page_type);
 
+
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
 
       $candidate_information = $this->_getModel()->getCandidateData($pnCandiPk);
@@ -4946,6 +4947,7 @@ ChromePhp::log($page_type);
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 //$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
+ChromePhp::log("test");
       $newArea = 1;
       $nCount = 0;
       if($page_type == "edit")
@@ -4966,7 +4968,7 @@ ChromePhp::log($page_type);
         }
       }
 
-      if($page_type == "add")
+      else
       {
         for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
         {
