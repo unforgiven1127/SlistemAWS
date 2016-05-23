@@ -1208,14 +1208,14 @@ order by m.candidatefk
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      /*if($diff > 90)
+      if($diff > 90)
       {
         echo $row['sl_position_linkpk'].' : ';
         echo $create_date.' - ';
         echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
-      }*/
+      }
 
       if ($row['status'] > 51)
       {
