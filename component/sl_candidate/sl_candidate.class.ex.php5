@@ -4,7 +4,8 @@ require_once('component/sl_candidate/sl_candidate.class.php5');
 require_once('component/sl_candidate/sl_candidate.model.php5');
 require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 require_once('component/sl_candidate/resources/class/slate_vars.class.php5');
-
+define('CONTACT_ADD', 'cadd');
+define('CONTACT_EDIT', 'cedit');
 
 class CSl_candidateEx extends CSl_candidate
 {
