@@ -152,7 +152,20 @@ class CSl_candidateEx extends CSl_candidate
     $oPage = CDependency::getCpPage();
 
 ChromePhp::log($this->csType);
-
+    if($this->csType = "cont_add")
+    {
+      $this->csType = CONST_CANDIDATE_TYPE_CANDI;
+      $contact_page = "add";
+    }
+    else if($this->csType = "cont_edit")
+    {
+      $this->csType = CONST_CANDIDATE_TYPE_CANDI;
+      $contact_page = "edit";
+    }
+    else
+    {
+      $contact_page = "add";
+    }
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
 
@@ -377,7 +390,7 @@ ChromePhp::log($this->csType);
         switch($this->csAction)
         {
           case CONST_ACTION_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,$contact_page))));
             break;
 
           case CONST_ACTION_SAVEADD:
