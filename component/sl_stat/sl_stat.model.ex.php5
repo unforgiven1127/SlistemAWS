@@ -1205,7 +1205,10 @@ order by m.candidatefk
       $create_date = $row['ccm_create_date'];
       $date_completed = $row['date_completed'];
 
-      $diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24));
+
+      //$diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
 
       if($diff > 0)
       {
