@@ -5174,6 +5174,8 @@ ChromePhp::log("test");
         $flag = true;
       }
 
+ChromePhp::log($flag);
+
       foreach($candidateContactInfoArray as $key => $value)
       {
         array_push($contactValuesArray, $value['value']);
