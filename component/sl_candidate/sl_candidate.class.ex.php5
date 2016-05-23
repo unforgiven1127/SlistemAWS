@@ -1495,7 +1495,7 @@ ChromePhp::log($this->csAction);
           $sHTML.= $this->_oDisplay->getFloatHack();
         }
       }
-ChromePhp::log('ekledik');
+
 
       $sHTML.= "<table>
                   <tr>
@@ -1517,7 +1517,7 @@ ChromePhp::log('ekledik');
                   </tr>
                 </table>";
 
-
+ChromePhp::log($sURL);
 
       if($bRead)
       {

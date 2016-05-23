@@ -333,6 +333,10 @@ class CPageEx extends CPage
     //--------------------------------------------------------------------
     // CASE 1 : User don't have the right to access the page
     //--------------------------------------------------------------------
+ChromePhp::log($this->csUid);
+ChromePhp::log($this->csAction);
+ChromePhp::log($this->csType);
+ChromePhp::log($this->cnPk);
 
     if(!$this->coRight->canAccess($this->csUid, $this->csAction, $this->csType, $this->cnPk))
     {
@@ -341,7 +345,7 @@ class CPageEx extends CPage
         exit(__LINE__.' No available library to display the page. Please contact your administrator.');
 
       //dump('can T access '.$this->csMode);
-ChromePhp::log($this->csMode);
+
       switch($this->csMode)
       {
         case CONST_URL_PARAM_PAGE_AJAX:
