@@ -107,7 +107,7 @@
 							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
-							<td style="height: 52px; font-size: 200%;" class="text_right"><?php echo $value['Researcher']['placedRevenue']; ?></td>
+							<td style="height: 52px; font-size: 200%;" class="text_right"><?php echo $value['researcher']['placedRevenue']; ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['mccm']; ?></td>
 							<td style="height: 52px; font-size: 200%;" class="text_center"><?php echo $value['Researcher']['ccm1']; ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
