@@ -4481,7 +4481,7 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['placedRevenue_info'] = $temp_ccm[$id]['placedRevenue_info'];
 
           ChromePhp::log($stats_data['researcher'][$id]['placedRevenue']);
-          ChromePhp::log($stats_data['researcher'][$id]['placedRevenue_info'])
+          ChromePhp::log($stats_data['researcher'][$id]['placedRevenue_info']);
         }
         else
         {
