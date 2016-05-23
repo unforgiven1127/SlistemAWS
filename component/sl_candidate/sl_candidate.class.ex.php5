@@ -5191,7 +5191,7 @@ ChromePhp::log("test");
         }
       }
 ChromePhp::log($pbSave);
-if ($pbSave != true)
+if ($pbSave > 0)
 {
   ChromePhp::log('girmesi lazim');
 }
