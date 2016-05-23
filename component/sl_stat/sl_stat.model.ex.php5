@@ -951,8 +951,9 @@ order by m.candidatefk
           }
           $revenue_data[$user_id][$row['position']]['placedRevenue'] = $placed_count;
         }
-//var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
-//echo "<br><br>";
+echo $revenue_data[$user_id][$row['position']]['name'].' - ';
+var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
+echo "<br><br>";
         if(empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
           if($ccm1_count == null)
