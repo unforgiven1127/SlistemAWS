@@ -1208,14 +1208,14 @@ order by m.candidatefk
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($diff > 180)
+      /*if($diff > 180)
       {
         echo $row['sl_position_linkpk'].' : ';
         echo $create_date.' - ';
         echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
-      }
+      }*/
 
       if ($row['status'] > 51)
       {
@@ -1245,7 +1245,7 @@ order by m.candidatefk
 
       $array_key = '';
 
-      if ($row['status'] == 51 && $diff < 180)
+      if ($row['status'] == 51)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
@@ -1257,13 +1257,13 @@ order by m.candidatefk
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
         }
-        if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date)
+        if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date && $diff < 180)
         {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
         }
       }
-      else if ($row['status'] == 52 && $diff < 90)
+      else if ($row['status'] == 52)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_52';
 
@@ -1287,7 +1287,7 @@ order by m.candidatefk
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
 
-          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date)
+          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date && $diff < 180)
           {
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1331,7 +1331,7 @@ order by m.candidatefk
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
 
-          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date)
+          if($row['active'] == 0 && $row['date_completed'] >= $start_date && $row['date_completed'] <= $end_date  && $diff < 180)
           {
             //$ccm_data[$row['created_by']]['mccm_done'] += 1;
             //$ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
