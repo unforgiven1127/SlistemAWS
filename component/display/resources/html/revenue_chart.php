@@ -69,7 +69,7 @@
 						<th style="height: 80px; font-size: 250%;" class="text_center">Rank</th>
 						<th style="height: 80px; font-size: 250%;" class="text_center">Flag</th>
 						<th style="height: 80px; font-size: 250%;" class="text_center">Name</th>
-						<th style="height: 80px; font-size: 250%;" class="text_center">Revenue<br>(15%)</th>
+						<th style="height: 80px; font-size: 250%;" class="text_center">Revenue</th>
 						<th style="height: 80px; font-size: 250%;" class="text_center"># of <br>Placements</th>
 						<th style="height: 80px; font-size: 250%;" class="text_center">MCCM's</th>
 						<th style="height: 80px; font-size: 250%;" class="text_center">CCM1</th>
