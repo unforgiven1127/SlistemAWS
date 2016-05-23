@@ -4487,7 +4487,7 @@ class CSl_statEx extends CSl_stat
             array_push($finalArray,$addArray);
           }
 
-          $stats_data['researcher'][$id]['placedRevenue_info'] = $addArray;
+          $stats_data['researcher'][$id]['placedRevenue_info'] = $finalArray;
 var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
           exit;
 
