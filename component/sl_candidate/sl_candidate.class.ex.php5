@@ -4948,7 +4948,7 @@ ChromePhp::log($page_type);
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
       $newArea = 1;
       $nCount = 0;
-      if(CDependency::getCpLogin()->isAdmin())
+      if($page_type == "edit")
       {
         while($bRead)
         {
@@ -4966,11 +4966,13 @@ ChromePhp::log($page_type);
         }
       }
 
-
-      for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
+      if($page_type == "add")
       {
-        $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
-        $newArea++;
+        for($nCount = $nContact; $nCount < $nContact+$nNewFields; $nCount++)
+        {
+          $this->_getContactFormRow($oForm, $nCount, $asTypes, array(),'',$newArea);
+          $newArea++;
+        }
       }
 
       return $oForm->getDisplay();
