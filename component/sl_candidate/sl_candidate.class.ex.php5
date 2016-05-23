@@ -5161,7 +5161,7 @@ ChromePhp::log("test");
         $nCandidatePk = $nCandidatePk;
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
-
+ChromePhp::log($pbSave);
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
