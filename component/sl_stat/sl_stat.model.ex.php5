@@ -1210,13 +1210,11 @@ order by m.candidatefk
 
       //$diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
 
-      if($diff > 0)
-      {
         echo $create_date.' - ';
         echo $date_completed.' = ';
         echo $diff;
         echo "<br><br>";
-      }
+      
 
       if ($row['status'] > 51)
       {
