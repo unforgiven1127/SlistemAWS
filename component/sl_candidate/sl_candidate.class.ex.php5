@@ -377,15 +377,15 @@ ChromePhp::log($this->csAction);
         switch($this->csAction)
         {
           case CONST_ACTION_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,$contact_page))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
 
           case CONTACT_ADD:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,$contact_page))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
 
           case CONTACT_EDIT:
-            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,$contact_page))));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
 
           case CONST_ACTION_SAVEADD:
