@@ -1182,7 +1182,7 @@ order by m.candidatefk
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active';
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk AND slp.status >= 51';
-      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
     }
