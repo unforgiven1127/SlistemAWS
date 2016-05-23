@@ -341,7 +341,7 @@ class CPageEx extends CPage
         exit(__LINE__.' No available library to display the page. Please contact your administrator.');
 
       //dump('can T access '.$this->csMode);
-
+ChromePhp::log($this->csMode);
       switch($this->csMode)
       {
         case CONST_URL_PARAM_PAGE_AJAX:
