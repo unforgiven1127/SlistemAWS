@@ -234,10 +234,6 @@ class CPageEx extends CPage
     if(empty($this->csMode))
       $this->csMode = $psMode;
 
-ChromePhp::log($this->csUid);
-ChromePhp::log($this->csAction);
-ChromePhp::log($this->csType);
-ChromePhp::log($this->cnPk);
 
     $this->coSettings = CDependency::getComponentByName('settings');
     if(empty($this->coSettings))
