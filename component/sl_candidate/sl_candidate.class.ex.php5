@@ -5219,7 +5219,7 @@ ChromePhp::log($edit_flag);
         //ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
 
-        if (!in_array($contact_info, $contactValuesArray))
+        if ($edit_flag || !in_array($contact_info, $contactValuesArray))
         {
           if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
             $sErrorType = 'dba';
