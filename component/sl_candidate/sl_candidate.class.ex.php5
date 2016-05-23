@@ -5162,18 +5162,7 @@ ChromePhp::log("test");
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-ChromePhp::log($asContact['update']);// yeni ekleniyorsa null geliyor
 
-      if(!isset($asContact['update']))
-      {
-        $edit_flag = false;
-      }
-      else
-      {
-        $edit_flag = true;
-      }
-
-ChromePhp::log($edit_flag);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
