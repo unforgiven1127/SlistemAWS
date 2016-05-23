@@ -1202,6 +1202,16 @@ order by m.candidatefk
     {
       $row = $db_result->getData();
 
+      $create_date = $row['ccm_create_date'];
+      $date_completed = $row['date_completed'];
+
+      $diff = round(($date_completed-$create_date) / 60 / 60 / 24 / 30);
+
+      echo $create_date.' - ';
+      echo $date_completed.' - ';
+      echo $diff;
+      echo "<br><br>";
+
       if ($row['status'] > 51)
       {
         $status = $row['status'];
