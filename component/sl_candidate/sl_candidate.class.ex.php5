@@ -5190,11 +5190,7 @@ ChromePhp::log("test");
           break;
         }
       }
-ChromePhp::log($pbSave);
-if ($pbSave > 0)
-{
-  ChromePhp::log('girmesi lazim');
-}
+
       if($bEmpty)
         return array('error' => 'No contact details input in the form.');
 
@@ -5210,7 +5206,7 @@ if ($pbSave > 0)
         //ChromePhp::log($contact_info);
         //added to keep crappy data in the database T_T
 
-        if ($pbSave != true || !in_array($contact_info, $contactValuesArray))
+        if ($pbSave > 0 || !in_array($contact_info, $contactValuesArray))
         {
           if(!$bAdmin && !empty($_POST['sl_contactpk'][$nRow]))
             $sErrorType = 'dba';
