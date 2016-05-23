@@ -401,6 +401,14 @@ ChromePhp::log($this->csAction);
           case CONST_ACTION_ADD:
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk))));
             break;
+
+          case CONTACT_ADD:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"add"))));
+            break;
+
+          case CONTACT_EDIT:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getCandidateContactForm($this->cnPk,0,"edit"))));
+            break;
         }
         break;
 
@@ -4903,8 +4911,6 @@ ChromePhp::log($sQuery);
     {
       if(!assert('is_key($pnCandiPk)'))
         return array('error' => 'Sorry, an error occured.');
-
-ChromePhp::log($page_type);
 
 
       $bIsAdmin = (bool)$this->casUserData['is_admin'];
