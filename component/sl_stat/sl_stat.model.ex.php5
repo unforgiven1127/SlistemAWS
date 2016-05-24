@@ -1092,14 +1092,22 @@ order by m.candidatefk
             $revenue_data[$row['user_position']][$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
+            {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+
+              $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data[$row['user_position']][$user_id]['total_amount'];
+            }
+            else
+            {
+              $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'];
+            }
           }
         }
         $read = $db_result->readNext();
       }
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('placedRevenue', 'reverse'));
+      uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
       foreach ($revenue_data['Researcher'] as $key => $value)
       {
