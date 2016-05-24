@@ -1240,10 +1240,10 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-if ($group == 'consultant'){
+/*if ($group == 'consultant'){
   var_dump($query);
     exit;
-}
+}*/
 
     //else
     /*{
@@ -1287,7 +1287,7 @@ if ($group == 'consultant'){
       {
         $status = $row['status'];
 
-        if (isset($repeating_info[$row['created_by']][$status][$row['candidatefk']]))
+        if(isset($repeating_info[$row['created_by']][$status][$row['candidatefk']]))
         {
           $read = $db_result->readNext();
           continue;
@@ -1319,11 +1319,21 @@ if ($group == 'consultant'){
 
       if ($row['status'] == 51 && $row['candidate_status'] == 0)
       {
+          if($row['candidatefk'] == '206311')
+          {
+            echo $diff.'<br><br>';
+            if($row_create_date >= $control_start_date && $row_create_date <= $control_end_date)
+            {
+              echo 'GIRDI';
+            }
+            exit;
+          }
+
         $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
+        if($row_create_date >= $control_start_date && $row_create_date <= $control_end_date)
         {
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
