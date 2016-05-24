@@ -1340,6 +1340,11 @@ order by m.candidatefk
         }
         if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
         {
+          if($row['candidatefk'] == '206311')
+          {
+            echo $row['created_by'];
+            echo 'GIRDI';
+          }
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
 
