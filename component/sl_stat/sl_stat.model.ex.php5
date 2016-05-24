@@ -939,14 +939,7 @@ var_dump($query);//
         if (empty($revenue_data[$user_id][$row['position']]['name']))
             $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
         if (empty($revenue_data[$user_id][$row['position']]['position']))
-          if($user_id == '457')
-          {
-            $revenue_data[$user_id][$row['position']]['userPosition'] = 'researcher';
-          }
-          else
-          {
-            $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
-          }
+          $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
         if (empty($revenue_data[$user_id][$row['position']]['nationality']))
               $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
 
