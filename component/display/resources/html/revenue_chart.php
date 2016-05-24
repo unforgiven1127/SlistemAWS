@@ -159,7 +159,7 @@
 
 	$('.scrollingContainer').css('overflow', 'auto');
 	document.getElementById('componentContainerId').setAttribute("style",
-                                        "margin-top:-45px");
+                                        "margin-top:-40px");
 	//$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
