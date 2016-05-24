@@ -941,10 +941,6 @@ order by m.candidatefk
         $placed_count = (int)$ccms[$user_id]['placedRevenue'];
 
         //var_dump($user_id);
-        if(empty($revenue_data['Researcher'][$user_id]['sort']))
-        {
-          $revenue_data['Researcher'][$user_id]['sort'] = $placed_count;
-        }
 
         if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
             $revenue_data['Researcher'][$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
@@ -979,6 +975,12 @@ order by m.candidatefk
             $mccm_count = 0;
           }
           $revenue_data['Researcher'][$user_id][$row['position']]['mccm'] = $mccm_count;
+        }
+
+        if(empty($revenue_data['Researcher'][$user_id]['sort']))
+        {
+          $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
+          $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
         }
 
         $read = $db_result->readNext();
@@ -1079,7 +1081,11 @@ order by m.candidatefk
             $revenue_data[$row['user_position']][$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
+            {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+
+              $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['total_amount']*10000000;
+            }
           }
 
           if (strtolower($row['user_position']) == 'researcher')
@@ -1100,7 +1106,7 @@ order by m.candidatefk
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
-              $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data[$row['user_position']][$user_id]['total_amount'];
+              $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['total_amount']*10000000;
             }
             /*else
             {
@@ -1111,7 +1117,7 @@ order by m.candidatefk
         $read = $db_result->readNext();
       }
 
-      uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
+      uasort($revenue_data['Consultant'], sort_multi_array_by_value('sort', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
       /*foreach ($revenue_data['Researcher'] as $key => $value)
