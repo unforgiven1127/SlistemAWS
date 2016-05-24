@@ -1451,13 +1451,13 @@ order by m.candidatefk
           if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
           {
             $ccm_data[$row['created_by']]['mccm'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
+            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
             if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
             {
               $ccm_data[$row['meeting_created_by']]['mccm'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
+              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
                 'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
             }
           }
