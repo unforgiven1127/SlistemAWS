@@ -981,8 +981,8 @@ order by m.candidatefk
       $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk ';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
 
-var_dump($query);
-exit;
+//var_dump($query);
+//exit;
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
 
@@ -1092,6 +1092,8 @@ exit;
 
       uasort($revenue_data, sort_multi_array_by_value('total_amount', 'reverse'));
     }
+    var_dump($revenue_data['493']);
+    exit;
     //echo "<br><br>";
     //var_dump($revenue_data);//
     return $revenue_data;
