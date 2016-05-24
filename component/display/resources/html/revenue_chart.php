@@ -31,7 +31,7 @@
 							else
 								$flag_pic = $value['Consultant']['nationality'].'_32.png';
 					?>
-					<?php if($value['consultant']['signed'] != 0 && ($value['Consultant']['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined")){ $total_consultant_count++;?>
+					<?php if(($value['Consultant']['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined")){ $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
 							<td style="height: 51px; font-size: 200%;" class="text_center"><?php echo $row_number_rank; ?></td>
 							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
