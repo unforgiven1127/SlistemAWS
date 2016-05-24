@@ -927,7 +927,7 @@ order by m.candidatefk
         //var_dump($row);
         $user_id = $row['loginpk'];
 
-        if($user_id == '457')
+        if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
         {
           $row['position'] = "Researcher";
         }
@@ -1098,8 +1098,13 @@ order by m.candidatefk
         $read = $db_result->readNext();
       }
 
-      uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount','reverse', 'placedRevenue'));
+      //array_multisort();
+
+      //uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
+      //uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount','reverse', 'placedRevenue'));
+
+      $sorted = array_orderby($revenue_data['Consultant'], 'total_amount', SORT_ASC, 'placedRevenue', SORT_ASC);
+      $sorted = array_orderby($revenue_data['Researcher'], 'total_amount', SORT_ASC, 'placedRevenue', SORT_ASC);
     }
     //var_dump($revenue_data['493']);
     //exit;
