@@ -36,7 +36,7 @@
 							<td style="height: 50px; font-size: 180%;" class="text_center"><?php echo $row_number_rank; ?></td>
 							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 50px; font-size: 180%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
-							<td style="height: 55px; font-size: 180%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>
+							<td style="height: 50px; font-size: 180%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>
 							<td style="height: 50px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
 							<td style="height: 50px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
