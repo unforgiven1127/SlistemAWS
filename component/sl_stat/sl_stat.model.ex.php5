@@ -995,7 +995,7 @@ order by m.candidatefk
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
       $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
+        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
 
       while($read)
       {
@@ -1099,7 +1099,7 @@ order by m.candidatefk
       }
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount', 'reverse'));
+      uasort($revenue_data['Researcher'], sort_multi_array_by_value('placedRevenue', 'reverse'));
 
       foreach ($revenue_data['Researcher'] as $key => $value)
       {
