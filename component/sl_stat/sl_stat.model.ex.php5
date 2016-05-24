@@ -949,7 +949,7 @@ order by m.candidatefk
           {
             $placed_count = 0;
           }
-          $revenue_data[$user_id][$row['position']]['placedRevenue'] = $user_id.'_'.$placed_count;
+          $revenue_data[$user_id][$row['position']]['placedRevenue'] = $placed_count;
         }
 //echo $revenue_data[$user_id][$row['position']]['name'].' - ';
 //var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
@@ -1422,7 +1422,7 @@ order by m.candidatefk
       }
       else if($row['status'] == 101) // revenue chart ve kpi da researcher lar icin yazdik
       {
-        if($row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date)
+        if($row_complete_date >= $control_start_date)
         {
             $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_placed_revenue';
 
