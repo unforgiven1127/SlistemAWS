@@ -1080,11 +1080,12 @@ order by m.candidatefk
 
             $revenue_data[$row['user_position']][$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
+            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['consultant']['signed']*10000000;
+
             if ($row['status'])
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
-              $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['total_amount']*10000000000;
             }
           }
 
@@ -1102,11 +1103,12 @@ order by m.candidatefk
 
             $revenue_data[$row['user_position']][$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
+            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['researcher']['signed']*10000000;
+
             if ($row['status'])
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
-              $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['total_amount']*10000000000;
             }
             /*else
             {
