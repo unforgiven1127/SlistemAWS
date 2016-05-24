@@ -4237,16 +4237,16 @@ class CSl_statEx extends CSl_stat
         if (in_array($id, $consultant_skip_id))
           continue;
 
-        //if (!empty($temp_resume_sent[$id]['resumes_sent']))
-        //{
+        if (!empty($temp_resume_sent[$id]['resumes_sent']))
+        {
           $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
           $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['resumes_sent'] = 0;
           $stats_data['consultant'][$id]['resumes_sent_info'] = array();
-        }*/
+        }
 
         //if (!empty($temp_set_vs_met[$id]['set']))
         //{
@@ -4404,16 +4404,16 @@ class CSl_statEx extends CSl_stat
         //exit;
         $stats_data['researcher'][$id]['position'] = $user_info['position'];
 
-        //if (!empty($temp_resume_sent[$id]['resumes_sent']))
-        //{
+        if (!empty($temp_resume_sent[$id]['resumes_sent']))
+        {
           $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
           $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['resumes_sent'] = 0;
           $stats_data['researcher'][$id]['resumes_sent_info'] = array();
-        }*/
+        }
 
         //if (!empty($temp_set_vs_met[$id]['set']))
         //{
