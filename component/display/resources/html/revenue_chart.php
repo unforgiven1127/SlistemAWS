@@ -17,7 +17,7 @@
 					</tr>
 
 					<?php
-						foreach ($revenue_data as $key => $value):
+						foreach ($revenue_data['Consultant'] as $key => $value):
 							if ($key == 'former' && empty($value['consultant']['signed']))
 								continue;
 
@@ -82,7 +82,7 @@
 						$total_signed_researcher = 0;
 						$total_placed_researcher = 0;
 						$researcher_rank = 0;
-						foreach ($revenue_data as $key => $value):
+						foreach ($revenue_data['Researcher'] as $key => $value):
 
 							if ($key == 'former' && empty($value['signed']))
 								continue;
