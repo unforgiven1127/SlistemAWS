@@ -33,11 +33,11 @@
 					?>
 					<?php if(($value['Consultant']['userPosition'] == "Consultant" || $value['userPosition'] == "Not defined")){ $total_consultant_count++;?>
 						<tr class="hover_row<?php echo $even; ?>">
-							<td style="height: 51px; font-size: 200%;" class="text_center"><?php echo $row_number_rank; ?></td>
+							<td style="height: 50px; font-size: 200%;" class="text_center"><?php echo $row_number_rank; ?></td>
 							<td class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
-							<td style="height: 51px; font-size: 200%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
-							<td style="height: 52px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
-							<td style="height: 51px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
+							<td style="height: 50px; font-size: 200%;" class="text_center"><?php echo $value['Consultant']['name']; ?></td>
+							<td style="height: 50px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['consultant']['signed'], $decimals, '.', ','); ?></td>
+							<td style="height: 50px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($value['consultant']['paid'], $decimals, '.', ','); ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Consultant']['placed']; ?></td>-->
 						</tr>
@@ -53,9 +53,9 @@
 					?>
 
 					<tr class="revenue_table_footer">
-						<td style="height: 51px; font-size: 200%;" class="text_center" colspan="3">Total</td>
-						<td style="height: 51px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
-						<td style="height: 51px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
+						<td style="height: 50px; font-size: 200%;" class="text_center" colspan="3">Total</td>
+						<td style="height: 50px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
+						<td style="height: 50px; font-size: 200%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>-->
 					</tr>
 				</table>
