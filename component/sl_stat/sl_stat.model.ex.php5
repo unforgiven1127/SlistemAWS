@@ -1366,6 +1366,7 @@ order by m.candidatefk
           if($row['candidatefk'] == '206311')
           {
             echo '<br><br><br><br><br><br><br>';
+            echo $group.'<br>';
             echo $row['created_by'].'<br>';
             echo 'GIRDI'.'<br>';
             echo $row['candidatefk'].'<br>';
