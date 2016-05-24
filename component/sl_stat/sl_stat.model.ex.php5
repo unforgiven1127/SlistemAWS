@@ -1211,7 +1211,7 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by, slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slc.status as candidate_status';
+      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by, slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slc.statusfk as candidate_status';
       $query .= ' FROM sl_position_link slp';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
@@ -1223,7 +1223,7 @@ order by m.candidatefk
     else if ($group == 'researcher')
     {
       $query = 'SELECT slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
-      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc.status as candidate_status';
+      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc.statusfk as candidate_status';
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
