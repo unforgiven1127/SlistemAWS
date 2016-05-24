@@ -1099,7 +1099,7 @@ order by m.candidatefk
       }
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('placedRevenue', 'reverse'));
+      uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount', 'placedRevenue'));
     }
     //var_dump($revenue_data['493']);
     //exit;
