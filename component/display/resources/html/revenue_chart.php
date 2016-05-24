@@ -7,12 +7,12 @@
 						<th style="width:100%; font-size:390%; white-space: nowrap;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 50px; font-size: 250%; overflow:none;" class="text_center">Rank</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Flag</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Name</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Placed</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Signed</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Paid</th>
+						<th style="height: 50px; font-size: 200%; overflow:none;" class="text_center">Rank</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Flag</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Name</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Placed</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Signed</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Paid</th>
 						<!--<th class="text_center">Team</th>-->
 					</tr>
 
@@ -66,13 +66,13 @@
 						<th style="width:100% font-size: 390%; white-space: nowrap;"  class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Rank</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Flag</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Name</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">Revenue</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center"># of Plcs</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">MCCM's</th>
-						<th style="height: 50px; font-size: 250%;" class="text_center">CCM1</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Rank</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Flag</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Name</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Revenue</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center"># of Plcs</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">MCCM's</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">CCM1</th>
 						<!--<th class="text_center">Team</th>-->
 						<!--<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
