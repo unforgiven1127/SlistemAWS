@@ -1211,8 +1211,9 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT sl_position_linkpk, positionfk, candidatefk, created_by, status, date_completed, date_created as ccm_create_date, active';
-      $query .= ' FROM sl_position_link';
+      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by, slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slc.status as candidate_status';
+      $query .= ' FROM sl_position_link slp';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
                   //AND date_created >= "'.$start_date.'"
@@ -1222,9 +1223,10 @@ order by m.candidatefk
     else if ($group == 'researcher')
     {
       $query = 'SELECT slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
-      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate';
+      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc.status as candidate_status';
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
@@ -1307,7 +1309,7 @@ order by m.candidatefk
       $control_end_date = strtotime($end_date);
 
 
-      if ($row['status'] == 51)
+      if ($row['status'] == 51 && $row['candidate_status'] != 6)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
 
@@ -1338,7 +1340,7 @@ order by m.candidatefk
             }
         }
       }
-      else if ($row['status'] == 52)
+      else if ($row['status'] == 52 && $row['candidate_status'] != 6)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_52_'.$row['sl_position_linkpk'];
 
@@ -1383,7 +1385,7 @@ order by m.candidatefk
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 90)
+      else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 90 && $row['candidate_status'] != 6)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['sl_position_linkpk'];
 
@@ -1451,7 +1453,7 @@ order by m.candidatefk
           }*/
         //}
       }
-      else if($row['status'] == 101) // revenue chart ve kpi da researcher lar icin yazdik
+      else if($row['status'] == 101 && $row['candidate_status'] != 6) // revenue chart ve kpi da researcher lar icin yazdik
       {
         if($row_complete_date >= $control_start_date)
         {
