@@ -1103,6 +1103,7 @@ order by m.candidatefk
 
       foreach ($revenue_data['Researcher'] as $key => $value)
       {
+        echo $key." - ";
         var_dump($value);
         echo "<br><br>";
       }
