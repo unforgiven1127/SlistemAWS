@@ -1097,10 +1097,10 @@ order by m.candidatefk
 
               $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data[$row['user_position']][$user_id]['total_amount'];
             }
-            else
+            /*else
             {
               $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'];
-            }
+            }*/
           }
         }
         $read = $db_result->readNext();
