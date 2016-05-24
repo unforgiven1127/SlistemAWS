@@ -1,5 +1,5 @@
-<?php $total_consultant_count = 0 ?>
 	<table valign="top">
+	<?php $total_consultant_count = 0 ?>
 		<tr >
 			<td  valign="top" >
 				<table class="revenue_table">
