@@ -1308,6 +1308,18 @@ order by m.candidatefk
         $ccm_data[$row['created_by']]['ccm_info']['ccm2'] = array();
         $ccm_data[$row['created_by']]['ccm_info']['mccm'] = array();
       }
+      if (!isset($ccm_data[$row['meeting_created_by']]['ccm1']))
+      {
+        $ccm_data[$row['meeting_created_by']]['ccm1'] = 0;
+        $ccm_data[$row['meeting_created_by']]['ccm1_done'] = 0;
+        $ccm_data[$row['meeting_created_by']]['ccm2'] = 0;
+        $ccm_data[$row['meeting_created_by']]['ccm2_done'] = 0;
+        $ccm_data[$row['meeting_created_by']]['mccm'] = 0;
+        $ccm_data[$row['meeting_created_by']]['mccm_done'] = 0;
+        $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'] = array();
+        $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'] = array();
+        $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'] = array();
+      }
 
       $array_key = '';
 
