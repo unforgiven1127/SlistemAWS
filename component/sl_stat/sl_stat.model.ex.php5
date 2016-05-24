@@ -936,9 +936,9 @@ order by m.candidatefk
         //array_push($users,$user_id);
         $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
 
-        $ccm1_count = $ccms[$user_id]['ccm1_done'];
+        $ccm1_count = (int)$ccms[$user_id]['ccm1_done'];
         $mccm_count = (int)$ccms[$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
-        $placed_count = $ccms[$user_id]['placedRevenue'];
+        $placed_count = (int)$ccms[$user_id]['placedRevenue'];
 
         //var_dump($user_id);
         if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
