@@ -1535,6 +1535,7 @@ order by m.candidatefk
       $read = $db_result->readNext();
     }
 
+var_dump($ccm_data);
     return $ccm_data;
   }
 
