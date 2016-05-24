@@ -161,7 +161,7 @@
 	document.getElementById('componentContainerId').setAttribute("style",
                                         "margin-top:-40px");
 
-	document.getElementById('footerId').hide();
+	document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
