@@ -1419,7 +1419,7 @@ order by m.candidatefk
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 180 && $row['candidate_status'] == 0)
+      else if ($row['status'] > 52 && $row['status'] <= 61 && $row['candidate_status'] == 0)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['status'];
 
