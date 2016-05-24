@@ -1321,7 +1321,16 @@ order by m.candidatefk
       {
           if($row['candidatefk'] == '206311')
           {
+            echo $row['ccm_create_date'].'<br><br>';
+            echo $row['date_completed'].'<br><br>';
+            echo $start_date.'<br><br>';
+            echo $end_date.'<br><br>';
+            
             echo $diff.'<br><br>';
+            echo $row_create_date.'<br><br>';
+            echo $control_start_date.'<br><br>';
+            echo $row_create_date.'<br><br>';
+            echo $control_end_date.'<br><br>';
             if($row_create_date >= $control_start_date && $row_create_date <= $control_end_date)
             {
               echo 'GIRDI';
