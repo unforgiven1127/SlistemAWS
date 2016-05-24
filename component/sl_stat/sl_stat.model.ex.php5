@@ -1098,8 +1098,8 @@ order by m.candidatefk
         $read = $db_result->readNext();
       }
 
-      uasort($revenue_data['Consultant'], "total_amount");
-      uasort($revenue_data['Researcher'], "total_amount","placedRevenue");
+      uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount'));
+      uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount', 'placedRevenue'));
     }
     //var_dump($revenue_data['493']);
     //exit;
