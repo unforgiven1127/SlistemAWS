@@ -1421,7 +1421,7 @@ order by m.candidatefk
       }
       else if ($row['status'] > 52 && $row['status'] <= 61  && $diff < 90 && $row['candidate_status'] == 0)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['sl_position_linkpk'];
+        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['status'];
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
          // strtotime($row['ccm_create_date']) <= $end_date_stamp)
@@ -1446,7 +1446,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm_'.$row['sl_position_linkpk'];
+          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm_'.$row['status'];
 
           if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
           {
