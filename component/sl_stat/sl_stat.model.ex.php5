@@ -1321,7 +1321,7 @@ order by m.candidatefk
       {
 
 
-        $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
+        $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
