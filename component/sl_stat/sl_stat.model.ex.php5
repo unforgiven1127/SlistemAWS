@@ -1352,22 +1352,25 @@ order by m.candidatefk
         }
         if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
         {
+          if($group == 'consultant')
+          {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+          }
 
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['ccm1_done'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
-            }
-            if($row['candidatefk'] == '206311')
-            {
-              echo '<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>';
-              echo $row['created_by'].'<br>';
-              echo 'GIRDI'.'<br>';
-              echo $row['candidatefk'].'<br>';
-              echo $ccm_data[$row['created_by']]['ccm1_done'].'<br>';
-            }
+          if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
+          {
+            $ccm_data[$row['meeting_created_by']]['ccm1_done'] += 1;
+            $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
+          }
+          if($row['candidatefk'] == '206311')
+          {
+            echo '<br><br><br><br><br><br><br>';
+            echo $row['created_by'].'<br>';
+            echo 'GIRDI'.'<br>';
+            echo $row['candidatefk'].'<br>';
+            echo $ccm_data[$row['created_by']]['ccm1_done'].'<br>';
+          }
         }
       }
       else if ($row['status'] == 52 && $row['candidate_status'] == 0)
