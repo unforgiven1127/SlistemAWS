@@ -56,7 +56,7 @@
 						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="3">Total</td>
 						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
 						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
-						<td style="height: 40px; font-size: 180%;" class="text_right"><?php echo $total_placed; ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center"><?php echo $total_placed; ?></td>
 					</tr>
 				</table>
 			</td>
@@ -70,9 +70,9 @@
 						<th style="height: 50px; font-size: 200%;" class="text_center">Flag</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">Name</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">Revenue</th>
-						<th style="height: 50px; font-size: 200%;" class="text_center"># of Plcs</th>
-						<th style="height: 50px; font-size: 200%;" class="text_center">MCCM's</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">CCM1</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">MCCM's</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center"># of Plcs</th>
 						<!--<th class="text_center">Team</th>-->
 						<!--<th style=" height: 45px; font-size: 300%;" class="text_center">Placed</th>-->
 					</tr>
@@ -81,6 +81,8 @@
 						$total_paid_researcher = 0;
 						$total_signed_researcher = 0;
 						$total_placed_researcher = 0;
+						$total_ccm1_researcher = 0;
+						$total_mccm_researcher = 0;
 						$researcher_rank = 0;
 						foreach ($revenue_data['Researcher'] as $key => $value):
 
@@ -107,9 +109,9 @@
 							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $display_object->getPicture('/common/pictures/flags/'.$flag_pic); ?></td>
 							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['name']; ?></td>
 							<td style="height: 52px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($value['researcher']['signed'], $decimals, '.', ','); ?></td>
-							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['placedRevenue']; ?></td>
-							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['mccm']; ?></td>
 							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['ccm1']; ?></td>
+							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['mccm']; ?></td>
+							<td style="height: 52px; font-size: 180%;" class="text_center"><?php echo $value['Researcher']['placedRevenue']; ?></td>
 							<!--<td class="text_center"><?php echo $value['team']; ?></td>-->
 							<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $value['Researcher']['placed']; ?></td>-->
 						</tr>
@@ -123,6 +125,8 @@
 							$total_signed_researcher += $value['researcher']['signed'];
 							//$total_placed += $value['placed'];
 							$total_placed_researcher += $value['Researcher']['placed'];
+							$total_ccm1_researcher += $value['Researcher']['ccm1'];
+							$total_mccm_researcher += $value['Researcher']['mccm'];
 					}
 						endforeach;
 					?>
@@ -144,7 +148,10 @@
 					} ?>
 					<tr class="revenue_table_footer">
 						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="3">Total</td>
-						<td style="height: 40px; font-size: 180%;" class="text_left" colspan="4">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_left">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center">$total_ccm1_researcher</td>
+						<td style="height: 40px; font-size: 180%;" class="text_center">$total_mccm_researcher</td>
+						<td style="height: 40px; font-size: 180%;" class="text_center">$total_placed_researcher</td>
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>-->
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>-->
 					</tr>
