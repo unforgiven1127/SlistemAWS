@@ -124,7 +124,7 @@
 							//$total_signed += $value['signed'];
 							$total_signed_researcher += $value['researcher']['signed'];
 							//$total_placed += $value['placed'];
-							$total_placed_researcher += $value['Researcher']['placed'];
+							$total_placed_researcher += $value['Researcher']['placedRevenue'];
 							$total_ccm1_researcher += $value['Researcher']['ccm1'];
 							$total_mccm_researcher += $value['Researcher']['mccm'];
 					}
