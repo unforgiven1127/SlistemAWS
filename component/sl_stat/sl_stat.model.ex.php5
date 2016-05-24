@@ -941,7 +941,7 @@ var_dump($query);//
         if (empty($revenue_data[$user_id][$row['position']]['position']))
           if($user_id == '457')
           {
-            $revenue_data[$user_id][$row['position']]['userPosition'] = 'Researcher';
+            $revenue_data[$user_id][$row['position']]['userPosition'] = 'researcher';
           }
           else
           {
