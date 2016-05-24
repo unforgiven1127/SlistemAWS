@@ -131,7 +131,7 @@
 						for ($i=0; $i < $total_consultant_count ; $i++) {
 							echo "
 							<tr>
-								<td align='right' style='height: 52px;'>-</td>
+								<td style='height: 52px;'><center>-</center></td>
 								<td style='height: 52px;'><center>-</center></td>
 								<td style='height: 52px;'><center>-</center></td>
 								<td style='height: 52px;'><center>-</center></td>
