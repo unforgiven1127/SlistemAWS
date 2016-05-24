@@ -914,11 +914,11 @@ order by m.candidatefk
                 FROM login l
                 LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '".$ccm1_start_date."' AND '".$ccm1_end_date."'
                 LEFT JOIN sl_nationality sln ON l.nationalityfk = sln.sl_nationalitypk
-                WHERE (l.position = 'Researcher' OR l.loginpk = '457') AND l.status = 1";
+                WHERE (l.position = 'Researcher' OR l.loginpk = '457') AND l.status = 1 AND l.loginpk != '382'";
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
-//var_dump($query);//
+//var_dump($query);// 382
 //var_dump('<br><br>');
 //ChromePhp::log($query);
       while($read)
