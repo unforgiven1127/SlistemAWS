@@ -1099,9 +1099,15 @@ order by m.candidatefk
       }
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('placedRevenue', 'natural'));
+      uasort($revenue_data['Researcher'], sort_multi_array_by_value('total_amount', 'reverse'));
+
+      foreach ($revenue_data['Researcher'] as $key => $value)
+      {
+        var_dump($value);
+        echo "<br><br>";
+      }
     }
-    //var_dump($revenue_data['493']);
+
     //exit;
     //echo "<br><br>";
     //var_dump($revenue_data);//
