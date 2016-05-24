@@ -160,6 +160,8 @@
 	$('.scrollingContainer').css('overflow', 'auto');
 	document.getElementById('componentContainerId').setAttribute("style",
                                         "margin-top:-40px");
+
+	document.getElementById('footerId').hide();
 	//$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
