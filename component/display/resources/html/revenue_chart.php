@@ -149,9 +149,9 @@
 					<tr class="revenue_table_footer">
 						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="3">Total</td>
 						<td style="height: 40px; font-size: 180%;" class="text_left">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
-						<td style="height: 40px; font-size: 180%;" class="text_center">$total_ccm1_researcher</td>
-						<td style="height: 40px; font-size: 180%;" class="text_center">$total_mccm_researcher</td>
-						<td style="height: 40px; font-size: 180%;" class="text_center">$total_placed_researcher</td>
+						<td style="height: 40px; font-size: 180%;" class="text_center"><?php echo $total_ccm1_researcher?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center"><?php echo $total_mccm_researcher?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center">$<?php echo $total_placed_researcher?></td>
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>-->
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>-->
 					</tr>
