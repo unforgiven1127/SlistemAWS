@@ -981,8 +981,8 @@ order by m.candidatefk
       $query .= 'LEFT JOIN login ON revenue_member.loginpk = login.loginpk ';
       $query .= 'LEFT JOIN sl_nationality ON login.nationalityfk = sl_nationality.sl_nationalitypk';
 
-//var_dump($query);
-//exit;
+var_dump($query);
+exit;
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
 
