@@ -1240,10 +1240,10 @@ order by m.candidatefk
                   //AND date_created <= "'.$end_date.'"';
     }
 
-/*if ($group == 'researcher'){
+if ($group == 'consultant'){
   var_dump($query);
     exit;
-}*/
+}
 
     //else
     /*{
