@@ -53,9 +53,9 @@
 					?>
 
 					<tr class="revenue_table_footer">
-						<td style="height: 45px; font-size: 180%;" class="text_center" colspan="4">Total</td>
-						<td style="height: 45px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
-						<td style="height: 45px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="4">Total</td>
+						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>-->
 					</tr>
 				</table>
@@ -143,8 +143,8 @@
 						}
 					} ?>
 					<tr class="revenue_table_footer">
-						<td style="height: 45px; font-size: 180%;" class="text_center" colspan="3">Total</td>
-						<td style="height: 45px; font-size: 180%;" class="text_left" colspan="4">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="3">Total</td>
+						<td style="height: 40px; font-size: 180%;" class="text_left" colspan="4">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right">&yen;<?php echo number_format($total_paid_researcher, $decimals, '.', ','); ?></td>-->
 						<!--<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed_researcher; ?></td>-->
 					</tr>
