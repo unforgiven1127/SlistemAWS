@@ -4237,38 +4237,38 @@ class CSl_statEx extends CSl_stat
         if (in_array($id, $consultant_skip_id))
           continue;
 
-        if (!empty($temp_resume_sent[$id]['resumes_sent']))
-        {
+        //if (!empty($temp_resume_sent[$id]['resumes_sent']))
+        //{
           $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
           $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['consultant'][$id]['resumes_sent'] = 0;
           $stats_data['consultant'][$id]['resumes_sent_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_set_vs_met[$id]['set']))
-        {
+        //if (!empty($temp_set_vs_met[$id]['set']))
+        //{
           $stats_data['consultant'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['consultant'][$id]['set'] = 0;
           $stats_data['consultant'][$id]['set_meeting_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_set_vs_met[$id]['met']))
-        {
+        //if (!empty($temp_set_vs_met[$id]['met']))
+        //{
           $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['consultant'][$id]['met'] = 0;
           $stats_data['consultant'][$id]['met_meeting_info'] = array();
-        }
+        }*/
 
         //if (!empty($temp_ccm[$id]['ccm1']) || !empty($temp_ccm[$id]['ccm1_done']))
         //{
@@ -4283,31 +4283,31 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['ccm1_info'] = array();
         }*/
 
-        if (!empty($temp_ccm[$id]['ccm2']))
-        {
+        //if (!empty($temp_ccm[$id]['ccm2']))
+        //{
           $stats_data['consultant'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
           $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
           $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['consultant'][$id]['ccm2'] = 0;
           $stats_data['consultant'][$id]['ccm2_done'] = 0;
           $stats_data['consultant'][$id]['ccm2_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_ccm[$id]['mccm']))
-        {
+        //if (!empty($temp_ccm[$id]['mccm']))
+        //{
           $stats_data['consultant'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
           $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
           $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['consultant'][$id]['mccm'] = 0;
           $stats_data['consultant'][$id]['mccm_done'] = 0;
           $stats_data['consultant'][$id]['mccm_info'] = array();
-        }
+        }*/
 
 //----------------------------------------------------------------------------------
         if (!empty($temp_in_play[$id]['new_candidates']))
@@ -4404,77 +4404,77 @@ class CSl_statEx extends CSl_stat
         //exit;
         $stats_data['researcher'][$id]['position'] = $user_info['position'];
 
-        if (!empty($temp_resume_sent[$id]['resumes_sent']))
-        {
+        //if (!empty($temp_resume_sent[$id]['resumes_sent']))
+        //{
           $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
           $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['resumes_sent'] = 0;
           $stats_data['researcher'][$id]['resumes_sent_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_set_vs_met[$id]['set']))
-        {
+        //if (!empty($temp_set_vs_met[$id]['set']))
+        //{
           $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['set'] = 0;
           $stats_data['researcher'][$id]['set_meeting_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_set_vs_met[$id]['met']))
-        {
+        //if (!empty($temp_set_vs_met[$id]['met']))
+        //{
           $stats_data['researcher'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['met'] = 0;
            $stats_data['researcher'][$id]['met_meeting_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_ccm[$id]['ccm1']))
-        {
+        //if (!empty($temp_ccm[$id]['ccm1']))
+        //{
           $stats_data['researcher'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
           $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
           $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['ccm1'] = 0;
           $stats_data['researcher'][$id]['ccm1_done'] = 0;
           $stats_data['researcher'][$id]['ccm1_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_ccm[$id]['ccm2']))
-        {
+        //if (!empty($temp_ccm[$id]['ccm2']))
+        //{
           $stats_data['researcher'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
           $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
           $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['ccm2'] = 0;
           $stats_data['researcher'][$id]['ccm2_done'] = 0;
           $stats_data['researcher'][$id]['ccm2_info'] = array();
-        }
+        }*/
 
-        if (!empty($temp_ccm[$id]['mccm']))
-        {
+        //if (!empty($temp_ccm[$id]['mccm']))
+        //{
           $stats_data['researcher'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
           $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
           $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        }
-        else
+        //}
+        /*else
         {
           $stats_data['researcher'][$id]['mccm'] = 0;
           $stats_data['researcher'][$id]['mccm_done'] = 0;
           $stats_data['researcher'][$id]['mccm_info'] = array();
-        }
+        }*/
 
         if (!empty($temp_ccm[$id]['placedRevenue']))
         {
