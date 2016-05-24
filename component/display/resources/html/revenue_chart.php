@@ -157,7 +157,7 @@
 	var url = '<?php echo $url; ?>';
 	var swap_time = <?php echo $swap_time; ?>;
 
-	$('.scrollingContainer').css('overflow', 'auto');
+	//$('.scrollingContainer').css('overflow', 'auto');
 	document.getElementById('componentContainerId').setAttribute("style",
                                         "margin-top:-40px");
 
