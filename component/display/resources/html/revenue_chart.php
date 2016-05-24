@@ -56,7 +56,7 @@
 						<td style="height: 40px; font-size: 180%;" class="text_center" colspan="3">Total</td>
 						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_signed, $decimals, '.', ','); ?></td>
 						<td style="height: 40px; font-size: 180%;" class="text_right">&yen;<?php echo number_format($total_paid, $decimals, '.', ','); ?></td>
-						<td style="height: 55px; font-size: 250%;" class="text_right"><?php echo $total_placed; ?></td>
+						<td style="height: 40px; font-size: 180%;" class="text_right"><?php echo $total_placed; ?></td>
 					</tr>
 				</table>
 			</td>
