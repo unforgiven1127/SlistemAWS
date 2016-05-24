@@ -941,9 +941,9 @@ order by m.candidatefk
         $placed_count = (int)$ccms[$user_id]['placedRevenue'];
 
         //var_dump($user_id);
-        if(empty($revenue_data[$row['user_position']][$user_id]['sort']))
+        if(empty($revenue_data['Researcher'][$user_id]['sort']))
         {
-          $revenue_data[$row['user_position']][$user_id]['sort'] = $placed_count;
+          $revenue_data['Researcher'][$user_id]['sort'] = $placed_count;
         }
 
         if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
