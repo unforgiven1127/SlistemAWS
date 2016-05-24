@@ -1446,7 +1446,7 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
+          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm_'.$row['sl_position_linkpk'];
 
           if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
           {
