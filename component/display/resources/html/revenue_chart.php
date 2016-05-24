@@ -1,7 +1,7 @@
 <?php $total_consultant_count = 0 ?>
 	<table style="padding-top: -100px;" valign="top">
 		<tr>
-			<td valign="top" >
+			<td style="padding-top: -100px;" valign="top" >
 				<table class="revenue_table">
 					<tr>
 						<th style="width:50%; font-size:400%; white-space: nowrap;" class="text_center" colspan="5"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
