@@ -973,7 +973,7 @@ order by m.candidatefk
 
         $read = $db_result->readNext();
       }
-//var_dump($revenue_data);
+var_dump($revenue_data);
 // Researcher position will be included MCA
 //LEFT JOIN login ON revenue_member.loginpk = login.loginpk => AND (login.position LIKE "Consultant" OR login.position LIKE "Researcher")
       $query = 'SELECT revenue_member.*,login.position as userPosition, login.id, login.firstname, login.lastname, login.status, sl_nationality.shortname AS nationality ';
