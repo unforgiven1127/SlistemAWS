@@ -158,7 +158,9 @@
 	var swap_time = <?php echo $swap_time; ?>;
 
 	$('.scrollingContainer').css('overflow', 'auto');
-	$('#componentContainerId').css('margin-top','-48px;');
+	document.getElementById('componentContainerId').setAttribute("style",
+                                        "margin-top:-50px");
+	//$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
 	}, (swap_time));*/
