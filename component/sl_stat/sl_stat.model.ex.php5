@@ -986,7 +986,10 @@ order by m.candidatefk
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
 
-      $revenue_data['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
+      $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
+        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
+
+      $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
       while($read)
