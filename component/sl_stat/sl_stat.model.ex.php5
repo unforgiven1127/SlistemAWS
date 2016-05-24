@@ -1214,7 +1214,7 @@ order by m.candidatefk
       $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by, slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slc.statusfk as candidate_status';
       $query .= ' FROM sl_position_link slp';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
-      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND status >= 51';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
