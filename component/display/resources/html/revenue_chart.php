@@ -1,5 +1,5 @@
+<?php $total_consultant_count = 0 ?>
 	<table valign="top">
-	<?php $total_consultant_count = 0 ?>
 		<tr >
 			<td  valign="top" >
 				<table class="revenue_table">
@@ -158,6 +158,7 @@
 	var swap_time = <?php echo $swap_time; ?>;
 
 	$('.scrollingContainer').css('overflow', 'auto');
+	$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
 	}, (swap_time));*/
