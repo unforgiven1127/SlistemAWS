@@ -22,7 +22,7 @@
 								continue;
 							if($value['consultant']['signed'] == 0 && $value['consultant']['paid'] == 0)
 							{
-								$revenue_data['Consultant'][$key]['placed'] = 0;
+								$value['Consultant']['placed'] = 0;
 							}
 							if ($row_number_rank % 2 === 0)
 								$even = ' even_row';
