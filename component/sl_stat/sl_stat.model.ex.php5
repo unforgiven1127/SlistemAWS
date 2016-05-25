@@ -1860,17 +1860,19 @@ exit;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by';
-      $query .= ' FROM sl_position_link';
-      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND status = 101';
+      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slc._sys_status as candidate_status';
+      $query .= ' FROM sl_position_link slp';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk AND slc._sys_status = 0';
+      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND slp.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND slp.status = 101';
     }
     else
     {
-      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by, slc._sys_status as candidate_status';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND sl_position_link.status = 101';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = sl_position_link.candidatefk AND slc._sys_status = 0';
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1';
