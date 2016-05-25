@@ -20,7 +20,10 @@
 						foreach ($revenue_data['Consultant'] as $key => $value):
 							if ($key == 'former' && empty($value['consultant']['signed']))
 								continue;
-
+							if($value['consultant']['signed'] == 0 && $value['consultant']['paid'] == 0)
+							{
+								$revenue_data['Consultant'][$key]['placed'] = 0;
+							}
 							if ($row_number_rank % 2 === 0)
 								$even = ' even_row';
 							else
