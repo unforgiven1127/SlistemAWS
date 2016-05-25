@@ -488,8 +488,8 @@ order by m.candidatefk
       if($temp['meeting_done'] == 0  && $temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date) )
       {
         //echo $temp['sl_meetingpk'].'<br>';
-        $read = $db_result->readNext();
-        continue;
+        //$read = $db_result->readNext();
+        //continue;
       }
       else
       {
@@ -508,9 +508,9 @@ order by m.candidatefk
             $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
         }
 
-        $read = $db_result->readNext();
       }
 
+      $read = $db_result->readNext();
     }
 
     foreach ($meeting_array as $meeting)
