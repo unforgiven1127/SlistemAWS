@@ -1024,6 +1024,7 @@ order by m.candidatefk
           {
             $user_id = 'former';
             $row['user_position'] = 'Consultant';
+            $row['userPosition'] = 'Consultant';
             if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
 
