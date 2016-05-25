@@ -1641,15 +1641,14 @@ order by m.candidatefk
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active,
-        slc._sys_status as candidate_status, pl.date_completed
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
-        AND pl.date_completed <= "'.$end_date.'"
+        AND m.date_completed >= "'.$start_date.'"
+        AND m.date_completed <= "'.$end_date.'"
         AND m.meeting_done = 1
         AND pl.status >= 51
         AND pl.active == 0
@@ -1657,9 +1656,11 @@ order by m.candidatefk
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+/*if($group == 'researcher')
+{
   echo '<br><br>';
   var_dump($query);
-
+}*/
 
 
     $oDbResult = array();
@@ -1690,16 +1691,15 @@ order by m.candidatefk
 
     // gets new_positions_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
-        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk,
-        slc._sys_status as candidate_status, pl.date_completed
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
         FROM sl_meeting m
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
-        AND pl.date_completed <= "'.$end_date.'"
+        AND m.date_completed >= "'.$start_date.'"
+        AND m.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active != 1
         AND pl2.status = 51
