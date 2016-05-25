@@ -487,9 +487,9 @@ order by m.candidatefk
 
       if($temp['meeting_done'] == 0  && $temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
       {
-        //echo $temp['sl_meetingpk'];
+        echo $temp['sl_meetingpk'];
         $read = $db_result->readNext();
-        break;
+        continue;
       }
 
 
