@@ -458,6 +458,7 @@ order by m.candidatefk
 
     $query = 'SELECT candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
     $query .= ' FROM sl_meeting';
+    $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
 
     $data = array();
