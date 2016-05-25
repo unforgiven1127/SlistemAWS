@@ -467,13 +467,33 @@ order by m.candidatefk
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
-    //echo '<br><br><br><br><br>';
     while($read)
     {
 
       $temp = $db_result->getData();
 
-      $create_date = $temp['date_created'];
+      $meeting_array[] = $temp;
+
+      if (!isset($met_candidates_array[$temp['candidatefk']]))
+      {
+        $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
+        $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
+      }
+
+      if ((int)$temp['meeting_done'] > 0)
+      {
+        $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
+        if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
+          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
+      }
+
+      $read = $db_result->readNext();
+    }
+
+    foreach ($meeting_array as $meeting)
+    {
+
+      $create_date = $meeting['date_created'];
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
 
@@ -484,36 +504,13 @@ order by m.candidatefk
 
       $today = date("Y-m-d H:i:s");
 
-      if($temp['meeting_done'] == 0  && $temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date) )
+      if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
       {
-        $meeting_array[] = array();
-        $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
-        $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
-      }
-      else
-      {
-        $meeting_array[] = $temp;
-
-        if (!isset($met_candidates_array[$temp['candidatefk']]))
-        {
-          $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
-          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
-        }
-
-        if ((int)$temp['meeting_done'] > 0)
-        {
-          $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
-          if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
-            $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
-        }
-
+        //echo $temp['sl_meetingpk'];
+        //$read = $db_result->readNext();
+        continue;
       }
 
-      $read = $db_result->readNext();
-    }
-
-    foreach ($meeting_array as $meeting)
-    {
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
         && strtotime($meeting['date_created']) <= strtotime($end_date)
         && isset($flip_user_ids[$meeting[$group_switch]]))
