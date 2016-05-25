@@ -1107,6 +1107,9 @@ class CSettingsEx extends CSettings
     $asActiveUsers = $oLogin->getUserList(0, true, false);
     $asUserAndGroup = $oLogin->getUsersGroup(array_keys($asActiveUsers));
 
+    var_dump($asActiveUsers);
+    exit;
+
     $sHTML = $oHTML->getBlocStart('');
 
       $sHTML.= $oHTML->getBlocStart('', array('class'=>'settingsTitleBloc'));

@@ -3552,9 +3552,6 @@ class CLoginEx extends CLogin
   */
   public function getUsersGroup($panUserPk = array(), $pbGroup = true, $pbCompact = false)
   {
-    echo $pbGroup;
-    exit;
-
     if(!assert('is_array($panUserPk)'))
       return array();
 
