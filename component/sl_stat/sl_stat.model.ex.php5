@@ -1814,11 +1814,12 @@ exit;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by';
-      $query .= ' FROM sl_position_link';
-      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND (status = 100 OR status = 101) GROUP BY candidatefk, positionfk';
+      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slp._sys_status as candidate_status';
+      $query .= ' FROM sl_position_link slp';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk AND slp._sys_status = 0';
+      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND slp.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND (slp.status = 100 OR slp.status = 101) GROUP BY slp.candidatefk, slp.positionfk';
     }
     else
     {
