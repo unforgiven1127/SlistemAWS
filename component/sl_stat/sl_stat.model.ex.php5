@@ -489,7 +489,7 @@ order by m.candidatefk
       {
         //echo $temp['sl_meetingpk'];
         $read = $db_result->readNext();
-        continue;
+        break;
       }
 
 
