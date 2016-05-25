@@ -473,6 +473,13 @@ order by m.candidatefk
 
       $meeting_array[] = $temp;
 
+      $create_date = $temp['date_created'];
+      $month = date("m",strtotime($create_date));
+      $year = date("Y",strtotime($create_date));
+
+      var_dump($month);
+      var_dump($year);
+
       if (!isset($met_candidates_array[$temp['candidatefk']]))
       {
         $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
