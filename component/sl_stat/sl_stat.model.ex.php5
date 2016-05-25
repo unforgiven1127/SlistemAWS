@@ -1814,7 +1814,7 @@ exit;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slp._sys_status as candidate_status';
+      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slc._sys_status as candidate_status';
       $query .= ' FROM sl_position_link slp';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk AND slc._sys_status = 0';
       $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
