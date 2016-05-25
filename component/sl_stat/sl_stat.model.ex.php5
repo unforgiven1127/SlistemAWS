@@ -1647,19 +1647,20 @@ order by m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND m.date_created >= "'.$start_date.'"
-        AND m.date_created < "'.$end_date.'"
+        AND m.date_completed >= "'.$start_date.'"
+        AND m.date_completed <= "'.$end_date.'"
         AND m.meeting_done = 1
         AND pl.status >= 51
-        AND pl.active != 1
+        AND pl.active == 0
         AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
-if($group == 'researcher')
+
+/*if($group == 'researcher')
 {
   echo '<br><br>';
   var_dump($query);
-}
+}*/
 
 
     $oDbResult = array();
@@ -1697,8 +1698,8 @@ if($group == 'researcher')
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND m.date_created >= "'.$start_date.'"
-        AND m.date_created < "'.$end_date.'"
+        AND m.date_completed >= "'.$start_date.'"
+        AND m.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active != 1
         AND pl2.status = 51
