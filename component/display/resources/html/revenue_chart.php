@@ -69,7 +69,7 @@
 						<th style="height: 50px; font-size: 200%;" class="text_center">Rank</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">Flag</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">Name</th>
-						<th style="height: 50px; font-size: 200%;" class="text_center">Revenue</th>
+						<th style="height: 50px; font-size: 200%;" class="text_center">Signed</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">Placed</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">MCCM's</th>
 						<th style="height: 50px; font-size: 200%;" class="text_center">CCM1</th>
