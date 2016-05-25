@@ -1709,7 +1709,7 @@ order by m.candidatefk
         AND pl2.status = 51
         AND pl2.active = 0
         AND slc._sys_status = 0
-        group by m.sl_meetingpk, pl.positionfk
+        group by m.sl_meetingpk
         order by m.candidatefk';
 
     $oDbResult = array();
