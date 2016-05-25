@@ -1641,7 +1641,8 @@ order by m.candidatefk
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active,
+        slc._sys_status as candidate_status, pl.date_completed
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
@@ -1691,7 +1692,8 @@ order by m.candidatefk
 
     // gets new_positions_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
-        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk,
+        slc._sys_status as candidate_status, pl.date_completed
         FROM sl_meeting m
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
