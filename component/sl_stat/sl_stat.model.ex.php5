@@ -485,7 +485,7 @@ order by m.candidatefk
 
       $today = date("Y-m-d H:i:s");
 
-      if($temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+      if($temp['meeting_done'] == 0  && $temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
       {
         echo $temp['sl_meetingpk'];
         exit;
