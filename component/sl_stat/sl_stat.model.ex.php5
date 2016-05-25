@@ -1653,6 +1653,7 @@ order by m.candidatefk
         AND m.meeting_done = 1
         AND pl.status > 51
         AND pl.active != 1
+        AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
 
@@ -1697,6 +1698,7 @@ order by m.candidatefk
         AND pl.active != 1
         AND pl2.status = 51
         AND pl2.active != 1
+        AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
 
