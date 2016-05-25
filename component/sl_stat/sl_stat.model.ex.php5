@@ -419,7 +419,6 @@ order by m.candidatefk
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-var_dump($query);
 
     $oDbResult = array();
 
@@ -430,17 +429,15 @@ var_dump($query);
     {
       $temp = $oDbResult->getData();
 
+      if(!isset($asData[$temp['created_by']]))
+      {
+        $asData[$temp['created_by']] = array();
+      }
+
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        if(isset($asData[$temp['created_by']]))
-        {
-          array_push($asData[$temp['created_by']], $temp);
-        }
-        else
-        {
-          $asData[$temp['created_by']] = array();
-          array_push($asData[$temp['created_by']], $temp);
-        }
+        array_push($asData[$temp['created_by']], $temp);
+
         //$asData[$temp['created_by']] = $temp;
       }
       $read = $oDbResult->readNext();
