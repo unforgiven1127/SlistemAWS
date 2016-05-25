@@ -1655,6 +1655,12 @@ order by m.candidatefk
         AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
+if($group == 'researcher')
+{
+  echo '<br><br>';
+  var_dump($query);
+}
+
 
     $oDbResult = array();
 
@@ -1665,7 +1671,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
         {
@@ -1710,7 +1716,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
         {
