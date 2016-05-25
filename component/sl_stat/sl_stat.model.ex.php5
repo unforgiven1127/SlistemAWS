@@ -491,22 +491,24 @@ order by m.candidatefk
         $read = $db_result->readNext();
         continue;
       }
-
-
-      if (!isset($met_candidates_array[$temp['candidatefk']]))
+      else
       {
-        $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
-        $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
+        if (!isset($met_candidates_array[$temp['candidatefk']]))
+        {
+          $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
+          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
+        }
+
+        if ((int)$temp['meeting_done'] > 0)
+        {
+          $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
+          if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
+            $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
+        }
+
+        $read = $db_result->readNext();
       }
 
-      if ((int)$temp['meeting_done'] > 0)
-      {
-        $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
-        if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
-          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
-      }
-
-      $read = $db_result->readNext();
     }
 
     foreach ($meeting_array as $meeting)
