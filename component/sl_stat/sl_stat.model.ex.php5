@@ -1132,7 +1132,7 @@ order by m.candidatefk
 
     //exit;
     //echo "<br><br>";
-    var_dump($revenue_data);//
+    //var_dump($revenue_data);//
     return $revenue_data;
   }
 
