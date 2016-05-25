@@ -1657,11 +1657,9 @@ order by m.candidatefk
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-/*if($group == 'researcher')
-{
   echo '<br><br>';
   var_dump($query);
-}*/
+
 
 
     $oDbResult = array();
