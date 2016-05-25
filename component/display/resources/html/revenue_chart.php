@@ -136,11 +136,12 @@
 					<?php if($total_consultant_count>0)
 					{
 						$flag_url = "/common/pictures/flags/empty.png";
+						$empty_flag = $display_object->getPicture($flag_url);
 						for ($i=0; $i < $total_consultant_count ; $i++) {
 							echo "
 							<tr>
 								<td style='height: 6%; font-size: 150%;'><center>-</center></td>
-								<td style='height: 6%; font-size: 150%;'><center>".$display_object->getPicture($flag_url);."</center></td>
+								<td style='height: 6%; font-size: 150%;'><center>".$empty_flag ."</center></td>
 								<td style='height: 6%; font-size: 150%;'><center>-</center></td>
 								<td style='height: 6%; font-size: 150%;'><center>-</center></td>
 								<td style='height: 6%; font-size: 150%;'><center>-</center></td>
