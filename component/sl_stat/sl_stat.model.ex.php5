@@ -409,7 +409,7 @@ group by m.sl_meetingpk
 order by m.candidatefk
 
  */
-  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
+  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
