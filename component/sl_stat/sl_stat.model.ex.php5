@@ -477,7 +477,7 @@ order by m.candidatefk
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
 
-      $new_month = $month+1;
+      $new_month = $month+01;
       $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
 
       var_dump($month);
