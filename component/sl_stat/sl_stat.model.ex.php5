@@ -477,8 +477,13 @@ order by m.candidatefk
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
 
-      var_dump($month);
-      var_dump($year);
+      $new_month = $month+1;
+      $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
+
+      var_dump($create_date);
+      var_dump($control_date);
+
+      exit;
 
       if (!isset($met_candidates_array[$temp['candidatefk']]))
       {
