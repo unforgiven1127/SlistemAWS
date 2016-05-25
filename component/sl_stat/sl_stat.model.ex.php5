@@ -473,7 +473,6 @@ order by m.candidatefk
 
       $temp = $db_result->getData();
 
-
       $create_date = $temp['date_created'];
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
@@ -488,9 +487,8 @@ order by m.candidatefk
       if($temp['meeting_done'] == 0  && $temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date) )
       {
         $meeting_array[] = array();
-        //echo $temp['sl_meetingpk'].'<br>';
-        //$read = $db_result->readNext();
-        //continue;
+        $met_candidates_array[$temp['candidatefk']]['times_met'] = 0;
+        $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
       }
       else
       {
