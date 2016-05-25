@@ -412,6 +412,7 @@ order by m.candidatefk
   $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
