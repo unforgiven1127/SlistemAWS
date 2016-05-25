@@ -1650,14 +1650,14 @@ order by m.candidatefk
         AND pl.date_completed >= "'.$start_date.'"
         AND pl.date_completed <= "'.$end_date.'"
         AND m.meeting_done = 1
-        AND pl.status >= 51
+        AND pl.status = 51
         AND pl.active = 0
         AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-echo '<br><br>';
-var_dump($query);
+//echo '<br><br>';
+//var_dump($query);
 
     $oDbResult = array();
 
