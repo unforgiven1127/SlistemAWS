@@ -504,12 +504,6 @@ order by m.candidatefk
 
       $today = date("Y-m-d H:i:s");
 
-      if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
-      {
-        //echo $temp['sl_meetingpk'];
-        //$read = $db_result->readNext();
-        continue;
-      }
 
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
         && strtotime($meeting['date_created']) <= strtotime($end_date)
@@ -520,10 +514,17 @@ order by m.candidatefk
           $data[$meeting[$group_switch]] = array('set' => 0, 'met' => 0, 'set_meeting_info' => array(),
             'met_meeting_info' => array());
         }
+        if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+        {
+          # do nthng
+        }
+        else
+        {
+          $data[$meeting[$group_switch]]['set'] += 1;
+          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+            'date' => $meeting['date_created']);
+        }
 
-        $data[$meeting[$group_switch]]['set'] += 1;
-        $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-          'date' => $meeting['date_created']);
       }
 
       if (strtotime($meeting['date_met']) >= strtotime($start_date)
