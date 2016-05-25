@@ -456,7 +456,7 @@ order by m.candidatefk
     if ($group == 'consultant')
       $group_switch = 'attendeefk';
 
-    $query = 'SELECT candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
+    $query = 'SELECT sl_meetingpk, candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
     $query .= ' FROM sl_meeting';
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
@@ -469,6 +469,7 @@ order by m.candidatefk
     $read = $db_result->readFirst();
     while($read)
     {
+
       $temp = $db_result->getData();
 
       $meeting_array[] = $temp;
@@ -482,13 +483,14 @@ order by m.candidatefk
       $new_month = date("m",strtotime($effectiveDate));
       $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
 
-      var_dump($month);
-      var_dump($year);
+      $today = date("Y-m-d H:i:s");
 
-      var_dump($create_date);
-      var_dump($control_date);
+      if($temp['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+      {
+        echo $temp['sl_meetingpk'];
+        exit;
+      }
 
-      exit;
 
       if (!isset($met_candidates_array[$temp['candidatefk']]))
       {
