@@ -1023,7 +1023,7 @@ order by m.candidatefk
           if (!$row['status'])
           {
             $user_id = 'former';
-            $row['user_position'] = 'consultant';
+            $row['user_position'] = 'Consultant';
             if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
 
