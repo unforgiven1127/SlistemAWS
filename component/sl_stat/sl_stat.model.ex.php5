@@ -1823,9 +1823,10 @@ exit;
     }
     else
     {
-      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by, slc._sys_status as candidate_status ';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND (sl_position_link.status = 100 OR sl_position_link.status = 101) AND sl_position_link.active != 0';
+      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = sl_position_link.candidatefk AND slc._sys_status = 0';
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
