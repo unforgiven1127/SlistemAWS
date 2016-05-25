@@ -4391,7 +4391,7 @@ class CSl_statEx extends CSl_stat
       $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
       $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
-      //$temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date);
+      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
 echo '<br><br><br>';
 var_dump($temp_new_candidate_met);
 echo '<br><br><br>';
