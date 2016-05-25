@@ -480,6 +480,9 @@ order by m.candidatefk
       $new_month = $month+1;
       $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
 
+      var_dump($month);
+      var_dump($year);
+
       var_dump($create_date);
       var_dump($control_date);
 
