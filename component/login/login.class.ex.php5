@@ -3552,9 +3552,8 @@ class CLoginEx extends CLogin
   */
   public function getUsersGroup($panUserPk = array(), $pbGroup = true, $pbCompact = false)
   {
-    ChromePhp::log($panUserPk);
-    ChromePhp::log($pbGroup);
-    ChromePhp::log($pbCompact);
+    echo $pbGroup;
+    exit;
 
     if(!assert('is_array($panUserPk)'))
       return array();
