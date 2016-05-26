@@ -1860,7 +1860,7 @@ function _live_dump($pvTrace, $psTitle = null)
               }
             },
             xAxis: {
-              categories: ['tEST','Apr','May']
+              categories: ['Mar','Apr','May']
             },
             yAxis:
              {
@@ -1908,8 +1908,36 @@ function _live_dump($pvTrace, $psTitle = null)
     return $table;
   }
 
-  function get_meetings()
+  function get_meetings($user_id)
   {
+    $user_information = getUserInformaiton($user_id);
+    $user_short_name = $user_information['id'];
+
+    $start_date3 = (new DateTime('first day of this month'))->format("Y-m-d");
+    $start_date3.= ' 00:00:00';
+
+    $end_date3 = (new DateTime('last day of this month'))->format("Y-m-d");
+    $end_date3 .= ' 23:59:59';
+
+    $start_date2 = strtotime($start_date3.' -1 months');
+    $end_date2 = strtotime($end_date3.' -1 months');
+
+    $start_date1 = strtotime($start_date3.' -2 months');
+    $end_date1 = strtotime($end_date3.' -2 months');
+
+    $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
+    $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
+    $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
+
+    $monthName3 = $start_date3->format('M');
+    $monthName2 = $start_date2->format('M');
+    $monthName1 = $start_date1->format('M');
+
+    var_dump($monthName3);
+    var_dump($monthName2);
+    var_dump($monthName1);
+    exit;
+
     $table = create_meetings_table();
 
     return $table;
