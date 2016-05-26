@@ -1025,7 +1025,7 @@ order by m.candidatefk
 
       $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
-
+$flag = 0;
       while($read)
       {
         $row = $db_result->getData();
@@ -1046,8 +1046,12 @@ order by m.candidatefk
           {
             $user_id = 'former';
             $row['user_position'] = 'Consultant';
-            if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
+            //if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
+            if($flag == 0)
+            {
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
+              $flag = 1;
+            }
 
             if (!isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
@@ -1142,9 +1146,7 @@ order by m.candidatefk
         }
         $read = $db_result->readNext();
       }
-var_dump($revenue_data['Consultant']['former']['Consultant']['placed']);
-echo'<br><br>';
-var_dump($revenue_data['Researcher']['former']['Researcher']['placed']);
+
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
