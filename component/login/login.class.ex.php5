@@ -2308,11 +2308,13 @@ class CLoginEx extends CLogin
 
     if($pvTeamPk == 116)
     {
-      $sWhere = " WHERE l.status = 1 AND l.phone_ext != ''";
+      $sQuery = 'SELECT * FROM login l';
+      $sWhere = " WHERE l.status = 1 AND l.phone_ext != '' ";
     }
     else if($pvTeamPk == -1)
     {
-      $sWhere = " WHERE 1 ";
+      $sQuery = 'SELECT * FROM login l';
+      $sWhere = ' ';
     }
     else
     {
