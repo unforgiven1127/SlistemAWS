@@ -1053,6 +1053,7 @@ order by m.candidatefk
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
               var_dump($temp_placed);
+              echo'<br><br>';
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
