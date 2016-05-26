@@ -3130,12 +3130,12 @@ class CLoginEx extends CLogin
 
   private function _displayList($pbFullPage = true)
   {
-    ChromePhp::log('_displayList');
     $oHTML = CDependency::getCpHtml();
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
 
+ChromePhp::log($this->getResourcePath());
 
     $oRight = CDependency::getComponentByName('right');
     if($oRight->canAccess($this->csUid, CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER))
@@ -3153,7 +3153,6 @@ class CLoginEx extends CLogin
       {
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
         $sTitle = $aUserGroups[$nGroupFk]['title'];
-        $sTitle = 'All Users';
       }
     }
     else
