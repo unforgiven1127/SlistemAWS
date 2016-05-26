@@ -1929,9 +1929,9 @@ function _live_dump($pvTrace, $psTitle = null)
     $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
     $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
 
-    $monthName3 = $start_date3->format('M');
-    $monthName2 = $start_date2->format('M');
-    $monthName1 = $start_date1->format('M');
+    //$monthName3 = $start_date3->format('M');
+    //$monthName2 = $start_date2->format('M');
+    //$monthName1 = $start_date1->format('M');
 
     var_dump(jdmonthname (  $monthName3 ,  0 ));
     var_dump(jdmonthname (  $monthName2 ,  0 ));
