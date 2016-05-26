@@ -3154,7 +3154,6 @@ ChromePhp::log($nGroupFk);
     if($nGroupFk >= 0 || $nGroupFk == -1)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
-      ChromePhp::log($aUserList);
       if($nGroupFk == 0)
         $sTitle = 'Users with no group';
       else
@@ -3168,7 +3167,6 @@ ChromePhp::log($nGroupFk);
       $sTitle = 'All Users';
       $aUserList = $this->getUserList(0, false, true, 'l.status DESC, l.firstname, l.lastname');
     }
-
 
     //Full list container
     $sHTML = $oHTML->getBlocStart('', array('style'=>'position: relative;'));
