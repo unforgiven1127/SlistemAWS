@@ -1052,6 +1052,7 @@ order by m.candidatefk
             if (!isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
+              var_dump($temp_placed);
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
@@ -1257,12 +1258,12 @@ order by m.candidatefk
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
-      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 
+      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 AND slm.meeting_done = 1
       GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
     }
-//AND slm.meeting_done = 1 cikarttik kontrol icin
+
 /*if ($group == 'researcher'){
   echo '<br><br><br>';
   var_dump($query);
