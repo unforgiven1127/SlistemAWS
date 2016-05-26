@@ -3148,8 +3148,11 @@ ChromePhp::log($sQuery);
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
-ChromePhp::log('_displayList');
-ChromePhp::log($nGroupFk);
+
+    if($nGroupFk == -1)
+    {
+      $nGroupFk = 116;
+    }
 
     $oRight = CDependency::getComponentByName('right');
     if($oRight->canAccess($this->csUid, CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER))
@@ -3158,7 +3161,7 @@ ChromePhp::log($nGroupFk);
       $bAdmin = false;
 
 
-    if($nGroupFk >= 0 || $nGroupFk == -1)
+    if($nGroupFk >= 0)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
