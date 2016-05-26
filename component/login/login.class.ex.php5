@@ -2347,6 +2347,8 @@ class CLoginEx extends CLogin
     else
       $sQuery.= $sWhere.' ORDER BY l.firstname';
 
+var_dump($sQuery);
+
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 
