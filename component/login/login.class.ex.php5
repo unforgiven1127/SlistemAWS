@@ -3169,12 +3169,6 @@ ChromePhp::log($nGroupFk);
       $aUserList = $this->getUserList(0, false, true, 'l.status DESC, l.firstname, l.lastname');
     }
 
-if($nGroupFk == -1)
-{
-  var_dump($aUserList);
-  exit;
-}
-
 
     //Full list container
     $sHTML = $oHTML->getBlocStart('', array('style'=>'position: relative;'));
