@@ -2293,6 +2293,7 @@ class CLoginEx extends CLogin
   */
   public function getUserByTeam($pvTeamPk = 0, $pvGroupName = '', $pbOnlyActive = true, $pbSortByStatus = true, $pbAllGroups = false)
   {
+    ChromePhp::log('getUserByTeam');
     if(!assert('is_integer($pvTeamPk) || is_array($pvTeamPk)'))
       return array();
 
@@ -2342,7 +2343,7 @@ class CLoginEx extends CLogin
       }
     }
 
-ChromePhp::log($sQuery);
+
     if($pbSortByStatus)
       $sQuery.= $sWhere.' ORDER BY status Desc, l.firstname';
     else
