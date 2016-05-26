@@ -1860,7 +1860,7 @@ function _live_dump($pvTrace, $psTitle = null)
               }
             },
             xAxis: {
-              categories: ['Mar','Apr','May']
+              categories: ['tEST','Apr','May']
             },
             yAxis:
              {
@@ -1903,7 +1903,6 @@ function _live_dump($pvTrace, $psTitle = null)
         });
       });
       </script>
-
     ";
 
     return $table;
