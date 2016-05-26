@@ -2306,7 +2306,7 @@ class CLoginEx extends CLogin
 
     if($pvTeamPk == 116)
     {
-      $sWhere = " WHERE l.status = 1 AND l.phone_ext != NULL";
+      $sWhere = " WHERE l.status = 1 AND l.phone_ext != ''";
     }
     else
     {
@@ -2347,7 +2347,6 @@ class CLoginEx extends CLogin
     else
       $sQuery.= $sWhere.' ORDER BY l.firstname';
 
-var_dump($sQuery);
 
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
