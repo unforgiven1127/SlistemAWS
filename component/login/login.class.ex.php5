@@ -3170,7 +3170,7 @@ ChromePhp::log($sQuery);
       else
       {
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
-        if($sTitle != 'All Users')
+        if(!isset($sTitle))
         {
           $sTitle = $aUserGroups[$nGroupFk]['title'];
         }
