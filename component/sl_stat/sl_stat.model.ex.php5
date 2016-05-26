@@ -1142,7 +1142,7 @@ order by m.candidatefk
         }
         $read = $db_result->readNext();
       }
-
+var_dump($revenue_data[$row['user_position']]['former'][$row['userPosition']]['placed']);
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
