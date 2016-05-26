@@ -1934,6 +1934,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $monthName1 = date('M',$start_date1);
 
     var_dump($start_date3);
+    var_dump($start_date2);
+    var_dump($start_date1);
     var_dump($monthName3);
     var_dump($monthName2);
     var_dump($monthName1);
