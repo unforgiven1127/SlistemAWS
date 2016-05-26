@@ -3136,6 +3136,11 @@ class CLoginEx extends CLogin
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
 ChromePhp::log($nGroupFk);
 
+    if($nGroupFk == -1)
+    {
+      $nGroupFk = 116;
+    }
+
     $oRight = CDependency::getComponentByName('right');
     if($oRight->canAccess($this->csUid, CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER))
       $bAdmin = true;
