@@ -1891,7 +1891,7 @@ function _live_dump($pvTrace, $psTitle = null)
                     type: 'column',
                     name: 'Met - mmoir',
                     stack: 'mmoir',
-                    data: [30,1,1],
+                    data: [25,14,13],
                     color: '#2073CC' ,
               dataLabels:
               {
