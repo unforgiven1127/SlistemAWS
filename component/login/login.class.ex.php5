@@ -3071,7 +3071,7 @@ class CLoginEx extends CLogin
    * @return type
    */
   public function getUserPageList()
-  {ChromePhp::log('getUserPageList');
+  {
     $sHTML = $this->_displayList(false);
     return $sHTML;
   }
@@ -3123,7 +3123,7 @@ class CLoginEx extends CLogin
    * @return string HTML
    */
   public function displayUserList($pbFullPage = true)
-  {ChromePhp::log('displayUserList');
+  {
     return $this->_displayList($pbFullPage);
   }
 
@@ -3354,7 +3354,7 @@ class CLoginEx extends CLogin
   }
 
   public function displayList($pbFullPage = false)
-  {ChromePhp::log('displayList');
+  {
     return $this->_displayList($pbFullPage);
   }
 

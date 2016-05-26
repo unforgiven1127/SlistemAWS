@@ -300,6 +300,7 @@ class CSettingsEx extends CSettings
   {
     $oLogin = CDependency::getCpLogin();
     $sData = $oLogin->getUserPageList();
+    ChromePhp::log('_getAjaxUserPage');
 
     if(empty($sData) || $sData == 'null' || $sData == null)
       return array('data' => 'Sorry, an error occured while refreshing the list.');
