@@ -1919,8 +1919,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date3 = (new DateTime('last day of this month'))->format("Y-m-d");
     $end_date3 .= ' 23:59:59';
 
-    $start_date3 = strtotime($start_date3.' 0 months');
-    $end_date2 = strtotime($end_date3.' 0 months');
+    $start_date3 = strtotime($start_date3);
+    $end_date2 = strtotime($end_date3);
 
     $start_date2 = strtotime($start_date3.' -1 months');
     $end_date2 = strtotime($end_date3.' -1 months');
