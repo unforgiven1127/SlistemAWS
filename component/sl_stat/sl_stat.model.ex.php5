@@ -521,7 +521,7 @@ order by m.candidatefk
         else
         {
           $data[$meeting[$group_switch]]['set'] += 1;
-          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidatefk' => $meeting['candidatefk'],
+          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
             'date' => $meeting['date_created']);
         }
 
