@@ -1933,9 +1933,9 @@ function _live_dump($pvTrace, $psTitle = null)
     $monthName2 = $start_date2->format('M');
     $monthName1 = $start_date1->format('M');
 
-    var_dump($monthName3);
-    var_dump($monthName2);
-    var_dump($monthName1);
+    var_dump(jdmonthname (  $monthName3 ,  0 ));
+    var_dump(jdmonthname (  $monthName2 ,  0 ));
+    var_dump(jdmonthname (  $monthName1 ,  0 ));
     exit;
 
     $table = create_meetings_table();
