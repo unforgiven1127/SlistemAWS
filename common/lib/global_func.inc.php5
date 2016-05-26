@@ -1877,7 +1877,7 @@ function _live_dump($pvTrace, $psTitle = null)
                 xAxis: {
                   categories: ['Mar','Apr','May']
                 },
-                yAxis: 
+                yAxis:
                  {
                     title:
                     {
@@ -1921,6 +1921,8 @@ function _live_dump($pvTrace, $psTitle = null)
     </div>
 
     ";
+
+    return $table;
   }
 
   function get_meetings()
