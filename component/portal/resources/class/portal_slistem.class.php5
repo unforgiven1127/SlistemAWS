@@ -482,6 +482,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
 ChromePhp::log('objectives bas');
     ChromePhp::log(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_play.html');
+    exit;
 
     if(!empty($objectives) && $asSettings['home_taregt_tbl'] > 0)
       $sTable.= '
