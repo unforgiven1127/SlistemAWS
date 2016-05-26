@@ -2293,8 +2293,11 @@ class CLoginEx extends CLogin
   */
   public function getUserByTeam($pvTeamPk = 0, $pvGroupName = '', $pbOnlyActive = true, $pbSortByStatus = true, $pbAllGroups = false)
   {
+    ChromePhp::log('getUserByTeam');
     if(!assert('is_integer($pvTeamPk) || is_array($pvTeamPk)'))
       return array();
+
+    ChromePhp::log($pvTeamPk);
 
     if(!assert('is_bool($pbOnlyActive)'))
       return array();
@@ -2352,6 +2355,7 @@ class CLoginEx extends CLogin
     else
       $sQuery.= $sWhere.' ORDER BY l.firstname';
 
+ChromePhp::log($sQuery);
 
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
@@ -2364,7 +2368,7 @@ class CLoginEx extends CLogin
     while($bRead)
     {
       $row = $oDbResult->getData();
-      $asResult[$row['loginpk']] = $row;
+      $asResult[$row['loginpk']] = $oDbResult->getData();
       $bRead = $oDbResult->readNext();
     }
 
@@ -3140,11 +3144,8 @@ class CLoginEx extends CLogin
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
-ChromePhp::log($candidate_info);
-    if($nGroupFk == -1)
-    {
-      $nGroupFk = 116;
-    }
+ChromePhp::log('_displayList');
+ChromePhp::log($nGroupFk);
 
     $oRight = CDependency::getComponentByName('right');
     if($oRight->canAccess($this->csUid, CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER))
@@ -3153,7 +3154,7 @@ ChromePhp::log($candidate_info);
       $bAdmin = false;
 
 
-    if($nGroupFk >= 0)
+    if($nGroupFk >= 0 || $nGroupFk == -1)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
