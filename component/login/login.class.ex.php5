@@ -3142,7 +3142,7 @@ class CLoginEx extends CLogin
       $bAdmin = false;
 
 
-    if($nGroupFk >= 0)
+    if($nGroupFk >= 0 && $nGroupFk < 999)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
@@ -3197,7 +3197,7 @@ class CLoginEx extends CLogin
     else
     {
       //Refresh list in ajax for
-      $aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=116\', \'body\', false, \'area_users\'); ');
+      $aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=999\', \'body\', false, \'area_users\'); ');
       foreach($aUserGroups as $aGroup)
         $aActions[] = array('label' => $aGroup['title'], 'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk='.$aGroup['login_grouppk'].'\', \'body\', false, \'area_users\'); ');
 
