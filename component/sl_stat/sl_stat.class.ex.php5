@@ -4263,6 +4263,9 @@ class CSl_statEx extends CSl_stat
         //{
           $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
+          echo '<br><br><br>';
+          var_dump($stats_data['consultant'][$id]['met_meeting_info']);
+          echo '<br><br><br>';
         //}
         /*else
         {
