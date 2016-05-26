@@ -1678,7 +1678,6 @@ function _live_dump($pvTrace, $psTitle = null)
     $table = "
 
       <div class='graph_bloc' style='display: block;'>
-        <div class='home_item_title'>Meetings</div>
         <div id='sicChart_5747743f84f90' style='height: 240px; width: 450px;  margin: 0 auto;' data-highcharts-chart='0'>
             <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);'>
                 <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
