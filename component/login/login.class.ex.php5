@@ -2367,10 +2367,11 @@ ChromePhp::log($sQuery);
 
     while($bRead)
     {
-      $asResult[$oDbResult->getFieldValue('loginpk')] = $oDbResult->getData();
+      $row = $oDbResult->getData();
+      $asResult[$row['loginpk']] = $row;
       $bRead = $oDbResult->readNext();
     }
-ChromePhp::log($asResult);
+
     return $asResult;
   }
 
