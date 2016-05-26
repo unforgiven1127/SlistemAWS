@@ -56,7 +56,15 @@
 	else
 		$even = '';
 	?>
-	<?php if($flag){ ?>
+	<?php if($flag){
+		if($value['position'] == 'Consultant')
+		{
+			$index = 'candidate';
+		}
+		else
+		{
+			$index = 'candidatefk';
+		}?>
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
@@ -80,14 +88,7 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php foreach ($value['met_meeting_info'] as $stat_info):
-			if($value['position'] == 'Consultant')
-			{
-				$index = 'candidate';
-			}
-			else
-			{
-				$index = 'candidatefk';
-			}?>
+			?>
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info[$index]); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info[$index]; ?></a>
