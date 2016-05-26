@@ -3152,7 +3152,7 @@ ChromePhp::log($sQuery);
     if($nGroupFk == -1)
     {
       $nGroupFk = 116;
-      $sTitle = 'All Users';
+      $sTitle = 'Active users';
     }
 
     $oRight = CDependency::getComponentByName('right');
