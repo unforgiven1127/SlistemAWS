@@ -79,7 +79,7 @@
 			<?php echo $value['met']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['met_meeting_info'] as $stat_info): 
+			<?php foreach ($value['met_meeting_info'] as $stat_info):
 			if($value['position'] == 'Consultant')
 			{
 				$index = 'candidate';
