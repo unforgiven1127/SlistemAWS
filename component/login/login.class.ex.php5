@@ -3197,8 +3197,7 @@ class CLoginEx extends CLogin
     else
     {
       //Refresh list in ajax for
-      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=-1');
-      //$aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=-1\', \'body\', false, \'area_users\'); ');
+      $aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=116\', \'body\', false, \'area_users\'); ');
       foreach($aUserGroups as $aGroup)
         $aActions[] = array('label' => $aGroup['title'], 'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk='.$aGroup['login_grouppk'].'\', \'body\', false, \'area_users\'); ');
 
