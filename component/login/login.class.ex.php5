@@ -3184,13 +3184,13 @@ class CLoginEx extends CLogin
       $aUserGroups = $this->_getModel()->getUserGroup(0, true);
 
     $aActions = array();
-ChromePhp::log($aUserGroups);
+
     //Use current URL instead of component url for Slistem
     //page is loaded by another component, it has to stay there
     //$sURL = $oPage->getUrl($this->csUid, CONST_ACTION_LIST, CONST_LOGIN_TYPE_USER, 0);
     $sURL = $oPage->getRequestedUrl();
     $sURL = preg_replace('/(&login_groupfk=)([0-9]{0,6})/', '', $sURL);
-
+ChromePhp::log($sURL);
 
     if($pbFullPage)
     {
