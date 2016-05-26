@@ -3137,6 +3137,7 @@ ChromePhp::log($sQuery);
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
+ChromePhp::log('_displayList');
 ChromePhp::log($nGroupFk);
 
     $oRight = CDependency::getComponentByName('right');
