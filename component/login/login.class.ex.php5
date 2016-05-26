@@ -2293,15 +2293,8 @@ class CLoginEx extends CLogin
   */
   public function getUserByTeam($pvTeamPk = 0, $pvGroupName = '', $pbOnlyActive = true, $pbSortByStatus = true, $pbAllGroups = false)
   {
-    ChromePhp::log('getUserByTeam');
     if(!assert('is_integer($pvTeamPk) || is_array($pvTeamPk)'))
       return array();
-
-    if($pvTeamPk == -1)
-    {
-      $pvTeamPk = 116;
-    }
-    ChromePhp::log($pvTeamPk);
 
     if(!assert('is_bool($pbOnlyActive)'))
       return array();
@@ -2359,7 +2352,6 @@ class CLoginEx extends CLogin
     else
       $sQuery.= $sWhere.' ORDER BY l.firstname';
 
-ChromePhp::log($sQuery);
 
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
@@ -3148,7 +3140,7 @@ ChromePhp::log($sQuery);
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
-
+ChromePhp::log($candidate_info);
     if($nGroupFk == -1)
     {
       $nGroupFk = 116;
