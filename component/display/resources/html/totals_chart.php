@@ -48,12 +48,7 @@
 	{
 		if($value['position'] != "Researcher")
 		{
-			$index = 'candidatefk';
 			$flag = false;
-		}
-		else
-		{
-			$index = 'candidate';
 		}
 	}
 	if ($row_number_rank % 2 === 0)
@@ -61,7 +56,7 @@
 	else
 		$even = '';
 	?>
-	<?php if($flag){?>
+	<?php if($flag){ ?>
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
@@ -84,11 +79,10 @@
 			<?php echo $value['met']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['met_meeting_info'] as $stat_info):
-			?>
+			<?php foreach ($value['met_meeting_info'] as $stat_info): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info[$index]); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info[$index]; ?></a>
+				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
+					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
 				</div>
 			<?php endforeach ?>
 			</div>
