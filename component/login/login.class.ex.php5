@@ -2297,6 +2297,10 @@ class CLoginEx extends CLogin
     if(!assert('is_integer($pvTeamPk) || is_array($pvTeamPk)'))
       return array();
 
+    if($pvTeamPk == -1)
+    {
+      $pvTeamPk = 116;
+    }
     ChromePhp::log($pvTeamPk);
 
     if(!assert('is_bool($pbOnlyActive)'))
