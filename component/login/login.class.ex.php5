@@ -3130,6 +3130,7 @@ class CLoginEx extends CLogin
 
   private function _displayList($pbFullPage = true)
   {
+    ChromePhp::log('_displayList');
     $oHTML = CDependency::getCpHtml();
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
