@@ -1160,7 +1160,7 @@ class CLoginEx extends CLogin
    */
 
   private function _formUser($pnPK)
-  {
+  {ChromePhp::log('_formUser');
     $oHTML = CDependency::getCpHtml();
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile($this->getResourcePath().'/css/login.form.css');
@@ -3071,7 +3071,7 @@ class CLoginEx extends CLogin
    * @return type
    */
   public function getUserPageList()
-  {
+  {ChromePhp::log('getUserPageList');
     $sHTML = $this->_displayList(false);
     return $sHTML;
   }
@@ -3209,7 +3209,7 @@ class CLoginEx extends CLogin
 
       $aActions[] = array('label' => 'No Group',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=0\', \'body\', false, \'area_users\')' );
     }
-ChromePhp::log($aActions);
+
     $sHTML.= $oHTML->getActionButtons($aActions, 1, $sTitle, array('width' => 225, 'id' => 'displayUsers'));
 
 
@@ -3358,7 +3358,7 @@ ChromePhp::log($aActions);
   }
 
   public function displayList($pbFullPage = false)
-  {
+  {ChromePhp::log('displayList');
     return $this->_displayList($pbFullPage);
   }
 
