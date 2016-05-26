@@ -48,7 +48,12 @@
 	{
 		if($value['position'] != "Researcher")
 		{
+			$index = 'candidatefk';
 			$flag = false;
+		}
+		else
+		{
+			$index = 'candidate';
 		}
 	}
 	if ($row_number_rank % 2 === 0)
@@ -56,15 +61,7 @@
 	else
 		$even = '';
 	?>
-	<?php if($flag){
-		if($value['position'] == 'Consultant')
-		{
-			$index = 'candidate';
-		}
-		else
-		{
-			$index = 'candidatefk';
-		}?>
+	<?php if($flag){?>
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
