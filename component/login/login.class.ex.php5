@@ -2310,6 +2310,10 @@ class CLoginEx extends CLogin
     {
       $sWhere = " WHERE l.status = 1 AND l.phone_ext != ''";
     }
+    else if($pvTeamPk == -1)
+    {
+      $sWhere = " WHERE 1 ";
+    }
     else
     {
       $sWhere = '';
@@ -3147,7 +3151,7 @@ ChromePhp::log($nGroupFk);
       $bAdmin = false;
 
 
-    if($nGroupFk >= 0)
+    if($nGroupFk >= 0 || $nGroupFk == -1)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
