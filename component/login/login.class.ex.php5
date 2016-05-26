@@ -3190,7 +3190,7 @@ class CLoginEx extends CLogin
     //$sURL = $oPage->getUrl($this->csUid, CONST_ACTION_LIST, CONST_LOGIN_TYPE_USER, 0);
     $sURL = $oPage->getRequestedUrl();
     $sURL = preg_replace('/(&login_groupfk=)([0-9]{0,6})/', '', $sURL);
-ChromePhp::log($sURL);
+
 
     if($pbFullPage)
     {
@@ -3209,7 +3209,7 @@ ChromePhp::log($sURL);
 
       $aActions[] = array('label' => 'No Group',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=0\', \'body\', false, \'area_users\')' );
     }
-
+ChromePhp::log($aActions);
     $sHTML.= $oHTML->getActionButtons($aActions, 1, $sTitle, array('width' => 225, 'id' => 'displayUsers'));
 
 
