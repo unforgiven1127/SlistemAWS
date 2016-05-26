@@ -3134,8 +3134,7 @@ class CLoginEx extends CLogin
     $oPage = CDependency::getCpPage();
     $oPage->addCssFile(array($this->getResourcePath().'css/login.form.css'));
     $nGroupFk = (int)getValue('login_groupfk', CONST_LOGIN_DEFAULT_LIST_GRP);
-ChromePhp::log($nGroupFk);
-ChromePhp::log($pbFullPage);
+
 
     if($nGroupFk == -1)
     {
@@ -3185,7 +3184,7 @@ ChromePhp::log($pbFullPage);
       $aUserGroups = $this->_getModel()->getUserGroup(0, true);
 
     $aActions = array();
-
+ChromePhp::log($aUserGroups);
     //Use current URL instead of component url for Slistem
     //page is loaded by another component, it has to stay there
     //$sURL = $oPage->getUrl($this->csUid, CONST_ACTION_LIST, CONST_LOGIN_TYPE_USER, 0);
