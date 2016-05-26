@@ -1677,247 +1677,235 @@ function _live_dump($pvTrace, $psTitle = null)
   {
     $table = "
 
-      <div class='graph_bloc' style='display: block;'>
-        <div id='sicChart_5747743f84f90' style='height: 240px; width: 450px;  margin: 0 auto;' data-highcharts-chart='0'>
-            <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);'>
-                <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
-                    xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
-                    <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
-                    <defs>
-                        <clipPath id='highcharts-1'>
-                            <rect x='0' y='0' width='222' height='195'></rect>
-                        </clipPath>
-                    </defs>
-                    <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highcharts-background'></rect>
-                    <path fill='#000' d='M 0 0'></path>
-                    <g class='highcharts-grid' zIndex='1'></g>
-                    <g class='highcharts-grid' zIndex='1'>
-                        <path fill='none' d='M 61 9.5 L 283 9.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'></path>
-                        <path fill='none' d='M 61 75.5 L 283 75.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'></path>
-                        <path fill='none' d='M 61 140.5 L 283 140.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'></path>
-                        <path fill='none' d='M 61 205.5 L 283 205.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'></path>
+      <div class='graph_bloc'>
+    <div class='home_item_title'>Meetings</div>
+    <div style='height: 240px; width: 450px;  margin: 0 auto;' id='sicChart_57476ae4c76f5' data-highcharts-chart='0'>
+        <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
+            <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
+                xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
+                <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
+                <defs>
+                    <clipPath id='highcharts-1'>
+                        <rect x='0' y='0' width='262' height='194'/>
+                    </clipPath>
+                </defs>
+                <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highcharts-background'/>
+                <g class='highcharts-grid' zIndex='1'/>
+                <g class='highcharts-grid' zIndex='1'>
+                    <path fill='none' d='M 61 9.5 L 323 9.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
+                    <path fill='none' d='M 61 75.5 L 323 75.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
+                    <path fill='none' d='M 61 139.5 L 323 139.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
+                    <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
+                </g>
+                <g class='highcharts-axis' zIndex='2'>
+                    <path fill='none' d='M 235.5 204 L 235.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
+                    <path fill='none' d='M 323.5 204 L 323.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
+                    <path fill='none' d='M 147.5 204 L 147.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
+                    <path fill='none' d='M 60.5 204 L 60.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
+                    <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
+                </g>
+                <g class='highcharts-axis' zIndex='2'>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
+                </g>
+                <g class='highcharts-series-group' zIndex='3'>
+                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
+                        <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <path fill='none' d='M 0 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 262 19.400000000000006' stroke='#000' stroke-width='2' zIndex='1' stroke-dasharray='6,2'/>
+                        <path fill='none' d='M 33.666666666666664 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 228.33333333333331 19.400000000000006' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highcharts-tracker' style=''/>
                     </g>
-                    <g class='highcharts-axis' zIndex='2'>
-                        <path fill='none' d='M 208.5 205 L 208.5 215' stroke='#C0D0E0' stroke-width='1' opacity='1'></path>
-                        <path fill='none' d='M 283.5 205 L 283.5 215' stroke='#C0D0E0' stroke-width='1' opacity='1'></path>
-                        <path fill='none' d='M 134.5 205 L 134.5 215' stroke='#C0D0E0' stroke-width='1' opacity='1'></path>
-                        <path fill='none' d='M 60.5 205 L 60.5 215' stroke='#C0D0E0' stroke-width='1' opacity='1'></path>
-                        <path fill='none' d='M 61 205.5 L 283 205.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'></path>
+                    <g class='highcharts-markers highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
+                        <path fill='#000' d='M 218 15.400000000000006 C 223.328 15.400000000000006 223.328 23.400000000000006 218 23.400000000000006 C 212.672 23.400000000000006 212.672 15.400000000000006 218 15.400000000000006 Z'/>
+                        <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
+                        <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
-                    <g class='highcharts-axis' zIndex='2'>
-                        <text x='23.765625' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 23.765625 107.5)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107.5'>Meetings</text>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='84.5' width='42' height='14' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='16' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='18' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='19' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='196.5' y='65.5' width='42' height='40' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='42' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-series-group' zIndex='3'>
-                        <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
-                            <path fill='none' d='M 37 19.5 L 111 19.5 L 185 19.5' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'></path>
-                            <path fill='none' d='M 37 19.5 L 111 19.5 L 185 19.5' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'></path>
-                            <path fill='none' d='M 37 19.5 L 111 19.5 L 185 19.5' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'></path>
-                            <path fill='none' d='M 0 19.5 L 37 19.5 L 111 19.5 L 185 19.5 L 222 19.5' stroke='#000' stroke-width='2' zIndex='1' stroke-dasharray='6,2'></path>
-                            <path fill='none' d='M 27 19.5 L 37 19.5 L 111 19.5 L 185 19.5 L 195 19.5' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highcharts-tracker' style=''></path>
-                        </g>
-                        <g class='highcharts-markers highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
-                            <path fill='#000' d='M 185 15.5 C 190.328 15.5 190.328 23.5 185 23.5 C 179.672 23.5 179.672 15.5 185 15.5 Z' stroke-width='1'></path>
-                            <path fill='#000' d='M 111 15.5 C 116.328 15.5 116.328 23.5 111 23.5 C 105.672 23.5 105.672 15.5 111 15.5 Z' stroke-width='1'></path>
-                            <path fill='#000' d='M 37 15.5 C 42.328 15.5 42.328 23.5 37 23.5 C 31.672 23.5 31.672 15.5 37 15.5 Z' stroke-width='1'></path>
-                        </g>
-                        <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                            <rect x='166.5' y='156.5' width='36' height='34' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='156.5' width='36' height='36' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='156.5' width='36' height='38' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='156.5' width='36' height='39' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                        </g>
-                        <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'></g>
-                        <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='18.5' y='195.5' width='36' height='0' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='92.5' y='195.5' width='36' height='0' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                            <rect x='166.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='195.5' width='36' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)' r='0'></rect>
-                            <rect x='166.5' y='195.5' width='36' height='0' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'></rect>
-                        </g>
-                        <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'></g>
+                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                        <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='162' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='103.5' width='42' height='86' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='103.5' width='42' height='88' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='103.5' width='42' height='90' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='103.5' width='42' height='91' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='196.5' y='110.5' width='42' height='79' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='110.5' width='42' height='81' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='110.5' width='42' height='83' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='110.5' width='42' height='84' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
-                        <g zIndex='1' transform='translate(30,178)' style='cursor:default;'>
-                            <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
-                        </g>
-                        <g zIndex='1' transform='translate(104,178)' style='cursor:default;'>
-                            <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
-                        </g>
-                        <g zIndex='1' transform='translate(178,178)' style='cursor:default;'>
-                            <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
-                        </g>
+                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
+                <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
+                    <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
                     </g>
-                    <g class='highcharts-legend' zIndex='7' transform='translate(303,95)'>
-                        <g zIndex='1'>
-                            <g>
-                                <g class='highcharts-legend-item' zIndex='1' transform='translate(8,3)'>
-                                    <path fill='none' d='M 0 11 L 16 11' stroke-dasharray='6,2' stroke='#000' stroke-width='2'></path>
-                                    <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'></path>
-                                    <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
-                                </g>
-                                <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
-                                    <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                        <tspan>Not met</tspan>
-                                    </text>
-                                    <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'></rect>
-                                </g>
-                                <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
-                                    <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                        <tspan>Met - administrator</tspan>
-                                    </text>
-                                    <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'></rect>
-                                </g>
+                    <g zIndex='1' transform='translate(122,104)' style='cursor:default;'>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>14</text>
+                    </g>
+                    <g zIndex='1' transform='translate(209,111)' style='cursor:default;'>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
+                    </g>
+                </g>
+                <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
+                    <g zIndex='1'>
+                        <g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,3)'>
+                                <path fill='none' d='M 0 11 L 16 11' stroke-dasharray='6,2' stroke='#000' stroke-width='2'/>
+                                <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
+                                <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
+                            </g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
+                                    <tspan>Not met</tspan>
+                                </text>
+                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
+                            </g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
+                                    <tspan>Met - mmoir</tspan>
+                                </text>
+                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
                         </g>
                     </g>
-                    <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
-                        <text x='98' text-anchor='middle' style='width:54px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Mar</text>
-                        <text x='172' text-anchor='middle' style='width:54px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Apr</text>
-                        <text x='246' text-anchor='middle' style='width:54px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>May</text>
-                    </g>
-                    <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
-                        <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='211' opacity='1'>0</text>
-                        <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='146' opacity='1'>10</text>
-                        <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='81' opacity='1'>20</text>
-                        <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='16' opacity='1'>30</text>
-                    </g>
-                    <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(114,71)' opacity='0' visibility='hidden'>
-                        <path fill='none' d='M 3.5 0.5 L 201.5 0.5 C 204.5 0.5 204.5 0.5 204.5 3.5 L 204.5 73.5 C 204.5 76.5 204.5 76.5 201.5 76.5 L 3.5 76.5 C 0.5 76.5 0.5 76.5 0.5 73.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)' width='204' height='76'></path>
-                        <path fill='none' d='M 3.5 0.5 L 201.5 0.5 C 204.5 0.5 204.5 0.5 204.5 3.5 L 204.5 73.5 C 204.5 76.5 204.5 76.5 201.5 76.5 L 3.5 76.5 C 0.5 76.5 0.5 76.5 0.5 73.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' isShadow='true' stroke='black' stroke-opacity='0.09999999999999999' stroke-width='3' transform='translate(1, 1)' width='204' height='76'></path>
-                        <path fill='none' d='M 3.5 0.5 L 201.5 0.5 C 204.5 0.5 204.5 0.5 204.5 3.5 L 204.5 73.5 C 204.5 76.5 204.5 76.5 201.5 76.5 L 3.5 76.5 C 0.5 76.5 0.5 76.5 0.5 73.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)' width='204' height='76'></path>
-                        <path fill='rgba(249, 249, 249, .85)' d='M 3.5 0.5 L 201.5 0.5 C 204.5 0.5 204.5 0.5 204.5 3.5 L 204.5 73.5 C 204.5 76.5 204.5 76.5 201.5 76.5 L 3.5 76.5 C 0.5 76.5 0.5 76.5 0.5 73.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' stroke='#000' stroke-width='1'></path>
-                        <text x='8' zIndex='1' style='font-size:12px;color:#333333;fill:#333333;' y='21'>
-                            <tspan style='font-size: 10px'>Mar</tspan>
-                            <tspan style='fill:#000' x='8' dy='16'>●</tspan>
-                            <tspan dx='0'> Target: </tspan>
-                            <tspan style='font-weight:bold' dx='0'>27 meeting(s)</tspan>
-                            <tspan style='fill:#FF2224' x='8' dy='16'>●</tspan>
-                            <tspan dx='0'> Not met: </tspan>
-                            <tspan style='font-weight:bold' dx='0'>0 meeting(s)</tspan>
-                            <tspan style='fill:#2073CC' x='8' dy='16'>●</tspan>
-                            <tspan dx='0'> Met - administrator: </tspan>
-                            <tspan style='font-weight:bold' dx='0'>0 meeting(s)</tspan>
-                        </text>
-                    </g>
-                </svg>
-            </div>
+                </g>
+                <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
+                    <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
+                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
+                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
+                </g>
+                <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>10</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>20</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>30</text>
+                </g>
+                <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
+                    <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)'/>
+                    <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.09999999999999999' stroke-width='3' transform='translate(1, 1)'/>
+                    <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)'/>
+                    <path fill='rgba(249, 249, 249, .85)' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0'/>
+                    <text x='8' zIndex='1' style='font-size:12px;color:#333333;fill:#333333;' y='21'></text>
+                </g>
+            </svg>
         </div>
-        <script>
-            $(function ()
-            {
-              $('#sicChart_5747743f84f90').highcharts(
-              {
-                chart:
-                {
-                  events :
-                  {
-                    load : edgeExtend,
-                    redraw : edgeExtend
-                  }
-                },
-                title: {
-                    text: ''
-                },
-                legend: {
-                    layout: 'vertical',
-                    align: 'right',
-                    verticalAlign: 'middle',
-                    borderWidth: 0
-                },
-                plotOptions:
-                {
-                  column:
-                  {
-                    stacking: 'normal'
-                  },
-                  area:
-                  {
-                    marker:
-                    {
-                      enabled: false,
-                      symbol: 'circle',
-                      radius: 1,
-                      states: {
-                          hover: {
-                              enabled: true
-                          }
-                      }
-                    },
-                    fillColor:
-                    {
-                      linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
-                      stops:
-                      [
-                        [0, '#FFF6E5'],
-                        [1, '#FFEECE']
-                      ]
-                    },
-                    fillOpacity: 0.5,
-                    lineWidth: 0,
-                    shadow: false,
-                    threshold: null
-                  }
-                },
-                xAxis: {
-                  categories: ['Mar','Apr','May']
-                },
-                yAxis:
-                 {
-                    title:
-                    {
-                      text: 'Meetings'
-                    },
-                 },
-                tooltip: {
-                    shared: true,
-                    valueSuffix: ' meeting(s)'
-                },
-                series: [{
-                    type: 'line',
-                    color: '#000',
-                    name: 'Target',
-                    data: [27,27,27],
-                    dashStyle: 'ShortDash'
-                },
-              {
-                type: 'column',
-                name: 'Not met',
-                stack: 'administrator',
-                data: [0,0,6],
-                color: '#FF2224' },
-                {
-                    type: 'column',
-                    name: 'Met - administrator',
-                    stack: 'administrator',
-                    data: [0,0,0],
-                    color: '#2073CC' ,
-              dataLabels:
-              {
-                enabled: true,
-                rotation: 0,
-                color: '#FFFFFF',
-                align: 'center',
-                verticalAlign: 'top'
-              }},]
-            });
-          });
-          </script>
     </div>
+    <script>
+        $(function ()
+        {
+          $('#sicChart_57476ae4c76f5').highcharts(
+          {
+            chart:
+            {
+              events :
+              {
+                load : edgeExtend,
+                redraw : edgeExtend
+              }
+            },
+            title: {
+                text: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            plotOptions:
+            {
+              column:
+              {
+                stacking: 'normal'
+              },
+              area:
+              {
+                marker:
+                {
+                  enabled: false,
+                  symbol: 'circle',
+                  radius: 1,
+                  states: {
+                      hover: {
+                          enabled: true
+                      }
+                  }
+                },
+                fillColor:
+                {
+                  linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                  stops:
+                  [
+                    [0, '#FFF6E5'],
+                    [1, '#FFEECE']
+                  ]
+                },
+                fillOpacity: 0.5,
+                lineWidth: 0,
+                shadow: false,
+                threshold: null
+              }
+            },
+            xAxis: {
+              categories: ['Mar','Apr','May']
+            },
+            yAxis:
+             {
+                title:
+                {
+                  text: 'Meetings'
+                },
+             },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' meeting(s)'
+            },
+            series: [{
+                type: 'line',
+                color: '#000',
+                name: 'Target',
+                data: [27,27,27],
+                dashStyle: 'ShortDash'
+            },
+          {
+            type: 'column',
+            name: 'Not met',
+            stack: 'mmoir',
+            data: [0,3,7],
+            color: '#FF2224' },
+            {
+                type: 'column',
+                name: 'Met - mmoir',
+                stack: 'mmoir',
+                data: [25,14,13],
+                color: '#2073CC' ,
+          dataLabels:
+          {
+            enabled: true,
+            rotation: 0,
+            color: '#FFFFFF',
+            align: 'center',
+            verticalAlign: 'top'
+          }},]
+        });
+      });
+      </script>
+</div>
 
     ";
 
