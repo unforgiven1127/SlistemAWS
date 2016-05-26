@@ -2306,7 +2306,7 @@ class CLoginEx extends CLogin
 
     if($pvTeamPk == 116)
     {
-
+      $sWhere = " WHERE l.status = 1";
     }
     else
     {
