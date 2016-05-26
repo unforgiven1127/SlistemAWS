@@ -2370,7 +2370,7 @@ ChromePhp::log($sQuery);
       $asResult[$oDbResult->getFieldValue('loginpk')] = $oDbResult->getData();
       $bRead = $oDbResult->readNext();
     }
-
+ChromePhp::log($asResult);
     return $asResult;
   }
 
