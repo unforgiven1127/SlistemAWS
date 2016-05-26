@@ -1913,20 +1913,20 @@ function _live_dump($pvTrace, $psTitle = null)
     $user_information = getUserInformaiton($user_id);
     $user_short_name = $user_information['id'];
 
-    $start_date3 = (new DateTime('first day of this month'))->format("Y-m-d");
-    $start_date3.= ' 00:00:00';
+    $start_date_3 = (new DateTime('first day of this month'))->format("Y-m-d");
+    $start_date_3.= ' 00:00:00';
 
-    $end_date3 = (new DateTime('last day of this month'))->format("Y-m-d");
-    $end_date3 .= ' 23:59:59';
+    $end_date_3 = (new DateTime('last day of this month'))->format("Y-m-d");
+    $end_date_3 .= ' 23:59:59';
 
-    $start_date3 = strtotime($start_date3);
-    $end_date2 = strtotime($end_date3);
+    $start_date3 = strtotime($start_date_3);
+    $end_date2 = strtotime($end_date_3);
 
-    $start_date2 = strtotime($start_date3.' -1 months');
-    $end_date2 = strtotime($end_date3.' -1 months');
+    $start_date2 = strtotime($start_date_3.' -1 months');
+    $end_date2 = strtotime($end_date_3.' -1 months');
 
-    $start_date1 = strtotime($start_date3.' -2 months');
-    $end_date1 = strtotime($end_date3.' -2 months');
+    $start_date1 = strtotime($start_date_3.' -2 months');
+    $end_date1 = strtotime($end_date_3.' -2 months');
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
     $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
