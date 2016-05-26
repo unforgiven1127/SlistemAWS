@@ -3188,17 +3188,17 @@ class CLoginEx extends CLogin
 
     if($pbFullPage)
     {
-      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=116');
+      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=-1');
       foreach($aUserGroups as $aGroup)
-        //$aActions[] = array('label' => $aGroup['title'], 'url' => $sURL.'&login_groupfk='.$aGroup['login_grouppk']);
-        $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=116');
+        $aActions[] = array('label' => $aGroup['title'], 'url' => $sURL.'&login_groupfk='.$aGroup['login_grouppk']);
 
       $aActions[] = array('label' => 'No Group',  'url' => $sURL.'&login_groupfk=0');
     }
     else
     {
       //Refresh list in ajax for
-      $aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=-1\', \'body\', false, \'area_users\'); ');
+      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=-1');
+      //$aActions[] = array('label' => 'All Users',  'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk=-1\', \'body\', false, \'area_users\'); ');
       foreach($aUserGroups as $aGroup)
         $aActions[] = array('label' => $aGroup['title'], 'url' => 'javascript:;', 'onclick' => 'AjaxRequest(\''.$sURL.'&login_groupfk='.$aGroup['login_grouppk'].'\', \'body\', false, \'area_users\'); ');
 
