@@ -3152,7 +3152,6 @@ ChromePhp::log($sQuery);
     if($nGroupFk == -1)
     {
       $nGroupFk = 116;
-      $sTitle = 'Active users';
     }
 
     $oRight = CDependency::getComponentByName('right');
@@ -3170,10 +3169,7 @@ ChromePhp::log($sQuery);
       else
       {
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
-        if(!isset($sTitle))
-        {
-          $sTitle = $aUserGroups[$nGroupFk]['title'];
-        }
+        $sTitle = $aUserGroups[$nGroupFk]['title'];
       }
     }
     else
