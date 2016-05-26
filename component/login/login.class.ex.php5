@@ -2304,35 +2304,43 @@ class CLoginEx extends CLogin
     $sQuery = 'SELECT * FROM `login` l
       LEFT JOIN login_group_member lm ON (l.loginpk=lm.loginfk) ';
 
-    $sWhere = '';
+    if($pvTeamPk == 116)
+    {
 
-    if($pbOnlyActive)
-       $sWhere.= ' WHERE l.status > 0';
+    }
     else
-      $sWhere.= ' WHERE 1 ';
-
-    if(!empty($pvTeamPk))
     {
-      if(is_array($pvTeamPk))
-        $sWhere.= ' AND lm.login_groupfk IN ('.implode(',', $pvTeamPk).') ';
-      elseif($pvTeamPk >= 0)
+      $sWhere = '';
+
+      if($pbOnlyActive)
+         $sWhere.= ' WHERE l.status > 0';
+      else
+        $sWhere.= ' WHERE 1 ';
+
+      if(!empty($pvTeamPk))
       {
-        $sWhere.= ' AND lm.login_groupfk = "'.$pvTeamPk.'" ';
+        if(is_array($pvTeamPk))
+          $sWhere.= ' AND lm.login_groupfk IN ('.implode(',', $pvTeamPk).') ';
+        elseif($pvTeamPk >= 0)
+        {
+          $sWhere.= ' AND lm.login_groupfk = "'.$pvTeamPk.'" ';
+        }
+      }
+
+      if(!empty($pvGroupName))
+      {
+        $sQuery.= ' LEFT JOIN login_group lgro ON (lgro.login_grouppk = lm.login_groupfk) ';
+
+        if(!$pbAllGroups)
+        {
+          if(is_array($pvGroupName))
+            $sWhere.= ' AND lgro.shortname IN ("'.implode('", "', $pvGroupName).'") ';
+          else
+            $sWhere.= ' AND lgro.shortname LIKE "'.$pvGroupName.'" ';
+        }
       }
     }
 
-    if(!empty($pvGroupName))
-    {
-      $sQuery.= ' LEFT JOIN login_group lgro ON (lgro.login_grouppk = lm.login_groupfk) ';
-
-      if(!$pbAllGroups)
-      {
-        if(is_array($pvGroupName))
-          $sWhere.= ' AND lgro.shortname IN ("'.implode('", "', $pvGroupName).'") ';
-        else
-          $sWhere.= ' AND lgro.shortname LIKE "'.$pvGroupName.'" ';
-      }
-    }
 
     if($pbSortByStatus)
       $sQuery.= $sWhere.' ORDER BY status Desc, l.firstname';
