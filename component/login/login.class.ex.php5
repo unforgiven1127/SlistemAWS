@@ -3188,7 +3188,7 @@ class CLoginEx extends CLogin
 
     if($pbFullPage)
     {
-      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=-1');
+      $aActions[] = array('label' => 'All Users',  'url' => $sURL.'&login_groupfk=999');
       foreach($aUserGroups as $aGroup)
         $aActions[] = array('label' => $aGroup['title'], 'url' => $sURL.'&login_groupfk='.$aGroup['login_grouppk']);
 
