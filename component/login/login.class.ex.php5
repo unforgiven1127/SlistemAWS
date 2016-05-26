@@ -3153,6 +3153,7 @@ class CLoginEx extends CLogin
       {
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
         $sTitle = $aUserGroups[$nGroupFk]['title'];
+        $sTitle = 'All Users';
       }
     }
     else
