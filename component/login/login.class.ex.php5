@@ -3154,6 +3154,7 @@ ChromePhp::log($nGroupFk);
     if($nGroupFk >= 0 || $nGroupFk == -1)
     {
       $aUserList = $this->getUserByTeam($nGroupFk);
+      ChromePhp::log($aUserList);
       if($nGroupFk == 0)
         $sTitle = 'Users with no group';
       else
