@@ -2296,6 +2296,7 @@ class CLoginEx extends CLogin
     if(!assert('is_integer($pvTeamPk) || is_array($pvTeamPk)'))
       return array();
 
+    ChromePhp::log($pvTeamPk);
 
     if(!assert('is_bool($pbOnlyActive)'))
       return array();
@@ -2341,12 +2342,13 @@ class CLoginEx extends CLogin
       }
     }
 
-
+ChromePhp::log($sQuery);
     if($pbSortByStatus)
       $sQuery.= $sWhere.' ORDER BY status Desc, l.firstname';
     else
       $sQuery.= $sWhere.' ORDER BY l.firstname';
 
+ChromePhp::log($sQuery);
 
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
