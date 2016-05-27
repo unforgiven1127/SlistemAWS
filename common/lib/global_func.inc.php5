@@ -1944,13 +1944,16 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
+    $count_new_met_3 = count($new_met[$user_id]);
     $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
+    $count_new_met_2 = count($new_met[$user_id]);
     $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
+    $count_new_met_1 = count($new_met[$user_id]);
 
-    $monthly_new_candidate_met = array($new_met_1,$new_met_2,$new_met_3);
+    $monthly_new_candidate_met = array($count_new_met_1,$count_new_met_2,$count_new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
 
-    var_dump($monthly_new_candidate_met);exit;
+    //var_dump($monthly_new_candidate_met);exit;
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
