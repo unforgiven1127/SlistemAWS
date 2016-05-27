@@ -320,7 +320,15 @@ class CSl_menuEx extends CSl_menu
 
                             if(asValue.length == 2)
                             return true;
+                            asWords = asValue[0].split(\' \');
+                            if(asWords.length > 1)
+                            {
+                              sValue = asWords[0]+\', \';
+                              delete(asWords[0]);
 
+                              sValue+= asWords.join(\' \');
+                              $(this).val(sValue);
+                            }
                           }"
                           />
                       </div>
