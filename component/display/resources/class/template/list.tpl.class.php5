@@ -187,6 +187,8 @@ class CTemplateList extends CTemplate
                 else
                   $sContainer = $sListUid;
 
+                $sContainer = $sListUid; // sonradan ekledik
+
                 $sAction.= '<a href="javascript:;" class="tplListSortAsc" onclick="AjaxRequest(\''.$asColumnData['sort']['up'].'\', \'body\', \'\', \''.$sContainer.'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" class="tplListSortDesc" onclick="AjaxRequest(\''.$asColumnData['sort']['down'].'\', \'body\', \'\', \''.$sContainer.'\');">'.$sPictDesc.'</a>';
               }
