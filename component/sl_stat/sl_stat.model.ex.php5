@@ -895,7 +895,7 @@ order by m.candidatefk
     return $asData;
   }
 
-  public function get_revenue_data($request_date = '', $location = '')
+public function get_revenue_data($request_date = '', $location = '')
   {
     $revenue_data = $revenue_data_raw = array();
 
@@ -933,9 +933,9 @@ order by m.candidatefk
 
       $query = "SELECT l.*, sln.shortname as nationality
                 FROM login l
-                LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '".$ccm1_start_date."' AND '".$ccm1_end_date."'
+                LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '2016-01-01 00:00:00' AND '2016-12-31 23:59:59'
                 LEFT JOIN sl_nationality sln ON l.nationalityfk = sln.sl_nationalitypk
-                WHERE (l.position = 'Researcher' OR l.loginpk = '457') AND l.status = 1 AND l.loginpk != '382'";
+                WHERE l.position = 'Researcher' AND l.status = 1";
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
@@ -946,61 +946,20 @@ order by m.candidatefk
         $row = $db_result->getData();
         //var_dump($row);
         $user_id = $row['loginpk'];
-
-        if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
-        {
-          $row['position'] = "Researcher";
-        }
-
-        $users = array($user_id);
-        //array_push($users,$user_id);
-        $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
-
-        $ccm1_count = (int)$ccms[$user_id]['ccm1_done'];
-        $mccm_count = (int)$ccms[$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
-        $placed_count = (int)$ccms[$user_id]['placedRevenue'];
-
         //var_dump($user_id);
-
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
-            $revenue_data['Researcher'][$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['position']))
-          $revenue_data['Researcher'][$user_id][$row['position']]['userPosition'] = $row['position'];
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['nationality']))
-              $revenue_data['Researcher'][$user_id][$row['position']]['nationality'] = $row['nationality'];
-
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue']))
+        if (empty($revenue_data[$user_id][$row['position']]['name']))
+            $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
+        if (empty($revenue_data[$user_id][$row['position']]['position']))
+          $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
+        if (empty($revenue_data[$user_id][$row['position']]['nationality']))
+              $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
+        if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
-          if($placed_count == null)
-          {
-            $placed_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'] = $placed_count;
+          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
         }
-//echo $revenue_data[$user_id][$row['position']]['name'].' - ';
-//var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
-//echo "<br><br>";
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['ccm1']))
+        else
         {
-          if($ccm1_count == null)
-          {
-            $ccm1_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['ccm1'] = $ccm1_count;
-        }
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['mccm']))
-        {
-          if($mccm_count == null)
-          {
-            $mccm_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['mccm'] = $mccm_count;
-        }
-
-        if(empty($revenue_data['Researcher'][$user_id]['sort']))
-        {
-          $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
-          $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
+          $revenue_data[$user_id][$row['userPosition']]['ccm1']++;
         }
 
         $read = $db_result->readNext();
@@ -1021,9 +980,6 @@ order by m.candidatefk
       $revenue_data['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
-      $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
-
       while($read)
       {
         $row = $db_result->getData();
@@ -1043,46 +999,45 @@ order by m.candidatefk
           if (!$row['status'])
           {
             $user_id = 'former';
-            $row['user_position'] = 'Consultant';
 
-            if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
+            if (empty($revenue_data[$row['userPosition']][$user_id]['placed']))
+              $revenue_data[$user_id][$row['userPosition']]['placed'] = 0;
 
             if (!isset($revenue_data[$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
+              $revenue_data[$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
-            $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['name'] = "Former";
-            $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
+            $revenue_data[$user_id][$row['userPosition']]['name'] = "Former";
+            $revenue_data[$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
           }
           else
           {
             $user_id = $row['loginpk'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed'] = 0;
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
+              $revenue_data[$user_id][$row['user_position']]['placed'] = 0;
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['nationality']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['nationality'] = $row['nationality'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['nationality']))
+              $revenue_data[$user_id][$row['user_position']]['nationality'] = $row['nationality'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['userPosition']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['userPosition'] = $row['userPosition'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['userPosition']))
+              $revenue_data[$user_id][$row['user_position']]['userPosition'] = $row['userPosition'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed']))
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed'] += $temp_placed[$user_id]['placed'];
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id][$row['user_position']]['placed'] += $temp_placed[$user_id]['placed'];
+              $revenue_data[$user_id][$row['user_position']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['name']))
-                $revenue_data[$row['user_position']][$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['name']))
+                $revenue_data[$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
           }
 
-          if (!isset($revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid']))
-            $revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']][$row['user_position']]['signed'] = $revenue_data[$row['user_position']][$user_id][$row['user_position']]['total_amount'] = 0;
+          if (!isset($revenue_data[$user_id][$row['user_position']]['paid']))
+            $revenue_data[$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']]['signed'] = $revenue_data[$user_id][$row['user_position']]['total_amount'] = 0;
 
           if (empty($revenue_data[$user_id]['team']))
             $revenue_data[$user_id]['team'] = $this->get_user_team($user_id);
@@ -1095,14 +1050,14 @@ order by m.candidatefk
               case 'paid':
               case 'refund':
               case 'retainer':
-                $revenue_data[$row['user_position']][$user_id]['consultant']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                $revenue_data[$user_id]['consultant']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
                 break;
             }
 
-            $revenue_data[$row['user_position']][$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
+            $revenue_data[$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
-              $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+              $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
           }
 
           if (strtolower($row['user_position']) == 'researcher')
@@ -1113,14 +1068,14 @@ order by m.candidatefk
               case 'paid':
               case 'refund':
               case 'retainer':
-                $revenue_data[$row['user_position']][$user_id]['researcher']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                $revenue_data[$user_id]['researcher']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
                 break;
             }
 
-            $revenue_data[$row['user_position']][$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
+            $revenue_data[$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
-              $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+              $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
           }
         }
         $read = $db_result->readNext();
