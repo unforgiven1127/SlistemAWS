@@ -181,7 +181,7 @@ ChromePhp::log($sListUid);
             if(!empty($asColumnData['sort']))
             {
               //TODO: allow to pass extra params for the onclick and callback in ajax and sorting mode
-              if(isset($asColumnData['sort']['ajax']) && !empty($asColumnData['sort']['ajax']))
+              if(isset($sListUid) || isset($asColumnData['sort']['ajax']) && !empty($asColumnData['sort']['ajax']))
               {
                 if(isset($asColumnData['sort']['ajax_target']))
                   $sContainer = $asColumnData['sort']['ajax_target'];
