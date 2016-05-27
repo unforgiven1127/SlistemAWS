@@ -4263,6 +4263,9 @@ class CSl_statEx extends CSl_stat
         //{
           $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
+          //echo '<br><br><br>';
+          //var_dump($stats_data['consultant'][$id]['met_meeting_info']);
+          //echo '<br><br><br>';
         //}
         /*else
         {
@@ -4391,10 +4394,10 @@ class CSl_statEx extends CSl_stat
       $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
       $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
-      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date);
-echo '<br><br><br>';
-var_dump($temp_new_candidate_met);
-
+      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
+//echo '<br><br><br>';
+//var_dump($temp_new_candidate_met);
+//echo '<br><br><br>';
       foreach ($researcher_ids as $id)
       {
         if (in_array($id, $researcher_skip_id))

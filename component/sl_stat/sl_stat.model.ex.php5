@@ -409,16 +409,14 @@ group by m.sl_meetingpk
 order by m.candidatefk
 
  */
-  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
+  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
-        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
-
 
     $oDbResult = array();
 
@@ -429,15 +427,17 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      if(!isset($asData[$temp['created_by']]))
-      {
-        $asData[$temp['created_by']] = array();
-      }
-
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        array_push($asData[$temp['created_by']], $temp);
-
+        if(isset($asData[$temp['created_by']]))
+        {
+          array_push($asData[$temp['created_by']], $temp);
+        }
+        else
+        {
+          $asData[$temp['created_by']] = array();
+          array_push($asData[$temp['created_by']], $temp);
+        }
         //$asData[$temp['created_by']] = $temp;
       }
       $read = $oDbResult->readNext();
@@ -456,9 +456,8 @@ order by m.candidatefk
     if ($group == 'consultant')
       $group_switch = 'attendeefk';
 
-    $query = 'SELECT sl_meetingpk, candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
+    $query = 'SELECT candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
     $query .= ' FROM sl_meeting';
-    $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
 
     $data = array();
@@ -469,7 +468,6 @@ order by m.candidatefk
     $read = $db_result->readFirst();
     while($read)
     {
-
       $temp = $db_result->getData();
 
       $meeting_array[] = $temp;
@@ -492,19 +490,6 @@ order by m.candidatefk
 
     foreach ($meeting_array as $meeting)
     {
-
-      $create_date = $meeting['date_created'];
-      $month = date("m",strtotime($create_date));
-      $year = date("Y",strtotime($create_date));
-
-      $effectiveDate = date('Y-m-d', strtotime("+1 month", strtotime($create_date)));
-
-      $new_month = date("m",strtotime($effectiveDate));
-      $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
-
-      $today = date("Y-m-d H:i:s");
-
-
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
         && strtotime($meeting['date_created']) <= strtotime($end_date)
         && isset($flip_user_ids[$meeting[$group_switch]]))
@@ -514,17 +499,10 @@ order by m.candidatefk
           $data[$meeting[$group_switch]] = array('set' => 0, 'met' => 0, 'set_meeting_info' => array(),
             'met_meeting_info' => array());
         }
-        if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
-        {
-          # do nthng
-        }
-        else
-        {
-          $data[$meeting[$group_switch]]['set'] += 1;
-          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-            'date' => $meeting['date_created']);
-        }
 
+        $data[$meeting[$group_switch]]['set'] += 1;
+        $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+          'date' => $meeting['date_created']);
       }
 
       if (strtotime($meeting['date_met']) >= strtotime($start_date)
@@ -897,7 +875,6 @@ order by m.candidatefk
 
   public function get_revenue_data($request_date = '', $location = '')
   {
-
     $revenue_data = $revenue_data_raw = array();
 
     if (empty($request_date))
@@ -934,75 +911,33 @@ order by m.candidatefk
 
       $query = "SELECT l.*, sln.shortname as nationality
                 FROM login l
-                LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '".$ccm1_start_date."' AND '".$ccm1_end_date."'
+                LEFT JOIN sl_position_link s ON s.created_by = l.loginpk  AND active = 0 AND date_completed BETWEEN '2016-01-01 00:00:00' AND '2016-12-31 23:59:59'
                 LEFT JOIN sl_nationality sln ON l.nationalityfk = sln.sl_nationalitypk
-                WHERE (l.position = 'Researcher' OR l.loginpk = '457') AND l.status = 1 AND l.loginpk != '382'";
+                WHERE l.position = 'Researcher' AND l.status = 1";
 
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
-//var_dump($query);// 382
+//var_dump($query);
 //var_dump('<br><br>');
-//ChromePhp::log($query);
       while($read)
       {
         $row = $db_result->getData();
         //var_dump($row);
         $user_id = $row['loginpk'];
-
-        if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
-        {
-          $row['position'] = "Researcher";
-        }
-
-        $users = array($user_id);
-        //array_push($users,$user_id);
-        $ccms = $this->get_ccm_data($users, $ccm1_start_date, $ccm1_end_date, $group = 'researcher');
-
-        $ccm1_count = (int)$ccms[$user_id]['ccm1_done'];
-        $mccm_count = (int)$ccms[$user_id]['ccm2_done'] + (int)$ccms['researcher'][$user_id]['mccm_done'];
-        $placed_count = (int)$ccms[$user_id]['placedRevenue'];
-
         //var_dump($user_id);
-
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
-            $revenue_data['Researcher'][$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['position']))
-          $revenue_data['Researcher'][$user_id][$row['position']]['userPosition'] = $row['position'];
-        if (empty($revenue_data['Researcher'][$user_id][$row['position']]['nationality']))
-              $revenue_data['Researcher'][$user_id][$row['position']]['nationality'] = $row['nationality'];
-
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue']))
+        if (empty($revenue_data[$user_id][$row['position']]['name']))
+            $revenue_data[$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
+        if (empty($revenue_data[$user_id][$row['position']]['position']))
+          $revenue_data[$user_id][$row['position']]['userPosition'] = $row['position'];
+        if (empty($revenue_data[$user_id][$row['position']]['nationality']))
+              $revenue_data[$user_id][$row['position']]['nationality'] = $row['nationality'];
+        if (empty($revenue_data[$user_id][$row['position']]['ccm1']))
         {
-          if($placed_count == null)
-          {
-            $placed_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'] = $placed_count;
+          $revenue_data[$user_id][$row['userPosition']]['ccm1'] = 0;
         }
-//echo $revenue_data[$user_id][$row['position']]['name'].' - ';
-//var_dump($revenue_data[$user_id][$row['position']]['placedRevenue']);
-//echo "<br><br>";
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['ccm1']))
+        else
         {
-          if($ccm1_count == null)
-          {
-            $ccm1_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['ccm1'] = $ccm1_count;
-        }
-        if(empty($revenue_data['Researcher'][$user_id][$row['position']]['mccm']))
-        {
-          if($mccm_count == null)
-          {
-            $mccm_count = 0;
-          }
-          $revenue_data['Researcher'][$user_id][$row['position']]['mccm'] = $mccm_count;
-        }
-
-        if(empty($revenue_data['Researcher'][$user_id]['sort']))
-        {
-          $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
-          $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
+          $revenue_data[$user_id][$row['userPosition']]['ccm1']++;
         }
 
         $read = $db_result->readNext();
@@ -1020,11 +955,8 @@ order by m.candidatefk
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
 
-      $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
+      $revenue_data['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
-
-      $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
 
       while($read)
       {
@@ -1045,48 +977,48 @@ order by m.candidatefk
           if (!$row['status'])
           {
             $user_id = 'former';
-            $row['user_position'] = 'Consultant';
-            if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
 
-            if (!isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
+            if (empty($revenue_data[$row['userPosition']][$user_id]['placed']))
+              $revenue_data[$user_id][$row['userPosition']]['placed'] = 0;
+
+            if (!isset($revenue_data[$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
-              $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
+              $revenue_data[$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
-            $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['name'] = "Former";
-            $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
+            $revenue_data[$user_id][$row['userPosition']]['name'] = "Former";
+            $revenue_data[$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
           }
           else
           {
             $user_id = $row['loginpk'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed'] = 0;
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
+              $revenue_data[$user_id][$row['user_position']]['placed'] = 0;
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['nationality']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['nationality'] = $row['nationality'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['nationality']))
+              $revenue_data[$user_id][$row['user_position']]['nationality'] = $row['nationality'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['userPosition']))
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['userPosition'] = $row['userPosition'];
+            if (empty($revenue_data[$user_id][$row['user_position']]['userPosition']))
+              $revenue_data[$user_id][$row['user_position']]['userPosition'] = $row['userPosition'];
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed']))
+            if (empty($revenue_data[$user_id][$row['user_position']]['placed']))
             {
               $temp_placed = $this->get_placement_number_revenue(array($user_id), $date_start, $date_end);
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['placed'] += $temp_placed[$user_id]['placed'];
-              $revenue_data[$row['user_position']][$user_id][$row['user_position']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
+              $revenue_data[$user_id][$row['user_position']]['placed'] += $temp_placed[$user_id]['placed'];
+              $revenue_data[$user_id][$row['user_position']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
-            if (empty($revenue_data[$row['user_position']][$user_id][$row['user_position']]['name']))
-                $revenue_data[$row['user_position']][$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
-
+            if (empty($revenue_data[$user_id][$row['user_position']]['name']))
+                $revenue_data[$user_id][$row['user_position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
           }
-          if (!isset($revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid']))
-            $revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid'] = $revenue_data[$row['user_position']][$user_id][$row['user_position']]['signed'] = $revenue_data[$row['user_position']][$user_id][$row['user_position']]['total_amount'] = 0;
 
-          if (empty($revenue_data[$row['user_position']][$user_id]['team']))
-            $revenue_data[$row['user_position']][$user_id]['team'] = $this->get_user_team($user_id);
+          if (!isset($revenue_data[$user_id][$row['user_position']]['paid']))
+            $revenue_data[$user_id][$row['user_position']]['paid'] = $revenue_data[$user_id][$row['user_position']]['signed'] = $revenue_data[$user_id][$row['user_position']]['total_amount'] = 0;
+
+          if (empty($revenue_data[$user_id]['team']))
+            $revenue_data[$user_id]['team'] = $this->get_user_team($user_id);
 
           if (strtolower($row['user_position']) == 'consultant')
           //if(1) // did not calculate researchers so changed to 1
@@ -1096,19 +1028,14 @@ order by m.candidatefk
               case 'paid':
               case 'refund':
               case 'retainer':
-                $revenue_data[$row['user_position']][$user_id]['consultant']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                $revenue_data[$user_id]['consultant']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
                 break;
             }
 
-            $revenue_data[$row['user_position']][$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
-
-            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['consultant']['signed']*10000000;
+            $revenue_data[$user_id]['consultant']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
-            {
-              $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
-
-            }
+              $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
           }
 
           if (strtolower($row['user_position']) == 'researcher')
@@ -1119,40 +1046,21 @@ order by m.candidatefk
               case 'paid':
               case 'refund':
               case 'retainer':
-                $revenue_data[$row['user_position']][$user_id]['researcher']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+                $revenue_data[$user_id]['researcher']['paid'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
                 break;
             }
 
-            $revenue_data[$row['user_position']][$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
-
-            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['researcher']['signed']*10000000;
+            $revenue_data[$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
             if ($row['status'])
-            {
-              $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
-
-            }
-            /*else
-            {
-              $revenue_data[$row['user_position']][$user_id]['sort'] = $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'];
-            }*/
+              $revenue_data[$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
           }
         }
         $read = $db_result->readNext();
       }
 
-      uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
-      uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
-
-      /*foreach ($revenue_data['Researcher'] as $key => $value)
-      {
-        echo $key." - ";
-        var_dump($value);
-        echo "<br><br>";
-      }*/
+      uasort($revenue_data, sort_multi_array_by_value('total_amount', 'reverse'));
     }
-
-    //exit;
     //echo "<br><br>";
     //var_dump($revenue_data);//
     return $revenue_data;
@@ -1233,7 +1141,6 @@ order by m.candidatefk
 
   public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher')
   {
-    //var_dump($user_ids);
     $ccm_data = $repeating_info = $ccm_keys = array();
 
     $start_date_stamp = strtotime($start_date);
@@ -1241,31 +1148,15 @@ order by m.candidatefk
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by, slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slc._sys_status as candidate_status';
-      $query .= ' FROM sl_position_link slp';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
-      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND status >= 51';
-                  //AND date_created >= "'.$start_date.'"
-                  //AND date_created <= "'.$end_date.'"';
+      $query = 'SELECT positionfk, candidatefk, created_by, status, date_created as ccm_create_date, active';
+      $query .= ' FROM sl_position_link';
+      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND status >= 51
+                  AND date_created >= "'.$start_date.'"
+                  AND date_created <= "'.$end_date.'"';
     }
-
-    else if ($group == 'researcher')
+    else
     {
-      $query = 'SELECT slm.meeting_done,slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
-      , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc._sys_status as candidate_status';
-      $query .= ' FROM sl_meeting slm';
-      $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
-      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 AND slm.meeting_done = 1
-      GROUP BY slp.sl_position_linkpk';
-                  //AND date_created >= "'.$start_date.'"
-                  //AND date_created <= "'.$end_date.'"';
-    }
-
-
-    //else
-    /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
       $query .= ' sl_position_link.date_created as ccm_create_date, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
@@ -1275,7 +1166,7 @@ order by m.candidatefk
       $query .= ' AND sl_meeting.meeting_done = 1
                   AND sl_position_link.date_created >= "'.$start_date.'"
                   AND sl_position_link.date_created <= "'.$end_date.'"';
-    }*/
+    }
 
     $query .= ' ORDER BY ccm_create_date DESC';
 
@@ -1287,26 +1178,11 @@ order by m.candidatefk
     {
       $row = $db_result->getData();
 
-      $create_date = strtotime($row['ccm_create_date']);
-      $date_completed = strtotime($row['date_completed']);
-
-      $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
-
-      /*if($diff > 180)
-      {
-        echo $row['sl_position_linkpk'].' : ';
-        echo $create_date.' - ';
-        echo $date_completed.' = ';
-        echo $diff;
-        echo "<br><br>";
-      }*/
-
       if ($row['status'] > 51)
       {
         $status = $row['status'];
 
-        if(isset($repeating_info[$row['created_by']][$status][$row['candidatefk']]))
+        if (isset($repeating_info[$row['created_by']][$status][$row['candidatefk']]))
         {
           $read = $db_result->readNext();
           continue;
@@ -1327,75 +1203,30 @@ order by m.candidatefk
         $ccm_data[$row['created_by']]['ccm_info']['ccm2'] = array();
         $ccm_data[$row['created_by']]['ccm_info']['mccm'] = array();
       }
-      if (!isset($ccm_data[$row['meeting_created_by']]['ccm1']))
-      {
-        $ccm_data[$row['meeting_created_by']]['ccm1'] = 0;
-        $ccm_data[$row['meeting_created_by']]['ccm1_done'] = 0;
-        $ccm_data[$row['meeting_created_by']]['ccm2'] = 0;
-        $ccm_data[$row['meeting_created_by']]['ccm2_done'] = 0;
-        $ccm_data[$row['meeting_created_by']]['mccm'] = 0;
-        $ccm_data[$row['meeting_created_by']]['mccm_done'] = 0;
-        $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'] = array();
-        $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'] = array();
-        $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'] = array();
-      }
 
       $array_key = '';
 
-      $row_create_date = strtotime($row['ccm_create_date']);
-      $row_complete_date = strtotime($row['date_completed']);
-      $control_start_date = strtotime($start_date);
-      $control_end_date = strtotime($end_date);
-
-
-      if ($row['status'] == 51 && $row['candidate_status'] == 0)
+      if ($row['status'] == 51)
       {
-
-
-        $array_key = $row['positionfk'].$row['candidatefk'].'_51_'.$row['sl_position_linkpk'];
+        $array_key = $row['positionfk'].$row['candidatefk'].'_51';
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
         //  strtotime($row['ccm_create_date']) <= $end_date_stamp)
-        if($row_create_date >= $control_start_date && $row_create_date <= $control_end_date)
-        {
+        //if($row['active'] == 1)
+        //{
           $ccm_data[$row['created_by']]['ccm1'] += 1;
           $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
             'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-
-          if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-          {
-            $ccm_data[$row['meeting_created_by']]['ccm1'] += 1;
-            $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key] = array('candidate' => $row['candidatefk'],
-              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-          }
-        }
-        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+        //}
+        if($row['active'] == 0)
         {
-          if($group == 'consultant')
-          {
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
-
-          if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-          {
-            $ccm_data[$row['meeting_created_by']]['ccm1_done'] += 1;
-            $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
-          }
-          /*if($row['candidatefk'] == '206311')
-          {
-            echo '<br><br><br><br><br><br><br>';
-            echo $group.'<br>';
-            echo $row['created_by'].'<br>';
-            echo 'GIRDI'.'<br>';
-            echo $row['candidatefk'].'<br>';
-            echo $ccm_data[$row['created_by']]['ccm1_done'].'<br>';
-          }*/
         }
       }
-      else if ($row['status'] == 52 && $row['candidate_status'] == 0)
+      else if ($row['status'] == 52)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].'_52_'.$row['sl_position_linkpk'];
+        $array_key = $row['positionfk'].$row['candidatefk'].'_52';
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
           //strtotime($row['ccm_create_date']) <= $end_date_stamp)
@@ -1410,37 +1241,22 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm1_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm1'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
-          if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
-          {
-            $ccm_data[$row['created_by']]['ccm2'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
-              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['ccm2'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
-                'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-            }
-          }
+          $ccm_data[$row['created_by']]['ccm2'] += 1;
+          $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key] = array('candidate' => $row['candidatefk'],
+            'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+          if($row['active'] == 0)
           {
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
-
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['ccm2_done'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
-            }
           }
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61 && $row['candidate_status'] == 0)
+      else if ($row['status'] > 52 && $row['status'] <= 61)
       {
-        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['status'];
+        $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm';
 
         //if (strtotime($row['ccm_create_date']) >= $start_date_stamp &&
          // strtotime($row['ccm_create_date']) <= $end_date_stamp)
@@ -1465,35 +1281,19 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$previous_ccm_key]['ccm_done_candidate'] = $row['candidatefk'];
           }*/
 
-          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm_'.$row['status'];
+          $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_mccm';
 
-          if($row_create_date>= $control_start_date && $row_create_date <= $control_end_date)
-          {
-            $ccm_data[$row['created_by']]['mccm'] += 1;
-            $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
-              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
+          $ccm_data[$row['created_by']]['mccm'] += 1;
+          $ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key] = array('candidate' => $row['candidatefk'],
+            'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
 
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['mccm'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
-                'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-            }
-          }
-
-          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+          if($row['active'] == 0)
           {
             //$ccm_data[$row['created_by']]['mccm_done'] += 1;
             //$ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
 
             $ccm_data[$row['created_by']]['mccm_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
-
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['mccm_done'] += 1;
-              $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
-            }
           }
 
           /*if (!empty($ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]) &&
@@ -1505,28 +1305,6 @@ order by m.candidatefk
             $ccm_data[$row['created_by']]['ccm_info']['mccm'][$previous_ccm_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
           }*/
         //}
-      }
-      else if($row['status'] == 101 && $row['candidate_status'] == 0) // revenue chart ve kpi da researcher lar icin yazdik
-      {
-        if($row_complete_date >= $control_start_date)
-        {
-            $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_placed_revenue';
-
-            $ccm_data[$row['created_by']]['placedRevenue'] += 1;
-            //$ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
-
-            $ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
-              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-
-            if($group == 'researcher' && $row['created_by'] != $row['meeting_created_by'])
-            {
-              $ccm_data[$row['meeting_created_by']]['placedRevenue'] += 1;
-              //$ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
-
-              $ccm_data[$row['meeting_created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key] = array('candidate' => $row['candidatefk'],
-              'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
-            }
-        }
       }
       //else
       //{
@@ -1572,7 +1350,6 @@ order by m.candidatefk
       $read = $db_result->readNext();
     }
 
-//var_dump($ccm_data);
     return $ccm_data;
   }
 
@@ -1638,24 +1415,18 @@ order by m.candidatefk
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
-        ,pl.date_completed , pl.date_created as ccm_create_date
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
-        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
-        AND pl.date_completed <= "'.$end_date.'"
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
         AND m.meeting_done = 1
-        AND pl.status = 51
-        AND pl.active = 0
-        AND slc._sys_status = 0
+        AND pl.status > 51
+        AND pl.active != 1
         group by m.sl_meetingpk
         order by m.candidatefk';
-
-//echo '<br><br>';
-//var_dump($query);
 
     $oDbResult = array();
 
@@ -1666,13 +1437,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      $create_date = strtotime($temp['ccm_create_date']);
-      $date_completed = strtotime($temp['date_completed']);
-
-      $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
-
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
         {
@@ -1691,21 +1456,18 @@ order by m.candidatefk
 
     // gets new_positions_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
-        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
-        ,pl.date_completed , pl.date_created as ccm_create_date
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk
         FROM sl_meeting m
-        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
         WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
-        AND pl.date_completed <= "'.$end_date.'"
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
         AND pl.status = 51
-        AND pl.active = 0
+        AND pl.active != 1
         AND pl2.status = 51
-        AND pl2.active = 0
-        AND slc._sys_status = 0
+        AND pl2.active != 1
         group by m.sl_meetingpk
         order by m.candidatefk';
 
@@ -1718,13 +1480,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      $create_date = strtotime($temp['ccm_create_date']);
-      $date_completed = strtotime($temp['date_completed']);
-
-      $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
-
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 && $diff < 180)
+      if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
         {
@@ -1832,19 +1588,17 @@ exit;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slc._sys_status as candidate_status';
-      $query .= ' FROM sl_position_link slp';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk AND slc._sys_status = 0';
-      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND slp.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND (slp.status = 100 OR slp.status = 101) GROUP BY slp.candidatefk, slp.positionfk';
+      $query = 'SELECT positionfk, candidatefk, created_by';
+      $query .= ' FROM sl_position_link';
+      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND (status = 100 OR status = 101) GROUP BY candidatefk, positionfk';
     }
     else
     {
-      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by, slc._sys_status as candidate_status ';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND (sl_position_link.status = 100 OR sl_position_link.status = 101) AND sl_position_link.active != 0';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = sl_position_link.candidatefk AND slc._sys_status = 0';
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
@@ -1878,19 +1632,17 @@ exit;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT slp.positionfk, slp.candidatefk, slp.created_by, slc._sys_status as candidate_status';
-      $query .= ' FROM sl_position_link slp';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk AND slc._sys_status = 0';
-      $query .= ' WHERE slp.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND slp.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND slp.status = 101';
+      $query = 'SELECT positionfk, candidatefk, created_by';
+      $query .= ' FROM sl_position_link';
+      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND status = 101';
     }
     else
     {
-      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by, slc._sys_status as candidate_status';
+      $query = 'SELECT sl_position_link.positionfk, sl_position_link.candidatefk, sl_meeting.created_by';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND sl_position_link.status = 101';
-      $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = sl_position_link.candidatefk AND slc._sys_status = 0';
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1';
