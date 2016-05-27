@@ -456,7 +456,7 @@ order by m.candidatefk
     if ($group == 'consultant')
       $group_switch = 'attendeefk';
 
-    $query = 'SELECT sl_meetingpk, candidatefk , created_by, date_created, date_met, attendeefk, meeting_done';
+    $query = 'SELECT sl_meetingpk, candidatefk, created_by, date_created, date_met, attendeefk, meeting_done';
     $query .= ' FROM sl_meeting';
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
@@ -1046,16 +1046,14 @@ $flag = 0;
           {
             $user_id = 'former';
             $row['user_position'] = 'Consultant';
-            //if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
-            if($flag == 0)
-            {
+            if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] = 0;
-              $flag = 1;
-            }
 
             if (!isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
+              var_dump($temp_placed);
+              echo'<br><br>';
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
