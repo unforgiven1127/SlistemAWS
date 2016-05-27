@@ -2460,7 +2460,7 @@ ChromePhp::log($sURL);
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-//ChromePhp::log("test");
+ChromePhp::log("_getCandidateList");
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
