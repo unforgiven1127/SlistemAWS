@@ -1950,6 +1950,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $monthly_new_candidate_met = array($new_met_1,$new_met_2,$new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
 
+    var_dump($monthly_new_candidate_met);exit;
+
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
     return $table;
