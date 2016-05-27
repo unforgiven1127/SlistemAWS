@@ -186,20 +186,21 @@ class CTemplateList extends CTemplate
                 else
                   $sContainer = $sListUid;
 
+ChromePhp::log($sContainer);
+
                 $sAction.= '<a href="javascript:;" class="tplListSortAsc" onclick="AjaxRequest(\''.$asColumnData['sort']['up'].'\', \'body\', \'\', \''.$sContainer.'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" class="tplListSortDesc" onclick="AjaxRequest(\''.$asColumnData['sort']['down'].'\', \'body\', \'\', \''.$sContainer.'\');">'.$sPictDesc.'</a>';
               }
-              //elseif(isset($asColumnData['sort']['javascript']) && $asColumnData['sort']['javascript'])
-              else
+              elseif(isset($asColumnData['sort']['javascript']) && $asColumnData['sort']['javascript'])
               {
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$asColumnData['sort']['javascript'].'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$asColumnData['sort']['javascript'].'\');">'.$sPictDesc.'</a>';
               }
-              /*else
+              else
               {
                 $sAction.= '<a href="'.$asColumnData['sort']['up'].'" class="tplListSortAsc" >'.$sPictAsc.'</a>';
                 $sAction.= '<a href="'.$asColumnData['sort']['down'].'" class="tplListSortDesc" >'.$sPictDesc.'</a>';
-              }*/
+              }
             }
 
             if(!empty($asColumnData['filter']))
