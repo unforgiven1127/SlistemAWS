@@ -1,5 +1,8 @@
 <?php $total_consultant_count = 0 ?>
-	<table style="width:100%;" valign="top">
+<table>
+	<tr>
+		<td>
+		<table style="width:100%;" valign="top">
 		<tr >
 			<td style="width:50%;" valign="top" >
 				<table class="revenue_table">
@@ -164,6 +167,10 @@
 			</td>
 		</tr>
 	</table>
+		</td>
+	</tr>
+</table>
+	
 
 <script>
 	var url = '<?php echo $url; ?>';
