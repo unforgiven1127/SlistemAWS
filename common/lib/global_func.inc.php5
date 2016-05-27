@@ -1946,11 +1946,11 @@ function _live_dump($pvTrace, $psTitle = null)
 var_dump($start_date3 );
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
-    $count_new_met_3 = count($new_met[$user_id]);
+    $count_new_met_3 = count($new_met_3[$user_id]);
     $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
-    $count_new_met_2 = count($new_met[$user_id]);
+    $count_new_met_2 = count($new_met_2[$user_id]);
     $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
-    $count_new_met_1 = count($new_met[$user_id]);
+    $count_new_met_1 = count($new_met_1[$user_id]);
 
     $monthly_new_candidate_met = array($count_new_met_1,$count_new_met_2,$count_new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
