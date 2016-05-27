@@ -129,7 +129,7 @@ class CTemplateList extends CTemplate
           }
           else
           {
-            $type = 'value';
+            $type = 'text';
           }
 
           $sText = $oDisplay->getSpan('', $asColumnData['label']);
