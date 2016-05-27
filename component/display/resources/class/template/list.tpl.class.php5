@@ -194,8 +194,8 @@ ChromePhp::log($asColumnData);
               }
               elseif(isset($asColumnData['sort']['javascript']) && $asColumnData['sort']['javascript'])
               {
-                
-ChromePhp::log($sListId);
+
+//ChromePhp::log($sListId);
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$asColumnData['sort']['up'].'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$asColumnData['sort']['down'].'\');">'.$sPictDesc.'</a>';
               }
