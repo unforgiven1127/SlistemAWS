@@ -1188,7 +1188,7 @@ function displaySalary(value)
 
     var listItems = oList.children('li:not(:first)').get();
     //console.log(listItems);
-
+alert(psMode);
     $(oList).animate({opacity: '0.2'}, function()
     {
         switch(psMode)
