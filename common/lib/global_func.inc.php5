@@ -1908,6 +1908,17 @@ function _live_dump($pvTrace, $psTitle = null)
     return $table;
   }
 
+  function strtotimefix($val,$timestamp=0)
+  {
+    if ($timestamp==0){ $timestamp = time(); }
+    if (date('m') == date('m',strtotime('-1 month'))){
+      $timestamp = strtotime('-3 days',$timestamp);
+    }else{
+      if($timestamp==0){$timestamp = time();}
+    }
+    $strtotime = strtotime($val,$timestamp);
+    return $strtotime;
+  }
 
   function get_meetings($user_id)
   {
@@ -1923,20 +1934,33 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date3 = $start_date_3;
     $end_date3 = $end_date_3;
 
-    $start_date2 = strtotime($start_date_3.' -1 months');
-    $end_date2 = strtotime($end_date_3.' -1 months');
+    //$start_date2 = strtotime($start_date_3.' -1 months');
+    //$end_date2 = strtotime($end_date_3.' -1 months');
+
+    $start_date2 =strtotimefix($start_date_3,strtotime($start_date_3.' -1 months'));
+    $end_date2 =strtotimefix($end_date_3,strtotime($end_date_3.' -1 months'));
 
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
 
+var_dump($start_date3);
+var_dump($end_date3);
+echo '<br><br>';
+var_dump($start_date2);
+var_dump($end_date2);
+echo '<br><br>';
+var_dump($start_date1);
+var_dump($end_date1);
+
+exit;
 
     $monthName3 = date('M',$start_date3);
     $monthName2 = date('M',$start_date2);
     $monthName1 = date('M',$start_date1);
 
 
-    //$start_date3 = date('Y-m-d, H:i:s',$start_date3);
-    //$end_date3 = date('Y-m-d, H:i:s',$end_date3);
+    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
 
     $start_date2 = date('Y-m-d, H:i:s',$start_date2);
     $end_date2 = date('Y-m-d, H:i:s',$end_date2);
