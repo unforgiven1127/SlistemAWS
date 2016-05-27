@@ -1553,7 +1553,7 @@ function _live_dump($pvTrace, $psTitle = null)
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
-        WHERE m.created_by IN ('.implode(',', $user_id).')
+        WHERE m.created_by ='. $user_id.'
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         group by m.sl_meetingpk
