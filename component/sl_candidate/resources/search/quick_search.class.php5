@@ -112,7 +112,7 @@ class CQuickSearch
       if(!empty($sCandidate))
       {
         //check if it's a comma separated sting
-        $asWords = explode(',', $sCandidate);
+        $asWords = explode(' ', $sCandidate);
         ChromePhp::log($asWords);
         $this->_cleanArray($asWords);
         $nWord = count($asWords);
