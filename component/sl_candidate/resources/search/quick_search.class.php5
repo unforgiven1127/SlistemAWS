@@ -118,7 +118,11 @@ class CQuickSearch
         $nWord = count($asWords);
         if($nWord > 2)
           return 'Only one comma is allowed to separated the lastname and firstname.';
-
+        if($nWord == 1)
+        {
+          $nWord = 2;
+          $asWords[1] = $asWords[0];
+        }
         //comma separated
         if($nWord == 2)
         {
