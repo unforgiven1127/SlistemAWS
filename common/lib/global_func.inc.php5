@@ -1562,7 +1562,7 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
-    $oDbResult = $this->oDB->executeQuery($query);
+    $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
     while($read)
