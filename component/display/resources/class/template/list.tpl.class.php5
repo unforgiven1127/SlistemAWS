@@ -120,8 +120,18 @@ class CTemplateList extends CTemplate
 
         foreach($asHeader as $nHeaderPos => $asColumnData)
         {
-ChromePhp::log($asColumnData);
+//ChromePhp::log($asColumnData); // $asColumnData['label']
           //dump($asColumnData);
+
+          if($asColumnData['label'] == "ID")
+          {
+            $type = 'integer';
+          }
+          else
+          {
+            $type = 'value';
+          }
+
           $sText = $oDisplay->getSpan('', $asColumnData['label']);
 
           //Save column params + generate a uniq class for every column
@@ -196,8 +206,8 @@ ChromePhp::log($asColumnData);
               {
 
 //ChromePhp::log($sListId);
-                $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$asColumnData['sort']['up'].'\');">'.$sPictAsc.'</a>';
-                $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$asColumnData['sort']['down'].'\');">'.$sPictDesc.'</a>';
+                $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$type.'\');">'.$sPictAsc.'</a>';
+                $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$type.'\');">'.$sPictDesc.'</a>';
               }
               else
               {
