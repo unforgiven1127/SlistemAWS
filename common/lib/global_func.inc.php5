@@ -1549,35 +1549,35 @@ function _live_dump($pvTrace, $psTitle = null)
     $oDB = CDependency::getComponentByName('database');
     $asData = array();
 
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date
+  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
-        WHERE m.created_by = "'.$user_id.'"
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created < "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+
     $oDbResult = array();
 
-    $oDbResult = $oDB->executeQuery($query);
+    $oDbResult = $this->oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
     while($read)
     {
       $temp = $oDbResult->getData();
 
+      if(!isset($asData[$temp['created_by']]))
+      {
+        $asData[$temp['created_by']] = array();
+      }
+
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        if(isset($asData[$temp['created_by']]))
-        {
-          array_push($asData[$temp['created_by']], $temp);
-        }
-        else
-        {
-          $asData[$temp['created_by']] = array();
-          array_push($asData[$temp['created_by']], $temp);
-        }
+        array_push($asData[$temp['created_by']], $temp);
+
         //$asData[$temp['created_by']] = $temp;
       }
       $read = $oDbResult->readNext();
