@@ -1908,34 +1908,6 @@ function _live_dump($pvTrace, $psTitle = null)
     return $table;
   }
 
-  function substractMonth($date,$monthToSubtract)
-  {
-    $d1 = DateTime::createFromFormat('Y-m-d H:i:s', $date);
-
-    $year = $d1-&gt;format('Y');
-    $month = $d1-&gt;format('n');
-    $day = $d1-&gt;format('d');
-
-    $year -= floor($monthToSubtract/12);
-    $monthToSubtract = $monthToSubtract%12;
-    $month -= $monthToSubtract;
-    if($month &lt; 1) {
-        $year --;
-        $month = $month % 12;
-        if($month === 0)
-            $month = 12;
-    }
-
-    if(!checkdate($month, $day, $year)) {
-      $d2 = DateTime::createFromFormat('Y-n-j', $year.'-'.$month.'-1');
-      $d2-&gt;modify('last day of');
-    }else {
-      $d2 = DateTime::createFromFormat('Y-n-d', $year.'-'.$month.'-'.$day);
-    }
-    $d2-&gt;setTime($d1-&gt;format('H'), $d1-&gt;format('i'), $d1-&gt;format('s'));
-
-    return $d2-&gt;format('Y-m-d H:i:s');
-  }
 
   function get_meetings($user_id)
   {
@@ -1951,10 +1923,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date3 = $start_date_3;
     $end_date3 = $end_date_3;
 
-    //$start_date2 = strtotime($start_date_3.' -1 months');
-    //$end_date2 = strtotime($end_date_3.' -1 months');
-    $start_date2 = substractMonth($start_date_3,1);
-    $end_date2 = substractMonth($end_date_3,1);
+    $start_date2 = strtotime($start_date_3.' -1 months');
+    $end_date2 = strtotime($end_date_3.' -1 months');
 
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
