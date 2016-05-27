@@ -1084,36 +1084,24 @@ class CSl_statEx extends CSl_stat
       $nDay = date('j');
       $month_total_days = date('t');
 
-      $target_met = $asStatData['target'][$user_id]['target_met'];
-      $target_play = $asStatData['target'][$user_id]['target_play'];
-      $target_position = $asStatData['target'][$user_id]['target_position'];
-
       $nMet = $asStatData['met'][$user_id][$sMonth];
       $nPlay = $asStatData['play'][$user_id][$sMonth];
       $nPos = $asStatData['position'][$user_id][$sMonth];
 
-      $nMetToDate = ceil(($target_met/$month_total_days) * $nDay) - $nMet;
-      if ($nMetToDate < 0)
-        $nMetToDate = 0;
-
-      $nPlayToDate = ceil(($target_play/$month_total_days) * $nDay) - $nPlay;
-      if ($nPlayToDate < 0)
-        $nPlayToDate = 0;
-
-      $nPosToDate = ceil(($target_position/$month_total_days) * $nDay) - $nPos;
-      if ($nPosToDate < 0)
-        $nPosToDate = 0;
+      $nMetToDate = ceil((27/$month_total_days) * $nDay);
+      $nPlayToDate = ceil((7/$month_total_days) * $nDay);
+      $nPosToDate = ceil((5/$month_total_days) * $nDay);
 
       $nMetRatio = $nPlayRatio = $nPosRatio = 0;
 
       if (!empty($nMet))
-        $nMetRatio = round(($nMet/$target_met)*100);
+        $nMetRatio = round(($nMet/27)*100);
 
       if (!empty($nPlay))
-        $nPlayRatio = round(($nPlay/$target_play)*100);
+        $nPlayRatio = round(($nPlay/7)*100);
 
       if (!empty($nPos))
-        $nPosRatio = round(($nPos/$target_position)*100);
+        $nPosRatio = round(($nPos/5)*100);
 
       $sMetClass = $this->_getClassFromValue($nMet, $nMetToDate);
       $sPlayClass = $this->_getClassFromValue($nPlay, $nPlayToDate);
@@ -1124,15 +1112,15 @@ class CSl_statEx extends CSl_stat
           <div class="obj-row obj-header">
             <div class="obj-desc"></div>
             <div class="obj-value">Met *</div>
-            <div class="obj-value">In play</div>
-            <div class="obj-value">Positions **</div>
+            <div class="obj-value">In play **</div>
+            <div class="obj-value">Positions ***</div>
           </div>
 
           <div class="obj-row">
             <div class="obj-desc">Month target</div>
-            <div class="obj-value">'.$target_met.'</div>
-            <div class="obj-value">'.$target_play.'</div>
-            <div class="obj-value">'.$target_position.'</div>
+            <div class="obj-value">27</div>
+            <div class="obj-value">7</div>
+            <div class="obj-value">5</div>
           </div>
 
           <div class="obj-row">
@@ -1159,7 +1147,8 @@ class CSl_statEx extends CSl_stat
 
         <div class="portal-legend">
           <span style="color: #888; font-style: italic; font-size: 11px;">* Meeting created with the new meeting feature. </span><br />
-          <span style="color: #888; font-style: italic; font-size: 11px;">** Newly active positions, having their first CCM. </span>
+          <span style="color: #888; font-style: italic; font-size: 11px;">** Phone assessed are counted up to the 5 first calls only. </span><br />
+          <span style="color: #888; font-style: italic; font-size: 11px;">*** Newly active positions, having their first CCM this month. </span>
         </div>
         </div>
       ';
@@ -4022,8 +4011,6 @@ class CSl_statEx extends CSl_stat
 
     private function get_revenue_chart()
     {
-      //echo 'test'; // mca MCA
-      //exit;
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
       $year = $next_year = getValue('year', date('Y'));
@@ -4041,8 +4028,7 @@ class CSl_statEx extends CSl_stat
         $year = date('Y');
 
       $revenue_data = $this->_getModel()->get_revenue_data($year);
-      //var_dump($revenue_data);
-      //exit;
+
       $this->_oPage->addCssFile($this->getResourcePath().'/css/revenue.css');
 
       $data = array('revenue_data' => $revenue_data, 'location' => $location, 'year' => $year, 'row_number_rank' => 1, 'total_paid' => 0,
@@ -4230,7 +4216,6 @@ class CSl_statEx extends CSl_stat
       $temp_in_play = $this->_getModel()->get_new_in_play($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_placement = $this->_getModel()->get_placement_number($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
 
       foreach ($consultant_ids as $id)
       {
@@ -4248,76 +4233,71 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['resumes_sent_info'] = array();
         }
 
-        //if (!empty($temp_set_vs_met[$id]['set']))
-        //{
+        if (!empty($temp_set_vs_met[$id]['set']))
+        {
           $stats_data['consultant'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['set'] = 0;
           $stats_data['consultant'][$id]['set_meeting_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_set_vs_met[$id]['met']))
-        //{
+        if (!empty($temp_set_vs_met[$id]['met']))
+        {
           $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-          //echo '<br><br><br>';
-          //var_dump($stats_data['consultant'][$id]['met_meeting_info']);
-          //echo '<br><br><br>';
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['met'] = 0;
           $stats_data['consultant'][$id]['met_meeting_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['ccm1']) || !empty($temp_ccm[$id]['ccm1_done']))
-        //{
+        if (!empty($temp_ccm[$id]['ccm1']))
+        {
           $stats_data['consultant'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
           $stats_data['consultant'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
           $stats_data['consultant'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['ccm1'] = 0;
           $stats_data['consultant'][$id]['ccm1_done'] = 0;
           $stats_data['consultant'][$id]['ccm1_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['ccm2']))
-        //{
+        if (!empty($temp_ccm[$id]['ccm2']))
+        {
           $stats_data['consultant'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
           $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
           $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['ccm2'] = 0;
           $stats_data['consultant'][$id]['ccm2_done'] = 0;
           $stats_data['consultant'][$id]['ccm2_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['mccm']))
-        //{
+        if (!empty($temp_ccm[$id]['mccm']))
+        {
           $stats_data['consultant'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
           $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
           $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['mccm'] = 0;
           $stats_data['consultant'][$id]['mccm_done'] = 0;
           $stats_data['consultant'][$id]['mccm_info'] = array();
-        }*/
+        }
 
-//----------------------------------------------------------------------------------
         if (!empty($temp_in_play[$id]['new_candidates']))
         {
-          $count = count($temp_in_play[$id]['new_candidates']);
-          $stats_data['consultant'][$id]['new_candidates'] = $count;
-          $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
+          $stats_data['consultant'][$id]['new_candidates'] = $temp_in_play[$id]['new_candidates'];
+          $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['in_play_info']['new_candidates'];
         }
         else
         {
@@ -4327,22 +4307,19 @@ class CSl_statEx extends CSl_stat
 
         if (!empty($temp_in_play[$id]['new_positions']))
         {
-          $count = count($temp_in_play[$id]['new_positions']);
-          $stats_data['consultant'][$id]['new_positions'] = $count;
-          $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
+          $stats_data['consultant'][$id]['new_positions'] = $temp_in_play[$id]['new_positions'];
+          $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play[$id]['in_play_info']['new_positions'];
         }
         else
         {
           $stats_data['consultant'][$id]['new_positions'] = 0;
           $stats_data['consultant'][$id]['new_position_info'] = array();
         }
-//----------------------------------------------------------------------------------
 
         if (!empty($temp_placement[$id]['placed']))
         {
           $stats_data['consultant'][$id]['placed'] = $temp_placement[$id]['placed'];
           $stats_data['consultant'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
-
         }
         else
         {
@@ -4361,18 +4338,6 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['offer_info'] = array();
         }
 
-        if (!empty($temp_new_candidate_met[$id]))
-        {
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['consultant'][$id]['new_candidate_met_count'] = $count;
-          $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['new_candidate_met_count'] = 0;
-          $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
-        }
         $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
       }
 
@@ -4394,20 +4359,11 @@ class CSl_statEx extends CSl_stat
       $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
       $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
-      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
-//echo '<br><br><br>';
-//var_dump($temp_new_candidate_met);
-//echo '<br><br><br>';
+
       foreach ($researcher_ids as $id)
       {
         if (in_array($id, $researcher_skip_id))
           continue;
-
-        $user_info = getUserInformaiton($id);
-        //var_dump($user_info);
-        //ChromePhp::log($user_info);
-        //exit;
-        $stats_data['researcher'][$id]['position'] = $user_info['position'];
 
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
         {
@@ -4420,116 +4376,71 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['resumes_sent_info'] = array();
         }
 
-        //if (!empty($temp_set_vs_met[$id]['set']))
-        //{
+        if (!empty($temp_set_vs_met[$id]['set']))
+        {
           $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['set'] = 0;
           $stats_data['researcher'][$id]['set_meeting_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_set_vs_met[$id]['met']))
-        //{
-          //$stats_data['researcher'][$id]['met'] = $temp_set_vs_met[$id]['met'];
-          //$stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-
-// NOTE: researcher larda met ile new candidate met ayni olsun istendi !!!!!!
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['researcher'][$id]['met'] = $count;
-          $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
-        //}
-        /*else
+        if (!empty($temp_set_vs_met[$id]['met']))
+        {
+          $stats_data['researcher'][$id]['met'] = $temp_set_vs_met[$id]['met'];
+          $stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
+        }
+        else
         {
           $stats_data['researcher'][$id]['met'] = 0;
            $stats_data['researcher'][$id]['met_meeting_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['ccm1']))
-        //{
+        if (!empty($temp_ccm[$id]['ccm1']))
+        {
           $stats_data['researcher'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
           $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
           $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['ccm1'] = 0;
           $stats_data['researcher'][$id]['ccm1_done'] = 0;
           $stats_data['researcher'][$id]['ccm1_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['ccm2']))
-        //{
+        if (!empty($temp_ccm[$id]['ccm2']))
+        {
           $stats_data['researcher'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
           $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
           $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['ccm2'] = 0;
           $stats_data['researcher'][$id]['ccm2_done'] = 0;
           $stats_data['researcher'][$id]['ccm2_info'] = array();
-        }*/
+        }
 
-        //if (!empty($temp_ccm[$id]['mccm']))
-        //{
+        if (!empty($temp_ccm[$id]['mccm']))
+        {
           $stats_data['researcher'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
           $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
           $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['mccm'] = 0;
           $stats_data['researcher'][$id]['mccm_done'] = 0;
           $stats_data['researcher'][$id]['mccm_info'] = array();
-        }*/
-
-        if (!empty($temp_ccm[$id]['placedRevenue']))
-        {
-          $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm[$id]['placedRevenue']; $id."_".$temp_ccm[$id]['placedRevenue'];
-          $array = $temp_ccm[$id]['placedRevenue_info'];
-
-          $finalArray = array();
-          foreach ($array['placedRevenue'] as $key => $first) {
-            $addArray['candidate'] = $first['candidate'];
-            array_push($finalArray,$addArray);
-          }
-
-          $stats_data['researcher'][$id]['placedRevenue_info'] = $finalArray;
-          //var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
-          //exit;
-
-/*echo $id.'<br><br><br>';
-          foreach ($temp_ccm[$id]['placedRevenue_info'] as $key1 => $first) {
-            foreach ($first as $key => $second) {
-              //var_dump($second);echo'<br>';
-              $ekle['candidate'] = $second['candidate'];
-              array_push($array,$ekle);
-              echo'<ekle - >';var_dump($ekle);echo'<br>';
-              //array_push($stats_data['researcher'][$id]['placedRevenue_info'],$ekle);
-            }
-          }
-          $stats_data['researcher'][$id]['placedRevenue_info'] = $array;
-          var_dump($stats_data['researcher'][$id]['placedRevenue']);
-          echo "<br><br>";
-          var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
-          exit;*/
         }
-        else
-        {
-          $stats_data['researcher'][$id]['placedRevenue'] = 0;
-          $stats_data['researcher'][$id]['placedRevenue_info'] = array();
-        }
-        //------------------------------------------------------------
+
         if (!empty($temp_in_play[$id]['new_candidates']))
         {
-          $count = count($temp_in_play[$id]['new_candidates']);
-          $stats_data['researcher'][$id]['new_candidates'] = $count;
-          $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
+          $stats_data['researcher'][$id]['new_candidates'] = $temp_in_play[$id]['new_candidates'];
+          $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play[$id]['in_play_info']['new_candidates'];
         }
         else
         {
@@ -4539,16 +4450,14 @@ class CSl_statEx extends CSl_stat
 
         if (!empty($temp_in_play[$id]['new_positions']))
         {
-          $count = count($temp_in_play[$id]['new_positions']);
-          $stats_data['researcher'][$id]['new_positions'] = $count;
-          $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
+          $stats_data['researcher'][$id]['new_positions'] = $temp_in_play[$id]['new_positions'];
+          $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play[$id]['in_play_info']['new_positions'];
         }
         else
         {
           $stats_data['researcher'][$id]['new_positions'] = 0;
           $stats_data['researcher'][$id]['new_position_info'] = array();
         }
-        //----------------------------------------------------------
 
         if (!empty($temp_placement[$id]['placed']))
         {
@@ -4570,19 +4479,6 @@ class CSl_statEx extends CSl_stat
         {
           $stats_data['researcher'][$id]['offers_sent'] = 0;
           $stats_data['researcher'][$id]['offer_info'] = array();
-        }
-
-        if (!empty($temp_new_candidate_met[$id]))
-        {
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['researcher'][$id]['new_candidate_met_count'] = $count;
-          $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['new_candidate_met_count'] = 0;
-          $stats_data['researcher'][$id]['new_candidate_met_info'] = array();
         }
 
         $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
