@@ -2498,7 +2498,6 @@ ChromePhp::log($sURL);
 
       // ============================================
       // search and pagination management
-      ChromePhp::log($poQB);
 
       if(empty($this->csSearchId) && empty($nHistoryPk))
       {
