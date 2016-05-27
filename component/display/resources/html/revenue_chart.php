@@ -1,7 +1,7 @@
 <?php $total_consultant_count = 0 ?>
-<table>
+<table style="width:100%;" valign="top">
 	<tr>
-		<td>
+		<td style="width:100%;" valign="top">
 		<table style="width:100%;" valign="top">
 		<tr >
 			<td style="width:50%;" valign="top" >
