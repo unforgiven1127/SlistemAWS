@@ -1252,20 +1252,19 @@ order by m.candidatefk
 
     else if ($group == 'researcher')
     {
-      $query = 'SELECT slm.meeting_done,slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
+      $query = 'SELECT slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc._sys_status as candidate_status';
       $query .= ' FROM sl_meeting slm';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
-      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 AND slm.meeting_done = 1
-      GROUP BY slp.sl_position_linkpk';
+      $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
     }
 
-/*if ($group == 'researcher'){
-  echo '<br><br><br>';
+/*if ($group == 'consultant'){
   var_dump($query);
+    exit;
 }*/
 
     //else
@@ -1643,7 +1642,7 @@ order by m.candidatefk
 
     // gets new_candidates_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
-        ,pl.date_completed , pl.date_created as ccm_create_date
+        ,pl.date_completed , pl.create_date as ccm_create_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
@@ -1670,13 +1669,13 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      $create_date = strtotime($temp['ccm_create_date']);
-      $date_completed = strtotime($temp['date_completed']);
+      $create_date = strtotime($row['ccm_create_date']);
+    $date_completed = strtotime($row['date_completed']);
 
-      $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
+    $diff = $date_completed - $create_date;
+    $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
         {
@@ -1696,7 +1695,7 @@ order by m.candidatefk
     // gets new_positions_in_play START
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
         min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
-        ,pl.date_completed , pl.date_created as ccm_create_date
+        ,pl.date_completed , pl.create_date as ccm_create_date
         FROM sl_meeting m
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
@@ -1722,13 +1721,7 @@ order by m.candidatefk
     {
       $temp = $oDbResult->getData();
 
-      $create_date = strtotime($temp['ccm_create_date']);
-      $date_completed = strtotime($temp['date_completed']);
-
-      $diff = $date_completed - $create_date;
-      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
-
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 && $diff < 180)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
         {
