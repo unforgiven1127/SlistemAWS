@@ -1673,7 +1673,7 @@ function _live_dump($pvTrace, $psTitle = null)
     return $table;
   }
 
-  function create_meetings_table()
+  function create_meetings_table($user_short_name,$monthly_new_candidate_met,$months)
   {
     $table = "
 
@@ -1775,7 +1775,7 @@ function _live_dump($pvTrace, $psTitle = null)
                             </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>Met - mmoir</tspan>
+                                    <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
@@ -1860,7 +1860,7 @@ function _live_dump($pvTrace, $psTitle = null)
               }
             },
             xAxis: {
-              categories: ['Mar','Apr','May']
+              categories: ['".$months[0]."','".$months[1]."','".$months[2]."']
             },
             yAxis:
              {
@@ -1883,14 +1883,14 @@ function _live_dump($pvTrace, $psTitle = null)
           {
             type: 'column',
             name: 'Not met',
-            stack: 'mmoir',
+            stack: '".$user_short_name."',
             data: [0,3,7],
             color: '#FF2224' },
             {
                 type: 'column',
-                name: 'Met - mmoir',
-                stack: 'mmoir',
-                data: [25,14,13],
+                name: 'Met - ".$user_short_name."',
+                stack: '".$user_short_name."',
+                data: [".$monthly_new_candidate_met[0].",".$monthly_new_candidate_met[1].",".$monthly_new_candidate_met[2]."],
                 color: '#2073CC' ,
           dataLabels:
           {
@@ -1928,23 +1928,29 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
 
-    $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
-    $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
-    $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
 
     $monthName3 = date('M',$start_date3);
     $monthName2 = date('M',$start_date2);
     $monthName1 = date('M',$start_date1);
 
-    var_dump($start_date3);
-    var_dump($start_date2);
-    var_dump($start_date1);
-    var_dump($monthName3);
-    var_dump($monthName2);
-    var_dump($monthName1);
-    exit;
 
-    $table = create_meetings_table();
+    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
+
+    $start_date2 = date('Y-m-d, H:i:s',$start_date2);
+    $end_date2 = date('Y-m-d, H:i:s',$end_date2);
+
+    $start_date1 = date('Y-m-d, H:i:s',$start_date1);
+    $end_date1 = date('Y-m-d, H:i:s',$end_date1);
+
+    $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
+    $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
+    $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
+
+    $monthly_new_candidate_met = array($new_met_1,$new_met_2,$new_met_3);
+    $months = array($monthName1,$monthName2,$monthName3);
+
+    $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
     return $table;
   }
