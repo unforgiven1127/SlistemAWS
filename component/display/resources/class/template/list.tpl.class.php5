@@ -168,6 +168,9 @@ class CTemplateList extends CTemplate
             $nListWidth+= $fTotalWidth;
           }
 
+ChromePhp::log($asColumnData['sort']['ajax_target']);
+ChromePhp::log($sListUid);
+
           unset($asColumnData['params']['width']);
 
           $sAction = '';
