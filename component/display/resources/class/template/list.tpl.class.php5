@@ -120,7 +120,7 @@ class CTemplateList extends CTemplate
 
         foreach($asHeader as $nHeaderPos => $asColumnData)
         {
-
+ChromePhp::log($asColumnData);
           //dump($asColumnData);
           $sText = $oDisplay->getSpan('', $asColumnData['label']);
 
