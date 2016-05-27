@@ -2498,8 +2498,8 @@ ChromePhp::log($sURL);
 
       // ============================================
       // search and pagination management
-      var_dump($poQB);
-      exit;
+      ChromePhp::log($poQB);
+
       if(empty($this->csSearchId) && empty($nHistoryPk))
       {
         //$asListMsg[] = ' new search id [empty sId or history]. ';
