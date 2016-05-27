@@ -871,6 +871,7 @@ ChromePhp::log($this->csAction);
 
     private function _displayCandidateList($pbInAjax = false)
     {
+      ChromePhp::log('_displayCandidateList');
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
@@ -2460,7 +2461,6 @@ ChromePhp::log($sURL);
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-ChromePhp::log("_getCandidateList");
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
