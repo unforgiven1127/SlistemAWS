@@ -1943,7 +1943,16 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date1 = date('Y-m-d, H:i:s',$start_date1);
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
-//var_dump($start_date3 );
+var_dump($start_date3);
+var_dump($end_date3);
+echo"<br><br>";
+var_dump($start_date2);
+var_dump($end_date2);
+echo"<br><br>";
+var_dump($start_date1);
+var_dump($end_date1);
+
+exit;
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
     $count_new_met_3 = count($new_met_3[$user_id]);
