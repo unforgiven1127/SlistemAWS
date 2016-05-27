@@ -112,7 +112,7 @@ class CQuickSearch
       if(!empty($sCandidate))
       {
         //check if it's a comma separated sting
-        $asWords = explode(' ', $sCandidate);
+        $asWords = explode(',', $sCandidate);
         ChromePhp::log($asWords);
         $this->_cleanArray($asWords);
         $nWord = count($asWords);
@@ -158,8 +158,11 @@ class CQuickSearch
           {
             $asWords[0] = trim($asWords[0]);
 
-            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.lastname)) AS lastname_lev ');
-            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.firstname)) AS firstname_lev ');
+            //$this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.lastname)) AS lastname_lev ');
+            //$this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.firstname)) AS firstname_lev ');
+
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio ');
+
             $this->coQb->addWhere('( scan.lastname LIKE "'.$sWildcard.$asWords[0].'%" OR  scan.firstname LIKE "'.$sWildcard.$asWords[0].'%" ) ');
 
             $this->coQb->addOrder(' lastname_lev ASC, firstname_lev ASC ');
