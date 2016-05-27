@@ -1943,7 +1943,10 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
-
+    if(date('m',$start_date1) != date('m',$end_date1))
+    {
+      $end_date2 = strtotime($end_date2.' -1 days');
+    }
 
 
     $monthName3 = date('M',$start_date3);
