@@ -2704,9 +2704,9 @@ $flag = strpos($test, $control);
 
         }
       }
-
+ChromePhp::log($sQuery);
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
-        //ChromePhp::log($sQuery[1]);
+
 
         $limit = $sQuery[1];
         $limit = explode("LIMIT", $limit);

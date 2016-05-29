@@ -170,7 +170,7 @@
 		</td>
 	</tr>
 </table>
-	
+
 
 <script>
 	var url = '<?php echo $url; ?>';
