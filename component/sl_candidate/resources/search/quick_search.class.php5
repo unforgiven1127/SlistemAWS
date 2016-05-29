@@ -131,8 +131,6 @@ class CQuickSearch
 
           $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$asWords[1]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio ');
 
-          $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[1].$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio2 ');
-
           if($bReverse)
           {
             $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[1].$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio_rev ');
@@ -176,8 +174,6 @@ class CQuickSearch
             $asWords[1] = trim($asWords[1]);
 
             $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$asWords[1]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio ');
-
-            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[1].$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio2 ');
 
             if($bReverse)
             {
