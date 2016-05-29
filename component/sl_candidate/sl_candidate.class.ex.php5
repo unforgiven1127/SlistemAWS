@@ -2718,7 +2718,8 @@ ChromePhp::log($sQuery);
 
         //ChromePhp::log($sSortField." - ".$sSortOrder);
 
-        if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null){
+        if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null)
+        {
           ChromePhp::log($sSortField);
           if($sSortField == "sl_candidatepk")
           {
@@ -2775,6 +2776,10 @@ ChromePhp::log($sQuery);
           {
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
+        }
+        else if(strpos($sQuery,"ratio_rev") !== false)
+        {
+          $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
         }
         else if(strpos($sQuery,"ratio") !== false)
         {
