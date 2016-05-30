@@ -1628,6 +1628,8 @@ if ($group == 'researcher'){
     {
       $row = $db_result->getData();
 
+      $index = $row['candidatefk'].'_'.$row['positionfk'];
+
       if (!isset($resume_sent_info[$row['created_by']]['resumes_sent']))
       {
         $resume_sent_info[$row['created_by']]['resumes_sent'] = 0;
@@ -1636,17 +1638,19 @@ if ($group == 'researcher'){
 
       if ($group == 'researcher')
       {
-        if (isset($resume_sent_info[$row['created_by']][$row['candidatefk']]))
+        if (isset($resume_sent_info[$row['created_by']][$index]))
         {
           $read = $db_result->readNext();
           continue;
         }
         else
-          $resume_sent_info[$row['created_by']][$row['candidatefk']] = '';
+        {
+          $resume_sent_info[$row['created_by']][$index] = '';
+        }
       }
 
       $resume_sent_info[$row['created_by']]['resumes_sent'] += 1;
-      $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $row['candidatefk'],
+      $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $index,
         'date' => $row['resume_sent_date']);
 
       $read = $db_result->readNext();
