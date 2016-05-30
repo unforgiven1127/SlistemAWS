@@ -1655,12 +1655,13 @@ $flag = 0;
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
-    $query = 'SELECT pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
+    $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
         WHERE m.created_by IN ('.implode(',', $user_ids).')
         AND pl.date_completed >= "'.$start_date.'"
         AND pl.date_completed <= "'.$end_date.'"
@@ -1689,7 +1690,7 @@ $flag = 0;
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
       {
         if($group == 'researcher')
         {
