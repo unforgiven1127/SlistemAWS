@@ -1949,13 +1949,11 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
 
-    $monthName3 = date('M',$start_date3);
-    $monthName2 = date('M',$start_date2);
-    $monthName1 = date('M',$start_date1);
 
 
-    //$start_date3 = date('Y-m-d, H:i:s',$start_date3);
-    //$end_date3 = date('Y-m-d, H:i:s',$end_date3);
+
+    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
 
     $start_date2 = date('Y-m-d, H:i:s',$start_date2);
     $end_date2 = date('Y-m-d, H:i:s',$end_date2);
@@ -1963,16 +1961,10 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date1 = date('Y-m-d, H:i:s',$start_date1);
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
-/*var_dump($start_date3);
-var_dump($end_date3);
-echo '<br><br>';
-var_dump($start_date2);
-var_dump($end_date2);
-echo '<br><br>';
-var_dump($start_date1);
-var_dump($end_date1);
+    $monthName3 = date('M',$start_date3);
+    $monthName2 = date('M',$start_date2);
+    $monthName1 = date('M',$start_date1);
 
-exit;*/
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
     $count_new_met_3 = count($new_met_3[$user_id]);
@@ -1985,7 +1977,17 @@ exit;*/
     $months = array($monthName1,$monthName2,$monthName3);
 
     var_dump($months);
-    exit;
+    echo '<br><br>';
+    var_dump($start_date3);
+    var_dump($end_date3);
+    echo '<br><br>';
+    var_dump($start_date2);
+    var_dump($end_date2);
+    echo '<br><br>';
+    var_dump($start_date1);
+    var_dump($end_date1);
+
+exit;
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
