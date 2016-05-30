@@ -1655,7 +1655,7 @@ $flag = 0;
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
+    $query = 'SELECT pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
@@ -1691,14 +1691,22 @@ $flag = 0;
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
       {
-        if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
+        if($group == 'researcher')
         {
-          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+          $user = $temp['created_by'];
         }
         else
         {
-          $new_in_play_info[$temp['created_by']]['new_candidates'] = array();
-          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+          $user = $temp['pl_created_by'];
+        }
+        if(isset($new_in_play_info[$user]['new_candidates']))
+        {
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$user]['new_candidates'] = array();
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
         }
         //$asData[$temp['created_by']] = $temp;
       }
@@ -1743,14 +1751,23 @@ $flag = 0;
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 && $diff < 180)
       {
-        if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
+        if($group == 'researcher')
         {
-          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+          $user = $temp['created_by'];
         }
         else
         {
-          $new_in_play_info[$temp['created_by']]['new_positions'] = array();
-          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+          $user = $temp['pl_created_by'];
+        }
+
+        if(isset($new_in_play_info[$user]['new_positions']))
+        {
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$user]['new_positions'] = array();
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
         }
         //$asData[$temp['created_by']] = $temp;
       }
