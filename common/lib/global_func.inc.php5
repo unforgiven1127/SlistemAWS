@@ -2026,7 +2026,7 @@ exit;*/
 
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
 
-    $count_new_met = $new_met//count($new_met[$user_id]);
+    $count_new_met = $new_met;//count($new_met[$user_id]);
 
     $table = create_objectives_table($count_in_play_candidate, $count_in_play_position, $count_new_met);
 
