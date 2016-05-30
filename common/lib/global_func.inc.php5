@@ -1592,10 +1592,10 @@ function _live_dump($pvTrace, $psTitle = null)
     foreach ($asData[$user_id] as $key => $value) {
       $count++;
     }
-var_dump($asData[$user_id]);
+/*var_dump($asData[$user_id]);
 echo '<br><br>';
 echo $count;
-exit;
+exit;*/
 
     $count = count($asData[$user_id]);
     return $count;
