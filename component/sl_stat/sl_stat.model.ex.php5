@@ -1525,7 +1525,7 @@ $flag = 0;
       }
       else if($row['status'] == 101 && $row['candidate_status'] == 0) // revenue chart ve kpi da researcher lar icin yazdik
       {
-        if($row_complete_date >= $control_start_date)
+        if($row_create_date >= $control_start_date && $row_create_date <= $control_end_date)
         {
             $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_placed_revenue';
 
@@ -1949,9 +1949,6 @@ exit;
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1';
-
-      echo '<br><br>';
-      var_dump($query);
     }
 
     $db_result = $this->oDB->executeQuery($query);
