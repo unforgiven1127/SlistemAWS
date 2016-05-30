@@ -1259,20 +1259,20 @@ $flag = 0;
       $query = 'SELECT min(m2.sl_meetingpk) as min_date,slm.meeting_done,slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc._sys_status as candidate_status';
       $query .= ' FROM sl_meeting slm';
-      $query .= ' INNER JOIN sl_meeting m2 ON m2.candidatefk = slm.candidatefk';
+      $query .= ' INNER JOIN sl_meeting m2 ON m2.candidatefk = slm.candidatefk AND m2.meeting_done = 1';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).')
-      AND slp.status >= 51 AND slm.meeting_done = 1 AND m2.meeting_done = 1
+      AND slp.status >= 51 AND slm.meeting_done = 1
       GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
     }
 
-/*if ($group == 'researcher'){
+if ($group == 'researcher'){
   echo '<br><br><br>';
   var_dump($query);
-}*/
+}
 
     //else
     /*{
