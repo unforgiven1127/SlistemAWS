@@ -1686,6 +1686,8 @@ function _live_dump($pvTrace, $psTitle = null)
       $read = $oDbResult->readNext();
     }
 
+    var_dump($new_in_play_info[$user_id]['new_candidates']);
+    exit;
     $count = count($new_in_play_info[$user_id]['new_candidates']);
     return $count;
   }
