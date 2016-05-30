@@ -1263,7 +1263,7 @@ $flag = 0;
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).')
-      AND slp.status >= 51 AND slm.meeting_done = 1
+      AND slp.status >= 51 AND slm.meeting_done = 0
       GROUP BY slp.sl_position_linkpk';
                   //AND date_created >= "'.$start_date.'"
                   //AND date_created <= "'.$end_date.'"';
