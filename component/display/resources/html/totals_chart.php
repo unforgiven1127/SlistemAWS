@@ -83,7 +83,7 @@
 				<div>
 				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php if(isset($stat_info['candidate'])){echo $stat_info['candidate'];}
-					else if(isset($stat_info['candidatefk'])){echo $stat_info['candidatefk'];}
+					else if(isset($stat_info['candidatefk'])){echo $stat_info['candidate'];}
 					else {echo $stat_info['candidate'];} ?></a>
 				</div>
 			<?php endforeach ?>
