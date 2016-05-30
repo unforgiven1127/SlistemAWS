@@ -2780,7 +2780,7 @@ $flag = strpos($test, $control);
         }
         else if(strpos($oldQ,"ratio DESC, ratio_rev DES") !== false)
         {
-          $sQuery.= ' ratio DESC, ratio_rev DES ';
+          $sQuery.= ' ORDER BY ratio DESC, ratio_rev DES ';
           ChromePhp::log($sQuery);
         }
         else if(strpos($sQuery,"ratio_rev") !== false)
