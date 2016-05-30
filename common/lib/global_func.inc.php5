@@ -1549,7 +1549,16 @@ function _live_dump($pvTrace, $psTitle = null)
     $oDB = CDependency::getComponentByName('database');
     $asData = array();
 
-  $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
+    $user_info = getUserInformaiton($user_id);
+    $group = strtolower($user_info['position']);
+
+    $add = " ";
+    if($group == 'researcher')
+    {
+      $add = " AND m.meeting_done = 1 ";
+    }
+
+    $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
