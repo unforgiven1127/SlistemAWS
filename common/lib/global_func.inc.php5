@@ -1597,7 +1597,7 @@ echo '<br><br>';
 echo $count;
 exit;*/
 
-    $count = count($asData[$user_id]);
+    //$count = count($asData[$user_id]);
     return $count;
   }
 
