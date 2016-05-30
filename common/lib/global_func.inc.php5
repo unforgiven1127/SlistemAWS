@@ -3,8 +3,6 @@ require_once 'htmlpurifier/library/HTMLPurifier.auto.php';
 
 define('URL_FORMAT','_^(?:(?:https?|ftp)://)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}-\x{ffff}0-9]+-?)*[a-z\x{00a1}-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}-\x{ffff}]{2,})))(?::\d{2,5})?(?:/[^\s]*)?$_iuS');
 
-$coModel = null;
-
 function array_search_multi($needle, $haystack)
 {
   for($i = 0, $l = count($haystack); $i < $l; ++$i)
@@ -1546,35 +1544,167 @@ function _live_dump($pvTrace, $psTitle = null)
     return $new_in_play_info;
   }
 
-  function &_getModel_global()
-  {
-    if($coModel !== null)
-      return $coModel;
-
-    require_once('component/sl_candidate/sl_candidate.model.php5');
-    require_once('component/sl_candidate/sl_candidate.model.ex.php5');
-    $coModel = new CSl_candidateModelEx();
-
-    return $coModel;
-  }
-
   function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
   {
-
-
     $oDB = CDependency::getComponentByName('database');
-    $user_id = array($user_id);
+    $asData = array();
 
     $user_info = getUserInformaiton($user_id);
     $group = strtolower($user_info['position']);
 
-    require_once('component/sl_stat/sl_stat.model.php5');
-    require_once('component/sl_stat/sl_stat.model.ex.php5');
+    $new_in_play_info = array();
 
-    $temp_in_play = _getModel_global()->get_new_in_play($user_id, $start_date, $end_date, $group);
+    // gets new_candidates_in_play START
 
-    $count = count($temp_in_play[$id]['new_candidates']);
+    $add = " ";
+    if($group == 'researcher')
+    {
+      $add = " AND m.meeting_done = 1 ";
+    }
 
+    $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
+        ,pl.date_completed , pl.date_created as ccm_create_date
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
+        WHERE pl.date_completed >= "'.$start_date.'"
+        AND pl.date_completed <= "'.$end_date.'"
+        AND pl.status = 51
+        AND pl.active = 0
+        AND pl2.status = 51
+        AND pl2.active = 0
+        AND slc._sys_status = 0
+        '.$add.'
+        group by pl.candidatefk, pl.positionfk
+        order by m.candidatefk';
+
+//echo '<br><br>';
+//var_dump($query);
+
+    $oDbResult = array();
+
+    $oDbResult = $oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      $create_date = strtotime($temp['ccm_create_date']);
+      $date_completed = strtotime($temp['date_completed']);
+
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
+      {
+        if($group == 'researcher')
+        {
+          $user = $temp['created_by'];
+        }
+        else
+        {
+          $user = $temp['pl_created_by'];
+        }
+        if(isset($new_in_play_info[$user]['new_candidates']))
+        {
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$user]['new_candidates'] = array();
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+    // gets new_candidates_in_play END
+
+    // gets new_positions_in_play START
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.created_by as pl_created_by, pl.sl_position_linkpk,
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
+        ,pl.date_completed , pl.date_created as ccm_create_date
+        FROM sl_meeting m
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
+        WHERE pl.date_completed >= "'.$start_date.'"
+        AND pl.date_completed <= "'.$end_date.'"
+        AND pl.status = 51
+        AND pl.active = 0
+        AND pl2.status = 51
+        AND pl2.active = 0
+        '.$add.'
+        AND slc._sys_status = 0
+        group by pl.candidatefk, pl.positionfk
+        order by m.candidatefk';
+
+    //echo '<br><br>';
+    //var_dump($query);
+
+    $oDbResult = array();
+
+    $oDbResult = $oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      $create_date = strtotime($temp['ccm_create_date']);
+      $date_completed = strtotime($temp['date_completed']);
+
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 ) // && $diff < 180 cikarttik
+      {
+        if($group == 'researcher')
+        {
+          $user = $temp['created_by'];
+        }
+        else
+        {
+          $user = $temp['pl_created_by'];
+        }
+
+        if(isset($new_in_play_info[$user]['new_positions']))
+        {
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$user]['new_positions'] = array();
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
+        }
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+
+    if (!empty($new_in_play_info[$user_id]['new_candidates']))
+    {
+      $count = count($new_in_play_info[$user_id]['new_candidates']);
+      //$stats_data['consultant'][$id]['new_candidates'] = $count;
+      //$stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
+    }
+    else
+    {
+      $count = 0;
+      //$stats_data['consultant'][$id]['new_candidate_info'] = array();
+    }
+
+    var_dump($new_in_play_info[$user_id]['new_candidates']);
+    echo '<br><br>';
+    echo $count;
+    echo '<br><br>';
+    echo $user_id;
+    exit;
+    $count = count($new_in_play_info[$user_id]['new_candidates']);
     return $count;
   }
 
