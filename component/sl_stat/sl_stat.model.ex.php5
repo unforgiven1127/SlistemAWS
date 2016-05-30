@@ -1686,7 +1686,7 @@ if ($group == 'researcher'){
         AND pl2.active = 0
         AND slc._sys_status = 0
         '.$add.'
-        group by m.sl_meetingpk
+        group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
 //echo '<br><br>';
@@ -1749,7 +1749,7 @@ if ($group == 'researcher'){
         AND pl2.active = 0
         '.$add.'
         AND slc._sys_status = 0
-        group by m.sl_meetingpk
+        group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
     echo '<br><br>';
