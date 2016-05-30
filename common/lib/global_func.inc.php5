@@ -1948,12 +1948,12 @@ function _live_dump($pvTrace, $psTitle = null)
       $end_date1 = strtotime(date('Y-m-d, H:i:s',$end_date1).' -1 days');
     }
 
+    $start_date_3 = strtotime($start_date_3);
+    $end_date_3 = strtotime($end_date_3);
 
 
-
-
-    //$start_date3 = date('Y-m-d, H:i:s',$start_date3);
-    //$end_date3 = date('Y-m-d, H:i:s',$end_date3);
+    $start_date3 = date('Y-m-d, H:i:s',$start_date_3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date_3);
 
     $start_date2 = date('Y-m-d, H:i:s',$start_date2);
     $end_date2 = date('Y-m-d, H:i:s',$end_date2);
