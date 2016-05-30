@@ -1962,8 +1962,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
     $monthName3 = date('M',$start_date_3);
-    $monthName2 = date('M',$start_date2);
-    $monthName1 = date('M',$start_date1);
+    $monthName2 = date('M',$start_date_2);
+    $monthName1 = date('M',$start_date_1);
 
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
