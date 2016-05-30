@@ -1544,8 +1544,22 @@ function _live_dump($pvTrace, $psTitle = null)
     return $new_in_play_info;
   }
 
+  function &_getModel_global()
+  {
+    if($this->coModel !== null)
+      return $this->coModel;
+
+    require_once('component/sl_candidate/sl_candidate.model.php5');
+    require_once('component/sl_candidate/sl_candidate.model.ex.php5');
+    $this->coModel = new CSl_candidateModelEx();
+
+    return $this->coModel;
+  }
+
   function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
   {
+
+
     $oDB = CDependency::getComponentByName('database');
     $user_id = array($user_id);
 
@@ -1555,7 +1569,7 @@ function _live_dump($pvTrace, $psTitle = null)
     require_once('component/sl_stat/sl_stat.model.php5');
     require_once('component/sl_stat/sl_stat.model.ex.php5');
 
-    $temp_in_play = $this->_getModel()->get_new_in_play($user_id, $start_date, $end_date, $group);
+    $temp_in_play = _getModel_global()->get_new_in_play($user_id, $start_date, $end_date, $group);
 
     $count = count($temp_in_play[$id]['new_candidates']);
 
