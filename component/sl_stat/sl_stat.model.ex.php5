@@ -1655,6 +1655,13 @@ $flag = 0;
     $new_in_play_info = array();
 
     // gets new_candidates_in_play START
+
+    $add = " ";
+    if($group == 'researcher')
+    {
+      $add = " AND m.meeting_done = 1 ";
+    }
+
     $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
@@ -1664,12 +1671,12 @@ $flag = 0;
         INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
         WHERE pl.date_completed >= "'.$start_date.'"
         AND pl.date_completed <= "'.$end_date.'"
-        AND m.meeting_done = 1
         AND pl.status = 51
         AND pl.active = 0
         AND pl2.status = 51
         AND pl2.active = 0
         AND slc._sys_status = 0
+        '.$add.'
         group by m.sl_meetingpk
         order by m.candidatefk';
 
@@ -1731,6 +1738,7 @@ $flag = 0;
         AND pl.active = 0
         AND pl2.status = 51
         AND pl2.active = 0
+        '.$add.'
         AND slc._sys_status = 0
         group by m.sl_meetingpk
         order by m.candidatefk';
