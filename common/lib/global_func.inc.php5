@@ -1686,9 +1686,9 @@ function _live_dump($pvTrace, $psTitle = null)
       $read = $oDbResult->readNext();
     }
 
-    if (!empty($temp_in_play[$user_id]['new_candidates']))
+    if (!empty($new_in_play_info[$user_id]['new_candidates']))
     {
-      $count = count($temp_in_play[$user_id]['new_candidates']);
+      $count = count($new_in_play_info[$user_id]['new_candidates']);
       //$stats_data['consultant'][$id]['new_candidates'] = $count;
       //$stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
     }
