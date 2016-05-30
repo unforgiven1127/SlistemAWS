@@ -1588,7 +1588,7 @@ function _live_dump($pvTrace, $psTitle = null)
       $read = $oDbResult->readNext();
     }
 
-    $count = count($temp_new_candidate_met[$user_id]);
+    $count = count($asData[$user_id]);
     return $count;
   }
 
