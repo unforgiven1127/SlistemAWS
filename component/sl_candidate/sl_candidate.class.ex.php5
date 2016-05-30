@@ -2780,7 +2780,7 @@ $flag = strpos($test, $control);
         }
         else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
         {
-          $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio,ratio_rev) DESC ';
+          $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio,ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
           //$sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
           //$sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
         }
@@ -2790,7 +2790,7 @@ $flag = strpos($test, $control);
         }
         else if(strpos($sQuery,"ratio") !== false)
         {
-            $sQuery.= ' ORDER BY ratio DESC ';
+            $sQuery.= ' ORDER BY ratio DESC , lastname desc, firstname desc, PK desc ';
         }
         else
         {

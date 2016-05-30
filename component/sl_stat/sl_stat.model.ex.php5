@@ -1734,6 +1734,8 @@ $flag = 0;
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+    ChromePhp::log($query);
+
     $oDbResult = array();
 
     $oDbResult = $this->oDB->executeQuery($query);
