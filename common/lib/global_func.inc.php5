@@ -1952,8 +1952,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date_3 = strtotime($end_date_3);
 
 
-    $start_date3 = date('Y-m-d, H:i:s',$start_date_3);
-    $end_date3 = date('Y-m-d, H:i:s',$end_date_3);
+    //$start_date3 = date('Y-m-d, H:i:s',$start_date_3);
+    //$end_date3 = date('Y-m-d, H:i:s',$end_date_3);
 
     $start_date2 = date('Y-m-d, H:i:s',$start_date2);
     $end_date2 = date('Y-m-d, H:i:s',$end_date2);
@@ -1961,7 +1961,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date1 = date('Y-m-d, H:i:s',$start_date1);
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
-    $monthName3 = date('M',$start_date3);
+    $monthName3 = date('M',$start_date_3);
     $monthName2 = date('M',$start_date2);
     $monthName1 = date('M',$start_date1);
 
