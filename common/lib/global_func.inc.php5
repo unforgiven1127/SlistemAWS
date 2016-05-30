@@ -1697,12 +1697,12 @@ function _live_dump($pvTrace, $psTitle = null)
       //$stats_data['consultant'][$id]['new_candidate_info'] = array();
     }
 
-    var_dump($new_in_play_info[$user_id]['new_candidates']);
+    /*var_dump($new_in_play_info[$user_id]['new_candidates']);
     echo '<br><br>';
     echo $count;
     echo '<br><br>';
     echo $user_id;
-    exit;
+    exit;*/
     $count = count($new_in_play_info[$user_id]['new_candidates']);
     return $count;
   }
