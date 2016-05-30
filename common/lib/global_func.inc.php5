@@ -1686,7 +1686,21 @@ function _live_dump($pvTrace, $psTitle = null)
       $read = $oDbResult->readNext();
     }
 
+    if (!empty($temp_in_play[$id]['new_candidates']))
+    {
+      $count = count($temp_in_play[$id]['new_candidates']);
+      //$stats_data['consultant'][$id]['new_candidates'] = $count;
+      //$stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
+    }
+    else
+    {
+      $count = 0;
+      //$stats_data['consultant'][$id]['new_candidate_info'] = array();
+    }
+
     var_dump($new_in_play_info[$user_id]['new_candidates']);
+    echo '<br><br>';
+    echo $count;
     exit;
     $count = count($new_in_play_info[$user_id]['new_candidates']);
     return $count;
