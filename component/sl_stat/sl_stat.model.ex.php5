@@ -1673,8 +1673,8 @@ $flag = 0;
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-echo '<br><br>';
-var_dump($query);
+//echo '<br><br>';
+//var_dump($query);
 
     $oDbResult = array();
 
@@ -1725,8 +1725,7 @@ var_dump($query);
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
+        WHERE pl.date_completed >= "'.$start_date.'"
         AND pl.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active = 0
