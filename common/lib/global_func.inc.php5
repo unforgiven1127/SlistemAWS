@@ -1985,6 +1985,7 @@ exit;*/
     $months = array($monthName1,$monthName2,$monthName3);
 
     var_dump($months);
+    exit;
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
