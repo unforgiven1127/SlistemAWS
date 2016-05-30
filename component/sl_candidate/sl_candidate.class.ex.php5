@@ -2780,7 +2780,7 @@ $flag = strpos($test, $control);
         }
         else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
         {
-          $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
+          $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev,ratio) DESC ';
           //$sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
           //$sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
           ChromePhp::log($sQuery);
