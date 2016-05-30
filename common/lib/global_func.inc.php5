@@ -1580,9 +1580,9 @@ function _live_dump($pvTrace, $psTitle = null)
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
-    echo '<br><br>';
-    var_dump($query);
-    echo '<br><br>';
+    //echo '<br><br>';
+    //var_dump($query);
+    //echo '<br><br>';
 
     $oDbResult = array();
 
