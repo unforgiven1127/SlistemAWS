@@ -1689,8 +1689,8 @@ $flag = 0;
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
-//echo '<br><br>';
-//var_dump($query);
+echo '<br><br>';
+var_dump($query);
 
     $oDbResult = array();
 
@@ -1751,9 +1751,6 @@ $flag = 0;
         AND slc._sys_status = 0
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
-
-    echo '<br><br>';
-    var_dump($query);
 
     $oDbResult = array();
 
