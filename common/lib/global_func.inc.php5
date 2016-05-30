@@ -1548,14 +1548,14 @@ function _live_dump($pvTrace, $psTitle = null)
 
   function &_getModel_global()
   {
-    if($this->coModel !== null)
-      return $this->coModel;
+    if($coModel !== null)
+      return $coModel;
 
     require_once('component/sl_candidate/sl_candidate.model.php5');
     require_once('component/sl_candidate/sl_candidate.model.ex.php5');
-    $this->coModel = new CSl_candidateModelEx();
+    $coModel = new CSl_candidateModelEx();
 
-    return $this->coModel;
+    return $coModel;
   }
 
   function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
