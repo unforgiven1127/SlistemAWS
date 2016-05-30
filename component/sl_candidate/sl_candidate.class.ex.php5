@@ -2704,7 +2704,7 @@ $flag = strpos($test, $control);
 
         }
       }
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
 
@@ -2780,6 +2780,7 @@ ChromePhp::log($sQuery);
         else if(strpos($sQuery[1],"ratio DESC, ratio_rev DES") !== false)
         {
           $sQuery.= ' ratio DESC, ratio_rev DES ';
+          ChromePhp::log($sQuery);
         }
         else if(strpos($sQuery,"ratio_rev") !== false)
         {
@@ -2803,7 +2804,7 @@ ChromePhp::log($sQuery);
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
