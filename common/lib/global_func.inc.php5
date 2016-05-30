@@ -1617,7 +1617,8 @@ function _live_dump($pvTrace, $psTitle = null)
       }
       $read = $oDbResult->readNext();
     }
-
+var_dump($new_in_play_info);
+exit;
     return $new_in_play_info;
   }
 
