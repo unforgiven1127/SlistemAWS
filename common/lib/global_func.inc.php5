@@ -1617,9 +1617,9 @@ function _live_dump($pvTrace, $psTitle = null)
       }
       $read = $oDbResult->readNext();
     }
-var_dump($new_in_play_info);
-exit;
-    return $new_in_play_info;
+
+    $count = count($temp_new_candidate_met[$user_id]);
+    return $count;
   }
 
   function get_target_to_date()
