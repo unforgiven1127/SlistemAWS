@@ -1717,7 +1717,7 @@ $flag = 0;
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active,, pl.created_by as pl_created_by pl.sl_position_linkpk,
         min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
