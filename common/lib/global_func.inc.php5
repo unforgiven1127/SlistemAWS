@@ -1931,8 +1931,8 @@ function _live_dump($pvTrace, $psTitle = null)
     $end_date_3 = (new DateTime('last day of this month'))->format("Y-m-d");
     $end_date_3 .= ' 23:59:59';
 
-    $start_date3 = $start_date_3;
-    $end_date3 = $end_date_3;
+    $start_date3 = strtotime($start_date_3);
+    $end_date3 = strtotime($end_date_3);
 
     $start_date2 = strtotime($start_date_3.' -1 months');
     $end_date2 = strtotime($end_date_3.' -1 months');
@@ -1949,10 +1949,6 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
 
-    $monthName3 = date('M',$start_date3);
-    $monthName2 = date('M',$start_date2);
-    $monthName1 = date('M',$start_date1);
-
 
     $start_date3 = date('Y-m-d, H:i:s',$start_date3);
     $end_date3 = date('Y-m-d, H:i:s',$end_date3);
@@ -1963,7 +1959,9 @@ function _live_dump($pvTrace, $psTitle = null)
     $start_date1 = date('Y-m-d, H:i:s',$start_date1);
     $end_date1 = date('Y-m-d, H:i:s',$end_date1);
 
-
+    $monthName3 = date('M',$start_date3);
+    $monthName2 = date('M',$start_date2);
+    $monthName1 = date('M',$start_date1);
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
     $count_new_met_3 = count($new_met_3[$user_id]);
