@@ -1662,8 +1662,7 @@ $flag = 0;
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
-        AND pl.date_completed >= "'.$start_date.'"
+        WHERE pl.date_completed >= "'.$start_date.'"
         AND pl.date_completed <= "'.$end_date.'"
         AND m.meeting_done = 1
         AND pl.status = 51
