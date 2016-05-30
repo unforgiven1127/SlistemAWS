@@ -1616,10 +1616,10 @@ $flag = 0;
       $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
     }
 
-if ($group == 'researcher'){
+/*if ($group == 'researcher'){
   echo '<br><br><br>';
   var_dump($query);
-}
+}*/
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
