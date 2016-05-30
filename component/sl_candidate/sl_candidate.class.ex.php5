@@ -2778,10 +2778,10 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        else if(strpos($oldQ,"ratio DESC, ratio_rev DES") !== false)
+        else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
         {
           $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
-          $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
+          $sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
           ChromePhp::log($sQuery);
         }
         else if(strpos($sQuery,"ratio_rev") !== false)
