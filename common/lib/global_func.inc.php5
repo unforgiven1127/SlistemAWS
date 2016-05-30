@@ -1549,21 +1549,14 @@ function _live_dump($pvTrace, $psTitle = null)
     $oDB = CDependency::getComponentByName('database');
     $asData = array();
 
-  $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
-        ,pl.date_completed , pl.date_created as ccm_create_date
+  $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
         FROM sl_meeting m
-        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
-        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
-        INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
-        WHERE pl.date_completed >= "'.$start_date.'"
-        AND pl.date_completed <= "'.$end_date.'"
-        AND pl.status = 51
-        AND pl.active = 0
-        AND pl2.status = 51
-        AND pl2.active = 0
-        AND slc._sys_status = 0
-        group by pl.candidatefk, pl.positionfk
+        WHERE m.created_by ='. $user_id.'
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        group by m.sl_meetingpk
         order by m.candidatefk';
 
 
@@ -1993,9 +1986,6 @@ function _live_dump($pvTrace, $psTitle = null)
     var_dump($start_date1);
     var_dump($end_date1);
     exit;*/
-
-    //var_dump($monthly_new_candidate_met);
-    //exit;
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
