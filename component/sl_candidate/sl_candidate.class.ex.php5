@@ -2788,7 +2788,7 @@ $flag = strpos($test, $control);
         {
           $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
         }
-        else if(strpos($sQuery,"ratio") !== false)
+        else if(strpos($sQuery,"AS ratio") !== false)
         {
             $sQuery.= ' ORDER BY ratio DESC , lastname desc, firstname desc, PK desc ';
         }
