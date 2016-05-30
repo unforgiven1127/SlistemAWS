@@ -1994,8 +1994,8 @@ function _live_dump($pvTrace, $psTitle = null)
     var_dump($end_date1);
     exit;*/
 
-    var_dump($monthly_new_candidate_met);
-    exit;
+    //var_dump($monthly_new_candidate_met);
+    //exit;
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
