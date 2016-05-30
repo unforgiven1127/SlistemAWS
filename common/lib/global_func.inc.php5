@@ -1588,6 +1588,10 @@ function _live_dump($pvTrace, $psTitle = null)
       $read = $oDbResult->readNext();
     }
 
+var_dump($asData[$user_id]);
+echo '<br><br>';
+exit;
+
     $count = count($asData[$user_id]);
     return $count;
   }
