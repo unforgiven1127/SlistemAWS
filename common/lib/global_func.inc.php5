@@ -1563,9 +1563,12 @@ function _live_dump($pvTrace, $psTitle = null)
         AND pl2.status = 51
         AND pl2.active = 0
         AND slc._sys_status = 0
+        '.$add.'
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
+//echo '<br><br>';
+//var_dump($query);
 
     $oDbResult = array();
 
@@ -1576,21 +1579,37 @@ function _live_dump($pvTrace, $psTitle = null)
     {
       $temp = $oDbResult->getData();
 
-      if(!isset($asData[$temp['created_by']]))
-      {
-        $asData[$temp['created_by']] = array();
-      }
+      $create_date = strtotime($temp['ccm_create_date']);
+      $date_completed = strtotime($temp['date_completed']);
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
-      {
-        array_push($asData[$temp['created_by']], $temp);
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
+      {
+        if($group == 'researcher')
+        {
+          $user = $temp['created_by'];
+        }
+        else
+        {
+          $user = $temp['pl_created_by'];
+        }
+        if(isset($new_in_play_info[$user]['new_candidates']))
+        {
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
+        }
+        else
+        {
+          $new_in_play_info[$user]['new_candidates'] = array();
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
+        }
         //$asData[$temp['created_by']] = $temp;
       }
       $read = $oDbResult->readNext();
     }
 
-    return $asData;
+    return $new_in_play_info;
   }
 
   function get_target_to_date()
