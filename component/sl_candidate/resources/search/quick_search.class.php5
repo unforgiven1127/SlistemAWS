@@ -161,7 +161,7 @@ class CQuickSearch
             $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.lastname)) AS lastname_lev ');
             $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.firstname)) AS firstname_lev ');
 
-            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.'))) AS ratio ');
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(scan.'.$sFirstField.'))*100/LENGTH(scan.'.$sFirstField.')) AS ratio ');
 
 
             $this->coQb->addWhere('( scan.lastname LIKE "'.$sWildcard.$asWords[0].'%" OR  scan.firstname LIKE "'.$sWildcard.$asWords[0].'%" ) ');
