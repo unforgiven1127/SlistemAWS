@@ -1975,7 +1975,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $monthly_new_candidate_met = array($count_new_met_1,$count_new_met_2,$count_new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
 
-    var_dump($months);
+    /*var_dump($months);
     echo '<br><br>';
     var_dump($start_date3);
     var_dump($end_date3);
@@ -1985,8 +1985,7 @@ function _live_dump($pvTrace, $psTitle = null)
     echo '<br><br>';
     var_dump($start_date1);
     var_dump($end_date1);
-
-exit;
+    exit;*/
 
     $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
 
