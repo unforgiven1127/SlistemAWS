@@ -1552,7 +1552,7 @@ function _live_dump($pvTrace, $psTitle = null)
     $user_info = getUserInformaiton($user_id);
     $group = strtolower($user_info['position']);
 
-    $asData = array();
+    //$asData = array();
 
     $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
         FROM sl_meeting m
