@@ -1269,10 +1269,10 @@ $flag = 0;
                   //AND date_created <= "'.$end_date.'"';
     }
 
-if ($group == 'researcher'){
+/*if ($group == 'researcher'){
   echo '<br><br><br>';
   var_dump($query);
-}
+}*/
     //else
     /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
@@ -1752,8 +1752,8 @@ if ($group == 'researcher'){
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
-    echo '<br><br>';
-    var_dump($query);
+    //echo '<br><br>';
+    //var_dump($query);
 
     $oDbResult = array();
 
