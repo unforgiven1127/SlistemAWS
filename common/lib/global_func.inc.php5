@@ -1949,7 +1949,7 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
 
-    $monthName3 = date('M',$start_date_3);
+    $monthName3 = date('M',$start_date3);
     $monthName2 = date('M',$start_date2);
     $monthName1 = date('M',$start_date1);
 
