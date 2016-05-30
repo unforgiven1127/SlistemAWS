@@ -2778,9 +2778,9 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        else if(strpos($sQuery,"total_ratio") !== false)
+        else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
         {
-          $sQuery.= ' ORDER BY total_ratio DESC ';
+          $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
           //$sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
           //$sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
           ChromePhp::log($sQuery);
