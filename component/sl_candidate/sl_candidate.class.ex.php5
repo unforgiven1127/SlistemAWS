@@ -2705,6 +2705,7 @@ $flag = strpos($test, $control);
         }
       }
 //ChromePhp::log($sQuery);
+        $oldQ = $sQuery;
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
 
@@ -2777,7 +2778,7 @@ $flag = strpos($test, $control);
             $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
           }
         }
-        else if(strpos($sQuery[1],"ratio DESC, ratio_rev DES") !== false)
+        else if(strpos($oldQ,"ratio DESC, ratio_rev DES") !== false)
         {
           $sQuery.= ' ratio DESC, ratio_rev DES ';
           ChromePhp::log($sQuery);
