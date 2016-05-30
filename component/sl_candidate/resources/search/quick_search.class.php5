@@ -161,12 +161,14 @@ class CQuickSearch
             $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.lastname)) AS lastname_lev ');
             $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", LOWER(scan.firstname)) AS firstname_lev ');
 
-            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(scan.'.$sFirstField.'))*100/LENGTH(scan.'.$sFirstField.')) AS ratio ');
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$sWildcard).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio ');
+
+            $this->coQb->addSelect(' 100-(levenshtein("'.($sWildcard.$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio_rev ');
 
 
             $this->coQb->addWhere('( scan.lastname LIKE "'.$sWildcard.$asWords[0].'%" OR  scan.firstname LIKE "'.$sWildcard.$asWords[0].'%" ) ');
 
-            $this->coQb->addOrder(' lastname_lev ASC, firstname_lev ASC ');
+            $this->coQb->addOrder(' ratio DESC, ratio_rev DESC ');
           }
           elseif($nWord == 2)
           {
