@@ -1386,7 +1386,7 @@ if ($group == 'researcher'){
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
         }
-        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 184)
         {
           if($group == 'consultant')
           {
@@ -1752,8 +1752,8 @@ if ($group == 'researcher'){
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-    //echo '<br><br>';
-    //var_dump($query);
+    echo '<br><br>';
+    var_dump($query);
 
     $oDbResult = array();
 
