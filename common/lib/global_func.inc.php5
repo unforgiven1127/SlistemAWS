@@ -1981,11 +1981,11 @@ exit;*/
 
 
     $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
-    $count_new_met_3 = count($new_met_3[$user_id]);
+    $count_new_met_3 = $new_met_3;
     $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
-    $count_new_met_2 = count($new_met_2[$user_id]);
+    $count_new_met_2 = $new_met_2;
     $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
-    $count_new_met_1 = count($new_met_1[$user_id]);
+    $count_new_met_1 = $new_met_1;
 
     $monthly_new_candidate_met = array($count_new_met_1,$count_new_met_2,$count_new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
@@ -2026,7 +2026,7 @@ exit;*/
 
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
 
-    $count_new_met = count($new_met[$user_id]);
+    $count_new_met = $new_met//count($new_met[$user_id]);
 
     $table = create_objectives_table($count_in_play_candidate, $count_in_play_position, $count_new_met);
 
