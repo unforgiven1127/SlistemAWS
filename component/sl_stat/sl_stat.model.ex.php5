@@ -1949,6 +1949,9 @@ exit;
       $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
       $query .= ' AND sl_meeting.meeting_done = 1';
+
+      echo '<br><br>';
+      var_dump($query);
     }
 
     $db_result = $this->oDB->executeQuery($query);
