@@ -81,7 +81,8 @@
 			<div class="stat_candi_info">
 			<?php foreach ($value['met_meeting_info'] as $stat_info): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
+				<?php if(isset($stat_info['candidate'])){$candidate = $stat_info['candidate'];} else {$candidate = $stat_info['candidatefk'];}
+				$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php if(isset($stat_info['candidate'])){echo $stat_info['candidate'];}
 					else if(isset($stat_info['candidatefk'])){echo $stat_info['candidatefk'];}
 					else {echo $stat_info['candidate'];} ?></a>
