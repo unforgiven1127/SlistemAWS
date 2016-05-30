@@ -1256,9 +1256,10 @@ $flag = 0;
 
     else if ($group == 'researcher')
     {
-      $query = 'SELECT slm.meeting_done,slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
+      $query = 'SELECT min(m2.sl_meetingpk) as min_date,slm.meeting_done,slm.created_by as meeting_created_by, slp.sl_position_linkpk, slp.positionfk, slp.candidatefk, slp.created_by
       , slp.status, slp.date_completed, slp.date_created as ccm_create_date, slp.active, slp.candidatefk as candidate, slc._sys_status as candidate_status';
       $query .= ' FROM sl_meeting slm';
+      $query .= ' INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk';
       $query .= ' INNER JOIN sl_position_link slp on slp.candidatefk = slm.candidatefk ';
       $query .= ' INNER JOIN sl_candidate slc on slc.sl_candidatepk = slp.candidatefk';
       $query .= ' WHERE slm.created_by IN ('.implode(',', $user_ids).') AND slp.status >= 51 AND slm.meeting_done = 1
@@ -1354,9 +1355,17 @@ $flag = 0;
       $row_complete_date = strtotime($row['date_completed']);
       $control_start_date = strtotime($start_date);
       $control_end_date = strtotime($end_date);
+      $researcher_date_flag = true;
 
+      if($group == 'researcher')
+      {
+        if($temp['min_date'] != $temp['sl_meetingpk'])
+        {
+            $researcher_date_flag = false;
+        }
+      }
 
-      if ($row['status'] == 51 && $row['candidate_status'] == 0)
+      if ($row['status'] == 51 && $row['candidate_status'] == 0 && $researcher_date_flag)
       {
 
 
@@ -1401,7 +1410,7 @@ $flag = 0;
           }*/
         }
       }
-      else if ($row['status'] == 52 && $row['candidate_status'] == 0)
+      else if ($row['status'] == 52 && $row['candidate_status'] == 0 && $researcher_date_flag)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].'_52_'.$row['sl_position_linkpk'];
 
@@ -1446,7 +1455,7 @@ $flag = 0;
 
         //}
       }
-      else if ($row['status'] > 52 && $row['status'] <= 61 && $row['candidate_status'] == 0)
+      else if ($row['status'] > 52 && $row['status'] <= 61 && $row['candidate_status'] == 0 && $researcher_date_flag)
       {
         $array_key = $row['positionfk'].$row['candidatefk'].$row['status'].'_mccm_'.$row['status'];
 
