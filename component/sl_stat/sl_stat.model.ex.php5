@@ -1273,7 +1273,6 @@ if ($group == 'researcher'){
   echo '<br><br><br>';
   var_dump($query);
 }
-
     //else
     /*{
       $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, sl_position_link.status,';
