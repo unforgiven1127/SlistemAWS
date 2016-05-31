@@ -943,6 +943,15 @@ order by m.candidatefk
 //var_dump($query);// 382
 //var_dump('<br><br>');
 //ChromePhp::log($query);
+
+
+      $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
+        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
+
+      $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
+        'placedRevenue' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
+
+
       while($read)
       {
         $row = $db_result->getData();
@@ -1024,11 +1033,6 @@ order by m.candidatefk
       $db_result = $this->oDB->executeQuery($query);
       $read = $db_result->readFirst();
 
-      $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
-
-      $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
-        'placedRevenue' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
 $flag = 0;
       while($read)
