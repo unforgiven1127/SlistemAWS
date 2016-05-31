@@ -1556,8 +1556,7 @@ echo '<br><br>';*/
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
-        WHERE pl.created_by = "'.$user_id.'"
-        AND pl.date_completed >= "2016-05-01 00:00:00"
+        WHERE pl.date_completed >= "2016-05-01 00:00:00"
         AND pl.date_completed <= "2016-05-31 23:59:59"
         AND pl.status = 51
         AND pl.active = 0
@@ -1612,7 +1611,7 @@ var_dump($query);
         $user = $temp['pl_created_by'];
       }
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      if($user_id == $user && $temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$user]['new_positions']))
         {
