@@ -1169,7 +1169,7 @@ $flag = 0;
         $read = $db_result->readNext();
       }
 
-      $revenue_data['Researcher']['former']['sort'] = -1000000;
+      $revenue_data['Researcher']['former']['sort'] = -1000000; // siralamada en altta olmasi icin
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));

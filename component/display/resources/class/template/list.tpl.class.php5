@@ -123,7 +123,7 @@ class CTemplateList extends CTemplate
 //ChromePhp::log($asColumnData); // $asColumnData['label']
           //dump($asColumnData);
 
-          if($asColumnData['label'] == "ID")
+          if($asColumnData['label'] == "ID" || $asColumnData['label'] == "C")
           {
             $type = 'integer';
           }
