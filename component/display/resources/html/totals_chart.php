@@ -15,8 +15,14 @@
 		</div>
 	</div>
 </form>
-
-<?php foreach ($stats_data as $key => $stat): $arrayPosition = $key?>
+<?php
+ 	$total_ncm = 0;
+	$total_ncip = 0;
+	$total_npip = 0;
+	$total_o = 0;
+	$total_p = 0;
+	 ?>
+<?php foreach ($stats_data as $key => $stat): $arrayPosition = $key ?>
 <table class="totals_table">
 	<tr>
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
@@ -244,7 +250,9 @@
 			<div class="stat_holder">
 			<?php
 				if($value['position'] == "Researcher")
-				{echo $value['placedRevenue']; }
+				{
+					$total_p = $total_p + $value['placedRevenue'];
+					echo $value['placedRevenue']; }
 				else
 				{echo $value['placed'];}
 			 ?>
@@ -270,6 +278,11 @@
 	<?php $row_number_rank += 1; ?>
 	<?php endforeach ?>
 	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
+	<tr>
+		<td>
+			<?php echo $total_p ?>
+		</td>
+	</tr>
 </table>
 
 <div class="general_form_row" style="height: 20px;"></div>
