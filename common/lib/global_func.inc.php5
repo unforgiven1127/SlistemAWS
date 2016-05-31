@@ -1467,8 +1467,7 @@ function _live_dump($pvTrace, $psTitle = null)
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
-        WHERE pl_created_by = "'.$user_id.'"
-        And pl.date_completed >= "2016-05-01 00:00:00"
+        WHERE pl.date_completed >= "2016-05-01 00:00:00"
         AND pl.date_completed <= "2016-05-31 23:59:59"
         AND pl.status = 51
         AND pl.active = 0
@@ -1506,14 +1505,14 @@ echo '<br><br>';
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
       {
-        if(isset($new_in_play_info[$temp['created_by']]['new_candidates']))
+        if(isset($new_in_play_info[$temp['pl_created_by']]['new_candidates']))
         {
-          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+          array_push($new_in_play_info[$temp['pl_created_by']]['new_candidates'], $temp);
         }
         else
         {
-          $new_in_play_info[$temp['created_by']]['new_candidates'] = array();
-          array_push($new_in_play_info[$temp['created_by']]['new_candidates'], $temp);
+          $new_in_play_info[$temp['pl_created_by']]['new_candidates'] = array();
+          array_push($new_in_play_info[$temp['pl_created_by']]['new_candidates'], $temp);
         }
         //$asData[$temp['created_by']] = $temp;
       }
