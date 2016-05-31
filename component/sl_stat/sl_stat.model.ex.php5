@@ -1025,9 +1025,6 @@ order by m.candidatefk
 
       $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
-echo'<br><br>';
-var_dump($revenue_data['Researcher']['former']);
-echo'<br><br>';
 
 $flag = 0;
       while($read)
@@ -1049,7 +1046,7 @@ $flag = 0;
           if (!$row['status'])
           {
             $user_id = 'former';
-            $row['user_position'] = 'Consultant';
+            //$row['user_position'] = 'Consultant';
             //if (empty($revenue_data[$row['user_position']][$row['userPosition']][$user_id]['placed']))
             if($flag == 0)
             {
@@ -1065,6 +1062,10 @@ $flag = 0;
             }
             $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['name'] = "Former";
             $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
+
+            echo'<br><br>';
+            var_dump($revenue_data['Researcher']['former']);
+            echo'<br><br>';
           }
           else
           {
