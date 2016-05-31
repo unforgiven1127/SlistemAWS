@@ -129,7 +129,7 @@ ChromePhp::log($asColumnData); // $asColumnData['label']
           }
           else if($asColumnData['label'] == "C")
           {
-            $type = 'value';
+            $type = 'cp_client_val';
           }
           else
           {

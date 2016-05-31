@@ -1234,6 +1234,24 @@ function displaySalary(value)
           }
           break;
 
+          case 'cp_client_val':
+          {
+            listItems.sort(function(a,b)
+            {
+              //console.log($(a).find('.'+sColumn).attr('cp_client_val'));
+              compA = $(a).find('.'+sColumn).attr('cp_client_val');
+              compB = $(b).find('.'+sColumn).attr('cp_client_val');
+
+              //console.log('mode 2 [.'+sColumn+' attr(sort_value)] ==> a: '+compA+' / b: '+compB);
+
+               if(psWay == 'up')
+                 return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+
+              return (compA > compB) ? -1 : (compA < compB) ? 1 : 0;
+            });
+          }
+          break;
+
           case 'value_integer':
           {
             listItems.sort(function(a,b)
