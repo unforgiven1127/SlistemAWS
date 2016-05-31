@@ -977,6 +977,10 @@ order by m.candidatefk
           {
             $placed_count = 0;
           }
+          if (!$row['status'])
+          {
+            $user_id = 'former';
+          }
           $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'] = $placed_count;
         }
 //echo $revenue_data[$user_id][$row['position']]['name'].' - ';
