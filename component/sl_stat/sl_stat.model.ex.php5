@@ -1332,12 +1332,33 @@ $flag = 0;
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
 
-    while ($read)
+    while($read)
     {
       $row = $db_result->getData();
 
+      $positionfk = $row['positionfk'];
+      $candidatefk = $row['candidatefk'];
+
       $create_date = strtotime($row['ccm_create_date']);
       $date_completed = strtotime($row['date_completed']);
+
+      $query = "SELECT * FROM sl_position_link slp WHERE spl.candidatefk = ".$candidatefk." AND spl.status = 151 AND spl.positionfk = ".$positionfk;
+      $result = $this->oDB->executeQuery($query);
+      $read_inner = $result->readFirst();
+
+      $control_flag = true;
+      while($read_inner)
+      {
+        $row_inner = $result->getData();
+        $control_date = $row_inner['date_created'];
+
+        if($control_date == $date_completed)
+        {
+          $control_flag = false;
+        }
+
+        $result->readNext();
+      }
 
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
@@ -1426,7 +1447,7 @@ $flag = 0;
               'date' => $row['ccm_create_date'], 'ccm_position' => $row['positionfk']);
           }
         }
-        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 184)
+        if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 184 && $control_flag)
         {
           if($group == 'consultant')
           {
@@ -1481,7 +1502,7 @@ $flag = 0;
             }
           }
 
-          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180 && $control_flag)
           {
             $ccm_data[$row['created_by']]['ccm2_done'] += 1;
             $ccm_data[$row['created_by']]['ccm_info']['ccm2'][$array_key]['ccm_done_candidate'] = $row['candidatefk'];
@@ -1538,7 +1559,7 @@ $flag = 0;
             }
           }
 
-          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180)
+          if($row['active'] == 0 && $row_complete_date >= $control_start_date && $row_complete_date <= $control_end_date && $diff < 180 && $control_flag)
           {
             //$ccm_data[$row['created_by']]['mccm_done'] += 1;
             //$ccm_data[$row['created_by']]['ccm_info']['mccm'][$array_key]['ccm_done_candidate'][$row['status']] = $row['candidatefk'];
