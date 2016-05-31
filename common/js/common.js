@@ -1197,7 +1197,7 @@ function displaySalary(value)
           {
             listItems.sort(function(a,b)
             {
-              console.log(parseInt($(a).find('.'+sColumn).value()));
+              console.log(parseInt($(a).find('.'+sColumn).val()));
               compA = parseInt($(a).find('.'+sColumn).text());
               compB = parseInt($(b).find('.'+sColumn).text());
 
