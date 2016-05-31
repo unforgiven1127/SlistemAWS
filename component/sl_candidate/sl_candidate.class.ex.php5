@@ -5617,7 +5617,7 @@ ChromePhp::log($edit_flag);
 
       //$occupation_tree = $oForm->getField('paged_tree', 'occupationpk', array('text' => '-- Occupation --',
        // 'label' => '', 'value' => $oDbResult->getFieldValue('occupationfk'), 'style' => 'width: 165px; min-width: 145px;'));
-      $occupation_tree = addOption($this->_getTreeData('occupation'));
+      $occupation_tree = ($this->_getTreeData('occupation'));
 
       $industry_tree = $oForm->getField('paged_tree', 'industrypk', array('text' => '-- Industry --',
         'label' => '', 'value' => $oDbResult->getFieldValue('industryfk'), 'style' => 'width: 165px; min-width: 145px;'));
