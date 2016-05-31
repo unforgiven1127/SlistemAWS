@@ -1467,7 +1467,7 @@ function _live_dump($pvTrace, $psTitle = null)
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
-        WHERE pl.created_by = "'.$user_id.'"
+        WHERE pl_created_by = "'.$user_id.'"
         And pl.date_completed >= "2016-05-01 00:00:00"
         AND pl.date_completed <= "2016-05-31 23:59:59"
         AND pl.status = 51
