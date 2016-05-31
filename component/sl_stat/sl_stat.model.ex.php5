@@ -1357,7 +1357,7 @@ $flag = 0;
           $control_flag = false;
         }
 
-        $result->readNext();
+        $read_inner = $result->readNext();
       }
 
       $diff = $date_completed - $create_date;
