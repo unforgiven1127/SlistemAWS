@@ -1342,7 +1342,7 @@ $flag = 0;
       $create_date = strtotime($row['ccm_create_date']);
       $date_completed = strtotime($row['date_completed']);
 
-      $query = "SELECT * FROM sl_position_link slp WHERE spl.candidatefk = ".$candidatefk." AND spl.status = 151 AND spl.positionfk = ".$positionfk;
+      $query = "SELECT * FROM sl_position_link slp WHERE slp.candidatefk = ".$candidatefk." AND slp.status = 151 AND slp.positionfk = ".$positionfk;
       $result = $this->oDB->executeQuery($query);
       $read_inner = $result->readFirst();
 
