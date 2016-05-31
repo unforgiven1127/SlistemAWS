@@ -134,7 +134,7 @@ class CPtree extends CField
 
       //-------------------------------------
       //root level of the tree
-      $sTree.= '<div class="TSelectLevel TSelect_lvl_0" level="0" >';
+      //$sTree.= '<div class="TSelectLevel TSelect_lvl_0" level="0" >';
       $sTree.= '<select>';
 
       foreach($asValues as $nKey => $avValue)
@@ -177,7 +177,7 @@ class CPtree extends CField
 
       $sTree.= '</select>';
       $sTree.= '<div class="floatHack"></div>';
-      $sTree.= '</div>';
+      //$sTree.= '</div>';
 
       if(empty($nLevl0))
         return ' no values ';
