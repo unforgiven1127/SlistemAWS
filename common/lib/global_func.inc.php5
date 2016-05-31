@@ -1458,6 +1458,18 @@ function _live_dump($pvTrace, $psTitle = null)
     $oDB = CDependency::getComponentByName('database');
     $new_in_play_info = array();
 
+    $user_info = getUserInformaiton($user_id);
+    $group = strtolower($user_info['position']);
+
+    if($group == 'researcher')
+    {
+      $user = $temp['created_by'];
+    }
+    else
+    {
+      $user = $temp['pl_created_by'];
+    }
+
     // gets new_candidates_in_play START
 
     $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
@@ -1506,14 +1518,14 @@ echo '<br><br>';
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
       {
-        if(isset($new_in_play_info[$temp['pl_created_by']]['new_candidates']))
+        if(isset($new_in_play_info[$user]['new_candidates']))
         {
-          array_push($new_in_play_info[$temp['pl_created_by']]['new_candidates'], $temp);
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
         }
         else
         {
-          $new_in_play_info[$temp['pl_created_by']]['new_candidates'] = array();
-          array_push($new_in_play_info[$temp['pl_created_by']]['new_candidates'], $temp);
+          $new_in_play_info[$user]['new_candidates'] = array();
+          array_push($new_in_play_info[$user]['new_candidates'], $temp);
         }
         //$asData[$temp['created_by']] = $temp;
       }
