@@ -1699,6 +1699,12 @@ $flag = 0;
         $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $row['candidatefk'],
           'date' => $row['resume_sent_date']);
       }
+      else if($row['status'] == 2)
+      {
+        $resume_sent_info[$row['created_by']]['resumes_sent'] += 1;
+        $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $row['candidatefk'],
+          'date' => $row['resume_sent_date']);
+      }
 
       $read = $db_result->readNext();
     }
