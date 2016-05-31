@@ -1660,10 +1660,10 @@ $flag = 0;
       $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY spl.candidatefk, spl.positionfk';
     }
 
-if ($group == 'consultant'){
+/*if ($group == 'consultant'){
   echo '<br><br><br>';
   var_dump($query);
-}
+}*/
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
