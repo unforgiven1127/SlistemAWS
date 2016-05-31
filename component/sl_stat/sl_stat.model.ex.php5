@@ -1650,7 +1650,7 @@ $flag = 0;
     else
     {
       $query = 'SELECT sl_meeting.date_met, spl.positionfk, spl.candidatefk, min(spl2.sl_position_linkpk)';
-      $query .= ' spl.date_created as resume_sent_date, sl_meeting.created_by, ';
+      $query .= ' spl.date_created as resume_sent_date, sl_meeting.created_by ';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link spl ON sl_meeting.candidatefk = spl.candidatefk AND (spl.status = 2 OR spl.status = 51)';
       $query .= ' INNER JOIN sl_position_link spl2 ON sl_meeting.candidatefk = spl2.candidatefk AND (spl2.status = 2)';
