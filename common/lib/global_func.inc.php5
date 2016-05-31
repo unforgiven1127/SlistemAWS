@@ -1481,13 +1481,13 @@ function _live_dump($pvTrace, $psTitle = null)
         AND pl.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active = 0
-        
+        AND pl2.status = 51
         AND pl2.active = 0
         AND slc._sys_status = 0
         '.$add.'
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
-//AND pl2.status = 51 bunu cikarttik
+
     /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
@@ -1560,13 +1560,13 @@ echo '<br><br>';*/
         AND pl.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active = 0
-        
+        AND pl2.status = 51
         AND pl2.active = 0
         '.$add.'
         AND slc._sys_status = 0
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
-//AND pl2.status = 51 bunu cikarttik
+
     /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
         min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk
         FROM sl_meeting m
