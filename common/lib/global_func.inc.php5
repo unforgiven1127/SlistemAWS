@@ -1461,6 +1461,12 @@ function _live_dump($pvTrace, $psTitle = null)
     $user_info = getUserInformaiton($user_id);
     $group = strtolower($user_info['position']);
 
+    $add = " ";
+    if($group == 'researcher')
+    {
+      $add = " AND m.meeting_done = 1 ";
+    }
+
     // gets new_candidates_in_play START
 
     $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
@@ -1471,13 +1477,14 @@ function _live_dump($pvTrace, $psTitle = null)
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         INNER JOIN sl_position_link pl2 ON pl2.candidatefk = pl.candidatefk
         WHERE pl.created_by = "'.$user_id.'"
-        And pl.date_completed >= "2016-05-01 00:00:00"
-        AND pl.date_completed <= "2016-05-31 23:59:59"
+        AND pl.date_completed >= "'.$start_date.'"
+        AND pl.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active = 0
         AND pl2.status = 51
         AND pl2.active = 0
         AND slc._sys_status = 0
+        '.$add.'
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
@@ -1496,9 +1503,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
-echo 'new candi in play: ';
+/*echo 'new candi in play: ';
 var_dump($query);
-echo '<br><br>';
+echo '<br><br>';*/
 
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
@@ -1534,7 +1541,28 @@ echo '<br><br>';
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START
-    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
+
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.created_by as pl_created_by, pl.sl_position_linkpk,
+        min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk, slc._sys_status as candidate_status
+        ,pl.date_completed , pl.date_created as ccm_create_date
+        FROM sl_meeting m
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
+        INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
+        WHERE pl.created_by = "'.$user_id.'"
+        AND pl.date_completed >= "2016-05-01 00:00:00"
+        AND pl.date_completed <= "2016-05-31 23:59:59"
+        AND pl.status = 51
+        AND pl.active = 0
+        AND pl2.status = 51
+        AND pl2.active = 0
+        '.$add.'
+        AND slc._sys_status = 0
+        group by pl.candidatefk, pl.positionfk
+        order by m.candidatefk';
+
+    /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, pl.sl_position_linkpk,
         min(pl2.sl_position_linkpk) as min_date_position, pl.positionfk as positionfk
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
@@ -1548,7 +1576,7 @@ echo '<br><br>';
         AND pl2.status = 51
         AND pl2.active != 1
         group by m.sl_meetingpk
-        order by m.candidatefk';
+        order by m.candidatefk';*/
 
     $oDbResult = array();
 
@@ -1563,16 +1591,25 @@ echo '<br><br>';
     {
       $temp = $oDbResult->getData();
 
+      if($group == 'researcher')
+      {
+        $user = $temp['created_by'];
+      }
+      else
+      {
+        $user = $temp['pl_created_by'];
+      }
+
       if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
-        if(isset($new_in_play_info[$temp['created_by']]['new_positions']))
+        if(isset($new_in_play_info[$user]['new_positions']))
         {
-          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
         }
         else
         {
-          $new_in_play_info[$temp['created_by']]['new_positions'] = array();
-          array_push($new_in_play_info[$temp['created_by']]['new_positions'], $temp);
+          $new_in_play_info[$user]['new_positions'] = array();
+          array_push($new_in_play_info[$user]['new_positions'], $temp);
         }
         //$asData[$temp['created_by']] = $temp;
       }
