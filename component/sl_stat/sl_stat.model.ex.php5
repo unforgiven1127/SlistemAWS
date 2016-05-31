@@ -1351,17 +1351,17 @@ $flag = 0;
       {
         $row_inner = $result->getData();
         $control_date = strtotime($row_inner['date_created']);
-echo '<br><br>';
-        echo 'control date: '.$control_date;
-        echo '<br><br>';
-        echo 'complete date: '.$date_completed;
+//echo '<br><br>';
+        //echo 'control date: '.$control_date;
+        //echo '<br><br>';
+        //echo 'complete date: '.$date_completed;
 
         if($control_date == $date_completed)
         {
           $control_flag = false;
         }
-        echo '<br><br>';
-        echo $control_flag;
+        //echo '<br><br>';
+        //echo $control_flag;
         $read_inner = $result->readNext();
       }
 
