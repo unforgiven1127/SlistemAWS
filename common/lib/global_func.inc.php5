@@ -1474,6 +1474,10 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
+echo 'new candi in play: ';
+var_dump($query);
+echo '<br><br>';
+
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
@@ -1517,6 +1521,10 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
+echo 'new position in play: ';
+var_dump($query);
+echo '<br><br>';
+exit;
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
