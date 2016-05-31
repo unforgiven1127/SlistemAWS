@@ -1187,7 +1187,8 @@ function displaySalary(value)
     //console.log('col:'+sColumn+' - sort list call here - mode: '+psMode);
 
     var listItems = oList.children('li:not(:first)').get();
-    //console.log(listItems);
+    console.log(listItems);
+    //ChromePhp::log($listItems);
 //alert(psMode);
     $(oList).animate({opacity: '0.2'}, function()
     {
