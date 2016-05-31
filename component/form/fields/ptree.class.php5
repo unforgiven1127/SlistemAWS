@@ -167,7 +167,7 @@ class CPtree extends CField
               if($this->bCanSelectCategory)
                 $sTree.= ' class="final">'.$sLabel.'</option> ';
               else
-                $sTree.= '>'.$sLabel.'</select> ';
+                $sTree.= '>'.$sLabel.'</option> ';
             }
           }
 
@@ -175,7 +175,7 @@ class CPtree extends CField
         }
       }
 
-      $sTree.= '</ul>';
+      $sTree.= '</select>';
       $sTree.= '<div class="floatHack"></div>';
       $sTree.= '</div>';
 
