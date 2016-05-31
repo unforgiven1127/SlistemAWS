@@ -1767,7 +1767,7 @@ $flag = 0;
         '.$add.'
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
-
+//AND pl2.status = 51 bunu cikarttik
 //echo '<br><br>';
 //var_dump($query);
 
@@ -1824,13 +1824,13 @@ $flag = 0;
         AND pl.date_completed <= "'.$end_date.'"
         AND pl.status = 51
         AND pl.active = 0
-        AND pl2.status = 51
+        
         AND pl2.active = 0
         '.$add.'
         AND slc._sys_status = 0
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
-
+//AND pl2.status = 51 bunu cikarttik
 //echo '<br><br>';
 //var_dump($query);
 
