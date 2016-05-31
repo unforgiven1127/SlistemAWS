@@ -1584,9 +1584,9 @@ echo '<br><br>';*/
         order by m.candidatefk';*/
 
     $oDbResult = array();
-echo '<br><br>';echo '<br><br>';
+/*echo '<br><br>';echo '<br><br>';
 echo 'new position in play: ';
-var_dump($query);
+var_dump($query);*/
 
 //exit;
     $oDbResult = $oDB->executeQuery($query);
