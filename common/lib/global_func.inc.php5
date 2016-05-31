@@ -1598,6 +1598,55 @@ echo $count;
 exit;*/
 
     //$count = count($asData[$user_id]);
+
+    return $count;
+  }
+
+  function get_not_happened_meetings($user_id, $start_date, $end_date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $user_ids = array($user_id);
+
+    $user_info = getUserInformaiton($user_id);
+    $group = strtolower($user_info['position']);
+
+    //$asData = array();
+
+    $query = 'SELECT m.*, slc._sys_status as candidate_status
+        FROM sl_meeting m
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        AND m.date_created >= "'.$start_date.'"
+        AND m.date_created < "'.$end_date.'"
+        AND m.meeting_done = 0';
+
+    $oDbResult = array();
+
+    $oDbResult = $oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      if(!isset($asData[$temp['created_by']]))
+      {
+        $asData[$temp['created_by']] = array();
+      }
+      else
+      {
+        array_push($asData[$temp['created_by']], $temp);
+
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+
+    $count = 0;
+    foreach ($asData[$user_id] as $key => $value) {
+      $count++;
+    }
+
     return $count;
   }
 
@@ -1688,7 +1737,7 @@ exit;*/
     return $table;
   }
 
-  function create_meetings_table($user_short_name,$monthly_new_candidate_met,$months)
+  function create_meetings_table($user_short_name,$monthly_new_candidate_met,$months,$not_mets)
   {
     $table = "
 
@@ -1899,7 +1948,7 @@ exit;*/
             type: 'column',
             name: 'Not met',
             stack: '".$user_short_name."',
-            data: [0,3,7],
+            data: [".$not_mets[0].",".$not_mets[1].",".$not_mets[2]."],
             color: '#FF2224' },
             {
                 type: 'column',
@@ -1980,15 +2029,17 @@ exit;*/
 
 
 
-    $new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
-    $count_new_met_3 = $new_met_3;
-    $new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
-    $count_new_met_2 = $new_met_2;
-    $new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
-    $count_new_met_1 = $new_met_1;
+    $count_new_met_3 = get_objectives_new_candidate_met($user_id, $start_date3, $end_date3);
+    $count_new_met_2 = get_objectives_new_candidate_met($user_id, $start_date2, $end_date2);
+    $count_new_met_1 = get_objectives_new_candidate_met($user_id, $start_date1, $end_date1);
+
+    $count_not_met_3 = get_not_happened_meetings($user_id, $start_date3, $end_date3);
+    $count_not_met_2 = get_not_happened_meetings($user_id, $start_date2, $end_date2);
+    $count_not_met_1 = get_not_happened_meetings($user_id, $start_date1, $end_date1);
 
     $monthly_new_candidate_met = array($count_new_met_1,$count_new_met_2,$count_new_met_3);
     $months = array($monthName1,$monthName2,$monthName3);
+    $not_mets = array($count_not_met_1,$count_not_met_2,$count_not_met_3);
 
     /*var_dump($months);
     echo '<br><br>';
@@ -2002,7 +2053,7 @@ exit;*/
     var_dump($end_date1);
     exit;*/
 
-    $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months);
+    $table = create_meetings_table($user_short_name,$monthly_new_candidate_met,$months,$not_mets);
 
     return $table;
   }
