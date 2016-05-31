@@ -1015,17 +1015,9 @@ order by m.candidatefk
 
         if(empty($revenue_data['Researcher'][$user_id]['sort']))
         {
-          if($user_id == 'former')
-          {
-            echo 'girdi';
-            $revenue_data['Researcher'][$user_id]['sort'] = 0;
-            echo $revenue_data['Researcher'][$user_id]['sort'];
-          }
-          else
-          {
-            $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
-            $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
-          }
+
+          $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
+          $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
 
         }
 
@@ -1176,6 +1168,8 @@ $flag = 0;
         }
         $read = $db_result->readNext();
       }
+
+      $revenue_data['Researcher']['former']['sort'] = -1000000;
 
       uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
