@@ -957,10 +957,6 @@ order by m.candidatefk
         $row = $db_result->getData();
 
         $user_id = $row['loginpk'];
-        if (!$row['status'])
-        {
-          $user_id = 'former';
-        }
 
         if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
         {
@@ -976,6 +972,11 @@ order by m.candidatefk
         $placed_count = (int)$ccms[$user_id]['placedRevenue'];
 
         //var_dump($user_id);
+
+        if (!$row['status'])
+        {
+          $user_id = 'former';
+        }
 
         if (empty($revenue_data['Researcher'][$user_id][$row['position']]['name']))
             $revenue_data['Researcher'][$user_id][$row['position']]['name'] = substr($row['firstname'], 0, 1).'. '.$row['lastname'];
