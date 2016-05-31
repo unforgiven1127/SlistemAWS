@@ -294,6 +294,9 @@
 	<?php endforeach ?>
 	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
 	<tr>
+		<td colspan="10" class="text_right">
+			Total :
+		</td>
 		<td>
 			<?php echo $total_ncm; ?>
 		</td>
