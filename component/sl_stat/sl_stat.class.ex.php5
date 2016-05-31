@@ -4248,16 +4248,16 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['resumes_sent_info'] = array();
         }
 
-        //if (!empty($temp_set_vs_met[$id]['set']))
-        //{
+        if (!empty($temp_set_vs_met[$id]['set']))
+        {
           $stats_data['consultant'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['set'] = 0;
           $stats_data['consultant'][$id]['set_meeting_info'] = array();
-        }*/
+        }
 
         //if (!empty($temp_set_vs_met[$id]['met']))
         //{
