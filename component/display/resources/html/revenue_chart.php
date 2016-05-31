@@ -94,7 +94,7 @@
 
 							if ($key == 'former' && empty($value['researcher']['signed']))
 								continue;
-							else
+							else if($key == 'former' && !empty($value['researcher']['signed']))
 							{
 								$value['Researcher']['nationality'] = '';
 							}
