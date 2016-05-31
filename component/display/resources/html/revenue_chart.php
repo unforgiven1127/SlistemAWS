@@ -92,7 +92,7 @@
 						$researcher_rank = 0;
 						foreach ($revenue_data['Researcher'] as $key => $value):
 
-							if ($key == 'former' && empty($value['signed']))
+							if ($key == 'former' && empty($value['researcher']['signed']))
 								continue;
 
 							if ($row_number_rank % 2 === 0)
