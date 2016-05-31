@@ -955,9 +955,12 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
-        var_dump($row['status']);
-        echo '<br><br>';
+
         $user_id = $row['loginpk'];
+        if (!$row['status'])
+        {
+          $user_id = 'former';
+        }
 
         if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
         {
@@ -986,11 +989,6 @@ order by m.candidatefk
           if($placed_count == null)
           {
             $placed_count = 0;
-          }
-          if (!$row['status'])
-          {
-            echo 'girdi';
-            $user_id = 'former';
           }
           $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'] = $placed_count;
         }
