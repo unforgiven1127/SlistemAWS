@@ -1018,7 +1018,7 @@ order by m.candidatefk
           if($user_id == 'former')
           {
             echo 'girdi';
-            $revenue_data['Researcher'][$user_id]['sort'] = -100000;
+            $revenue_data['Researcher'][$user_id]['sort'] = 0;
             echo $revenue_data['Researcher'][$user_id]['sort'];
           }
           else
