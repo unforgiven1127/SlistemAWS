@@ -1622,6 +1622,9 @@ exit;*/
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+var_dump($query);
+exit;
+
     $oDbResult = array();
 
     $oDbResult = $oDB->executeQuery($query);
