@@ -988,6 +988,7 @@ order by m.candidatefk
           }
           if (!$row['status'])
           {
+            echo 'girdi';
             $user_id = 'former';
           }
           $revenue_data['Researcher'][$user_id][$row['position']]['placedRevenue'] = $placed_count;
