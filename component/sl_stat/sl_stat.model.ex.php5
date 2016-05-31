@@ -1352,11 +1352,16 @@ $flag = 0;
         $row_inner = $result->getData();
         $control_date = $row_inner['date_created'];
 
+        echo 'control date: '.$control_date;
+        echo '<br>';
+        echo 'complete date: '.$date_completed;
+
         if($control_date == $date_completed)
         {
           $control_flag = false;
         }
-
+        echo '<br>';
+        echo $control_flag;
         $read_inner = $result->readNext();
       }
 
