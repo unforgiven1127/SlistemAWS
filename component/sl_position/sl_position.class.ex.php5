@@ -1522,6 +1522,9 @@ ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
 
       $asCandidate = array();
       $asConsultant = array();
+
+      $date_completed = date('Y-m-d H:i:s');
+
       while($bRead)
       {
         $asCandidate[] = (int)$oDbResult->getFieldValue('candidatefk');
@@ -1532,6 +1535,9 @@ ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
         $asConsultant[$nLoginPk]['firstname'] = $oDbResult->getFieldValue('firstname');
         $asConsultant[$nLoginPk]['lastname'] = $oDbResult->getFieldValue('lastname');
         $asConsultant[$nLoginPk]['candidate'][] = '<a href="'.$sURL.'">#'.$oDbResult->getFieldValue('candidatefk').'</a>&nbsp;&nbsp; - &nbsp;&nbsp;<a href="'.$sURL.'">'.$oDbResult->getFieldValue('candi_lastname').' '.$oDbResult->getFieldValue('candi_firstname').'</a>';
+
+        $pre_record_id =$oDbResult->getFieldValue('sl_position_linkpk');
+        $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
 
         $bRead = $oDbResult->readnext();
       }

@@ -1792,6 +1792,9 @@ $flag = 0;
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
+echo '<br><br>';
+var_dump($query);
+
     $oDbResult = array();
 
     $oDbResult = $this->oDB->executeQuery($query);
