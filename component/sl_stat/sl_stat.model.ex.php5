@@ -1025,6 +1025,10 @@ order by m.candidatefk
 
       $revenue_data['Researcher']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined', 'placedRevenue' => 0);
+echo'<br><br>';
+var_dump($revenue_data['Researcher']['former']);
+echo'<br><br>';
+
 $flag = 0;
       while($read)
       {
