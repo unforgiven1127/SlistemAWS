@@ -133,7 +133,7 @@ ChromePhp::log($asColumnData); // $asColumnData['label']
           }
           else if($asColumnData['label'] == "G")
           {
-            $type = 'sort_value';
+            $type = 'value';
           }
           else
           {
