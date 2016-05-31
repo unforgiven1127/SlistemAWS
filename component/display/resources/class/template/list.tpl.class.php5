@@ -131,6 +131,10 @@ ChromePhp::log($asColumnData); // $asColumnData['label']
           {
             $type = 'cp_client_val';
           }
+          else if($asColumnData['label'] == "G")
+          {
+            $type = 'sort_value';
+          }
           else
           {
             $type = 'text';
