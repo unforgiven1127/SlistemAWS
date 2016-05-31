@@ -1064,7 +1064,7 @@ $flag = 0;
             $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']] = '';
 
             echo'<br><br>';
-            var_dump($revenue_data['Researcher']['former']);
+            var_dump($revenue_data);
             echo'<br><br>';
           }
           else
