@@ -1155,10 +1155,24 @@ $flag = 0;
 
       foreach ($revenue_data['Researcher'] as $key => $value)
       {
-        echo $key." - ";
-        var_dump($value);
-        echo "<br><br>";
+        if($key == 'former')
+        {
+          echo $key." - ";
+          var_dump($value);
+          echo "<br><br>";
+        }
       }
+
+      foreach ($revenue_data['Consultant'] as $key => $value)
+      {
+        if($key == 'former')
+        {
+          echo $key." - ";
+          var_dump($value);
+          echo "<br><br>";
+        }
+      }
+
     }
 
     //exit;
