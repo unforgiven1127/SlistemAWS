@@ -75,10 +75,7 @@
 			<div class="stat_candi_info">
 			<?php foreach ($value['set_meeting_info'] as $stat_info): ?>
 				<div>
-				<?php
-				if(isset($stat_info['candidate']) && !empty(trim($stat_info['candidate']))){ $set_count = (int)$stat_info['candidate'];}
-				else { $set_count = 0;}
-				$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $set_count); ?>
+				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
 				</div>
 			<?php endforeach ?>
