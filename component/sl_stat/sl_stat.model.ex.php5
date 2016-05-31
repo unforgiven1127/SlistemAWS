@@ -955,7 +955,8 @@ order by m.candidatefk
       while($read)
       {
         $row = $db_result->getData();
-        //var_dump($row);
+        var_dump($row['status']);
+        echo '<br><br>';
         $user_id = $row['loginpk'];
 
         if($user_id == '457') // saruul un hem consultant hem researcher da gorunebilmesi icin...
