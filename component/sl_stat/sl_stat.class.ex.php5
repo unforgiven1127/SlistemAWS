@@ -4259,19 +4259,19 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['set_meeting_info'] = array();
         }
 
-        //if (!empty($temp_set_vs_met[$id]['met']))
-        //{
+        if (!empty($temp_set_vs_met[$id]['met']))
+        {
           $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
           $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
           //echo '<br><br><br>';
           //var_dump($stats_data['consultant'][$id]['met_meeting_info']);
           //echo '<br><br><br>';
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['consultant'][$id]['met'] = 0;
           $stats_data['consultant'][$id]['met_meeting_info'] = array();
-        }*/
+        }
 
         //if (!empty($temp_ccm[$id]['ccm1']) || !empty($temp_ccm[$id]['ccm1_done']))
         //{
