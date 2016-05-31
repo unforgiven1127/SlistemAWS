@@ -1220,7 +1220,7 @@ function displaySalary(value)
           {
             listItems.sort(function(a,b)
             {
-              console.log($(a).find('.'+sColumn).attr('sort_value'));
+              console.log($(a).find('.'+sColumn).attr('cp_client_val'));
               compA = $(a).find('.'+sColumn).attr('sort_value');
               compB = $(b).find('.'+sColumn).attr('sort_value');
 
