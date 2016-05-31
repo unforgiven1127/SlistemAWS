@@ -1015,8 +1015,16 @@ order by m.candidatefk
 
         if(empty($revenue_data['Researcher'][$user_id]['sort']))
         {
-          $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
-          $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
+          if($user_id == 'former')
+          {
+            $revenue_data['Researcher'][$user_id]['sort'] = -100000;
+          }
+          else
+          {
+            $calculate_sort = ($placed_count * 100000) + ($mccm_count * 1000) + ($ccm1_count * 10);
+            $revenue_data['Researcher'][$user_id]['sort'] = $calculate_sort;
+          }
+
         }
 
         $read = $db_result->readNext();
