@@ -1639,23 +1639,24 @@ $flag = 0;
 
     if ($group == 'consultant')
     {
-      $query = 'SELECT positionfk, candidatefk, created_by, date_created as resume_sent_date, min(spl2.sl_position_linkpk)';
-      $query .= ' FROM sl_position_link';
-      $query .= ' INNER JOIN sl_position_link spl2 ON sl_position_link.candidatefk = spl2.candidatefk AND (spl2.status = 2)';
-      $query .= ' WHERE created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
-      $query .= ' AND (status = 2 OR status = 51) GROUP BY candidatefk, positionfk';
+      $query = 'SELECT spl.positionfk, spl.candidatefk, spl.created_by, spl.date_created as resume_sent_date
+      , min(spl2.sl_position_linkpk)';
+      $query .= ' FROM sl_position_link spl';
+      $query .= ' INNER JOIN sl_position_link spl2 ON spl.candidatefk = spl2.candidatefk AND (spl2.status = 2)';
+      $query .= ' WHERE spl.created_by IN ('.implode(',', $user_ids).')';
+      $query .= ' AND spl.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND (spl.status = 2 OR spl.status = 51) GROUP BY spl.candidatefk, spl.positionfk';
     }
     else
     {
-      $query = 'SELECT sl_meeting.date_met, sl_position_link.positionfk, sl_position_link.candidatefk, min(spl2.sl_position_linkpk)';
-      $query .= ' sl_position_link.date_created as resume_sent_date, sl_meeting.created_by, ';
+      $query = 'SELECT sl_meeting.date_met, spl.positionfk, spl.candidatefk, min(spl2.sl_position_linkpk)';
+      $query .= ' spl.date_created as resume_sent_date, sl_meeting.created_by, ';
       $query .= ' FROM sl_meeting';
-      $query .= ' INNER JOIN sl_position_link ON sl_meeting.candidatefk = sl_position_link.candidatefk AND (sl_position_link.status = 2 OR sl_position_link.status = 51)';
+      $query .= ' INNER JOIN sl_position_link spl ON sl_meeting.candidatefk = spl.candidatefk AND (spl.status = 2 OR spl.status = 51)';
       $query .= ' INNER JOIN sl_position_link spl2 ON sl_meeting.candidatefk = spl2.candidatefk AND (spl2.status = 2)';
-      $query .= ' AND sl_position_link.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
+      $query .= ' AND spl.date_created BETWEEN "'.$start_date.'" AND "'.$end_date.'"';
       $query .= ' WHERE sl_meeting.created_by IN ('.implode(',', $user_ids).')';
-      $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY sl_position_link.candidatefk, sl_position_link.positionfk';
+      $query .= ' AND sl_meeting.meeting_done = 1 GROUP BY spl.candidatefk, spl.positionfk';
     }
 
 if ($group == 'consultant'){
