@@ -294,7 +294,7 @@
 	<?php $row_number_rank += 1; ?>
 	<?php endforeach ?>
 	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
-	<tr bgcolor="#FF0000">
+	<tr bgcolor="#58FAAC">
 		<td colspan="10" class="text_right">
 			Total :
 		</td>
