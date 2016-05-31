@@ -94,6 +94,10 @@
 
 							if ($key == 'former' && empty($value['researcher']['signed']))
 								continue;
+							else
+							{
+								$value['Researcher']['nationality'] = '';
+							}
 
 							if ($row_number_rank % 2 === 0)
 								$even = ' even_row';
