@@ -1693,7 +1693,7 @@ $flag = 0;
         }
       }
 
-      if($row['status'] >= 51 && $row['sl_position_linkpk'] == $row['control'])
+      if($row['status'] >= 51 && $row['control'] == null)
       {
         $resume_sent_info[$row['created_by']]['resumes_sent'] += 1;
         $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $row['candidatefk'],
