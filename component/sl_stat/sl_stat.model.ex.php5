@@ -1054,14 +1054,14 @@ $flag = 0;
               $flag = 1;
             }
 
-            if ($row['user_position'] == 'consultant' && !isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
+            if ($row['user_position'] == 'Consultant' && !isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placed'] += $temp_placed[$row['loginpk']]['placed'];
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['candidates'] .= ';'.$clear_data[$row['revenue_id']]['candidate'];
             }
 
-            else if ($row['user_position'] == 'researcher' && !isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
+            else if ($row['user_position'] == 'Researcher' && !isset($revenue_data[$row['user_position']][$user_id][$row['userPosition']]['do_not_count_placed'][$row['loginpk']]))
             {
               $temp_placed = $this->get_placement_number_revenue(array($row['loginpk']), $date_start, $date_end);
               $revenue_data[$row['user_position']][$user_id][$row['userPosition']]['placedRevenue'] += $temp_placed[$row['loginpk']]['placed'];
