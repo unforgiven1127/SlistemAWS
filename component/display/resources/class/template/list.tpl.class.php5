@@ -127,11 +127,11 @@ ChromePhp::log($asColumnData); // $asColumnData['label']
           {
             $type = 'integer';
           }
-          else if($asColumnData['label'] == "C" || $asColumnData['label'] == "G")
+          else if($asColumnData['label'] == "C" )
           {
             $type = 'cp_client_val';
           }
-          else if($asColumnData['label'] == "G")
+          else if($asColumnData['label'] == "G"|| $asColumnData['label'] == "R")
           {
             $type = 'value';
           }

@@ -183,13 +183,7 @@ class CCandi_row extends CTemplate
       $asOption['class'].= ' tplCandi_resume';
       $asOption['title'] = 'Resume';
       $asOption['onclick'] = 'window.open(\''.$sURL.'\', \'_view_res\'); ';
-      $asOption['cp_client_val'] = '1';
     }
-    else
-    {
-      $asOption['cp_client_val'] = '0';
-    }
-
     $sHTML.= $oDisplay->getBloc('', '&nbsp;', $asOption);
 
 
