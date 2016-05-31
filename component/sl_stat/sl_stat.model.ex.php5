@@ -1350,7 +1350,7 @@ $flag = 0;
       while($read_inner)
       {
         $row_inner = $result->getData();
-        $control_date = $row_inner['date_created'];
+        $control_date = strtotime($row_inner['date_created']);
 echo '<br><br>';
         echo 'control date: '.$control_date;
         echo '<br><br>';
