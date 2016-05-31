@@ -196,7 +196,10 @@
 		</td>
 		<td>
 			<div class="stat_holder">
-			<?php echo $value['new_candidate_met_count']; ?>
+			<?php
+				$total_ncm  = $total_ncm + $value['new_candidate_met_count'];
+				echo $value['new_candidate_met_count'];
+			?>
 			</div>
 			<div class="stat_candi_info">
 			<?php foreach ($value['new_candidate_met_info'] as $stat_info): ?>
@@ -209,7 +212,10 @@
 		</td>
 		<td>
 			<div class="stat_holder">
-			<?php echo $value['new_candidates']; ?>
+			<?php
+				$total_ncip = $total_ncip + $value['new_candidates'];
+				echo $value['new_candidates'];
+			?>
 			</div>
 			<div class="stat_candi_info">
 			<?php foreach ($value['new_candidate_info'] as $stat_info): ?>
@@ -222,7 +228,10 @@
 		</td>
 		<td>
 			<div class="stat_holder">
-			<?php echo $value['new_positions']; ?>
+			<?php
+				$total_npip = $total_npip + $value['new_positions'];
+				echo $value['new_positions'];
+			?>
 			</div>
 			<div class="stat_candi_info">
 			<?php foreach ($value['new_position_info'] as $stat_info): ?>
@@ -235,7 +244,10 @@
 		</td>
 		<td>
 			<div class="stat_holder">
-			<?php echo $value['offers_sent']; ?>
+			<?php
+				$total_o = $total_o + $value['offers_sent'];
+				echo $value['offers_sent'];
+			?>
 			</div>
 			<div class="stat_candi_info">
 			<?php foreach ($value['offer_info'] as $stat_info): ?>
@@ -283,7 +295,19 @@
 	<tr class="totals_table_footer"><td colspan="15">&nbsp;</td></tr>
 	<tr>
 		<td>
-			<?php echo $total_p ?>
+			<?php echo $total_ncm; ?>
+		</td>
+		<td>
+			<?php echo $total_ncip; ?>
+		</td>
+		<td>
+			<?php echo $total_npip; ?>
+		</td>
+		<td>
+			<?php echo $total_o; ?>
+		</td>
+		<td>
+			<?php echo $total_p; ?>
 		</td>
 	</tr>
 </table>
