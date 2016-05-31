@@ -123,9 +123,13 @@ class CTemplateList extends CTemplate
 ChromePhp::log($asColumnData); // $asColumnData['label']
           //dump($asColumnData);
 
-          if($asColumnData['label'] == "ID" || $asColumnData['label'] == "C")
+          if($asColumnData['label'] == "ID" )
           {
             $type = 'integer';
+          }
+          else if($asColumnData['label'] == "C")
+          {
+            $type = 'value';
           }
           else
           {
