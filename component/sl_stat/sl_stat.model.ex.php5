@@ -1807,7 +1807,7 @@ $flag = 0;
       $diff = $date_completed - $create_date;
       $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor...
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 & $diff < 180) // && $diff < 180 geri koydum neden ciktiysa
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 & $diff < 180) // && $diff < 180 geri koydum neden ciktiysa
       {
         if($group == 'researcher')
         {
