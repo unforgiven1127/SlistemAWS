@@ -1640,7 +1640,7 @@ $flag = 0;
     if ($group == 'consultant')
     {
       $query = 'SELECT spl.positionfk, spl.candidatefk, spl.created_by, spl.date_created as resume_sent_date
-      , min(spl2.sl_position_linkpk) as control, spl.sl_position_linkpk';
+      , min(spl2.sl_position_linkpk) as control, spl.sl_position_linkpk, spl.status';
       $query .= ' FROM sl_position_link spl';
       $query .= ' INNER JOIN sl_position_link spl2 ON spl.candidatefk = spl2.candidatefk AND (spl2.status = 2)';
       $query .= ' WHERE spl.created_by IN ('.implode(',', $user_ids).')';
@@ -1650,7 +1650,7 @@ $flag = 0;
     else
     {
       $query = 'SELECT sl_meeting.date_met, spl.positionfk, spl.candidatefk, min(spl2.sl_position_linkpk) as control
-                , spl.sl_position_linkpk,';
+                , spl.sl_position_linkpk, spl.status,';
       $query .= ' spl.date_created as resume_sent_date, sl_meeting.created_by ';
       $query .= ' FROM sl_meeting';
       $query .= ' INNER JOIN sl_position_link spl ON sl_meeting.candidatefk = spl.candidatefk AND (spl.status = 2 OR spl.status = 51)';
@@ -1693,7 +1693,7 @@ $flag = 0;
         }
       }
 
-      if(1)
+      if($row['status'] >= 51 && $row['sl_position_linkpk'] == $row['control'])
       {
         $resume_sent_info[$row['created_by']]['resumes_sent'] += 1;
         $resume_sent_info[$row['created_by']]['resumes_sent_info'][] = array('candidate' => $row['candidatefk'],
