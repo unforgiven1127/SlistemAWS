@@ -78,7 +78,7 @@
 				<?php
 				if(isset($stat_info['candidate'])){ $set_count = (int)$stat_info['candidate'];}
 				else { $set_count = 0;}
-				$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$set_count]); ?>
+				$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$set_count); ?>
 					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
 				</div>
 			<?php endforeach ?>
