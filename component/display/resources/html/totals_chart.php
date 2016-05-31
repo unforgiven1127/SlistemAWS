@@ -15,14 +15,15 @@
 		</div>
 	</div>
 </form>
-<?php
+
+<?php foreach ($stats_data as $key => $stat): $arrayPosition = $key ?>
+	<?php
  	$total_ncm = 0;
 	$total_ncip = 0;
 	$total_npip = 0;
 	$total_o = 0;
 	$total_p = 0;
 	 ?>
-<?php foreach ($stats_data as $key => $stat): $arrayPosition = $key ?>
 <table class="totals_table">
 	<tr>
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
