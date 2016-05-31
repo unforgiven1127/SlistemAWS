@@ -135,7 +135,7 @@ class CPtree extends CField
       //-------------------------------------
       //root level of the tree
       $sTree.= '<div class="TSelectLevel TSelect_lvl_0" level="0" >';
-      $sTree.= '<ul>';
+      $sTree.= '<select>';
 
       foreach($asValues as $nKey => $avValue)
       {
@@ -144,7 +144,7 @@ class CPtree extends CField
           //remove empty categories if i can select those
           if($this->bCanSelectCategory || isset($anCounter[(int)$avValue['value']]))
           {
-            $sTree.= '<li ';
+            $sTree.= '<option ';
             $sLabel = $avValue['label'];
             unset($avValue['label']);
 
@@ -161,13 +161,13 @@ class CPtree extends CField
                 $sTree.= ' '.$sParam.'="'.$vValue.'" ';
 
             if(isset($anCounter[(int)$avValue['value']]))
-              $sTree.= '>'.$sLabel.' ('.$anCounter[(int)$avValue['value']].') <img src="/component/form/resources/pictures/category.png" style="float: right; margin-right: 10px;" /></li> ';
+              $sTree.= '>'.$sLabel.' ('.$anCounter[(int)$avValue['value']].') <img src="/component/form/resources/pictures/category.png" style="float: right; margin-right: 10px;" /></option> ';
             else
             {
               if($this->bCanSelectCategory)
-                $sTree.= ' class="final">'.$sLabel.'</li> ';
+                $sTree.= ' class="final">'.$sLabel.'</option> ';
               else
-                $sTree.= '>'.$sLabel.'</li> ';
+                $sTree.= '>'.$sLabel.'</select> ';
             }
           }
 
