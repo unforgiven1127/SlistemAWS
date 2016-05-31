@@ -60,6 +60,7 @@ class CCandi_row extends CTemplate
     {
       $asOption['class'].= ' tplCandi_client';
       $asOption['title'] = 'Work for a client company';
+      $asOption['value'] = '1';
     }
     $sHTML.= $oDisplay->getBloc('', '', $asOption);
 
