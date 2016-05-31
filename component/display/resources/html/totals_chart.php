@@ -254,7 +254,10 @@
 					$total_p = $total_p + $value['placedRevenue'];
 					echo $value['placedRevenue']; }
 				else
-				{echo $value['placed'];}
+				{
+					$total_p = $total_p + $value['placed'];
+					echo $value['placed'];
+				}
 			 ?>
 			</div>
 			<div class="stat_candi_info">
