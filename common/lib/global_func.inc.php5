@@ -1464,8 +1464,8 @@ function _live_dump($pvTrace, $psTitle = null)
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         WHERE m.created_by = "'.$user_id.'"
-        AND m.date_created >= "'.$start_date.'"
-        AND m.date_created < "'.$end_date.'"
+        AND m.date_created >= "2016-05-01 00:00:00"
+        AND m.date_created < "2016-05-31 23:59:59"
         AND m.meeting_done = 1
         AND pl.status > 51
         AND pl.active != 1
@@ -1510,8 +1510,8 @@ echo '<br><br>';
         INNER JOIN sl_position_link pl ON pl.candidatefk = m.candidatefk
         INNER JOIN sl_position_link pl2 ON pl2.positionfk = pl.positionfk
         WHERE m.created_by = "'.$user_id.'"
-        AND m.date_created >= "'.$start_date.'"
-        AND m.date_created < "'.$end_date.'"
+        AND m.date_created >= "2016-05-01 00:00:00"
+        AND m.date_created < "2016-05-31 23:59:59"
         AND pl.status = 51
         AND pl.active != 1
         AND pl2.status = 51
@@ -1524,7 +1524,7 @@ echo '<br><br>';
 echo 'new position in play: ';
 var_dump($query);
 echo '<br><br>';
-exit;
+//exit;
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
