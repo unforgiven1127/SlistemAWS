@@ -1514,6 +1514,12 @@ echo '<br><br>';*/
     {
       $temp = $oDbResult->getData();
 
+      $create_date = strtotime($temp['ccm_create_date']);
+      $date_completed = strtotime($temp['date_completed']);
+
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor..
+
       if($group == 'researcher')
       {
         $user = $temp['created_by'];
@@ -1591,6 +1597,12 @@ echo '<br><br>';
     {
       $temp = $oDbResult->getData();
 
+      $create_date = strtotime($temp['ccm_create_date']);
+      $date_completed = strtotime($temp['date_completed']);
+
+      $diff = $date_completed - $create_date;
+      $diff = floor($diff/(60*60*24)); // gun cinsinden veriyor..
+
       if($group == 'researcher')
       {
         $user = $temp['created_by'];
@@ -1600,7 +1612,7 @@ echo '<br><br>';
         $user = $temp['pl_created_by'];
       }
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] &&$temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
       {
         if(isset($new_in_play_info[$user]['new_positions']))
         {
