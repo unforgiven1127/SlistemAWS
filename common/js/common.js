@@ -1238,9 +1238,14 @@ function displaySalary(value)
           {
             listItems.sort(function(a,b)
             {
-              //console.log($(a).find('.'+sColumn).attr('cp_client_val'));
-              compA = $(a).find('.'+sColumn).attr('cp_client_val');
-              compB = $(b).find('.'+sColumn).attr('cp_client_val');
+              compA = parseInt($(a).find('.'+sColumn).attr('cp_client_val'));
+              compB = parseInt($(b).find('.'+sColumn).attr('cp_client_val'));
+
+              if(isNaN(compA))
+                compA = 0;
+
+              if(isNaN(compB))
+                compB = 0;
 
               //console.log('mode 2 [.'+sColumn+' attr(sort_value)] ==> a: '+compA+' / b: '+compB);
 
