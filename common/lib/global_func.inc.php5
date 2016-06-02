@@ -1904,13 +1904,13 @@ exit;*/
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
                 <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[0]."</text>
                     </g>
                     <g zIndex='1' transform='translate(122,104)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>14</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[1]."</text>
                     </g>
                     <g zIndex='1' transform='translate(209,111)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[2]."</text>
                     </g>
                 </g>
                 <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
@@ -1957,7 +1957,6 @@ exit;*/
             </svg>
         </div>
     </div>
-    
 
     ";
 
@@ -2028,13 +2027,13 @@ exit;*/
                 </g>
                 <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(55,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' style='cursor:default;' transform='translate(36,178)'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[0]."</text>
                     </g>
                     <g zIndex='1' style='cursor:default;' transform='translate(123,178)'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[0]."</text>
                     </g>
                     <g zIndex='1' style='cursor:default;' transform='translate(209,178)'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>0</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[0]."</text>
                     </g>
                 </g>
                 <g class='highcharts-legend' zIndex='7' transform='translate(334,102)'>
