@@ -2051,7 +2051,7 @@ exit;*/
           });
         });
       </script>
-
+ 
     ";
 
     return $table;
