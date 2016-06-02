@@ -2020,7 +2020,7 @@ exit;*/
              },
             tooltip: {
                 shared: true,
-                valueSuffix: ' meeting(s)'
+                valueSuffix: ' candidate(s)'
             },
             series: [{
                 type: 'line',
@@ -2246,7 +2246,7 @@ exit;*/
              },
             tooltip: {
                 shared: true,
-                valueSuffix: ' meeting(s)'
+                valueSuffix: ' position(s)'
             },
             series: [{
                 type: 'line',
