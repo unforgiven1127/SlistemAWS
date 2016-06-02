@@ -1971,7 +1971,7 @@ exit;*/
     <script>
         $(function ()
         {
-          $('#mainPagePosition').highchartsp(
+          $('#mainPagePosition').highcharts(
           {
             chart:
             {
