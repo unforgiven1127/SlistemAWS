@@ -1831,48 +1831,48 @@ exit;*/
   {
     $table = "
 
-      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidates' data-highcharts-chart='0'>
-        <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
+      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidates' data-highchartsNewCandidate-chart='0'>
+        <div class='highchartsNewCandidate-container' id='highchartsNewCandidate-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
             <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
                 xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
-                <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
+                <desc>Created with highchartsNewCandidate 4.0.3 /Highstock 2.0.3</desc>
                 <defs>
-                    <clipPath id='highcharts-1'>
+                    <clipPath id='highchartsNewCandidate-1'>
                         <rect x='0' y='0' width='262' height='194'/>
                     </clipPath>
                 </defs>
-                <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highcharts-background'/>
-                <g class='highcharts-grid' zIndex='1'/>
-                <g class='highcharts-grid' zIndex='1'>
+                <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highchartsNewCandidate-background'/>
+                <g class='highchartsNewCandidate-grid' zIndex='1'/>
+                <g class='highchartsNewCandidate-grid' zIndex='1'>
                     <path fill='none' d='M 61 9.5 L 323 9.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 75.5 L 323 75.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 139.5 L 323 139.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                 </g>
-                <g class='highcharts-axis' zIndex='2'>
+                <g class='highchartsNewCandidate-axis' zIndex='2'>
                     <path fill='none' d='M 235.5 204 L 235.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 323.5 204 L 323.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 147.5 204 L 147.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 60.5 204 L 60.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
                 </g>
-                <g class='highcharts-axis' zIndex='2'>
-                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
+                <g class='highchartsNewCandidate-axis' zIndex='2'>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highchartsNewCandidate-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
                 </g>
-                <g class='highcharts-series-group' zIndex='3'>
-                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
+                <g class='highchartsNewCandidate-series-group' zIndex='3'>
+                    <g class='highchartsNewCandidate-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highchartsNewCandidate-1)'>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <path fill='none' d='M 0 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 262 19.400000000000006' stroke='#000' stroke-width='2' zIndex='1' stroke-dasharray='6,2'/>
-                        <path fill='none' d='M 33.666666666666664 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 228.33333333333331 19.400000000000006' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highcharts-tracker' style=''/>
+                        <path fill='none' d='M 33.666666666666664 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 228.33333333333331 19.400000000000006' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highchartsNewCandidate-tracker' style=''/>
                     </g>
-                    <g class='highcharts-markers highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
+                    <g class='highchartsNewCandidate-markers highchartsNewCandidate-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
                         <path fill='#000' d='M 218 15.400000000000006 C 223.328 15.400000000000006 223.328 23.400000000000006 218 23.400000000000006 C 212.672 23.400000000000006 212.672 15.400000000000006 218 15.400000000000006 Z'/>
                         <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
                         <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                    <g class='highchartsNewCandidate-series highchartsNewCandidate-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highchartsNewCandidate-1)'>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -1886,8 +1886,8 @@ exit;*/
                         <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                    <g class='highchartsNewCandidate-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
+                    <g class='highchartsNewCandidate-series highchartsNewCandidate-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highchartsNewCandidate-1)'>
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -1901,8 +1901,8 @@ exit;*/
                         <rect x='196.5' y='110.5' width='42' height='83' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <rect x='196.5' y='110.5' width='42' height='84' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
-                <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
+                    <g class='highchartsNewCandidate-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
+                <g class='highchartsNewCandidate-data-labels highchartsNewCandidate-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
                         <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
                     </g>
@@ -1913,21 +1913,21 @@ exit;*/
                         <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
                     </g>
                 </g>
-                <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
+                <g class='highchartsNewCandidate-legend' zIndex='7' transform='translate(343,95)'>
                     <g zIndex='1'>
                         <g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,3)'>
+                            <g class='highchartsNewCandidate-legend-item' zIndex='1' transform='translate(8,3)'>
                                 <path fill='none' d='M 0 11 L 16 11' stroke-dasharray='6,2' stroke='#000' stroke-width='2'/>
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                            <g class='highchartsNewCandidate-legend-item' zIndex='1' transform='translate(8,17)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Not met</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
                             </g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
+                            <g class='highchartsNewCandidate-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
@@ -1936,18 +1936,18 @@ exit;*/
                         </g>
                     </g>
                 </g>
-                <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
+                <g class='highchartsNewCandidate-axis-labels highchartsNewCandidate-xaxis-labels' zIndex='7'>
                     <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
                     <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
                     <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
                 </g>
-                <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
+                <g class='highchartsNewCandidate-axis-labels highchartsNewCandidate-yaxis-labels' zIndex='7'>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>10</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>20</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>30</text>
                 </g>
-                <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
+                <g class='highchartsNewCandidate-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)'/>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.09999999999999999' stroke-width='3' transform='translate(1, 1)'/>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)'/>
@@ -1960,7 +1960,7 @@ exit;*/
     <script>
         $(function ()
         {
-          $('#mainPageNewCandidates').highcharts(
+          $('#mainPageNewCandidates').highchartsNewCandidate(
           {
             chart:
             {
@@ -2061,48 +2061,48 @@ exit;*/
   {
     $table = "
 
-      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewPositions' data-highcharts-chart='0'>
-        <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
+      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewPositions' data-highchartsNewPosition-chart='0'>
+        <div class='highchartsNewPosition-container' id='highchartsNewPosition-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
             <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
                 xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
-                <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
+                <desc>Created with highchartsNewPosition 4.0.3 /Highstock 2.0.3</desc>
                 <defs>
-                    <clipPath id='highcharts-1'>
+                    <clipPath id='highchartsNewPosition-1'>
                         <rect x='0' y='0' width='262' height='194'/>
                     </clipPath>
                 </defs>
-                <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highcharts-background'/>
-                <g class='highcharts-grid' zIndex='1'/>
-                <g class='highcharts-grid' zIndex='1'>
+                <rect x='0' y='0' width='450' height='240' strokeWidth='0' fill='#FFFFFF' class=' highchartsNewPosition-background'/>
+                <g class='highchartsNewPosition-grid' zIndex='1'/>
+                <g class='highchartsNewPosition-grid' zIndex='1'>
                     <path fill='none' d='M 61 9.5 L 323 9.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 75.5 L 323 75.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 139.5 L 323 139.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0C0C0' stroke-width='1' zIndex='1' opacity='1'/>
                 </g>
-                <g class='highcharts-axis' zIndex='2'>
+                <g class='highchartsNewPosition-axis' zIndex='2'>
                     <path fill='none' d='M 235.5 204 L 235.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 323.5 204 L 323.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 147.5 204 L 147.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 60.5 204 L 60.5 214' stroke='#C0D0E0' stroke-width='1' opacity='1'/>
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
                 </g>
-                <g class='highcharts-axis' zIndex='2'>
-                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
+                <g class='highchartsNewPosition-axis' zIndex='2'>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highchartsNewPosition-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
                 </g>
-                <g class='highcharts-series-group' zIndex='3'>
-                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
+                <g class='highchartsNewPosition-series-group' zIndex='3'>
+                    <g class='highchartsNewPosition-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highchartsNewPosition-1)'>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <path fill='none' d='M 0 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 262 19.400000000000006' stroke='#000' stroke-width='2' zIndex='1' stroke-dasharray='6,2'/>
-                        <path fill='none' d='M 33.666666666666664 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 228.33333333333331 19.400000000000006' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highcharts-tracker' style=''/>
+                        <path fill='none' d='M 33.666666666666664 19.400000000000006 L 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006 L 228.33333333333331 19.400000000000006' stroke-linejoin='round' visibility='visible' stroke='rgba(192,192,192,0.0001)' stroke-width='22' zIndex='2' class=' highchartsNewPosition-tracker' style=''/>
                     </g>
-                    <g class='highcharts-markers highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
+                    <g class='highchartsNewPosition-markers highchartsNewPosition-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none' style=''>
                         <path fill='#000' d='M 218 15.400000000000006 C 223.328 15.400000000000006 223.328 23.400000000000006 218 23.400000000000006 C 212.672 23.400000000000006 212.672 15.400000000000006 218 15.400000000000006 Z'/>
                         <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
                         <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                    <g class='highchartsNewPosition-series highchartsNewPosition-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highchartsNewPosition-1)'>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -2116,8 +2116,8 @@ exit;*/
                         <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                    <g class='highchartsNewPosition-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
+                    <g class='highchartsNewPosition-series highchartsNewPosition-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highchartsNewPosition-1)'>
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -2131,8 +2131,8 @@ exit;*/
                         <rect x='196.5' y='110.5' width='42' height='83' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
                         <rect x='196.5' y='110.5' width='42' height='84' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
-                    <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
-                <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
+                    <g class='highchartsNewPosition-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
+                <g class='highchartsNewPosition-data-labels highchartsNewPosition-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
                         <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
                     </g>
@@ -2143,21 +2143,21 @@ exit;*/
                         <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
                     </g>
                 </g>
-                <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
+                <g class='highchartsNewPosition-legend' zIndex='7' transform='translate(343,95)'>
                     <g zIndex='1'>
                         <g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,3)'>
+                            <g class='highchartsNewPosition-legend-item' zIndex='1' transform='translate(8,3)'>
                                 <path fill='none' d='M 0 11 L 16 11' stroke-dasharray='6,2' stroke='#000' stroke-width='2'/>
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                            <g class='highchartsNewPosition-legend-item' zIndex='1' transform='translate(8,17)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Not met</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
                             </g>
-                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
+                            <g class='highchartsNewPosition-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
@@ -2166,18 +2166,18 @@ exit;*/
                         </g>
                     </g>
                 </g>
-                <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
+                <g class='highchartsNewPosition-axis-labels highchartsNewPosition-xaxis-labels' zIndex='7'>
                     <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
                     <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
                     <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
                 </g>
-                <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
+                <g class='highchartsNewPosition-axis-labels highchartsNewPosition-yaxis-labels' zIndex='7'>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>10</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>20</text>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>30</text>
                 </g>
-                <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
+                <g class='highchartsNewPosition-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)'/>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.09999999999999999' stroke-width='3' transform='translate(1, 1)'/>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)'/>
@@ -2190,7 +2190,7 @@ exit;*/
     <script>
         $(function ()
         {
-          $('#mainPageNewPositions').highcharts(
+          $('#mainPageNewPositions').highchartsNewPosition(
           {
             chart:
             {
