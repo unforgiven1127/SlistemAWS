@@ -1921,9 +1921,15 @@ exit;*/
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
+                                    <tspan>Not met</tspan>
+                                </text>
+                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
+                            </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>".$user_short_name."</tspan>
+                                    <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
@@ -2028,12 +2034,17 @@ exit;*/
                 data: [27,27,27],
                 dashStyle: 'ShortDash'
             },
-
+          {
+            type: 'column',
+            name: 'Not met',
+            stack: '".$user_short_name."',
+            data: [".$not_mets[0].",".$not_mets[1].",".$not_mets[2]."],
+            color: '#FF2224' },
             {
                 type: 'column',
                 name: 'Met - ".$user_short_name."',
                 stack: '".$user_short_name."',
-                data: [".$candidate_in_plays[0].",".$candidate_in_plays[1].",".$candidate_in_plays[2]."],
+                data: [".$monthly_new_candidate_met[0].",".$monthly_new_candidate_met[1].",".$monthly_new_candidate_met[2]."],
                 color: '#2073CC' ,
           dataLabels:
           {
