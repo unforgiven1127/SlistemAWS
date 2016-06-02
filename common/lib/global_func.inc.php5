@@ -1827,7 +1827,7 @@ exit;*/
     return $table;
   }
 
-  function create_new_candidate_table()
+  function create_new_candidate_table($user_short_name,$months,$candidate_in_plays)
   {
     $table = "
 
@@ -1909,16 +1909,16 @@ exit;*/
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
-                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>administrator</text>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>".$user_short_name."</text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'></rect>
                             </g>
                         </g>
                     </g>
                 </g>
                 <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
-                    <text x='105.66666666666666' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Apr</text>
-                    <text x='189' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>May</text>
-                    <text x='272.3333333333333' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Jun</text>
+                    <text x='105.66666666666666' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[0]."</text>
+                    <text x='189' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[1]."</text>
+                    <text x='272.3333333333333' text-anchor='middle' style='width:63px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[2]."</text>
                 </g>
                 <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
                     <text x='49' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='211' opacity='1'>0</text>
@@ -1932,7 +1932,7 @@ exit;*/
                     <path fill='none' d='M 3.5 0.5 L 68.5 0.5 74.5 -5.5 80.5 0.5 144 0.5 C 147.5 0.5 147.5 0.5 147.5 3.5 L 147.5 41.5 C 147.5 44.5 147.5 44.5 144.5 44.5 L 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)' width='147' height='44'></path>
                     <path fill='rgba(249, 249, 249, .85)' d='M 3.5 0.5 L 68.5 0.5 74.5 -5.5 80.5 0.5 144 0.5 C 147.5 0.5 147.5 0.5 147.5 3.5 L 147.5 41.5 C 147.5 44.5 147.5 44.5 144.5 44.5 L 3.5 44.5 C 0.5 44.5 0.5 44.5 0.5 41.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' stroke='#000' stroke-width='1'></path>
                     <text x='8' zIndex='1' style='font-size:12px;color:#333333;fill:#333333;' y='21'>
-                        <tspan style='font-size: 10px'>Jun</tspan>
+                        <tspan style='font-size: 10px'>".$months[2]."</tspan>
                         <tspan style='fill:#000' x='8' dy='16'>●</tspan>
                         <tspan dx='0'> Target: </tspan>
                         <tspan style='font-weight:bold' dx='0'>7 candidate(s)</tspan>
@@ -1947,7 +1947,7 @@ exit;*/
     return $table;
   }
 
-  function create_new_position_table()
+  function create_new_position_table($user_short_name,$months,$positions_in_plays)
   {
     $table = "
 
@@ -2029,16 +2029,16 @@ exit;*/
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
-                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>administrator</text>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>".$user_short_name."</text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'></rect>
                             </g>
                         </g>
                     </g>
                 </g>
                 <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
-                    <text x='98.16666666666666' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Apr</text>
-                    <text x='184.5' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>May</text>
-                    <text x='270.8333333333333' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>Jun</text>
+                    <text x='98.16666666666666' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[0]."</text>
+                    <text x='184.5' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[1]."</text>
+                    <text x='270.8333333333333' text-anchor='middle' style='width:66px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='225' opacity='1'>".$months[2]."</text>
                 </g>
                 <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
                     <text x='40' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='211' opacity='1'>0</text>
@@ -2052,12 +2052,12 @@ exit;*/
                     <path fill='none' d='M 3.5 0.5 L 171.5 0.5 C 174.5 0.5 174.5 0.5 174.5 3.5 L 174.5 57.5 C 174.5 60.5 174.5 60.5 171.5 60.5 L 3.5 60.5 C 0.5 60.5 0.5 60.5 0.5 57.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' isShadow='true' stroke='black' stroke-opacity='0.15' stroke-width='1' transform='translate(1, 1)' width='174' height='60'></path>
                     <path fill='rgba(249, 249, 249, .85)' d='M 3.5 0.5 L 171.5 0.5 C 174.5 0.5 174.5 0.5 174.5 3.5 L 174.5 57.5 C 174.5 60.5 174.5 60.5 171.5 60.5 L 3.5 60.5 C 0.5 60.5 0.5 60.5 0.5 57.5 L 0.5 3.5 C 0.5 0.5 0.5 0.5 3.5 0.5' stroke='#000' stroke-width='1'></path>
                     <text x='8' zIndex='1' style='font-size:12px;color:#333333;fill:#333333;' y='21'>
-                        <tspan style='font-size: 10px'>May</tspan>
+                        <tspan style='font-size: 10px'>".$months[1]."</tspan>
                         <tspan style='fill:#000' x='8' dy='16'>●</tspan>
                         <tspan dx='0'> Target: </tspan>
                         <tspan style='font-weight:bold' dx='0'>5 position(s)</tspan>
                         <tspan style='fill:#2073CC' x='8' dy='16'>●</tspan>
-                        <tspan dx='0'> administrator: </tspan>
+                        <tspan dx='0'> ".$user_short_name.": </tspan>
                         <tspan style='font-weight:bold' dx='0'>0 position(s)</tspan>
                     </text>
                 </g>
@@ -2181,8 +2181,8 @@ exit;*/
                 </g>
                 <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
                     <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
-                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
-                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
+                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[0]."</text>
+                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[1]."</text>
                 </g>
                 <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
@@ -2319,16 +2319,118 @@ exit;*/
 
   function get_new_candidates_in_play($user_id)
   {
+    $user_information = getUserInformaiton($user_id);
+    $user_short_name = $user_information['id'];
 
-    $table = create_new_candidate_table();
+    $start_date_3 = (new DateTime('first day of this month'))->format("Y-m-d");
+    $start_date_3.= ' 00:00:00';
+
+    $end_date_3 = (new DateTime('last day of this month'))->format("Y-m-d");
+    $end_date_3 .= ' 23:59:59';
+
+    $start_date3 = strtotime($start_date_3);
+    $end_date3 = strtotime($end_date_3);
+
+    $start_date2 = strtotime($start_date_3.' -1 months');
+    $end_date2 = strtotime($end_date_3.' -1 months');
+    if(date('m',$start_date2) != date('m',$end_date2))
+    {
+      $end_date2 = strtotime(date('Y-m-d, H:i:s',$end_date2).' -1 days');
+    }
+
+    $start_date1 = strtotime($start_date_3.' -2 months');
+    $end_date1 = strtotime($end_date_3.' -2 months');
+    if(date('m',$start_date1) != date('m',$end_date1))
+    {
+      $end_date1 = strtotime(date('Y-m-d, H:i:s',$end_date1).' -1 days');
+    }
+
+
+    $monthName3 = date('M',$start_date3);
+    $monthName2 = date('M',$start_date2);
+    $monthName1 = date('M',$start_date1);
+
+    $months = array($monthName1,$monthName2,$monthName3);
+
+    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
+
+    $start_date2 = date('Y-m-d, H:i:s',$start_date2);
+    $end_date2 = date('Y-m-d, H:i:s',$end_date2);
+
+    $start_date1 = date('Y-m-d, H:i:s',$start_date1);
+    $end_date1 = date('Y-m-d, H:i:s',$end_date1);
+
+    $in_play1 = get_objectives_in_play($user_id, $start_date1, $end_date1);
+    $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
+    $in_play3 = get_objectives_in_play($user_id, $start_date3, $end_date3);
+
+    $count_in_play_candidate1 = count($in_play1[$user_id]['new_candidates']);
+    $count_in_play_candidate2 = count($in_play2[$user_id]['new_candidates']);
+    $count_in_play_candidate3 = count($in_play3[$user_id]['new_candidates']);
+
+    $candidate_in_plays = array($count_in_play_candidate1,$count_in_play_candidate2,$count_in_play_candidate3);
+
+    $table = create_new_candidate_table($user_short_name,$months,$candidate_in_plays);
 
     return $table;
   }
 
   function get_new_positions_in_play($user_id)
   {
+    $user_information = getUserInformaiton($user_id);
+    $user_short_name = $user_information['id'];
 
-    $table = create_new_position_table();
+    $start_date_3 = (new DateTime('first day of this month'))->format("Y-m-d");
+    $start_date_3.= ' 00:00:00';
+
+    $end_date_3 = (new DateTime('last day of this month'))->format("Y-m-d");
+    $end_date_3 .= ' 23:59:59';
+
+    $start_date3 = strtotime($start_date_3);
+    $end_date3 = strtotime($end_date_3);
+
+    $start_date2 = strtotime($start_date_3.' -1 months');
+    $end_date2 = strtotime($end_date_3.' -1 months');
+    if(date('m',$start_date2) != date('m',$end_date2))
+    {
+      $end_date2 = strtotime(date('Y-m-d, H:i:s',$end_date2).' -1 days');
+    }
+
+    $start_date1 = strtotime($start_date_3.' -2 months');
+    $end_date1 = strtotime($end_date_3.' -2 months');
+    if(date('m',$start_date1) != date('m',$end_date1))
+    {
+      $end_date1 = strtotime(date('Y-m-d, H:i:s',$end_date1).' -1 days');
+    }
+
+
+    $monthName3 = date('M',$start_date3);
+    $monthName2 = date('M',$start_date2);
+    $monthName1 = date('M',$start_date1);
+
+    $months = array($monthName1,$monthName2,$monthName3);
+
+    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
+
+    $start_date2 = date('Y-m-d, H:i:s',$start_date2);
+    $end_date2 = date('Y-m-d, H:i:s',$end_date2);
+
+    $start_date1 = date('Y-m-d, H:i:s',$start_date1);
+    $end_date1 = date('Y-m-d, H:i:s',$end_date1);
+
+    $in_play1 = get_objectives_in_play($user_id, $start_date1, $end_date1);
+    $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
+    $in_play3 = get_objectives_in_play($user_id, $start_date3, $end_date3);
+
+    $count_in_play_candidate1 = count($in_play1[$user_id]['new_positions']);
+    $count_in_play_candidate2 = count($in_play2[$user_id]['new_positions']);
+    $count_in_play_candidate3 = count($in_play3[$user_id]['new_positions']);
+
+    $positions_in_plays = array($count_in_play_candidate1,$count_in_play_candidate2,$count_in_play_candidate3);
+
+    $table = create_new_position_table($user_short_name,$months,$positions_in_plays);
 
     return $table;
   }
