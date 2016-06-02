@@ -1830,11 +1830,8 @@ exit;*/
   function create_new_candidate_table($user_short_name,$months,$candidate_in_plays)
   {
     $h1 = 6*(int)$candidate_in_plays[0];
-    $h1 = $h1.'px;';
     $h2 = 6*(int)$candidate_in_plays[1];
-    $h2 = $h2.'px;';
     $h3 = 6*(int)$candidate_in_plays[2];
-    $h3 = $h3.'px;';
 
     $table = "
 
