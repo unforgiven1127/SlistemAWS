@@ -1872,20 +1872,6 @@ exit;*/
                         <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
                         <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
-                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
-                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
-                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='22.5' y='32.5' width='42' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
-                        <rect x='109.5' y='84.5' width='42' height='14' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
-                        <rect x='109.5' y='84.5' width='42' height='16' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
-                        <rect x='109.5' y='84.5' width='42' height='18' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='109.5' y='84.5' width='42' height='19' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
-                        <rect x='196.5' y='65.5' width='42' height='40' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
-                        <rect x='196.5' y='65.5' width='42' height='42' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
-                        <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
-                    </g>
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
                     <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
@@ -1923,7 +1909,7 @@ exit;*/
                             </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>Met - ".$user_short_name."</tspan>
+                                    <tspan>".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
@@ -2039,7 +2025,7 @@ exit;*/
                             </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>Met - ".$user_short_name."</tspan>
+                                    <tspan>".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
