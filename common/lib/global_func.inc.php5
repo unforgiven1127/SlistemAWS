@@ -2268,7 +2268,7 @@ exit;*/
             type: 'column',
             name: 'Met - ".$user_short_name."',
             stack: '".$user_short_name."',
-            data: [".$positions_in_plays[0].",".$positions_in_plays[1].",".$positions_in_plays[2]."],
+            data: [99,".$positions_in_plays[1].",".$positions_in_plays[2]."],
             color: '#2073CC' ,
             dataLabels:
             {
