@@ -2029,12 +2029,7 @@ exit;*/
                 data: [7,7,7],
                 dashStyle: 'ShortDash'
             },
-            {
-            type: 'column',
-            name: 'Not met',
-            stack: '".$user_short_name."',
-            data: [0,0,0],
-            color: '#FF2224' },
+
             {
             type: 'column',
             name: 'Met - ".$user_short_name."',
@@ -2260,12 +2255,7 @@ exit;*/
                 data: [5,5,5],
                 dashStyle: 'ShortDash'
             },
-            {
-            type: 'column',
-            name: 'Not met',
-            stack: '".$user_short_name."',
-            data: [0,0,0],
-            color: '#FF2224' },
+
             {
             type: 'column',
             name: 'Met - ".$user_short_name."',
