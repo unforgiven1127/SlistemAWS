@@ -1857,7 +1857,7 @@ function create_new_candidate_table($user_short_name,$months,$candidate_in_plays
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
                 </g>
                 <g class='highcharts-axis' zIndex='2'>
-                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>New candidates in play</text>
                 </g>
                 <g class='highcharts-series-group' zIndex='3'>
                     <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
@@ -2088,7 +2088,7 @@ function create_new_candidate_table($user_short_name,$months,$candidate_in_plays
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
                 </g>
                 <g class='highcharts-axis' zIndex='2'>
-                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>New positions in play</text>
                 </g>
                 <g class='highcharts-series-group' zIndex='3'>
                     <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
