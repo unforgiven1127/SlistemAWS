@@ -15,11 +15,11 @@ $tmpDir = __DIR__."/test/";
 // username for MySQL
 $user = "slistem";
 // password for MySQL
-$password = "7088762";
+$password = "smwXN2RTDm6Zz3hR";
 // database name to backup
 $dbName = "slistem";
 // hostname or IP where database resides
-$dbHost = "localhost";
+$dbHost = "127.0.0.1";
 // the zip file will have this prefix
 $prefix = "sql_db_";
 
@@ -57,5 +57,7 @@ fclose($f);
 // Delete the temporary files
 unlink($sqlFile);
 unlink($backupFile);
+
+echo 'Backup uploaded successfully';
 
 ?>
