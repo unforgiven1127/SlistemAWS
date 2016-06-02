@@ -476,9 +476,11 @@ Reminder linked to item', '2013-10-05 08:00:00');
     $objectives = get_objectives($pnUserPk);
     //$sMet = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_met.html');
     $sMet = get_meetings($pnUserPk);
-    $sPlay = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_play.html');
+    $sPlay = get_new_candidates_in_play($pnUserPk);
+    //$sPlay = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_play.html');
     $sCandidate = '';
-    $sPosition = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_position.html');
+    //$sPosition = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_position.html');
+    $sPosition = get_new_positions_in_play($pnUserPk);
     $sPipeline = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_pipeline.html');
 
 
