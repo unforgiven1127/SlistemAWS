@@ -1529,7 +1529,7 @@ echo '<br><br>';*/
         $user = $temp['pl_created_by'];
       }
 
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] != 1)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['meeting_done'] == 1 && $temp['pl_status'] >= 51 && $temp['pl_active'] == 0 && $diff < 180)
       {
         if(isset($new_in_play_info[$user]['new_candidates']))
         {
@@ -1611,7 +1611,7 @@ var_dump($query);*/
         $user = $temp['pl_created_by'];
       }
 
-      if($user_id == $user && $temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['min_date_position'] == $temp['sl_position_linkpk'] && $temp['pl_status'] == 51 && $temp['pl_active'] == 0 && $diff < 180)
       {
         if(isset($new_in_play_info[$user]['new_positions']))
         {
