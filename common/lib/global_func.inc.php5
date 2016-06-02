@@ -1921,12 +1921,7 @@ exit;*/
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
-                            <g class='highchartsc-legend-item' zIndex='1' transform='translate(8,17)'>
-                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>Not met</tspan>
-                                </text>
-                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
-                            </g>
+
                             <g class='highchartsc-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Met - ".$user_short_name."</tspan>
@@ -2157,12 +2152,7 @@ exit;*/
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
-                            <g class='highchartsc-legend-item' zIndex='1' transform='translate(8,17)'>
-                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>Not met</tspan>
-                                </text>
-                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
-                            </g>
+
                             <g class='highchartsc-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
                                     <tspan>Met - ".$user_short_name."</tspan>
