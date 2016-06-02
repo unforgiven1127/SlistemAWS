@@ -1831,13 +1831,13 @@ exit;*/
   {
     $table = "
 
-      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidateInPlay' data-highcharts-chart='0'>
-        <div class='highcharts-container' id='highcharts-0-mainPageNewCandidateInPlay' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
+      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidates' data-highcharts-chart='0'>
+        <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
             <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
                 xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
                 <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
                 <defs>
-                    <clipPath id='highcharts-1-mainPageNewCandidateInPlay'>
+                    <clipPath id='highcharts-1'>
                         <rect x='0' y='0' width='262' height='194'/>
                     </clipPath>
                 </defs>
@@ -1860,7 +1860,7 @@ exit;*/
                     <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
                 </g>
                 <g class='highcharts-series-group' zIndex='3'>
-                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
+                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -1872,8 +1872,22 @@ exit;*/
                         <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
                         <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='84.5' width='42' height='14' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='16' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='18' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='19' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='196.5' y='65.5' width='42' height='40' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='42' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                    </g>
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -1890,13 +1904,13 @@ exit;*/
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
                 <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[0]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
                     </g>
                     <g zIndex='1' transform='translate(122,104)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[1]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>14</text>
                     </g>
                     <g zIndex='1' transform='translate(209,111)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$candidate_in_plays[2]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
                     </g>
                 </g>
                 <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
@@ -1907,9 +1921,15 @@ exit;*/
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
+                                    <tspan>Not met</tspan>
+                                </text>
+                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
+                            </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>".$user_short_name."</tspan>
+                                    <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
@@ -1917,15 +1937,15 @@ exit;*/
                     </g>
                 </g>
                 <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
-                    <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[0]."</text>
-                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[1]."</text>
-                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[2]."</text>
+                    <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
+                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
+                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
                 </g>
                 <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>3</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>6</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>9</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>10</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>20</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>30</text>
                 </g>
                 <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)'/>
@@ -1937,6 +1957,100 @@ exit;*/
             </svg>
         </div>
     </div>
+    <script>
+        $(function ()
+        {
+          $('#mainPageNewCandidates').highcharts(
+          {
+            chart:
+            {
+              events :
+              {
+                load : edgeExtend,
+                redraw : edgeExtend
+              }
+            },
+            title: {
+                text: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            plotOptions:
+            {
+              column:
+              {
+                stacking: 'normal'
+              },
+              area:
+              {
+                marker:
+                {
+                  enabled: false,
+                  symbol: 'circle',
+                  radius: 1,
+                  states: {
+                      hover: {
+                          enabled: true
+                      }
+                  }
+                },
+                fillColor:
+                {
+                  linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                  stops:
+                  [
+                    [0, '#FFF6E5'],
+                    [1, '#FFEECE']
+                  ]
+                },
+                fillOpacity: 0.5,
+                lineWidth: 0,
+                shadow: false,
+                threshold: null
+              }
+            },
+            xAxis: {
+              categories: ['".$months[0]."','".$months[1]."','".$months[2]."']
+            },
+            yAxis:
+             {
+                title:
+                {
+                  text: 'Meetings'
+                },
+             },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' meeting(s)'
+            },
+            series: [{
+                type: 'line',
+                color: '#000',
+                name: 'Target',
+                data: [27,27,27],
+                dashStyle: 'ShortDash'
+            },
+            {
+            type: 'column',
+            name: 'Met - ".$user_short_name."',
+            stack: '".$user_short_name."',
+            data: [".$positions_in_plays[0].",".$positions_in_plays[1].",".$positions_in_plays[2]."],
+            color: '#2073CC' ,
+            dataLabels:
+            {
+              enabled: true,
+              rotation: 0,
+              color: '#FFFFFF',
+              align: 'center',
+              verticalAlign: 'top'
+            }},]
+          });
+        });
+      </script>
 
     ";
 
@@ -1947,13 +2061,13 @@ exit;*/
   {
     $table = "
 
-      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidateInPlay' data-highcharts-chart='0'>
-        <div class='highcharts-container' id='highcharts-0-mainPageNewCandidateInPlay' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
+      <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewPositions' data-highcharts-chart='0'>
+        <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
             <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
                 xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
                 <desc>Created with Highcharts 4.0.3 /Highstock 2.0.3</desc>
                 <defs>
-                    <clipPath id='highcharts-1-mainPageNewCandidateInPlay'>
+                    <clipPath id='highcharts-1'>
                         <rect x='0' y='0' width='262' height='194'/>
                     </clipPath>
                 </defs>
@@ -1976,7 +2090,7 @@ exit;*/
                     <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highcharts-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
                 </g>
                 <g class='highcharts-series-group' zIndex='3'>
-                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
+                    <g class='highcharts-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highcharts-1)'>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='5' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='3' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <path fill='none' d='M 43.666666666666664 19.400000000000006 L 131 19.400000000000006 L 218.33333333333331 19.400000000000006' stroke='black' stroke-width='1' zIndex='1' stroke-dasharray='6,2' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -1988,8 +2102,22 @@ exit;*/
                         <path fill='#000' d='M 131 15.400000000000006 C 136.328 15.400000000000006 136.328 23.400000000000006 131 23.400000000000006 C 125.672 23.400000000000006 125.672 15.400000000000006 131 15.400000000000006 Z'/>
                         <path fill='#000' d='M 43 15.400000000000006 C 48.328 15.400000000000006 48.328 23.400000000000006 43 23.400000000000006 C 37.672 23.400000000000006 37.672 15.400000000000006 43 15.400000000000006 Z'/>
                     </g>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='0' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='84.5' width='42' height='14' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='16' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='18' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='109.5' y='84.5' width='42' height='19' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='196.5' y='65.5' width='42' height='40' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='42' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='44' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
+                        <rect x='196.5' y='65.5' width='42' height='45' fill='#FF2224' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                    </g>
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/>
-                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1-mainPageNewCandidateInPlay)'>
+                    <g class='highcharts-series highcharts-tracker' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' style='' clip-path='url(#highcharts-1)'>
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
@@ -2006,13 +2134,13 @@ exit;*/
                     <g class='highcharts-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
                 <g class='highcharts-data-labels highcharts-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
                     <g zIndex='1' transform='translate(35,33)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[0]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>25</text>
                     </g>
                     <g zIndex='1' transform='translate(122,104)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[1]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>14</text>
                     </g>
                     <g zIndex='1' transform='translate(209,111)' style='cursor:default;'>
-                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>".$positions_in_plays[2]."</text>
+                        <text x='3' zIndex='1' style='font-size:11px;color:#FFFFFF;fill:#FFFFFF;' y='15'>13</text>
                     </g>
                 </g>
                 <g class='highcharts-legend' zIndex='7' transform='translate(343,95)'>
@@ -2023,9 +2151,15 @@ exit;*/
                                 <path fill='#000' d='M 8 7 C 13.328 7 13.328 15 8 15 C 2.6719999999999997 15 2.6719999999999997 7 8 7 Z'/>
                                 <text x='21' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2' y='15'>Target</text>
                             </g>
+                            <g class='highcharts-legend-item' zIndex='1' transform='translate(8,17)'>
+                                <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
+                                    <tspan>Not met</tspan>
+                                </text>
+                                <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#FF2224'/>
+                            </g>
                             <g class='highcharts-legend-item' zIndex='1' transform='translate(8,31)'>
                                 <text x='21' y='15' style='color:#333333;font-size:12px;font-weight:bold;cursor:pointer;fill:#333333;' text-anchor='start' zIndex='2'>
-                                    <tspan>".$user_short_name."</tspan>
+                                    <tspan>Met - ".$user_short_name."</tspan>
                                 </text>
                                 <rect x='0' y='4' width='16' height='12' zIndex='3' fill='#2073CC'/>
                             </g>
@@ -2033,15 +2167,15 @@ exit;*/
                     </g>
                 </g>
                 <g class='highcharts-axis-labels highcharts-xaxis-labels' zIndex='7'>
-                    <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[0]."</text>
-                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[1]."</text>
-                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>".$months[2]."</text>
+                    <text x='104.66666666666666' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Mar</text>
+                    <text x='192' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>Apr</text>
+                    <text x='279.3333333333333' text-anchor='middle' style='width:67px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='224' opacity='1'>May</text>
                 </g>
                 <g class='highcharts-axis-labels highcharts-yaxis-labels' zIndex='7'>
                     <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='209.5' opacity='1'>0</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>3</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>6</text>
-                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>9</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='144.83333333333331' opacity='1'>10</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='80.16666666666666' opacity='1'>20</text>
+                    <text x='46' text-anchor='end' style='width:129px;color:#606060;cursor:default;font-size:11px;fill:#606060;' y='15.5' opacity='1'>30</text>
                 </g>
                 <g class='highcharts-tooltip' zIndex='8' style='cursor:default;padding:0;white-space:nowrap;' transform='translate(0,-9999)'>
                     <path fill='none' d='M 3 0 L 13 0 C 16 0 16 0 16 3 L 16 13 C 16 16 16 16 13 16 L 3 16 C 0 16 0 16 0 13 L 0 3 C 0 0 0 0 3 0' isShadow='true' stroke='black' stroke-opacity='0.049999999999999996' stroke-width='5' transform='translate(1, 1)'/>
@@ -2053,6 +2187,100 @@ exit;*/
             </svg>
         </div>
     </div>
+    <script>
+        $(function ()
+        {
+          $('#mainPageNewPositions').highcharts(
+          {
+            chart:
+            {
+              events :
+              {
+                load : edgeExtend,
+                redraw : edgeExtend
+              }
+            },
+            title: {
+                text: ''
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            plotOptions:
+            {
+              column:
+              {
+                stacking: 'normal'
+              },
+              area:
+              {
+                marker:
+                {
+                  enabled: false,
+                  symbol: 'circle',
+                  radius: 1,
+                  states: {
+                      hover: {
+                          enabled: true
+                      }
+                  }
+                },
+                fillColor:
+                {
+                  linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+                  stops:
+                  [
+                    [0, '#FFF6E5'],
+                    [1, '#FFEECE']
+                  ]
+                },
+                fillOpacity: 0.5,
+                lineWidth: 0,
+                shadow: false,
+                threshold: null
+              }
+            },
+            xAxis: {
+              categories: ['".$months[0]."','".$months[1]."','".$months[2]."']
+            },
+            yAxis:
+             {
+                title:
+                {
+                  text: 'Meetings'
+                },
+             },
+            tooltip: {
+                shared: true,
+                valueSuffix: ' meeting(s)'
+            },
+            series: [{
+                type: 'line',
+                color: '#000',
+                name: 'Target',
+                data: [27,27,27],
+                dashStyle: 'ShortDash'
+            },
+            {
+            type: 'column',
+            name: 'Met - ".$user_short_name."',
+            stack: '".$user_short_name."',
+            data: [".$positions_in_plays[0].",".$positions_in_plays[1].",".$positions_in_plays[2]."],
+            color: '#2073CC' ,
+            dataLabels:
+            {
+              enabled: true,
+              rotation: 0,
+              color: '#FFFFFF',
+              align: 'center',
+              verticalAlign: 'top'
+            }},]
+          });
+        });
+      </script>
 
     ";
 
