@@ -1960,7 +1960,7 @@ exit;*/
     <script>
         $(function ()
         {
-          $('#mainPagePosition').highchartsc(
+          $('#mainPagePosition').highcharts(
           {
             chart:
             {
