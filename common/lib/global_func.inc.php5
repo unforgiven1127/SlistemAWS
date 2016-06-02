@@ -2261,7 +2261,7 @@ exit;*/
                 type: 'line',
                 color: '#000',
                 name: 'Target',
-                data: [27,27,27],
+                data: [9,9,9],
                 dashStyle: 'ShortDash'
             },
             {
