@@ -2063,7 +2063,7 @@ exit;*/
   {
     $table = "
 
-    <div style='height: 240px; width: 450px;  margin: 0 auto;' id='meetings' data-highcharts-chart='0'>
+    <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageMeetings' data-highcharts-chart='0'>
         <div class='highcharts-container' id='highcharts-0' style='position: relative; overflow: hidden; width: 450px; height: 240px; text-align: left; line-height: normal; z-index: 0; left: 0px; top: 0px;'>
             <svg version='1.1' style='font-family:&quot;Lucida Grande&quot;, &quot;Lucida Sans Unicode&quot;, Arial, Helvetica, sans-serif;font-size:12px;'
                 xmlns='http://www.w3.org/2000/svg' width='450' height='240'>
@@ -2192,7 +2192,7 @@ exit;*/
     <script>
         $(function ()
         {
-          $('#meetings').highcharts(
+          $('#mainPageMeetings').highcharts(
           {
             chart:
             {
@@ -2266,28 +2266,28 @@ exit;*/
                 data: [27,27,27],
                 dashStyle: 'ShortDash'
             },
-          {
+            {
             type: 'column',
             name: 'Not met',
             stack: '".$user_short_name."',
             data: [".$not_mets[0].",".$not_mets[1].",".$not_mets[2]."],
             color: '#FF2224' },
             {
-                type: 'column',
-                name: 'Met - ".$user_short_name."',
-                stack: '".$user_short_name."',
-                data: [".$monthly_new_candidate_met[0].",".$monthly_new_candidate_met[1].",".$monthly_new_candidate_met[2]."],
-                color: '#2073CC' ,
-          dataLabels:
-          {
-            enabled: true,
-            rotation: 0,
-            color: '#FFFFFF',
-            align: 'center',
-            verticalAlign: 'top'
-          }},]
+            type: 'column',
+            name: 'Met - ".$user_short_name."',
+            stack: '".$user_short_name."',
+            data: [".$monthly_new_candidate_met[0].",".$monthly_new_candidate_met[1].",".$monthly_new_candidate_met[2]."],
+            color: '#2073CC' ,
+            dataLabels:
+            {
+              enabled: true,
+              rotation: 0,
+              color: '#FFFFFF',
+              align: 'center',
+              verticalAlign: 'top'
+            }},]
+          });
         });
-      });
       </script>
     ";
 
