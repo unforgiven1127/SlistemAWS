@@ -2241,7 +2241,7 @@ exit;*/
              {
                 title:
                 {
-                  text: 'Meetings'
+                  text: 'New Positions In Play'
                 },
              },
             tooltip: {
