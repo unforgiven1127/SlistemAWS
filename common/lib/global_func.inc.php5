@@ -2034,12 +2034,6 @@ exit;*/
             },
             {
             type: 'column',
-            name: '',
-            stack: '".$user_short_name."',
-            data: [0,0,0],
-            color: '#FF2224' },
-            {
-            type: 'column',
             name: '".$user_short_name."',
             stack: '".$user_short_name."',
             data: [".$positions_in_plays[0].",".$positions_in_plays[1].",".$positions_in_plays[2]."],
