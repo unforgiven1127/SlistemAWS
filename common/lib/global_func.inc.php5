@@ -1857,7 +1857,7 @@ exit;*/
                     <path fill='none' d='M 61 204.5 L 323 204.5' stroke='#C0D0E0' stroke-width='1' zIndex='7' visibility='visible'/>
                 </g>
                 <g class='highchartsc-axis' zIndex='2'>
-                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highchartsc-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>New Candidates In Play</text>
+                    <text x='24' zIndex='7' text-anchor='middle' transform='translate(0,0) rotate(270 24 107)' class=' highchartsc-yaxis-title' style='color:#707070;fill:#707070;' visibility='visible' y='107'>Meetings</text>
                 </g>
                 <g class='highchartsc-series-group' zIndex='3'>
                     <g class='highchartsc-series' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='url(#highchartsc-1)'>
@@ -2015,7 +2015,7 @@ exit;*/
              {
                 title:
                 {
-                  text: 'Meetings'
+                  text: 'New Candidates In Play'
                 },
              },
             tooltip: {
