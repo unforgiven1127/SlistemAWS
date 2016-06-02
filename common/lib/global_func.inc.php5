@@ -1829,10 +1829,6 @@ exit;*/
 
   function create_new_candidate_table($user_short_name,$months,$candidate_in_plays)
   {
-    $h1 = 6*(int)$candidate_in_plays[0];
-    $h2 = 6*(int)$candidate_in_plays[1];
-    $h3 = 6*(int)$candidate_in_plays[2];
-
     $table = "
 
       <div style='height: 240px; width: 450px;  margin: 0 auto;' id='mainPageNewCandidates' data-highchartsNewCandidate-chart='0'>
@@ -1895,15 +1891,15 @@ exit;*/
                         <rect x='22.5' y='32.5' width='42' height='157' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='159' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='22.5' y='32.5' width='42' height='161' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='22.5' y='32.5' width='42' height='".$h1."' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
-                        <rect x='109.5' y='103.5' width='42' height='".$h1."' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
+                        <rect x='22.5' y='32.5' width='42' height='162' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='103.5' width='42' height='86' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='109.5' y='103.5' width='42' height='88' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='109.5' y='103.5' width='42' height='90' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='109.5' y='103.5' width='42' height='".$h2."' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='109.5' y='103.5' width='42' height='91' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                         <rect x='196.5' y='110.5' width='42' height='79' fill='none' rx='0' ry='0' stroke='black' stroke-width='5' isShadow='true' stroke-opacity='0.049999999999999996' transform='translate(1, 1)'/>
                         <rect x='196.5' y='110.5' width='42' height='81' fill='none' rx='0' ry='0' stroke='black' stroke-width='3' isShadow='true' stroke-opacity='0.09999999999999999' transform='translate(1, 1)'/>
                         <rect x='196.5' y='110.5' width='42' height='83' fill='none' rx='0' ry='0' stroke='black' stroke-width='1' isShadow='true' stroke-opacity='0.15' transform='translate(1, 1)'/>
-                        <rect x='196.5' y='110.5' width='42' height='".$h3."' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
+                        <rect x='196.5' y='110.5' width='42' height='84' fill='#2073CC' rx='0' ry='0' stroke='#FFFFFF' stroke-width='1'/>
                     </g>
                     <g class='highchartsNewCandidate-markers' visibility='visible' zIndex='0.1' transform='translate(61,10) scale(1 1)' clip-path='none'/></g>
                 <g class='highchartsNewCandidate-data-labels highchartsNewCandidate-tracker' visibility='visible' zIndex='6' transform='translate(61,10) scale(1 1)' opacity='1' style=''>
@@ -2265,14 +2261,14 @@ exit;*/
                 type: 'line',
                 color: '#000',
                 name: 'Target',
-                data: [9,9,9],
+                data: [27,27,27],
                 dashStyle: 'ShortDash'
             },
             {
             type: 'column',
             name: 'Met - ".$user_short_name."',
             stack: '".$user_short_name."',
-            data: [99,".$positions_in_plays[1].",".$positions_in_plays[2]."],
+            data: [".$positions_in_plays[0].",".$positions_in_plays[1].",".$positions_in_plays[2]."],
             color: '#2073CC' ,
             dataLabels:
             {
