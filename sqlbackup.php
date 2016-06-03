@@ -21,7 +21,7 @@ $dbName = "slistem";
 // hostname or IP where database resides
 $dbHost = "127.0.0.1";
 // the zip file will have this prefix
-$prefix = "sql_db_";
+$prefix = "sql_db";
 
 // Create the database backup file
 $sqlFile = $tmpDir.$prefix.date('Y_m_d_h:i:s').".sql";
