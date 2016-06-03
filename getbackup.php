@@ -1,6 +1,6 @@
 <?php
 
-ini_set('max_execution_time', 0);
+ini_set('max_execution_time', 10000);
 require_once './common/lib/dropbox-sdk/lib/Dropbox/autoload.php';;
 use \Dropbox as dbx;
 
@@ -30,7 +30,7 @@ if ($metadata === null) {
     die;
 }
 
-$deleted = $client->getFile($dropboxPath);
+$deleted = $client->delete($dropboxPath);
 
 echo "Backup downloaded successfully ".date('Y-m-d h:i:s')." <br><br> Metadata: ";
 print_r($metadata);
