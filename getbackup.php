@@ -1,7 +1,10 @@
 <?php
 
+ini_set('max_execution_time', 0);
 require_once './common/lib/dropbox-sdk/lib/Dropbox/autoload.php';;
 use \Dropbox as dbx;
+
+echo 'Download started '.date('Y-m-d h:i:s')."<br><br>";
 
 $accessToken = 'ONKIZcLnUBAAAAAAAAAAB8z48X7hn2KiBDLh8HM7xfszzyuIdOovFX0Y5yKONq6K';
 
@@ -9,7 +12,7 @@ $accessToken = 'ONKIZcLnUBAAAAAAAAAAB8z48X7hn2KiBDLh8HM7xfszzyuIdOovFX0Y5yKONq6K
 /* @var string $dropboxPath */
 /* @var string $localPath */
 
-$dropboxPath = "/SQL_Backup.zip";
+$dropboxPath = "/SQL_Backup/sql_db.tgz";
 $localPath = "/web/backup/SQL_Backup_".date("Y-m-d-His");
 
 $pathError = dbx\Path::findErrorNonRoot($dropboxPath);
@@ -27,7 +30,9 @@ if ($metadata === null) {
     die;
 }
 
-echo "Backup downloaded successfully <br><br> Metadata: ";
+$deleted = $client->getFile($dropboxPath);
+
+echo "Backup downloaded successfully ".date('Y-m-d h:i:s')." <br><br> Metadata: ";
 print_r($metadata);
 echo "<br><br>";
 echo "File contents written to \"$localPath\"\n";
