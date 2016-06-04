@@ -12,7 +12,7 @@ $accessToken = 'ONKIZcLnUBAAAAAAAAAAB8z48X7hn2KiBDLh8HM7xfszzyuIdOovFX0Y5yKONq6K
 /* @var string $dropboxPath */
 /* @var string $localPath */
 
-$dropboxPath = "/SQL_Backup/sql_db.zip";
+$dropboxPath = "/SQL_Backup/sql_db.tgz";
 $localPath = "/web/backup/SQL_Backup_".date("Y-m-d-His");
 
 $pathError = dbx\Path::findErrorNonRoot($dropboxPath);

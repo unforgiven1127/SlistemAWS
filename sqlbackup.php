@@ -25,7 +25,7 @@ $prefix = "sql_db";
 
 // Create the database backup file
 $sqlFile = $tmpDir.$prefix.date('Y_m_d_h:i:s').".sql";
-$backupFilename = $prefix.".zip";
+$backupFilename = $prefix.".tgz";
 $backupFile = $tmpDir.$backupFilename;
 
 $createBackup = "mysqldump -h ".$dbHost." -u ".$user." --password='".$password."' ".$dbName." --> ".$sqlFile;
