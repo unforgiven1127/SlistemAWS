@@ -7051,7 +7051,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('input', 'cp_type', array('type' => 'hidden', 'value' => getValue('cp_type')));
       $oForm->addField('input', 'cp_pk', array('type' => 'hidden', 'value' => getValue('cp_pk')));
 
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a Resume'));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a resume'));
       $oForm->addField('misc', '', array('type' => 'br'));
 
 
