@@ -151,7 +151,7 @@ class CSl_candidateEx extends CSl_candidate
     $this->_processUrl();
     $oPage = CDependency::getCpPage();
 
-ChromePhp::log($this->csAction);
+//ChromePhp::log($this->csAction);
 
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
@@ -1517,7 +1517,7 @@ ChromePhp::log($this->csAction);
                   </tr>
                 </table>";
 
-ChromePhp::log($sURL);
+//ChromePhp::log($sURL);
 
       if($bRead)
       {
@@ -2721,7 +2721,7 @@ $flag = strpos($test, $control);
 
         if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null)
         {
-          ChromePhp::log($sSortField);
+//          ChromePhp::log($sSortField);
           if($sSortField == "sl_candidatepk")
           {
             $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
@@ -4955,7 +4955,7 @@ ChromePhp::log($sQuery);
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 //$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
-ChromePhp::log("test");
+//ChromePhp::log("test");
       $newArea = 1;
       $nCount = 0;
       if($page_type == "edit")
@@ -5174,7 +5174,7 @@ ChromePhp::log("test");
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-ChromePhp::log($_POST['sl_contactpk']);
+//ChromePhp::log($_POST['sl_contactpk']);
 
       $edit_flag = true;
       foreach ($_POST['sl_contactpk'] as $key => $value) {
@@ -5184,7 +5184,7 @@ ChromePhp::log($_POST['sl_contactpk']);
         }
       }
 
-ChromePhp::log($edit_flag);
+//ChromePhp::log($edit_flag);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
@@ -7129,7 +7129,10 @@ die();*/
       $asError = array();
 
       if(empty($_FILES) || empty($_FILES['document']['name']))
+      {
+        ChromePhp::log('No file selected');
         return array();
+      }
 
       if($pbTest)
       {

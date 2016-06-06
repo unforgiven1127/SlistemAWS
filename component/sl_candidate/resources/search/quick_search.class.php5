@@ -47,7 +47,7 @@ class CQuickSearch
 
   public function _buildCandidateQuickSearch($pbStrict = true)
   {
-    ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya
+//    ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya
     if($pbStrict)
       $sOperator = ' AND ';
     else
@@ -113,7 +113,7 @@ class CQuickSearch
       {
         //check if it's a comma separated sting
         $asWords = explode(',', $sCandidate);
-        ChromePhp::log($asWords);
+//        ChromePhp::log($asWords);
         $this->_cleanArray($asWords);
         $nWord = count($asWords);
         if($nWord > 2)

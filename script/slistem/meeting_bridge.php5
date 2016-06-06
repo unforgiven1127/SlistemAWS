@@ -158,8 +158,8 @@ while(!$bError && !$bDone && $nPass < $nMaxPass)
 
   if(!empty($asMyInsert))
   {
-    ChromePhp::log('EKLE');
-    ChromePhp::log($asMyInsert);
+//    ChromePhp::log('EKLE');
+ //   ChromePhp::log($asMyInsert);
     $sMyQuery = 'INSERT INTO `sl_meeting` (date_created, created_by, candidatefk, attendeefk, `type`, date_meeting, meeting_done, date_met)
       VALUES '.implode(' ,', $asMyInsert);
 

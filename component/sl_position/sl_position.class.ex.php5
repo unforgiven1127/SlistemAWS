@@ -1281,7 +1281,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $oShareSpace = CDependency::getComponentByName('sharedspace');
           $asDocument = $oShareSpace->getDocuments(0, $asItem);
 
-          ChromePhp::log($asDocument);
+//          ChromePhp::log($asDocument);
 
           if(empty($asDocument))
             return array('error' => __LINE__.' - There is no resume on this candidate profile. Please upload the resume before adding the candidate to the position.
@@ -1331,10 +1331,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $bUpdate = $this->_getModel()->update($asUpdate, 'sl_position_link', 'positionfk = '.$asCurrentPhase['positionfk'].' AND candidatefk = '.$asCurrentPhase['candidatefk']);
 
           $date_completed = date('Y-m-d H:i:s');
-ChromePhp::log($date_completed);
+//ChromePhp::log($date_completed);
 
           $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
-ChromePhp::log($return);
+//ChromePhp::log($return);
           if(!$bUpdate)
             return array('error' => __LINE__.' - Unable to update the candidate status.');
         }
@@ -1357,7 +1357,7 @@ ChromePhp::log($return);
         // -=- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=-
         //last status is always the one active
         $asData['active'] = 1;
-ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
+//ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
         $nLinkPk = $this->_getModel()->add($asData, 'sl_position_link');
         if(empty($nLinkPk))
           return array('error' => __LINE__.' - Could not link the candidate to the position.');
