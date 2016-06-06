@@ -7762,7 +7762,7 @@ die();*/
       $oForm->addField('input', 'cp_type', array('type' => 'hidden', 'value' => getValue('cp_type')));
       $oForm->addField('input', 'cp_pk', array('type' => 'hidden', 'value' => getValue('cp_pk')));
 
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a Resume'));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a resume'));
       $oForm->addField('misc', '', array('type' => 'br'));
 
 
@@ -7782,6 +7782,7 @@ die();*/
 
     private function _getResumeSaveAdd()
     {
+      ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
       $sTitle = trim(getValue('title'));
       $sContent = purify_html(getValue('content'));
