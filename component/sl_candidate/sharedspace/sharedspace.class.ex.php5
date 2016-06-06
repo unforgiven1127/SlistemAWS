@@ -328,6 +328,7 @@ class CSharedspaceEx extends CSharedspace
    */
   public function getDocuments($pnLoginfk, $pasCpValues)
   {
+    ChromePhp::log('getDocuments');
     if(!assert('is_integer($pnLoginfk) && is_array($pasCpValues)'))
       return array();
 
