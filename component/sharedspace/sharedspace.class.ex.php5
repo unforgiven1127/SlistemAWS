@@ -1636,10 +1636,8 @@ class CSharedspaceEx extends CSharedspace
    * @param array $pasItemLink
    * @return array
    */
-  public function quickAddDocument($pasItemLink, $psTitle, $psDescription = '', $pnVisibility = 0)
+  public function quickAddDocument($pasItemLink, $psTitle, $psDescription = '', $pnVisibility = 0 , $doc_type = '')
   {
-    echo 'adasda';
-    exit;
     if(!assert('!empty($psTitle)'))
       return array( 'error' => __LINE__.' - Missing parameters.');
 
@@ -1659,7 +1657,7 @@ class CSharedspaceEx extends CSharedspace
     $asDoc['refresh_url'] = '';
     $asDoc['notify'] = 0;
     $asDoc['has_cp_link'] = $pasItemLink;
-    $asDoc['doc_type'] = '';
+    $asDoc['doc_type'] = $doc_type;
 
     return $this->_saveDocument(0, false, $asDoc);
   }

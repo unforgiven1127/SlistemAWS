@@ -7151,7 +7151,7 @@ die();*/
 
         $oSharedspace = CDependency::getComponentByName('sharedspace');
         $asItemLink = array(CONST_CP_UID => '555-001', CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, CONST_CP_PK => $pasCandidate['candidatefk']);
-        $asResult = $oSharedspace->quickAddDocument($asItemLink, $sTitle, $sDescription);
+        $asResult = $oSharedspace->quickAddDocument($asItemLink, $sTitle, $sDescription, 0, 'resume');
 
         if(isset($asResult['error']))
           $asError[] = $asResult['error'];
