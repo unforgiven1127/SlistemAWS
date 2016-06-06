@@ -1868,7 +1868,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a Resume</a>';
       $sHTML.= '</div>';
 
       return array('content' => $sHTML, 'nb_result' => $nDocument, 'priority' => $nPriority);
