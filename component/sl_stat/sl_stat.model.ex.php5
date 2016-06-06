@@ -910,6 +910,8 @@ order by m.candidatefk
     $query .= 'FROM revenue ';
     $query .= 'WHERE date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
 
+echo '<br><br><br>TEST'
+
     if (!empty($location))
       $query = ' AND location = "'.$location.'"';
 
