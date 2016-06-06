@@ -1159,7 +1159,7 @@ $flag = 0;
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
-              $revenue_data[$row['user_position']][$user_id]['sort'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100)*10000000;
+              $revenue_data[$row['user_position']][$user_id]['sort_tot'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
             }
             /*else
             {
@@ -1172,7 +1172,7 @@ $flag = 0;
 
       $revenue_data['Researcher']['former']['sort'] = -1000000; // siralamada en altta olmasi icin
 
-      uasort($revenue_data['Consultant'], sort_multi_array_by_value('sort', 'reverse'));
+      uasort($revenue_data['Consultant'], sort_multi_array_by_value('sort_tot', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
       /*foreach ($revenue_data['Researcher'] as $key => $value)
