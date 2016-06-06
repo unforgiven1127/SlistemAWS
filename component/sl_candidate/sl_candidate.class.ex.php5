@@ -7125,6 +7125,7 @@ die();*/
 
     private function _saveResume($pbTest = true, $pbSave = false, $pasCandidate = array())
     {
+      ChromePhp::log('_saveResume');
       $asError = array();
 
       if(empty($_FILES) || empty($_FILES['document']['name']))
