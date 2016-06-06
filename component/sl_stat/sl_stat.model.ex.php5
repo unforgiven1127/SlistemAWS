@@ -906,11 +906,10 @@ order by m.candidatefk
     $date_start = $request_date.'-01-01';
     $date_end = $request_date.'-12-31';
 
-    $query = 'SELECT id, amount, location, status, refund_amount, currency, candidate ';
-    $query .= 'FROM revenue ';
-    $query .= 'WHERE date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
-
-echo '<br><br><br>TEST';
+    $query = 'SELECT r.id, r.amount, r.location, r.status, r.refund_amount, r.currency, r.candidate, l.revenue_chart_flag ';
+    $query .= 'FROM revenue r';
+    $query .= 'INNER JOIN login l on l.loginpk = r.closed_by AND l.revenue_chart_flag = a';
+    $query .= 'WHERE r.date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
 
     if (!empty($location))
       $query = ' AND location = "'.$location.'"';
