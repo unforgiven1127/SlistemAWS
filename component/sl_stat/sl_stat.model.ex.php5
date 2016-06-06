@@ -1153,7 +1153,7 @@ $flag = 0;
 
             $revenue_data[$row['user_position']][$user_id]['researcher']['signed'] += $current_revenue_info['amount'] * ($row['percentage'] / 100);
 
-            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['researcher']['signed']*10000000;
+            $revenue_data[$row['user_position']][$user_id]['sort'] += $revenue_data[$row['user_position']][$user_id]['researcher']['signed']*1000000000;
 
             if ($row['status'])
             {
