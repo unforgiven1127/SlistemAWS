@@ -1638,6 +1638,8 @@ class CSharedspaceEx extends CSharedspace
    */
   public function quickAddDocument($pasItemLink, $psTitle, $psDescription = '', $pnVisibility = 0)
   {
+    echo 'adasda';
+    exit;
     if(!assert('!empty($psTitle)'))
       return array( 'error' => __LINE__.' - Missing parameters.');
 
