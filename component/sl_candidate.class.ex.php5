@@ -1868,7 +1868,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a Resume</a>';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
       $sHTML.= '</div>';
 
       return array('content' => $sHTML, 'nb_result' => $nDocument, 'priority' => $nPriority);
@@ -7039,7 +7039,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm = $this->_oDisplay->initForm('resumeAddForm');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_DOC, $nCandidatePk);
 
-      $oForm->setFormParams('addresume', true, array('action' => $sURL, 'class' => 'resumeCreateForm', 'submitLabel'=>'Create a resume'));
+      $oForm->setFormParams('addresume', true, array('action' => $sURL, 'class' => 'resumeCreateForm', 'submitLabel'=>'Create a Resume'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 1));
 
       $oForm->addField('input', 'candidatepk', array('type' => 'hidden','value'=> $nCandidatePk));
