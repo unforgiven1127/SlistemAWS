@@ -7039,7 +7039,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm = $this->_oDisplay->initForm('resumeAddForm');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_DOC, $nCandidatePk);
 
-      $oForm->setFormParams('addresume', true, array('action' => $sURL, 'class' => 'resumeCreateForm', 'submitLabel'=>'Create a Resume'));
+      $oForm->setFormParams('addresume', true, array('action' => $sURL, 'class' => 'resumeCreateForm', 'submitLabel'=>'Create a resume'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, 'columns' => 1));
 
       $oForm->addField('input', 'candidatepk', array('type' => 'hidden','value'=> $nCandidatePk));
@@ -7051,7 +7051,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('input', 'cp_type', array('type' => 'hidden', 'value' => getValue('cp_type')));
       $oForm->addField('input', 'cp_pk', array('type' => 'hidden', 'value' => getValue('cp_pk')));
 
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a resume'));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a Resume'));
       $oForm->addField('misc', '', array('type' => 'br'));
 
 
