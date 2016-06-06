@@ -7782,7 +7782,7 @@ die();*/
 
     private function _getResumeSaveAdd()
     {
-      ChromePhp::log('_getResumeSaveAdd');
+      //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
       $sTitle = trim(getValue('title'));
       $sContent = purify_html(getValue('content'));
