@@ -7762,7 +7762,7 @@ die();*/
       $oForm->addField('input', 'cp_type', array('type' => 'hidden', 'value' => getValue('cp_type')));
       $oForm->addField('input', 'cp_pk', array('type' => 'hidden', 'value' => getValue('cp_pk')));
 
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a resume'));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Create a Resume'));
       $oForm->addField('misc', '', array('type' => 'br'));
 
 
@@ -7774,7 +7774,7 @@ die();*/
 
       $sURL = $this->getResourcePath().'/resume/resume_template.html';
       $sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
-      $oForm->addField('misc', '', array('type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'">Load Template 1</a>'));
+      $oForm->addField('misc', '', array('type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'">Load template 1</a>'));
 
       return $oForm->getDisplay();
     }
