@@ -912,6 +912,7 @@ order by m.candidatefk
     $query .= 'WHERE r.date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
 
 echo "<br><br><br>".$query;
+exit;
 
     if (!empty($location))
       $query = ' AND location = "'.$location.'"';
