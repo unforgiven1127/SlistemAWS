@@ -1412,7 +1412,7 @@ ChromePhp::log($this->csAction);
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-        $sHTML.= '<li><a href="javascript:;" onclick="'.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/create_doc_24.png" title="Create a new resume"/> Create a Resume</a></li>';
+        $sHTML.= '<li><a href="javascript:;" onclick="'.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/create_doc_24.png" title="Create a new resume"/> Create a resume</a></li>';
 
         $sURL = $oPage->getAjaxUrl('555-005', CONST_ACTION_ADD, CONST_POSITION_TYPE_LINK, 0, array('candidatepk' => $pasCandidateData['sl_candidatepk']));
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
@@ -1925,7 +1925,7 @@ ChromePhp::log($sURL);
 
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a Resume</a>';
       $sHTML.= '</div>';
 
 
