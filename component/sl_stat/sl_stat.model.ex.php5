@@ -1054,7 +1054,7 @@ $flag = 0;
         {
           $current_revenue_info = $revenue_data_raw[$row['revenue_id']];
 
-          if (!$row['status'])
+          if (!$row['status'] || $row['revenue_chart_flag'] == "p")
           {
             $user_id = 'former';
             //$row['user_position'] = 'Consultant';
