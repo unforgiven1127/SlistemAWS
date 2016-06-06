@@ -1281,7 +1281,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $oShareSpace = CDependency::getComponentByName('sharedspace');
           $asDocument = $oShareSpace->getDocuments(0, $asItem);
 
-          ChromePhp::log($candidate_info);
+          ChromePhp::log($asDocument);
 
           if(empty($asDocument))
             return array('error' => __LINE__.' - There is no resume on this candidate profile. Please upload the resume before adding the candidate to the position.
