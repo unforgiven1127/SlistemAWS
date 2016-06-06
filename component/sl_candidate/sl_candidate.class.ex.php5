@@ -1925,7 +1925,7 @@ ChromePhp::log($sURL);
 
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_DOC, 0, $asItem);
       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1000; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a Resume</a>';
+      $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">Create a resume</a>';
       $sHTML.= '</div>';
 
 
@@ -7774,7 +7774,7 @@ die();*/
 
       $sURL = $this->getResourcePath().'/resume/resume_template.html';
       $sJavascript = 'var sMceId = $(this).closest(\'form\').find(\'.resume_mce\').attr(\'id\'); loadTinyMce(\''.$sURL.'\', sMceId, true); ';
-      $oForm->addField('misc', '', array('type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'">Load template 1</a>'));
+      $oForm->addField('misc', '', array('type' => 'text', 'text' => '<a href="javascript:;" onclick="'.$sJavascript.'">Load Template 1</a>'));
 
       return $oForm->getDisplay();
     }
