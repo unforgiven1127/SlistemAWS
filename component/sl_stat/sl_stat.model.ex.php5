@@ -911,6 +911,8 @@ order by m.candidatefk
     $query .= 'INNER JOIN login l on l.loginpk = r.closed_by AND l.revenue_chart_flag = a';
     $query .= 'WHERE r.date_due BETWEEN "'.$date_start.'" AND "'.$date_end.'"';
 
+echo "<br><br><br>".$query;
+
     if (!empty($location))
       $query = ' AND location = "'.$location.'"';
 
