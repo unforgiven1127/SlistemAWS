@@ -13,7 +13,12 @@ $accessToken = 'ONKIZcLnUBAAAAAAAAAAB8z48X7hn2KiBDLh8HM7xfszzyuIdOovFX0Y5yKONq6K
 /* @var string $localPath */
 
 $dropboxPath = "/SQL_Backup/sql_db.tgz";
-$localPath = "/web/backup/SQL_Backup_".date("Y-m-d-His");
+$localPath = "/web/backup/SQL_Backup_".date("Y-m-d-His").".tgz";
+
+//mkdir($localPath, 0777);
+//chmod($localPath, 0777);
+
+//sleep(5);
 
 $pathError = dbx\Path::findErrorNonRoot($dropboxPath);
 if ($pathError !== null) {
@@ -24,13 +29,13 @@ if ($pathError !== null) {
 $appInfo = dbx\AppInfo::loadFromJsonFile(__DIR__."/config.json");
 $client = new dbx\Client($accessToken, "SQL_Backup");
 
-$metadata = $client->getFile($dropboxPath, fopen($localPath, "wb"));
+$metadata = $client->getFile($dropboxPath, fopen($localPath,'wb'));
 if ($metadata === null) {
     echo("File not found on Dropbox.\n");
     die;
 }
 
-$deleted = $client->delete($dropboxPath);
+//$deleted = $client->delete($dropboxPath);
 
 echo "Backup downloaded successfully ".date('Y-m-d h:i:s')." <br><br> Metadata: ";
 print_r($metadata);
