@@ -1280,6 +1280,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $asItem = array(CONST_CP_UID => '555-001', CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, CONST_CP_PK => $asData['candidatefk']);
           $oShareSpace = CDependency::getComponentByName('sharedspace');
           $asDocument = $oShareSpace->getDocuments(0, $asItem);
+
+          ChromePhp::log($asDocument);
+
           if(empty($asDocument))
             return array('error' => __LINE__.' - There is no resume on this candidate profile. Please upload the resume before adding the candidate to the position.
               <br /><a href="javascript:;" style="color: red; font-size: inherit;" onclick="$(this).closest(\'.ui-dialog\').find(\'.ui-button\').click(); var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \'/index.php5?uid=999-111&ppa=ppaa&ppt=shdoc&ppk=0&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk='.$asData['candidatefk'].'&callback=refresh_candi&pg=ajx&pclose=1 \'); " >Add a document here</a>');
