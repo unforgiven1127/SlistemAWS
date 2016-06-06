@@ -1171,7 +1171,7 @@ $flag = 0;
 
       $revenue_data['Researcher']['former']['sort'] = -1000000; // siralamada en altta olmasi icin
 
-      uasort($revenue_data['Consultant'], sort_multi_array_by_value('total_amount', 'reverse'));
+      uasort($revenue_data['Consultant'], sort_multi_array_by_value('sort', 'reverse'));
       uasort($revenue_data['Researcher'], sort_multi_array_by_value('sort', 'reverse'));
 
       /*foreach ($revenue_data['Researcher'] as $key => $value)
