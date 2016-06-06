@@ -1111,7 +1111,11 @@ $flag = 0;
 
           }
           if (!isset($revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid']))
+          {
             $revenue_data[$row['user_position']][$user_id][$row['user_position']]['paid'] = $revenue_data[$row['user_position']][$user_id][$row['user_position']]['signed'] = $revenue_data[$row['user_position']][$user_id][$row['user_position']]['total_amount'] = 0;
+
+            $revenue_data[$row['user_position']][$user_id][$row['user_position']]['sort_total'] = 0;
+          }
 
           if (empty($revenue_data[$row['user_position']][$user_id]['team']))
             $revenue_data[$row['user_position']][$user_id]['team'] = $this->get_user_team($user_id);
@@ -1136,6 +1140,8 @@ $flag = 0;
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
+              $revenue_data[$row['user_position']][$user_id]['sort_total'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
+
             }
           }
 
@@ -1159,7 +1165,6 @@ $flag = 0;
             {
               $revenue_data[$row['user_position']][$user_id]['total_amount'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
 
-              $revenue_data[$row['user_position']][$user_id]['sort_tot'] += ($current_revenue_info['amount'] - $current_revenue_info['refund_amount']) * ($row['percentage'] / 100);
             }
             /*else
             {
