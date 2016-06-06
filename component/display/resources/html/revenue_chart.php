@@ -140,7 +140,7 @@
 					}
 						endforeach;
 					?>
-					<?php if($total_consultant_count>0)
+					<?php /*if($total_consultant_count>0)
 					{
 						$flag_url = "/common/pictures/flags/empty.png";
 						$empty_flag = $display_object->getPicture($flag_url);
@@ -157,7 +157,7 @@
 							</tr>
 							";
 						}
-					} ?>
+					} */?>
 					<tr class="revenue_table_footer">
 						<td style="height: 40px; font-size: 150%;" class="text_center" colspan="3">Total</td>
 						<td style="height: 40px; font-size: 150%;" class="text_right">&yen;<?php echo number_format($total_signed_researcher, $decimals, '.', ','); ?></td>
