@@ -7128,6 +7128,9 @@ die();*/
       ChromePhp::log('_saveResume');
       $asError = array();
 
+      $desc = getValue('doc_description');
+
+
       if(empty($_FILES) || empty($_FILES['document']['name']))
       {
         ChromePhp::log('No file selected');
