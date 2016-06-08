@@ -1634,7 +1634,28 @@ class CLoginEx extends CLogin
 
     $this->_oDisplay = CDependency::getCpHtml();
 
+    $lastPositions = $this->_getModel()->getLatestPositions();
+    $firstFive = array();
+    $lastFive = array();
 
+    foreach ($lastPositions as $key => $value)
+    {
+      if($value['length'] > 25)
+      {
+        $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";
+      }
+      if($key < 5)
+      {
+        array_push($firstFive,$lastPositions[$key]);
+      }
+      else
+      {
+        array_push($lastFive,$lastPositions[$key]);
+      }
+    }
+
+    $data["firstFive"] = $firstFive;
+    $data["lastFive"] = $lastFive;
 
     $oHTML = CDependency::getCpHtml();
     $oSetting = CDependency::getComponentByName('settings');
