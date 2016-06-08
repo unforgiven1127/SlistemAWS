@@ -94,5 +94,4 @@ if(isset($_GET['action']) && $_GET['action'] =='gallery')
 
   exit(json_encode(array('data' => $sHtml)));
 }
-?>
 
