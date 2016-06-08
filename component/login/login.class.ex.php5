@@ -1640,6 +1640,8 @@ class CLoginEx extends CLogin
 
     foreach ($lastPositions as $key => $value)
     {
+      $lastPositions[$key]['description'] = nl2br($lastPositions[$key]['description']);
+      $lastPositions[$key]['requirements'] = nl2br($lastPositions[$key]['requirements']);
       if($value['length'] > 25)
       {
         $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";

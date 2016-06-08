@@ -60,7 +60,7 @@ function openExtra(open)
 
       .test {
         font-family: 'Merriweather', serif;
-
+        margin-left: 5px;
 
       }
       .borderlist {
@@ -149,26 +149,26 @@ function openExtra(open)
               </td>
             </tr>
             <tr class="closeAll" style="display: none;"  id=<?php echo "'firstFive_".$i."'" ?> >
-              <th class="extra " id=<?php echo "'firstFive_".$i."_'" ?>  style=" background-color: rgba(138, 40, 40, 0.15);" colspan="2">
-                <p style="font-size: 12pt;" class="test"><b>Company: </b><?php echo $firstFive[$i]['name']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Title: </b><?php echo $firstFive[$i]['long_title']; ?> (#<?php echo $firstFive[$i]['sl_positionpk']; ?>)</p>
-                <p style="font-size: 12pt;" class="test"><b>Salary range: </b>&yen;<?php echo $firstFive[$i]['salary_from']; ?> - &yen;<?php echo $firstFive[$i]['salary_to']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><?php echo $firstFive[$i]['firstname']; ?> <?php echo $firstFive[$i]['lastname']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Description: </b><?php echo $firstFive[$i]['description']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Requirements: </b><?php echo $firstFive[$i]['requirements']; ?></p>
+              <th class="extra " id=<?php echo "'firstFive_".$i."_'" ?>  style=" background-color: rgba(138, 40, 40, 0.08);" colspan="2">
+                <p style="font-size: 12pt;" class="test"><b>Company: </b><i style="color: #424242; font-size:11pt;"><?php echo $firstFive[$i]['name']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Title: </b><i style="color: #424242; font-size:11pt;"><?php echo $firstFive[$i]['long_title']; ?> (#<?php echo $firstFive[$i]['sl_positionpk']; ?>)</i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Salary range: </b><i style="color: #424242; font-size:11pt;">&yen;<?php echo $firstFive[$i]['salary_from']; ?> - &yen;<?php echo $firstFive[$i]['salary_to']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><i style="color: #424242; font-size:11pt;"><?php echo $firstFive[$i]['firstname']; ?> <?php echo $firstFive[$i]['lastname']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Description: </b><i style="color: #424242; font-size:11pt;"><?php echo $firstFive[$i]['description']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Requirements: </b><i style="color: #424242; font-size:11pt;"><?php echo $firstFive[$i]['requirements']; ?></i></p><br>
                 <div style="margin-top: 5px;">
                   <p style="font-size: 11pt; " class="test"><b>Less: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/minus.png" onclick="closeExtra()"></p>
                 </div>
               </th>
             </tr>
             <tr class="closeAll" style="display: none;" id=<?php echo "'lastFive_".$i."'" ?> >
-              <th class="extra " id=<?php echo "'lastFive_".$i."_'" ?>  style=" background-color: rgba(138, 40, 40, 0.15);" colspan="2">
-                <p style="font-size: 12pt;" class="test"><b>Company: </b><?php echo $lastFive[$i]['name']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Title: </b><?php echo $lastFive[$i]['long_title']; ?> (#<?php echo $lastFive[$i]['sl_positionpk']; ?>)</p>
-                <p style="font-size: 12pt;" class="test"><b>Salary range: </b>&yen;<?php echo $lastFive[$i]['salary_from']; ?> - &yen;<?php echo $lastFive[$i]['salary_to']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><?php echo $lastFive[$i]['firstname']; ?> <?php echo $lastFive[$i]['lastname']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Description: </b><?php echo $lastFive[$i]['description']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Requirements: </b><?php echo $lastFive[$i]['requirements']; ?></p>
+              <th class="extra " id=<?php echo "'lastFive_".$i."_'" ?>  style=" background-color: rgba(138, 40, 40, 0.08);" colspan="2">
+                <p style="font-size: 12pt;" class="test"><b>Company: </b><i style="color: #424242; font-size:11pt;"><?php echo $lastFive[$i]['name']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Title: </b><i style="color: #424242; font-size:11pt;"><?php echo $lastFive[$i]['long_title']; ?> (#<?php echo $lastFive[$i]['sl_positionpk']; ?>)</i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Salary range: </b><i style="color: #424242; font-size:11pt;">&yen;<?php echo $lastFive[$i]['salary_from']; ?> - &yen;<?php echo $lastFive[$i]['salary_to']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><i style="color: #424242; font-size:11pt;"><?php echo $lastFive[$i]['firstname']; ?> <?php echo $lastFive[$i]['lastname']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Description: </b><i style="color: #424242; font-size:11pt;"><?php echo $lastFive[$i]['description']; ?></i></p><br>
+                <p style="font-size: 12pt;" class="test"><b>Requirements: </b><i style="color: #424242; font-size:11pt;"><?php echo $lastFive[$i]['requirements']; ?></i></p><br>
                 <div style="margin-top: 5px;">
                   <p style="font-size: 11pt; " class="test"><b>Less: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/minus.png" onclick="closeExtra()"></p>
                 </div>
