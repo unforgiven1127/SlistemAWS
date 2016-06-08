@@ -1670,7 +1670,7 @@ class CLoginEx extends CLogin
     $data["login"] = $sURL;
     $data["lost"] = $sURLPswd;
 
-    $sHTML = $this->_oDisplay->render('new_login',$data);
+    //$sHTML = $this->_oDisplay->render('new_login',$data);
 
     //force redirection for external identification
 
