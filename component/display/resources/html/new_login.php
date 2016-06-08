@@ -104,7 +104,7 @@ function openExtra(open)
     <tr>
       <td valign="middle" align="middle" class="half" style=" width: 50%;">
         <div class="login-form">
-        <form name="loginFormData" enctype="multipart/form-data" submitajax="1" action="https://slistemlocal.com/index.php5?uid=579-704&ppa=ppava&ppt=pswd&ppk=0&pg=ajx" method="POST" id="loginFormDataId" onbeforesubmit onsubmit>
+        <form name="loginFormData" enctype="multipart/form-data" submitajax="1" action="https://beta1.slate.co.jp/index.php5?uid=579-704&ppa=ppava&ppt=pswd&ppk=0&pg=ajx" method="POST" id="loginFormDataId" onbeforesubmit onsubmit>
           <div style="width: 300px;"><center><img style="text-align: center; width: 300px; margin-bottom: 20px;" src="/common/pictures/slate_logo.png" /></center></div>
          <div style="width: 300px;" class="form-group ">
            <input type="text" name="login" class="form-control" placeholder="Username " id="UserName">
@@ -116,7 +116,7 @@ function openExtra(open)
          </div>
          <div style="width: 300px;">
             <span class="alert">Invalid Credentials</span>
-            <a class="link" href="https://slistemlocal.com/index.php5?uid=579-704&ppa=ppares&ppt=pswd&ppk=0">Lost your password?</a>
+            <a class="link" href="https://beta1.slate.co.jp/index.php5?uid=579-704&ppa=ppares&ppt=pswd&ppk=0">Lost your password?</a>
             <button type="submit" class="log-btn" >Log in</button>
          </div>
         </form>
