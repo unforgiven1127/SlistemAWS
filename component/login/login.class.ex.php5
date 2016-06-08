@@ -1654,12 +1654,12 @@ class CLoginEx extends CLogin
       }
     }
 
+    $host = $_SERVER['HTTP_HOST'];
     $data["firstFive"] = $firstFive;
     $data["lastFive"] = $lastFive;
 
+    $host = "https://".$data['host'];
 
-
-    $sHTML = $this->_oDisplay->render('new_login',$data);
 
       //return $html;
 
@@ -1671,6 +1671,12 @@ class CLoginEx extends CLogin
     $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_VALIDATE, CONST_LOGIN_TYPE_PASSWORD);
 
     $sURLPswd = $oPage->getUrl('login', CONST_ACTION_RESET, CONST_LOGIN_TYPE_PASSWORD);
+
+
+    $data["login"] = $sURL;
+    $data["lost"] = $sURLPswd;
+
+    $sHTML = $this->_oDisplay->render('new_login',$data);
 
     //force redirection for external identification
 
