@@ -1746,8 +1746,8 @@ class CLoginEx extends CLogin
         $sHTML.= $asSettings['loginScreenBottom'];
       $sHTML.= $oHTML->getBlocEnd();
 
-var_dump($asSettings['loginScreenTop']);
-exit;
+//var_dump($asSettings['loginScreenTop']);
+//exit;
 
     $sHTML.= $oHTML->getBlocEnd();
 
