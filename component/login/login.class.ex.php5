@@ -1743,7 +1743,7 @@ class CLoginEx extends CLogin
 
       $sHTML.= $oHTML->getBlocStart('', array('class' => 'loginScreenContent loginScreenBottom'));
       if(!empty($asSettings['loginScreenBottom']))
-        $sHTML.= $asSettings['loginScreenTop'];
+        $sHTML.= $asSettings['loginScreenBottom'];
       $sHTML.= $oHTML->getBlocEnd();
 
     $sHTML.= $oHTML->getBlocEnd();
