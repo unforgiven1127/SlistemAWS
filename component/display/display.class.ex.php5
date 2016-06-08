@@ -1069,10 +1069,10 @@ class CDisplayEx extends CDisplay
     $oPage = CDependency::getCpPage();
 
     //$sPicture = $this->getPicture(CONST_HEADER_LOGO, $oPage->getPageTitle());
-    $sHTML = $this->getBlocStart('logo');
+    //$sHTML = $this->getBlocStart('logo');
     //$sHTML.= $this->getLink($sPicture, CONST_WEBSITE_LOGO_URL);
-    $sHTML.= $this->getBlocEnd();
-    return $sHTML;
+    //$sHTML.= $this->getBlocEnd();
+    //return $sHTML;
   }
 
   public function getUserMenuBloc($pbIsLogged)
