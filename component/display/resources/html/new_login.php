@@ -52,8 +52,15 @@ function openExtra(open)
 
 </script>
 <style>
+
+    .jobs{
+        overflow-y: auto;    /* Trigger vertical scroll    */
+        overflow-x: hidden;  /* Hide the horizontal scroll */
+    }
+
       .test {
         font-family: 'Merriweather', serif;
+
 
       }
       .borderlist {
