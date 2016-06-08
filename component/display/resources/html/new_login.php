@@ -8,14 +8,6 @@
   <!--<link rel="stylesheet" type="text/css" href="common/lib/verticalSlider/css/style.css">-->
   <link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
 
-  <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-  <!-- jQuery library -->
-
-  <!-- Latest compiled JavaScript -->
-  <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-
-  <!--<script type="text/javascript" src="/common/lib/verticalSlider/js/jquery.totemticker.js"></script>-->
-
 
 <script type="text/javascript">
 
