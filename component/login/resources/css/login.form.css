@@ -30,6 +30,10 @@
   position:relative;
  }
 
+.userBloc
+{
+  display: none;
+}
 
 #loginFormDataId .formField
 {

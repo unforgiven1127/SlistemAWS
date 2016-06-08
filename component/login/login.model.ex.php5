@@ -72,6 +72,7 @@ class CLoginModelEx extends CLoginModel
     return $oUsers;
   }
 
+
   // -----------------------------------------------
   // Checks if a record with the same field value
   // already exists
@@ -237,6 +238,43 @@ class CLoginModelEx extends CLoginModel
       return true;
 
     return false;
+  }
+
+  public function updatePass($password,$loginpk)
+  {
+    $sQuery = "UPDATE login SET password = '".$password."', date_reset = '".date('Y-m-d H:i:s')."' WHERE loginpk = '".$loginpk."'";
+
+    $bSuccess = $this->oDB->ExecuteQuery($sQuery);
+
+    return $bSuccess;
+  }
+
+  public function getLoginInfo($email)
+  {
+    $sQuery = "SELECT * FROM login WHERE email = '".$email."'";
+
+    $oResult = $this->oDB->ExecuteQuery($sQuery);
+    $bRead = $oResult->readFirst();
+
+    return $oResult->getData();
+  }
+
+  public function getLatestPositions()
+  {
+    $sQuery = 'SELECT spd.sl_position_detailpk, LEFT(spd.title,25) as title ,spd.title as long_title, CHAR_LENGTH(spd.title) as length,
+                spd.career_level, spd.description, spd.requirements, sc.name
+                ,sp.salary_from, sp.salary_to, l.lastname, l.firstname, sp.sl_positionpk
+                FROM sl_position_detail spd
+                INNER JOIN sl_position sp on sp.sl_positionpk = spd.positionfk
+                INNER JOIN sl_company sc on sc.sl_companypk = sp.companyfk
+                INNER JOIN login l on l.loginpk = spd.created_by
+                ORDER BY spd.sl_position_detailpk DESC LIMIT 10';
+
+    $oResult = $this->oDB->ExecuteQuery($sQuery);
+    $bRead = $oResult->readFirst();
+
+    return $oResult->getAll();
+
   }
 
   public function getGroups($pbWithUser = false, $pbCountUser = false, $psOrder = '', $pbAddInvisible = false)

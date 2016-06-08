@@ -7,7 +7,7 @@ if(isset($_GET['action']) && $_GET['action'] =='tips')
 {
   $asTips = getTips(10);
 
-  $sHtml = '
+  /*$sHtml = '
   <script>
       function rotateTips()
       {
@@ -24,7 +24,7 @@ if(isset($_GET['action']) && $_GET['action'] =='tips')
         });
       }
       setTimeout("rotateTips();", 7500);
-  </script>';
+  </script>';*/
 
   $bFirst = true;
   foreach($asTips as $sKey => $sTip)
@@ -37,9 +37,9 @@ if(isset($_GET['action']) && $_GET['action'] =='tips')
     else
       $sClass = 'hidden';
 
-    $sHtml.= '<div class="tipContainer '.$sClass.'" id="tipCont_'.$sKey.'">
+    /*$sHtml.= '<div class="tipContainer '.$sClass.'" id="tipCont_'.$sKey.'">
                 <div class="text2">Placement tips: <br><div class="text3">'.$sKey.': '.$sTip.'</div></div>
-              </div>';
+              </div>';*/
   }
 
    $sHtml.= '<div class="homeRequirements">

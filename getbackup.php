@@ -1,7 +1,7 @@
 <?php
 
 ini_set('max_execution_time', 10000);
-require_once './common/lib/dropbox-sdk/lib/Dropbox/autoload.php';;
+require_once './common/lib/dropbox-sdk/lib/Dropbox/autoload.php';
 use \Dropbox as dbx;
 
 echo 'Download started '.date('Y-m-d h:i:s')."<br><br>";

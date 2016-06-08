@@ -10,6 +10,7 @@ class CLoginEx extends CLogin
   private $casUserData;
   private $casRight;
   private $coSlateVars = null;
+  private $_oDisplay;
 
   public function __construct()
   {
@@ -1614,10 +1615,53 @@ class CLoginEx extends CLogin
    * @return fom structure
    */
 
+ /* private function _getJobSlider()
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $oHTML = CDependency::getComponentByName('display');
+    $oPage = CDependency::getComponentByName('page');
+
+    $sLanguage = $oPage->getLanguage();
+    $sHTML = $this->_oDisplay->render('vertical_slider');
+
+    return $sHtml;
+  }*/
+
   private function _getLoginForm($pbWelcomeMsg = true, $psExtraClass = '', $pbRedirect = true)
   {
     if(!assert('is_bool($pbWelcomeMsg)'))
       return false;
+
+    $this->_oDisplay = CDependency::getCpHtml();
+
+    $lastPositions = $this->_getModel()->getLatestPositions();
+    $firstFive = array();
+    $lastFive = array();
+
+    foreach ($lastPositions as $key => $value)
+    {
+      if($value['length'] > 25)
+      {
+        $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";
+      }
+      if($key < 5)
+      {
+        array_push($firstFive,$lastPositions[$key]);
+      }
+      else
+      {
+        array_push($lastFive,$lastPositions[$key]);
+      }
+    }
+
+    $data["firstFive"] = $firstFive;
+    $data["lastFive"] = $lastFive;
+
+
+
+    $sHTML = $this->_oDisplay->render('new_login',$data);
+
+      //return $html;
 
     $oHTML = CDependency::getCpHtml();
     $oSetting = CDependency::getComponentByName('settings');
@@ -1626,16 +1670,19 @@ class CLoginEx extends CLogin
 
     $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_VALIDATE, CONST_LOGIN_TYPE_PASSWORD);
 
+    $sURLPswd = $oPage->getUrl('login', CONST_ACTION_RESET, CONST_LOGIN_TYPE_PASSWORD);
+
     //force redirection for external identification
 
     $sRedirectAfterLogin = getValue('redirect');
     if(!empty($sRedirectAfterLogin))
       $sURL.= '&redirect='.urlencode($sRedirectAfterLogin);
 
+
     //fetch customization settings
     $asSettings = $oSetting->getSettings(array('loginScreenTop', 'loginScreenBottom', 'loginScreenLeft', 'loginScreenRight'), false);
-
-    $sHTML = $oHTML->getBlocStart('', array('class' => 'loginScreenContainer '.$psExtraClass));
+    //$sHTML.= $this->_getJobSlider();
+    $sHTML .= $oHTML->getBlocStart('', array('class' => 'loginScreenContainer '.$psExtraClass));
 
       $sHTML.= $oHTML->getBlocStart('', array('class' => 'loginScreenContent loginScreenTop'));
       if(!empty($asSettings['loginScreenTop']))
@@ -1669,11 +1716,14 @@ class CLoginEx extends CLogin
           /* @var $oForm CFormEx */
           $oForm = $oHTML->initForm('loginFormData');
           $oForm->setFormParams('', true, array('submitLabel' => $this->casText['LOGIN_SIGNIN'], 'action' => $sURL));
+
+
           $oForm->setFormDisplayParams(array('noCancelButton' => 1, 'columns' => 1));
 
-          $oForm->addField('input', 'login', array('label'=>$this->casText['LOGIN_LOGIN'], 'class' => 'loginWideField'));
-          $oForm->addField('input', 'password', array('label'=>$this->casText['LOGIN_PASSWORD'], 'type'=> 'password', 'class' => 'loginWideField'));
+          //$oForm->addField('input', 'login', array('label'=>$this->casText['LOGIN_LOGIN'], 'class' => 'loginWideField'));
+          //$oForm->addField('input', 'password', array('label'=>$this->casText['LOGIN_PASSWORD'], 'type'=> 'password', 'class' => 'loginWideField'));
           $sURLPswd = $oPage->getUrl('login', CONST_ACTION_RESET, CONST_LOGIN_TYPE_PASSWORD);
+
           $sLink = $oHTML->getLink($this->casText['LOGIN_FORGOT_PASSWORD'], $sURLPswd);
           if($pbRedirect)
             $oForm->addField('input', 'redirect', array('type'=> 'hidden', 'value' => CONST_CRM_DOMAIN.$_SERVER['REQUEST_URI']));
@@ -1697,6 +1747,8 @@ class CLoginEx extends CLogin
       $sHTML.= $oHTML->getBlocEnd();
 
     $sHTML.= $oHTML->getBlocEnd();
+
+
     return $sHTML;
   }
 
@@ -2134,7 +2186,6 @@ class CLoginEx extends CLogin
   public function _getLogout($pbIsAjax = false, $pbRedirect = true)
   {
 
-
     $oDb = CDependency::getComponentByName('database');
     $sQuery = 'UPDATE login SET log_hash = \'\' WHERE loginpk = '.$this->casUserData['pk'];
     $oDb->executeQuery($sQuery);
@@ -2147,6 +2198,7 @@ class CLoginEx extends CLogin
 
     //$oPage = CDependency::getCpPage();
     //$sUrl = $oPage->getUrlHome(true);
+
     $sUrl = CONST_CRM_DOMAIN.'/?';
 
     if($pbIsAjax)
