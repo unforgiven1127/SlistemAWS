@@ -50,7 +50,7 @@
     $oHTML = CDependency::getComponentByInterface('do_html');
     $sHTML = '';
 
-    $sFooter = 'Regards,<br/><strong>Globus Consulting</strong><br /><hr style="color: blue; margin: 5px 0;"/>'.$oHTML->getPicture('http://'.CONST_CRM_HOST.CONST_HEADER_LOGO);
+    $sFooter = 'Regards,<br/><strong>Globus Consulting</strong><br /><hr style="color: blue; margin: 5px 0;"/>'.$oHTML->getPicture('https://'.CONST_CRM_HOST.CONST_HEADER_LOGO);
       $sHTML .= $oHTML->getBloc('footer', $sFooter);
       $sHTML .= $oHTML->getBloc('', '<br />This is an automatic email. Please do not reply.', array('style' => 'font-size:10px; font-style:italic;'));
       $sHTML .= $oHTML->getBlocEnd();
