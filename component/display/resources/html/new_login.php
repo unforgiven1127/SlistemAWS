@@ -33,7 +33,7 @@ if(url.indexOf(search)>-1)
 
 //location.reload(); // sayfayi tekrar yukler
 
-document.getElementByClassName("userBloc").style.visibility='hidden';
+document.getElementsByClassName("userBloc").style.visibility='hidden';
 
 function closeExtra()
 {
