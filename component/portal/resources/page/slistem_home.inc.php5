@@ -7,7 +7,7 @@ if(isset($_GET['action']) && $_GET['action'] =='tips')
 {
   $asTips = getTips(10);
 
-  /*$sHtml = '
+  $sHtml = '
   <script>
       function rotateTips()
       {
@@ -24,7 +24,7 @@ if(isset($_GET['action']) && $_GET['action'] =='tips')
         });
       }
       setTimeout("rotateTips();", 7500);
-  </script>';*/
+  </script>';
 
   $bFirst = true;
   foreach($asTips as $sKey => $sTip)
