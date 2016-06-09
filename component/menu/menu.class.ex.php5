@@ -523,7 +523,8 @@ class CMenuEx extends CMenu
                   $sExtraClass.= ' menuNavText ';
                 }
 
-                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
+                $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
+                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic', 'onclick' => "window.open('$mainPageUrl','_self');"));
                 $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
               }
               else

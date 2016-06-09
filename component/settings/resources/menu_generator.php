@@ -1284,12 +1284,7 @@ $asArray = array();
     'action' => '',
     'pk' => 0,
     'ajaxpopup' => 0,
-    'onclick' => "
-      $('#tab_list .tab_type_home a.close_tab').click();
-      var asContainer = goTabs.create('home');
-      AjaxRequest('/index.php5?uid=111-111&pg=ajx', 'body', '',  asContainer['id'], '', '', 'initHeaderManager();' );
-      goTabs.select(asContainer['number']);
-      showFullPage(); ",
+    'onclick' => "window.open('https://beta1.slate.co.jp','_self');",
     'right' => array ('logged')
   ),
   5 =>
