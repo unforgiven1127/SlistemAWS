@@ -11,6 +11,18 @@
 
 <script type="text/javascript">
 
+//alert($('#bottomCandidateSection').height());
+
+var loginHeight = $('#bottomCandidateSection').height();
+var windowHeight = window.innerHeight;
+
+//alert(windowHeight);
+
+var oran = 100*loginHeight/windowHeight;
+//alert(oran);
+var newOran = 95*windowHeight/100;
+newOran = newOran+'px';
+
 var url = document.URL;
 var search = "/?";
 
@@ -21,7 +33,23 @@ if(url.indexOf(search)>-1)
   //alert();
 }
 
+if(oran < 85)
+{
+  $('#bottomCandidateSection').height(newOran);
+}
 
+$(window).resize(function() {
+  var loginHeightR = $('#bottomCandidateSection').height();
+  var windowHeightR = window.innerHeight;
+  var oranR = 100*loginHeightR/windowHeightR;
+  //alert(oranR);
+  if(oranR < 90)
+  {
+    var newOranR = 95*windowHeightR/100;
+    newOranR = newOranR+'px';
+    $('#bottomCandidateSection').height(newOranR);
+  }
+});
 //location.reload(); // sayfayi tekrar yukler
 
 //document.getElementsByClassName("userBloc").style.visibility='hidden';
