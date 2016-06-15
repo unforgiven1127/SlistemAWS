@@ -29,7 +29,9 @@ var search = "/?";
 if(url.indexOf(search)>-1)
 {
   url = url.substring(0, url.length - 1);
-  window.location.href = url;
+  var res = url.split("/?");
+  //alert(res[0]);
+  window.location.href = res;
   //alert();
 }
 
@@ -142,7 +144,7 @@ function openExtra(open)
          </div>
          <div style="width: 300px;">
             <span class="alert">Invalid Credentials</span>
-            <a class="link" href=<?php echo "'".$lost."'"; ?> >Lost your password?</a>
+            <!--<a class="link" href=<?php echo "'".$lost."'"; ?> >Lost your password?</a>-->
             <button type="submit" class="log-btn" >Log in</button>
          </div>
         </form>
