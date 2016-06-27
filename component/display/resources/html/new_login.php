@@ -160,21 +160,21 @@ function openExtra(open)
           <?php for($i=0 ; $i<5 ; $i++) { ?>
             <tr>
               <td>
-                <p style="font-size: 12pt;" class="test"><b>Company: </b><?php echo $firstFive[$i]['name']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Title: </b><?php echo $firstFive[$i]['title']; ?> (#<?php echo $firstFive[$i]['sl_positionpk']; ?>)</p>
-                <p style="font-size: 12pt;" class="test"><b>Salary range: </b>&yen;<?php echo $firstFive[$i]['salary_from']; ?> - &yen;<?php echo $firstFive[$i]['salary_to']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><?php echo $firstFive[$i]['firstname']; ?> <?php echo $firstFive[$i]['lastname']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $firstFive[$i]['name']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $firstFive[$i]['title']; ?> (#<?php echo $firstFive[$i]['sl_positionpk']; ?>)</p>
+                <p style="font-size: 12pt;" class="test">&yen;<?php echo $firstFive[$i]['salary_from']; ?> - &yen;<?php echo $firstFive[$i]['salary_to']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $firstFive[$i]['firstname']; ?> <?php echo $firstFive[$i]['lastname']; ?></p>
                 <div style="margin-top: 5px;">
-                  <p style="font-size: 11pt; " class="test"><b>More: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/plus.png" onclick="openExtra(<?php echo "'firstFive_".$i."'" ?>)"></p>
+                  <p style="font-size: 11pt; " class="test"><b>More: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/plus.png" onclick="openExtra(<?php echo "'firstFive_".$i."'" ?>)"> <img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/minus.png" onclick="closeExtra()"></p>
                 </div>
               </td>
               <td>
-                <p style="font-size: 12pt;" class="test"><b>Company: </b><?php echo $lastFive[$i]['name']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Title: </b><?php echo $lastFive[$i]['title']; ?> (#<?php echo $lastFive[$i]['sl_positionpk']; ?>)</p>
-                <p style="font-size: 12pt;" class="test"><b>Salary range: </b>&yen;<?php echo $lastFive[$i]['salary_from']; ?> - &yen;<?php echo $lastFive[$i]['salary_to']; ?></p>
-                <p style="font-size: 12pt;" class="test"><b>Consultant: </b><?php echo $lastFive[$i]['firstname']; ?> <?php echo $lastFive[$i]['lastname']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $lastFive[$i]['name']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $lastFive[$i]['title']; ?> (#<?php echo $lastFive[$i]['sl_positionpk']; ?>)</p>
+                <p style="font-size: 12pt;" class="test">&yen;<?php echo $lastFive[$i]['salary_from']; ?> - &yen;<?php echo $lastFive[$i]['salary_to']; ?></p>
+                <p style="font-size: 12pt;" class="test"><?php echo $lastFive[$i]['firstname']; ?> <?php echo $lastFive[$i]['lastname']; ?></p>
                 <div style="margin-top: 5px;">
-                  <p style="font-size: 11pt; " class="test"><b>More: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/plus.png" onclick="openExtra(<?php echo "'lastFive_".$i."'" ?>)"></p>
+                  <p style="font-size: 11pt; " class="test"><b>More: </b><img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/plus.png" onclick="openExtra(<?php echo "'lastFive_".$i."'" ?>)"> <img style="cursor:pointer; width: 20px; vertical-align: text-bottom;" src="common/pictures/minus.png" onclick="closeExtra()"></p>
                 </div>
               </td>
             </tr>
