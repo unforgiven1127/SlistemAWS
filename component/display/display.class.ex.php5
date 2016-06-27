@@ -1068,7 +1068,7 @@ class CDisplayEx extends CDisplay
   {
     $oPage = CDependency::getCpPage();
 
-    $url = $_SERVER['REQUEST_URI'];
+    $url = $_SERVER['SERVER_NAME'];
 
     $sPicture = $this->getPicture(CONST_HEADER_LOGO, $oPage->getPageTitle());
     $sHTML = $this->getBlocStart('logo');
