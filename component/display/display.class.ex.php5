@@ -1072,6 +1072,7 @@ class CDisplayEx extends CDisplay
 
     $sPicture = $this->getPicture(CONST_HEADER_LOGO, $oPage->getPageTitle());
     $sHTML = $this->getBlocStart('logo');
+    //$sHTML.= $this->getLink($sPicture, CONST_WEBSITE_LOGO_URL);
     $sHTML.= $this->getLink($sPicture, $url);
     $sHTML.= $this->getBlocEnd();
     return $sHTML;
