@@ -1638,22 +1638,34 @@ class CLoginEx extends CLogin
     $firstFive = array();
     $lastFive = array();
 
+    $control = array();
+
+    $i = 0;
+
     foreach ($lastPositions as $key => $value)
     {
       $lastPositions[$key]['description'] = nl2br($lastPositions[$key]['description']);
       $lastPositions[$key]['requirements'] = nl2br($lastPositions[$key]['requirements']);
-      if($value['length'] > 25)
+
+      if(!isset($control[$value['created_by']]) && $i<10)
       {
-        $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";
+        $i++;
+        $control[$value['created_by']] = $value;
+
+        if($value['length'] > 25)
+        {
+          $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";
+        }
+        if($key < 5)
+        {
+          array_push($firstFive,$lastPositions[$key]);
+        }
+        else
+        {
+          array_push($lastFive,$lastPositions[$key]);
+        }
       }
-      if($key < 5)
-      {
-        array_push($firstFive,$lastPositions[$key]);
-      }
-      else
-      {
-        array_push($lastFive,$lastPositions[$key]);
-      }
+
     }
 
     $data["firstFive"] = $firstFive;

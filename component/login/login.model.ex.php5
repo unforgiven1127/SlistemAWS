@@ -262,7 +262,7 @@ class CLoginModelEx extends CLoginModel
   public function getLatestPositions()
   {
     $sQuery = 'SELECT spd.sl_position_detailpk, LEFT(spd.title,25) as title ,spd.title as long_title, CHAR_LENGTH(spd.title) as length,
-                spd.career_level, spd.description, spd.requirements, sc.name
+                spd.career_level, spd.description, spd.requirements, sc.name, spd.created_by
                 ,sp.salary_from, sp.salary_to, l.lastname, l.firstname, sp.sl_positionpk
                 FROM sl_position_detail spd
                 INNER JOIN sl_position sp on sp.sl_positionpk = spd.positionfk
