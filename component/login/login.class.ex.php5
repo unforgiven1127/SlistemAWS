@@ -1656,7 +1656,7 @@ class CLoginEx extends CLogin
         {
           $lastPositions[$key]['title'] = $lastPositions[$key]['title']."...";
         }
-        if($key < 5)
+        if($i < 5)
         {
           array_push($firstFive,$lastPositions[$key]);
         }
