@@ -268,7 +268,7 @@ class CLoginModelEx extends CLoginModel
                 INNER JOIN sl_position sp on sp.sl_positionpk = spd.positionfk
                 INNER JOIN sl_company sc on sc.sl_companypk = sp.companyfk
                 INNER JOIN login l on l.loginpk = spd.created_by
-                ORDER BY spd.sl_position_detailpk GROUP BY spd.created_by DESC LIMIT 10';
+                GROUP BY spd.created_by ORDER BY spd.sl_position_detailpk DESC LIMIT 10';
 
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
