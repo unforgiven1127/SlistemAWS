@@ -1649,7 +1649,6 @@ class CLoginEx extends CLogin
 
       if(!isset($control[$value['created_by']]) && $i<10)
       {
-        $i++;
         $control[$value['created_by']] = $value;
 
         if($value['length'] > 25)
@@ -1664,6 +1663,8 @@ class CLoginEx extends CLogin
         {
           array_push($lastFive,$lastPositions[$key]);
         }
+
+        $i++;
       }
 
     }
