@@ -7129,8 +7129,8 @@ die();*/
       $asError = array();
 
       $desc = getValue('doc_description');
-//ChromePhp::log($desc);
-      if(isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
+ChromePhp::log($desc);
+      if($pbSave && isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
       {
         $this->_getResumeSaveAdd($pasCandidate['candidatefk'],$desc);
       }
@@ -7798,13 +7798,16 @@ die();*/
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
-      $sTitle = trim(getValue('title'));
-      $sContent = purify_html(getValue('content'));
 
       if($passContent =! '')
       {
         $sContent = $passContent;
         $sTitle = $passTitle;
+      }
+      else
+      {
+        $sTitle = trim(getValue('title'));
+        $sContent = purify_html(getValue('content'));
       }
 ChromePhp::log($sContent);
 ChromePhp::log($pasCandidate);
