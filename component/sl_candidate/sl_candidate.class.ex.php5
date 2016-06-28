@@ -7130,7 +7130,7 @@ die();*/
 
       $desc = getValue('doc_description');
 ChromePhp::log($desc);
-      if(isset($desc) && !empty($desc))
+      if(isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
       {
         $this->_getResumeSaveAdd($pasCandidate['candidatefk'],$desc);
       }
