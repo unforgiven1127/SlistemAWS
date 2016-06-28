@@ -7804,7 +7804,7 @@ die();*/
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
-ChromePhp::log($array);
+//ChromePhp::log($array);
       if(isset($array[0]))
       {
         $pasCandidate = $array[0];
@@ -7817,8 +7817,8 @@ ChromePhp::log($array);
         $sContent = purify_html(getValue('content'));
       }
 
-ChromePhp::log($sContent);
-ChromePhp::log($pasCandidate);
+//ChromePhp::log($sContent);
+//ChromePhp::log($pasCandidate);
 
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
@@ -7853,7 +7853,7 @@ ChromePhp::log($pasCandidate);
         $asCpLink['cp_pk'] = (int)getValue('cp_pk');
       }
 
-ChromePhp::log($pasCandidate);
+//ChromePhp::log($pasCandidate);
 ChromePhp::log($asCpLink);
 
       if(!assert('is_cpValues($asCpLink)'))
@@ -7884,20 +7884,26 @@ ChromePhp::log($asCpLink);
       $oSharedspace = CDependency::getComponentByName('sharedspace');
       $sError = $oSharedspace->saveLocalDocument($sDisplayFileName, $sFilePath, $sTitle, 'resume', $asCpLink);
 
-      if(!empty($sError))
-        return array('error' => $sError);
+      if(isset($array[0]))
+      {
+        return true;
+      }
+      else
+      {
+        if(!empty($sError))
+          return array('error' => $sError);
 
 
-      $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
+        $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
 
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
 
 
-      if(getValue('pclose'))
-        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
+        if(getValue('pclose'))
+          return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
 
-      return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
-
+        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
+        }
     }
 
 
