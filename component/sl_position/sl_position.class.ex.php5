@@ -600,7 +600,7 @@ class CSl_positionEx extends CSl_position
 
         $asPosition['positionfk'] = $pnPositionPk;
 
-        $nPositionPk = $this->_getModel()->update($asPosition, 'sl_position_detail', 'positionfk = '.$pnPositionPk.' AND language = "'.$asPosition['language'].'"');
+        $nPositionPk = $this->_getModel()->update($asPosition, 'sl_position_detail', 'positionfk = '.$pnPositionPk);
         if(empty($nPositionPk))
           return array('error' => __LINE__.' - Error while saving the position.');
 
