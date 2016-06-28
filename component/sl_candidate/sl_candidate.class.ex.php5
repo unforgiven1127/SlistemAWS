@@ -7132,7 +7132,7 @@ die();*/
 ChromePhp::log($desc);
       if(isset($desc) && !empty($desc))
       {
-        //$this->_getResumeSaveAdd($desc);
+        $this->_getResumeSaveAdd($pasCandidate,$desc);
       }
 
       else
@@ -7794,7 +7794,7 @@ ChromePhp::log($desc);
     }
 
 
-    private function _getResumeSaveAdd($passContent = '' , $passTitle ='Resume')
+    private function _getResumeSaveAdd($pasCandidate='', $passContent = '' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
@@ -7830,6 +7830,8 @@ ChromePhp::log($sTitle);
       $asCpLink['cp_action'] = getValue('cp_action');
       $asCpLink['cp_type'] = getValue('cp_type');
       $asCpLink['cp_pk'] = (int)getValue('cp_pk');
+
+ChromePhp::log($asCpLink);
 
       if(!assert('is_cpValues($asCpLink)'))
         return array('error' => 'Missing parameters.');
