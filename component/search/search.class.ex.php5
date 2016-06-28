@@ -868,8 +868,8 @@ class CSearchEx extends CSearch
   {
     //dump($pasField);
 
-    $time = time();
-    ChromePhp::log($time);
+    //$time = time();
+    //ChromePhp::log($time);
 
     if(isset($pasField['display']['operator']['params']))
     {
