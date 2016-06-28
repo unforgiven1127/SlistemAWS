@@ -7125,7 +7125,7 @@ die();*/
 
     private function _saveResume($pbTest = true, $pbSave = false, $pasCandidate = array())
     {
-      ChromePhp::log('_saveResume');
+      ChromePhp::log($pasCandidate);
       $asError = array();
 
       $desc = getValue('doc_description');
@@ -7866,6 +7866,11 @@ ChromePhp::log($sTitle);
       $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
 
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
+
+      if($passContent =! '')
+      {
+        return true;
+      }
 
       if(getValue('pclose'))
         return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
