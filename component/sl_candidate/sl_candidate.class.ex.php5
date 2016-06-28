@@ -7803,7 +7803,7 @@ die();*/
 
       if($passContent =! '')
       {
-        $sContent = purify_html($passContent);
+        $sContent = $passContent;
         $sTitle = $passTitle;
       }
 ChromePhp::log($sContent);
