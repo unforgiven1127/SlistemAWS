@@ -7838,7 +7838,7 @@ ChromePhp::log($pasCandidate);
 
       $asCpLink = array();
 
-      if($passContent =! '')
+      if(isset($array[0]))
       {
         $asCpLink['cp_uid'] = '555-001';
         $asCpLink['cp_action'] = 'ppav';
