@@ -7125,13 +7125,13 @@ die();*/
 
     private function _saveResume($pbTest = true, $pbSave = false, $pasCandidate = array())
     {
-      ChromePhp::log($pasCandidate);
       $asError = array();
 
       $desc = getValue('doc_description');
-ChromePhp::log($desc);
       if($pbSave && isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
       {
+        $desc = getValue('doc_description');
+        ChromePhp::log($desc);
         $this->_getResumeSaveAdd($pasCandidate['candidatefk'],$desc);
       }
 
