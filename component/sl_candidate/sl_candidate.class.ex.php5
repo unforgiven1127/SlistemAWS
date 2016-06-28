@@ -7137,7 +7137,7 @@ die();*/
 
         $array = array($pasCandidate['candidatefk'],$desc);
 
-        $this->_getResumeSaveAdd($array,$pasCandidate['candidatefk']);
+        $this->_getResumeSaveAdd($array);
         $passResume = '';
       }
 
@@ -7800,13 +7800,14 @@ die();*/
     }
 
 
-    private function _getResumeSaveAdd($array,$pasCandidate='' , $passTitle ='Resume')
+    private function _getResumeSaveAdd($array = '' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
 ChromePhp::log($array);
-      if($pasCandidate =! '')
+      if($array =! '')
       {
+        $pasCandidate = $array[0];
         $sContent = $array[1];
         $sTitle = $passTitle;
       }
