@@ -558,7 +558,8 @@ class CSl_positionEx extends CSl_position
 
 
       //field for sl_position_detail table
-      $asPosition['language'] = filter_var(getValue('language'), FILTER_SANITIZE_STRING);
+      //$asPosition['language'] = filter_var(getValue('language'), FILTER_SANITIZE_STRING);
+      $asPosition['language'] = getValue('language');
       $asPosition['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
       if(empty($asPosition['title']))
         return array('error' => __LINE__.' - You must enter title.');
