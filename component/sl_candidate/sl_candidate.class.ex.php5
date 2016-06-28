@@ -7129,7 +7129,7 @@ die();*/
       $asError = array();
 
       $desc = getValue('doc_description');
-
+ChromePhp::log($desc);
       if(isset($desc) && !empty($desc))
       {
         $this->_getResumeSaveAdd($desc);
@@ -7794,7 +7794,7 @@ die();*/
     }
 
 
-    private function _getResumeSaveAdd($passContent = '')
+    private function _getResumeSaveAdd($passContent = '' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
@@ -7804,7 +7804,10 @@ die();*/
       if($passContent =! '')
       {
         $sContent = purify_html($passContent);
+        $sTitle = $passTitle;
       }
+ChromePhp::log($sContent);
+ChromePhp::log($sTitle);
 
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
