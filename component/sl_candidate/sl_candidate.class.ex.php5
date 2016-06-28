@@ -7884,26 +7884,20 @@ ChromePhp::log($asCpLink);
       $oSharedspace = CDependency::getComponentByName('sharedspace');
       $sError = $oSharedspace->saveLocalDocument($sDisplayFileName, $sFilePath, $sTitle, 'resume', $asCpLink);
 
-      if($passContent =! '')
-      {
-        return true;
-      }
-      else
-      {
-        if(!empty($sError))
-          return array('error' => $sError);
+      if(!empty($sError))
+        return array('error' => $sError);
 
 
-        $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
+      $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
 
-        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
+      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
 
 
-        if(getValue('pclose'))
-          return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
+      if(getValue('pclose'))
+        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
 
-        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
-        }
+      return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
+
     }
 
 
