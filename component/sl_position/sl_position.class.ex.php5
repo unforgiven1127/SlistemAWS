@@ -505,6 +505,9 @@ class CSl_positionEx extends CSl_position
      */
     private function _savePosition($pnPositionPk = 0)
     {
+      ChromePhp::log('_savePosition');
+      $lang = getValue('language');
+      ChromePhp::log($lang);
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Missing parameters to save the position.');
 
