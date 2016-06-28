@@ -68,7 +68,10 @@ function addSearchFormRow(poTag)
 
   //now we've got a row, we need to edit ids
   var sId = uniqueId();
-  nRows = (nRows+100);
+
+  var add = Date.now();
+  //nRows = (nRows+100);
+  nRows = (nRows+add);
   var nGroup = $(oContainer).attr('nb_group');
   $(oRow).attr('group_nb', nGroup).attr('row_nb', nRows).attr('id', 'search_row_'+nRows);
 
