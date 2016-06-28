@@ -7134,7 +7134,10 @@ die();*/
         $desc = getValue('doc_description');
         $passResume = $desc;
         ChromePhp::log($passResume);
-        $this->_getResumeSaveAdd($pasCandidate['candidatefk']);
+
+        $array = array($pasCandidate['candidatefk'],$desc);
+
+        $this->_getResumeSaveAdd($array,$pasCandidate['candidatefk']);
         $passResume = '';
       }
 
@@ -7797,11 +7800,11 @@ die();*/
     }
 
 
-    private function _getResumeSaveAdd($pasCandidate='' , $passTitle ='Resume')
+    private function _getResumeSaveAdd($array,$pasCandidate='' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
-ChromePhp::log($passResume);
+ChromePhp::log($array);
       if($passResume =! '')
       {
         $sContent = $passResume;
