@@ -7130,38 +7130,45 @@ die();*/
 
       $desc = getValue('doc_description');
 
-
-      if(empty($_FILES) || empty($_FILES['document']['name']))
+      if(isset($desc) && !empty($desc))
       {
-        ChromePhp::log('No file selected');
-        return array();
+        $this->_getResumeSaveAdd($desc);
       }
 
-      if($pbTest)
+      else
       {
-        if(empty($_FILES['document']['tmp_name']))
-          $asError[] = 'No resume uploaded. It could be a transfer error, or you\'ve forgotten to select a file.';
-      }
+        if(empty($_FILES) || empty($_FILES['document']['name']))
+        {
+          ChromePhp::log('No file selected');
+          return array();
+        }
 
-      if(!empty($asError))
-        return array('error' => implode('<br />', $asError));
+        if($pbTest)
+        {
+          if(empty($_FILES['document']['tmp_name']))
+            $asError[] = 'No resume uploaded. It could be a transfer error, or you\'ve forgotten to select a file.';
+        }
 
-      if($pbSave)
-      {
-        $sTitle = getValue('doc_title');
-        $sDescription = getValue('doc_description');
+        if(!empty($asError))
+          return array('error' => implode('<br />', $asError));
 
-        if(empty($sTitle))
-          $sTitle = $pasCandidate['lastname'].'_'.$pasCandidate['firstname'].'_resume';
+        if($pbSave)
+        {
+          $sTitle = getValue('doc_title');
+          $sDescription = getValue('doc_description');
 
-        $sTitle = str_replace(' ', '_', $sTitle);
+          if(empty($sTitle))
+            $sTitle = $pasCandidate['lastname'].'_'.$pasCandidate['firstname'].'_resume';
 
-        $oSharedspace = CDependency::getComponentByName('sharedspace');
-        $asItemLink = array(CONST_CP_UID => '555-001', CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, CONST_CP_PK => $pasCandidate['candidatefk']);
-        $asResult = $oSharedspace->quickAddDocument($asItemLink, $sTitle, $sDescription, 0, 'resume');
+          $sTitle = str_replace(' ', '_', $sTitle);
 
-        if(isset($asResult['error']))
-          $asError[] = $asResult['error'];
+          $oSharedspace = CDependency::getComponentByName('sharedspace');
+          $asItemLink = array(CONST_CP_UID => '555-001', CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, CONST_CP_PK => $pasCandidate['candidatefk']);
+          $asResult = $oSharedspace->quickAddDocument($asItemLink, $sTitle, $sDescription, 0, 'resume');
+
+          if(isset($asResult['error']))
+            $asError[] = $asResult['error'];
+        }
       }
 
       return $asError;
@@ -7787,12 +7794,18 @@ die();*/
     }
 
 
-    private function _getResumeSaveAdd()
+    private function _getResumeSaveAdd($passContent = '')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
       $sTitle = trim(getValue('title'));
       $sContent = purify_html(getValue('content'));
+
+      if($passContent =! '')
+      {
+        $sContent = purify_html($passContent);
+      }
+
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
 
