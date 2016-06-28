@@ -7132,7 +7132,7 @@ die();*/
       {
         $desc = getValue('doc_description');
         ChromePhp::log($desc);
-        $this->_getResumeSaveAdd($pasCandidate['candidatefk'],$desc);
+        $this->_getResumeSaveAdd($pasCandidate['candidatefk'],purify_html($desc));
       }
 
       else
