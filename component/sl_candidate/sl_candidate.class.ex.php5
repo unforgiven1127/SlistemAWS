@@ -7794,7 +7794,7 @@ ChromePhp::log($desc);
     }
 
 
-    private function _getResumeSaveAdd($pasCandidate='', $passContent = '' , $passTitle ='Resume')
+    private function _getResumeSaveAdd($pasCandidate=array(), $passContent = '' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
@@ -7842,7 +7842,7 @@ ChromePhp::log($sTitle);
         $asCpLink['cp_pk'] = (int)getValue('cp_pk');
       }
 
-ChromePhp::log($asCpLink);
+ChromePhp::log($pasCandidate);
 
       if(!assert('is_cpValues($asCpLink)'))
         return array('error' => 'Missing parameters.');
@@ -7872,23 +7872,26 @@ ChromePhp::log($asCpLink);
       $oSharedspace = CDependency::getComponentByName('sharedspace');
       $sError = $oSharedspace->saveLocalDocument($sDisplayFileName, $sFilePath, $sTitle, 'resume', $asCpLink);
 
-      if(!empty($sError))
-        return array('error' => $sError);
-
-
-      $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
-
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
-
       if($passContent =! '')
       {
         return true;
       }
+      else
+      {
+        if(!empty($sError))
+          return array('error' => $sError);
 
-      if(getValue('pclose'))
-        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
 
-      return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
+        $this->_getModel()->_logChanges(array('sl_document' => 'new'), 'document', 'new document', '', $asCpLink);
+
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asCpLink['cp_pk'], array('check_profile' => 1));
+
+
+        if(getValue('pclose'))
+          return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3");');
+
+        return array('notice' => 'Resume saved.', 'action' => 'view_candi("'.$sURL.'", "#tabLink3"); goPopup.removeActive(\'layer\');  ');
+        }
     }
 
 
