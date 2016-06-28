@@ -260,17 +260,50 @@ $array=array(	'	8893	',
 foreach ($array as $key => $value)
 {
 	$array[$key] = TRIM($value);
-	echo $array[$key]."<br>";
+	//echo $array[$key]."<br>";
 }
 
+	/*JOBBOARD CONNECTION INFO*/
+	define('DB_NAME', 'jobboard');
+    define('DB_SERVER', '127.0.0.1');
+    define('DB_USER', 'jobboard');
+    define('DB_PASSWORD', 'KCd7C56XJ8Nud7uF');
+    /*JOBBOARD CONNECTION INFO*/
 
-
-	/*define('DB_NAME_SLISTEM','slistem');
+    /*SLISTEM CONNECTION INFO*/
+	define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
     define('DB_USER_SLISTEM', 'slistem');
     define('DB_PASSWORD_SLISTEM', 'smwXN2RTDm6Zz3hR');
+    /*SLISTEM CONNECTION INFO*/
 
-	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
+    /*JOBBOARD ISLEMLERI ICIN*/
+    mysql_connect( DB_SERVER, DB_USER, DB_PASSWORD) or die(mysql_error());
+    mysql_select_db(DB_NAME) or die(mysql_error());
+
+    $positionArrayJB = array();
+
+    foreach ($array as $key => $value)
+    {
+    	$slistemQuery = "SELECT * FROM positions p WHERE p.external_key = '".$value."'";
+
+    	$positionData = mysql_query($slistemQuery);
+
+    	array_push($positionArrayJB,$positionData);
+    }
+
+    var_dump($positionArrayJB);
+
+    /*JOBBOARD ISLEMLERI ICIN*/
+
+
+
+    /*SLISTEM ISLEMLERI ICIN*/
+    mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
+    mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
+    /*SLISTEM ISLEMLERI ICIN*/
+
+	/*mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
 
 	foreach ($array as $key => $value)
