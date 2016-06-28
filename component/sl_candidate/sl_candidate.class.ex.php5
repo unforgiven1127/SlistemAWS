@@ -7809,6 +7809,7 @@ die();*/
         $sTitle = trim(getValue('title'));
         $sContent = purify_html(getValue('content'));
       }
+ChromePhp::log($passContent);
 ChromePhp::log($sContent);
 ChromePhp::log($pasCandidate);
 
