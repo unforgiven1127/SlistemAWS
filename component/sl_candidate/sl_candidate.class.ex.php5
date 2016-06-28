@@ -7805,7 +7805,7 @@ die();*/
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
 ChromePhp::log($array);
-      if($array =! '')
+      if(isset($array[0]))
       {
         $pasCandidate = $array[0];
         $sContent = $array[1];
