@@ -342,8 +342,6 @@ class CSearchEx extends CSearch
 
         $this->_addGroupOperator($oForm, $nGroup);
 
-        $time = time();
-        ChromePhp::log($time);
         //Reload a previous search, or slice the array of fields and display the default form
         $asAllFields = $this->casSearchField[$psComponentType];
         foreach($asAllFields as $sFieldName => $asFieldData)
@@ -869,6 +867,10 @@ class CSearchEx extends CSearch
   private function _addAdvancedSearchFieldOperator(&$poForm, $pasField, $pnGroupNumber, $pnRowNumber, $psSelectedOp = '')
   {
     //dump($pasField);
+
+    $time = time();
+    ChromePhp::log($time);
+
     if(isset($pasField['display']['operator']['params']))
     {
       $asParams = $pasField['display']['operator']['params'];
