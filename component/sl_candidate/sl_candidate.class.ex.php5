@@ -7826,10 +7826,21 @@ ChromePhp::log($sTitle);
       $sContent = $head.$sContent.$footer;
 
       $asCpLink = array();
-      $asCpLink['cp_uid'] = getValue('cp_uid');
-      $asCpLink['cp_action'] = getValue('cp_action');
-      $asCpLink['cp_type'] = getValue('cp_type');
-      $asCpLink['cp_pk'] = (int)getValue('cp_pk');
+
+      if($passContent =! '')
+      {
+        $asCpLink['cp_uid'] = '555-001';
+        $asCpLink['cp_action'] = 'ppav';
+        $asCpLink['cp_type'] = 'candi';
+        $asCpLink['cp_pk'] = $pasCandidate['candidatefk'];
+      }
+      else
+      {
+        $asCpLink['cp_uid'] = getValue('cp_uid');
+        $asCpLink['cp_action'] = getValue('cp_action');
+        $asCpLink['cp_type'] = getValue('cp_type');
+        $asCpLink['cp_pk'] = (int)getValue('cp_pk');
+      }
 
 ChromePhp::log($asCpLink);
 
