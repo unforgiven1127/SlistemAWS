@@ -7132,8 +7132,8 @@ die();*/
       if($pbSave && isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
       {
         $desc = getValue('doc_description');
-        ChromePhp::log($desc);
         $passResume = $desc;
+        ChromePhp::log($passResume);
         $this->_getResumeSaveAdd($pasCandidate['candidatefk']);
         $passResume = '';
       }
