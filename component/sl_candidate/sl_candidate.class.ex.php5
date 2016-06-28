@@ -7129,7 +7129,7 @@ die();*/
       $asError = array();
 
       $desc = getValue('doc_description');
-ChromePhp::log($desc);
+//ChromePhp::log($desc);
       if(isset($desc) && !empty($desc) && isset($pasCandidate['candidatefk']) && !empty($pasCandidate['candidatefk']))
       {
         $this->_getResumeSaveAdd($pasCandidate['candidatefk'],$desc);
@@ -7807,7 +7807,7 @@ ChromePhp::log($desc);
         $sTitle = $passTitle;
       }
 ChromePhp::log($sContent);
-ChromePhp::log($sTitle);
+ChromePhp::log($pasCandidate);
 
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
