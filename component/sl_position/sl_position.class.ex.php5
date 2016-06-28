@@ -505,9 +505,9 @@ class CSl_positionEx extends CSl_position
      */
     private function _savePosition($pnPositionPk = 0)
     {
-      ChromePhp::log('_savePosition');
+      //ChromePhp::log('_savePosition');
       $lang = getValue('language');
-      ChromePhp::log($lang);
+      //ChromePhp::log($lang);
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Missing parameters to save the position.');
 
@@ -558,8 +558,8 @@ class CSl_positionEx extends CSl_position
 
 
       //field for sl_position_detail table
-      //$asPosition['language'] = filter_var(getValue('language'), FILTER_SANITIZE_STRING);
-      $asPosition['language'] = getValue('language');
+      $asPosition['language'] = filter_var(getValue('language'), FILTER_SANITIZE_STRING);
+      //$asPosition['language'] = getValue('language');
       $asPosition['title'] = filter_var(getValue('title'), FILTER_SANITIZE_STRING);
       if(empty($asPosition['title']))
         return array('error' => __LINE__.' - You must enter title.');
