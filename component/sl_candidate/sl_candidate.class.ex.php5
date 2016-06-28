@@ -20,6 +20,7 @@ class CSl_candidateEx extends CSl_candidate
   private $csTplSettings = '';
 
   private $csSearchId = '';
+  private $passResume = '';
 
 
   public function __construct()
@@ -7132,7 +7133,9 @@ die();*/
       {
         $desc = getValue('doc_description');
         ChromePhp::log($desc);
-        $this->_getResumeSaveAdd($pasCandidate['candidatefk'],purify_html($desc));
+        $passResume = $desc;
+        $this->_getResumeSaveAdd($pasCandidate['candidatefk']);
+        $passResume = '';
       }
 
       else
@@ -7794,14 +7797,15 @@ die();*/
     }
 
 
-    private function _getResumeSaveAdd($pasCandidate='', $passContent = '' , $passTitle ='Resume')
+    private function _getResumeSaveAdd($pasCandidate='' , $passTitle ='Resume')
     {
       //ChromePhp::log('_getResumeSaveAdd');
       // check form, create a html file from it
-
-      if($passContent =! '')
+ChromePhp::log($passResume);
+      if($passResume =! '')
       {
-        $sContent = $passContent;
+        $sContent = $passResume;
+        $passResume = '';
         $sTitle = $passTitle;
       }
       else
@@ -7809,7 +7813,7 @@ die();*/
         $sTitle = trim(getValue('title'));
         $sContent = purify_html(getValue('content'));
       }
-ChromePhp::log($passContent);
+
 ChromePhp::log($sContent);
 ChromePhp::log($pasCandidate);
 
