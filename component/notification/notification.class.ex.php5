@@ -1707,6 +1707,7 @@ class CNotificationEx extends CNotification
 
   private function _getReminderSave($pnReminderPk = 0)
   {
+    ChromePhp::log('_getReminderSave');
     if(!assert('is_integer($pnReminderPk)'))
       return array('error' => 'Bad parameters.');
 
@@ -1804,6 +1805,7 @@ class CNotificationEx extends CNotification
 
 
     $asReminder['recipient'] = getValue('recipient');
+    ChromePhp::log($asReminder['recipient']);
     if(empty($asReminder['recipient']))
       return array('error' => __LINE__.' - You need to select a recipient.');
 
@@ -1825,6 +1827,7 @@ class CNotificationEx extends CNotification
     }
 
     $asReminder['message'] = getValue('message');
+    ChromePhp::log($asReminder['message']);
     if(empty($asReminder['message']))
       $asReminder['message'] = '<br /><em> -- no message -- </em>';
 
