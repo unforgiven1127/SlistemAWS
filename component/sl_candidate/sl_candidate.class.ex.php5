@@ -5226,6 +5226,8 @@ ChromePhp::log($sQuery);
       $anPk = array();
       $asError = array();
 
+      ChromePhp::log($_POST['contact_value']);
+
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
         $contact_info = trim($_POST['contact_value'][$nRow]);
