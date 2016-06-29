@@ -1938,7 +1938,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
       else
       {
-        $hiddenClass = 'hidden';
+        $hiddenClass = '';
       }
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
