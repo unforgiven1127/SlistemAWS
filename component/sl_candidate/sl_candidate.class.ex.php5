@@ -5208,12 +5208,20 @@ ChromePhp::log($sQuery);
 
 
       $bEmpty = true;
+
+      ChromePhp::log($_POST['contact_value']);
+      ChromePhp::log($_POST['contact_type']);
+
+      $controlType = $_POST['contact_type'];
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
         if(!empty($sValue))
         {
-          $bEmpty = false;
-          break;
+          if($controlType[$nRow] == '2' || $controlType[$nRow] == '5' || $controlType[$nRow] == '6')
+          {
+            $bEmpty = false;
+            break;
+          }
         }
       }
 
@@ -5225,9 +5233,6 @@ ChromePhp::log($sQuery);
       $nValidRow = 0;
       $anPk = array();
       $asError = array();
-
-      ChromePhp::log($_POST['contact_value']);
-      ChromePhp::log($_POST['contact_type']);
 
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
