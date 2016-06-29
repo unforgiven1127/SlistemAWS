@@ -1932,7 +1932,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $user_id = $oLogin->getuserPk();
       $userInformation = getUserInformaiton($user_id);
 
-      if($user_id == $positionCreator || $userInformation['position'] == "Admin")
+      if($user_id == $oDbResult->getFieldValue('created_by') || $userInformation['position'] == "Admin")
       {
         $hiddenClass = 'hidden ';
       }
