@@ -5226,7 +5226,7 @@ ChromePhp::log($sQuery);
       }
 
       if($bEmpty)
-        return array('error' => 'No contact details (work,mobile od e-mail) input in the form.');
+        return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
 
       $bAdmin = $this->_oLogin->isAdmin();
 
