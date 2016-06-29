@@ -1927,10 +1927,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
-      /*$positionInformation = getPositionData($position_id);
+      $positionInformation = getPositionData($position_id);
       $positionCreator = $positionInformation['created_by'];
-      $user_id = $oLogin->getuserPk();
-      $userInformation = getUserInformaiton($user_id);*/
+      //$user_id = $oLogin->getuserPk();
+      //$userInformation = getUserInformaiton($user_id);
 
       /*if($user_id == $positionCreator || $userInformation['position'] == "Admin")
       {
