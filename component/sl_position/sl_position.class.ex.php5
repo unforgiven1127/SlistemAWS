@@ -1926,10 +1926,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
       $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
-      $companyInformation = getPositionInformation($position_id);
-      ChromePhp::log($companyInformation);
-      //$positionInformation = getPositionData($position_id);
-      //$positionCreator = $positionInformation['created_by'];
+
+      $positionInformation = getPositionData($pnPositionPk);
+      $positionCreator = $positionInformation['created_by'];
       //$user_id = $oLogin->getuserPk();
       //$userInformation = getUserInformaiton($user_id);
 
