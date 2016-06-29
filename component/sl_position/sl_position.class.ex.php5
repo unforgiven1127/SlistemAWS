@@ -1934,11 +1934,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       if($user_id == $positionCreator || $userInformation['position'] == "Admin")
       {
-        $hiddenClass = 'hidden';
+        $hiddenClass = 'hidden ';
       }
       else
       {
-        $hiddenClass = '';
+        $hiddenClass = ' ';
       }
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
