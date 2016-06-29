@@ -1927,19 +1927,21 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
-      $positionInformation = getPositionData($position_id);
+      /*$positionInformation = getPositionData($position_id);
       $positionCreator = $positionInformation['created_by'];
       $user_id = $oLogin->getuserPk();
-      $userInformation = getUserInformaiton($user_id);
+      $userInformation = getUserInformaiton($user_id);*/
 
-      if($user_id == $positionCreator || $userInformation['position'] == "Admin")
+      /*if($user_id == $positionCreator || $userInformation['position'] == "Admin")
       {
         $hiddenClass = 'hidden ';
       }
       else
       {
         $hiddenClass = ' ';
-      }
+      }*/
+
+      $hiddenClass = ' ';
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
