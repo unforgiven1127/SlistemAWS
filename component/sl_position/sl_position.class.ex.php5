@@ -1927,6 +1927,20 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
+      $positionInformation = getPositionData($position_id);
+      $positionCreator = $positionInformation['created_by'];
+      $user_id = $oLogin->getuserPk();
+      $userInformation = getUserInformaiton($user_id);
+
+      if($user_id == $positionCreator || $userInformation['position'] == "Admin")
+      {
+        $hiddenClass = 'hidden';
+      }
+      else
+      {
+        $hiddenClass = 'hidden';
+      }
+
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
         goPopup.removeLastByType(\'layer\');
@@ -1934,7 +1948,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         oConf.width = 950;
         oConf.height = 660;
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
-        ">Edit position</a>', array('class' => 'position_edit test1'));
+        ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
       {

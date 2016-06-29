@@ -2790,6 +2790,26 @@ exit;*/
     return $row;
   }
 
+  function getPositionData($position_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slpd.* FROM sl_position_detail slpd
+    WHERE slpd.positionfk = ".$position_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+      $read = $db_result->readNext();
+    }
+
+    return $row;
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');
