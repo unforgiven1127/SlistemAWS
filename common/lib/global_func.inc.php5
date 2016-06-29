@@ -2795,7 +2795,7 @@ exit;*/
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT slpd.* FROM sl_position_detail slpd
-    WHERE slpd.positionfk = ".$position_id;
+    WHERE slpd.positionfk = '".$position_id."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
