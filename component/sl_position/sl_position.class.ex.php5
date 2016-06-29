@@ -1934,7 +1934,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         oConf.width = 950;
         oConf.height = 660;
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
-        ">Edit position</a>', array('class' => 'position_edit'));
+        ">Edit position</a>', array('class' => 'position_edit test1'));
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
       {
@@ -1946,7 +1946,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
             if(window.confirm(\'Delete this position ?\'))
             { AjaxRequest(\''.$sURL.'\'); }"
-            >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 80px;'));
+            >Delete position</a>', array('class' => 'position_edit test2', 'style' => 'top: 80px;'));
         }
 
       }
@@ -2505,7 +2505,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         oConf.width = 950;
         oConf.height = 660;
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
-        ">Edit position</a>', array('class' => 'position_edit'));
+        ">Edit position</a>', array('class' => 'position_edit test3'));
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
       {
@@ -2517,7 +2517,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
             if(window.confirm(\'Delete this position ?\'))
             { AjaxRequest(\''.$sURL.'\'); }"
-            >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 80px;'));
+            >Delete position</a>', array('class' => 'position_edit test4', 'style' => 'top: 80px;'));
         }
 
       }
