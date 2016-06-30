@@ -5224,6 +5224,17 @@ ChromePhp::log($nCandidatePk);
           }
         }
       }
+
+
+      foreach($_POST['contact_value'] as $nRow => $sValue)
+      {
+        if(!empty($sValue) && $nCandidatePk != 999)
+        {
+          $bEmpty = false;
+          break;
+        }
+      }
+
 ChromePhp::log($bEmpty);
       if($bEmpty)
         return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
