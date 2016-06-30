@@ -1889,10 +1889,12 @@ class CNotificationEx extends CNotification
       $csAction = "ppav";
       $csType= "candi";
 
+      $addLog = insertLog($user_id, $target_candidate_id, $note);
+
       //$sViewURL = $oPage->getAjaxUrl($csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
       //$sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
-      $sLink = "#";
-      logUserHistory($csUid, $csAction, $csType, $target_candidate_id, array('text' => $note, 'link' => $sLink));
+      //$sLink = "#";
+      //logUserHistory($csUid, $csAction, $csType, $target_candidate_id, array('text' => $note, 'link' => $sLink));
 
       /*$oEvent = CDependency::getComponentByName('sl_event');
       $oEvent->addNote($target_candidate_id, 'merge_summary', $note);*/

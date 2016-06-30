@@ -2810,6 +2810,23 @@ exit;*/
     return $row;
   }
 
+  function insertLog($loginfk, $cp_pk, $text)
+  {
+    $cp_uid = "555-004";
+    $cp_action = "ppasa";
+    $cp_type = "event";
+    $sDate = date('Y-m-d H:i:s');
+
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "INSERT INTO `login_activity`(`loginfk`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`,`text`, `log_date`, `status`)
+               VALUES($loginfk,$cp_uid,$cp_action,$cp_type,$cp_pk,$text,$sDate,0)";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    return true;
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');
