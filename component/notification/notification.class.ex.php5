@@ -1885,11 +1885,16 @@ class CNotificationEx extends CNotification
       $target_candidate_id = $asItem['cp_pk'];
       //ChromePhp::log($target_candidate_id);
 
-      /*$sViewURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
-      $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
-      logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => $note, 'link' => $sLink));
+      $csUid = "555-001";
+      $csAction = "ppav";
+      $csType= "candi";
 
-      $oEvent = CDependency::getComponentByName('sl_event');
+
+      $sViewURL = $oPage->getAjaxUrl($csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
+      $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
+      logUserHistory($csUid, $csAction, $csType, $target_candidate_id, array('text' => $note, 'link' => $sLink));
+
+      /*$oEvent = CDependency::getComponentByName('sl_event');
       $oEvent->addNote($target_candidate_id, 'merge_summary', $note);*/
       // write DBA to actions MCA
     }
