@@ -6600,6 +6600,17 @@ die();*/
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
 
+        if($pnCandidatePk > 0)
+        {
+          $dateNow = date('Y-m-d H:i:s');
+          $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' WHERE candidate_id = '".$pnCandidatePk."', last_activity ='".$dateNow."'";
+          $this->_getModel()->executeQuery($sQuery);
+
+          $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
+                     VALUES ('".$pnCandidatePk."','".$nNewCompanyFk."','".$dateNow."','".$dateNow."')";
+          $this->_getModel()->executeQuery($sQuery);
+        }
+
 
         if(empty($asData['firstname']) || strlen($asData['firstname']) < 2)
           $asError[] = 'Firstname empty or too short.';
