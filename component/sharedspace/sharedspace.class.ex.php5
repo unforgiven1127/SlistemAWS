@@ -1382,8 +1382,8 @@ class CSharedspaceEx extends CSharedspace
     $oForm->addField('textarea', 'description_html', array('label'=>'Long description', 'value' => $sDescriptionHtml, 'isTinymce' => 1));
     $oForm->closeSection();
 
-    /*$sLinkDesc = '<a id=\'switchDesc\' href=\'javascript:;\' onClick=\'switchDesc(); return false;\'>Hide / Show a rich text description</a>';*/
-    $oForm->addField('misc', 'descLink', array('label' => '&nbsp;', 'type' => 'text', 'text' => $sLinkDesc));
+    /*$sLinkDesc = '<a id=\'switchDesc\' href=\'javascript:;\' onClick=\'switchDesc(); return false;\'>Hide / Show a rich text description</a>';
+    $oForm->addField('misc', 'descLink', array('label' => '&nbsp;', 'type' => 'text', 'text' => $sLinkDesc));*/
     $oForm->addField('input', 'is_html', array('type' => 'hidden', 'value' => '0', 'id' => 'is_html'));
 
     if(!$bIsCpValuesInPost)
