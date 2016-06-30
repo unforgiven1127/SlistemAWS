@@ -1882,11 +1882,11 @@ class CNotificationEx extends CNotification
 
       $note .= "<br><br>Message: ".$message;
 
-      $target_candidate_id = $asItem;
-      ChromePhp::log($target_candidate_id);
+      $target_candidate_id = $asItem['cp_pk'];
+      //ChromePhp::log($target_candidate_id);
 
-      //$oEvent = CDependency::getComponentByName('sl_event');
-      //$oEvent->addNote($target_candidate_id, 'merge_summary', $note);
+      $oEvent = CDependency::getComponentByName('sl_event');
+      $oEvent->addNote($target_candidate_id, 'merge_summary', $note);
       // write DBA to actions MCA
     }
 
