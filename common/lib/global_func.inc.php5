@@ -2822,6 +2822,8 @@ exit;*/
     $sQuery = "INSERT INTO `login_activity`(`loginfk`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`,`text`, `log_date`, `status`)
                VALUES($loginfk,$cp_uid,$cp_action,$cp_type,$cp_pk,$text,$sDate,0)";
 
+ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
 
     return true;
