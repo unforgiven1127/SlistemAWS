@@ -1863,6 +1863,35 @@ class CNotificationEx extends CNotification
       else
         $nPk = $this->addItemMessage($sId, $asReminder['recipient'], $asItem, $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
 
+      // write DBA to actions MCA
+      $user_id = $oLogin->getUserPk();
+      $message = $asReminder['message'];
+      $recipents = $asReminder['recipient']; // array
+
+      $senderInfo = getUserInformaiton($user_id);
+
+      $note = $senderInfo['firstname']." ".$senderInfo['lastname']." sent a DBA to ";
+
+      foreach ($recipents as $key => $recipent)
+      {
+        $recipentInfo = getUserInformaiton($recipent);
+
+        $note .= $recipentInfo['firstname']." ".$recipentInfo['lastname'].", ";
+
+      }
+
+      $note .= "<br><br>Message: ".$message;
+
+      $target_candidate_id = $asItem['cp_pk'];
+      //ChromePhp::log($target_candidate_id);
+
+      $sViewURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
+      $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
+      logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => $note, 'link' => $sLink));
+
+      $oEvent = CDependency::getComponentByName('sl_event');
+      $oEvent->addNote($target_candidate_id, 'merge_summary', $note);
+      // write DBA to actions MCA
     }
 
     if(empty($nPk))

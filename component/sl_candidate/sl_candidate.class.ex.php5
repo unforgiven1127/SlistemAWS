@@ -2225,6 +2225,10 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getFloatHack();
 
+      ChromePhp::log($this->csUid);
+      ChromePhp::log($this->csAction);
+      ChromePhp::log($this->csType);
+      ChromePhp::log($this->cnPk);
 
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$asCompany['name'].' (#'.$pnPk.')', 'link' => $sLink));
