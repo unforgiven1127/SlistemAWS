@@ -1880,7 +1880,7 @@ class CNotificationEx extends CNotification
 
       }
 
-      $note .= "<br><br>Message: ".$message;
+      $note .= "<br>Message: ".$message;
 
       $target_candidate_id = $asItem['cp_pk'];
       //ChromePhp::log($target_candidate_id);
@@ -1888,7 +1888,6 @@ class CNotificationEx extends CNotification
       $csUid = "555-001";
       $csAction = "ppav";
       $csType= "candi";
-
 
       $sViewURL = $oPage->getAjaxUrl($csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
