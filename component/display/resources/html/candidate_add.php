@@ -369,7 +369,7 @@
 		<div id="candi_resume" class="add_margin_top_10 hidden">
 			<div class="gray_section">
 				<div class="general_form_row">
-					<div class="general_form_label">doc title</div>
+					<div class="general_form_label">Document title</div>
 					<div class="general_form_column">
 						<input type="text" name="doc_title" value="" />
 					</div>
@@ -381,7 +381,7 @@
 					</div>
 				</div>
 				<div class="general_form_row add_margin_top_10">
-					<div class="general_form_label">upload doc</div>
+					<div class="general_form_label">Upload document</div>
 					<div class="general_form_column">
 						<input type="file" maxfilesize="<?php echo CONST_SS_MAX_DOCUMENT_SIZE; ?>" name="document" />
 						<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo CONST_SS_MAX_DOCUMENT_SIZE; ?>" />
