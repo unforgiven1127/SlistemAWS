@@ -1890,8 +1890,9 @@ class CNotificationEx extends CNotification
       $csType= "candi";
 
       $sViewURL = $oPage->getAjaxUrl($csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $user_id);
-      $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
-      logUserHistory($csUid, $csAction, $csType, $target_candidate_id, array('text' => $note, 'link' => $sLink));
+      ChromePhp::log($sViewURL);
+      //$sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
+      //logUserHistory($csUid, $csAction, $csType, $target_candidate_id, array('text' => $note, 'link' => $sLink));
 
       /*$oEvent = CDependency::getComponentByName('sl_event');
       $oEvent->addNote($target_candidate_id, 'merge_summary', $note);*/
