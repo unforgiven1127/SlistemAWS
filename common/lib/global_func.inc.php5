@@ -2818,11 +2818,12 @@ exit;*/
     $sDate = date('Y-m-d H:i:s');
     $component = "555-001_ppav_candi_".$cp_pk;
     $uri = "https://slistem.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$cp_pk."&pg=ajx";
+    $table = "user_history";
 
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`)
-               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."')";
+    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`)
+               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."')";
 
 ChromePhp::log($sQuery);
 
