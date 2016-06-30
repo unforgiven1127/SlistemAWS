@@ -139,6 +139,11 @@
 
   function logUserHistory($psItemUid, $psItemAction='', $psItemType='', $pnItemPk=0, $pasLogData = array(), $pbAddToSysLog = true)
   {
+      ChromePhp::log($psItemUid);
+      ChromePhp::log($psItemAction);
+      ChromePhp::log($psItemType);
+      ChromePhp::log($pnItemPk);
+
     $oLogin = CDependency::getCpLogin();
     $pasLogData['force_log'] = 1;
 
