@@ -35,7 +35,7 @@
 			</div>
 			<div class="gray_section extended_select extended_input">
 				<div class="general_form_row">
-					<div class="general_form_label">gender</div>
+					<div class="general_form_label">Gender</div>
 					<div class="general_form_column">
 						<select id="sex_id" name="sex" onchange="toggleGenderPic(this);">
 							<option value="2">female</option>
@@ -54,16 +54,16 @@
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">lastname</div>
+					<div class="general_form_label">Lastname</div>
 					<div class="general_form_column">
 						<input <?php echo $readonly_name; ?> type="text" name="lastname" value="<?php echo $lastname; ?>" />
 					</div>
-					<div class="general_form_label add_margin_left_30">firstname</div>
+					<div class="general_form_label add_margin_left_30">Firstname</div>
 					<div class="general_form_column">
 						<input <?php echo $readonly_name; ?> type="text" name="firstname" value="<?php echo $firstname; ?>" />
 					</div>
 					<div class="general_form_label add_margin_left_30">
-						<a href="javascript:;" onclick="change_date_field('birth_date');">birth</a> /
+						<a href="javascript:;" onclick="change_date_field('birth_date');">Birth</a> /
 						<a href="javascript:;" onclick="change_date_field('estimated_age');">age</a>
 					</div>
 					<div class="general_form_column">
@@ -72,19 +72,19 @@
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">language</div>
+					<div class="general_form_label">Language</div>
 					<div class="general_form_column">
 						<select name="language">
 						<?php echo $language; ?>
 						</select>
 					</div>
-					<div class="general_form_label add_margin_left_30">nationality</div>
+					<div class="general_form_label add_margin_left_30">Nationality</div>
 					<div class="general_form_column">
 						<select name="nationality">
 						<?php echo $nationality; ?>
 						</select>
 					</div>
-					<div class="general_form_label add_margin_left_30">location</div>
+					<div class="general_form_label add_margin_left_30">Location</div>
 					<div class="general_form_column">
 						<select name="location" >
 						<?php echo $location; ?>
@@ -97,7 +97,7 @@
 			</div>
 			<div class="gray_section">
 				<div class="general_form_row extended_input">
-					<div class="general_form_label">company</div>
+					<div class="general_form_label">Company</div>
 					<div class="general_form_column" style="width: 183px;">
 						<input id="company" type="text" name="companypk" value="<?php echo $company; ?>" />
 					</div>
@@ -108,27 +108,27 @@
 							+ add a new company
 						</a>
 					</div>
-					<div class="general_form_label add_margin_left_30">title</div>
+					<div class="general_form_label add_margin_left_30">Title</div>
 					<div class="general_form_column">
 						<input type="text" name="title" value="<?php echo $title; ?>" />
 					</div>
 				</div>
 				<div class="general_form_row extended_input">
-					<div class="general_form_label">occupation</div>
+					<div class="general_form_label">Occupation</div>
 					<div class="general_form_column" style="width: 183px;">
 					<?php echo $occupation_tree; ?>
 					</div>
-					<div class="general_form_label add_margin_left_30">industry</div>
+					<div class="general_form_label add_margin_left_30">Industry</div>
 					<div class="general_form_column" style="width: 184px;">
 					<?php echo $industry_tree; ?>
 					</div>
-					<div class="general_form_label add_margin_left_30">department</div>
+					<div class="general_form_label add_margin_left_30">Department</div>
 					<div class="general_form_column">
 						<input type="text" name="department" value="<?php echo $department; ?>" />
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">salary</div>
+					<div class="general_form_label">Salary</div>
 					<div class="general_form_column">
 						<input class="salary_field" type="text" name="salary" value="<?php echo $candidate_salary; ?>" />
 						<select id="salary_unit" class="salary_manipulation" name="salary_unit">
@@ -154,7 +154,7 @@
 						<?php } ?>
 						</select>
 					</div>
-					<div class="general_form_label add_margin_left_30">bonus</div>
+					<div class="general_form_label add_margin_left_30">Bonus</div>
 					<div class="general_form_column">
 						<input class="salary_field" type="text" name="bonus" value="<?php echo $candidate_salary_bonus; ?>" />
 						<input id="bonus_unit" class="salary_manipulation_small read_only_field" type="text" name="bonus_unit"
@@ -164,7 +164,7 @@
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">target sal. from</div>
+					<div class="general_form_label">Target sal. from</div>
 					<div class="general_form_column">
 						<input class="salary_field" type="text" name="target_low" value="<?php echo $target_low; ?>" />
 						<input id="target_low_unit" class="salary_manipulation_small read_only_field" type="text" name="target_low_unit"
@@ -172,7 +172,7 @@
 						<input id="target_low_currency" class="salary_manipulation_small read_only_field" type="text" name="target_low_currency"
 							value="" readonly />
 					</div>
-					<div class="general_form_label add_margin_left_30">to</div>
+					<div class="general_form_label add_margin_left_30">To</div>
 					<div class="general_form_column">
 						<input class="salary_field" type="text" name="target_high" value="<?php echo $target_high; ?>" />
 						<input id="target_high_unit" class="salary_manipulation_small read_only_field" type="text" name="target_high_unit"
@@ -187,13 +187,13 @@
 			</div>
 			<div class="gray_section">
 				<div class="general_form_row  extended_select">
-					<div class="general_form_label">grade</div>
+					<div class="general_form_label">Grade</div>
 					<div class="general_form_column">
 						<select name="grade" >
 						<?php echo $grade; ?>
 						</select>
 					</div>
-					<div class="general_form_label add_margin_left_30">status</div>
+					<div class="general_form_label add_margin_left_30">Status</div>
 					<div class="general_form_column">
 						<select name="status" onchange="manageFormStatus(this, <?php echo $candidate_id; ?>);">
 						<?php echo $status_options; ?>
@@ -208,7 +208,7 @@
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">keyword</div>
+					<div class="general_form_label">Keyword</div>
 					<div class="general_form_column extended_input">
 						<input type="text" name="keyword" value="<?php echo $keyword; ?>" />
 					</div>
@@ -352,13 +352,13 @@
 					</span>
 				</div>
 				<div class="general_form_row add_margin_top_10">
-					<div class="general_form_label">character note</div>
+					<div class="general_form_label">Character note</div>
 					<div class="general_form_column">
 						<textarea id="character_note" name="character_note"></textarea>
 					</div>
 				</div>
 				<div class="general_form_row">
-					<div class="general_form_label">note</div>
+					<div class="general_form_label">Note</div>
 					<div class="general_form_column">
 						<textarea id="note" name="note"></textarea>
 					</div>
