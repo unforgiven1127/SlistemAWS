@@ -375,7 +375,7 @@
 					</div>
 				</div>
 				<div class="general_form_row add_margin_top_10">
-					<div class="general_form_label">doc content</div>
+					<div class="general_form_label">HTML resume</div>
 					<div class="general_form_column">
 						<textarea id="doc_description" name="doc_description"></textarea>
 					</div>
