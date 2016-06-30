@@ -6599,15 +6599,17 @@ die();*/
         $asData['companyfk'] = $nNewCompanyFk;
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
-
+ChromePhp::log($pnCandidatePk);
         if($pnCandidatePk > 0)
         {
           $dateNow = date('Y-m-d H:i:s');
-          $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' WHERE candidate_id = '".$pnCandidatePk."', last_activity ='".$dateNow."'";
+          $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$pnCandidatePk."'";
+ChromePhp::log($sQuery);
           $this->_getModel()->executeQuery($sQuery);
 
           $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
                      VALUES ('".$pnCandidatePk."','".$nNewCompanyFk."','".$dateNow."','".$dateNow."')";
+ChromePhp::log($sQuery);
           $this->_getModel()->executeQuery($sQuery);
         }
 
