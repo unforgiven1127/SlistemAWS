@@ -5224,7 +5224,7 @@ ChromePhp::log($nCandidatePk);
           }
         }
       }
-
+ChromePhp::log($bEmpty);
       if($bEmpty)
         return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
 
