@@ -1369,9 +1369,9 @@ class CSharedspaceEx extends CSharedspace
       }
     }
 
-    /*$oForm->addSection('sdescription', array('class' => 'descriptionSection'));
+    $oForm->addSection('sdescription', array('class' => 'descriptionSection'));
     $oForm->addField('textarea', 'description', array('label'=>'Short description', 'value' => $oDocument->getFieldValue('description')));
-    $oForm->closeSection();*/
+    $oForm->closeSection();
 
     $aOptionsDescHtml = array('class' => 'descriptionSection');
     $sDescriptionHtml = $oDocument->getFieldValue('description_html');
