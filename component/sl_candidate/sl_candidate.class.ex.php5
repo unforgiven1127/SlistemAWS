@@ -5217,7 +5217,7 @@ ChromePhp::log($nCandidatePk);
       {
         if(!empty($sValue))
         {
-          if($nCandidatePk == 0 && ($controlType[$nRow] == '2' || $controlType[$nRow] == '5' || $controlType[$nRow] == '6'))
+          if($nCandidatePk == 999 && ($controlType[$nRow] == '2' || $controlType[$nRow] == '5' || $controlType[$nRow] == '6'))
           {
             $bEmpty = false;
             break;
