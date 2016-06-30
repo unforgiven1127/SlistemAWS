@@ -2812,15 +2812,17 @@ exit;*/
 
   function insertLog($loginfk, $cp_pk, $text)
   {
-    $cp_uid = "555-004";
+    $cp_uid = "555-001";
     $cp_action = "ppasa";
-    $cp_type = "event";
+    $cp_type = "candi";
     $sDate = date('Y-m-d H:i:s');
+    $component = "555-001_ppav_candi_".$cp_pk;
+    $uri = "https://slistem.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$cp_pk."&pg=ajx";
 
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "INSERT INTO `login_activity`(`loginfk`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`,`text`, `log_date`, `status`)
-               VALUES('".$loginfk."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$text."','".$sDate."','0')";
+    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`)
+               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."')";
 
 ChromePhp::log($sQuery);
 
