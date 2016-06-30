@@ -5185,7 +5185,7 @@ ChromePhp::log($sQuery);
         }
       }
 
-//ChromePhp::log($edit_flag);
+ChromePhp::log($nCandidatePk);
 
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
