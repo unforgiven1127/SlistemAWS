@@ -1929,7 +1929,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getuserPk();
       $userInformation = getUserInformaiton($user_id);
-ChromePhp::log($userInformation);
+//ChromePhp::log($userInformation);
       if($user_id == $oDbResult->getFieldValue('created_by') || $userInformation['position'] == "Admin" || $userInformation['pseudo'] == "administrator")
       {
         $hiddenClass = ' ';

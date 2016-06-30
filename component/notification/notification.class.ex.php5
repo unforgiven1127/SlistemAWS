@@ -1844,7 +1844,6 @@ class CNotificationEx extends CNotification
     }
 
 
-
     $asSource = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => CONST_NOTIFY_TYPE_NOTIFICATION, CONST_CP_PK => 0);
     $sId = $this->initNotifier($asSource);
 
@@ -1863,6 +1862,32 @@ class CNotificationEx extends CNotification
         $nPk = $this->addMessage($sId, $asReminder['recipient'], $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
       else
         $nPk = $this->addItemMessage($sId, $asReminder['recipient'], $asItem, $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
+
+      // write DBA to actions MCA
+      $user_id = $oLogin->getUserPk();
+      $message = $asReminder['message'];
+      $recipents = $asReminder['recipient']; // array
+
+      $senderInfo = getUserInformaiton($user_id);
+
+      $note = $senderInfo['firstname']." ".$senderInfo['lastname']." sent a DBA to ";
+
+      foreach ($recipents as $key => $recipent)
+      {
+        $recipentInfo = getUserInformaiton($recipent);
+
+        $note .= $recipentInfo['firstname']." ".$recipentInfo['lastname'].", ";
+
+      }
+
+      $note .= "<br><br>Message: ".$message;
+
+      $target_candidate_id = $nPk;
+      ChromePhp::log($target_candidate_id);
+
+      //$oEvent = CDependency::getComponentByName('sl_event');
+      //$oEvent->addNote($target_candidate_id, 'merge_summary', $note);
+      // write DBA to actions MCA
     }
 
     if(empty($nPk))
