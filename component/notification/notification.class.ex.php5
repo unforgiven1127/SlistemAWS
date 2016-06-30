@@ -1882,7 +1882,7 @@ class CNotificationEx extends CNotification
 
       $note .= "<br><br>Message: ".$message;
 
-      $target_candidate_id = $this->casInitId[$sId];
+      $target_candidate_id = $asItem;
       ChromePhp::log($target_candidate_id);
 
       //$oEvent = CDependency::getComponentByName('sl_event');
