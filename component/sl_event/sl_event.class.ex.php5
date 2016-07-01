@@ -478,6 +478,7 @@ class CSl_eventEx extends CSl_event
 
   private function _saveNote($psAction = '')
   {
+    $oLogin = CDependency::getCpLogin();
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
 
@@ -494,6 +495,7 @@ class CSl_eventEx extends CSl_event
     ChromePhp::log($note_title);
     ChromePhp::log($content);
     ChromePhp::log($delete_flag);
+    ChromePhp::log($userInfo);
 
     if(!isset($delete_flag))
     {
