@@ -513,12 +513,12 @@ class CSl_eventEx extends CSl_event
         $note .= " note: </b><br>";
       }
 
-      $note .= "<b>".$note_title."<b><br>";
+      $note .= "<b>".$note_title."</b><br>";
       $note .= $content;
     }
     else
     {
-      $note = "<b>".$userName." deleted note #".$delete_flag;
+      $note = $userName." deleted note #".$delete_flag;
     }
     ChromePhp::log($user_id);
     ChromePhp::log($candidate_id);
