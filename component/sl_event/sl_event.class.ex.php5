@@ -482,12 +482,43 @@ class CSl_eventEx extends CSl_event
     $content = purify_html(getValue('content'));
 
     $note_title = purify_html(getValue('title'));
-    $delete_flag = getValue('delete_note');
+    $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
+    $candidate_id = $this->cnPk;
+    $user_id = $oLogin->getuserPk();
 
-    ChromePhp::log($event_type); // note, character, 
+    $userInfo = getUserInformaiton($user_id);
+
+    $userName = $userInfo['firstname']." ".$userInfo['lastname'];
+
+    ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
     ChromePhp::log($note_title);
     ChromePhp::log($content);
     ChromePhp::log($delete_flag);
+
+    if(!isset($delete_flag))
+    {
+      $note = "<b>".$userName." created a new";
+      if($event_type == "character" || $event_type == "email" || $event_type == "meeting" || $event_type == "phone" ||$event_type == "update")
+      {
+        $note .= $event_type." note: </b><br>";
+      }
+      else if($event_type == "cp_history")
+      {
+        $note .= " company history note: </b><br>";
+      }
+      else
+      {
+        $note .= " note: </b><br>";
+      }
+
+      $note .= "<b>".$note_title."<b><br>";
+      $note .= $content;
+    }
+    else
+    {
+      $note = "<b>".$userName." deleted note #".$delete_flag;
+    }
+    insertLog($user_id, $candidate_id, $note);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
       return array('error' => __LINE__.' - Can not create empty notes.');
