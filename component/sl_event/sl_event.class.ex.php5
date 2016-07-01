@@ -520,6 +520,12 @@ class CSl_eventEx extends CSl_event
     {
       $note = $userName." deleted note #".$delete_flag;
     }
+
+    if(!empty($this->cnPk))
+    {
+      $note = $userName." edited note #".$delete_flag;
+    }
+
     ChromePhp::log($user_id);
     ChromePhp::log($candidate_id);
     ChromePhp::log($note);
