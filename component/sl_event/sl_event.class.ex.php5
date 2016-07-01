@@ -491,11 +491,11 @@ class CSl_eventEx extends CSl_event
 
     $userName = $userInfo['firstname']." ".$userInfo['lastname'];
 
-    ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
-    ChromePhp::log($note_title);
-    ChromePhp::log($content);
-    ChromePhp::log($delete_flag);
-    ChromePhp::log($userInfo);
+    //ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
+    //ChromePhp::log($note_title);
+    //ChromePhp::log($content);
+    //ChromePhp::log($delete_flag);
+    //ChromePhp::log($userInfo);
 
     if(!isset($delete_flag))
     {
@@ -520,6 +520,8 @@ class CSl_eventEx extends CSl_event
     {
       $note = "<b>".$userName." deleted note #".$delete_flag;
     }
+    ChromePhp::log($user_id);
+    ChromePhp::log($candidate_id);
     ChromePhp::log($note);
     insertLog($user_id, $candidate_id, $note);
 
