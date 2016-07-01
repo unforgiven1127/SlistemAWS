@@ -494,10 +494,10 @@ class CSl_eventEx extends CSl_event
     //ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
     //ChromePhp::log($note_title);
     //ChromePhp::log($content);
-    //ChromePhp::log($delete_flag);
+    ChromePhp::log($delete_flag);
     //ChromePhp::log($userInfo);
 
-    if(!isset($delete_flag))
+    if(empty($delete_flag))
     {
       $note = "<b>".$userName." created a new";
       if($event_type == "character" || $event_type == "email" || $event_type == "meeting" || $event_type == "phone" ||$event_type == "update")
