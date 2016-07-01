@@ -9001,11 +9001,14 @@ ChromePhp::log($asCpLink);
 
               if($sLabel == 'company')
               {
+                $old_id = $old_variable;
+                $new_id = $new_variable;
+
                 $old_company = getCompanyInformation($old_variable);
                 $new_company = getCompanyInformation($new_variable);
 
-                $old_variable = $old_company['name'];
-                $new_variable = $new_company['name'];
+                $old_variable = $old_company['name']."(#".$old_id.")";
+                $new_variable = $new_company['name']."(#".$new_id.")";
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from '.$old_variable.' -> to: '.$new_variable;
