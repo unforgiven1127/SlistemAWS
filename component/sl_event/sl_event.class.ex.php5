@@ -235,7 +235,7 @@ class CSl_eventEx extends CSl_event
  */
   private function _getNoteForm($pnPk)
   {
-    ChromePhp::log('_getNoteForm');
+    //ChromePhp::log('_getNoteForm'); // not ekleme kismi buraya geliyor
     if(!assert('is_integer($pnPk)'))
       return '';
 
@@ -478,6 +478,7 @@ class CSl_eventEx extends CSl_event
 
   private function _saveNote($psAction = '')
   {
+    ChromePhp::log('_saveNote');
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
 
