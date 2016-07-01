@@ -478,9 +478,11 @@ class CSl_eventEx extends CSl_event
 
   private function _saveNote($psAction = '')
   {
-    ChromePhp::log('_saveNote');
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
+
+    ChromePhp::log($event_type);
+    ChromePhp::log($content);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
       return array('error' => __LINE__.' - Can not create empty notes.');
