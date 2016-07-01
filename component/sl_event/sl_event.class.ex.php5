@@ -235,6 +235,7 @@ class CSl_eventEx extends CSl_event
  */
   private function _getNoteForm($pnPk)
   {
+    ChromePhp::log('_getNoteForm');
     if(!assert('is_integer($pnPk)'))
       return '';
 
