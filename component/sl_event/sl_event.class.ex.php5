@@ -484,11 +484,8 @@ class CSl_eventEx extends CSl_event
 
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
-    $candidate_id = $this->cnPk;
+    $candidate_id = (int)getValue(CONST_CP_PK);
     $user_id = $oLogin->getuserPk();
-
-    ChromePhp::log($this->cnPk);
-    ChromePhp::log((int)getValue(CONST_CP_PK));
 
     $userInfo = getUserInformaiton($user_id);
 
