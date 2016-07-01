@@ -487,6 +487,9 @@ class CSl_eventEx extends CSl_event
     $candidate_id = $this->cnPk;
     $user_id = $oLogin->getuserPk();
 
+    ChromePhp::log($this->cnPk);
+    ChromePhp::log((int)getValue(CONST_CP_PK));
+
     $userInfo = getUserInformaiton($user_id);
 
     $userName = $userInfo['firstname']." ".$userInfo['lastname'];
