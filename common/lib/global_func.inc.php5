@@ -2769,6 +2769,26 @@ exit;*/
     return $contact_info;
   }
 
+  function getCompanyInformation($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_company slc
+    WHERE slc.sl_companypk = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $read = $db_result->readFirst();
+
+    while ($read)
+    {
+      $row = $db_result->getData();
+      $read = $db_result->readNext();
+    }
+
+    return $row;
+  }
+
   function getPositionInformation($position_id)
   {
     $oDB = CDependency::getComponentByName('database');
