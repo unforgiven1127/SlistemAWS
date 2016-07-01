@@ -480,11 +480,14 @@ class CSl_eventEx extends CSl_event
   {
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
-    $note_title = purify_html(getValue('title'));
 
-    ChromePhp::log($event_type); // note,
+    $note_title = purify_html(getValue('title'));
+    $delete_flag = getValue('delete_note');
+
+    ChromePhp::log($event_type); // note, character, 
     ChromePhp::log($note_title);
     ChromePhp::log($content);
+    ChromePhp::log($delete_flag);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
       return array('error' => __LINE__.' - Can not create empty notes.');
