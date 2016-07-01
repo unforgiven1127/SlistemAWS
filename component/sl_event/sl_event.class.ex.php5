@@ -502,7 +502,7 @@ class CSl_eventEx extends CSl_event
       $note = "<b>".$userName." created a new";
       if($event_type == "character" || $event_type == "email" || $event_type == "meeting" || $event_type == "phone" ||$event_type == "update")
       {
-        $note .= " ".$event_type." note: </b><br>";
+        $note .= " ".ucfirst($event_type)." note: </b><br>";
       }
       else if($event_type == "cp_history")
       {
