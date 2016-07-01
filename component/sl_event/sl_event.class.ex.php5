@@ -483,6 +483,7 @@ class CSl_eventEx extends CSl_event
     $note_title = purify_html(getValue('title'));
 
     ChromePhp::log($event_type); // note,
+    ChromePhp::log($note_title);
     ChromePhp::log($content);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
