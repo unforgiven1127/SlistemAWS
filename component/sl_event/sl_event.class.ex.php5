@@ -494,7 +494,7 @@ class CSl_eventEx extends CSl_event
     //ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
     //ChromePhp::log($note_title);
     //ChromePhp::log($content);
-    ChromePhp::log($delete_flag);
+    ChromePhp::log($psAction);
     //ChromePhp::log($userInfo);
 
     if(empty($delete_flag))
