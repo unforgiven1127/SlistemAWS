@@ -121,13 +121,13 @@ class CTemplateList extends CTemplate
         foreach($asHeader as $nHeaderPos => $asColumnData)
         {
 ChromePhp::log($asColumnData['label']); // $asColumnData['label']
-          var_dump($asColumnData);
+          //var_dump($asColumnData);
 
           if($asColumnData['label'] == "ID" )
           {
             $type = 'integer';
           }
-          else if($asColumnData['label'] == "C" || $asColumnData['label'] == "G" || $asColumnData['label'] == "R" || $asColumnData['label'] == "Note")
+          else if($asColumnData['label'] == "C" || $asColumnData['label'] == "G" || $asColumnData['label'] == "R" || $asColumnData['label'] == "Note"|| $asColumnData['label'] == "Salary")
           {
             $type = 'value';
           }
