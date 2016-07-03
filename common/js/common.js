@@ -1226,8 +1226,6 @@ function displaySalary(value)
               compA = $(a).find('.'+sColumn).attr('sort_value');
               compB = $(b).find('.'+sColumn).attr('sort_value');
 
-              alert(compA);
-              alert(compB);
 
               //console.log('mode 2 [.'+sColumn+' attr(sort_value)] ==> a: '+compA+' / b: '+compB);
 
