@@ -5206,9 +5206,6 @@ $flag = strpos($test, $control);
 
       $bEmpty = true;
 
-      ChromePhp::log($_POST['contact_value']);
-      ChromePhp::log($_POST['contact_type']);
-
       $controlType = $_POST['contact_type'];
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
@@ -7881,8 +7878,6 @@ die();*/
         $asCpLink['cp_pk'] = (int)getValue('cp_pk');
       }
 
-//ChromePhp::log($pasCandidate);
-ChromePhp::log($asCpLink);
 
       if(!assert('is_cpValues($asCpLink)'))
         return array('error' => 'Missing parameters.');
