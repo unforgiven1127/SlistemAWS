@@ -123,11 +123,11 @@ class CTemplateList extends CTemplate
 ChromePhp::log($asColumnData['label']); // $asColumnData['label']
           //var_dump($asColumnData);
 
-          if($asColumnData['label'] == "ID" )
+          if($asColumnData['label'] == "ID" || $asColumnData['label'] == "Salary")
           {
             $type = 'integer';
           }
-          else if($asColumnData['label'] == "C" || $asColumnData['label'] == "G" || $asColumnData['label'] == "R" || $asColumnData['label'] == "Note"|| $asColumnData['label'] == "Salary")
+          else if($asColumnData['label'] == "C" || $asColumnData['label'] == "G" || $asColumnData['label'] == "R" || $asColumnData['label'] == "Note")
           {
             $type = 'value';
           }
