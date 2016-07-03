@@ -494,7 +494,7 @@ class CSl_eventEx extends CSl_event
     //ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
     //ChromePhp::log($note_title);
     //ChromePhp::log($content);
-    ChromePhp::log($psAction);
+    //ChromePhp::log($psAction);
     //ChromePhp::log($userInfo);
 
     if(empty($delete_flag))
@@ -526,9 +526,9 @@ class CSl_eventEx extends CSl_event
       $note = $userName." edited note #".$this->cnPk;
     }
 
-    ChromePhp::log($user_id);
-    ChromePhp::log($candidate_id);
-    ChromePhp::log($note);
+    //ChromePhp::log($user_id);
+    //ChromePhp::log($candidate_id);
+    //ChromePhp::log($note);
     insertLog($user_id, $candidate_id, $note);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
