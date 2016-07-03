@@ -9011,11 +9011,10 @@ ChromePhp::log($asCpLink);
                 $new_variable = $new_company['name']." (#".$new_id.")";
 
                 $loginfk = $oLogin->getuserPk();
-                $cp_pk = $pasOldData['sl_candidatepk'];
+                //$cp_pk = $pasOldData['sl_candidatepk'];
                 $text = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
 
                 ChromePhp::log($loginfk);
-                ChromePhp::log($cp_pk);
                 ChromePhp::log($text);
                 ChromePhp::log($pasOldData);
 
