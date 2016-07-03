@@ -2806,7 +2806,6 @@ $flag = strpos($test, $control);
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-ChromePhp::log($sQuery);
 //ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
@@ -5185,8 +5184,6 @@ ChromePhp::log($sQuery);
         }
       }
 
-ChromePhp::log($nCandidatePk);
-
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
@@ -5235,7 +5232,6 @@ ChromePhp::log($nCandidatePk);
         }
       }
 
-ChromePhp::log($bEmpty);
       if($bEmpty)
         return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
 
@@ -6599,17 +6595,17 @@ die();*/
         $asData['companyfk'] = $nNewCompanyFk;
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
-ChromePhp::log($pnCandidatePk);
+
         if($pnCandidatePk > 0)
         {
           $dateNow = date('Y-m-d H:i:s');
           $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$pnCandidatePk."'";
-ChromePhp::log($sQuery);
+
           $this->_getModel()->executeQuery($sQuery);
 
           $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
                      VALUES ('".$pnCandidatePk."','".$nNewCompanyFk."','".$dateNow."','".$dateNow."')";
-ChromePhp::log($sQuery);
+
           $this->_getModel()->executeQuery($sQuery);
         }
 
@@ -7165,7 +7161,7 @@ ChromePhp::log($sQuery);
       {
         $desc = getValue('doc_description');
         $passResume = $desc;
-        ChromePhp::log($passResume);
+
 
         $array = array($pasCandidate['candidatefk'],$desc);
 
@@ -7177,7 +7173,7 @@ ChromePhp::log($sQuery);
       {
         if(empty($_FILES) || empty($_FILES['document']['name']))
         {
-          ChromePhp::log('No file selected');
+
           return array();
         }
 
