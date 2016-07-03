@@ -121,7 +121,7 @@ class CTemplateList extends CTemplate
         foreach($asHeader as $nHeaderPos => $asColumnData)
         {
 ChromePhp::log($asColumnData['label']); // $asColumnData['label']
-          dump($asColumnData);
+          var_dump($asColumnData);
 
           if($asColumnData['label'] == "ID" )
           {
