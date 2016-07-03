@@ -9001,15 +9001,11 @@ die();*/
                 $old_variable = $old_company['name']." (#".$old_id.")";
                 $new_variable = $new_company['name']." (#".$new_id.")";
 
-                $loginfk = $oLogin->getuserPk();
-                //$cp_pk = $pasOldData['sl_candidatepk'];
+                $loginfk = $this->_oLogin->getUserPk();
+                $cp_pk = $pasOldData['sl_candidatepk'];
                 $text = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
 
-                ChromePhp::log($loginfk);
-                ChromePhp::log($text);
-                ChromePhp::log($pasOldData);
-
-                //insertLog($loginfk, $cp_pk, $text, "company_history");
+                insertLog($loginfk, $cp_pk, $text, "company_history");
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
