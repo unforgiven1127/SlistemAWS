@@ -1222,9 +1222,12 @@ function displaySalary(value)
           {
             listItems.sort(function(a,b)
             {
-              console.log($(a).find('.'+sColumn).attr('cp_client_val'));
+              //console.log($(a).find('.'+sColumn).attr('cp_client_val'));
               compA = $(a).find('.'+sColumn).attr('sort_value');
               compB = $(b).find('.'+sColumn).attr('sort_value');
+
+              alert(compA);
+              alert(compB);
 
               //console.log('mode 2 [.'+sColumn+' attr(sort_value)] ==> a: '+compA+' / b: '+compB);
 
