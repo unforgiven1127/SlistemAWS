@@ -9014,7 +9014,12 @@ ChromePhp::log($asCpLink);
                 $cp_pk = $pasOldData['sl_candidatepk'];
                 $text = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
 
-                insertLog($loginfk, $cp_pk, $text, "company_history");
+                ChromePhp::log($loginfk);
+                ChromePhp::log($cp_pk);
+                ChromePhp::log($text);
+                ChromePhp::log($pasOldData);
+
+                //insertLog($loginfk, $cp_pk, $text, "company_history");
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
