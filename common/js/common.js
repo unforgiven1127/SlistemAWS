@@ -1188,9 +1188,9 @@ function displaySalary(value)
 
     var listItems = oList.children('li:not(:first)').get();
 //console.log(listItems);
-alert(poElement);
-alert(psWay);
-alert(psMode);
+//alert(poElement);
+//alert(psWay);
+//alert(psMode);
     $(oList).animate({opacity: '0.2'}, function()
     {
         switch(psMode)
@@ -1222,7 +1222,7 @@ alert(psMode);
           {
             listItems.sort(function(a,b)
             {
-              //console.log($(a).find('.'+sColumn).attr('cp_client_val'));
+              console.log($(a).find('.'+sColumn).attr('cp_client_val'));
               compA = $(a).find('.'+sColumn).attr('sort_value');
               compB = $(b).find('.'+sColumn).attr('sort_value');
 
