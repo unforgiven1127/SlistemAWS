@@ -1306,7 +1306,6 @@ class CSharedspaceEx extends CSharedspace
 
         $oForm->addField('input', 'callback', array('type' => 'hidden', 'value' => getValue('callback')));
       }
-      $oForm->addField('input', 'fileName');
     }
     else
     {
@@ -1405,6 +1404,8 @@ class CSharedspaceEx extends CSharedspace
 
     // Files managment
     $sInputText = $sLabelFile.'<p id=\'single-upload-filelist\' style=\'display:none;\'><span></span><a href=\'#\' id=\'removeFile\'>Remove</a></p>';
+
+    $oForm->addField('input', 'fileName');
     //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sInputText));
     $oForm->addSection('single-upload-input');
     $oForm->addField('input', 'document', array('type' => 'file', 'label'=> $sInputText, 'value'=>'', 'class' => 'single-upload-input'));
