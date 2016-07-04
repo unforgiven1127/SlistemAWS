@@ -511,6 +511,7 @@ class CMenuEx extends CMenu
               if(!empty($asMenuItems['icon']))
               {
                 ChromePhp::log($asMenuItems);
+                exit;
                 $sExtraClass.= ' menuNavIcon ';
 
                 if(substr($asMenuItems['icon'], 0, 1) == '/' || substr($asMenuItems['icon'], 0, 4) == 'http')
