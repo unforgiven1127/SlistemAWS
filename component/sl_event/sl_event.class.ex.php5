@@ -121,9 +121,9 @@ ChromePhp::log($asNotes);
 
     if($psNoteType == 'cp_history')
     {
-      $companyHistory = getCompanyHistory($candidate_id);
+      //$companyHistory = getCompanyHistory($candidate_id);
 
-      ChromePhp::log($companyHistory);
+      ChromePhp::log($pnItemPk);
 
       /*foreach ($variable as $key => $value)
       {
