@@ -1294,7 +1294,7 @@ class CSettingsEx extends CSettings
         $oForm->addField('misc', '', array('type'=> 'br'));
       }
 
-     // $oForm->addField('misc', '', array('type'=> 'text', 'text' => 'use the menu_generator here: <a href="/component/settings/resources/menu_generator.php" target="_blank">menu_generator.php</a>'));
+      $oForm->addField('misc', '', array('type'=> 'text', 'text' => 'use the menu_generator here: <a href="/component/settings/resources/menu_generator.php" target="_blank">menu_generator.php</a>'));
 
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
