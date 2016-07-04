@@ -1424,7 +1424,7 @@ class CSharedspaceEx extends CSharedspace
             $('#single-upload-filelist > span').text(inputText);
             $('#single-upload-filelist').show();
             $('#single-upload-input').hide();
-            $('#fileNameHidden').text(inputText);
+            $('#fileNameHidden').val(inputText);
           }
         });
 
