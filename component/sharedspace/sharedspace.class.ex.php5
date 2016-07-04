@@ -2010,7 +2010,7 @@ class CSharedspaceEx extends CSharedspace
 
     foreach( $_FILES['document']['name'] as $key => $value )
     {
-      unset( $_FILES['document']['name'][$key] );
+      //unset( $_FILES['document']['name'][$key] );
       ChromePhp::log('UNSET');
     }
 
