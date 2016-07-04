@@ -85,7 +85,7 @@ class CSl_eventEx extends CSl_event
       return array();
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
-//ChromePhp::log($asNotes);
+ChromePhp::log($asNotes['content']);
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
