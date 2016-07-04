@@ -113,7 +113,7 @@ class CSl_eventEx extends CSl_event
       {
         if(strlen($splitted[$i]) > 30)
         {
-          $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
+          $splitted[$i] = str_replace("<br />","",$splitted[$i]);
           $splitted[$i] = '';
         }
       }
