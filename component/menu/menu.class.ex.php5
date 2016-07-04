@@ -500,7 +500,7 @@ class CMenuEx extends CMenu
                 $sPicture = '';
 
               if(!empty($asMenuItems['name']))
-                $sExtraClass.= ' menuNavText test ';
+                $sExtraClass.= ' menuNavText test3 ';
 
               $sItem = $this->_oDisplay->getLink($sPicture.$asMenuItems['name'], 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic', 'target' => $asMenuItems['target']));
               $sTextItem = $sItem;
@@ -520,7 +520,7 @@ class CMenuEx extends CMenu
                 if(!empty($asMenuItems['name']))
                 {
                   $sPic.= ' '.$asMenuItems['name'];
-                  $sExtraClass.= ' menuNavText ';
+                  $sExtraClass.= ' menuNavText test ';
                 }
 
                 $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
@@ -529,7 +529,7 @@ class CMenuEx extends CMenu
               }
               else
               {
-                $sExtraClass.= ' menuNavText ';
+                $sExtraClass.= ' menuNavText test2 ';
                 $sItem = $this->_oDisplay->getLink($asMenuItems['name'], $sLink, array('class' => 'mainMenuPic', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target']));
                 $sTextItem = $sItem;
               }
