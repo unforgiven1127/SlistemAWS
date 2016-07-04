@@ -964,10 +964,11 @@ ChromePhp::log('buraya geldi');
         $asCandidate = $this->updateCandidateProfile($pnPk);
       }
 
-      if(getValue('insertNewLog'))
+      $candidate_id = $_GET['candidate_id'];
+      $insertNewLog = $_GET['insertNewLog'];
+
+      if(isset($candidate_id))
       {
-        $candidate_id = getValue('candidate_id');
-        $insertNewLog = getValue('insertNewLog');
         ChromePhp::log($candidate_id);
         ChromePhp::log($insertNewLog);
         return $candidate_id."_".$insertNewLog;
