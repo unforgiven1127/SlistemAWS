@@ -12,7 +12,8 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
       //alert(candidate_id);
-      refresh_candi(candidate_id);
+      test = refresh_candi(candidate_id,'','contactDetails');
+      alert(test);
     }
 
     //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
@@ -56,6 +57,11 @@ function view_candi(psUrl, psTab)
 
 function refresh_candi(pnPk, pbRequestCheck, insertNewLog)
 {
+  if(typeof insertNewLog != 'undefined' && insertNewLog != null)
+  {
+    sURL = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog="+insertNewLog+"&candidate_id="+pnPk;
+  }
+
   if(pbRequestCheck)
     sURL = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&check_profile=1&ppk="+pnPk;
   else

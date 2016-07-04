@@ -964,6 +964,13 @@ class CSl_candidateEx extends CSl_candidate
         $asCandidate = $this->updateCandidateProfile($pnPk);
       }
 
+      if(getValue('insertNewLog'))
+      {
+        $candidate_id = getValue('candidate_id');
+        $insertNewLog = getValue('insertNewLog');
+        return $candidate_id."_".$insertNewLog;
+      }
+
       $sViewURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
       if(getValue('preview'))
       {
