@@ -122,6 +122,8 @@ class CSl_eventEx extends CSl_event
 
       $asNotes[$key]['content'] = $imploted;
 
+      $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
+
       ChromePhp::log($asNotes[$key]['content']);
     }
 
