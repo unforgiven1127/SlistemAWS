@@ -134,6 +134,7 @@ class CEventModelEx extends CEventModel
     if(!assert('is_key($pnPk)'))
       return array('error' => __LINE__.' - Wrong parameter assigned to getEventsFromPk');
 
+ChromePhp::log('getEventsFromPk');
     $sQuery = 'SELECT * FROM event as ev ';
     $sQuery.= ' INNER JOIN event_link as el ON (el.eventfk = ev.eventpk AND el.eventfk = '.$pnPk.') ';
     $sQuery.= ' INNER JOIN shared_login as lo ON (lo.loginpk = ev.created_by) ';
