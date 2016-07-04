@@ -510,6 +510,7 @@ class CMenuEx extends CMenu
             {
               if(!empty($asMenuItems['icon']))
               {
+                ChromePhp::log($asMenuItems);
                 $sExtraClass.= ' menuNavIcon ';
 
                 if(substr($asMenuItems['icon'], 0, 1) == '/' || substr($asMenuItems['icon'], 0, 4) == 'http')
@@ -524,7 +525,7 @@ class CMenuEx extends CMenu
                 }
 
                 $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
-                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 '.$sLink.' ', 'onclick' => "window.open('$mainPageUrl','_self');"));
+                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => "window.open('$mainPageUrl','_self');"));
                 $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic test6 ', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
               }
               else
