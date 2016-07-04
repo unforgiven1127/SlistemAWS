@@ -11,7 +11,8 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     var oContainer =  $(poElement).closest('.candiTabContainer');
     if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
-      alert(candidate_id);
+      //alert(candidate_id);
+      refresh_candi(candidate_id);
     }
 
     //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
@@ -53,7 +54,7 @@ function view_candi(psUrl, psTab)
     AjaxRequest(psUrl, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
 }
 
-function refresh_candi(pnPk, pbRequestCheck)
+function refresh_candi(pnPk, pbRequestCheck, insertNewLog)
 {
   if(pbRequestCheck)
     sURL = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&check_profile=1&ppk="+pnPk;
