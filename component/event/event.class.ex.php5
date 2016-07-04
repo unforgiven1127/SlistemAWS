@@ -1193,6 +1193,7 @@ class CEventEx extends CEvent
 
   public function getEventDetail($psEventType='', $pnItemPk, $psType, $pnLimit=0)
   {
+    ChromePhp::log('getEventDetail');
     if(!assert('!empty($pnItemPk) && is_integer($pnItemPk)&& is_integer($pnLimit)'))
       return 0;
 

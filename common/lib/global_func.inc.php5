@@ -2830,6 +2830,11 @@ exit;*/
     return $row;
   }
 
+  function insertEvent($type,$content,$created_by, $cp_pk)
+  {
+
+  }
+
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history")
   {
     $cp_uid = "555-001";

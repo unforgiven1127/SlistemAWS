@@ -9006,6 +9006,7 @@ die();*/
                 $text = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
 
                 insertLog($loginfk, $cp_pk, $text, "company_history");
+                //insertEvent("company_history",$text,$loginfk,$cp_pk);
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
