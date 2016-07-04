@@ -9,7 +9,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     $(poElement).addClass('selected');
 
     var oContainer =  $(poElement).closest('.candiTabContainer');
-    if(candidate_id != 'undefined')
+    if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
       alert(candidate_id);
     }
