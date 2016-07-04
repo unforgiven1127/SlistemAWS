@@ -1678,6 +1678,9 @@ class CSharedspaceEx extends CSharedspace
     if(!assert('is_integer($pnPk)'))
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
+    $fileNameHidden = getValue('fileNameHidden');
+    ChromePhp::log($fileNameHidden);
+
     if(empty($_FILES) || empty($_FILES['document']['name']))
     {
       return array( 'error' => __LINE__.' - Please select a document.');
