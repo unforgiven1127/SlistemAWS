@@ -443,7 +443,7 @@ class CMenuEx extends CMenu
         $sPic = $this->_oDisplay->getPicture($this->getResourcePath().'pictures/toggle_menu_48.png');
         $sHTML.= $this->_oDisplay->getListItemStart();
         $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'menuNavIcon menu_open_label'));
-        $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('id' => 'toggleVertMenu', 'style' => 'width: 100%;', 'class' => 'mainMenuPic',
+        $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('id' => 'toggleVertMenu', 'style' => 'width: 100%;', 'class' => 'mainMenuPic test1 ',
             'current_width' => '55', 'max_width' => '250', 'min_width' => '55', 'onclick' => 'toggleVerticalMenu(this);'));
         $sHTML.= $this->_oDisplay->getBlocEnd();
         $sHTML.= $this->_oDisplay->getListItemEnd();
@@ -491,7 +491,7 @@ class CMenuEx extends CMenu
               $sAjax = $this->_oDisplay->getAjaxPopupJS($sURL, 'body', '', 0, 0, $asPopupParam);
               if(!empty($asMenuItems['icon']))
               {
-                $sPicture = $this->_oDisplay->getPicture($asMenuItems['icon'],  $asMenuItems['name'], '', array('class' => 'mainMenuPic'));
+                $sPicture = $this->_oDisplay->getPicture($asMenuItems['icon'],  $asMenuItems['name'], '', array('class' => 'mainMenuPic test2 '));
                 //$sItem = $this->_oDisplay->getLink($sPicture, 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic', 'target' => $asMenuItems['target']));
                 //$sTextItem = $this->_oDisplay->getLink($asMenuItems['name'], 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic', 'target' => $asMenuItems['target']));
                 $sExtraClass.= ' menuNavIcon ';
@@ -500,9 +500,9 @@ class CMenuEx extends CMenu
                 $sPicture = '';
 
               if(!empty($asMenuItems['name']))
-                $sExtraClass.= ' menuNavText test3 ';
+                $sExtraClass.= ' menuNavText ';
 
-              $sItem = $this->_oDisplay->getLink($sPicture.$asMenuItems['name'], 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic', 'target' => $asMenuItems['target']));
+              $sItem = $this->_oDisplay->getLink($sPicture.$asMenuItems['name'], 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic test3 ', 'target' => $asMenuItems['target']));
               $sTextItem = $sItem;
 
             }
@@ -520,17 +520,17 @@ class CMenuEx extends CMenu
                 if(!empty($asMenuItems['name']))
                 {
                   $sPic.= ' '.$asMenuItems['name'];
-                  $sExtraClass.= ' menuNavText test ';
+                  $sExtraClass.= ' menuNavText ';
                 }
 
                 $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
-                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic', 'onclick' => "window.open('$mainPageUrl','_self');"));
-                $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
+                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => "window.open('$mainPageUrl','_self');"));
+                $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic test6 ', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
               }
               else
               {
-                $sExtraClass.= ' menuNavText test2 ';
-                $sItem = $this->_oDisplay->getLink($asMenuItems['name'], $sLink, array('class' => 'mainMenuPic', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target']));
+                $sExtraClass.= ' menuNavText ';
+                $sItem = $this->_oDisplay->getLink($asMenuItems['name'], $sLink, array('class' => 'mainMenuPic test7 ', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target']));
                 $sTextItem = $sItem;
               }
 
@@ -538,7 +538,7 @@ class CMenuEx extends CMenu
               {
                 $sItem.= $this->_oDisplay->getCR();
                 $sItem.= $this->_oDisplay->getSpanStart('', array('class' => 'menuNavLegend'));
-                $sItem.= $this->_oDisplay->getLink($asMenuItems['legend'], $sLink, array('class' => 'mainMenuPic'));
+                $sItem.= $this->_oDisplay->getLink($asMenuItems['legend'], $sLink, array('class' => 'mainMenuPic test8 '));
                 $sItem.= $this->_oDisplay->getSpanEnd();
               }
             }
