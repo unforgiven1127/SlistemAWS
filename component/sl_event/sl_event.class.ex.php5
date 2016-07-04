@@ -114,6 +114,7 @@ class CSl_eventEx extends CSl_event
       {
         if(strlen($splitted[$i]) > 30)
         {
+          $splitted[$i] = strip_tags($splitted[$i]);
           $splitted[$i] = '';
         }
       }
