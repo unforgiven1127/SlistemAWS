@@ -1306,6 +1306,7 @@ class CSharedspaceEx extends CSharedspace
 
         $oForm->addField('input', 'callback', array('type' => 'hidden', 'value' => getValue('callback')));
       }
+      $oForm->addField('input', 'fileName');
     }
     else
     {
