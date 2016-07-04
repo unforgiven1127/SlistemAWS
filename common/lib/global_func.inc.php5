@@ -2852,6 +2852,7 @@ exit;*/
   {
     $candidate_id = $_POST['candidate_id'];
     echo $candidate_id;
+    exit;
   }
 
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history")

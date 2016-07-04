@@ -11,11 +11,11 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     var oContainer =  $(poElement).closest('.candiTabContainer');
     if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
-      //alert(candidate_id);
+      alert(candidate_id);
       //test = refresh_candi(candidate_id,'','contactDetails');
       //alert(test);
 
-      xhttp.open("POST", "https://beta1.slate.co.jp/web/slistem/beta/common/lib/global_func_inc.php5?candidate=" + candidate_id, true);
+      xhttp.open("POST", "https://beta1.slate.co.jp/web/slistem/beta/common/lib/global_func_inc.php5/ajaxLog?candidate=" + candidate_id, true);
       xhttp.send();
     }
 
