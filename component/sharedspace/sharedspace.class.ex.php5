@@ -1679,7 +1679,10 @@ class CSharedspaceEx extends CSharedspace
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
     $fileNameHidden = getValue('fileNameHidden');
-    ChromePhp::log($fileNameHidden);
+    if($fileNameHidden == 0 || empty($fileNameHidden))
+    {
+      return array( 'error' => __LINE__.' - Please select a document.');
+    }
 
     if(empty($_FILES) || empty($_FILES['document']['name']))
     {
