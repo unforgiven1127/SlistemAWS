@@ -85,7 +85,7 @@ class CSl_eventEx extends CSl_event
       return array();
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
-ChromePhp::log($asNotes);
+//ChromePhp::log($asNotes);
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
@@ -124,7 +124,7 @@ ChromePhp::log($asNotes);
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
 
-      ChromePhp::log($companyHistory);
+      //ChromePhp::log($companyHistory);
 
       foreach ($companyHistory as $key => $value)
       {
@@ -150,9 +150,9 @@ ChromePhp::log($asNotes);
         $addNotes['type'] = "cp_history";
         $addNotes['updated_by'] = '';
 
-        ChromePhp::log($addNotes);
-        array_push($asNotes,$addNotes);
-        ChromePhp::log($asNotes);
+        //ChromePhp::log($addNotes);
+        //array_push($asNotes,$addNotes);
+        //ChromePhp::log($asNotes);
       }
 
     }

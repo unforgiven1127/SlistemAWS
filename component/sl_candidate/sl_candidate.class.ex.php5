@@ -7170,7 +7170,7 @@ die();*/
       {
         if(empty($_FILES) || empty($_FILES['document']['name']))
         {
-
+          $asError[] = 'No file selected.';
           return array();
         }
 
