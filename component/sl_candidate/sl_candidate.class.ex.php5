@@ -1448,6 +1448,8 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_array($pasCandidateData) && !empty($pasCandidateData)'))
         return array();
 
+      ChromePhp::log('_getContactTab');
+
       $oPage = CDependency::getCpPage();
       $asTypeTitle = array( 1 => 'Home phone number', 2 => 'Office phone number', 3 => 'Website url', 4 => 'Fax number',
                             5 => 'Email address', 6 => 'Mobile phone number', 7 => 'LinkedIn url', 8 => 'Facebook url', 9 => 'info');
