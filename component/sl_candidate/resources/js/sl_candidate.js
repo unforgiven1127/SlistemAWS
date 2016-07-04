@@ -1,6 +1,8 @@
 
 function toggleCandiTab(poElement, psIdToShow, psContainer)
 {
+  <?php ?>
+  //psIdToShow acilacak olan tab
   if(poElement)
   {
     //remove selected links adn select current clicked one
