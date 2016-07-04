@@ -138,7 +138,7 @@ ChromePhp::log($asNotes);
         $addNotes['cp_pk'] = $candidate_id;
         $addNotes['cp_type'] = "candi";
         $addNotes['cp_uid'] = "555-001";
-        $addNotes['created_by'] = $value['user_fk'];
+        $addNotes['created_by'] = $value['userfk'];
         $addNotes['custom_type'] = "";
         $addNotes['date_create'] = $value['date'];
         $addNotes['date_display'] = "";
