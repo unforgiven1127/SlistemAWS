@@ -952,7 +952,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       if(!assert('is_key($pnPk)'))
         return '';
-//ChromePhp::log('buraya geldi');
+ChromePhp::log('buraya geldi');
 //ChromePhp::log($pnPk);
 //ChromePhp::log($pasRedirected);
       $sHTML = '';
@@ -968,6 +968,8 @@ class CSl_candidateEx extends CSl_candidate
       {
         $candidate_id = getValue('candidate_id');
         $insertNewLog = getValue('insertNewLog');
+        ChromePhp::log($candidate_id);
+        ChromePhp::log($insertNewLog);
         return $candidate_id."_".$insertNewLog;
       }
 
