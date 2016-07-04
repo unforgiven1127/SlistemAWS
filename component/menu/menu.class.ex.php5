@@ -513,17 +513,41 @@ class CMenuEx extends CMenu
                 ChromePhp::log($asMenuItems['onclick']);
                 $sExtraClass.= ' menuNavIcon ';
 
-                $onclickTest = "var sURL = '/index.php5?uid=333-333&amp;ppa=ppaa&amp;ppt=msg&amp;pg=ajx';
+                $onclickNew = "window.open('$mainPageUrl','_self');";
+                if($asMenuItems['name'] == 'Messaging')
+                {
+                  $onclickNew = "var sURL = '/index.php5?uid=333-333&amp;ppa=ppaa&amp;ppt=msg&amp;pg=ajx';
+                    var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
+                    if(oItem.length)
+                      sURL+= '&amp;cp_item_selector='+encodeURI($(oItem).attr('data-cp_item_selector'));
 
-          var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
-          if(oItem.length)
-            sURL+= '&amp;cp_item_selector='+encodeURI($(oItem).attr('data-cp_item_selector'));
+                    var oConf = goPopup.getConfig();
+                    oConf.draggable = true;
+                    oConf.height = 550;
+                    oConf.width = 850;
+                    goPopup.setLayerFromAjax(oConf, sURL);";
+                }
+                else if($asMenuItems['name'] == 'Schedule')
+                {
+                  $onclickNew = "var sURL = '/index.php5?uid=333-333&amp;ppa=ppaa&amp;ppt=not&amp;pg=ajx';
 
-          var oConf = goPopup.getConfig();
-          oConf.draggable = true;
-          oConf.height = 550;
-          oConf.width = 850;
-          goPopup.setLayerFromAjax(oConf, sURL);";
+                  var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
+                  if(oItem.length)
+                    sURL+= '&amp;cp_item_selector='+encodeURI($(oItem).attr('data-cp_item_selector'));
+
+                  var oConf = goPopup.getConfig();
+                  oConf.height = 500;
+                  oConf.width = 850;
+                  goPopup.setLayerFromAjax(oConf, sURL);";
+                }
+                else if($asMenuItems['name'] == 'View')
+                {
+                  $onclickNew = "var oConf = goPopup.getConfig();  oConf.width = '1080';  oConf.height = '725';  oConf.tag = 'position_window';  oConf.modal = true;  goPopup.setLayerFromAjax(oConf,  'https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppal&amp;ppt=jd&amp;ppk=0&amp;pg=ajx', '', false);";
+                }
+                else if($asMenuItems['name'] == 'Contact sheet')
+                {
+                  $onclickNew = "window.open('https://beta1.slate.co.jp/index.php5?uid=579-704&amp;ppa=ppae&amp;ppt=usr&amp;ppk=0','_self');";
+                }
 
                 if(substr($asMenuItems['icon'], 0, 1) == '/' || substr($asMenuItems['icon'], 0, 4) == 'http')
                   $sPic = $this->_oDisplay->getPicture($asMenuItems['icon'], $asMenuItems['name']);
@@ -537,7 +561,7 @@ class CMenuEx extends CMenu
                 }
 
                 $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
-                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => $onclickTest));
+                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => $onclickNew));
                 $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic test6 ', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
               }
               else
