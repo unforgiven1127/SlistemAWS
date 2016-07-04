@@ -452,7 +452,7 @@ class CMenuEx extends CMenu
       if(!empty($asMenuArray))
       {
         foreach($asMenuArray as $asMenuItems)
-        {
+        {ChromePhp::log($asMenuItems['name']);
           if($this->_canAccessMenu($asMenuItems))
           {
             $sExtraClass = '';
@@ -510,7 +510,6 @@ class CMenuEx extends CMenu
             {
               if(!empty($asMenuItems['icon']))
               {
-                ChromePhp::log($asMenuItems['onclick']);
                 $sExtraClass.= ' menuNavIcon ';
 
                 $onclickNew = "window.open('$mainPageUrl','_self');";
