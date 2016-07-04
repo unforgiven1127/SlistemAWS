@@ -1805,6 +1805,7 @@ class CNotificationEx extends CNotification
 
     $asReminder['recipient'] = getValue('recipient');
 
+    if(!isset($asReminder['recipient']) || empty($asReminder['recipient']))
       return array('error' => __LINE__.' - You need to select a recipient.');
 
     $asReminder['recipient'] = explode(',', $asReminder['recipient']);
