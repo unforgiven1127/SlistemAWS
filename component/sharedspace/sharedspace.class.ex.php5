@@ -1405,10 +1405,10 @@ class CSharedspaceEx extends CSharedspace
     // Files managment
     $sInputText = $sLabelFile.'<p id=\'single-upload-filelist\' style=\'display:none;\'><span></span><a href=\'#\' id=\'removeFile\'>Remove</a></p>';
 
-    $oForm->addField('input', 'fileName');
     //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sInputText));
     $oForm->addSection('single-upload-input');
     $oForm->addField('input', 'document', array('type' => 'file', 'label'=> $sInputText, 'value'=>'', 'class' => 'single-upload-input'));
+    $oForm->addField('input', 'fileNameHidden');
     $oForm->closeSection();
 
     $sJsFileUpload = "
