@@ -12,11 +12,11 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
       alert(candidate_id);
+      var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&candidate_id="+candidate_id;
+      $.get(url);
       //test = refresh_candi(candidate_id,'','contactDetails');
       //alert(test);
 
-      xhttp.open("POST", "https://beta1.slate.co.jp/web/slistem/beta/common/lib/global_func_inc.php5/ajaxLog?candidate=" + candidate_id, true);
-      xhttp.send();
     }
 
     //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container

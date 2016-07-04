@@ -952,7 +952,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       if(!assert('is_key($pnPk)'))
         return '';
-//ChromePhp::log('buraya geldi');
+ChromePhp::log('buraya geldi');
 //ChromePhp::log($pnPk);
 //ChromePhp::log($pasRedirected);
       $sHTML = '';
@@ -962,6 +962,16 @@ class CSl_candidateEx extends CSl_candidate
       if(getValue('check_profile'))
       {
         $asCandidate = $this->updateCandidateProfile($pnPk);
+      }
+
+      $candidate_id = $_GET['candidate_id'];
+      $insertNewLog = $_GET['insertNewLog'];
+
+      if(isset($candidate_id))
+      {
+        ChromePhp::log($candidate_id);
+        ChromePhp::log($insertNewLog);
+        return $candidate_id."_".$insertNewLog;
       }
 
       $sViewURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
