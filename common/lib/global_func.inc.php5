@@ -2835,6 +2835,19 @@ exit;*/
 
   }
 
+  function getCompanyHistory($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM login_system_history lhs WHERE lhs.table = 'company_history' AND lhs.cp_pk = '".$candidate_id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history")
   {
     $cp_uid = "555-001";

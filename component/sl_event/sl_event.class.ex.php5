@@ -119,6 +119,37 @@ ChromePhp::log($asNotes);
       $sHTML.= '</div>';
     }
 
+    if($psNoteType == 'cp_history')
+    {
+      $companyHistory = getCompanyHistory($candidate_id);
+
+      foreach ($variable as $key => $value)
+      {
+        $addNotes['_fts'] = $value['action'];
+        $addNotes['companyName'] = "";
+        $addNotes['content'] = $value['action'];
+        $addNotes['cp_action'] = "ppav";
+        $addNotes['cp_params'] = "";
+        $addNotes['cp_pk'] = $candidate_id;
+        $addNotes['cp_type'] = "candi";
+        $addNotes['cp_uid'] = "555-001";
+        $addNotes['created_by'] = $value['user_fk'];
+        $addNotes['custom_type'] = "";
+        $addNotes['date_create'] = $value['date'];
+        $addNotes['date_display'] = "";
+        $addNotes['date_update'] = "";
+        $addNotes['event_linkpk'] = "";
+        $addNotes['eventfk'] = "";
+        $addNotes['eventpk'] = "";
+        $addNotes['title'] = "";
+        $addNotes['type'] = "cp_history";
+        $addNotes['updated_by'] = '';
+      }
+
+      array_push($asNotes,$addNotes);
+
+    }
+
     if(empty($asNotes))
     {
       $sHTML.= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
