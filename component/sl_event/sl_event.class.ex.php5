@@ -99,7 +99,7 @@ class CSl_eventEx extends CSl_event
 
       foreach ($splitted as $i => $value)
       {
-        if(strlen($splitted[$i] > 50))
+        if(strlen($splitted[$i]) > 50)
         {
           ChromePhp::log($splitted[$i]);
           $splitted[$i] = '';
