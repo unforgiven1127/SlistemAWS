@@ -94,6 +94,20 @@ ChromePhp::log($asNotes);
       $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("------=_Part_339388_953714533.1467092718630"," ",$asNotes[$key]['content']);
+
+      $splitted = explode(" ",$asNotes[$key]['content']);
+
+      foreach ($splitted as $i => $value)
+      {
+        if(strlen($splitted[$i] > 100))
+        {
+          $splitted[$i] = '';
+        }
+      }
+
+      $imploted = implode(" ",$splitted);
+
+      $asNotes[$key]['content'] = $imploted;
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
