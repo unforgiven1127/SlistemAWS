@@ -452,7 +452,13 @@ class CMenuEx extends CMenu
       if(!empty($asMenuArray))
       {
         foreach($asMenuArray as $asMenuItems)
-        {ChromePhp::log($asMenuItems['name']);
+        {
+          ChromePhp::log($asMenuItems['name']);
+          $onclickNew = "window.open('$mainPageUrl','_self');";
+          if($asMenuItems['name'] == 'Reports')
+          {
+            $onclickNew = "window.open('https://beta1.slate.co.jp/index.php5?uid=555-006&amp;ppa=ppttc&amp;ppt=ttc&amp;ppk=0','_self');";
+          }
           if($this->_canAccessMenu($asMenuItems))
           {
             $sExtraClass = '';
@@ -512,7 +518,6 @@ class CMenuEx extends CMenu
               {
                 $sExtraClass.= ' menuNavIcon ';
 
-                $onclickNew = "window.open('$mainPageUrl','_self');";
                 if($asMenuItems['name'] == 'Messaging')
                 {
                   $onclickNew = "var sURL = '/index.php5?uid=333-333&amp;ppa=ppaa&amp;ppt=msg&amp;pg=ajx';
