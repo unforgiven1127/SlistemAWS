@@ -123,7 +123,9 @@ ChromePhp::log($asNotes);
     {
       $companyHistory = getCompanyHistory($candidate_id);
 
-      foreach ($variable as $key => $value)
+      ChromePhp::log($companyHistory);
+
+      /*foreach ($variable as $key => $value)
       {
         $addNotes['_fts'] = $value['action'];
         $addNotes['companyName'] = "";
@@ -146,7 +148,7 @@ ChromePhp::log($asNotes);
         $addNotes['updated_by'] = '';
       }
 
-      array_push($asNotes,$addNotes);
+      array_push($asNotes,$addNotes);*/
 
     }
 
