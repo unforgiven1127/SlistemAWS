@@ -93,6 +93,8 @@ class CSl_eventEx extends CSl_event
       $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
       if(isset($splitted1[1]))
       {
+        ChromePhp::log($splitted1[0]);
+        ChromePhp::log($splitted1[1]);
         $asNotes[$key]['content'] = $splitted1[1];
 
         $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
