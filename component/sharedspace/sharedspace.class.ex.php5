@@ -1408,7 +1408,7 @@ class CSharedspaceEx extends CSharedspace
     //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sInputText));
     $oForm->addSection('single-upload-input');
     $oForm->addField('input', 'document', array('type' => 'file', 'label'=> $sInputText, 'value'=>'', 'class' => 'single-upload-input'));
-    $oForm->addField('input', 'fileNameHidden',array('label'=> 'Selected file'));
+    $oForm->addField('input', 'fileNameHidden',array('label'=> 'Selected file','id' => 'fileNameHidden'));
     $oForm->closeSection();
 
     $sJsFileUpload = "
