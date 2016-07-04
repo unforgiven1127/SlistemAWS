@@ -1622,6 +1622,8 @@ class CSharedspaceEx extends CSharedspace
     $_POST = array('fastupload' => 0, 'title' => $psTitle, 'private' => 0, 'doc_type' => $psDocType);
     $_POST = array_merge($_POST, $pasCpLink);
 
+    $fileNameHidden = getValue('fileNameHidden');
+    ChromePhp::log($fileNameHidden);
     //dump($_POST);
     //dump($_FILES);
     $asReturn = $this->_saveDocument(0, true);
@@ -1646,9 +1648,6 @@ class CSharedspaceEx extends CSharedspace
 
     if(!assert('empty($pasItemLink) || is_cpValues($pasItemLink)'))
       return array( 'error' => __LINE__.' - Missing parameters.');
-
-    $fileNameHidden = getValue('fileNameHidden');
-    ChromePhp::log($fileNameHidden);
 
     $asDoc = $pasItemLink;
     $asDoc['fast_upload'] = false;
