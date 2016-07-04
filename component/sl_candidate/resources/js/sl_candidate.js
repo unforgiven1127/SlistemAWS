@@ -1,5 +1,5 @@
 
-function toggleCandiTab(poElement, psIdToShow, psContainer)
+function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
 {
   //psIdToShow acilacak olan tab
   if(poElement)
@@ -9,7 +9,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer)
     $(poElement).addClass('selected');
 
     var oContainer =  $(poElement).closest('.candiTabContainer');
-
+alert(candidate_id);
     //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
     if(!psContainer)
       psContainer = '';

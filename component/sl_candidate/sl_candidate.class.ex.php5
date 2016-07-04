@@ -1335,7 +1335,7 @@ class CSl_candidateEx extends CSl_candidate
           if($asContact['nb_result'] > 0)
             $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\');" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
           else
-            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\');" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
+            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',"",21);" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
 
           if($asDocument['nb_result'] > 0)
             $sHTML.= '<li id="tabLink3" onclick="toggleCandiTab(this, \'candiTab3\');" class="'.$sDocSelected.' tab_document" title="Displays the uploaded documents"><span class="tab_number tab_level_'.$asDocument['priority'].'">'.$asDocument['nb_result'].'</span></li>';
