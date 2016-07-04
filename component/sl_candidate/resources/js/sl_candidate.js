@@ -1,7 +1,6 @@
 
 function toggleCandiTab(poElement, psIdToShow, psContainer)
 {
-  <?php ?>
   //psIdToShow acilacak olan tab
   if(poElement)
   {
