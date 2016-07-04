@@ -463,7 +463,7 @@ class CMenuEx extends CMenu
           }
           else if($asMenuItems['name'] == 'Add')
           {
-            $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=555-001&amp;ppa=ppaa&amp;ppt=candi&amp;ppk=0&amp;pg=ajx','_self');";
+            $onclickNew = "var oConf = goPopup.getConfig();  oConf.width = '1070';  oConf.height = '725';  oConf.modal = true;  goPopup.setLayerFromAjax(oConf,  '".$mainPageUrl."/index.php5?uid=555-001&amp;ppa=ppaa&amp;ppt=candi&amp;ppk=0&amp;pg=ajx'";
           }
 
           if($this->_canAccessMenu($asMenuItems))
