@@ -149,7 +149,7 @@ ChromePhp::log($asNotes);
         $addNotes['updated_by'] = '';
       }
 
-      array_push($asNotes,$addNotes);
+      //array_push($asNotes,$addNotes);
 
     }
 
