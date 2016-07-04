@@ -91,7 +91,7 @@ class CSl_eventEx extends CSl_event
     {
 
       $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
-      if(isset($splitted1[1]))
+      if(isset($splitted1[1]) && !empty($splitted1[1]))
       {
         ChromePhp::log($splitted1[0]);
         ChromePhp::log($splitted1[1]);
