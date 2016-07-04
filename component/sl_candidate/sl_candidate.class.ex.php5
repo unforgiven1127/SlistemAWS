@@ -967,12 +967,13 @@ ChromePhp::log('buraya geldi');
 
       if(isset($_GET['candidate_id']))
       {
-        $candidate_id = $_GET['candidate_id'];
+        ChromePhp::log('iceride');
+        /*$candidate_id = $_GET['candidate_id'];
         $insertNewLog = $_GET['insertNewLog'];
 
         ChromePhp::log($candidate_id);
         ChromePhp::log($insertNewLog);
-        return $candidate_id."_".$insertNewLog;
+        return $candidate_id."_".$insertNewLog;*/
       }
 
       $sViewURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
