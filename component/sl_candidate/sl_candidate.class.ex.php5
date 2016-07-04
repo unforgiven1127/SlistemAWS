@@ -965,7 +965,7 @@ ChromePhp::log('buraya geldi');
       }
 
 
-      if(isset($_GET['candidate_id']))
+      if(isset($_GET['insertNewLog']))
       {
         ChromePhp::log('iceride');
         /*$candidate_id = $_GET['candidate_id'];
