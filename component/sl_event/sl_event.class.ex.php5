@@ -104,6 +104,7 @@ class CSl_eventEx extends CSl_event
       $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=slate_logo_small.png","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_logo_small.png","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png","",$asNotes[$key]['content']);
 
       $splitted = explode(" ",$asNotes[$key]['content']);
 
@@ -111,15 +112,15 @@ class CSl_eventEx extends CSl_event
       {
         if(strlen($splitted[$i]) > 30)
         {
-          ChromePhp::log($splitted[$i]);
           $splitted[$i] = '';
-          ChromePhp::log($splitted[$i]);
         }
       }
 
       $imploted = implode(" ",$splitted);
 
       $asNotes[$key]['content'] = $imploted;
+
+      ChromePhp::log($asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
