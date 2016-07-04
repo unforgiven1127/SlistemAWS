@@ -115,6 +115,8 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Type: multipart/related; ","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Connect to Slate:","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace('Like on style=3D"background-color: #fdfdfd;" #fdfdfd;"> Network on data-mce-bogus=3D"1">',"",$asNotes[$key]['content']);
 
         $splitted = explode(" ",$asNotes[$key]['content']);
 
