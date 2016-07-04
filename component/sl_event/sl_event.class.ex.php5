@@ -89,10 +89,11 @@ ChromePhp::log($asNotes);
 
     foreach ($asNotes as $key => $note)
     {
-      $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8"," ",$asNotes[$key]['content']);
-      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit"," ",$asNotes[$key]['content']);
-      $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8"," ",$asNotes[$key]['content']);
-      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable"," ",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("------=_Part_339388_953714533.1467092718630"," ",$asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
