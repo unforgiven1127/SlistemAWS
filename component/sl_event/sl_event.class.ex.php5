@@ -126,7 +126,7 @@ ChromePhp::log($asNotes);
 
       ChromePhp::log($companyHistory);
 
-      foreach ($variable as $key => $value)
+      foreach ($companyHistory as $key => $value)
       {
         $addNotes = array();
 
@@ -151,9 +151,8 @@ ChromePhp::log($asNotes);
         $addNotes['updated_by'] = '';
 
         ChromePhp::log($addNotes);
+        array_push($asNotes,$addNotes);
       }
-
-      //array_push($asNotes,$addNotes);
 
     }
 
