@@ -105,7 +105,9 @@ class CSl_eventEx extends CSl_event
       $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_logo_small.png","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png","",$asNotes[$key]['content']);
-      $asNotes[$key]['content'] = str_replace("<br /><br /><br />","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: multipart/related; ","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("<br  />
+<br />","",$asNotes[$key]['content']);
 
       $splitted = explode(" ",$asNotes[$key]['content']);
 
