@@ -1380,7 +1380,7 @@ $asArray = array();
 
   1 =>
   array (
-    'name' => 'Schedule',
+    'name' => 'Scheduler',
     'link' => 'javascript:;',
     'icon' => '/media/picture/slistem/schedule_48.png',
     'target' => '',
