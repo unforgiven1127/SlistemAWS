@@ -461,7 +461,7 @@ class CMenuEx extends CMenu
           {
             $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=555-006&amp;ppa=ppttc&amp;ppt=ttc&amp;ppk=0','_self');";
           }
-          else if($asMenuItems['name'] == 'Reports')
+          else if($asMenuItems['name'] == 'Add')
           {
             $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=555-001&amp;ppa=ppaa&amp;ppt=candi&amp;ppk=0&amp;pg=ajx','_self');";
           }
