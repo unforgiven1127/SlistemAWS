@@ -89,6 +89,10 @@ class CSl_eventEx extends CSl_event
 
     foreach ($asNotes as $key => $note)
     {
+
+      $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = $splitted1[1];
+
       $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
@@ -106,18 +110,18 @@ class CSl_eventEx extends CSl_event
       $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Type: multipart/related; ","",$asNotes[$key]['content']);
-      
+      $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
 
-      $splitted = explode("<br />",$asNotes[$key]['content']);
+      $splitted = explode(" ",$asNotes[$key]['content']);
 
       foreach ($splitted as $i => $value)
       {
-        //if(strlen($splitted[$i]) > 30)
-        //{
+        if(strlen($splitted[$i]) > 30)
+        {
           $splitted[$i] = '';
-        //}
+        }
       }
-$asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
+
       $imploted = implode(" ",$splitted);
 
       $asNotes[$key]['content'] = $imploted;
