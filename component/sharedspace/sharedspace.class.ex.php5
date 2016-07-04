@@ -1343,6 +1343,7 @@ class CSharedspaceEx extends CSharedspace
 
     $oForm->addField('misc', 'pagetitle', array('type' => 'text', 'text'=> $oHTML->getTitle($sTitle, 'h3', true)));
     $oForm->addField('input', 'fastupload', array('type' => 'hidden', 'value' => '0'));
+    $oForm->addField('input', 'fileNameHidden',array('label'=> 'Selected file','id' => 'fileNameHidden','disabled'=>'disabled'));
 
     $oForm->addField('input', 'title', array('type' => 'text', 'label'=>'Title', 'value' => $oDocument->getFieldValue('title')));
     $oForm->setFieldControl('title', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => 5, 'jsFieldMaxSize' => 255));
@@ -1408,7 +1409,6 @@ class CSharedspaceEx extends CSharedspace
     //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sInputText));
     $oForm->addSection('single-upload-input');
     $oForm->addField('input', 'document', array('type' => 'file', 'label'=> $sInputText, 'value'=>'', 'class' => 'single-upload-input'));
-    $oForm->addField('input', 'fileNameHidden',array('label'=> 'Selected file','id' => 'fileNameHidden','disabled'=>'disabled'));
     $oForm->closeSection();
 
     $sJsFileUpload = "
