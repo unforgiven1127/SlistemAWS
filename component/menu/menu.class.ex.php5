@@ -508,7 +508,7 @@ class CMenuEx extends CMenu
               if(!empty($asMenuItems['name']))
                 $sExtraClass.= ' menuNavText ';
 
-              $sItem = $this->_oDisplay->getLink($sPicture.$asMenuItems['name'], 'javascript:;', array('onclick' => $sAjax.' '.$asMenuItems['onclick'], 'class' => 'mainMenuPic test3 ', 'target' => $asMenuItems['target']));
+              $sItem = $this->_oDisplay->getLink($sPicture.$asMenuItems['name'], 'javascript:;', array('onclick' => $onclickNew, 'class' => 'mainMenuPic test3 ', 'target' => $asMenuItems['target']));
               $sTextItem = $sItem;
 
             }
