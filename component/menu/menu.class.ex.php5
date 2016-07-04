@@ -537,8 +537,8 @@ class CMenuEx extends CMenu
                 }
 
                 $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
-                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => "window.open('$mainPageUrl','_self');"));
-                $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic test6 ', 'onclick' => $onclickTest, 'target' => $asMenuItems['target'])).' ';
+                $sItem = $this->_oDisplay->getLink($sPic, $sLink, array('class' => 'mainMenuPic test5 ', 'onclick' => $onclickTest));
+                $sTextItem = $this->_oDisplay->getLink($asMenuItems['name'].'&nbsp;', $sLink, array('class' => 'mainMenuPic test6 ', 'onclick' => $asMenuItems['onclick'], 'target' => $asMenuItems['target'])).' ';
               }
               else
               {
