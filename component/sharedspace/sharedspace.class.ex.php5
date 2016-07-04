@@ -1677,7 +1677,7 @@ class CSharedspaceEx extends CSharedspace
 
     if(empty($_FILES) || empty($_FILES['document']['name']))
     {
-      return array( 'error' => __LINE__.' - Document is required.');
+      return array( 'error' => __LINE__.' - Please select a document.');
     }
 
     if(!empty($pasDocData))
@@ -2007,6 +2007,8 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
+
+    unset($_FILES['document']);
 
     return $aOutput;
   }
