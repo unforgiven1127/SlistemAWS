@@ -1680,7 +1680,7 @@ class CSharedspaceEx extends CSharedspace
 
     $fileNameHidden = getValue('fileNameHidden');
     ChromePhp::log($fileNameHidden);
-    if($fileNameHidden == 0)
+    if($fileNameHidden == '0')
     {
       return array( 'error' => __LINE__.' - Please select a document.');
     }
