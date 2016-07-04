@@ -114,7 +114,7 @@ class CSl_eventEx extends CSl_event
       {
         if(strlen($splitted[$i]) > 30)
         {
-          $splitted[$i] = preg_replace('/(<br />)+$/', '', $splitted[$i]);
+          $splitted[$i] = preg_replace('/(<br  />)+$/', '', $splitted[$i]);
           $splitted[$i] = '';
         }
       }
