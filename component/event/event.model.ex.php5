@@ -73,6 +73,8 @@ class CEventModelEx extends CEventModel
     $sQuery = 'SELECT elin.*, even.*, slc.name as companyName
     FROM `event_link` as elin';
 
+    ChromePhp::log($psEventType);
+
     $sQuery.= ' LEFT JOIN sl_candidate_profile as cp ON (cp.candidatefk = elin.cp_pk)';
     $sQuery.= ' LEFT JOIN sl_company as slc ON (slc.sl_companypk = cp.companyfk)';
 
@@ -111,7 +113,7 @@ class CEventModelEx extends CEventModel
       $sQuery.= ' ORDER BY '.$psOrder;
 
     //dump($sQuery);
-    
+
 /*if($oLogin->getUserPk() == 101 || isDevelopment() )
         {
           $sHTML.= '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
