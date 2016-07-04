@@ -86,6 +86,15 @@ class CSl_eventEx extends CSl_event
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 ChromePhp::log($asNotes);
+
+    foreach ($asNotes as $key => $note)
+    {
+      $note['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$note['content']);
+      $note['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$note['content']);
+      $note['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$note['content']);
+      $note['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$note['content']);
+    }
+
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
