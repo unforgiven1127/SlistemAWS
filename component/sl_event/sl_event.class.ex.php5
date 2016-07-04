@@ -94,12 +94,22 @@ class CSl_eventEx extends CSl_event
       $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
       $asNotes[$key]['content'] = str_replace("------=_Part_339388_953714533.1467092718630"," ",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=slate_header_small.png","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_header_small.png","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: base64","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=linkedin.png","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png ","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: base64","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=slate_logo_small.png","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_logo_small.png","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
 
       $splitted = explode(" ",$asNotes[$key]['content']);
 
       foreach ($splitted as $i => $value)
       {
-        if(strlen($splitted[$i]) > 50)
+        if(strlen($splitted[$i]) > 30)
         {
           ChromePhp::log($splitted[$i]);
           $splitted[$i] = '';
