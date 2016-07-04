@@ -116,7 +116,8 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("Content-Type: multipart/related; ","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Connect to Slate:","",$asNotes[$key]['content']);
-        $asNotes[$key]['content'] = str_replace("Like on style=3D","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("------=_Part_3526789_7121016.1442195907117","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
 
         $splitted = explode(" ",$asNotes[$key]['content']);
 
