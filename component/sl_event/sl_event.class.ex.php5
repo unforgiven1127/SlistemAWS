@@ -121,11 +121,12 @@ ChromePhp::log($asNotes);
 
     if($psNoteType == 'cp_history')
     {
-      //$companyHistory = getCompanyHistory($candidate_id);
+      $candidate_id = $pnItemPk;
+      $companyHistory = getCompanyHistory($candidate_id);
 
-      ChromePhp::log($pnItemPk);
+      ChromePhp::log($companyHistory);
 
-      /*foreach ($variable as $key => $value)
+      foreach ($variable as $key => $value)
       {
         $addNotes['_fts'] = $value['action'];
         $addNotes['companyName'] = "";
@@ -148,7 +149,7 @@ ChromePhp::log($asNotes);
         $addNotes['updated_by'] = '';
       }
 
-      array_push($asNotes,$addNotes);*/
+      array_push($asNotes,$addNotes);
 
     }
 
