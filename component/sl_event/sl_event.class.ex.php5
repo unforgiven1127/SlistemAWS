@@ -152,6 +152,7 @@ ChromePhp::log($asNotes);
 
         ChromePhp::log($addNotes);
         array_push($asNotes,$addNotes);
+        ChromePhp::log($asNotes);
       }
 
     }
