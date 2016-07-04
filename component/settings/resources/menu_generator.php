@@ -1390,17 +1390,17 @@ $asArray = array();
     'pk' => 0,
     'ajaxpopup' => 0,
     'onclick' => "
-      var sURL = '/index.php5?uid=333-333&ppa=ppaa&ppt=not&pg=ajx';
+        var sURL = '/index.php5?uid=333-333&ppa=ppaa&ppt=not&pg=ajx';
 
-      var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
-      if(oItem.length)
-        sURL+= '&cp_item_selector='+encodeURI($(oItem).attr('data-cp_item_selector'));
+        var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
+        if(oItem.length)
+          sURL+= '&cp_item_selector='+encodeURI($(oItem).attr('data-cp_item_selector'));
 
-      var oConf = goPopup.getConfig();
-      oConf.height = 500;
-      oConf.width = 850;
-      goPopup.setLayerFromAjax(oConf, sURL);
-    ",
+        var oConf = goPopup.getConfig();
+        oConf.height = 500;
+        oConf.width = 850;
+        goPopup.setLayerFromAjax(oConf, sURL);
+      ",
     'right' => array ('logged'),
     'child' =>
     array (
