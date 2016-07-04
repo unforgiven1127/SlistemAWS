@@ -2008,7 +2008,10 @@ class CSharedspaceEx extends CSharedspace
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
 
-    unset($_FILES['document']);
+    foreach( $_FILES['document']['name'] as $key => $value )
+    {
+      unset( $_FILES['document']['name'][$key] );
+    }
 
     return $aOutput;
   }
