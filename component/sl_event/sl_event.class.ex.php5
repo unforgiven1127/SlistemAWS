@@ -85,7 +85,7 @@ class CSl_eventEx extends CSl_event
       return array();
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
-ChromePhp::log($asNotes);
+
 
     foreach ($asNotes as $key => $note)
     {
@@ -99,6 +99,7 @@ ChromePhp::log($asNotes);
 
       foreach ($splitted as $i => $value)
       {
+        ChromePhp::log($splitted[$i]);
         if(strlen($splitted[$i] > 100))
         {
           $splitted[$i] = '';
