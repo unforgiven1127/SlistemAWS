@@ -7151,6 +7151,7 @@ die();*/
 
     private function _saveResume($pbTest = true, $pbSave = false, $pasCandidate = array())
     {
+      ChromePhp::log('_saveResume');
       $asError = array();
 
       $desc = getValue('doc_description');
