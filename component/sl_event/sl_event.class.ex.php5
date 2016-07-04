@@ -137,7 +137,12 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("Connect to Slate:","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("------=_Part_3526789_7121016.1442195907117","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
-
+        $asNotes[$key]['content'] = str_replace("=C2=B7","*",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=E2=80=93","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("1=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("5=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("2=20","",$asNotes[$key]['content']);
       //ChromePhp::log($asNotes[$key]['content']);
     }
 
