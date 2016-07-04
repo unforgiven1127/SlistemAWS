@@ -454,11 +454,18 @@ class CMenuEx extends CMenu
         foreach($asMenuArray as $asMenuItems)
         {
           ChromePhp::log($asMenuItems['name']);
+
+          $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
           $onclickNew = "window.open('$mainPageUrl','_self');";
           if($asMenuItems['name'] == 'Reports')
           {
-            $onclickNew = "window.open('https://beta1.slate.co.jp/index.php5?uid=555-006&amp;ppa=ppttc&amp;ppt=ttc&amp;ppk=0','_self');";
+            $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=555-006&amp;ppa=ppttc&amp;ppt=ttc&amp;ppk=0','_self');";
           }
+          else if($asMenuItems['name'] == 'Reports')
+          {
+            $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=555-001&amp;ppa=ppaa&amp;ppt=candi&amp;ppk=0&amp;pg=ajx','_self');";
+          }
+
           if($this->_canAccessMenu($asMenuItems))
           {
             $sExtraClass = '';
@@ -550,7 +557,7 @@ class CMenuEx extends CMenu
                 }
                 else if($asMenuItems['name'] == 'Tools')
                 {
-                  $onclickNew = "window.open('https://beta1.slate.co.jp/index.php5?uid=579-704&amp;ppa=ppae&amp;ppt=usr&amp;ppk=0','_self');";
+                  $onclickNew = "window.open('".$mainPageUrl."/index.php5?uid=579-704&amp;ppa=ppae&amp;ppt=usr&amp;ppk=0','_self');";
                 }
 
                 if(substr($asMenuItems['icon'], 0, 1) == '/' || substr($asMenuItems['icon'], 0, 4) == 'http')
