@@ -468,7 +468,7 @@ class CSl_positionEx extends CSl_position
           In this case, please be careful with the "company label" field: this is the text displayed instead of the real company name.
           (examples: leading IT company, international financial group, automotive company...)</div>'));
 
-         $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Position details'));
+         $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Position details...'));
        $oForm->closeSection('pubField');
 
 
@@ -1924,7 +1924,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oApplicant = $this->_getModel()->getPositionApplicant($pnPositionPk);
 
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
-      $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
+      $sHTML = $this->_oDisplay->getTitle('Position details.', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
       $user_id = $oLogin->getuserPk();
@@ -2507,7 +2507,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oApplicant = $this->_getModel()->getPositionApplicant($pnPositionPk);
 
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
-      $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
+      $sHTML = $this->_oDisplay->getTitle('Position details..', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
