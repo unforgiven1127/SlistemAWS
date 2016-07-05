@@ -331,6 +331,11 @@ class CSl_positionEx extends CSl_position
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Bad parameteres.');
 
+      $oDbResult = $this->_getModel()->getPositionByPk($pnPositionPk);
+      $bread = $oDbResult->readFirst();
+      if(!$bread)
+        return array('error' => 'Could not find the position.');
+
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
       $oDbResult = new CDbResult();
 
