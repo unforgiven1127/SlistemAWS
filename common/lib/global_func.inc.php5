@@ -1724,7 +1724,7 @@ exit;*/
       {
         $asData[$temp['created_by']] = array();
       }
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] != 1)
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 0)
       {
         array_push($asData[$temp['created_by']], $temp);
 
