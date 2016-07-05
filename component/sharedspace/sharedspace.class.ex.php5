@@ -1478,7 +1478,7 @@ class CSharedspaceEx extends CSharedspace
           $sFileName = $oRevisions->getFieldValue('file_name');
 
         $sLabel = $oHTML->getLink($sFileName, $sURL, array('target' => '_blank'));
-        $sLabel .= ' - by '.$oLogin->getUserNameFromPk((int)$oRevisions->getFieldValue('creatorfk'));
+        $sLabel .= ' - by1 '.$oLogin->getUserNameFromPk((int)$oRevisions->getFieldValue('creatorfk'));
         $sLabel .= ' - '.$oHTML->getNiceTime($oRevisions->getFieldValue('date_creation'));
 
         if($oRevisions->getFieldValue('live')==1)
