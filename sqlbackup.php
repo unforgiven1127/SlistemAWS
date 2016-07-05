@@ -70,7 +70,7 @@ $subject = "Backup completed";
 $oMail->creatNewEmail();
 $oMail->setFrom(CONST_CRM_MAIL_SENDER, 'Backup completed');
 
-$oMail->addRecipient($to, $cons_name);
+$oMail->addRecipient($to, 'People of Slate');
 $oMail->addBCCRecipient($bcc, 'Munir ANAMERIC');
 //echo 'supposely sent to oMail->addRecipient('.$sEmail.', '.$asJobData['name'].')<br />';
 //$oMail->addRecipient('sboudoux@bulbouscell.com', 'stef');
