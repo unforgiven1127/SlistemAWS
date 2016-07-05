@@ -9046,8 +9046,8 @@ die();*/
               }
               if($sLabel == 'grade')
               {
-                $old_variable = $pasOldData['grade'];
-                $new_variable = $pasNewData['grade'];
+                $old_variable = getGrade($pasOldData['grade']);
+                $new_variable = getGrade($pasNewData['grade']);
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;

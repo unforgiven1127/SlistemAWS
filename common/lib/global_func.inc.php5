@@ -2848,6 +2848,34 @@ exit;*/
     return $result;
   }
 
+  function getGrade($grade_id)
+  {
+    if($grade_id == 0)
+    {
+      return 'No grade';
+    }
+    else if($grade_id == 1)
+    {
+      return 'Met';
+    }
+    else if($grade_id == 2)
+    {
+      return 'Low notable';
+    }
+    else if($grade_id == 3)
+    {
+      return 'High notable';
+    }
+    else if($grade_id == 4)
+    {
+      return 'Top shelf';
+    }
+    else
+    {
+      return '-';
+    }
+  }
+
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history")
   {
     $cp_uid = "555-001";
