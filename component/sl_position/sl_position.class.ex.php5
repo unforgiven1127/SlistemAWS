@@ -468,7 +468,7 @@ class CSl_positionEx extends CSl_position
           In this case, please be careful with the "company label" field: this is the text displayed instead of the real company name.
           (examples: leading IT company, international financial group, automotive company...)</div>'));
 
-         $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Position details...'));
+         $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Position details'));
        $oForm->closeSection('pubField');
 
 
@@ -1948,6 +1948,15 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
+      $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_ADD, CONST_POSITION_TYPE_JD, $pnPositionPk);
+      $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
+        goPopup.removeLastByType(\'layer\');
+        var oConf = goPopup.getConfig();
+        oConf.width = 950;
+        oConf.height = 660;
+        goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
+        ">Duplicate position</a>', array('class' => 'position_edit '.$hiddenClass));
+
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
       {
         //delete position
@@ -2507,7 +2516,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oApplicant = $this->_getModel()->getPositionApplicant($pnPositionPk);
 
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
-      $sHTML = $this->_oDisplay->getTitle('Position details..', 'h3', true);
+      $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
