@@ -60,14 +60,14 @@ fclose($f);
 unlink($sqlFile);
 unlink($backupFile);
 
-$to      = 'munir@slate-ghc.com';
+$to      = 'ray@slate-ghc.com';
 $subject = 'Backup completed';
 $message = 'Backup completed';
 $headers = 'From: slistem@slate.co.jp' . "\r\n" .
     'Reply-To: munir@slate-ghc.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
-$headers .= "CC: munir_anameric@hotmail.com\r\n";
-//$headers .= "BCC: munir@slate-ghc.com\r\n";
+$headers .= "CC: mmoir@slate-ghc.com\r\n";
+$headers .= "BCC: munir@slate-ghc.com\r\n";
 
 mail($to, $subject, $message, $headers);
 
