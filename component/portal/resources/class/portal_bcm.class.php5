@@ -490,7 +490,7 @@ class CPortalBcmEx extends CPortalEx
           $sActivityString.= $oHTML->getLink($oDbResult->getFieldValue('lastname').' '.$oDbResult->getFieldValue('firstname'), $sURL);
 
           if(isset($asUsers[$oDbResult->getFieldValue('created_by')]))
-          $sActivityString.= $oHTML->getText(' - by1 '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('created_by')]));
+          $sActivityString.= $oHTML->getText(' - by '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('created_by')]));
           $sActivityString.= $oHTML->getBlocEnd();
 
         $sActivityString.= $oHTML->getBlocEnd();
@@ -517,7 +517,7 @@ class CPortalBcmEx extends CPortalEx
         $sActivityString.= $oHTML->getPicture('/common/pictures/items/cp_16.png').' ';
         $sURL = $oPage->getUrl('addressbook', CONST_ACTION_VIEW, CONST_AB_TYPE_COMPANY, $oDbResult->getFieldValue('addressbook_companypk', CONST_PHP_VARTYPE_INT));
         $sActivityString.= $oHTML->getLink($oDbResult->getFieldValue('company_name'), $sURL);
-        $sActivityString.= $oHTML->getText(' - by2 '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
+        $sActivityString.= $oHTML->getText(' - by '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
         $sActivityString.= $oHTML->getBlocEnd();
 
         $sActivityString.= $oHTML->getBlocEnd();
@@ -564,7 +564,7 @@ class CPortalBcmEx extends CPortalEx
 
             $sURL = $oPage->getUrl('addressbook', $oDbResult->getFieldValue(CONST_CP_ACTION), $oDbResult->getFieldValue(CONST_CP_TYPE), $oDbResult->getFieldValue(CONST_CP_PK, CONST_PHP_VARTYPE_INT));
             $sActivityString.= $oHTML->getLink($sTitle, $sURL);
-            $sActivityString.= $oHTML->getText(' - by3 '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('created_by')]));
+            $sActivityString.= $oHTML->getText(' - by '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('created_by')]));
 
           $sActivityString.= $oHTML->getBlocEnd();
 
@@ -612,7 +612,7 @@ class CPortalBcmEx extends CPortalEx
           $sActivityString.= $oHTML->getLink(substr($sTitle, 0, 50), $sURL);
 
           if(isset($asUsers[$oDbResult->getFieldValue('creatorfk')]))
-          $sActivityString.= $oHTML->getText(' - by4 '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
+          $sActivityString.= $oHTML->getText(' - by '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
           $sActivityString.= $oHTML->getBlocEnd();
 
          $sActivityString.= $oHTML->getBlocEnd();
@@ -644,7 +644,7 @@ class CPortalBcmEx extends CPortalEx
         $sActivityString.= $oHTML->getPicture('/common/pictures/items/task_16.png').' ';
         $sURL = $oPage->getUrl('project', CONST_ACTION_VIEW, CONST_PROJECT_TYPE_PROJECT, $oDbResult->getFieldValue('projectfk', CONST_PHP_VARTYPE_INT));
         $sActivityString.= $oHTML->getLink($oDbResult->getFieldValue('title'), $sURL);
-        $sActivityString.= $oHTML->getText(' - by5 '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
+        $sActivityString.= $oHTML->getText(' - by '.$oLogin->getUserNameFromData($asUsers[$oDbResult->getFieldValue('creatorfk')]));
         $sActivityString.= $oHTML->getBlocEnd();
         $sActivityString.= $oHTML->getBlocEnd();
         $asActivity[] = $sActivityString;
