@@ -152,6 +152,10 @@ class CSl_positionEx extends CSl_position
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($this->cnPk))));
             break;
 
+          case CONST_ACTION_DUPLICATE:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionDuplicateForm($this->cnPk))));
+            break;
+
           case CONST_ACTION_SAVEADD:
           case CONST_ACTION_SAVEEDIT:
             return json_encode($this->_oPage->getAjaxExtraContent($this->_savePosition($this->cnPk)));
@@ -322,25 +326,173 @@ class CSl_positionEx extends CSl_position
     //  Private methods
     //------------------------------------------------------
 
-    private function _getPositionForm($pnPositionPk = 0)
+    private function _getPositionDuplicateForm($pnPositionPk = 0)
     {
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Bad parameteres.');
 
-      $duplicateFLAG = false;
-      $explodedID = explode('_',$pnPositionPk);
-      if(isset($explodedID[1]))
+      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
+      $oDbResult = new CDbResult();
+
+      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
+      $this->_oPage->addJsFile(self::getResourcePath().'js/sl_position.js');
+
+      $oForm = $this->_oDisplay->initForm('positionForm');
+      $oForm->setFormParams('positionForm', true, array('action' => $sURL));
+      $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+
+
+      $oForm->addField('input', 'userfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit position'));
+
+
+      $oForm->addField('select', 'is_public', array('label' => 'Position public', 'onchange' => 'if($(this).val() == 1)
+        {
+          $(this).closest(\'form\').find(\'.public_important_field\').addClass(\'on\');
+          $(this).closest(\'form\').find(\'#public_section\').show(0);
+        }
+        else
+        {
+           $(this).closest(\'form\').find(\'.public_important_field\').removeClass(\'on\');
+           $(this).closest(\'form\').find(\'#public_section\').hide(0);
+        }'));
+
+      $oForm->addOption('is_public', array('label' => 'No', 'value' => '0'));
+      $nPublic = (int)$oDbResult->getFieldValue('is_public');
+      if($nPublic)
+        $oForm->addOption('is_public', array('label' => 'Yes', 'value' => '1', 'selected' => 'selected'));
+      else
+        $oForm->addOption('is_public', array('label' => 'Yes', 'value' => '1'));
+
+
+      //common fields to every languages
+      $oForm->addField('select', 'location', array('class' => 'public_important_field', 'label' => 'Location'));
+      $oForm->addOptionHtml('location', $this->oCandidate->getVars()->getLocationOption($oDbResult->getFieldValue('location')));
+
+
+      $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
+      $oForm->addField('selector', 'companyfk', array('label' => 'Company', 'url' => $sURL));
+      $oForm->setFieldControl('companyfk', array('jsFieldNotEmpty'));
+      $nCompanyFk = (int)$oDbResult->getFieldValue('companyfk');
+      if($nCompanyFk)
       {
-        $pnPositionPk = $explodedID[1];
-      }
-      if($explodedID[0] == 'duplicate')
-      {
-        $duplicateFLAG = true;
+        $asCompany = $this->oCandidate->getItemDescription($nCompanyFk, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP);
+        $oForm->addOption('companyfk', array('label' => $asCompany[$nCompanyFk]['label'], 'value' => $nCompanyFk));
       }
 
-ChromePhp::log($duplicateFLAG);
-ChromePhp::log($explodedID);
-ChromePhp::log($pnPositionPk);
+      $oForm->addField('paged_tree', 'industryfk', array('text' => ' -- Industry --', 'label' => 'Industry', 'value' => (int)$oDbResult->getFieldValue('industryfk')));
+      $oForm->addoption('industryfk', $this->oCandidate->_getTreeData('industry'));
+      $oForm->setFieldControl('industryfk', array('jsFieldNotEmpty'));
+
+      $oForm->addField('input', 'age_from', array('label' => 'Age from', 'value' => $oDbResult->getFieldValue('age_from')));
+      $oForm->setFieldDisplayparams('age_from', array('class' => 'position_inline', 'keepNextInline' => 1));
+
+      $oForm->addField('input', 'age_to', array('label' => 'to', 'value' => $oDbResult->getFieldValue('age_to')));
+      $oForm->setFieldDisplayparams('age_to', array('class' => 'position_inline position_inline2'));
+
+      $oForm->addField('input', 'salary_from', array('label' => 'Salary from', 'value' => $oDbResult->getFieldValue('salary_from')));
+      $oForm->setFieldDisplayparams('salary_from', array('class' => 'position_inline', 'keepNextInline' => 1));
+
+      $oForm->addField('input', 'salary_to', array('label' => 'to', 'value' => $oDbResult->getFieldValue('salary_to')));
+      $oForm->setFieldDisplayparams('salary_to', array('class' => 'position_inline position_inline2'));
+
+      $oForm->addField('slider', 'english', array('label' => 'English level', 'value' => $oDbResult->getFieldValue('lvl_english'), 'min' => 1, 'max' => 9, 'legend' => array(1,2,3,4,5,6,7,8,9)));
+      $oForm->setFieldDisplayparams('english', array('class' => 'position_inline', 'keepNextInline' => 1));
+
+      $oForm->addField('slider', 'japanese', array('label' => 'Japanese level', 'value' => $oDbResult->getFieldValue('lvl_japanese'), 'min' => 1, 'max' => 9, 'legend' => array(1,2,3,4,5,6,7,8,9)));
+      $oForm->setFieldDisplayparams('japanese', array('class' => 'position_inline position_inline2'));
+
+
+      if($nPublic)
+        $oForm->addSection('pubField', array('id' => 'public_section', 'style' => 'display: block;'));
+      else
+        $oForm->addSection('pubField', array('id' => 'public_section'));
+
+        $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Jobboard display options'));
+
+        $sCompanyName = $oDbResult->getFieldValue('company_text');
+        if(empty($sCompanyName))
+          $sCompanyName = 'company name not publicy visible';
+
+        $oForm->addField('input', 'display_company', array('label' => 'Company label', 'value' => $sCompanyName));
+        $oForm->setFieldDisplayParams('display_company', array('class' => 'public_field'));
+
+        $display_age = (int)$oDbResult->getFieldValue('display_age');
+        $oForm->addField('select', 'display_age', array('label' => 'Show age', 'value' => $oDbResult->getFieldValue('company_text')));
+        $oForm->addOption('display_age', array('label' => 'No', 'value' => '0'));
+        if (!empty($display_age))
+          $oForm->addOption('display_age', array('label' => 'Yes', 'value' => '1', 'selected' => ''));
+        else
+          $oForm->addOption('display_age', array('label' => 'Yes', 'value' => '1'));
+        $oForm->setFieldDisplayParams('display_age', array('class' => 'public_field'));
+
+        $display_salary = (int)$oDbResult->getFieldValue('display_salary');
+        $oForm->addField('select', 'display_salary', array('label' => 'Show salary', 'value' => $oDbResult->getFieldValue('company_text')));
+        $oForm->addOption('display_salary', array('label' => 'No', 'value' => '0'));
+        if (!empty($display_salary))
+          $oForm->addOption('display_salary', array('label' => 'Yes', 'value' => '1', 'selected' => ''));
+        else
+          $oForm->addOption('display_salary', array('label' => 'Yes', 'value' => '1'));
+        $oForm->setFieldDisplayParams('display_salary', array('class' => 'public_field'));
+
+        $display_date = (int)$oDbResult->getFieldValue('display_date');
+        $oForm->addField('select', 'display_date', array('label' => 'Show posting date', 'value' => $oDbResult->getFieldValue('company_text')));
+        $oForm->addOption('display_date', array('label' => 'No', 'value' => '0'));
+        if (!empty($display_date))
+          $oForm->addOption('display_date', array('label' => 'Yes', 'value' => '1', 'selected' => ''));
+        else
+          $oForm->addOption('display_date', array('label' => 'Yes', 'value' => '1'));
+        $oForm->setFieldDisplayParams('display_date', array('class' => 'public_field'));
+
+        $requires_moderation = (int)$oDbResult->getFieldValue('moderation');
+        $oForm->addField('select', 'moderation', array('label' => 'Moderation', 'value' => $oDbResult->getFieldValue('company_text')));
+        $oForm->addOption('moderation', array('label' => 'Yes', 'value' => '1'));
+        if (empty($requires_moderation))
+          $oForm->addOption('moderation', array('label' => 'No', 'value' => '0', 'selected' => ''));
+        else
+          $oForm->addOption('moderation', array('label' => 'No', 'value' => '0'));
+        $oForm->setFieldDisplayParams('moderation', array('class' => 'public_field'));
+
+
+        $oForm->addField('misc', '', array('type' => 'text', 'text' => '<div class="position_tip"><b>note</b>:<br/>
+          If the position is not moderated, it will be sent straigth to the job board <span style="text-decoration: underline;">without</span> correction, translation or any SEO optimization that could make it more visible on the web.<br />
+          In this case, please be careful with the "company label" field: this is the text displayed instead of the real company name.
+          (examples: leading IT company, international financial group, automotive company...)</div>'));
+
+         $oForm->addField('misc', '', array('type' => 'title', 'title' => 'Position details'));
+       $oForm->closeSection('pubField');
+
+
+      $oForm->addField('select', 'language', array('label' => 'Language',
+        'onchange' => 'alert(\'Please fill all the fields below in \'+ $(\'option:selected\', this).text()); '));
+      $oForm->addOption('language', array('label' => 'English', 'value' => 'en'));
+
+      if($oDbResult->getFieldValue('language') == 'jp')
+        $oForm->addOption('language', array('label' => 'Japanese', 'value' => 'jp', 'selected' => 'selected'));
+      else
+        $oForm->addOption('language', array('label' => 'Japanese', 'value' => 'jp'));
+
+      //specific for each language
+      $oForm->addField('input', 'title', array('label' => 'Title', 'value' => $oDbResult->getFieldValue('title'),
+        'class' => 'public_important_field'));
+      $oForm->addField('input', 'career_level', array('label' => 'career level',
+        'value' => $oDbResult->getFieldValue('career_level'), 'class' => 'public_important_field'));
+
+      $oForm->addField('textarea', 'description', array('label' => 'Company/Job description',
+        'value' => $oDbResult->getFieldValue('description'), 'class' => 'public_important_field', 'allowTinymce' => 1));
+      $oForm->addField('textarea', 'responsabilities', array('label' => 'Responsibilities',
+        'value' => $oDbResult->getFieldValue('responsabilities'), 'allowTinymce' => 1));
+      $oForm->addField('textarea', 'requirements', array('label' => 'Requirements',
+        'value' => $oDbResult->getFieldValue('requirements'), 'class' => 'public_important_field', 'allowTinymce' => 1));
+
+
+      return $oForm->getDisplay();
+    }
+
+    private function _getPositionForm($pnPositionPk = 0)
+    {
+      if(!assert('is_integer($pnPositionPk)'))
+        return array('error' => 'Bad parameteres.');
 
       if(!empty($pnPositionPk))
       {
@@ -348,14 +500,8 @@ ChromePhp::log($pnPositionPk);
         $bread = $oDbResult->readFirst();
         if(!$bread)
           return array('error' => 'Could not find the position.');
-        if($duplicateFLAG)
-        {
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
-        }
-        else
-        {
-          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
-        }
+
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
       }
       else
       {
