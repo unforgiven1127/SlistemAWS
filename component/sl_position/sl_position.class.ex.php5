@@ -1951,7 +1951,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 ChromePhp::log($oDbResult->getFieldValue('created_by'));
 ChromePhp::log($oLogin->getuserPk());
 
-      if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
+      if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
         //delete position
         if($oApplicant->numRows() == 0)
