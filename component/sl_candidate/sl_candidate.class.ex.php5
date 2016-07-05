@@ -947,6 +947,10 @@ class CSl_candidateEx extends CSl_candidate
       return __LINE__.' - Nothing to display.';
     }
 
+    public function logAjax()
+    {
+      
+    }
 
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
