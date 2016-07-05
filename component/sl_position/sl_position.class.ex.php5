@@ -1956,16 +1956,16 @@ ChromePhp::log($oLogin->getuserPk());
         ChromePhp::log('iceride 1');
         ChromePhp::log($oApplicant->numRows());
         //delete position
-        //if($oApplicant->numRows() == 0)
-        //{
-          //ChromePhp::log('iceride 2');
+        if($oApplicant->numRows() == 0) // altinda aday yoksa silebiliyoruz...
+        {
+          ChromePhp::log('iceride 2');
           $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
 
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
             if(window.confirm(\'Delete this position ?\'))
             { AjaxRequest(\''.$sURL.'\'); }"
             >Delete position</a>', array('class' => 'position_edit test2', 'style' => 'top: 80px;'));
-        //}
+        }
 
       }
 
