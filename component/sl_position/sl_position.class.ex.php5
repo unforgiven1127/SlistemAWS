@@ -1948,6 +1948,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
+
       $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
         goPopup.removeLastByType(\'layer\');
@@ -1955,7 +1956,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         oConf.width = 950;
         oConf.height = 660;
         goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
-        ">Duplicate position</a>', array('class' => 'position_edit '));
+        ">Duplicate position</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
 
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
