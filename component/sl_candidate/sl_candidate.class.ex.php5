@@ -1864,7 +1864,7 @@ class CSl_candidateEx extends CSl_candidate
           $sHTML.= '<div class="entry">';
             $sHTML.= '<div class="note_header">';
             $sHTML.= '&rarr;&nbsp;&nbsp;<span class="note_date">'.$asHistoryData['date'].'</span>';
-            $sHTML.= ' - <span> by1 '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).'</span>';
+            $sHTML.= ' - <span> by '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).'</span>';
             $sHTML.= '</div>';
 
             $sHTML.= ' <div class="note_content">'.$asHistoryData['action'];
