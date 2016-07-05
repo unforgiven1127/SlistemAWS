@@ -278,7 +278,7 @@ ChromePhp::log($asUserData);
       return 'unknown';
 
     $oDisplay = CDependency::getCpHtml();
-    $sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
+    //$sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
     $sName = $asUserData['firstname']." ".$asUserData['lastname'];
 ChromePhp::log($sName);
     if($pbFriendly)
