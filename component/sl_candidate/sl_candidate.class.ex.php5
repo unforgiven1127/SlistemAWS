@@ -8949,7 +8949,7 @@ die();*/
       $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
           'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
 
-      $asProfessional = array('companyfk' => 'company', 'industryfk' => 'industry', ' occupationfk' => 'occupation',
+      $asProfessional = array('companyfk' => 'company', 'industryfk' => 'industry', 'occupationfk' => 'occupation',
           'title' => 'title', 'department' => 'department', 'salary' => 'salary', 'bonus' => 'bonus', 'target_low' => 'target salary from'
           , 'target_high' => 'target salary to');
 
@@ -9050,6 +9050,10 @@ die();*/
 
                 insertLog($loginfk, $cp_pk, $text, "company_history");
                 //insertEvent("company_history",$text,$loginfk,$cp_pk);
+              }
+              if($sLabel == 'company')
+              {
+
               }
               if($sLabel == 'grade')
               {
