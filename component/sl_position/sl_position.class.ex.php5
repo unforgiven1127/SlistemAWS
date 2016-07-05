@@ -2149,7 +2149,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
             if(window.confirm(\'Delete this position ?\'))
             { AjaxRequest(\''.$sURL.'\'); }"
-            >Delete position</a>', array('class' => 'position_edit test2', 'style' => 'top: 80px;'));
+            >Delete position</a>', array('class' => 'position_edit test2', 'style' => 'top: 160px;'));
         }
 
       }
