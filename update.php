@@ -27,11 +27,9 @@ array_push($arrayMulti,$array6);
 array_push($arrayMulti,$array7);
 array_push($arrayMulti,$array8);
 
-foreach ($arrayMulti as $key => $value) {
-	var_dump($value);
-}
 
-/*foreach ($arrayMulti as $key => $array)
+
+foreach ($arrayMulti as $key => $array)
 {
 	foreach ($array as $key => $value)
 	{
@@ -39,7 +37,7 @@ foreach ($arrayMulti as $key => $value) {
 		echo $array[$key]." - ";
 	}
 	echo "<br><br>";
-}*/
+}
 
 	/*JOBBOARD CONNECTION INFO*/
 	define('DB_NAME', 'jobboard');
