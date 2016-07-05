@@ -271,8 +271,9 @@ class CLoginEx extends CLogin
 
       $asUserData = $this->getUserDataByPk($pvUser);
     }*/
-
+ChromePhp::log($pvUser);
     $asUserData = $this->getUserDataByPk($pvUser);
+ChromePhp::log($asUserData);
     if(empty($asUserData))
       return 'unknown';
 
