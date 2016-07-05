@@ -225,6 +225,7 @@ class CLoginEx extends CLogin
 
   public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false)
   {
+    ChromePhp::log('getUserLink');
     if(!assert('(is_array($pvUser) || is_integer($pvUser))'))
     {
       assert('false; /* getUserLink with wrong pvUser '.  var_export($pvUser, true).' */');
@@ -276,7 +277,7 @@ class CLoginEx extends CLogin
 
     $oDisplay = CDependency::getCpHtml();
     $sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
-    $sName = $asUserData['firstname']." ".$asUserData['lastname'];
+    //$sName = $asUserData['firstname']." ".$asUserData['lastname'];
 
     if($pbFriendly)
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
