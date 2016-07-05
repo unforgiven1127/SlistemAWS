@@ -8947,7 +8947,7 @@ die();*/
           , 'target_high' => 'target salary to');
 
       $asStatus = array('statusfk' => 'status', 'play_for' => 'playing for', 'play_date' => 'playing date',
-          'is_client' => 'is a client', 'is_collaborator' => 'is a collaborator');
+          'is_client' => 'is a client', 'is_collaborator' => 'is a collaborator', 'grade' => 'grade');
 
       $asPersonal = array('sex' => 'gender', 'firstname' => 'firstname', 'lastname' => 'lastname',
           'nationalityfk' => 'nationality', 'languagefk' => 'language',
