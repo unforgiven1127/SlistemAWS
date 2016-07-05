@@ -953,15 +953,18 @@ class CSl_candidateEx extends CSl_candidate
 
     public function logAjax()
     {
-      ChromePhp::log('logAjax geldi');
+      $candidate_id = $_GET['ppk'];
+      $logType = $_GET['logType'];
+      ChromePhp::log($candidate_id);
+      ChromePhp::log($logType);
     }
 
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
       if(!assert('is_key($pnPk)'))
         return '';
-      $testUrl = $this->_oPage->getAjaxUrl($this->csUid, CANDI_LOG, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
-ChromePhp::log($testUrl);
+      //$testUrl = $this->_oPage->getAjaxUrl($this->csUid, CANDI_LOG, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
+//ChromePhp::log($testUrl);
 //ChromePhp::log($pnPk);
 //ChromePhp::log($pasRedirected);
       $sHTML = '';
@@ -971,20 +974,6 @@ ChromePhp::log($testUrl);
       if(getValue('check_profile'))
       {
         $asCandidate = $this->updateCandidateProfile($pnPk);
-      }
-
-
-      if(isset($_GET['insertNewLog']))
-      {
-        ChromePhp::log('iceride');
-        ChromePhp::log($_GET['insertNewLog']);
-        exit;
-        /*$candidate_id = $_GET['candidate_id'];
-        $insertNewLog = $_GET['insertNewLog'];
-
-        ChromePhp::log($candidate_id);
-        ChromePhp::log($insertNewLog);
-        return $candidate_id."_".$insertNewLog;*/
       }
 
       $sViewURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
