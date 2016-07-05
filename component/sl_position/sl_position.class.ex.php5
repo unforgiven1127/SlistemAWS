@@ -327,14 +327,33 @@ class CSl_positionEx extends CSl_position
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Bad parameteres.');
 
+      $duplicateFLAG = false;
+      $explodedID = explode('_',$pnPositionPk);
+      if(isset($explodedID[1]))
+      {
+        $pnPositionPk = $explodedID[1];
+      }
+      if($explodedID[0] == 'duplicate')
+      {
+        $duplicateFLAG = true;
+      }
+
+
+
       if(!empty($pnPositionPk))
       {
         $oDbResult = $this->_getModel()->getPositionByPk($pnPositionPk);
         $bread = $oDbResult->readFirst();
         if(!$bread)
           return array('error' => 'Could not find the position.');
-
-        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
+        if($duplicateFLAG)
+        {
+          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
+        }
+        else
+        {
+          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
+        }
       }
       else
       {
@@ -1948,8 +1967,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
-
-      $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_ADD, CONST_POSITION_TYPE_JD);
+      $duplicate_id = "duplicate_".$pnPositionPk;
+      $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_ADD, CONST_POSITION_TYPE_JD, $duplicate_id);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
         goPopup.removeLastByType(\'layer\');
         var oConf = goPopup.getConfig();
