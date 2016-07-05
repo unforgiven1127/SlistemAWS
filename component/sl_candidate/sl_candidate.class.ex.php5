@@ -965,6 +965,10 @@ class CSl_candidateEx extends CSl_candidate
       {
         $text = "Documents viewed";
       }
+      else if($logType == "candiTab7")
+      {
+        $text = "Company history viewed";
+      }
       else
       {
         $text = "Candidate viewed";
@@ -1381,9 +1385,9 @@ class CSl_candidateEx extends CSl_candidate
           $sHTML.= '<li id="tabLink6" onclick="toggleCandiTab(this, \'candiTab6\');" class="tab_empty tab_activity" title="Displays the recent activity of this candidate"></li>';
 
           if($asCpHistory['nb_result'] > 0)
-            $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\');" class="tab_history" title="Displays the company history"><span class="tab_number">'.$asCpHistory['nb_result'].'</span></li>';
+            $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="tab_history" title="Displays the company history"><span class="tab_number">'.$asCpHistory['nb_result'].'</span></li>';
           else
-            $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\');" class="tab_empty tab_history" title="Displays the company history"></li>';
+            $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="tab_empty tab_history" title="Displays the company history"></li>';
 
         $sHTML.= $this->_oDisplay->getListEnd();
 

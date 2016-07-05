@@ -11,8 +11,8 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     var oContainer =  $(poElement).closest('.candiTabContainer');
     if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
-      alert(candidate_id);
-      alert(poElement);
+      //alert(candidate_id);
+      //alert(psIdToShow);
       var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
       //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
       AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
