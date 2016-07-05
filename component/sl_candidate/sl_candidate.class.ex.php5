@@ -1860,10 +1860,10 @@ class CSl_candidateEx extends CSl_candidate
         {
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
-
+          $user_info = getUserInformaiton($asHistoryData['userfk']);
           $sHTML.= '<div class="entry">';
             $sHTML.= '<div class="note_header">';
-            $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$asHistoryData['userfk'].'</span>';
+            $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$user_info['phone_ext'].'</span>';
             $sHTML.= '<span class="note_date"> : '.$asHistoryData['date'].'</span>';
             $sHTML.= '</div>';
 
