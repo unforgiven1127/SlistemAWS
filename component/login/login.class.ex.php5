@@ -272,12 +272,13 @@ class CLoginEx extends CLogin
       $asUserData = $this->getUserDataByPk($pvUser);
     }*/
 
+    $asUserData = $this->getUserDataByPk($pvUser);
     if(empty($asUserData))
       return 'unknown';
 
     $oDisplay = CDependency::getCpHtml();
     $sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
-    //$sName = $asUserData['firstname']." ".$asUserData['lastname'];
+    $sName = $asUserData['firstname']." ".$asUserData['lastname'];
 ChromePhp::log($sName);
     if($pbFriendly)
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
