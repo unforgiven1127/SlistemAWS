@@ -957,7 +957,18 @@ class CSl_candidateEx extends CSl_candidate
       $logType = $_GET['logType'];
       $user_id = $this->_oLogin->getUserPk();
 
-      $text = "Contacts viewed";
+      if($logType == "candiTab2")
+      {
+        $text = "Contacts viewed";
+      }
+      else if($logType == "candiTab3")
+      {
+        $text = "Documents viewed";
+      }
+      else
+      {
+        $text = "Candidate viewed";
+      }
 
       insertLog($user_id, $candidate_id, $text, "user_history");
 
