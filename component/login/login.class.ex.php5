@@ -276,7 +276,7 @@ class CLoginEx extends CLogin
 
     $oDisplay = CDependency::getCpHtml();
     $sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
-
+    $sName = $asUserData['firstname']." ".$asUserData['lastname'];
 
     if($pbFriendly)
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
@@ -360,8 +360,8 @@ class CLoginEx extends CLogin
     if(empty($asUserData))
       return 'unknown';
 
-    //$sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
-    $sName = $asUserData['firstname']." ".$asUserData['lastname'];
+    $sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
+    //$sName = $asUserData['firstname']." ".$asUserData['lastname'];
     $_SESSION['login_UNCache'][$asUserData['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName] = $sName;
 
     return $sName;
