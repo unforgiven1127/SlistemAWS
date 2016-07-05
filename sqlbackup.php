@@ -64,6 +64,7 @@ $oMail = CDependency::getComponentByName('mail');
       //mail("munir_anameric@hotmail.com","New Application",$msg);
 
 $to = "munir_anameric@hotmail.com";//$cons_email olacak
+$cc = "munir@slate-ghc.com";
 $bcc = "munir@slate-ghc.com";
 $subject = "Backup completed";
 
@@ -71,6 +72,7 @@ $oMail->creatNewEmail();
 $oMail->setFrom(CONST_CRM_MAIL_SENDER, 'Backup completed');
 
 $oMail->addRecipient($to, 'People of Slate');
+$oMail->addCCRecipient($cc,'People of Slate');
 $oMail->addBCCRecipient($bcc, 'Munir ANAMERIC');
 //echo 'supposely sent to oMail->addRecipient('.$sEmail.', '.$asJobData['name'].')<br />';
 //$oMail->addRecipient('sboudoux@bulbouscell.com', 'stef');
