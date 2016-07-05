@@ -955,8 +955,14 @@ class CSl_candidateEx extends CSl_candidate
     {
       $candidate_id = $_GET['ppk'];
       $logType = $_GET['logType'];
-      ChromePhp::log($candidate_id);
-      ChromePhp::log($logType);
+      $user_id = $this->_oLogin->getUserPk();
+
+      $text = "Contacts viewed";
+
+      insertLog($user_id, $candidate_id, $text, "user_history");
+
+      //ChromePhp::log($candidate_id);
+      //ChromePhp::log($logType);
     }
 
     private function _getCandidateView($pnPk, $pasRedirected = array())
