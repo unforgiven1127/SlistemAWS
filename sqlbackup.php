@@ -5,6 +5,7 @@
 # Include the Dropbox SDK libraries
 require_once './common/lib/dropbox-sdk/lib/Dropbox/autoload.php';
 use \Dropbox as dbx;
+
 //your access token from the Dropbox App Panel
 $accessToken = 'ONKIZcLnUBAAAAAAAAAAB8z48X7hn2KiBDLh8HM7xfszzyuIdOovFX0Y5yKONq6K';
 echo 'Backup started '.date('Y-m-d h:i:s')."<br><br>";
@@ -59,28 +60,16 @@ fclose($f);
 unlink($sqlFile);
 unlink($backupFile);
 
-$oMail = CDependency::getComponentByName('mail');
-      //$msg = "<br>Mr/Mrs ".$name." has applied the position #".$position_id."<br>Contact Information: ".$contact;
-      //mail("munir_anameric@hotmail.com","New Application",$msg);
+$to      = 'munir@slate-ghc.com';
+$subject = 'Backup completed';
+$message = 'Backup completed';
+$headers = 'From: slistem@slate.co.jp' . "\r\n" .
+    'Reply-To: webmaster@example.com' . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
+$headers .= "CC: munir_anameric@hotmail.com\r\n";
+//$headers .= "BCC: munir@slate-ghc.com\r\n";
 
-$to = "munir_anameric@hotmail.com";//$cons_email olacak
-$cc = "munir@slate-ghc.com";
-$bcc = "munir@slate-ghc.com";
-$subject = "Backup completed";
-
-$oMail->creatNewEmail();
-$oMail->setFrom(CONST_CRM_MAIL_SENDER, 'Backup completed');
-
-$oMail->addRecipient($to, 'People of Slate');
-$oMail->addCCRecipient($cc,'People of Slate');
-$oMail->addBCCRecipient($bcc, 'Munir ANAMERIC');
-//echo 'supposely sent to oMail->addRecipient('.$sEmail.', '.$asJobData['name'].')<br />';
-//$oMail->addRecipient('sboudoux@bulbouscell.com', 'stef');
-
-
-$sContent = "Dear People of Slate, <br>Backup completed<br><br>Best Regards<br>Slistem";
-
-$oMail->send('Backup completed', $sContent);
+mail($to, $subject, $message, $headers);
 
 echo 'Backup uploaded successfully'.date('Y-m-d h:i:s');
 
