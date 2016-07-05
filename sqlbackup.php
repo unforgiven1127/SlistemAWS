@@ -59,6 +59,27 @@ fclose($f);
 unlink($sqlFile);
 unlink($backupFile);
 
+$oMail = CDependency::getComponentByName('mail');
+      //$msg = "<br>Mr/Mrs ".$name." has applied the position #".$position_id."<br>Contact Information: ".$contact;
+      //mail("munir_anameric@hotmail.com","New Application",$msg);
+
+$to = "munir_anameric@hotmail.com";//$cons_email olacak
+$bcc = "munir@slate-ghc.com";
+$subject = "Backup completed";
+
+$oMail->creatNewEmail();
+$oMail->setFrom(CONST_CRM_MAIL_SENDER, 'Backup completed');
+
+$oMail->addRecipient($to, $cons_name);
+$oMail->addBCCRecipient($bcc, 'Munir ANAMERIC');
+//echo 'supposely sent to oMail->addRecipient('.$sEmail.', '.$asJobData['name'].')<br />';
+//$oMail->addRecipient('sboudoux@bulbouscell.com', 'stef');
+
+
+$sContent = "Dear People of Slate, <br>Backup completed<br><br>Best Regards<br>Slistem";
+
+$oMail->send('Backup completed', $sContent);
+
 echo 'Backup uploaded successfully'.date('Y-m-d h:i:s');
 
 ?>
