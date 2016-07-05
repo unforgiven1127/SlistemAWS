@@ -8951,10 +8951,10 @@ die();*/
 
       $asPersonal = array('sex' => 'gender', 'firstname' => 'firstname', 'lastname' => 'lastname',
           'nationalityfk' => 'nationality', 'languagefk' => 'language',
-          'locationfk' => 'location', 'languagefk' => 'language', 'grade' => 'grade', 'keyword' => 'keywords',
+          'locationfk' => 'location', 'languagefk' => 'language', 'keyword' => 'keywords',
           'date_birth' => 'birthday', 'is_birth_estimation' => 'birthday',
           'cpa' => 'cpa', 'mba' => 'mba', 'skill_ag' => 'AG', 'skill_ap' => 'AP', 'skill_am' => 'AM', 'skill_mp' => 'MP'
-           ,'skill_in' => 'IN', 'skill_ex' => 'EX', 'skill_fx' => 'FX', 'skill_ch' => 'CH', 'skill_ed' => 'ED', 'skill_pl' => 'PL', 'skill_e' => 'e');
+           ,'skill_in' => 'IN', 'skill_ex' => 'EX', 'skill_fx' => 'FX', 'skill_ch' => 'CH', 'skill_ed' => 'ED', 'skill_pl' => 'PL', 'skill_e' => 'e');//, 'grade' => 'grade'
 
       $asLog = array('Business data' => array(), 'Status' => array(), 'Personal data' => array());
       foreach($pasOldData as $sField => $vValue)
