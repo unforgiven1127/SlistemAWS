@@ -1955,7 +1955,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         oConf.width = 950;
         oConf.height = 660;
         goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
-        ">Duplicate position</a>', array('class' => 'position_duplicate '));
+        ">Duplicate position</a>', array('class' => 'position_edit '));
 
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
