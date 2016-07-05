@@ -504,7 +504,7 @@ class CModel
     $oDbResult = $this->oDB->ExecuteQuery($sQuery);
     if($oDbResult->numRows() > 0)
     {
-      return true;
+      //return true;
     }
 
     if(!isset($pasData['log_detail']))
