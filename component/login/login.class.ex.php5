@@ -252,7 +252,7 @@ class CLoginEx extends CLogin
     if(empty($pvUser))
       $pvUser = (int)$this->casUserData['loginpk'];
 
-    /*if(is_array($pvUser))
+    if(is_array($pvUser))
     {
       if(!isset($pvUser['loginpk']))
         return 'unknow';
@@ -270,17 +270,15 @@ class CLoginEx extends CLogin
         return $_SESSION['login_ULCache'][$pvUser.'_'.(int)$pbFriendly.(int)$pbFullName];
 
       $asUserData = $this->getUserDataByPk($pvUser);
-    }*/
-ChromePhp::log($pvUser);
-    $asUserData = $this->getUserDataByPk($pvUser);
-ChromePhp::log($asUserData);
+    }
+
     if(empty($asUserData))
       return 'unknown';
 
     $oDisplay = CDependency::getCpHtml();
     //$sName = $this->getUserNameFromData($asUserData, $pbFriendly, $pbFullName);
     $sName = $asUserData['firstname']." ".$asUserData['lastname'];
-ChromePhp::log($sName);
+
     if($pbFriendly)
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
     else
