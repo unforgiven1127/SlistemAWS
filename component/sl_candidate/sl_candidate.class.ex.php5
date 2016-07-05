@@ -8936,6 +8936,9 @@ die();*/
 
     private function _customLogUpdate($pasOldData, $pasNewData)
     {
+      ChromePhp::log($pasOldData);
+      ChromePhp::log($pasNewData);
+
       $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
           'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
 
@@ -9003,7 +9006,6 @@ die();*/
                 $added_variable = $pasNewData[$sField];
               if(!empty($added_variable) && $added_variable != 'NULL')
               {
-                ChromePhp::log($added_variable);
                 $asLog[$sType][] = '['.$sLabel.'] has been added : '.$added_variable;
               }
             }
