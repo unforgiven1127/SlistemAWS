@@ -9044,6 +9044,11 @@ die();*/
                 insertLog($loginfk, $cp_pk, $text, "company_history");
                 //insertEvent("company_history",$text,$loginfk,$cp_pk);
               }
+              if($sLabel == 'grade')
+              {
+                $old_variable = $pasOldData['grade'];
+                $new_variable = $pasNewData['grade'];
+              }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
             }
