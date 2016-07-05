@@ -60,7 +60,7 @@ fclose($f);
 unlink($sqlFile);
 unlink($backupFile);
 
-$to      = 'ray@slate-ghc.com';
+$to      = 'munir@slate-ghc.com;munir_anameric@hotmail.com';
 $subject = 'Backup completed';
 $message = 'Backup completed';
 $headers = 'From: slistem@slate.co.jp' . "\r\n" .
