@@ -64,7 +64,7 @@ $to      = 'munir@slate-ghc.com';
 $subject = 'Backup completed';
 $message = 'Backup completed';
 $headers = 'From: slistem@slate.co.jp' . "\r\n" .
-    'Reply-To: webmaster@example.com' . "\r\n" .
+    'Reply-To: munir@slate-ghc.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 $headers .= "CC: munir_anameric@hotmail.com\r\n";
 //$headers .= "BCC: munir@slate-ghc.com\r\n";
