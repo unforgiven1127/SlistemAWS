@@ -331,15 +331,21 @@ class CSl_positionEx extends CSl_position
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Bad parameteres.');
 
-      $oDbResult = $this->_getModel()->getPositionByPk($pnPositionPk);
-      $bread = $oDbResult->readFirst();
-      if(!$bread)
-        return array('error' => 'Could not find the position.');
+      if(!empty($pnPositionPk))
+      {
+        $oDbResult = $this->_getModel()->getPositionByPk($pnPositionPk);
+        $bread = $oDbResult->readFirst();
+        if(!$bread)
+          return array('error' => 'Could not find the position.');
 
-      ChromePhp::log($pnPositionPk);
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
+      }
+      else
+      {
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
+        $oDbResult = new CDbResult();
+      }
 
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
-      $oDbResult = new CDbResult();
 
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_position.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_position.js');
