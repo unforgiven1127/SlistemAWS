@@ -1948,6 +1948,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
+ChromePhp::log($oDbResult->getFieldValue('created_by'));
+ChromePhp::log($oLogin->getuserPk());
 
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk())
       {
