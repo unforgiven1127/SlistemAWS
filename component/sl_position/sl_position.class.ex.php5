@@ -1949,7 +1949,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
 
-      $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_ADD, CONST_POSITION_TYPE_JD, $pnPositionPk);
+      $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, $pnPositionPk);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
         goPopup.removeLastByType(\'layer\');
         var oConf = goPopup.getConfig();
