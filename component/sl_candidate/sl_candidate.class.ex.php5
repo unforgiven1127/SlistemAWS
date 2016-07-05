@@ -9001,8 +9001,10 @@ die();*/
 
               if (empty($added_variable))
                 $added_variable = $pasNewData[$sField];
-
-              $asLog[$sType][] = '['.$sLabel.'] has been added : '.$added_variable;
+              if($added_variable != NULL)
+              {
+                $asLog[$sType][] = '['.$sLabel.'] has been added : '.$added_variable;
+              }
             }
             else
             {
