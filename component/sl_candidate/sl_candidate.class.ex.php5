@@ -9048,6 +9048,8 @@ die();*/
               {
                 $old_variable = getGrade($pasOldData['grade']);
                 $new_variable = getGrade($pasNewData['grade']);
+                ChromePhp::log($old_variable);
+                ChromePhp::log($new_variable);
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
