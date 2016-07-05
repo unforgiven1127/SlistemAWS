@@ -336,6 +336,8 @@ class CSl_positionEx extends CSl_position
       if(!$bread)
         return array('error' => 'Could not find the position.');
 
+      ChromePhp::log($pnPositionPk);
+
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_POSITION_TYPE_JD, 0);
       $oDbResult = new CDbResult();
 
