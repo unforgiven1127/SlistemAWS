@@ -15,8 +15,11 @@ $arrayMulti[5]( '	18-09-2008 17:23	','	333	','	257422	','	333	','	1	','	18-09-20
 $arrayMulti[6]( '	24-09-2008 12:25	','	270	','	254697	','	270	','	1	','	24-09-2008 12:25	','	Assessed in person	','	1	','	24-09-2008 12:25	');
 $arrayMulti[7]( '	28-02-2013 17:27	','	155	','	252792	','	360	','	1	','	28-02-2013 17:27	','	Assessed in person	','	1	','	28-02-2013 17:27	');
 
+foreach ($arrayMulti as $key => $value) {
+	var_dump($value);
+}
 
-foreach ($arrayMulti as $key => $array)
+/*foreach ($arrayMulti as $key => $array)
 {
 	foreach ($array as $key => $value)
 	{
@@ -24,7 +27,7 @@ foreach ($arrayMulti as $key => $array)
 		echo $array[$key]." - ";
 	}
 	echo "<br><br>";
-}
+}*/
 
 	/*JOBBOARD CONNECTION INFO*/
 	define('DB_NAME', 'jobboard');
