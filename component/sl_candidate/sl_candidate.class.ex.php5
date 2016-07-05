@@ -9001,8 +9001,9 @@ die();*/
 
               if (empty($added_variable))
                 $added_variable = $pasNewData[$sField];
-              if($added_variable != NULL)
+              if(!empty($added_variable) && $added_variable != NULL)
               {
+                ChromePhp::log($added_variable);
                 $asLog[$sType][] = '['.$sLabel.'] has been added : '.$added_variable;
               }
             }
