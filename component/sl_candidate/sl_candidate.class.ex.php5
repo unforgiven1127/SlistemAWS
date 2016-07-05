@@ -192,6 +192,10 @@ class CSl_candidateEx extends CSl_candidate
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateView($this->cnPk)))));
             break;
 
+          case CANDI_LOG:
+            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->logAjax($this->cnPk)))));
+            break;
+
           case CONST_ACTION_LIST:
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
@@ -949,14 +953,15 @@ class CSl_candidateEx extends CSl_candidate
 
     public function logAjax()
     {
-      
+      ChromePhp::log('logAjax geldi');
     }
 
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
       if(!assert('is_key($pnPk)'))
         return '';
-ChromePhp::log('buraya geldi');
+      $testUrl = $this->_oPage->getAjaxUrl($this->csUid, CANDI_LOG, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
+ChromePhp::log($testUrl);
 //ChromePhp::log($pnPk);
 //ChromePhp::log($pasRedirected);
       $sHTML = '';

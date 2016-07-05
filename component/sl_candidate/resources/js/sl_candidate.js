@@ -9,7 +9,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     $(poElement).addClass('selected');
 
     var oContainer =  $(poElement).closest('.candiTabContainer');
-    /*if(typeof candidate_id != 'undefined' && candidate_id != null)
+    if(typeof candidate_id != 'undefined' && candidate_id != null)
     {
       alert(candidate_id);
       var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
@@ -18,7 +18,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
       //test = refresh_candi(candidate_id,'','contactDetails');
       //alert(test);
 
-    }*/
+    }
 
     //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
     if(!psContainer)

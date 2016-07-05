@@ -343,6 +343,7 @@ define('CONST_URL_PARAM_PAGE_CRON', 'cron');
 define('CONST_ACTION_FULL_LIST', 'ppafl');
 define('CONST_ACTION_LIST', 'ppal');
 define('CONST_ACTION_VIEW', 'ppav');
+define('CANDI_LOG', 'ppcl');
 define('CONST_ACTION_EMAIL','ppaem');
 define('CONST_ACTION_VIEW_DETAILED', 'ppavd');
 define('CONST_ACTION_FASTEDIT', 'ppafe');
