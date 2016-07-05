@@ -8943,6 +8943,9 @@ die();*/
       ChromePhp::log($pasOldData);
       ChromePhp::log($pasNewData);
 
+      ChromePhp::log($pasOldData['occupationfk']);
+      ChromePhp::log($pasNewData['occupationfk']);
+
       $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
           'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
 
