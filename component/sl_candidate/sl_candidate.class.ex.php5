@@ -5708,7 +5708,8 @@ $flag = strpos($test, $control);
           <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
           <option value="3" '.(($nStatus === 3)? ' selected ':'').' class="unavailable"> Interview set</option>
           <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
-          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>';
+          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>
+          <option value="7" '.(($nStatus === 7)? ' selected ':'').'> Lost </option>';
       }
       elseif($bInPlay)
       {
@@ -5716,8 +5717,7 @@ $flag = strpos($test, $control);
           <option value="2"> Contacted </option>
           <option value="3" class="unavailable"> Interview set</option>
           <option value="5"> Phone assessed </option>
-          <option value="6" selected="selected"> Assessed - [ in play ] </option>
-          <option value="7"> Lost </option>';
+          <option value="6" selected="selected"> Assessed - [ in play ] </option>';
       }
       elseif(!empty($sDatePlayed) || !empty($asDateMeeting['met']))
       {
