@@ -1840,6 +1840,7 @@ class CEventEx extends CEvent
             else
               $asNote['title'] = $this->_decodeMailContent($asSubject[0]->text, $asSubject[0]->charset);
 
+            //rich text to plain text MCA
             $count = null;
             $matches = array('"{\*?\\.+(;})|\s?\\[A-Za-z0-9]+|\s?{\s?\\[A-Za-z0-9]+\s?|\s?}\s?"');
             $asNote['title'] = preg_replace($matches,'',$asNote['title'], -1, $count);
@@ -1867,6 +1868,10 @@ class CEventEx extends CEvent
               $asNote['body'] = str_replace("\n", '<br />', $asNote['body']);
             }
 
+            //rich text to plain text MCA
+            $count = null;
+            $matches = array('"{\*?\\.+(;})|\s?\\[A-Za-z0-9]+|\s?{\s?\\[A-Za-z0-9]+\s?|\s?}\s?"');
+            $asNote['body'] = preg_replace($matches,'',$asNote['body'], -1, $count);
 
             $asNote['content'] = strip_tags($asNote['body'], '<br><br/><p><span>');
 
