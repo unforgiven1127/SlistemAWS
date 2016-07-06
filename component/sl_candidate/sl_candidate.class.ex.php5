@@ -3089,7 +3089,7 @@ ChromePhp::log('_getCandidateList');
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer')).' new list';
       else
         $sHTML.= 'replay a search, pager offset '.$nPagerOffset.', container/search ID '.$this->csSearchId;*/
-
+ChromePhp::log('BURASI');
       if(!$bFilteredList)
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
@@ -6341,7 +6341,7 @@ ChromePhp::log('_getCandidateList');
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer')).' new list';
       else
         $sHTML.= 'replay a search, pager offset '.$nPagerOffset.', container/search ID '.$this->csSearchId;*/
-ChromePhp::log('BURASI');
+
       if(!$bFilteredList)
         $sHTML.= $this->_oDisplay->getBlocStart($this->csSearchId, array('class' => 'scrollingContainer'));
 
