@@ -143,7 +143,24 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("1=20","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("5=20","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("2=20","",$asNotes[$key]['content']);
-      //ChromePhp::log($asNotes[$key]['content']);
+
+        $splitted = explode(" ",$asNotes[$key]['content']);
+
+        foreach ($splitted as $i => $value)
+        {
+          if(strlen($splitted[$i]) > 30)
+          {
+            $splitted[$i] = '';
+          }
+        }
+
+        $imploted = implode(" ",$splitted);
+
+        $asNotes[$key]['content'] = $imploted;
+
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
+        
+      ChromePhp::log($asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
