@@ -1840,6 +1840,10 @@ class CEventEx extends CEvent
             else
               $asNote['title'] = $this->_decodeMailContent($asSubject[0]->text, $asSubject[0]->charset);
 
+            $count = null;
+            $matches = array('"{\*?\\.+(;})|\s?\\[A-Za-z0-9]+|\s?{\s?\\[A-Za-z0-9]+\s?|\s?}\s?"');
+            $asNote['title'] = preg_replace($matches,'',$asNote['title'], -1, $count);
+
             /*0: header
             echo '----------------------- body part 0';
             $sBody = imap_fetchbody($oMailBox, $oEmail->msgno, 0); dump($sBody);*/
