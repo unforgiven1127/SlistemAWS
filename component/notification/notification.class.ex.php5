@@ -1881,7 +1881,6 @@ class CNotificationEx extends CNotification
       $note .= "<br>Message: ".$message;
 
       $target_candidate_id = $asItem['cp_pk'];
-      //ChromePhp::log($target_candidate_id);
 
       $csUid = "555-001";
       $csAction = "ppav";
