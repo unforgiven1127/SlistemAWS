@@ -143,6 +143,12 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("1=20","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("5=20","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("2=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=A8=E3=80=82","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("()","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A2) =E4=B8=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A6) ","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A8) =E4=B8=8A=","",$asNotes[$key]['content']);
+
 
         $splitted = explode(" ",$asNotes[$key]['content']);
 
@@ -159,8 +165,8 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = $imploted;
 
         $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
-        
-      ChromePhp::log($asNotes[$key]['content']);
+
+        ChromePhp::log($asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
