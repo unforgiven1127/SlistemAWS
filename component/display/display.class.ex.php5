@@ -926,7 +926,9 @@ class CDisplayEx extends CDisplay
     <script type="text/javascript" src="/common/js/velocity.min.js'.$sTime.'"></script>
     <script type="text/javascript" src="/common/js/my-js.js"></script>
     <script type="text/javascript" src="/common/lib/verticalSlider/js/jquery.totemticker.js"></script>
-    <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>';
+    <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>
+    <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:"textarea" });</script>';
 
     $asJsFile[] = CONST_PATH_JS_JQUERY;
     $asJsFile[] = CONST_PATH_JS_JQUERYUI;
