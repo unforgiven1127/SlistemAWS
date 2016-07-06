@@ -1503,9 +1503,9 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $oDbResult = array();
 
-echo 'new candi in play: ';
+/*echo 'new candi in play: ';
 var_dump($query);
-echo '<br><br>';
+echo '<br><br>';*/
 
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
@@ -1705,7 +1705,7 @@ exit;*/
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE m.created_by IN ('.implode(',', $user_ids).')
         AND m.date_created >= "'.$start_date.'"
-        AND m.date_created < "'.$end_date.'"
+        AND m.date_created <= "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
 //echo '<br><br>';
