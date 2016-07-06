@@ -1718,7 +1718,7 @@ class CSharedspaceEx extends CSharedspace
       $asDocument[CONST_CP_PK] = (int)getValue(CONST_CP_PK);
     }
 
-    ChromePhp::log($asDocument);
+//    ChromePhp::log($asDocument);
 
     if(empty($asDocument['title']) && !$asDocument['fast_upload'])
       return array( 'error' => __LINE__.' - Document title is required.');
@@ -2021,7 +2021,7 @@ class CSharedspaceEx extends CSharedspace
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
 
-    ChromePhp::log('TEST');
+//    ChromePhp::log('TEST');
 
     return $aOutput;
   }

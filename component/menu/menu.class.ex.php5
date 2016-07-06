@@ -453,7 +453,7 @@ class CMenuEx extends CMenu
       {
         foreach($asMenuArray as $asMenuItems)
         {
-          ChromePhp::log($asMenuItems['name']);
+//          ChromePhp::log($asMenuItems['name']);
 
           $mainPageUrl = "https://".$_SERVER['HTTP_HOST'];
           $onclickNew = "window.open('$mainPageUrl','_self');";

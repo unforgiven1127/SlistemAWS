@@ -8943,11 +8943,11 @@ die();*/
 
     private function _customLogUpdate($pasOldData, $pasNewData)
     {
-      ChromePhp::log($pasOldData);
-      ChromePhp::log($pasNewData);
+//      ChromePhp::log($pasOldData);
+//      ChromePhp::log($pasNewData);
 
-      ChromePhp::log($pasOldData['occupationfk']);
-      ChromePhp::log($pasNewData['occupationfk']);
+//      ChromePhp::log($pasOldData['occupationfk']);
+//      ChromePhp::log($pasNewData['occupationfk']);
 
       $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
           'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
@@ -9062,12 +9062,12 @@ die();*/
               {
                 $old_variable = getGrade($pasOldData['grade']);
                 $new_variable = getGrade($pasNewData['grade']);
-                ChromePhp::log($old_variable);
-                ChromePhp::log($new_variable);
+                //ChromePhp::log($old_variable);
+                //ChromePhp::log($new_variable);
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
-              ChromePhp::log($asLog);
+              //ChromePhp::log($asLog);
             }
           }
         }

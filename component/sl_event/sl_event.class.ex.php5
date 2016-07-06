@@ -174,7 +174,7 @@ class CSl_eventEx extends CSl_event
 
         $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
 
-        ChromePhp::log($asNotes[$key]['content']);
+//        ChromePhp::log($asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
