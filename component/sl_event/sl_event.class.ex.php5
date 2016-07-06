@@ -104,7 +104,7 @@ class CSl_eventEx extends CSl_event
 
         foreach ($splitted as $i => $value)
         {
-          if(strlen($splitted[$i]) > 20)
+          if(strlen($splitted[$i]) > 30)
           {
             $splitted[$i] = '';
           }
@@ -162,7 +162,7 @@ class CSl_eventEx extends CSl_event
 
         foreach ($splitted as $i => $value)
         {
-          if(strlen($splitted[$i]) > 20)
+          if(strlen($splitted[$i]) > 30)
           {
             $splitted[$i] = '';
           }
