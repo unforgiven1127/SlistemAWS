@@ -60,9 +60,11 @@ fclose($f);
 unlink($sqlFile);
 unlink($backupFile);
 
+$dNow = date('Y-m-d');
+
 $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
 $subject = 'Backup completed';
-$message = 'Backup completed';
+$message = "Slistem Backup '".$dNow."' completed";
 $headers = 'From: slistem@slate.co.jp' . "\r\n" .
     'Reply-To: munir@slate-ghc.com' . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
