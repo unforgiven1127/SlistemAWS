@@ -148,7 +148,10 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("(=E3=82=A2) =E4=B8=","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("(=E3=82=A6) ","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("(=E3=82=A8) =E4=B8=8A=","",$asNotes[$key]['content']);
-
+        $asNotes[$key]['content'] = str_replace("TGlua2VkSW4gCgo=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(JP=)","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(PM/PL=E5=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=80=99=E8=A3=9C) /","",$asNotes[$key]['content']);
 
         $splitted = explode(" ",$asNotes[$key]['content']);
 
