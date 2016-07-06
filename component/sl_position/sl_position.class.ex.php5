@@ -3066,7 +3066,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           else
             $sMessage = 'Are you sure you want to delete this application ? <br />The candidate will not be in play for this position anymore. ';
 
-           $sHTML.= $this->_oDisplay->getLink('Delete '.$sPic, 'javascript:;', array('class' => 'position_delete test1', 'style' => 'position: relative; float: right;',
+           $sHTML.= $this->_oDisplay->getLink('Delete '.$sPic, 'javascript:;', array('class' => 'position_delete', 'style' => 'position: relative; float: right;',
                 'onclick' => ' goPopup.setPopupConfirm(\''.$sMessage.'\', \' AjaxRequest(\\\''.$sURL.'\\\'); \'); '));
         }
         else
@@ -3101,7 +3101,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_LINK, (int)$asHistory['sl_position_linkpk']);
               $sMessage = 'Are you sure you want to delete this stage ? <br />Status will roll back to previous stage.';
 
-              $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('class' => 'position_delete test2',
+              $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('class' => 'position_delete',
                 'onclick' => ' goPopup.setPopupConfirm(\''.$sMessage.'\', \' AjaxRequest(\\\''.$sURL.'\\\'); \'); '));
             }
 
@@ -3283,6 +3283,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         return array('error' => __LINE__.' - bad parameter');
 
       $asPosition = $this->_getModel()->getPositionByLinkPk($pnLinkPk);
+
+      deletePlacementNote($asPosition);
+
       if(empty($asPosition))
         return array('error' => __LINE__.' - could not find the position/application');
 

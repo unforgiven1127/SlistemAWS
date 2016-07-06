@@ -2897,6 +2897,23 @@ exit;*/
     return true;
   }
 
+  function deletePlacementNote($asPosition)
+  {
+    $candidate_id = $asPosition['candidatefk'];
+    $position_id = $asPosition['positionfk'];
+
+    $sQuery = "SELECT * FROM event e
+               INNER JOIN event_link el on el.eventfk = e.eventpk
+               WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
+               AND (content LIKE '%".$position_id."%')";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    ChromePhp::log($result);
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');
