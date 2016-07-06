@@ -1113,7 +1113,7 @@ class CSl_candidateEx extends CSl_candidate
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
       //logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$sName.' (#'.$pnPk.')', 'link' => $sLink));
-ChromePhp::log($sHTML);
+
       return $sHTML;
     }
 
@@ -2634,11 +2634,11 @@ ChromePhp::log($sHTML);
         $poQB->addLimit('0, 50');
 
 
-$test = $poQB->getSql();
+//$test = $poQB->getSql();
 //ChromePhp::log($test);
 
-$control = "sl_candidatepk =";
-$flag = strpos($test, $control);
+//$control = "sl_candidatepk =";
+//$flag = strpos($test, $control);
 //ChromePhp::log($flag);
 
       // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
