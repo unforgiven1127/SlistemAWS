@@ -3166,7 +3166,7 @@ ChromePhp::log('_getCandidateList');
 
         $test_value = getValue('pipe_filter');
 ChromePhp::log($test_value);
-        if($test_value == "placed")
+        if(isset($test_value) && $test_value == "placed")
         {
           // when add new candidate foreach does not work...
           foreach($asData as $key => $value) // MCA pipe_filter placed ise tum adaylarin statusunu placed yaptik
