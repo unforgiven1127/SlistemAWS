@@ -628,7 +628,7 @@ class CSl_eventEx extends CSl_event
 
     if(empty($delete_flag))
     {
-      $note = "<b>".$userName." created a new";
+      $note = $userName." created a new";
       if($event_type == "character" || $event_type == "email" || $event_type == "meeting" || $event_type == "phone" ||$event_type == "update")
       {
         $note .= " ".$event_type." note: </b><br>";
@@ -639,10 +639,10 @@ class CSl_eventEx extends CSl_event
       }
       else
       {
-        $note .= " note: </b><br>";
+        $note .= " note: <br>";
       }
 
-      $note .= "<b>".$note_title."</b><br>";
+      //$note .= "<b>".$note_title."</b><br>";
       //$note .= $content;
     }
     else
