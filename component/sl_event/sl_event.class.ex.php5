@@ -98,7 +98,25 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = $splitted1[1];
 
         $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
-        $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+
+        $splitted = explode(" ",$asNotes[$key]['content']);
+
+        foreach ($splitted as $i => $value)
+        {
+          if(strlen($splitted[$i]) > 30)
+          {
+            $splitted[$i] = '';
+          }
+        }
+
+        $imploted = implode(" ",$splitted);
+
+        $asNotes[$key]['content'] = $imploted;
+
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
+      }
+
+      $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
@@ -138,23 +156,6 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("=85=E9=A0=88 ()","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("(5=E9=A8=93)=E3=81=93=E3=81","",$asNotes[$key]['content']);
 
-
-        $splitted = explode(" ",$asNotes[$key]['content']);
-
-        foreach ($splitted as $i => $value)
-        {
-          if(strlen($splitted[$i]) > 30)
-          {
-            $splitted[$i] = '';
-          }
-        }
-
-        $imploted = implode(" ",$splitted);
-
-        $asNotes[$key]['content'] = $imploted;
-
-        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
-      }
 /*
 
         $splitted = explode(" ",$asNotes[$key]['content']);
