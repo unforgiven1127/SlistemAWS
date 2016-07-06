@@ -197,7 +197,7 @@
         'option' => array(array('label' => ' - ', 'value' => ''), array('label' => 'name collect', 'value' => 1),
                           array('label' => 'contacted', 'value' => 2), array('label' => 'interview set', 'value' => 3),
                           array('label' => 'pre-screened', 'value' => 4), array('label' => 'phone assessed', 'value' => 5),
-                          array('label' => 'Assessed in person', 'value' => 6)/*, array('label' => '7', 'value' => 7),
+                          array('label' => 'Assessed in person', 'value' => 6),array('label' => 'Lost', 'value' => 8)/*, array('label' => '7', 'value' => 7),
                           array('label' => '8', 'value' => 8), array('label' => '9', 'value' => 9)*/),
         'value' => array(),
         'default_value' => array(),
