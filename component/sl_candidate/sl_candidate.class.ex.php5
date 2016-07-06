@@ -5716,7 +5716,8 @@ $flag = strpos($test, $control);
           <option value="2"> Contacted </option>
           <option value="3" class="unavailable"> Interview set</option>
           <option value="5"> Phone assessed </option>
-          <option value="6" selected="selected"> Assessed - [ in play ] </option>';
+          <option value="6" selected="selected"> Assessed - [ in play ] </option>
+          <option value="7"> Lost </option>';
       }
       elseif(!empty($sDatePlayed) || !empty($asDateMeeting['met']))
       {
