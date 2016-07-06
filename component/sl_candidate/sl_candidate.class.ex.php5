@@ -107,7 +107,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       case 'notification_item':
       case 'searchable':
-//        ChromePhp::log('109');
+
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
@@ -118,7 +118,6 @@ class CSl_candidateEx extends CSl_candidate
         break;
 
       default:
-//        ChromePhp::log('120');
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('autocomplete' => 1));
         $asItem[] = array(CONST_CP_UID => $this->csUid, CONST_CP_ACTION => CONST_ACTION_VIEW,
             CONST_CP_TYPE => CONST_CANDIDATE_TYPE_CANDI, 'label' => 'Candidate', 'search_url' => $sURL);
@@ -152,7 +151,6 @@ class CSl_candidateEx extends CSl_candidate
     $this->_processUrl();
     $oPage = CDependency::getCpPage();
 
-//ChromePhp::log($this->csAction);
 
     // --------------------------------------------------------------
     //Complex search need 1 entry point on search for both data types
@@ -248,7 +246,6 @@ class CSl_candidateEx extends CSl_candidate
             $candidateList = $this->_getCandidateList(true, $oQB);
 
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($candidateList), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
-//ChromePhp::log($return);
             return json_encode($return);
             break;
             case CONST_ACTION_MANAGE:
@@ -976,18 +973,13 @@ class CSl_candidateEx extends CSl_candidate
 
       insertLog($user_id, $candidate_id, $text, "user_history");
 
-      //ChromePhp::log($candidate_id);
-      //ChromePhp::log($logType);
     }
 
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
       if(!assert('is_key($pnPk)'))
         return '';
-      //$testUrl = $this->_oPage->getAjaxUrl($this->csUid, CANDI_LOG, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
-//ChromePhp::log($testUrl);
-//ChromePhp::log($pnPk);
-//ChromePhp::log($pasRedirected);
+
       $sHTML = '';
 
       //-----------------------------------------------------------------------
@@ -1481,8 +1473,6 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_array($pasCandidateData) && !empty($pasCandidateData)'))
         return array();
 
-      ChromePhp::log('_getContactTab');
-
       $oPage = CDependency::getCpPage();
       $asTypeTitle = array( 1 => 'Home phone number', 2 => 'Office phone number', 3 => 'Website url', 4 => 'Fax number',
                             5 => 'Email address', 6 => 'Mobile phone number', 7 => 'LinkedIn url', 8 => 'Facebook url', 9 => 'info');
@@ -1552,8 +1542,6 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= "    </td>
                   </tr>
                 </table>";
-
-//ChromePhp::log($sURL);
 
       if($bRead)
       {
@@ -2496,7 +2484,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-ChromePhp::log('_getCandidateList');
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2634,13 +2621,6 @@ ChromePhp::log('_getCandidateList');
         $poQB->addLimit('0, 50');
 
 
-//$test = $poQB->getSql();
-//ChromePhp::log($test);
-
-//$control = "sl_candidatepk =";
-//$flag = strpos($test, $control);
-//ChromePhp::log($flag);
-
       // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
       // manage sort field / order
       //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
@@ -2740,7 +2720,7 @@ ChromePhp::log('_getCandidateList');
 
         }
       }
-//ChromePhp::log($sQuery);
+;
         $oldQ = $sQuery;
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
@@ -2753,11 +2733,9 @@ ChromePhp::log('_getCandidateList');
 
         $sSortOrder = getValue('sortorder');
 
-        //ChromePhp::log($sSortField." - ".$sSortOrder);
 
         if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null)
         {
-//          ChromePhp::log($sSortField);
           if($sSortField == "sl_candidatepk")
           {
             $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
@@ -2841,7 +2819,7 @@ ChromePhp::log('_getCandidateList');
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-//ChromePhp::log($sQuery);
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
@@ -3071,7 +3049,6 @@ ChromePhp::log('_getCandidateList');
 
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-//ChromePhp::log('2891');
       //$sURL = $this->_oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1));
       $sURL = $this->_oPage->getAjaxUrl('sl_candidate', $this->csAction, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId, '__filtered' => 1, 'data_type' => CONST_CANDIDATE_TYPE_CANDI, 'replay_search' => $nHistoryPk));
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
@@ -3771,16 +3748,13 @@ ChromePhp::log('_getCandidateList');
           if($createdByFk == -1)
           {
             $sLink = "Unknown";
-            //ChromePhp::log('icerde');
           }
           else
           {
             $user_info = getUserInformaiton($createdByFk);
             $sLink = $user_info['position']. ' '.$user_info['firstname']. ' '.$user_info['lastname'].' ';
           }
-//DENEDIK
-//ChromePhp::log($createdByFk);
-//ChromePhp::log($sLink);
+
 
             $sMeeting.= $this->_oDisplay->getBloc('', ' by', array('style' => 'width:20px; margin-left:5px;','class' => 'meeting_row_first'));
             $sMeeting.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'width:auto;','class' => 'meeting_row_creator'));
@@ -3799,7 +3773,7 @@ ChromePhp::log('_getCandidateList');
             else
               $sLink = $oLogin->getUserLink((int)$oDbResult->getFieldValue('created_by'), true);
 */
-//ChromePhp::log($sLink);
+
             if(isset($meetingInfo['date_created']))
             {
               $setDate = explode(' ',$meetingInfo['date_created']);
@@ -3820,8 +3794,7 @@ ChromePhp::log('_getCandidateList');
               $sMeeting.= $this->_oDisplay->getBloc('', '<span>'.$asDate[0].'</span> at <span>'.substr($asDate[1], 0, 5).'</span> ', array('class' => 'meeting_row_date '.$sClass));
             }
             $sMeeting.= $this->_oDisplay->getFloathack();
-//BOZUK !!!!!
-//ChromePhp::log($meetingInfo);
+
             //----------------------------------------------------
             //Third row
             $sMeeting.= $this->_oDisplay->getBloc('', 'Status', array('style' => 'width:150px;', 'class' => 'meeting_row_sixth'));
@@ -3834,7 +3807,7 @@ ChromePhp::log('_getCandidateList');
                 $sMeeting.= $this->_oDisplay->getBloc('', ' updated '.$updateDate[0].' at '.substr($updateDate[1], 0, 5), array('style' => 'width:auto; margin-left:5px;', 'class' => 'meeting_row_date'));
               }
             }
-//ChromePhp::log($meetingInfo);
+
             $sMeeting.= $this->_oDisplay->getBlocStart('', array('class' => 'meeting_row_action'));
             if($bManager || ($nStatus < 1 && ($nCurrentUser == $oDbResult->getFieldValue('created_by') || $nCurrentUser == $nAttendee)))
             {
@@ -4990,7 +4963,7 @@ ChromePhp::log('_getCandidateList');
 //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT_SHOW, array('pnCandiPk' => $pnCandiPk, 'pnContactpk ' => 0, 'showOld ' => true));
 //$showJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$showURL.'\'); ';;
 //$oForm->addField('misc', '', array('style'=> 'text-align: center','type' => 'text', 'text' => '<a href="#" onclick="alert(`munir alert`)">Click Me</a>'));
-//ChromePhp::log("test");
+
       $newArea = 1;
       $nCount = 0;
       if($page_type == "edit")
@@ -5209,7 +5182,6 @@ ChromePhp::log('_getCandidateList');
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-//ChromePhp::log($_POST['sl_contactpk']);
 
       $edit_flag = true;
       foreach ($_POST['sl_contactpk'] as $key => $value) {
@@ -5276,7 +5248,7 @@ ChromePhp::log('_getCandidateList');
       foreach($_POST['contact_value'] as $nRow => $sValue)
       {
         $contact_info = trim($_POST['contact_value'][$nRow]);
-        //ChromePhp::log($contact_info);
+
         //added to keep crappy data in the database T_T
 
         if ($edit_flag || !in_array($contact_info, $contactValuesArray))
@@ -7473,7 +7445,7 @@ die();*/
 
     public function updateCandidateProfile($pnCandidatePk)
     {
-      //ChromePhp::log('7172');
+
       if(!assert('is_key($pnCandidatePk)'))
         return array();
 
@@ -7642,7 +7614,7 @@ die();*/
 
       //dump($nPlay);
       //dump($nMaxActiveStatus);
-//ChromePhp::log($nScore);
+
       if($nScore > 116)
         $nRating = 100;
       else
@@ -7654,7 +7626,7 @@ die();*/
         else if($nRating > 100)
           $nRating = 100;
       }
-//ChromePhp::log($nRating);
+
       $asUpdate = array('_has_doc' => $nDocument, '_in_play' => $nPlay, '_pos_status' => $nMaxActiveStatus,
           'profile_rating' => $nRating, '_date_updated' => date('Y-m-d H:i:s'));
       $bUpdated = $this->_getModel()->update($asUpdate, 'sl_candidate_profile', 'candidatefk = '.$pnCandidatePk);
@@ -7864,9 +7836,9 @@ die();*/
 
     private function _getResumeSaveAdd($array = '' , $passTitle ='Resume')
     {
-      //ChromePhp::log('_getResumeSaveAdd');
+;
       // check form, create a html file from it
-//ChromePhp::log($array);
+
       if(isset($array[0]))
       {
         $pasCandidate = $array[0];
@@ -7879,8 +7851,6 @@ die();*/
         $sContent = purify_html(getValue('content'));
       }
 
-//ChromePhp::log($sContent);
-//ChromePhp::log($pasCandidate);
 
       if(empty($sTitle) || empty($sContent))
         return array('error' => 'Title and resume content are required.');
@@ -8743,9 +8713,9 @@ die();*/
       $sHTML = $this->_oDisplay->getTitle('Duplicates for candidate #'.$pnCandidatePk, 'h3', true);
       $sHTML.= $this->_oDisplay->getCR(2);
 
-//ChromePhp::log($pnCandidatePk);
+
       $duplicate_array = $this->_getModel()->getDuplicate($pnCandidatePk, $nManualTarget, true, true);
-//ChromePhp::log($duplicate_array);
+
       if(empty($duplicate_array['other']))
       {
         $sHTML.= '<span style="font-size: 15px; color: green; ">&rarr; No duplicate found for this candidate.</span><br /><br />';
@@ -8814,7 +8784,7 @@ die();*/
 
     private function _mergeDeleteCandidate($candidate_id)
     {
-      //ChromePhp::log('merge candidate section 1'); // merge ederken buraya geliyor
+
       if(!assert('is_key($candidate_id)'))
         return array('error' => __LINE__.' - Wrong parameters');
 
@@ -8942,11 +8912,6 @@ die();*/
 
     private function _customLogUpdate($pasOldData, $pasNewData)
     {
-//      ChromePhp::log($pasOldData);
-//      ChromePhp::log($pasNewData);
-
-//      ChromePhp::log($pasOldData['occupationfk']);
-//      ChromePhp::log($pasNewData['occupationfk']);
 
       $asBLFields = array('updated_by', 'date_updated', 'sl_candidatepk', ' date_created', '_sys_status', '_sys_redirect',
           'currency', 'currency_rate', 'salary_search', ' _has_doc', '  _in_play', '  _date_updated', 'uid', 'rating');
@@ -9061,12 +9026,11 @@ die();*/
               {
                 $old_variable = getGrade($pasOldData['grade']);
                 $new_variable = getGrade($pasNewData['grade']);
-                //ChromePhp::log($old_variable);
-                //ChromePhp::log($new_variable);
+
               }
 
               $asLog[$sType][] = '['.$sLabel.'] changed from: '.$old_variable.' -> to: '.$new_variable;
-              //ChromePhp::log($asLog);
+
             }
           }
         }
@@ -9282,7 +9246,7 @@ die();*/
             $candidate_data['target'][$key] = $candidate_data[$newer_candidate_info][$key];
         }
       }
-//ChromePhp::log($candidate_data['target']);
+
       $sl_candidate_profile_object = $model_object->update($candidate_data['target'], 'sl_candidate_profile', 'candidatefk = '.$target_id, true);
 
       $recalculated_profile_rating = $this->calculate_profile_rating($target_id);
