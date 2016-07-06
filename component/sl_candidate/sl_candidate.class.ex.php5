@@ -1061,10 +1061,11 @@ class CSl_candidateEx extends CSl_candidate
       $bRead = $oDbResult->readFirst();
       while($bRead)
       {
+ChromePhp::log('date_met');
         //$sMeetingDate = $oDbResult->getFieldValue('date_meeting');
         $sMeetingDate = $oDbResult->getFieldValue('date_met');
         $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
-
+ChromePhp::log($sMeetingDate);
         if($nStatus > 0)
         {
           if(empty($asCandidate['last_meeting']['date']) || $asCandidate['last_meeting']['date'] < $sMeetingDate)
