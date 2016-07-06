@@ -3208,7 +3208,7 @@ ChromePhp::log('_getCandidateList');
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-ChromePhp::log($sHTML);
+
       return $sHTML;
     }
 
