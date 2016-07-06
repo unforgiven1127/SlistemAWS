@@ -5709,7 +5709,7 @@ $flag = strpos($test, $control);
           <option value="3" '.(($nStatus === 3)? ' selected ':'').' class="unavailable"> Interview set</option>
           <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
           <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>
-          <option value="7" '.(($nStatus === 7)? ' selected ':'').'> Lost </option>';
+          <option value="8" '.(($nStatus === 8)? ' selected ':'').'> Lost </option>';
       }
       elseif($bInPlay)
       {
