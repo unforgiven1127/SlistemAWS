@@ -216,7 +216,7 @@ class CSl_eventEx extends CSl_event
     if($psNoteType == 'cp_history')
     {
       $candidate_id = $pnItemPk;
-      $companyHistory = getCompanyHistory($candidate_id);
+      /*$companyHistory = getCompanyHistory($candidate_id);
 
       //ChromePhp::log($companyHistory);
 
@@ -247,7 +247,7 @@ class CSl_eventEx extends CSl_event
         //ChromePhp::log($addNotes);
         array_push($asNotes,$addNotes);
         //ChromePhp::log($asNotes);
-      }
+      }*/
 
     }
 
