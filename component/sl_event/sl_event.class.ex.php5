@@ -86,7 +86,7 @@ class CSl_eventEx extends CSl_event
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
-
+ChromePhp::log($asNotes);
     foreach ($asNotes as $key => $note)
     {
       //ChromePhp::log($asNotes[$key]['type']);
@@ -176,7 +176,7 @@ class CSl_eventEx extends CSl_event
 
 //        ChromePhp::log($asNotes[$key]['content']);
     }
-
+ChromePhp::log($asNotes);
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
@@ -215,7 +215,6 @@ class CSl_eventEx extends CSl_event
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
 
-      ChromePhp::log($companyHistory);
 
       foreach ($companyHistory as $key => $value)
       {
