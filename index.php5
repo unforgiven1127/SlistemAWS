@@ -8,7 +8,7 @@ require_once './common/lib/ChromePhp.php';
 //require_once './common/lib/verticalSlider/js/jquery.totemticker.js';
 
 session_start();
-header("Cache-Control: no-cache");
+header("Cache-Control: no-cache, must-revalidate");
 header("Pragma: no-cache");
 
 // Connect to redis
