@@ -950,9 +950,15 @@ class CSl_candidateEx extends CSl_candidate
 
     public function logAjax()
     {
+      $oLogin = CDependency::getCpLogin();
+
       $candidate_id = $_GET['ppk'];
       $logType = $_GET['logType'];
-      $user_id = $this->_oLogin->getUserPk();
+      $user_id = $oLogin->getUserPk();
+
+      ChromePhp::log($candidate_id);
+      ChromePhp::log($logType);
+      ChromePhp::log($user_id);
 
       if($logType == "candiTab2")
       {
