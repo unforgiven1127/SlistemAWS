@@ -87,39 +87,36 @@ class CSl_eventEx extends CSl_event
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
 
-    //foreach ($asNotes as $key => $note)
-    //{
+    foreach ($asNotes as $key => $note)
+    {
       //ChromePhp::log($asNotes[$key]['type']);
-      //$splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
-      //if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
-      //{
+      $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+      if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
+      {
         //ChromePhp::log($splitted1[0]);
         //ChromePhp::log($splitted1[1]);
-        /*if(isset($splitted1[1]) && !empty($splitted1[1]))
+        $asNotes[$key]['content'] = $splitted1[1];
+
+        $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
+
+        $splitted = explode(" ",$asNotes[$key]['content']);
+
+        foreach ($splitted as $i => $value)
         {
-          $asNotes[$key]['content'] = $splitted1[1];
-
-          $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
-
-          $splitted = explode(" ",$asNotes[$key]['content']);
-
-          foreach ($splitted as $i => $value)
+          if(strlen($splitted[$i]) > 30)
           {
-            if(strlen($splitted[$i]) > 30)
-            {
-              $splitted[$i] = '';
-            }
+            $splitted[$i] = '';
           }
+        }
 
-          $imploted = implode(" ",$splitted);
+        $imploted = implode(" ",$splitted);
 
-          $asNotes[$key]['content'] = $imploted;
+        $asNotes[$key]['content'] = $imploted;
 
-          $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
-          }*/
-      //}
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);*/
+      }
 
-      /*$asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+      $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
@@ -157,7 +154,7 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = str_replace("=E9=81=8B=","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("=B0=9A=E5=8F=AF","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("=85=E9=A0=88 ()","",$asNotes[$key]['content']);
-        $asNotes[$key]['content'] = str_replace("(5=E9=A8=93)=E3=81=93=E3=81","",$asNotes[$key]['content']);*/
+        $asNotes[$key]['content'] = str_replace("(5=E9=A8=93)=E3=81=93=E3=81","",$asNotes[$key]['content']);
 
 /*
 
@@ -178,7 +175,7 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);*/
 
 //        ChromePhp::log($asNotes[$key]['content']);
-    //}
+    }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
@@ -216,7 +213,7 @@ class CSl_eventEx extends CSl_event
     if($psNoteType == 'cp_history')
     {
       $candidate_id = $pnItemPk;
-      /*$companyHistory = getCompanyHistory($candidate_id);
+      $companyHistory = getCompanyHistory($candidate_id);
 
       //ChromePhp::log($companyHistory);
 
@@ -247,7 +244,7 @@ class CSl_eventEx extends CSl_event
         //ChromePhp::log($addNotes);
         array_push($asNotes,$addNotes);
         //ChromePhp::log($asNotes);
-      }*/
+      }
 
     }
 

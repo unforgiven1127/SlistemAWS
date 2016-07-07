@@ -2,7 +2,7 @@
 function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
 {
   var serverName = window.location.host;
-  alert(serverName);
+  //alert(serverName);
   //psIdToShow acilacak olan tab
   if(poElement)
   {
@@ -15,7 +15,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
     {
       //alert(candidate_id);
       //alert(psIdToShow);
-      var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
+      var url = serverName+"/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
       alert(url);
       //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
       //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
@@ -58,7 +58,7 @@ function view_comp(psUrl)
 function view_candi(psUrl, psTab)
 {
   splitPage();
-alert(psUrl);
+//alert(psUrl);
   if(psTab)
     AjaxRequest(psUrl, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection(); $('"+psTab+"').click(); ");
   else
