@@ -49,14 +49,14 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
 function view_comp(psUrl)
 {
   splitPage();
-alert(psUrl);
+
   AjaxRequest(psUrl, 'body', '', 'topCandidateSection', '', '', "initTopPageSection();");
 }
 
 function view_candi(psUrl, psTab)
 {
   splitPage();
-
+alert(psUrl);
   if(psTab)
     AjaxRequest(psUrl, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection(); $('"+psTab+"').click(); ");
   else
