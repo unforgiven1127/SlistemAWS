@@ -217,6 +217,7 @@ class CSl_eventEx extends CSl_event
 
       if(isset($companyHistory) && !empty($companyHistory) && !empty($companyHistory['table']))
       {
+        ChromePhp::log('icerde');
         foreach ($companyHistory as $key => $value)
         {
           $addNotes = array();
