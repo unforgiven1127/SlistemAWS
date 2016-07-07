@@ -1298,7 +1298,11 @@ class CSl_candidateEx extends CSl_candidate
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
       //$asCharacter = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
-      if(isset($asCharacter) && empty($asCharacter['nb_result']))
+      if(!isset($asCharacter))
+      {
+        $asCharNotes['nb_result'] = '';
+      }
+      else if(empty($asCharacter['nb_result']))
       {
         //$sCharSelected = '';
         //$sNoteSelected = 'selected';
@@ -1306,7 +1310,11 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       //$asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
-      if(isset($asNotes) && empty($asNotes['nb_result']))
+      if(!isset($asNotes))
+      {
+        $sNoteSelected = '';
+      }
+      if(empty($asNotes['nb_result']))
       {
         $sNoteSelected = '';
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
