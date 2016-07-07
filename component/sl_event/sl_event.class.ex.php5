@@ -95,7 +95,7 @@ class CSl_eventEx extends CSl_event
       {
         //ChromePhp::log($splitted1[0]);
         //ChromePhp::log($splitted1[1]);
-        if(isset($splitted1[1]) && !empty($splitted1[1]))
+        /*if(isset($splitted1[1]) && !empty($splitted1[1]))
         {
           $asNotes[$key]['content'] = $splitted1[1];
 
@@ -116,7 +116,7 @@ class CSl_eventEx extends CSl_event
           $asNotes[$key]['content'] = $imploted;
 
           $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
-          }
+          }*/
       }
 
       $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
