@@ -4223,7 +4223,7 @@ class CSl_statEx extends CSl_stat
           var_dump($value);
           $consultant_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
           $consultant_ids[] = $key;
-          //$promote_dates = $value
+          $promote_dates[$key] = $value['r_to_c_date'];
         }
       }
 
@@ -4239,6 +4239,23 @@ class CSl_statEx extends CSl_stat
       {
         if (in_array($id, $consultant_skip_id))
           continue;
+
+        $user_info = getUserInformaiton($id);
+        if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
+        {
+          if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+          {
+            $stats_data['consultant'][$id]['position'] = "researcher";
+          }
+          else
+          {
+            $stats_data['consultant'][$id]['position'] = $user_info['position'];
+          }
+        }
+        else
+        {
+          $stats_data['consultant'][$id]['position'] = $user_info['position'];
+        }
 
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
         {
@@ -4377,6 +4394,15 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
         }
         $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
+        if($promote_dates[$id] == "0000-00-00 00:00:00")
+        {
+          $stats_data['consultant'][$id]['promote_date'] = "0";
+        }
+        else
+        {
+          $stats_data['consultant'][$id]['promote_date'] = $promote_dates[$id];
+        }
+
       }
 
       $temp_set_vs_met = $temp_resume_sent = $temp_ccm = array();
@@ -4594,6 +4620,7 @@ class CSl_statEx extends CSl_stat
         }
 
         $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
+        $stats_data['researcher'][$id]['promote_date'] = "0";
       }
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
