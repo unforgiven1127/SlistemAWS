@@ -116,7 +116,7 @@ class CSl_eventEx extends CSl_event
         $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
       }
 
-      $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
@@ -271,6 +271,7 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($matches);
 
       // array gelmezse patliyo... duzelt... MCA
+      ChromePhp::log($asNotes);
       foreach($asNotes as $asNote)
       {
         if (strpos($asNote['content'], 'for position #') !== false) {
