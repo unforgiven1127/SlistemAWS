@@ -2929,13 +2929,16 @@ exit;*/
     $sQuery = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
                 AND (action LIKE '%Placement !%' OR action LIKE '%[placed]%') AND (action LIKE '%#".$position_id."%')";
 
-    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
 
-    ChromePhp::log($result);
+    foreach ($result as $key => $value)
+    {
+      $sQuery = "UPDATE login_system_history SET flag = 'p' WHERE login_system_historypk = '".$value['login_system_historypk']."'";
+      $db_result = $oDB->executeQuery($sQuery);
+    }
 
   }
 
