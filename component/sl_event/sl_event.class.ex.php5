@@ -271,6 +271,7 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($matches);
 
       // array gelmezse patliyo... duzelt... MCA
+      ChromePhp::log('TEST');
       ChromePhp::log($asNotes);
       foreach($asNotes as $asNote)
       {
