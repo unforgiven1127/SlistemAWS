@@ -3282,10 +3282,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
        if(!assert('is_key($pnLinkPk)'))
         return array('error' => __LINE__.' - bad parameter');
 
+      $oLogin = CDependency::getCpLogin();
       $asPosition = $this->_getModel()->getPositionByLinkPk($pnLinkPk);
+      $user_id = $oLogin->getuserPk();
 
       if(!empty($asPosition))
-        deletePlacementNote($asPosition);
+        deletePlacementNote($asPosition,$user_id);
 
       if(empty($asPosition))
         return array('error' => __LINE__.' - could not find the position/application');

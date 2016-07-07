@@ -2897,12 +2897,14 @@ exit;*/
     return true;
   }
 
-  function deletePlacementNote($asPosition)
+  function deletePlacementNote($asPosition,$user_id)
   {
     $oDB = CDependency::getComponentByName('database');
 
     $candidate_id = $asPosition['candidatefk'];
     $position_id = $asPosition['positionfk'];
+
+    $now = date('Y-m-d H:i:s');
 
     ChromePhp::log($asPosition);
     ChromePhp::log($candidate_id);
@@ -2923,7 +2925,10 @@ exit;*/
 
     foreach ($result as $key => $value)
     {
-      # code...
+      $event_id = $value['eventpk'];
+      $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."'";
+
+      $db_result = $oDB->executeQuery($sQuery);
     }
 
   }
