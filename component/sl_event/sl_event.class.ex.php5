@@ -90,9 +90,9 @@ class CSl_eventEx extends CSl_event
     foreach ($asNotes as $key => $note)
     {
       //ChromePhp::log($asNotes[$key]['type']);
-      $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
-      if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
-      {
+      //$splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+      //if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
+      //{
         //ChromePhp::log($splitted1[0]);
         //ChromePhp::log($splitted1[1]);
         /*if(isset($splitted1[1]) && !empty($splitted1[1]))
@@ -117,7 +117,7 @@ class CSl_eventEx extends CSl_event
 
           $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
           }*/
-      }
+      //}
 
       $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
         $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
