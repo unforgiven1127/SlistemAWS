@@ -4245,7 +4245,7 @@ class CSl_statEx extends CSl_stat
         {
           if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
           {
-            $stats_data['consultant'][$id]['position'] = "researcher";
+            $stats_data['consultant'][$id]['position'] = "Researcher";
           }
           else
           {
