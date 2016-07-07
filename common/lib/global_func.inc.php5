@@ -2927,7 +2927,7 @@ exit;*/
 
 
     $sQuery = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
-                AND (action LIKE '%Placement !%' OR action LIKE '%[placed]%') AND (action LIKE '#".$position_id."')";
+                AND (action LIKE '%Placement !%' OR action LIKE '%[placed]%') AND (action LIKE '%#".$position_id."%')";
 
     ChromePhp::log($sQuery);
 
