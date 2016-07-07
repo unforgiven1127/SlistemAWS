@@ -65,7 +65,7 @@
 			$flag = false;
 		}
 	}
-	if($promoteFlag == "true")
+	if($value['promoteFlag'] == "true")
 	{
 		$flag = true;
 	}
