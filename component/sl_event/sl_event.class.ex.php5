@@ -84,9 +84,99 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
+    $sHTML= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
+return $sHTML;
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
+    foreach ($asNotes as $key => $note)
+    {
+      //ChromePhp::log($asNotes[$key]['type']);
+      $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+      if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
+      {
+        //ChromePhp::log($splitted1[0]);
+        //ChromePhp::log($splitted1[1]);
+        $asNotes[$key]['content'] = $splitted1[1];
 
+        $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
+
+        $splitted = explode(" ",$asNotes[$key]['content']);
+
+        foreach ($splitted as $i => $value)
+        {
+          if(strlen($splitted[$i]) > 30)
+          {
+            $splitted[$i] = '';
+          }
+        }
+
+        $imploted = implode(" ",$splitted);
+
+        $asNotes[$key]['content'] = $imploted;
+
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
+      }
+
+        $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: 7bit","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: text/html; charset=utf-8","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: quoted-printable","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("------=_Part_339388_953714533.1467092718630"," ",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=slate_header_small.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_header_small.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: base64","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=linkedin.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png ","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Transfer-Encoding: base64","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: image/png; name=slate_logo_small.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=slate_logo_small.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-ID:","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Disposition: attachment; filename=linkedin.png","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: multipart/related; ","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Connect to Slate:","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("------=_Part_3526789_7121016.1442195907117","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=C2=B7","*",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=E2=80=93","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("1=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("5=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("2=20","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=A8=E3=80=82","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("()","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A2) =E4=B8=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A6) ","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(=E3=82=A8) =E4=B8=8A=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("TGlua2VkSW4gCgo=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(JP=)","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(PM/PL=E5=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=80=99=E8=A3=9C) /","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=E9=81=8B=","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=B0=9A=E5=8F=AF","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("=85=E9=A0=88 ()","",$asNotes[$key]['content']);
+        $asNotes[$key]['content'] = str_replace("(5=E9=A8=93)=E3=81=93=E3=81","",$asNotes[$key]['content']);
+
+/*
+
+        $splitted = explode(" ",$asNotes[$key]['content']);
+
+        foreach ($splitted as $i => $value)
+        {
+          if(strlen($splitted[$i]) > 30)
+          {
+            $splitted[$i] = '';
+          }
+        }
+
+        $imploted = implode(" ",$splitted);
+
+        $asNotes[$key]['content'] = $imploted;
+
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);*/
+
+//        ChromePhp::log($asNotes[$key]['content']);
+    }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
@@ -121,7 +211,7 @@ class CSl_eventEx extends CSl_event
       $sHTML.= '</div>';
     }
 
-    /*if($psNoteType == 'cp_history')
+    if($psNoteType == 'cp_history')
     {
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
@@ -160,7 +250,7 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-    }*/
+    }
 
     if(empty($asNotes))
     {
