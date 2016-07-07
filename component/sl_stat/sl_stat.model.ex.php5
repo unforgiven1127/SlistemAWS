@@ -572,13 +572,14 @@ order by m.candidatefk
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
           $flagPromotion = true;
-
+echo'<br><br>';
           if($group == "consultant" && $meeting['date_met'] <= $promoteDate)
           {
             $flagPromotion = false;
           }
           else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $meeting['date_met'] >= $promoteDate)
           {
+
             var_dump('ICERDE');
             $flagPromotion = false;
           }
