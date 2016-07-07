@@ -84,8 +84,6 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
-    $sHTML= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
-return array();
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
     foreach ($asNotes as $key => $note)
@@ -358,6 +356,7 @@ return array();
       }
     }
 ChromePhp::log('TEST2');
+$sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
   }
 
