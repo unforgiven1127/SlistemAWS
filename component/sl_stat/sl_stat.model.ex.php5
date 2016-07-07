@@ -490,7 +490,7 @@ order by m.candidatefk
 
       $read = $db_result->readNext();
     }
-
+echo'<br><br>';
     foreach ($meeting_array as $meeting)
     {
 
@@ -572,15 +572,14 @@ order by m.candidatefk
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
           $flagPromotion = true;
-echo'<br><br>';
+
           if($group == "consultant" && $meeting['date_met'] <= $promoteDate)
           {
             $flagPromotion = false;
           }
           else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $meeting['date_met'] >= $promoteDate)
           {
-
-            var_dump('ICERDE');
+            echo $group.' - '.$promoteDate.' - '.$meeting['date_met'].' - '.$meeting[$group_switch]."<br><br>";
             $flagPromotion = false;
           }
 
