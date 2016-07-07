@@ -4388,6 +4388,8 @@ class CSl_statEx extends CSl_stat
         }
       }
 
+      $researcher_ids[] = '457';
+
       $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($researcher_ids, $start_date, $end_date);
       $temp_resume_sent = $this->_getModel()->get_resume_sent($researcher_ids, $start_date, $end_date);
       $temp_ccm = $this->_getModel()->get_ccm_data($researcher_ids, $start_date, $end_date);
