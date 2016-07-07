@@ -1314,7 +1314,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $sNoteSelected = '';
       }
-      if(empty($asNotes['nb_result']))
+      else if(empty($asNotes['nb_result']))
       {
         $sNoteSelected = '';
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
