@@ -352,9 +352,10 @@ class CSl_eventEx extends CSl_event
         $sHTML.= $oHTML->getBlocEnd();
       }
     }
-
+    ChromePhp::log('start');
     ChromePhp::log(count($asNotes));
     ChromePhp::log($nPriotity);
+    ChromePhp::log('end');
 
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
   }
