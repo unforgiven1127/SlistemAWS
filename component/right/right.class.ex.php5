@@ -355,6 +355,7 @@ class CRightEx extends CRight
     {
       if(!is_cpValues($psUid))
       {
+        ChromePhp::log('is_cpValues');
         assert('false; // bad parameters');
         return false;
       }
@@ -409,11 +410,11 @@ class CRightEx extends CRight
           return true;
      *
      */
-
+ChromePhp::log('test');
     //if the component calling this function specify a specific callback, we try it
     if(empty($pasCallback) || !isset($pasCallback['function']) || empty($pasCallback['function']))
       return false;
-
+ChromePhp::log('test1');
     if(!isset($pasCallback['params']))
       $pasCallback['params'] = array();
 
