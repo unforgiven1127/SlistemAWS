@@ -465,9 +465,6 @@ order by m.candidatefk
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
 
-echo"<br><br><br>";
-var_dump($flip_user_ids[$meeting[$group_switch]]);
-
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
@@ -508,6 +505,8 @@ var_dump($flip_user_ids[$meeting[$group_switch]]);
 
       $today = date("Y-m-d H:i:s");
 
+      echo"<br><br>";
+      var_dump($flip_user_ids[$meeting[$group_switch]]);
 
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
         && strtotime($meeting['date_created']) <= strtotime($end_date)
