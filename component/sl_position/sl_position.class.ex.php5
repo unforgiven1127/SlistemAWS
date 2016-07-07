@@ -3284,7 +3284,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $asPosition = $this->_getModel()->getPositionByLinkPk($pnLinkPk);
 
-      deletePlacementNote($asPosition);
+      if(!empty($asPosition))
+        deletePlacementNote($asPosition);
 
       if(empty($asPosition))
         return array('error' => __LINE__.' - could not find the position/application');
