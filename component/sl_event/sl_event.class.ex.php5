@@ -209,7 +209,7 @@ class CSl_eventEx extends CSl_event
       $sHTML.= '</div>';
     }
 
-    if($psNoteType == 'cp_history')
+    /*if($psNoteType == 'cp_history')
     {
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
@@ -248,7 +248,7 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-    }
+    }*/
 
     if(empty($asNotes))
     {
