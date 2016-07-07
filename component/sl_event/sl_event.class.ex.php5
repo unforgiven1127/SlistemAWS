@@ -81,9 +81,6 @@ class CSl_eventEx extends CSl_event
 
   public function displayNotes($pnItemPk, $psItemType, $psNoteType = '', $pasExcludeType = array(), $pbAddLink = true, $psLinkDefaultType = '')
   {
-    $sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
-      return array('content' => $sHTML, 'nb_result' => 0, 'priority' => 2);
-
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
@@ -354,16 +351,6 @@ class CSl_eventEx extends CSl_event
 
         $sHTML.= $oHTML->getBlocEnd();
       }
-    }
-    ChromePhp::log('start');
-    ChromePhp::log(count($asNotes));
-    ChromePhp::log($nPriotity);
-    ChromePhp::log('end');
-
-    if(count($asNotes) == 0)
-    {
-      $sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
-      return array('content' => $sHTML, 'nb_result' => 0, 'priority' => 2);
     }
 
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
