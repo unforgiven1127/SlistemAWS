@@ -465,6 +465,7 @@ order by m.candidatefk
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
 
+echo"<br><br><br>";
 var_dump($flip_user_ids[$meeting[$group_switch]]);
 
 
