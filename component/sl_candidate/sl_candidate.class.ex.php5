@@ -191,8 +191,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case CANDI_LOG:
-            return $this->logAjax($this->cnPk);
-            //return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->logAjax($this->cnPk)))));
+            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->logAjax($this->cnPk)))));
             break;
 
           case CONST_ACTION_LIST:
