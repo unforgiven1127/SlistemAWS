@@ -505,7 +505,7 @@ order by m.candidatefk
 
       $today = date("Y-m-d H:i:s");
 
-      if($group == 'researcher' && $meeting[$group_switch] != -1)
+      if($group == 'researcher' && $meeting[$group_switch] != -1 && $meeting['created_by'] == 457)
       {
         echo"<br><br>";
         var_dump($meeting);
