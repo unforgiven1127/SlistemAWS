@@ -81,6 +81,9 @@ class CSl_eventEx extends CSl_event
 
   public function displayNotes($pnItemPk, $psItemType, $psNoteType = '', $pasExcludeType = array(), $pbAddLink = true, $psLinkDefaultType = '')
   {
+    $sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
+      return array('content' => $sHTML, 'nb_result' => 0, 'priority' => 2);
+
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
