@@ -215,34 +215,36 @@ ChromePhp::log($asNotes);
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
 
-
-      foreach ($companyHistory as $key => $value)
+      if(isset($companyHistory) && !empty($companyHistory))
       {
-        $addNotes = array();
+        foreach ($companyHistory as $key => $value)
+        {
+          $addNotes = array();
 
-        $addNotes['_fts'] = $value['action'];
-        $addNotes['companyName'] = "";
-        $addNotes['content'] = $value['action'];
-        $addNotes['cp_action'] = "ppav";
-        $addNotes['cp_params'] = "";
-        $addNotes['cp_pk'] = (string)$candidate_id;
-        $addNotes['cp_type'] = "candi";
-        $addNotes['cp_uid'] = "555-001";
-        $addNotes['created_by'] = $value['userfk'];
-        $addNotes['custom_type'] = "";
-        $addNotes['date_create'] = $value['date'];
-        $addNotes['date_display'] = $value['date'];
-        $addNotes['date_update'] = "";
-        $addNotes['event_linkpk'] = "";
-        $addNotes['eventfk'] = "";
-        $addNotes['eventpk'] = "";
-        $addNotes['title'] = "";
-        $addNotes['type'] = "cp_history";
-        $addNotes['updated_by'] = '';
+          $addNotes['_fts'] = $value['action'];
+          $addNotes['companyName'] = "";
+          $addNotes['content'] = $value['action'];
+          $addNotes['cp_action'] = "ppav";
+          $addNotes['cp_params'] = "";
+          $addNotes['cp_pk'] = (string)$candidate_id;
+          $addNotes['cp_type'] = "candi";
+          $addNotes['cp_uid'] = "555-001";
+          $addNotes['created_by'] = $value['userfk'];
+          $addNotes['custom_type'] = "";
+          $addNotes['date_create'] = $value['date'];
+          $addNotes['date_display'] = $value['date'];
+          $addNotes['date_update'] = "";
+          $addNotes['event_linkpk'] = "";
+          $addNotes['eventfk'] = "";
+          $addNotes['eventpk'] = "";
+          $addNotes['title'] = "";
+          $addNotes['type'] = "cp_history";
+          $addNotes['updated_by'] = '';
 
-        //ChromePhp::log($addNotes);
-        array_push($asNotes,$addNotes);
-        //ChromePhp::log($asNotes);
+          //ChromePhp::log($addNotes);
+          array_push($asNotes,$addNotes);
+          //ChromePhp::log($asNotes);
+        }
       }
 
     }
