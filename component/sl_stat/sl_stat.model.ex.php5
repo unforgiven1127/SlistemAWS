@@ -508,7 +508,7 @@ order by m.candidatefk
       {
         $flagPromotion = false;
       }
-      else if($group == "researcher" && $create_date >= $promoteDate)
+      else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $create_date >= $promoteDate)
       {
         $flagPromotion = false;
       }
