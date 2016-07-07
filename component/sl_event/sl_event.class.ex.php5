@@ -85,7 +85,7 @@ class CSl_eventEx extends CSl_event
       return array();
 
     $sHTML= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
-return $sHTML;
+return array();
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
     foreach ($asNotes as $key => $note)
