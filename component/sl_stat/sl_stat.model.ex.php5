@@ -465,7 +465,6 @@ order by m.candidatefk
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
 
-
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
     while($read)
@@ -490,7 +489,7 @@ order by m.candidatefk
 
       $read = $db_result->readNext();
     }
-echo'<br><br>';
+
     foreach ($meeting_array as $meeting)
     {
 
@@ -498,23 +497,12 @@ echo'<br><br>';
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
 
-      $user_info = getUserInformaiton($meeting[$group_switch]);
-      $promoteDate = $user_info['r_to_c_date'];
-      $position = $user_info['position'];
-
-
       $effectiveDate = date('Y-m-d', strtotime("+1 month", strtotime($create_date)));
 
       $new_month = date("m",strtotime($effectiveDate));
       $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
 
       $today = date("Y-m-d H:i:s");
-
-      if($group == 'researcher' && $meeting[$group_switch] != -1 && $meeting['created_by'] == 457)
-      {
-        //echo"<br><br>";
-        //var_dump($meeting);
-      }
 
 
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
@@ -532,24 +520,9 @@ echo'<br><br>';
         }
         else
         {
-          $flagPromotion = true;
-
-          if($group == "consultant" && $create_date <= $promoteDate)
-          {
-            $flagPromotion = false;
-          }
-          else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $create_date >= $promoteDate)
-          {
-            $flagPromotion = false;
-          }
-
-          if($flagPromotion)
-          {
-            $data[$meeting[$group_switch]]['set'] += 1;
-            $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-              'date' => $meeting['date_created']);
-          }
-
+          $data[$meeting[$group_switch]]['set'] += 1;
+          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+            'date' => $meeting['date_created']);
         }
 
       }
@@ -571,27 +544,11 @@ echo'<br><br>';
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
-          $flagPromotion = true;
+          $data[$meeting[$group_switch]]['met'] += 1;
+          $data[$meeting[$group_switch]]['met_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+            'date' => $meeting['date_met']);
 
-          if($group == "consultant" && $meeting['date_met'] <= $promoteDate)
-          {
-            $flagPromotion = false;
-          }
-          else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $meeting['date_met'] >= $promoteDate)
-          {
-            echo $group.' - '.$promoteDate.' - '.$meeting['date_met'].' - '.$meeting[$group_switch]."<br><br>";
-            $flagPromotion = false;
-          }
-
-          if($flagPromotion)
-          {
-            $data[$meeting[$group_switch]]['met'] += 1;
-            $data[$meeting[$group_switch]]['met_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-              'date' => $meeting['date_met']);
-
-            $met_candidates_array[$meeting['candidatefk']]['oldest_meeting'] = '1950-05-05';
-          }
-
+          $met_candidates_array[$meeting['candidatefk']]['oldest_meeting'] = '1950-05-05';
         }
       }
     }
