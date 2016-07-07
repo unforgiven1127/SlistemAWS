@@ -342,7 +342,7 @@ class CPageEx extends CPage
     //--------------------------------------------------------------------
 
 
-    if(!$this->coRight->canAccess($this->csUid, $this->csAction, $this->csType, $this->cnPk,true))
+    if(!$this->coRight->canAccess($this->csUid, $this->csAction, $this->csType, $this->cnPk))
     {
       $oHTML = CDependency::getCpHtml();
       if(empty($oHTML))
