@@ -498,6 +498,21 @@ order by m.candidatefk
       $month = date("m",strtotime($create_date));
       $year = date("Y",strtotime($create_date));
 
+      $user_info = getUserInformaiton($meeting[$group_switch]);
+      $promoteDate = $user_info['r_to_c_date'];
+      $position = $user_info['position'];
+
+      $flagPromotion = true;
+
+      if($group == "consultant" && $end_date <= $promoteDate)
+      {
+        $flagPromotion = false;
+      }
+      else if($group == "researcher" && $end_date >= $promoteDate)
+      {
+        $flagPromotion = false;
+      }
+
       $effectiveDate = date('Y-m-d', strtotime("+1 month", strtotime($create_date)));
 
       $new_month = date("m",strtotime($effectiveDate));
@@ -527,9 +542,14 @@ order by m.candidatefk
         }
         else
         {
-          $data[$meeting[$group_switch]]['set'] += 1;
-          $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-            'date' => $meeting['date_created']);
+
+          if($flagPromotion)
+          {
+            $data[$meeting[$group_switch]]['set'] += 1;
+            $data[$meeting[$group_switch]]['set_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+              'date' => $meeting['date_created']);
+          }
+
         }
 
       }
@@ -551,11 +571,15 @@ order by m.candidatefk
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
-          $data[$meeting[$group_switch]]['met'] += 1;
-          $data[$meeting[$group_switch]]['met_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
-            'date' => $meeting['date_met']);
+          if($flagPromotion)
+          {
+            $data[$meeting[$group_switch]]['met'] += 1;
+            $data[$meeting[$group_switch]]['met_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
+              'date' => $meeting['date_met']);
 
-          $met_candidates_array[$meeting['candidatefk']]['oldest_meeting'] = '1950-05-05';
+            $met_candidates_array[$meeting['candidatefk']]['oldest_meeting'] = '1950-05-05';
+          }
+
         }
       }
     }
