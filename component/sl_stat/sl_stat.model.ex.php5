@@ -502,16 +502,6 @@ order by m.candidatefk
       $promoteDate = $user_info['r_to_c_date'];
       $position = $user_info['position'];
 
-      $flagPromotion = true;
-
-      if($group == "consultant" && $create_date <= $promoteDate)
-      {
-        $flagPromotion = false;
-      }
-      else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $create_date >= $promoteDate)
-      {
-        $flagPromotion = false;
-      }
 
       $effectiveDate = date('Y-m-d', strtotime("+1 month", strtotime($create_date)));
 
@@ -542,6 +532,16 @@ order by m.candidatefk
         }
         else
         {
+          $flagPromotion = true;
+
+          if($group == "consultant" && $create_date <= $promoteDate)
+          {
+            $flagPromotion = false;
+          }
+          else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $create_date >= $promoteDate)
+          {
+            $flagPromotion = false;
+          }
 
           if($flagPromotion)
           {
@@ -571,6 +571,17 @@ order by m.candidatefk
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
+          $flagPromotion = true;
+
+          if($group == "consultant" && $meeting['date_met'] <= $promoteDate)
+          {
+            $flagPromotion = false;
+          }
+          else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $meeting['date_met'] >= $promoteDate)
+          {
+            $flagPromotion = false;
+          }
+
           if($flagPromotion)
           {
             $data[$meeting[$group_switch]]['met'] += 1;
