@@ -213,11 +213,9 @@ class CSl_eventEx extends CSl_event
     {
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
-      ChromePhp::log($companyHistory);
 
       if(isset($companyHistory) && !empty($companyHistory) && !empty($companyHistory['table']))
       {
-        ChromePhp::log('icerde');
         foreach ($companyHistory as $key => $value)
         {
           $addNotes = array();
@@ -273,7 +271,6 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($matches);
 
       // array gelmezse patliyo... duzelt... MCA
-      ChromePhp::log('TEST');
       foreach($asNotes as $asNote)
       {
         if (strpos($asNote['content'], 'for position #') !== false) {
@@ -355,8 +352,10 @@ class CSl_eventEx extends CSl_event
         $sHTML.= $oHTML->getBlocEnd();
       }
     }
-ChromePhp::log('TEST2');
-$sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
+
+    ChromePhp::log(count($asNotes));
+    ChromePhp::log($nPriotity);
+
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
   }
 
