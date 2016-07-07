@@ -419,8 +419,8 @@ class CRightEx extends CRight
 ChromePhp::log('test');
 ChromePhp::log($pasCallback);
     //if the component calling this function specify a specific callback, we try it
-    //if(empty($pasCallback) || !isset($pasCallback['function']) || empty($pasCallback['function']))
-      //return false;
+    if(empty($pasCallback) || !isset($pasCallback['function']) || empty($pasCallback['function']))
+      return false;
 ChromePhp::log('test1');
     if(!isset($pasCallback['params']))
       $pasCallback['params'] = array();
