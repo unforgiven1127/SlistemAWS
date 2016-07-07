@@ -1154,6 +1154,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
+ChromePhp::log('_getRightTabsHalfed');
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -1290,19 +1291,15 @@ class CSl_candidateEx extends CSl_candidate
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
-
+ChromePhp::log('_getRightTabsFull');
       $sCharSelected =  'selected';
       $sDocSelected = $sContactSelected = $sJdSelected = $sNoteSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
-      //$asCharacter = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
-      if(!isset($asCharacter))
-      {
-        $asCharNotes['nb_result'] = '';
-      }
-      else if(empty($asCharacter['nb_result']))
+      $asCharacter = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
+      if(empty($asCharacter['nb_result']))
       {
         //$sCharSelected = '';
         //$sNoteSelected = 'selected';
@@ -1310,11 +1307,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       //$asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
-      if(!isset($asNotes))
-      {
-        $sNoteSelected = '';
-      }
-      else if(empty($asNotes['nb_result']))
+      if(empty($asNotes['nb_result']))
       {
         $sNoteSelected = '';
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
