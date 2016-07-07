@@ -507,8 +507,8 @@ order by m.candidatefk
 
       if($group == 'researcher' && $meeting[$group_switch] != -1 && $meeting['created_by'] == 457)
       {
-        echo"<br><br>";
-        var_dump($meeting);
+        //echo"<br><br>";
+        //var_dump($meeting);
       }
 
 

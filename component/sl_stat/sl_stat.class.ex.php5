@@ -4395,8 +4395,8 @@ class CSl_statEx extends CSl_stat
       $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
-echo '<br><br><br>';
-var_dump($temp_set_vs_met);
+//echo '<br><br><br>';
+//var_dump($temp_set_vs_met);
 //echo '<br><br><br>';
       foreach ($researcher_ids as $id)
       {
@@ -4424,6 +4424,9 @@ var_dump($temp_set_vs_met);
         {
           $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
+
+          echo '<br><br>';
+          var_dump($stats_data['researcher']);
 
         }
         else
