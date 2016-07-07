@@ -2902,6 +2902,10 @@ exit;*/
     $candidate_id = $asPosition['candidatefk'];
     $position_id = $asPosition['positionfk'];
 
+    ChromePhp::log($asPosition);
+    ChromePhp::log($candidate_id);
+    ChromePhp::log($candidate_id);
+
     $sQuery = "SELECT * FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
                WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
