@@ -86,7 +86,6 @@ class CSl_eventEx extends CSl_event
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
-ChromePhp::log($asNotes);
     foreach ($asNotes as $key => $note)
     {
       //ChromePhp::log($asNotes[$key]['type']);
@@ -176,7 +175,7 @@ ChromePhp::log($asNotes);
 
 //        ChromePhp::log($asNotes[$key]['content']);
     }
-ChromePhp::log($asNotes);
+
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
     //$query = $return['query'];
 
@@ -274,7 +273,6 @@ ChromePhp::log($asNotes);
 
       // array gelmezse patliyo... duzelt... MCA
       ChromePhp::log('TEST');
-      ChromePhp::log($asNotes);
       foreach($asNotes as $asNote)
       {
         if (strpos($asNote['content'], 'for position #') !== false) {
@@ -356,7 +354,7 @@ ChromePhp::log($asNotes);
         $sHTML.= $oHTML->getBlocEnd();
       }
     }
-
+ChromePhp::log('TEST2');
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
   }
 
