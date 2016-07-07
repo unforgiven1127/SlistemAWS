@@ -348,6 +348,12 @@ class CRightEx extends CRight
    */
   public function canAccess($psUid, $psAction = '', $psType = '', $pnPk = 0, $pasCallback = array())
   {
+    ChromePhp::log($psUid);
+    ChromePhp::log($psAction);
+    ChromePhp::log($psType);
+    ChromePhp::log($pnPk);
+    ChromePhp::log($pasCallback);
+
     if($this->cbIsAdmin)
       return true;
 
