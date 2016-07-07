@@ -405,7 +405,7 @@ class CLoginModelEx extends CLoginModel
     else
       $sQuery = 'SELECT * FROM login_system_history as lshi WHERE '.implode(' AND ', $asWhere);
 
-    $sQuery.= ' AND action IS NOT NULL AND flag = a
+    $sQuery.= ' AND action IS NOT NULL
     AND action <> ""
     ORDER BY `date` DESC, action ';
 
