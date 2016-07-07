@@ -99,7 +99,7 @@ class CSl_eventEx extends CSl_event
 
         $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
 
-        $splitted = explode(" ",$asNotes[$key]['content']);
+        /*$splitted = explode(" ",$asNotes[$key]['content']);
 
         foreach ($splitted as $i => $value)
         {
@@ -113,7 +113,7 @@ class CSl_eventEx extends CSl_event
 
         $asNotes[$key]['content'] = $imploted;
 
-        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);
+        $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);*/
       }
 
       $asNotes[$key]['content'] = str_replace("Content-Type: text/plain; charset=utf-8","",$asNotes[$key]['content']);
