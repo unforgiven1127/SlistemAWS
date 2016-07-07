@@ -58,6 +58,13 @@
 			$flag = false;
 		}
 	}
+	if($arrayPosition == "consultant")
+	{
+		if($value['position'] != "Consultant")
+		{
+			$flag = false;
+		}
+	}
 	if ($row_number_rank % 2 === 0)
 		$even = ' even_row';
 	else
