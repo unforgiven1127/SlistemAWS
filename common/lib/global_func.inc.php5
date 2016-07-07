@@ -2899,6 +2899,8 @@ exit;*/
 
   function deletePlacementNote($asPosition)
   {
+    $oDB = CDependency::getComponentByName('database');
+
     $candidate_id = $asPosition['candidatefk'];
     $position_id = $asPosition['positionfk'];
 
@@ -2913,11 +2915,11 @@ exit;*/
 
     ChromePhp::log($sQuery);
 
-    //$db_result = $oDB->executeQuery($sQuery);
+    $db_result = $oDB->executeQuery($sQuery);
 
-    //$result = $db_result->getAll();
+    $result = $db_result->getAll();
 
-    //ChromePhp::log($result);
+    ChromePhp::log($result);
   }
 
   function getUserInformaiton($user_id)
