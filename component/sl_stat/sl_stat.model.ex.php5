@@ -504,11 +504,11 @@ order by m.candidatefk
 
       $flagPromotion = true;
 
-      if($group == "consultant" && $end_date <= $promoteDate)
+      if($group == "consultant" && $create_date <= $promoteDate)
       {
         $flagPromotion = false;
       }
-      else if($group == "researcher" && $end_date >= $promoteDate)
+      else if($group == "researcher" && $create_date >= $promoteDate)
       {
         $flagPromotion = false;
       }
