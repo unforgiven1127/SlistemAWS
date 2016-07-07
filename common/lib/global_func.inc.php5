@@ -2906,22 +2906,16 @@ exit;*/
 
     $now = date('Y-m-d H:i:s');
 
-    ChromePhp::log($asPosition);
-    ChromePhp::log($candidate_id);
-    ChromePhp::log($position_id);
-
     $sQuery = "SELECT e.* FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
                WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
                AND (content LIKE '%".$position_id."%')";
 
-    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
 
-    ChromePhp::log($result);
 
     foreach ($result as $key => $value)
     {
@@ -2930,6 +2924,16 @@ exit;*/
 
       $db_result = $oDB->executeQuery($sQuery);
     }
+
+
+    $sQuery = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
+                AND (action LIKE '%Placement !%' OR action LIKE LIKE '%[placed]%') AND (action LIKE '#".$position_id."')";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    ChromePhp::log($result);
 
   }
 
