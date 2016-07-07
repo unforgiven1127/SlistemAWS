@@ -2904,7 +2904,7 @@ exit;*/
 
     ChromePhp::log($asPosition);
     ChromePhp::log($candidate_id);
-    ChromePhp::log($candidate_id);
+    ChromePhp::log($position_id);
 
     $sQuery = "SELECT * FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
