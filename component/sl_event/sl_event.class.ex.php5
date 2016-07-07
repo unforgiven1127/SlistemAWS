@@ -357,6 +357,11 @@ class CSl_eventEx extends CSl_event
     ChromePhp::log($nPriotity);
     ChromePhp::log('end');
 
+    if(count($asNotes) == 0)
+    {
+      return array();
+    }
+
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
   }
 
