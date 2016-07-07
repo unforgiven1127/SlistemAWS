@@ -217,7 +217,7 @@ class CPageEx extends CPage
     ChromePhp::log($psType);
     ChromePhp::log($pnPK);
     ChromePhp::log($psMode);
-    
+
     if(!assert('is_string($psUid)'))
       return '';
     if(!assert('is_string($psAction)'))
