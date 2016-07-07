@@ -65,6 +65,10 @@
 			$flag = false;
 		}
 	}
+	if($promoteFlag == "true")
+	{
+		$flag = true;
+	}
 	if ($row_number_rank % 2 === 0)
 		$even = ' even_row';
 	else

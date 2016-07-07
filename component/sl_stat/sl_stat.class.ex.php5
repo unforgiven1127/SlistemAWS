@@ -4257,6 +4257,15 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['position'] = $user_info['position'];
         }
 
+        if($start_date <= $user_info['r_to_c_date'] && $end_date >= $user_info['r_to_c_date'])
+        {
+          $stats_data['consultant'][$id]['promoteFlag'] = "true";
+        }
+        else
+        {
+          $stats_data['consultant'][$id]['promoteFlag'] = "false";
+        }
+
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
         {
           $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
@@ -4449,6 +4458,16 @@ var_dump($stats_data['consultant']['457']);
         {
           $stats_data['researcher'][$id]['position'] = $user_info['position'];
         }
+
+        if($start_date <= $user_info['r_to_c_date'] && $end_date >= $user_info['r_to_c_date'])
+        {
+          $stats_data['researcher'][$id]['promoteFlag'] = "true";
+        }
+        else
+        {
+          $stats_data['researcher'][$id]['promoteFlag'] = "false";
+        }
+
         //var_dump($user_info);
         //ChromePhp::log($user_info);
         //exit;
