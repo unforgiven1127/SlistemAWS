@@ -51,13 +51,13 @@
 	<?php foreach ($stat as $key => $value): ?>
 	<?php
 	$flag = true;
-	//if($arrayPosition == "researcher")
-	//{
+	if($arrayPosition == "researcher")
+	{
 		if($value['position'] != "Researcher")
 		{
 			$flag = false;
 		}
-	//}
+	}
 	if ($row_number_rank % 2 === 0)
 		$even = ' even_row';
 	else

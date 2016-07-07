@@ -4434,10 +4434,25 @@ var_dump($stats_data['consultant']['457']);
           continue;
 
         $user_info = getUserInformaiton($id);
+        if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
+        {
+          if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+          {
+            $stats_data['researcher'][$id]['position'] = "Researcher";
+          }
+          else
+          {
+            $stats_data['researcher'][$id]['position'] = $user_info['position'];
+          }
+        }
+        else
+        {
+          $stats_data['researcher'][$id]['position'] = $user_info['position'];
+        }
         //var_dump($user_info);
         //ChromePhp::log($user_info);
         //exit;
-        $stats_data['researcher'][$id]['position'] = $user_info['position'];
+        //$stats_data['researcher'][$id]['position'] = $user_info['position'];
 
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
         {
