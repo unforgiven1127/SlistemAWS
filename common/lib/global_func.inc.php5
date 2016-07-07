@@ -2920,7 +2920,7 @@ exit;*/
     foreach ($result as $key => $value)
     {
       $event_id = $value['eventpk'];
-      $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."'";
+      $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."' WHERE eventpk = '".$event_id."'";
 
       $db_result = $oDB->executeQuery($sQuery);
     }
