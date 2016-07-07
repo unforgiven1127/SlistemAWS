@@ -2908,7 +2908,7 @@ exit;*/
     ChromePhp::log($candidate_id);
     ChromePhp::log($position_id);
 
-    $sQuery = "SELECT * FROM event e
+    $sQuery = "SELECT e.* FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
                WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
                AND (content LIKE '%".$position_id."%')";
@@ -2920,6 +2920,12 @@ exit;*/
     $result = $db_result->getAll();
 
     ChromePhp::log($result);
+
+    foreach ($result as $key => $value)
+    {
+      # code...
+    }
+
   }
 
   function getUserInformaiton($user_id)
