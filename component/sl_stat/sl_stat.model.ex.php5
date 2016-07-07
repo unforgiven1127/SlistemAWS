@@ -579,6 +579,7 @@ order by m.candidatefk
           }
           else if($group == "researcher" && $promoteDate != "0000-00-00 00:00:00" && $meeting['date_met'] >= $promoteDate)
           {
+            var_dump('ICERDE');
             $flagPromotion = false;
           }
 
