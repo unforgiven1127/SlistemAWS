@@ -4219,8 +4219,8 @@ class CSl_statEx extends CSl_stat
       {
         if ($value['status'])
         {
-          echo "<br><br>";
-          var_dump($value);
+          //echo "<br><br>";
+          //var_dump($value);
           $consultant_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
           $consultant_ids[] = $key;
           $promote_dates[$key] = $value['r_to_c_date'];
@@ -4454,8 +4454,8 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
 
-          echo '<br><br>';
-          var_dump($stats_data['researcher']);
+          //echo '<br><br>';
+          //var_dump($stats_data['researcher']);
 
         }
         else
