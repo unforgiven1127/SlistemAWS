@@ -17,6 +17,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
       //alert(url);
       //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
       //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
+      AjaxRequest(url, 'body', '', 'topCandidateSection', '', '', "initTopPageSection();");
       //$get(url);
       //test = refresh_candi(candidate_id,'','contactDetails');
       //alert(test);
