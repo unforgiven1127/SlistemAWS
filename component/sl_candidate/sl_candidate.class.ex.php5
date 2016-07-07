@@ -1154,7 +1154,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
-ChromePhp::log('_getRightTabsHalfed');
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -1291,7 +1290,7 @@ ChromePhp::log('_getRightTabsHalfed');
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
-ChromePhp::log('_getRightTabsFull');
+
       $sCharSelected =  'selected';
       $sDocSelected = $sContactSelected = $sJdSelected = $sNoteSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -1306,7 +1305,8 @@ ChromePhp::log('_getRightTabsFull');
         $asCharNotes['nb_result'] = '';
       }
 
-      //$asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
+      $asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
+      ChromePhp::log($asNotes);
       if(empty($asNotes['nb_result']))
       {
         $sNoteSelected = '';
