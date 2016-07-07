@@ -15,14 +15,14 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
       //alert(candidate_id);
       //alert(psIdToShow);
       var serverName = window.location.host;
-      var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
+      //var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
       //alert(url);
       //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
-      //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
-      var oConf = goPopup.getConfig();
-      oConf.height = 700;
-      oConf.width = 950;
-      goPopup.setLayerFromAjax(oConf, url);
+      AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
+
+      xhttp.open("GET", url, true);
+      xhttp.send();
+
       //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
       //$get(url);
       //test = refresh_candi(candidate_id,'','contactDetails');
