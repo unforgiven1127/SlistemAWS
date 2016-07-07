@@ -360,7 +360,7 @@ class CSl_eventEx extends CSl_event
     if(count($asNotes) == 0)
     {
       $sHTML = '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
-      return array('content' => $sHTML, 'nb_result' => 0, 'priority' => 0);
+      return array('content' => $sHTML, 'nb_result' => 0, 'priority' => 2);
     }
 
     return array('content' => $sHTML, 'nb_result' => count($asNotes), 'priority' => $nPriotity);
