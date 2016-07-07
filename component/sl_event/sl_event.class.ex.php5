@@ -214,6 +214,7 @@ ChromePhp::log($asNotes);
     {
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
+      ChromePhp::log($companyHistory);
 
       if(isset($companyHistory) && !empty($companyHistory))
       {
