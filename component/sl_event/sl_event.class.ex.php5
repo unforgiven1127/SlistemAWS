@@ -215,7 +215,7 @@ class CSl_eventEx extends CSl_event
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
 
-      //ChromePhp::log($companyHistory);
+      ChromePhp::log($companyHistory);
 
       foreach ($companyHistory as $key => $value)
       {
