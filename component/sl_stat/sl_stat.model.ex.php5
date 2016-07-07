@@ -505,8 +505,12 @@ order by m.candidatefk
 
       $today = date("Y-m-d H:i:s");
 
-      echo"<br><br>";
-      var_dump($meeting[$group_switch]);
+      if($group == 'researcher' && $meeting[$group_switch] != -1)
+      {
+        echo"<br><br>";
+        var_dump($meeting[$group_switch]);
+      }
+
 
       if (strtotime($meeting['date_created']) >= strtotime($start_date)
         && strtotime($meeting['date_created']) <= strtotime($end_date)
