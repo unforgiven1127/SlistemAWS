@@ -2911,6 +2911,8 @@ exit;*/
                WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
                AND (content LIKE '%".$position_id."%')";
 
+    ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
