@@ -508,7 +508,7 @@ order by m.candidatefk
       if($group == 'researcher' && $meeting[$group_switch] != -1)
       {
         echo"<br><br>";
-        var_dump($meeting[$group_switch]);
+        var_dump($meeting);
       }
 
 
