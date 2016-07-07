@@ -1181,8 +1181,7 @@ class CSl_candidateEx extends CSl_candidate
       else
         $asContact['nb_result'] = '<span class="tab_number tab_level_1">'.$asContact['nb_result'].'</span>';
 
-ChromePhp::log('burada');
-      //$asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
+      $asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
       if(empty($asNotes['nb_result']))
       {
         //$sNoteSelected = '';
@@ -1288,7 +1287,7 @@ ChromePhp::log('burada');
     }
 
     private function _getRightTabsFull($pasCandidateData, $psClass = '')
-    {
+    {ChromePhp::log('burada');
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
 
