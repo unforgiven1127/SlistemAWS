@@ -349,7 +349,7 @@ class CRightEx extends CRight
   public function canAccess($psUid, $psAction = '', $psType = '', $pnPk = 0, $pasCallback = array())
   {
 
-    if($psAction == 'ppcl')
+    if($psAction == 'ppcl') // db den cekip olmadi asagida bulunan $pasCallback controlu bozuyor...
       return true;
 
     if($this->cbIsAdmin)
@@ -414,12 +414,11 @@ class CRightEx extends CRight
           return true;
      *
      */
-ChromePhp::log('test');
-ChromePhp::log($pasCallback);
+
     //if the component calling this function specify a specific callback, we try it
     if(empty($pasCallback) || !isset($pasCallback['function']) || empty($pasCallback['function']))
       return false;
-ChromePhp::log('test1');
+
     if(!isset($pasCallback['params']))
       $pasCallback['params'] = array();
 
