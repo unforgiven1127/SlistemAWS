@@ -4259,6 +4259,9 @@ class CSl_statEx extends CSl_stat
       $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
       $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
 
+      echo "<br><br>";
+      var_dump($temp_new_candidate_met);
+
       foreach ($consultant_ids as $id)
       {
         if (in_array($id, $consultant_skip_id))
