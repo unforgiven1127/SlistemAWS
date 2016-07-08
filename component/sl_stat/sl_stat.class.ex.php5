@@ -4283,30 +4283,8 @@ class CSl_statEx extends CSl_stat
             continue;
 
           $user_info = getUserInformaiton($id);
-          if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
-          {
-            if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
-            {
-              $stats_data['consultant'][$id]['position'] = "Researcher";
-            }
-            else
-            {
-              $stats_data['consultant'][$id]['position'] = $user_info['position'];
-            }
-          }
-          else
-          {
-            $stats_data['consultant'][$id]['position'] = $user_info['position'];
-          }
 
-          if($start_date < $user_info['r_to_c_date'] && $end_date > $user_info['r_to_c_date'])
-          {
-            $stats_data['consultant'][$id]['promoteFlag'] = "true";
-          }
-          else
-          {
-            $stats_data['consultant'][$id]['promoteFlag'] = "false";
-          }
+          $stats_data['consultant'][$id]['promoteFlag'] = "true";
 
           if (!empty($temp_resume_sent_promote[$id]['resumes_sent']))
           {
@@ -4449,15 +4427,6 @@ class CSl_statEx extends CSl_stat
         else
         {
           $stats_data['consultant'][$id]['position'] = $user_info['position'];
-        }
-
-        if($start_date < $user_info['r_to_c_date'] && $end_date > $user_info['r_to_c_date'])
-        {
-          $stats_data['consultant'][$id]['promoteFlag'] = "true";
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['promoteFlag'] = "false";
         }
 
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
@@ -4647,30 +4616,8 @@ class CSl_statEx extends CSl_stat
             continue;
 
           $user_info = getUserInformaiton($id);
-          if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
-          {
-            if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
-            {
-              $stats_data['researcher'][$id]['position'] = "Researcher";
-            }
-            else
-            {
-              $stats_data['researcher'][$id]['position'] = $user_info['position'];
-            }
-          }
-          else
-          {
-            $stats_data['researcher'][$id]['position'] = $user_info['position'];
-          }
 
-          if($start_date <= $user_info['r_to_c_date'] && $end_date >= $user_info['r_to_c_date'])
-          {
-            $stats_data['researcher'][$id]['promoteFlag'] = "true";
-          }
-          else
-          {
-            $stats_data['researcher'][$id]['promoteFlag'] = "false";
-          }
+          $stats_data['consultant'][$id]['promoteFlag'] = "true";
 
 
           if (!empty($temp_resume_sent_promoted[$id]['resumes_sent']))
