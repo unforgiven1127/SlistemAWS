@@ -4209,7 +4209,7 @@ class CSl_statEx extends CSl_stat
 
       $data = array();
 
-      $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
+      $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
       $stats_data = array();
       $consultant_skip_id = array(389, 315, 354, 186);
       $researcher_skip_id = array(301, 423, 475, 315, 474, 487, 486, 259);
@@ -4222,7 +4222,14 @@ class CSl_statEx extends CSl_stat
           //echo "<br><br>";
           //var_dump($value);
           $consultant_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
-          $consultant_ids[] = $key;
+          if($value['r_to_c_date'] == "0000-00-00 00:00:00")
+          {
+            $consultant_ids[] = $key;
+          }
+          else
+          {
+            $promoted_ids[] = $key;
+          }
           $promote_dates[$key] = $value['r_to_c_date'];
         }
       }
