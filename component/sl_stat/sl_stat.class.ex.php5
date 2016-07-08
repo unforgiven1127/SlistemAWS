@@ -4248,13 +4248,13 @@ class CSl_statEx extends CSl_stat
       $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
 
-      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_ccm[] = $this->_getModel()->get_ccm_data($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_in_play[] = $this->_getModel()->get_new_in_play($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_placement[] = $this->_getModel()->get_placement_number($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_offer[] = $this->_getModel()->get_offer_sent($consultant_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date_consultant , $end_date_consultant, 'consultant');
+      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_ccm[] = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_in_play[] = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_placement[] = $this->_getModel()->get_placement_number($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
 
       foreach ($consultant_ids as $id)
       {
@@ -4456,13 +4456,13 @@ class CSl_statEx extends CSl_stat
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
 
-      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_ccm[] = $this->_getModel()->get_ccm_data($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_in_play[] = $this->_getModel()->get_new_in_play($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_placement[] = $this->_getModel()->get_placement_number($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_offer[] = $this->_getModel()->get_offer_sent($consultant_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date_researcher , $end_date_researcher, 'consultant');
+      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_ccm[] = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_in_play[] = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_placement[] = $this->_getModel()->get_placement_number($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
+      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_researcher , $end_date_researcher, 'consultant');
 
 //echo '<br><br><br>';
 //var_dump($temp_set_vs_met);
