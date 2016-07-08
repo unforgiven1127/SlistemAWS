@@ -1679,12 +1679,6 @@ var_dump($query);*/
     foreach ($asData[$user_id] as $key => $value) {
       $count++;
     }
-echo '<br><br>';
-var_dump($asData['314']);
-echo '<br><br>';
-echo $count;
-echo '<br><br>';
-echo $query;
 
 
     //$count = count($asData[$user_id]);

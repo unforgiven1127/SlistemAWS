@@ -443,11 +443,6 @@ order by m.candidatefk
       $read = $oDbResult->readNext();
     }
 
-    echo '<br><br>';
-    var_dump($asData['314']);
-    echo '<br><br>';
-    var_dump($query);
-
     return $asData;
   }
 
