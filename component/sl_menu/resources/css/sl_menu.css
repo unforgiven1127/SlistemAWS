@@ -224,7 +224,7 @@ ul.menuActionShort menu_pipeline
 {
   border-color: #0879DB;
   box-shadow: 0 0 2px 1px #B5CBDD;
-  max-height: 100px;
+  max-height: 180px !important;
 }
 
 #tab_list li a.close_tab
