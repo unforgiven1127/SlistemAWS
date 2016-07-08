@@ -1107,12 +1107,12 @@ class CSl_candidateEx extends CSl_candidate
       //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
 
       ChromePhp::log('TEST');
-      ChromePhp::log($this->csAction);
+      ChromePhp::log($this->csUid);
       ChromePhp::log($this->csType);
 
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
-      //logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$sName.' (#'.$pnPk.')', 'link' => $sLink));
+      logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$sName.' (#'.$pnPk.')', 'link' => $sLink));
 
       return $sHTML;
     }
