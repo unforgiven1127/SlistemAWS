@@ -4261,6 +4261,8 @@ class CSl_statEx extends CSl_stat
       //var_dump($temp_new_candidate_met);
       if(isset($promoted_ids))
       {
+        echo "<br><br>ICEDER";
+        var_dump($promoted_ids);
         $temp_set_vs_met_promote = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
         $temp_resume_sent_promote = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
         $temp_ccm_promote = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
