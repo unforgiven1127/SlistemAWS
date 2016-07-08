@@ -1106,6 +1106,7 @@ class CSl_candidateEx extends CSl_candidate
       //a bit slow ?
       //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
 
+      ChromePhp::log('TEST');
       ChromePhp::log($this->csAction);
       ChromePhp::log($this->csType);
 
