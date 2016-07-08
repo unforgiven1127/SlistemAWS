@@ -4259,7 +4259,7 @@ class CSl_statEx extends CSl_stat
 
       //echo "<br><br>";
       //var_dump($temp_new_candidate_met);
-      if(isset($promoted_ids))
+      if(isset($promoted_ids[0]))
       {
         echo "<br><br>ICEDER";
         var_dump($promoted_ids);
