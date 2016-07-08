@@ -2560,14 +2560,14 @@ exit;*/
 
     $months = array($monthName1,$monthName2,$monthName3);
 
-    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
-    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
+    $start_date3 = date('Y-m-d H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d H:i:s',$end_date3);
 
-    $start_date2 = date('Y-m-d, H:i:s',$start_date2);
-    $end_date2 = date('Y-m-d, H:i:s',$end_date2);
+    $start_date2 = date('Y-m-d H:i:s',$start_date2);
+    $end_date2 = date('Y-m-d H:i:s',$end_date2);
 
-    $start_date1 = date('Y-m-d, H:i:s',$start_date1);
-    $end_date1 = date('Y-m-d, H:i:s',$end_date1);
+    $start_date1 = date('Y-m-d H:i:s',$start_date1);
+    $end_date1 = date('Y-m-d H:i:s',$end_date1);
 
     $in_play1 = get_objectives_in_play($user_id, $start_date1, $end_date1);
     $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
@@ -2619,14 +2619,14 @@ exit;*/
 
     $months = array($monthName1,$monthName2,$monthName3);
 
-    $start_date3 = date('Y-m-d, H:i:s',$start_date3);
-    $end_date3 = date('Y-m-d, H:i:s',$end_date3);
+    $start_date3 = date('Y-m-d H:i:s',$start_date3);
+    $end_date3 = date('Y-m-d H:i:s',$end_date3);
 
-    $start_date2 = date('Y-m-d, H:i:s',$start_date2);
-    $end_date2 = date('Y-m-d, H:i:s',$end_date2);
+    $start_date2 = date('Y-m-d H:i:s',$start_date2);
+    $end_date2 = date('Y-m-d H:i:s',$end_date2);
 
-    $start_date1 = date('Y-m-d, H:i:s',$start_date1);
-    $end_date1 = date('Y-m-d, H:i:s',$end_date1);
+    $start_date1 = date('Y-m-d H:i:s',$start_date1);
+    $end_date1 = date('Y-m-d H:i:s',$end_date1);
 
     $in_play1 = get_objectives_in_play($user_id, $start_date1, $end_date1);
     $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
