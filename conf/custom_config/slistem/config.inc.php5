@@ -173,7 +173,7 @@
         $sText = '';
 
       $oModel = new CModel();
-      $oModel->_logChanges(array('action' => 'log user history'), 'user_history', $sText);
+      $oModel->_logChanges(array('action' => 'log user history'), 'user_history_all_view', $sText);
     }
 
     //save the user activity (2-3 months history)
