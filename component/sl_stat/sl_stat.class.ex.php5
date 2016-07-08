@@ -4619,7 +4619,7 @@ class CSl_statEx extends CSl_stat
 
           $user_info = getUserInformaiton($id);
 
-          $stats_data['consultant'][$id]['promoteFlag'] = "true";
+          $stats_data['researcher'][$id]['promoteFlag'] = "true";
 
 
           if (!empty($temp_resume_sent_promoted[$id]['resumes_sent']))
