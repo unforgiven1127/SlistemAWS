@@ -4209,7 +4209,7 @@ class CSl_statEx extends CSl_stat
 
       $data = array();
 
-      $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
+      $all_ids = $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
       $stats_data = array();
       $consultant_skip_id = array(389, 315, 354, 186);
       $researcher_skip_id = array(301, 423, 475, 315, 474, 487, 486, 259);
@@ -4237,6 +4237,7 @@ class CSl_statEx extends CSl_stat
             $end_date_consultant = $end_date;
           }
           $promote_dates[$key] = $value['r_to_c_date'];
+          $all_ids[] = $key;
         }
       }
 
@@ -4248,8 +4249,8 @@ class CSl_statEx extends CSl_stat
       $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
 
-      echo "<br><br>";
-      var_dump($temp_new_candidate_met);
+      //echo "<br><br>";
+      //var_dump($temp_new_candidate_met);
 
       $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
       $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
@@ -4259,10 +4260,10 @@ class CSl_statEx extends CSl_stat
       $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
       $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
 
-      echo "<br><br>";
-      var_dump($temp_new_candidate_met);
+      //echo "<br><br>";
+      //var_dump($promoted_ids);
 
-      foreach ($consultant_ids as $id)
+      foreach ($all_ids as $id)
       {
         if (in_array($id, $consultant_skip_id))
           continue;
