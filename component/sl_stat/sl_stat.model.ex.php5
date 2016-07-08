@@ -1775,7 +1775,6 @@ $flag = 0;
         order by m.candidatefk';
 
 echo '<br><br>';
-var_dump($query);
 
     $oDbResult = array();
 
@@ -1815,6 +1814,7 @@ var_dump($query);
       }
       $read = $oDbResult->readNext();
     }
+    var_dump($new_in_play_info['314']['new_candidates']);
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START

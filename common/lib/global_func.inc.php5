@@ -1487,7 +1487,7 @@ echo "<br><br>".$start_date." - ".$end_date;
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
-echo "<br><br>".$query;
+echo "<br><br>";
 
     /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
         FROM sl_meeting m
@@ -1545,6 +1545,7 @@ echo '<br><br>';*/
       }
       $read = $oDbResult->readNext();
     }
+    var_dump($new_in_play_info['314']['new_candidates']);
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START
