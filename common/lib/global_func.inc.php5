@@ -1654,7 +1654,7 @@ var_dump($query);*/
 
     $oDbResult = array();
 
-    $oDbResult = $oDB->executeQuery($query);
+    $oDbResult = $this->oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
     while($read)
@@ -1680,7 +1680,7 @@ var_dump($query);*/
       $count++;
     }
 echo '<br><br>';
-var_dump($asData[$user_id]);
+var_dump($asData["314"]);
 echo '<br><br>';
 echo $count;
 
