@@ -4231,6 +4231,7 @@ class CSl_statEx extends CSl_stat
             echo "<br><br>".$start_date." - ".$value['r_to_c_date'];
             if($start_date < $value['r_to_c_date'] && $end_date > $value['r_to_c_date'])
             {
+              echo "<br><br>INSIDE";
               $promoted_ids[] = $key;
 
               $start_date_researcher = $start_date;
