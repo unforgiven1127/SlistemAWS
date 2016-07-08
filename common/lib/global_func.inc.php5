@@ -1487,6 +1487,8 @@ echo "<br><br>".$start_date." - ".$end_date;
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
+echo "<br><br>".$query;
+
     /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 ON m2.candidatefk = m.candidatefk
