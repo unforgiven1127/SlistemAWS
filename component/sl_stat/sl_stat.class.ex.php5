@@ -4228,7 +4228,7 @@ class CSl_statEx extends CSl_stat
           }
           else
           {
-            if($start_date <= $value['r_to_c_date'] && $end_date >= $value['r_to_c_date'])
+            if($start_date < $value['r_to_c_date'] && $end_date > $value['r_to_c_date'])
             {
               $promoted_ids[] = $key;
 
@@ -4284,7 +4284,7 @@ class CSl_statEx extends CSl_stat
           $user_info = getUserInformaiton($id);
           if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
           {
-            if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+            if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
             {
               $stats_data['consultant'][$id]['position'] = "Researcher";
             }
@@ -4298,7 +4298,7 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['position'] = $user_info['position'];
           }
 
-          if($start_date <= $user_info['r_to_c_date'] && $end_date >= $user_info['r_to_c_date'])
+          if($start_date < $user_info['r_to_c_date'] && $end_date > $user_info['r_to_c_date'])
           {
             $stats_data['consultant'][$id]['promoteFlag'] = "true";
           }
@@ -4436,7 +4436,7 @@ class CSl_statEx extends CSl_stat
         $user_info = getUserInformaiton($id);
         if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
         {
-          if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+          if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
           {
             $stats_data['consultant'][$id]['position'] = "Researcher";
           }
@@ -4450,7 +4450,7 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['position'] = $user_info['position'];
         }
 
-        if($start_date <= $user_info['r_to_c_date'] && $end_date >= $user_info['r_to_c_date'])
+        if($start_date < $user_info['r_to_c_date'] && $end_date > $user_info['r_to_c_date'])
         {
           $stats_data['consultant'][$id]['promoteFlag'] = "true";
         }
