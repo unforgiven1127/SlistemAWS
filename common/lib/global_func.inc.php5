@@ -1545,7 +1545,7 @@ echo '<br><br>';*/
       }
       $read = $oDbResult->readNext();
     }
-    var_dump($new_in_play_info['314']['new_candidates']);
+    var_dump($new_in_play_info[314]['new_candidates']);
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START
