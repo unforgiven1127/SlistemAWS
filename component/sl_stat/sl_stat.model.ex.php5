@@ -445,6 +445,8 @@ order by m.candidatefk
 
     echo '<br><br>';
     var_dump($asData['314']);
+    echo '<br><br>';
+    var_dump($query);
 
     return $asData;
   }
