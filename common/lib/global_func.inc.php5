@@ -1468,7 +1468,6 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
     // gets new_candidates_in_play START
-echo "<br><br>".$start_date." - ".$end_date;
     $query = 'SELECT min(pl2.sl_position_linkpk) as min_date_position, pl.sl_position_linkpk, pl.created_by as pl_created_by ,m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active, slc._sys_status as candidate_status
         ,pl.date_completed , pl.date_created as ccm_create_date
         FROM sl_meeting m
@@ -1487,7 +1486,6 @@ echo "<br><br>".$start_date." - ".$end_date;
         group by pl.candidatefk, pl.positionfk
         order by m.candidatefk';
 
-echo "<br><br>";
 
     /*$query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, pl.status as pl_status, pl.active as pl_active
         FROM sl_meeting m
@@ -1545,7 +1543,7 @@ echo '<br><br>';*/
       }
       $read = $oDbResult->readNext();
     }
-    var_dump($new_in_play_info[314]['new_candidates']);
+    //var_dump($new_in_play_info[314]['new_candidates']);
     // gets new_candidates_in_play END
 
     // gets new_positions_in_play START
@@ -1681,10 +1679,11 @@ var_dump($query);*/
     foreach ($asData[$user_id] as $key => $value) {
       $count++;
     }
-/*var_dump($asData[$user_id]);
+echo '<br><br>';
+var_dump($asData[$user_id]);
 echo '<br><br>';
 echo $count;
-exit;*/
+
 
     //$count = count($asData[$user_id]);
 
