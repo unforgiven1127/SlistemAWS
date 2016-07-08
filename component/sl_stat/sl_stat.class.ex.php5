@@ -4228,7 +4228,7 @@ class CSl_statEx extends CSl_stat
           }
           else
           {
-            echo "<br><br>".$start_date." - ".$value['r_to_c_date'];
+            //echo "<br><br>".$start_date." - ".$value['r_to_c_date'];
             if($start_date < $value['r_to_c_date'] && $end_date > $value['r_to_c_date'])
             {
               //echo "<br><br>INSIDE";
@@ -4966,6 +4966,9 @@ class CSl_statEx extends CSl_stat
         $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
         $stats_data['researcher'][$id]['promote_date'] = "0";
       }
+
+      uasort($stats_data['researcher'], sort_multi_array_by_value('name'));
+      uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
       $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
