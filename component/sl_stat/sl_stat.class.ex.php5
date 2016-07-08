@@ -4228,13 +4228,21 @@ class CSl_statEx extends CSl_stat
           }
           else
           {
-            $promoted_ids[] = $key;
+            if($start_date <= $value['r_to_c_date'] && $end_date >= $value['r_to_c_date'])
+            {
+              $promoted_ids[] = $key;
 
-            $start_date_researcher = $start_date;
-            $end_date_researcher = $value['r_to_c_date'];
+              $start_date_researcher = $start_date;
+              $end_date_researcher = $value['r_to_c_date'];
 
-            $start_date_consultant = $value['r_to_c_date'];
-            $end_date_consultant = $end_date;
+              $start_date_consultant = $value['r_to_c_date'];
+              $end_date_consultant = $end_date;
+            }
+            else
+            {
+              $consultant_ids[] = $key;
+            }
+
           }
           $promote_dates[$key] = $value['r_to_c_date'];
           $all_ids[] = $key;
@@ -4251,19 +4259,20 @@ class CSl_statEx extends CSl_stat
 
       //echo "<br><br>";
       //var_dump($temp_new_candidate_met);
-
-      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_ccm[] = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_in_play[] = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_placement[] = $this->_getModel()->get_placement_number($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
-
+      if(isset($promoted_ids))
+      {
+        $temp_set_vs_met_promote = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_resume_sent_promote = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_ccm_promote = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_in_play_promote = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_placement_promote = $this->_getModel()->get_placement_number($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_offer_promote = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+        $temp_new_candidate_met_promote = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
+      }
       //echo "<br><br>";
       //var_dump($promoted_ids);
 
-      foreach ($all_ids as $id)
+      foreach ($consultant_ids as $id)
       {
         if (in_array($id, $consultant_skip_id))
           continue;
@@ -4463,13 +4472,16 @@ class CSl_statEx extends CSl_stat
       $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
 
-      $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_ccm[] = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_in_play[] = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_placement[] = $this->_getModel()->get_placement_number($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_offer[] = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_researcher, $end_date_researcher, 'consultant');
-      $temp_new_candidate_met[] = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_researcher , $end_date_researcher, 'consultant');
+      if(isset($promoted_ids))
+      {
+        $temp_set_vs_met_promoted = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_resume_sent_promoted = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_ccm_promoted = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_in_play_promoted = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_placement_promoted = $this->_getModel()->get_placement_number($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_offer_promoted = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
+        $temp_new_candidate_met_promoted = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_researcher , $end_date_researcher);
+      }
 
 //echo '<br><br><br>';
 //var_dump($temp_set_vs_met);
