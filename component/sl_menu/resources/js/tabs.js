@@ -123,7 +123,7 @@ var CTabs = function()
     else
     {
       $('#tab_content_container').append('<li id="'+sId+'" class="tab_nb_'+this.cnUid+' hidden"></li>');
-      $('#tab_list').addClass('multiple_tabs');
+      $('#tab_list').addClass('multiple_tabs test');
     }
 
     //$('#tab_list').append(this._getTabHtml(this.cnUid, psType));
