@@ -4263,7 +4263,7 @@ class CSl_statEx extends CSl_stat
       //var_dump($temp_new_candidate_met);
       if(isset($promoted_ids[0]))
       {
-        //echo "<br><br>ICEDER";
+        echo "<br><br>ICEDER consultant";
         //var_dump($promoted_ids);
         $temp_set_vs_met_promote = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
         $temp_resume_sent_promote = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
@@ -4603,6 +4603,7 @@ class CSl_statEx extends CSl_stat
       //---------------promoted
       if(isset($promoted_ids[0]))
       {
+        echo "<br><br>iceride researcher";
         $temp_set_vs_met_promoted = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher);
         $temp_resume_sent_promoted = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
         $temp_ccm_promoted = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher);
