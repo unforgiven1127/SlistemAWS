@@ -4248,6 +4248,9 @@ class CSl_statEx extends CSl_stat
       $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
 
+      echo "<br><br>";
+      var_dump($temp_new_candidate_met);
+
       $temp_set_vs_met[] = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
       $temp_resume_sent[] = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
       $temp_ccm[] = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
