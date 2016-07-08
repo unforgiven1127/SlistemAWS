@@ -224,6 +224,7 @@ ul.menuActionShort menu_pipeline
 {
   border-color: #0879DB;
   box-shadow: 0 0 2px 1px #B5CBDD;
+  max-height: 100px;
 }
 
 #tab_list li a.close_tab
@@ -262,7 +263,6 @@ ul.menuActionShort menu_pipeline
   font-weight: bold;
   color: #2A6991;
   margin: 5px 0;
-  max-height: 100px;
 }
 
 .section_tab div div
