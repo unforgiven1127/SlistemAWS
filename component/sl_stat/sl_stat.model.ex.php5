@@ -419,7 +419,6 @@ order by m.candidatefk
         group by m.sl_meetingpk
         order by m.candidatefk';
 
-
     $oDbResult = array();
 
     $oDbResult = $this->oDB->executeQuery($query);

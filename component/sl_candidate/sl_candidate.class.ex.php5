@@ -1106,7 +1106,8 @@ class CSl_candidateEx extends CSl_candidate
       //a bit slow ?
       //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
 
-
+      ChromePhp::log($this->csAction);
+      ChromePhp::log($this->csType);
 
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
