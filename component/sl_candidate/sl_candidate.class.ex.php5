@@ -5730,8 +5730,11 @@ class CSl_candidateEx extends CSl_candidate
           <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
           <option value="3" '.(($nStatus === 3)? ' selected ':'').' '.$sClass.'> Interview set '.$sLegend.'</option>
           <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
-          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>
-          <option value="8" '.(($nStatus === 8)? ' selected ':'').' '.$sClass.'> Lost </option>';
+          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>';
+          if(CDependency::getCpLogin()->isAdmin())
+          {
+            $asStatus .= '<option value="8" '.(($nStatus === 8)? ' selected ':'').' '.$sClass.'> Lost </option>';
+          }
       }
 
       $is_client = (int)$oDbResult->getFieldValue('client') + (int)$oDbResult->getFieldValue('is_client');
