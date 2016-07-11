@@ -948,6 +948,7 @@ class CLoginEx extends CLogin
 
   private function _checkCredentials($pnLoginPk = 0,$psEmail,$psPassword,$pnPort,$psIMAP)
   {
+ChromePhp::log('TEST');
     //Check if the credentials given are correct.
     if(!empty($pnLoginPk))
     {
