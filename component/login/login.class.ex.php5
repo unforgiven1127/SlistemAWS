@@ -1073,6 +1073,8 @@ class CLoginEx extends CLogin
       if(empty($_POST['password']) || strlen($_POST['password']) < 5)
         return array('error' => 'password has to contains at least 5 characters.');
 
+      $encrypted_password = sha1($_POST['password']);
+
       $_POST['status'] = (int)$_POST['status'];
       if($_POST['status'] < 0 || $_POST['status'] > 1)
         return array('error' => __LINE__.' - Error.');
@@ -1090,6 +1092,7 @@ class CLoginEx extends CLogin
       $asUpdate['password'] = getValue('password');
       $asUpdate['status'] = getValue('status');
       $asUpdate['group'] = getValue('group');
+      $asUpdate['password_crypted'] = sha1(getValue('password'));
     }
 
     if(empty($_POST['firstname']))

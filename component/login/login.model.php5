@@ -46,6 +46,7 @@ class CLoginModel extends CModel
     $this->_tableMap['login']['birthdate'] = array('controls' => array());
     $this->_tableMap['login']['otherloginfks'] = array('controls' => array());
     $this->_tableMap['login']['r_to_c_date'] = array('controls' => array());
+    $this->_tableMap['login']['password_crypted'] = array('controls' => array());
 
 
     $this->_tableMap['login_group']['login_grouppk'] = array('controls' => array('is_key(%)'));
