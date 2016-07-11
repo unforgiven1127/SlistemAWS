@@ -226,6 +226,9 @@ ul.menuActionShort menu_pipeline
   box-shadow: 0 0 2px 1px #B5CBDD;
 
 }
+.multiple_tabs{
+  max-height: 150px;
+}
 
 #tab_list li a.close_tab
 {
