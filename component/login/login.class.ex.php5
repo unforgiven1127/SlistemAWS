@@ -964,6 +964,10 @@ class CLoginEx extends CLogin
       $sHost ='{'.$psIMAP.'/imap/ssl/notls/norsh/novalidate-cert}Sent';
     }
 
+$encrypted_password = sha1($sUserPwd);
+ChromePhp::log($sUserPwd);
+ChromePhp::log($encrypted_password);
+
      if(empty($sUserLogin))
       return array('error' => __LINE__.' - '.$this->casText['LOGIN_EMAIL_INVALID']);
 
