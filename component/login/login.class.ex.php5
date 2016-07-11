@@ -1974,9 +1974,6 @@ class CLoginEx extends CLogin
     $oDB = CDependency::getComponentByName('database');
     $oSetting = CDependency::getComponentByName('settings');
 
-    $encrypted_password = sha1($_POST['password']);
-    ChromePhp::log($encrypted_password);
-
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
        $sQuery = 'SELECT * FROM `login` WHERE loginpk = '.$pnCookiePk.' AND status = 1 ';
     else
@@ -1987,10 +1984,12 @@ class CLoginEx extends CLogin
       if(empty($_POST['login']) || empty($_POST['password']))
         return array('error' => __LINE__.' - '.$this->casText['LOGIN_PASSWORD_REQD']);
 
+      $encrypted_password = sha1($_POST['password']);
       $sQuery = 'SELECT * FROM `login`  WHERE (`id` = '.$oDB->dbEscapeString($_POST['login']).' ';
       $sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
       $sQuery.= ' OR ( `email` = '.$oDB->dbEscapeString($_POST['login']).' ';
-      $sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
+      //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
+      $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
     }
 
     $oDbResult = $oDB->ExecuteQuery($sQuery);
