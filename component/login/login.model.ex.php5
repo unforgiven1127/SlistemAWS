@@ -261,14 +261,14 @@ class CLoginModelEx extends CLoginModel
 
   public function getLatestPositions()
   {
-    $sQuery = 'SELECT spd.sl_position_detailpk, LEFT(spd.title,25) as title ,spd.title as long_title, CHAR_LENGTH(spd.title) as length,
+    $sQuery = "SELECT spd.sl_position_detailpk, LEFT(spd.title,25) as title ,spd.title as long_title, CHAR_LENGTH(spd.title) as length,
                 spd.career_level, spd.description, spd.requirements, sc.name, spd.created_by
                 ,sp.salary_from, sp.salary_to, l.lastname, l.firstname, sp.sl_positionpk
                 FROM sl_position_detail spd
                 INNER JOIN sl_position sp on sp.sl_positionpk = spd.positionfk
                 INNER JOIN sl_company sc on sc.sl_companypk = sp.companyfk
-                INNER JOIN login l on l.loginpk = spd.created_by
-                ORDER BY spd.sl_position_detailpk DESC LIMIT 100';
+                INNER JOIN login l on l.loginpk = spd.created_by AND l.loginpk <> '101'
+                ORDER BY spd.sl_position_detailpk DESC LIMIT 100";
 
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
