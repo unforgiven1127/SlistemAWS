@@ -230,7 +230,7 @@ ul.menuActionShort menu_pipeline
   max-height: 90px !important;
 }
 .menuActionBloc{
-  max-height: 150px !important;
+  max-height: 10% !important;
 }
 
 #tab_list li a.close_tab
