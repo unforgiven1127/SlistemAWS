@@ -1986,7 +1986,8 @@ class CLoginEx extends CLogin
 
       $encrypted_password = sha1($_POST['password']);
       $sQuery = 'SELECT * FROM `login`  WHERE (`id` = '.$oDB->dbEscapeString($_POST['login']).' ';
-      $sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
+      //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
+      $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
       $sQuery.= ' OR ( `email` = '.$oDB->dbEscapeString($_POST['login']).' ';
       //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
       $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
