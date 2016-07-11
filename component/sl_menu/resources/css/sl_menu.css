@@ -229,7 +229,9 @@ ul.menuActionShort menu_pipeline
 .multiple_tabs{
   max-height: 150px !important;
 }
-
+.mCustomScrollBox{
+  max-height: 150px !important;
+}
 #tab_list li a.close_tab
 {
   width: 20px;
