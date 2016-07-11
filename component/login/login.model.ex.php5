@@ -409,7 +409,7 @@ class CLoginModelEx extends CLoginModel
     AND action <> ""
     ORDER BY `date` DESC, action ';
 
-    ChromePhp::log($sQuery);
+    //ChromePhp::log($sQuery);
 
     if(!empty($psLimit))
       $sQuery.= ' LIMIT '.$psLimit;
