@@ -948,7 +948,6 @@ class CLoginEx extends CLogin
 
   private function _checkCredentials($pnLoginPk = 0,$psEmail,$psPassword,$pnPort,$psIMAP)
   {
-ChromePhp::log('TEST');
     //Check if the credentials given are correct.
     if(!empty($pnLoginPk))
     {
@@ -964,10 +963,6 @@ ChromePhp::log('TEST');
       $sUserPwd  =  $psPassword;
       $sHost ='{'.$psIMAP.'/imap/ssl/notls/norsh/novalidate-cert}Sent';
     }
-
-$encrypted_password = sha1($sUserPwd);
-ChromePhp::log($sUserPwd);
-ChromePhp::log($encrypted_password);
 
      if(empty($sUserLogin))
       return array('error' => __LINE__.' - '.$this->casText['LOGIN_EMAIL_INVALID']);
@@ -1978,6 +1973,9 @@ ChromePhp::log($encrypted_password);
   {
     $oDB = CDependency::getComponentByName('database');
     $oSetting = CDependency::getComponentByName('settings');
+
+    $encrypted_password = sha1($_POST['password']);
+    ChromePhp::log($encrypted_password);
 
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
        $sQuery = 'SELECT * FROM `login` WHERE loginpk = '.$pnCookiePk.' AND status = 1 ';
