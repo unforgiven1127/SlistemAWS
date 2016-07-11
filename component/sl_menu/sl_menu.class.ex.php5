@@ -235,7 +235,7 @@ class CSl_menuEx extends CSl_menu
         <div class="floatHack"></div>
       </li>
 
-      <li class="menu_section section_tab section_test" style="border-top: 1px solid #ddd; max-height:200px !important; margin-bottom:10px !important;">
+      <li class="menu_section section_tab section_test" style="border-top: 1px solid #ddd; max-height:150px !important; margin-bottom:10px !important;">
         <div class="menuActionMenuContainer" style="border-bottom: 1px solid #ddd; height: 20px;  margin-left: 0;  margin-top: 3px; padding-left: 5px;"><a href="javascript:;">Search tabs</a></div>
          <ul id="tab_list">
         </ul>
