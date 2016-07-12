@@ -2852,6 +2852,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $user_id = $oLogin->getUserPk();
 
+ChromePhp::log('HERE');
       $exploded = explode('_',$pbInAjax);
 
       if(isset($exploded[1]))
@@ -2864,7 +2865,7 @@ class CSl_candidateEx extends CSl_candidate
         //ChromePhp::log($sQuery);
       }
 
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
