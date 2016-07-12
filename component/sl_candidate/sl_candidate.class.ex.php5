@@ -2530,8 +2530,8 @@ class CSl_candidateEx extends CSl_candidate
         $pbInAjax = false;
         $searchID = $exploded[1];
 
-        $sQuery = getLoggedQuery($searchID);
-        $sQuery = $sQuery[0]['action'];
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
         //ChromePhp::log($sQuery);
       }
       else
