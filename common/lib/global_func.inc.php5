@@ -1718,13 +1718,13 @@ var_dump($query);
     {
       $temp = $oDbResult->getData();
 
-      if(!isset($asData[$temp['created_by']]))
+      if(!isset($asData[$user_id]))
       {
-        $asData[$temp['created_by']] = array();
+        $asData[$user_id] = array();
       }
       if($temp['min_date'] == $temp['sl_meetingpk'])
       {
-        array_push($asData[$temp['created_by']], $temp);
+        array_push($asData[$user_id], $temp);
 
         //$asData[$temp['created_by']] = $temp;
       }
