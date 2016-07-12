@@ -2511,7 +2511,9 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       ChromePhp::log('_getCandidateList');
+      ChromePhp::log($pbInAjax);
 
+      
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2524,16 +2526,6 @@ class CSl_candidateEx extends CSl_candidate
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
-      $exploded = explode('_',$pbInAjax);
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        //$searchID = $exploded[1];
-
-        //$savedQuery = getLoggedQuery($searchID);
-        //$sQuery = $savedQuery[0]['action'];
-        //ChromePhp::log($sQuery);
-      }
 
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
@@ -2758,7 +2750,7 @@ class CSl_candidateEx extends CSl_candidate
 
         }
       }
-
+;
         $oldQ = $sQuery;
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
@@ -2858,28 +2850,14 @@ class CSl_candidateEx extends CSl_candidate
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-      if(isset($exploded[1]))
-      {
-        //$pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-        //ChromePhp::log($sQuery);
-      }
-
-      ChromePhp::log($searchID);
-
-
       $user_id = $oLogin->getUserPk();
 
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
-      ChromePhp::log($oDbResult);
       $bRead = $oDbResult->readFirst();
 
       if(!$bRead || !$oDbResult->numRows())
