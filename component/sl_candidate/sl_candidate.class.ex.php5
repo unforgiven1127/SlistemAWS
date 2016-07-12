@@ -986,6 +986,11 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
       //$searchID = $_GET['searchId'];
+      if(isset($_GET['searchId']))
+      {
+        $searchID = $_GET['searchId'];
+        ChromePhp::log($searchID);
+      }
 ChromePhp::log('_getCandidateView');
 //ChromePhp::log($searchID);
       if(!assert('is_key($pnPk)'))
