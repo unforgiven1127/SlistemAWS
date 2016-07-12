@@ -2827,7 +2827,10 @@ class CSl_candidateEx extends CSl_candidate
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-ChromePhp::log($sQuery);
+      $user_id = $oLogin->getUserPk();
+
+//ChromePhp::log($sQuery);
+      insertLog($user_id, '-1', $sQuery,"quick_search");
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
