@@ -2517,15 +2517,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $exploded = explode('_',$pbInAjax);
 ChromePhp::log($exploded);
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-        //ChromePhp::log($sQuery);
-      }
+      
 
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
