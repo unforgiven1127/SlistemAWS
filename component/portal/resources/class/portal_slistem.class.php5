@@ -381,6 +381,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $add['cp_pk'] = $value['cp_pk'];
         $add['log_link'] = $value['uri'];
         $add['log_date'] = $value['date'];
+        $add['login_system_historypk'] = $value['login_system_historypk'];
 
         $searchLinks[] = $add;
       }
