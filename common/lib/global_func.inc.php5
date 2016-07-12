@@ -2845,6 +2845,19 @@ var_dump($query);*/
     return $result;
   }
 
+  function getSearchLogs($user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM login_system_history lhs WHERE lhs.table = 'quick_search' AND lhs.userfk = '".$user_id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getGrade($grade_id)
   {
     if($grade_id == 0)

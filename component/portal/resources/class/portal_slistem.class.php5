@@ -329,6 +329,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
   {
     $oDisplay = CDependency::getCpHtml();
     $oPage = CDependency::getCpPage();
+    $oLogin = CDependency::getCpLogin();
 
     if(!assert('is_array($pasActivity)') || empty($pasActivity))
     {
@@ -356,6 +357,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
     //$sTonight = date('Y-m-d').' 23:59:59';
     $sYesterday = date('Y-m-d', strtotime('-1 day')).' 00:00:00';
     $sTomorrow = date('Y-m-d', strtotime('+1 day')).' 00:00:00';
+
+    $user_id = $oLogin->getUserPk();
+    $searchLogs = getSearchLogs($user_id);
+ChromePhp::log($searchLogs);
 
     foreach($pasActivity as $asActivity)
     {
