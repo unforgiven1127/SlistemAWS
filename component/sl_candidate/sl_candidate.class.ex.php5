@@ -2512,6 +2512,19 @@ class CSl_candidateEx extends CSl_candidate
     {
       ChromePhp::log('_getCandidateList');
       ChromePhp::log($pbInAjax);
+
+      $exploded = explode('_',$pbInAjax);
+      if(isset($exploded[1]))
+      {
+        $pbInAjax = false;
+        $searchID = $exploded[1];
+      }
+      else
+      {
+        $searchID = 0;
+      }
+      ChromePhp::log($searchID);
+
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
