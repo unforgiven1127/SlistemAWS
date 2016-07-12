@@ -359,11 +359,11 @@ Reminder linked to item', '2013-10-05 08:00:00');
     $sTomorrow = date('Y-m-d', strtotime('+1 day')).' 00:00:00';
 
     $user_id = $oLogin->getUserPk();
-    $searchLogs = getSearchLogs($user_id);
 
     ChromePhp::log($psTitle);
     if($psTitle == "Searches")
     {
+      $searchLogs = getSearchLogs($user_id);
       ChromePhp::log($searchLogs);
     }
 
