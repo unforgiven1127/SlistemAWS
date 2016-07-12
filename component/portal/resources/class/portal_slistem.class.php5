@@ -356,10 +356,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
     //$sTonight = date('Y-m-d').' 23:59:59';
     $sYesterday = date('Y-m-d', strtotime('-1 day')).' 00:00:00';
     $sTomorrow = date('Y-m-d', strtotime('+1 day')).' 00:00:00';
-ChromePhp::log($pasActivity);
+
     foreach($pasActivity as $asActivity)
     {
-
+ChromePhp::log($asActivity);
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
