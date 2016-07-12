@@ -871,10 +871,10 @@ class CSl_candidateEx extends CSl_candidate
     //  Private methods
     //------------------------------------------------------
 
-    private function _displayCandidateList($pbInAjax = false)
+    private function _displayCandidateList($pbInAjax = false , $searchID)
     {
       ChromePhp::log('_displayCandidateList');
-      ChromePhp::log($pbInAjax);
+      ChromePhp::log($searchID);
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
@@ -986,9 +986,15 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateView($pnPk, $pasRedirected = array())
     {
       $searchID = $_GET['searchId'];
-      ChromePhp::log($searchID);
-ChromePhp::log('_getCandidateView');
-ChromePhp::log($pnPk);
+//ChromePhp::log($searchID);
+//ChromePhp::log('_getCandidateView');
+//ChromePhp::log($pnPk);
+
+      if($pnPk == -1 && isset($searchID))
+      {
+        $this->_displayCandidateList(false,$searchID);
+      }
+
       if(!assert('is_key($pnPk)'))
         return '';
 
