@@ -59,7 +59,6 @@ function view_comp(psUrl)
 function view_candi(psUrl, psTab)
 {
   splitPage();
-alert(psUrl);
   if(psTab)
     AjaxRequest(psUrl, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection(); $('"+psTab+"').click(); ");
   else
