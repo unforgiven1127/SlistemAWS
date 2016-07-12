@@ -2511,19 +2511,6 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       ChromePhp::log('_getCandidateList');
-      ChromePhp::log($pbInAjax);
-
-      $exploded = explode('_',$pbInAjax);
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-      }
-      else
-      {
-        $searchID = 0;
-      }
-      ChromePhp::log($searchID);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -2537,329 +2524,349 @@ class CSl_candidateEx extends CSl_candidate
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
-
-      //replay candoidate searches  (filters, sorting...)
-      $nHistoryPk = (int)getValue('replay_search');
-      if($nHistoryPk > 0)
+      $exploded = explode('_',$pbInAjax);
+      if(isset($exploded[1]))
       {
-        $this->csSearchId = getValue('searchId');
-        //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
+        $pbInAjax = false;
+        $searchID = $exploded[1];
 
-        $asHistoryData = $oLogin->getUserActivityByPk($nHistoryPk);
-        $poQB = $asHistoryData['data']['qb'];
-        if(!$poQB || !is_object($poQB))
+        $sQuery = getLoggedQuery($searchID);
+        ChromePhp::log($sQuery);
+      }
+      else
+      {
+        $searchID = 0;
+
+        //replay candoidate searches  (filters, sorting...)
+        $nHistoryPk = (int)getValue('replay_search');
+        if($nHistoryPk > 0)
         {
-          //dump($poQB);
-          $poQB = $this->_getModel()->getQueryBuilder();
-          $poQB->addWhere(' (false) ');
-          $asListMsg[] = ' Error, could not reload the search. ';
+          $this->csSearchId = getValue('searchId');
+          //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
+
+          $asHistoryData = $oLogin->getUserActivityByPk($nHistoryPk);
+          $poQB = $asHistoryData['data']['qb'];
+          if(!$poQB || !is_object($poQB))
+          {
+            //dump($poQB);
+            $poQB = $this->_getModel()->getQueryBuilder();
+            $poQB->addWhere(' (false) ');
+            $asListMsg[] = ' Error, could not reload the search. ';
+          }
         }
-      }
 
-      //Basic integration of the quick search tyhrough query builder
-      if(!$poQB)
-        $poQB = $this->_getModel()->getQueryBuilder();
+        //Basic integration of the quick search tyhrough query builder
+        if(!$poQB)
+          $poQB = $this->_getModel()->getQueryBuilder();
 
-      // ============================================
-      // search and pagination management
+        // ============================================
+        // search and pagination management
 
-      if(empty($this->csSearchId) && empty($nHistoryPk))
-      {
-        //$asListMsg[] = ' new search id [empty sId or history]. ';
-        $this->csSearchId = manageSearchHistory($this->csUid, CONST_CANDIDATE_TYPE_CANDI);
-        $poQB->addLimit('0, 50');
-        $nLimit = 50;
-      }
-      else
-      {
-        //$asListMsg[] = ' just apply pager to reloaded search. ';
-        $oPager = CDependency::getComponentByName('pager');
-        $oPager->initPager();
-        $nLimit = $oPager->getLimit();
-        $nPagerOffset = $oPager->getOffset();
+        if(empty($this->csSearchId) && empty($nHistoryPk))
+        {
+          //$asListMsg[] = ' new search id [empty sId or history]. ';
+          $this->csSearchId = manageSearchHistory($this->csUid, CONST_CANDIDATE_TYPE_CANDI);
+          $poQB->addLimit('0, 50');
+          $nLimit = 50;
+        }
+        else
+        {
+          //$asListMsg[] = ' just apply pager to reloaded search. ';
+          $oPager = CDependency::getComponentByName('pager');
+          $oPager->initPager();
+          $nLimit = $oPager->getLimit();
+          $nPagerOffset = $oPager->getOffset();
 
-        $poQB->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
-      }
-
+          $poQB->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
+        }
 
 
-      // =============================================================
-      //TODO: to be moved when the search arrives
 
-      $poQB->setTable('sl_candidate', 'scan');
+        // =============================================================
+        //TODO: to be moved when the search arrives
 
-      //join profile industry and occupation no matter what by default
-      $poQB->addJoin('left', 'sl_candidate_profile', 'scpr', 'scpr.candidatefk = scan.sl_candidatepk');
-      $poQB->addJoin('left', 'sl_company', 'scom', 'scom.sl_companypk = scpr.companyfk');
-      $poQB->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = scpr.industryfk');
-      $poQB->addJoin('left', 'sl_occupation', 'socc', 'socc.sl_occupationpk = scpr.occupationfk');
+        $poQB->setTable('sl_candidate', 'scan');
 
-      $sNow = date('Y-m-d H:i:s');
-      $poQB->addSelect('scan.*,
-          scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
-          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
-          scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
-          TIMESTAMPDIFF(YEAR, scan.date_birth, "'.$sNow.'") AS age,
-          scan.sl_candidatepk as PK');
+        //join profile industry and occupation no matter what by default
+        $poQB->addJoin('left', 'sl_candidate_profile', 'scpr', 'scpr.candidatefk = scan.sl_candidatepk');
+        $poQB->addJoin('left', 'sl_company', 'scom', 'scom.sl_companypk = scpr.companyfk');
+        $poQB->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = scpr.industryfk');
+        $poQB->addJoin('left', 'sl_occupation', 'socc', 'socc.sl_occupationpk = scpr.occupationfk');
 
-      $poQB->addCountSelect('count(DISTINCT scan.sl_candidatepk) as nCount');
+        $sNow = date('Y-m-d H:i:s');
+        $poQB->addSelect('scan.*,
+            scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
+            (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
+            scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
+            TIMESTAMPDIFF(YEAR, scan.date_birth, "'.$sNow.'") AS age,
+            scan.sl_candidatepk as PK');
 
-
-      $poQB->addJoin('left', 'event_link', 'elin', '(elin.cp_uid = "555-001" AND elin.cp_action = "ppav" AND elin.cp_type="candi" AND elin.cp_pk = scan.sl_candidatepk)');
-      $poQB->addSelect('count(elin.eventfk) as nb_note');
-      //$poQB->addSelect('MAX(elin.eventfk) as lastNote');
-      $poQB->addSelect('MAX(elin.event_linkpk) as lastNote');
-
-      if(!$oLogin->isAdmin())
-      {
-        $poQB->addWhere('(_sys_status = 0 OR _sys_redirect > 0)');
-        $poQB->addSelect('IF(_sys_redirect > 0, _sys_redirect, scan.sl_candidatepk) as PK, 0 as _is_admin ');
-      }
-      else
-        $poQB->addSelect(' 1 as _is_admin ');
-
-      $sGroupBy = '';
-      if(!empty($this->cnPk))
-      {
-        $asListMsg[] = ' + Mode name collect  ==> (status <= 3) ';
-        $poQB->addWhere('scan.sl_candidatepk = '.$this->cnPk);
-      }
+        $poQB->addCountSelect('count(DISTINCT scan.sl_candidatepk) as nCount');
 
 
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
-      //add to the queryBuilder specific conditions for pipe or other custom filters
-      $nFolderPk = getValue('folderpk');
-      if(!empty($nFolderPk))
-      {
-        //$bLogged = $this->_addFolderFilter($asListMsg, $poQB);
-        $nHistoryPk = $this->_addFolderFilter($asListMsg, $poQB);
-      }
+        $poQB->addJoin('left', 'event_link', 'elin', '(elin.cp_uid = "555-001" AND elin.cp_action = "ppav" AND elin.cp_type="candi" AND elin.cp_pk = scan.sl_candidatepk)');
+        $poQB->addSelect('count(elin.eventfk) as nb_note');
+        //$poQB->addSelect('MAX(elin.eventfk) as lastNote');
+        $poQB->addSelect('MAX(elin.event_linkpk) as lastNote');
 
+        if(!$oLogin->isAdmin())
+        {
+          $poQB->addWhere('(_sys_status = 0 OR _sys_redirect > 0)');
+          $poQB->addSelect('IF(_sys_redirect > 0, _sys_redirect, scan.sl_candidatepk) as PK, 0 as _is_admin ');
+        }
+        else
+          $poQB->addSelect(' 1 as _is_admin ');
 
-      if(getValue('pipe_filter'))
-      {
-        $this->_addPipeFilter($asListMsg, $poQB, $bDisplayPositionField);
-      }
-
-      if($sTemplate == 'name_collect' || 'display' == 'last notes' || 'dba' == 'tools')
-      {
-        $bHeavyJoin = true;
-
-        if($sTemplate == 'name_collect')
+        $sGroupBy = '';
+        if(!empty($this->cnPk))
         {
           $asListMsg[] = ' + Mode name collect  ==> (status <= 3) ';
-          $poQB->addWhere('scan.statusfk <= 3');
+          $poQB->addWhere('scan.sl_candidatepk = '.$this->cnPk);
         }
-      }
-
-      //-----------------------------------------------------------------------------
-      //-----------------------------------------------------------------------------
 
 
-      //manage default options
-      if(!$poQB->hasLimit())
-        $poQB->addLimit('0, 50');
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+        //add to the queryBuilder specific conditions for pipe or other custom filters
+        $nFolderPk = getValue('folderpk');
+        if(!empty($nFolderPk))
+        {
+          //$bLogged = $this->_addFolderFilter($asListMsg, $poQB);
+          $nHistoryPk = $this->_addFolderFilter($asListMsg, $poQB);
+        }
 
 
-      // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
-      // manage sort field / order
-      //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
-      $sSortField = getValue('sortfield'); // burasi
+        if(getValue('pipe_filter'))
+        {
+          $this->_addPipeFilter($asListMsg, $poQB, $bDisplayPositionField);
+        }
 
-      if($sSortField == '_in_play')
-      {
-        $sSortOrder = getValue('sortorder', 'DESC');
-        $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-        //$poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
-      }
+        if($sTemplate == 'name_collect' || 'display' == 'last notes' || 'dba' == 'tools')
+        {
+          $bHeavyJoin = true;
 
-      /*if(!empty($sSortField))
-      {
+          if($sTemplate == 'name_collect')
+          {
+            $asListMsg[] = ' + Mode name collect  ==> (status <= 3) ';
+            $poQB->addWhere('scan.statusfk <= 3');
+          }
+        }
+
+        //-----------------------------------------------------------------------------
+        //-----------------------------------------------------------------------------
+
+
+        //manage default options
+        if(!$poQB->hasLimit())
+          $poQB->addLimit('0, 50');
+
+
+        // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
+        // manage sort field / order
+        //no scan.sl_candidatepk  --> make the HeavyJoin mode crash (subQuery)
+        $sSortField = getValue('sortfield'); // burasi
+
         if($sSortField == '_in_play')
         {
           $sSortOrder = getValue('sortorder', 'DESC');
           $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-          $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          //$poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
         }
+
+        /*if(!empty($sSortField))
+        {
+          if($sSortField == '_in_play')
+          {
+            $sSortOrder = getValue('sortorder', 'DESC');
+            $poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+            $poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+          }
+          else
+          {
+            $sort_order = getValue('sortorder', 'DESC');
+
+            if ($sSortField == 'salary')
+              $sSortField = 'full_salary';
+            else if ($sSortField == 'date_birth')
+              $sSortField = 'age';
+
+            $ordering = $sSortField.' '.$sort_order.$secondary_order;
+
+            $poQB->setOrder($ordering);
+          }
+        }
+        else*/
+          $poQB->addOrder('scan.firstname DESC');
+
+
+        if(empty($sGroupBy))
+          $poQB->addGroup('scan.sl_candidatepk', false);
         else
+          $poQB->addGroup($sGroupBy, false);
+
+
+        $sMessage = $poQB->getTitle();
+        if(!empty($sMessage))
+          $asListMsg[] = $sMessage;
+
+        // =====================================================================================
+
+        //dump($poQB);
+        $sQuery = $poQB->getCountSql();
+
+
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+        if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
         {
-          $sort_order = getValue('sortorder', 'DESC');
-
-          if ($sSortField == 'salary')
-            $sSortField = 'full_salary';
-          else if ($sSortField == 'date_birth')
-            $sSortField = 'age';
-
-          $ordering = $sSortField.' '.$sort_order.$secondary_order;
-
-          $poQB->setOrder($ordering);
-        }
-      }
-      else*/
-        $poQB->addOrder('scan.firstname DESC');
-
-
-      if(empty($sGroupBy))
-        $poQB->addGroup('scan.sl_candidatepk', false);
-      else
-        $poQB->addGroup($sGroupBy, false);
-
-
-      $sMessage = $poQB->getTitle();
-      if(!empty($sMessage))
-        $asListMsg[] = $sMessage;
-
-      // =====================================================================================
-
-      //dump($poQB);
-      $sQuery = $poQB->getCountSql();
-
-
-      $oDbResult = $oDb->ExecuteQuery($sQuery);
-      $bRead = $oDbResult->readFirst();
-      if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
-      {
-        $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
-          <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
-        return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
-      }
-
-      $nResult = (int)$oDbResult->getFieldValue('nCount');
-      $sQuery = $poQB->getSql();
-      //dump($sQuery);
-
-      if ($nPagerOffset)
-      {
-        $record_start = $nPagerOffset*$nLimit;
-
-        if ($record_start > $nResult)
-        {
-          $poQB->addLimit('0, '.$nLimit);
-          $sQuery = $poQB->getSql();
-          $oPager->setOffset(1);
-        }
-      }
-
-      //Some joins are too heavy to make (notes, contacts...)
-      //So we put the main query in a subquery, and join with the filtered / size-limited result
-      if($bHeavyJoin)
-      {
-        if($sTemplate == 'name_collect')
-        {
-          $sQuery = 'SELECT *, GROUP_CONCAT(DISTINCT(scon.value) SEPARATOR ", ") as contact_detail FROM ('.$sQuery.') as candidate ';
-
-          $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
-          $sQuery.= ' WHERE candidate.statusfk <= 3 ';
-          $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
-          //if($flag != false)
-          //{
-            $asSql = $poQB->getSqlArray(); // burasi
-            if(!empty($asSql['order']))
-              $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
-          //}
-
-        }
-      }
-;
-        $oldQ = $sQuery;
-        $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
-
-
-        $limit = $sQuery[1];
-        $limit = explode("LIMIT", $limit);
-        $limit = $limit[1];
-
-        $sQuery = $sQuery[0];
-
-        $sSortOrder = getValue('sortorder');
-
-
-        if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null)
-        {
-          if($sSortField == "sl_candidatepk")
-          {
-            $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
-          }
-          else if($sSortField == "cp_client")
-          {
-            $sQuery.= ' ORDER BY scan.is_client '.$sSortOrder." ,cp_client ".$sSortOrder." ";
-          }
-          else if($sSortField == "_in_play")
-          {
-            //$sSortOrder = getValue('sortorder', 'DESC');
-            //$poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
-            //$poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
-            $sQuery.= ' ORDER BY _in_play '.$sSortOrder." ,sort_status ".$sSortOrder.' ';
-          }
-          else if($sSortField == "grade")
-          {
-            $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
-          }
-          else if($sSortField == "_has_doc")
-          {
-            $sQuery.= ' ORDER BY scpr._has_doc '.$sSortOrder." ";
-          }
-          else if($sSortField == "lastname")
-          {
-            $sQuery.= ' ORDER BY TRIM(scan.lastname) '.$sSortOrder." ";
-          }
-          else if($sSortField == "firstname")
-          {
-            $sQuery.= ' ORDER BY TRIM(scan.firstname) '.$sSortOrder." ";
-          }
-          else if($sSortField == "company_name")
-          {
-            $sQuery.= ' ORDER BY TRIM(scom.name) '.$sSortOrder." ";
-          }
-          else if($sSortField == "title")
-          {
-            $sQuery.= ' ORDER BY TRIM(scpr.title) '.$sSortOrder." ";
-          }
-          else if($sSortField == "department")
-          {
-            $sQuery.= ' ORDER BY TRIM(scpr.department) '.$sSortOrder." ";
-          }
-          else if($sSortField == "lastNote")
-          {
-            $sQuery.= ' ORDER BY lastNote '.$sSortOrder." ";
-          }
-          else if($sSortField == "date_birth")
-          {
-            $sQuery.= ' ORDER BY age '.$sSortOrder." ";
-          }
-          else if($sSortField == "salary")
-          {
-            $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
-          }
-        }
-        else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
-        {
-          $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio,ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
-          //$sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
-          //$sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
-        }
-        else if(strpos($sQuery,"ratio_rev") !== false)
-        {
-          $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
-        }
-        else if(strpos($sQuery,"AS ratio") !== false)
-        {
-            $sQuery.= ' ORDER BY ratio DESC , lastname desc, firstname desc, PK desc ';
-        }
-        else
-        {
-          $sQuery.= ' ORDER BY TRIM(scan.lastname) ASC, TRIM(scan.firstname) ASC ';
+          $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
+            <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
+          return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
         }
 
-        if(!empty($limit))
-          $sQuery.= " LIMIT ".$limit;
-        else
+        $nResult = (int)$oDbResult->getFieldValue('nCount');
+        $sQuery = $poQB->getSql();
+        //dump($sQuery);
+
+        if ($nPagerOffset)
         {
-          $sQuery = explode('LIMIT', $sQuery);
+          $record_start = $nPagerOffset*$nLimit;
+
+          if ($record_start > $nResult)
+          {
+            $poQB->addLimit('0, '.$nLimit);
+            $sQuery = $poQB->getSql();
+            $oPager->setOffset(1);
+          }
+        }
+
+        //Some joins are too heavy to make (notes, contacts...)
+        //So we put the main query in a subquery, and join with the filtered / size-limited result
+        if($bHeavyJoin)
+        {
+          if($sTemplate == 'name_collect')
+          {
+            $sQuery = 'SELECT *, GROUP_CONCAT(DISTINCT(scon.value) SEPARATOR ", ") as contact_detail FROM ('.$sQuery.') as candidate ';
+
+            $sQuery.= ' LEFT JOIN sl_contact as scon ON (scon.item_type = \'candi\' AND scon.itemfk = candidate.sl_candidatepk) ';
+            $sQuery.= ' WHERE candidate.statusfk <= 3 ';
+            $sQuery.= ' GROUP BY candidate.sl_candidatepk ';
+            //if($flag != false)
+            //{
+              $asSql = $poQB->getSqlArray(); // burasi
+              if(!empty($asSql['order']))
+                $sQuery.= ' ORDER BY '.implode(', ', $asSql['order']);
+            //}
+
+          }
+        }
+
+          $oldQ = $sQuery;
+          $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
+
+
+          $limit = $sQuery[1];
+          $limit = explode("LIMIT", $limit);
+          $limit = $limit[1];
+
           $sQuery = $sQuery[0];
-          //$sQuery.= 'ORDER BY scan.firstname DESC';
-        }
+
+          $sSortOrder = getValue('sortorder');
+
+
+          if(!empty($sSortField) && !empty($sSortOrder) && $sSortField != null && $sSortOrder != null)
+          {
+            if($sSortField == "sl_candidatepk")
+            {
+              $sQuery.= ' ORDER BY scan.sl_candidatepk '.$sSortOrder." ";
+            }
+            else if($sSortField == "cp_client")
+            {
+              $sQuery.= ' ORDER BY scan.is_client '.$sSortOrder." ,cp_client ".$sSortOrder." ";
+            }
+            else if($sSortField == "_in_play")
+            {
+              //$sSortOrder = getValue('sortorder', 'DESC');
+              //$poQB->addSelect('IF(_pos_status > 0 AND _pos_status < 101, (_pos_status+1000), IF(_pos_status = 151, 651, IF(_pos_status >= 150 AND _pos_status < 201, (_pos_status+100),  _pos_status))) as sort_status ');
+              //$poQB->setOrder('_in_play '.$sSortOrder.', sort_status '.$sSortOrder.' ');
+              $sQuery.= ' ORDER BY _in_play '.$sSortOrder." ,sort_status ".$sSortOrder.' ';
+            }
+            else if($sSortField == "grade")
+            {
+              $sQuery.= ' ORDER BY scpr.grade '.$sSortOrder." ";
+            }
+            else if($sSortField == "_has_doc")
+            {
+              $sQuery.= ' ORDER BY scpr._has_doc '.$sSortOrder." ";
+            }
+            else if($sSortField == "lastname")
+            {
+              $sQuery.= ' ORDER BY TRIM(scan.lastname) '.$sSortOrder." ";
+            }
+            else if($sSortField == "firstname")
+            {
+              $sQuery.= ' ORDER BY TRIM(scan.firstname) '.$sSortOrder." ";
+            }
+            else if($sSortField == "company_name")
+            {
+              $sQuery.= ' ORDER BY TRIM(scom.name) '.$sSortOrder." ";
+            }
+            else if($sSortField == "title")
+            {
+              $sQuery.= ' ORDER BY TRIM(scpr.title) '.$sSortOrder." ";
+            }
+            else if($sSortField == "department")
+            {
+              $sQuery.= ' ORDER BY TRIM(scpr.department) '.$sSortOrder." ";
+            }
+            else if($sSortField == "lastNote")
+            {
+              $sQuery.= ' ORDER BY lastNote '.$sSortOrder." ";
+            }
+            else if($sSortField == "date_birth")
+            {
+              $sQuery.= ' ORDER BY age '.$sSortOrder." ";
+            }
+            else if($sSortField == "salary")
+            {
+              $sQuery.= ' ORDER BY full_salary '.$sSortOrder." ";
+            }
+          }
+          else if(strpos($oldQ,"ratio DESC, ratio_rev DESC") !== false)
+          {
+            $sQuery.= ' ORDER BY  IF(MAX(ratio_rev) >= MAX(ratio), ratio,ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
+            //$sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ';
+            //$sQuery.= ' IF(MAX(ratio_rev) >= MAX(ratio), ratio_rev, ratio) DESC ';
+          }
+          else if(strpos($sQuery,"ratio_rev") !== false)
+          {
+            $sQuery.= ' ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc ';
+          }
+          else if(strpos($sQuery,"AS ratio") !== false)
+          {
+              $sQuery.= ' ORDER BY ratio DESC , lastname desc, firstname desc, PK desc ';
+          }
+          else
+          {
+            $sQuery.= ' ORDER BY TRIM(scan.lastname) ASC, TRIM(scan.firstname) ASC ';
+          }
+
+          if(!empty($limit))
+            $sQuery.= " LIMIT ".$limit;
+          else
+          {
+            $sQuery = explode('LIMIT', $sQuery);
+            $sQuery = $sQuery[0];
+            //$sQuery.= 'ORDER BY scan.firstname DESC';
+          }
+      }
+      ChromePhp::log($searchID);
+
+
+      
+
+
+
 
       $user_id = $oLogin->getUserPk();
 
