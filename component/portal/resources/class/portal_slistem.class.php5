@@ -367,8 +367,9 @@ Reminder linked to item', '2013-10-05 08:00:00');
       ChromePhp::log($searchLogs);
     }
 
+    $mainPageShortcuts = $pasActivity;
 
-    foreach($pasActivity as $asActivity)
+    foreach($mainPageShortcuts as $asActivity)
     {
 //ChromePhp::log($asActivity);
       if($asActivity['text'] = strip_tags($asActivity['text']))
