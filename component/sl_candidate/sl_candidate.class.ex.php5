@@ -2698,6 +2698,15 @@ ChromePhp::log($poQB);
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
+      if(isset($exploded[1]))
+      {
+        $pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+        //ChromePhp::log($sQuery);
+      }
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
