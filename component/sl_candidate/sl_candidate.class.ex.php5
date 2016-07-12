@@ -2513,7 +2513,7 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log('_getCandidateList');
       ChromePhp::log($pbInAjax);
 
-      
+
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2852,10 +2852,23 @@ class CSl_candidateEx extends CSl_candidate
 
       $user_id = $oLogin->getUserPk();
 
+      $exploded = explode('_',$pbInAjax);
+
+      if(isset($exploded[1]))
+      {
+        $pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+        //ChromePhp::log($sQuery);
+      }
+
 //ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
+
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
