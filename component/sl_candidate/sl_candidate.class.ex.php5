@@ -879,7 +879,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if($searchID > 0)
       {
-        $pbInAjax "search_".$searchID;
+        $pbInAjax = "search_".$searchID;
       }
 
       $sLiId = uniqid();
