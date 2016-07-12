@@ -1700,13 +1700,13 @@ var_dump($query);*/
         FROM sl_meeting m
         LEFT JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        WHERE (m.created_by IN ('.implode(',', $user_ids).') OR m.attendeefk IN ('.implode(',', $user_ids).') )
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created <= "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
-echo '<br><br>';
-var_dump($query);
+//echo '<br><br>';
+//var_dump($query);
 
     $oDbResult = array();
 
