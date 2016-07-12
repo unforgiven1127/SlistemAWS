@@ -361,13 +361,35 @@ Reminder linked to item', '2013-10-05 08:00:00');
     $user_id = $oLogin->getUserPk();
 
     ChromePhp::log($psTitle);
+    $searchLinks = array();
     if($psTitle == "Searches")
     {
       $searchLogs = getSearchLogs($user_id);
       ChromePhp::log($searchLogs);
-    }
+      foreach ($searchLogs as $key => $value)
+      {
+        $add = array();
+        if($value['table'] == "quick_search")
+        {
+          $text = "Quick search";
+        }
+        else
+        {
+          $text = "Complex search";
+        }
+        $add['text'] = $text;
+        $add['cp_pk'] = $value['cp_pk'];
+        $add['log_link'] = $value['uri'];
+        $add['log_date'] = $value['date'];
 
-    $mainPageShortcuts = $pasActivity;
+        $searchLinks[] = $add;
+      }
+      $mainPageShortcuts = $searchLinks;
+    }
+    else
+    {
+      $mainPageShortcuts = $pasActivity;
+    }
 
     foreach($mainPageShortcuts as $asActivity)
     {
