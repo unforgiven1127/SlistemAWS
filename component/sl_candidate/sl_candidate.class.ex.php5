@@ -873,6 +873,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _displayCandidateList($pbInAjax = false)
     {
+      ChromePhp::log('_displayCandidateList');
       ChromePhp::log($pbInAjax);
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
