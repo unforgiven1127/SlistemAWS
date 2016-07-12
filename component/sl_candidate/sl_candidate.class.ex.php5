@@ -2705,7 +2705,7 @@ ChromePhp::log($poQB);
 
         $savedQuery = getLoggedQuery($searchID);
         $sQuery = $savedQuery[0]['action'];
-        //ChromePhp::log($sQuery);
+        ChromePhp::log($sQuery);
       }
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
