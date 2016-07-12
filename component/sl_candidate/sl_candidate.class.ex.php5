@@ -2905,6 +2905,16 @@ ChromePhp::log($sQuery);
           assert('false; // count query returned results but not the select');
           return $this->_oDisplay->getBlocMessage('No candidate found.');
         }
+
+        $_SESSION['555-001']['query'][$this->csSearchId] = $sQuery;
+
+        //save search in history if it's a new search
+        if(empty($nHistoryPk) /*&& !$bLogged*/)
+        {
+          $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId));
+          $sLink = 'javascript: loadAjaxInNewTab(\''.$sURL.'\', \'candi\', \'candidate\');';
+          $nHistoryPk = logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => implode(', ', $asListMsg).' (#'.$nResult.' results)', 'link' => $sLink, 'data' => array()), false);
+        }
       }
 
 
