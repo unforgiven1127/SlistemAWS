@@ -360,6 +360,8 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
     $user_id = $oLogin->getUserPk();
     $searchLogs = getSearchLogs($user_id);
+
+ChromePhp::log($psTitle);
 ChromePhp::log($searchLogs);
 
     foreach($pasActivity as $asActivity)
