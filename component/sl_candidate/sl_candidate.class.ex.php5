@@ -873,8 +873,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _displayCandidateList($pbInAjax = false , $searchID)
     {
-      ChromePhp::log('_displayCandidateList');
-      ChromePhp::log($searchID);
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
@@ -891,7 +889,7 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
 
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
-          $sHTML.= $this->_getCandidateList($pbInAjax);
+          $sHTML.= $this->_getCandidateList($pbInAjax,null,$searchID);
           //$sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.=  $this->_oDisplay->getListItemEnd();
@@ -2501,8 +2499,10 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-    private function _getCandidateList($pbInAjax = false, &$poQB = null)
+    private function _getCandidateList($pbInAjax = false, &$poQB = null, $searchID)
     {
+      ChromePhp::log('_getCandidateList');
+      ChromePhp::log($searchID);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
