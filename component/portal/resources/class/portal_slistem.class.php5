@@ -383,10 +383,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $add['log_date'] = $value['date'];
         $add['login_system_historypk'] = $value['login_system_historypk'];
 
-        $searchLinks[] = $add;
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $value['login_system_historypk']));
 
         $add['newUrl'] = $sURL;
+        $searchLinks[] = $add;
       }
       $mainPageShortcuts = $searchLinks;
 
