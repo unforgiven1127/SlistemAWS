@@ -2830,7 +2830,9 @@ class CSl_candidateEx extends CSl_candidate
       $user_id = $oLogin->getUserPk();
 
 //ChromePhp::log($sQuery);
-      insertLog($user_id, '-1', $sQuery,"quick_search");
+      $limitlessQuery = explode('LIMIT', $sQuery);
+      $limitlessQuery = $limitlessQuery[0];
+      insertLog($user_id, '-1', $limitlessQuery,"quick_search");
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
