@@ -871,11 +871,16 @@ class CSl_candidateEx extends CSl_candidate
     //  Private methods
     //------------------------------------------------------
 
-    private function _displayCandidateList($pbInAjax = false , $searchID)
+    private function _displayCandidateList($pbInAjax = false , $searchID = 0)
     {
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
+
+      if($searchID > 0)
+      {
+        $pbInAjax "search_".$searchID;
+      }
 
       $sLiId = uniqid();
       if(!$pbInAjax)
@@ -893,7 +898,7 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($searchID);
 
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
-          $sHTML.= $this->_getCandidateList($pbInAjax,null,$searchID);
+          $sHTML.= $this->_getCandidateList($pbInAjax);
           //$sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.=  $this->_oDisplay->getListItemEnd();
@@ -2503,10 +2508,10 @@ class CSl_candidateEx extends CSl_candidate
 
 
 
-    private function _getCandidateList($pbInAjax = false, &$poQB = null, $searchID)
+    private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       ChromePhp::log('_getCandidateList');
-      ChromePhp::log($searchID);
+      ChromePhp::log($pbInAjax);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
