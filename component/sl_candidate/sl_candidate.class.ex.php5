@@ -990,7 +990,8 @@ class CSl_candidateEx extends CSl_candidate
       {
         $searchID = $_GET['searchId'];
         //ChromePhp::log($searchID);
-        $pnPk = 'search_'.$searchID;
+        $pbInAjax = 'search_'.$searchID;
+        return $this->_displayCandidateList($pbInAjax);
       }
 //ChromePhp::log('_getCandidateView');
 //ChromePhp::log($searchID);
