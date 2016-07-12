@@ -888,7 +888,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
 
-      ChromePhp::log($sLiId);
+      ChromePhp::log($pbInAjax);
       ChromePhp::log('_displayCandidateList');
       ChromePhp::log($searchID);
 
