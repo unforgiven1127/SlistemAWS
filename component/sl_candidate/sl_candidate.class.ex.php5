@@ -881,14 +881,16 @@ class CSl_candidateEx extends CSl_candidate
       if(!$pbInAjax)
         $this->_oPage->addCustomJs('$(document).ready(function(){  initHeaderManager(); goTabs.preload(\'candi\', \''.$sLiId.'\', true); });');
 
-      ChromePhp::log('_displayCandidateList');
-      ChromePhp::log($searchID);
 
       //container in which we'll put the list
       $sHTML.=  $this->_oDisplay->getBlocStart('', array('id' => 'bottomCandidateSection', 'class' => 'bottomCandidateSection'));
       $sHTML.=  $this->_oDisplay->getListStart('tab_content_container');
 
         $sHTML.=  $this->_oDisplay->getListItemStart($sLiId);
+
+      ChromePhp::log($sLiId);
+      ChromePhp::log('_displayCandidateList');
+      ChromePhp::log($searchID);
 
           //$sHTML.= $this->_oDisplay->getBlocStart(uniqid(), array('class' => 'scrollingContainer'));
           $sHTML.= $this->_getCandidateList($pbInAjax,null,$searchID);
