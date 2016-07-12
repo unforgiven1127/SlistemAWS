@@ -404,7 +404,7 @@ class CQuickSearch
     }
 
     $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
-ChromePhp::log($this->coQb);
+
     return '';
   }
 
