@@ -360,12 +360,12 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
     $user_id = $oLogin->getUserPk();
 
-    ChromePhp::log($psTitle);
+    //ChromePhp::log($psTitle);
     $searchLinks = array();
     if($psTitle == "Searches")
     {
       $searchLogs = getSearchLogs($user_id);
-      ChromePhp::log($searchLogs);
+      //ChromePhp::log($searchLogs);
       foreach ($searchLogs as $key => $value)
       {
         $add = array();
@@ -387,6 +387,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       }
       $mainPageShortcuts = $searchLinks;
       $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $value['login_system_historypk']));
+      ChromePhp::log('HERE');
     }
     else
     {
