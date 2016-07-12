@@ -2510,6 +2510,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       ChromePhp::log('_getCandidateList');
       ChromePhp::log($pbInAjax);
+      $exploded = explode('_',$pbInAjax);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -2893,6 +2894,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+ChromePhp::log($sQuery);
       if(isset($exploded[1]))
       {
         $oDbResult = $oDb->ExecuteQuery($sQuery);
@@ -2906,7 +2908,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
 
-ChromePhp::log($sQuery);
+
 ChromePhp::log($oDbResult);
 
 
