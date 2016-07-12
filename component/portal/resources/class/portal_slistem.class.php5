@@ -364,7 +364,7 @@ ChromePhp::log($searchLogs);
 
     foreach($pasActivity as $asActivity)
     {
-ChromePhp::log($asActivity);
+//ChromePhp::log($asActivity);
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
