@@ -1198,6 +1198,8 @@ class CSearchEx extends CSearch
 
   public function buildComplexSearchQuery()
   {
+    ChromePhp::log('buildComplexSearchQuery'); // sort ta da buraya
+
     $bComplex = (bool)getValue('complex_mode', 0);
     $sCpUid = getValue('component_uid');
     $sDataType = getValue('data_type');
