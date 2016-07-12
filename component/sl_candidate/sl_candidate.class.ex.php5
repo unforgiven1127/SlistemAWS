@@ -2514,6 +2514,7 @@ class CSl_candidateEx extends CSl_candidate
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
+      $exploded = explode('_',$pbInAjax);
       if(isset($exploded[1]))
       {
         $pbInAjax = false;
