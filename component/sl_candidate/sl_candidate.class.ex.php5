@@ -2710,15 +2710,28 @@ ChromePhp::log($poQB);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-      if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
+      if(isset($exploded[1]))
       {
-        $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
-          <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
-        return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
+        $pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+        $nResult = 2;
+      }
+      else
+      {
+        if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
+        {
+          $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
+            <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
+          return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
+        }
+
+        $nResult = (int)$oDbResult->getFieldValue('nCount');
+        $sQuery = $poQB->getSql();
       }
 
-      $nResult = (int)$oDbResult->getFieldValue('nCount');
-      $sQuery = $poQB->getSql();
       //dump($sQuery);
 
       if ($nPagerOffset)
