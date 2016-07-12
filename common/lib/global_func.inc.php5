@@ -1705,8 +1705,8 @@ var_dump($query);*/
         AND m.date_created <= "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
-//echo '<br><br>';
-//var_dump($query);
+echo '<br><br>';
+var_dump($query);
 
     $oDbResult = array();
 
