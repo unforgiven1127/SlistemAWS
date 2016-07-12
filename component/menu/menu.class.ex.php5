@@ -553,7 +553,7 @@ class CMenuEx extends CMenu
                 }
                 else if($asMenuItems['name'] == 'View')
                 {
-                  $onclickNew = "var oConf = goPopup.getConfig();  oConf.width = '1080';  oConf.height = '725';  oConf.tag = 'position_window';  oConf.modal = true;  goPopup.setLayerFromAjax(oConf,  'https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppal&amp;ppt=jd&amp;ppk=0&amp;pg=ajx', '', false);";
+                  $onclickNew = "var oConf = goPopup.getConfig();  oConf.width = '1080';  oConf.height = '725';  oConf.tag = 'position_window';  oConf.modal = true;  goPopup.setLayerFromAjax(oConf,  '".$mainPageUrl."/index.php5?uid=555-005&amp;ppa=ppal&amp;ppt=jd&amp;ppk=0&amp;pg=ajx', '', false);";
                 }
                 else if($asMenuItems['name'] == 'Tools')
                 {
