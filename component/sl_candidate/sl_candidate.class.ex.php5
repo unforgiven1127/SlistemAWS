@@ -2515,6 +2515,7 @@ class CSl_candidateEx extends CSl_candidate
       $bFilteredList = (bool)getValue('__filtered');
 
       $exploded = explode('_',$pbInAjax);
+ChromePhp::log($exploded);
       if(isset($exploded[1]))
       {
         $pbInAjax = false;
