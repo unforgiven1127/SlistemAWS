@@ -989,9 +989,10 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($_GET['searchId']))
       {
         $searchID = $_GET['searchId'];
-        ChromePhp::log($searchID);
+        //ChromePhp::log($searchID);
+        $pnPk = 'search_'.$searchID;
       }
-ChromePhp::log('_getCandidateView');
+//ChromePhp::log('_getCandidateView');
 //ChromePhp::log($searchID);
       if(!assert('is_key($pnPk)'))
         return '';
@@ -2513,6 +2514,15 @@ ChromePhp::log('_getCandidateView');
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
+      if(isset($exploded[1]))
+      {
+        $pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+        //ChromePhp::log($sQuery);
+      }
 
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
@@ -2535,6 +2545,8 @@ ChromePhp::log('_getCandidateView');
       //Basic integration of the quick search tyhrough query builder
       if(!$poQB)
         $poQB = $this->_getModel()->getQueryBuilder();
+
+ChromePhp::log($poQB);
 
       // ============================================
       // search and pagination management
