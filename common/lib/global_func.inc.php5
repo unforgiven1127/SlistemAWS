@@ -1703,6 +1703,7 @@ var_dump($query);*/
         WHERE (m.created_by IN ('.implode(',', $user_ids).') OR m.attendeefk IN ('.implode(',', $user_ids).') )
         AND m.date_created >= "'.$start_date.'"
         AND m.date_created <= "'.$end_date.'"
+        AND m.meeting_done = "0"
         group by m.sl_meetingpk
         order by m.candidatefk';
 echo '<br><br>';
@@ -1721,7 +1722,7 @@ var_dump($query);
       {
         $asData[$temp['created_by']] = array();
       }
-      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 0)
+      if($temp['min_date'] == $temp['sl_meetingpk'])
       {
         array_push($asData[$temp['created_by']], $temp);
 
