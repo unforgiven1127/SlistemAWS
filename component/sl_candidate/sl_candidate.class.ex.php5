@@ -2531,6 +2531,7 @@ class CSl_candidateEx extends CSl_candidate
         $searchID = $exploded[1];
 
         $sQuery = getLoggedQuery($searchID);
+        $sQuery = $sQuery[0]['action'];
         ChromePhp::log($sQuery);
       }
       else
