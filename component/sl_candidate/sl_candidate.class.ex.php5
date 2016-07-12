@@ -2532,7 +2532,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sQuery = getLoggedQuery($searchID);
         $sQuery = $sQuery[0]['action'];
-        ChromePhp::log($sQuery);
+        //ChromePhp::log($sQuery);
       }
       else
       {
@@ -2864,19 +2864,15 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($searchID);
 
 
-      
-
-
-
-
       $user_id = $oLogin->getUserPk();
 
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
+      ChromePhp::log($oDbResult);
       $bRead = $oDbResult->readFirst();
 
       if(!$bRead || !$oDbResult->numRows())
