@@ -2507,7 +2507,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $test = returnSerializedSearch();
       ChromePhp::log($test);
-      $test = unserialize($test);
+      $test = unserialize($test[0]['defaultvalue']);
       ChromePhp::log($test);
 
       global $gbNewSearch;
