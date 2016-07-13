@@ -2833,6 +2833,19 @@ var_dump($query);*/
 
   }
 
+  function returnSerializedSearch()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM customfield cf WHERE cf.customfieldpk = '1' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getCompanyHistory($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');
