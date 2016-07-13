@@ -2711,18 +2711,23 @@ class CSl_candidateEx extends CSl_candidate
         ChromePhp::log($nResult);
         //ChromePhp::log($sQuery);
       }
+      else
+      {
+        $nResult = (int)$oDbResult->getFieldValue('nCount');
+      }
 
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-      if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
+
+      if(!$bRead || $nResult == 0)
       {
         $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
           <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
         return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
       }
 
-      $nResult = (int)$oDbResult->getFieldValue('nCount');
+      //$nResult = (int)$oDbResult->getFieldValue('nCount');
       $sQuery = $poQB->getSql();
       //dump($sQuery);
 
