@@ -2506,6 +2506,7 @@ class CSl_candidateEx extends CSl_candidate
     {
 
       $exploded = explode('_',$poQB['csSearchTitle']);
+      ChromePhp::log($exploded);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
