@@ -2504,18 +2504,24 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
+      $exploded = explode('_',$pbInAjax);
       ChromePhp::log(serialize($poQB));
       $test1 = new CQueryBuilder(false);
       $test2 = new CQueryBuilder(true);
 
       $test = returnSerializedSearch();
-      $test3 = $test[0]['defaultvalue'];
+      //$test3 = $test[0]['defaultvalue'];
       $test1 = $test[0]['defaultvalue'];
-      $test2 = $test[0]['defaultvalue'];
+      //$test2 = $test[0]['defaultvalue'];
 
       ChromePhp::log(unserialize($test1));
-      ChromePhp::log(unserialize($test2));
-      ChromePhp::log(unserialize($test3));
+
+      if(isset($exploded[1]))
+      {
+        $poQB = unserialize($test1);
+      }
+      //ChromePhp::log(unserialize($test2));
+      //ChromePhp::log(unserialize($test3));
 
 
       global $gbNewSearch;
