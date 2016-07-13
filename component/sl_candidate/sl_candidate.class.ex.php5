@@ -2503,6 +2503,13 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
+      $exploded = explode('_',$pbInAjax);
+
+      if(isset($exploded[1]))
+      {
+        $this->_buildCandidateQuickSearch();
+      }
+
       ChromePhp::log($poQB);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -9345,4 +9352,368 @@ die();*/
 
       return $adjusted_candidate_ids;
     }
+
+  private function _buildCandidateQuickSearch($pbStrict = true, $name = 'test')
+  {
+    ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya
+    if($pbStrict)
+      $sOperator = ' AND ';
+    else
+      $sOperator = ' OR ';
+
+    $asTitle = array();
+    $bWide = (bool)getValue('qs_wide', 0);
+    $sNameFormat = getValue('qs_name_format');
+    //$sSearchId = getValue('searchId');
+    $sSearchId = $name;
+
+    if($bWide)
+      $sWildcard = '%';
+    else
+      $sWildcard = '';
+
+    switch($sNameFormat)
+    {
+      case 'none':
+        $sFirstField = 'lastname';
+        $sSecondField = 'firstname';
+        $bReverse = true;
+        break;
+
+      case 'firstname':
+        $sFirstField = 'firstname';
+        $sSecondField = 'lastname';
+        $bReverse = false;
+        break;
+
+      case 'lastname':
+      default:
+        $sFirstField = 'lastname';
+        $sSecondField = 'firstname';
+        $bReverse = false;
+        break;
+    }
+
+    //$sOperator = ' OR ';
+
+    //if there's a ref id, no need for any other search parameter
+    $sCandidate = strtolower(trim(getValue('candidate')));
+
+    $sRefId = preg_replace('/[^0-9]/', '', $sCandidate);
+
+
+    /*dump($sCandidate);
+    dump($sNameFormat);
+    dump($sFirstField);
+    dump($sSecondField);*/
+
+    if(!empty($sRefId) && is_numeric($sRefId))
+    {
+      $nRefId = (int)$sRefId;
+      if($nRefId != $sRefId || $nRefId < 1)
+        return 'The refId must be a positive integer.';
+
+      $this->coQb->addWhere('sl_candidatepk = '.$nRefId);
+      $asTitle[] = ' refId = '.$nRefId;
+    }
+    else
+    {
+      if(!empty($sCandidate))
+      {
+        //check if it's a comma separated sting
+        $asWords = explode(',', $sCandidate);
+//        ChromePhp::log($asWords);
+        $this->_cleanArray($asWords);
+        $nWord = count($asWords);
+        if($nWord > 2)
+          return 'Only one comma is allowed to separated the lastname and firstname.';
+        /*if($nWord == 1)
+        {
+          $nWord = 2;
+          $asWords[1] = $asWords[0];
+        }*/
+        //comma separated
+        if($nWord == 2)
+        {
+          $asWords[0] = trim($asWords[0]);
+          $asWords[1] = trim($asWords[1]);
+
+          $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$asWords[1]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio ');
+
+          if($bReverse)
+          {
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[1].$asWords[0]).'", LOWER(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.')))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio_rev ');
+
+            $this->coQb->addWhere('( (scan.'.$sFirstField.' LIKE "'.$asWords[0].'%" '.$sOperator.' scan.'.$sSecondField.' LIKE "'.$sWildcard.$asWords[1].'%")
+              OR (scan.'.$sSecondField.' LIKE "'.$sWildcard.$asWords[0].'%" '.$sOperator.' scan.'.$sFirstField.' LIKE "'.$sWildcard.$asWords[1].'%") )');
+
+            $this->coQb->addOrder(' IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ');
+          }
+          else
+          {
+            $this->coQb->addWhere(' scan.'.$sFirstField.' LIKE "'.$sWildcard.$asWords[0].'%" '.$sOperator.' scan.'.$sSecondField.' LIKE "'.$sWildcard.$asWords[1].'%" ');
+
+            $this->coQb->addOrder(' ratio DESC ');
+          }
+        }
+        else
+        {
+          //no comma, we split the string on space
+          $asWords = explode(' ', $sCandidate);
+          $nWord = count($asWords);
+          $this->_cleanArray($asWords);
+
+          if($nWord == 1)
+          {
+            $asWords[0] = trim($asWords[0]);
+
+            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", TRIM(LOWER(scan.lastname))) AS lastname_lev ');
+            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", TRIM(LOWER(scan.firstname))) AS firstname_lev ');
+
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(scan.'.$sFirstField.'))*100/LENGTH(scan.'.$sFirstField.')) AS ratio ');
+
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(scan.'.$sSecondField.'))*100/LENGTH(scan.'.$sSecondField.')) AS ratio_rev ');
+
+
+            $this->coQb->addWhere('( scan.lastname LIKE "'.$sWildcard.$asWords[0].'%" OR  scan.firstname LIKE "'.$sWildcard.$asWords[0].'%" ) ');
+
+            $this->coQb->addOrder(' firstname_lev DESC ');
+          }
+          elseif($nWord == 2)
+          {
+            $asWords[0] = trim($asWords[0]);
+            $asWords[1] = trim($asWords[1]);
+
+            $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0].$asWords[1]).'", LOWER(CONCAT(TRIM(scan.'.$sFirstField.'), TRIM(scan.'.$sSecondField.'))))*100/LENGTH(CONCAT(TRIM(scan.'.$sFirstField.'), TRIM(scan.'.$sSecondField.')))) AS ratio ');
+
+            if($bReverse)
+            {
+              $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[1].$asWords[0]).'", LOWER(CONCAT(TRIM(scan.'.$sFirstField.'), TRIM(scan.'.$sSecondField.'))))*100/LENGTH(CONCAT(scan.'.$sFirstField.', scan.'.$sSecondField.'))) AS ratio_rev ');
+
+              $this->coQb->addWhere('( (scan.'.$sFirstField.' LIKE "'.$sWildcard.$asWords[1].'%" '.$sOperator.' TRIM(scan.'.$sSecondField.') LIKE "'.$sWildcard.$asWords[0].'%")
+              OR (TRIM(scan.'.$sSecondField.') LIKE "'.$sWildcard.$asWords[1].'%" '.$sOperator.' TRIM(scan.'.$sFirstField.') LIKE "'.$sWildcard.$asWords[0].'%") )');
+
+              $this->coQb->addOrder(' IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC ');
+            }
+            else
+            {
+              $this->coQb->addWhere(' scan.'.$sFirstField.' LIKE "'.$sWildcard.$asWords[1].'%" '.$sOperator.' scan.'.$sSecondField.' LIKE "'.$sWildcard.$asWords[0].'%" ');
+
+              $this->coQb->addOrder(' ratio DESC ');
+            }
+          }
+          else
+          {
+            foreach($asWords as $sWord)
+            {
+              $this->coQb->addWhere(' scan.firstname LIKE "'.$sWildcard.trim($sWord).'%" '.$sOperator.' scan.lastname LIKE "'.$sWildcard.trim($sWord).'%" ');
+            }
+          }
+        }
+        $asTitle[] = ' candidate = '.$sCandidate;
+      }
+
+
+      $sCompany = trim(getValue('company'));
+      if($sCompany == 'Company')
+        $sCompany = '';
+      else
+        $sCompany = strtolower($sCompany);
+
+      if(!empty($sCompany))
+      {
+        $asTitle[] = ' company = '.$sCompany;
+
+        $bXCompany = (substr($sCompany, 0, 2) == 'x-');
+        if($bXCompany)
+        {
+          $sCompany = trim(substr($sCompany, 2));
+          //$this->coQb->addJoin('left', 'event_link', 'elin', 'elin.cp_pk = scan.sl_candidatepk AND elin.cp_uid = "555-001" AND elin.cp_type = "candi" AND elin.cp_action = "ppav"');
+          $this->coQb->addJoin('left', 'event', 'even', 'even.eventpk = elin.eventfk AND even.type = "cp_hidden"');
+
+          $asWords = explode(' ', $sCompany);
+          foreach($asWords as $sWord)
+            $this->coQb->addWhere(' even.content LIKE "%'.$sWord.'%" ');
+        }
+        else
+        {
+          $this->coQb->addJoin('left', 'sl_company', 'scom', 'scom.sl_companypk = scpr.companyfk');
+
+          //Try to find a refId in the search string
+          $nCompanyPk = $this->_fetchRefIdFromString($sCompany);
+          if((string)$nCompanyPk == $sCompany || ('#' . $nCompanyPk) == $sCompany)
+          {
+            $this->coQb->addWhere('scpr.companyfk = '.$nCompanyPk);
+          }
+          else
+          {
+            //Not a ref id, we treat the string as a name
+            $this->coQb->addSelect(' IF(scom.name LIKE "'.$sCompany.'", 3, IF(scom.name LIKE "'.$sCompany.'%", 2, 1)) as match_order ');
+            $this->coQb->addOrder('match_order DESC, scan.sl_candidatepk');
+
+            $asWords = explode(' ', $sCompany);
+            foreach($asWords as $sWord)
+              $this->coQb->addWhere(' scom.name LIKE "%'.$sWord.'%" ');
+          }
+        }
+      }
+
+      $sContact = trim(getValue('contact'));
+      if($sContact == 'Contact')
+        $sContact = '';
+
+      if(!empty($sContact))
+      {
+        $sContact = trim(str_replace(';', '', $sContact));
+        $this->coQb->addJoin('left', 'sl_contact', 'scon', 'scon.itemfk = scan.sl_candidatepk AND scon.item_type = "candi"');
+
+        if($this->_lookLikePhone($sContact))
+        {
+          $sNumeric = preg_replace('/[^0-9]/', '', $sContact);
+          //$this->coQb->addWhere(' scon.type IN (1,2,4,6) AND ( scon.value LIKE "'.$sContact.'%" OR  (scon.value REGEXP "[^0-9]") LIKE "'.$sNumeric.'%" )');
+          $this->coQb->addWhere(' scon.type IN (1,2,4,6) AND ( scon.value LIKE "'.$sContact.'%" OR scon.value LIKE "'.$sNumeric.'%" )');
+          $asTitle[] = ' phone = '.$sContact;
+        }
+        else
+        {
+          //if we find an @, and even if it's not a properly formated email adreesss we give a shot
+          $nMatchEmail = $this->_lookLikeEmail($sContact);
+          if($nMatchEmail == 2)
+          {
+            $this->coQb->addWhere(' scon.type = 5 AND scon.value LIKE "'.$sContact.'" ');
+            $asTitle[] = ' email = '.$sContact;
+          }
+          elseif($nMatchEmail == 1)
+          {
+            $this->coQb->addWhere(' scon.type = 5 AND scon.value LIKE "%'.$sContact.'%" ');
+            $asTitle[] = ' email = '.$sContact;
+          }
+          else
+          {
+            if($this->_lookLikeUrl($sContact))
+            {
+              $this->coQb->addWhere(' scon.type IN(3,7,8) AND scon.value LIKE "'.$sContact.'%" ');
+              $asTitle[] = ' url = '.$sContact;
+            }
+            else
+            {
+              $this->coQb->addWhere(' scon.value LIKE "'.$sContact.'%" ');
+              $asTitle[] = ' contact = '.$sContact;
+            }
+          }
+        }
+      }
+
+      $sDepartment = trim(getValue('department'));
+      if($sDepartment == 'Department')
+        $sDepartment = '';
+
+      if(!empty($sDepartment))
+      {
+        if($sDepartment == '__no_department__')
+        {
+          $this->coQb->addWhere(' (scpr.department IS NULL OR scpr.department = "") ');
+          $asTitle[] = ' department is empty';
+        }
+        else
+        {
+          $bExactMatch = (bool)getValue('qs_exact_match', 0);
+          if($bExactMatch)
+            $this->coQb->addWhere(' scpr.department LIKE "'.$sDepartment.'" ');
+          else
+            $this->coQb->addWhere(' scpr.department LIKE "'.$sDepartment.'%" ');
+
+          $asTitle[] = ' department = '.$sDepartment;
+        }
+      }
+
+//---------------------Keyword Search Starts---------------------------
+
+  $sKeyword = trim(getValue('keyword'));
+      if($sKeyword == 'Keyword')
+        $sKeyword = '';
+
+      if(!empty($sKeyword))
+      {
+        if($sKeyword == '__no_keyword__')
+        {
+          $this->coQb->addWhere(' (scpr.keyword IS NULL OR scpr.keyword = "") ');
+          $asTitle[] = ' keyword is empty';
+        }
+        else
+        {
+          $asWords = explode(',', $sKeyword);
+            foreach($asWords as $sWord)
+              $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
+
+          //$sKeyword = explode(",", $sKeyword); // , ile multi search
+          //ChromePhp::log($sKeyword);
+          /*foreach ($sKeyword as $key => $value) {
+            # code...
+            $bExactMatch = (bool)getValue('qs_exact_match', 0);
+            if($bExactMatch)
+              $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'" ');
+            else
+              $this->coQb->addWhere(' scpr.keyword LIKE "'.$sKeyword.'%" ');
+          }*/
+          $asTitle[] = ' keyword = '.$sKeyword;
+        }
+      }
+
+//---------------------Keyword Search ENDS-------------------------
+
+
+      $sPosition = trim(getValue('position'));
+      if($sPosition == 'Position ID or title')
+        $sPosition = '';
+
+      if(!empty($sPosition))
+      {
+        $nPositionPk = (int)$this->_fetchRefIdFromString($sPosition);
+
+        if(!empty($nPositionPk))
+        {
+          $this->coQb->addJoin('inner', 'sl_position_link', 'spli', ' spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.positionfk = "'.$nPositionPk.'" ');
+          $asTitle[] = ' position ID = #'.$nPositionPk;
+        }
+        else
+        {
+
+          $sCleanPosition = addslashes($sPosition);
+
+          $this->coQb->addJoin('inner', 'sl_position_link', 'spli', ' spli.candidatefk = scan.sl_candidatepk AND spli.active = 1');
+          $this->coQb->addJoin('inner', 'sl_position_detail', 'spde', ' spde.positionfk = spli.positionfk
+            AND (spde.title LIKE "%'.$sCleanPosition.'%" OR spde.description LIKE "%'.$sCleanPosition.'%" ) ');
+
+          $asTitle[] = ' position = '.$sPosition;
+        }
+
+        $sStatus = getValue('position_status');
+        if(!empty($sStatus))
+        {
+          $sStart = substr($sStatus, 0, 1);
+          if($sStart == '+')
+          {
+            $this->coQb->addWhere(' spli.status >= '.(int)substr($sStatus, 1) );
+          }
+          elseif($sStart == '-')
+          {
+            $this->coQb->addWhere(' spli.status <= '.(int)substr($sStatus, 1) );
+          }
+          else
+           $this->coQb->addWhere(' spli.status = '.(int)$sStatus);
+        }
+      }
+    }
+
+    //if search Id, i may just be filtering or sorting the results... no need to check params
+    if(empty($sKeyword) && empty($sSearchId) && empty($sRefId) && empty($sCandidate) && empty($sContact) && empty($sDepartment) && empty($sCompany) && empty($sPosition))
+    {
+      return 'You need to input a refId, a name, a contact detail, a company or a keyword.'.' kw:'.$sKeyword;
+    }
+
+    $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
+
+    return '';
+  }
 }
