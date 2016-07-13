@@ -2912,11 +2912,11 @@ ChromePhp::log($poQB);
       $asData = array();
       $asPk = array();
 
-ChromePhp::log('HERE I AM');
 
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
+        ChromePhp::log($asCandidate);
         $asCandidate['g'] = $asCandidate['lastname'].' '.$asCandidate['firstname'];
         $asCandidate['h'] = $asCandidate['company_name'];
 
