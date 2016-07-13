@@ -2716,7 +2716,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $exploded = explode('_',$pbInAjax);
 
-
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       $nResult = (int)$oDbResult->getFieldValue('nCount');
