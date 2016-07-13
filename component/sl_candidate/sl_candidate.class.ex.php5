@@ -2716,29 +2716,10 @@ class CSl_candidateEx extends CSl_candidate
 
       $exploded = explode('_',$pbInAjax);
 
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
 
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-
-        $oDbResult = $oDb->ExecuteQuery($sQuery);
-        $bRead = $oDbResult->readFirst();
-
-        $allData = $oDbResult->getAll();
-        $nResult = count($allData);
-        //ChromePhp::log($nResult);
-        //ChromePhp::log($sQuery);
-      }
-      else
-      {
-        $oDbResult = $oDb->ExecuteQuery($sQuery);
-        $bRead = $oDbResult->readFirst();
-        $nResult = (int)$oDbResult->getFieldValue('nCount');
-      }
-
+      $oDbResult = $oDb->ExecuteQuery($sQuery);
+      $bRead = $oDbResult->readFirst();
+      $nResult = (int)$oDbResult->getFieldValue('nCount');
 
       if(!$bRead || $nResult == 0)
       {
