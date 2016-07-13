@@ -371,11 +371,11 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $add = array();
         if($value['table'] == "quick_search")
         {
-          $text = "Quick search";
+          $text = "Quick search".substr($value['description'], 0, 20);
         }
         else
         {
-          $text = "Complex search";
+          $text = "Complex search".substr($value['description'], 0, 20);
         }
         $add['text'] = $text;
         $add['cp_pk'] = $value['cp_pk'];
