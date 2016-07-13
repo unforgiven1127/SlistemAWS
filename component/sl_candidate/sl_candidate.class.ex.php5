@@ -2506,6 +2506,7 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($poQB);
 
       $test = returnSerializedSearch();
+      ChromePhp::log($test);
       $test = unserialize($test);
       ChromePhp::log($test);
 
