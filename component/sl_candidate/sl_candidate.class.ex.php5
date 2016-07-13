@@ -2518,14 +2518,8 @@ class CSl_candidateEx extends CSl_candidate
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
 
-      if($nHistoryPk > 0)
-      {
-        $this->csSearchId = getValue('searchId');
-        //$asListMsg[] = 'replay search '.$nHistoryPk.': reload qb saved in db...';
-
 //BURADAN
-
-
+      
 
 
 // BURAYA KADAR
