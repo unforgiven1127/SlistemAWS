@@ -2889,6 +2889,7 @@ ChromePhp::log($sQuery);
 ChromePhp::log($oDbResult);
       if(!$bRead || !isset($nResult))
       {
+        ChromePhp::log('ASDASDASD');
         assert('false; // count query returned results but not the select');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
