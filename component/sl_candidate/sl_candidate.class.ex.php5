@@ -2503,7 +2503,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-
+      $exploded = explode('_',$pbInAjax);
       if(isset($exploded[1]))
       {
         $test = returnSerializedSearch();
