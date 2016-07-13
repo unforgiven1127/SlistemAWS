@@ -2876,7 +2876,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT * FROM login_system_history lhs WHERE (lhs.table = 'quick_search' OR lhs.table = 'quick_search') AND lhs.userfk = '".$user_id."' ORDER BY lhs.login_system_historypk DESC";
+    $sQuery = "SELECT * FROM login_system_history lhs WHERE (lhs.table = 'quick_search' OR lhs.table = 'complex_search') AND lhs.userfk = '".$user_id."' ORDER BY lhs.login_system_historypk DESC";
 
     $db_result = $oDB->executeQuery($sQuery);
 
