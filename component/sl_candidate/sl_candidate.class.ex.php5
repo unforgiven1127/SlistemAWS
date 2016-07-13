@@ -2513,16 +2513,10 @@ class CSl_candidateEx extends CSl_candidate
       $test1 = $test[0]['defaultvalue'];
       $test2 = $test[0]['defaultvalue'];
 
-      ChromePhp::log($test1);
-      ChromePhp::log($test2);
-      ChromePhp::log($test3);
+      ChromePhp::log(unserialize($test1));
+      ChromePhp::log(unserialize($test2));
+      ChromePhp::log(unserialize($test3));
 
-      $test = unserialize($test);
-      ChromePhp::log($test);
-
-
-      $test = unserialize(serialize($poQB));
-      ChromePhp::log($test);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
