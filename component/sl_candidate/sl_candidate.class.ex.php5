@@ -2505,7 +2505,7 @@ class CSl_candidateEx extends CSl_candidate
     {
       ChromePhp::log(serialize($poQB));
       require_once(__DIR__.'/querybuilder.class.php5');
-      $test = new CQueryBuilder(false);
+      $test1 = new CQueryBuilder(false);
       $test = returnSerializedSearch();
       $test = $test[0]['defaultvalue'];
       ChromePhp::log($test);
