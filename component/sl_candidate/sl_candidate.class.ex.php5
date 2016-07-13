@@ -2504,25 +2504,8 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-      $exploded = explode('_',$pbInAjax);
-      ChromePhp::log(serialize($poQB));
-      $test1 = new CQueryBuilder(false);
-      $test2 = new CQueryBuilder(true);
 
-      $test = returnSerializedSearch();
-      //$test3 = $test[0]['defaultvalue'];
-      $test1 = $test[0]['defaultvalue'];
-      //$test2 = $test[0]['defaultvalue'];
-
-      ChromePhp::log(unserialize($test1));
-
-      if(isset($exploded[1]))
-      {
-        $poQB = unserialize($test1);
-      }
-      ChromePhp::log($poQB);
-      //ChromePhp::log(unserialize($test3));
-
+      $exploded = explode('_',$poQB['csSearchTitle']);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -2714,17 +2697,24 @@ class CSl_candidateEx extends CSl_candidate
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      $exploded = explode('_',$pbInAjax);
-
-ChromePhp::log($sQuery);
       if(isset($exploded[1]))
       {
-        $sQuery = str_replace('AND scan.sl_candidatepk = -1',' ',$sQuery);
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+        $all = $oDbResult->getAll();
+        $nResult = count($all);
       }
-ChromePhp::log($sQuery);
-      $oDbResult = $oDb->ExecuteQuery($sQuery);
-      $bRead = $oDbResult->readFirst();
-      $nResult = (int)$oDbResult->getFieldValue('nCount');
+      else
+      {
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+        $nResult = (int)$oDbResult->getFieldValue('nCount');
+      }
 
       if(!$bRead || $nResult == 0)
       {
@@ -2905,12 +2895,19 @@ ChromePhp::log($sQuery);
       $asData = array();
       $asPk = array();
 
-      $sQuery = "SELECT  levenshtein('minamina', TRIM(LOWER(scan.lastname))) AS lastname_lev ,  levenshtein('minamina', TRIM(LOWER(scan.firstname))) AS firstname_lev ,  100-(levenshtein('minamina', LOWER(scan.lastname))*100/LENGTH(scan.lastname)) AS ratio ,  100-(levenshtein('minamina', LOWER(scan.firstname))*100/LENGTH(scan.firstname)) AS ratio_rev , scan.*,
-          scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
-          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
-          scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
-          TIMESTAMPDIFF(YEAR, scan.date_birth, '2016-07-12 11:05:50') AS age,
-          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%minamina%' OR  scan.firstname LIKE '%minamina%' )  GROUP BY scan.sl_candidatepk  ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc";
+      if(isset($exploded[1]))
+      {
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+        $all = $oDbResult->getAll();
+        $nResult = count($all);
+      }
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 

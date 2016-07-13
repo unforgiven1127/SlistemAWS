@@ -409,7 +409,15 @@ class CQuickSearch
       return 'You need to input a refId, a name, a contact detail, a company or a keyword.'.' kw:'.$sKeyword;
     }
 
-    $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
+    if(isset($_GET['searchId']))
+    {
+      $searchID = $_GET['searchId'];
+      $this->coQb->setTitle('QuickSearch_'.$searchID);
+    }
+    else
+    {
+      $this->coQb->setTitle('QuickSearch: '.implode(' , ', $asTitle));
+    }
 
     return '';
   }
