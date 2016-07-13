@@ -2713,12 +2713,11 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
         $nResult = (int)$oDbResult->getFieldValue('nCount');
       }
 
-
-      $oDbResult = $oDb->ExecuteQuery($sQuery);
-      $bRead = $oDbResult->readFirst();
 
       if(!$bRead || $nResult == 0)
       {
