@@ -2536,6 +2536,9 @@ class CSl_candidateEx extends CSl_candidate
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
+      $allData = $oDbResult->getAll();
+ChromePhp::log($allData);
+
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
