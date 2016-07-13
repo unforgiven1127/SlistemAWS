@@ -2889,8 +2889,8 @@ ChromePhp::log($sQuery);
           scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
           (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
           scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
-          TIMESTAMPDIFF(YEAR, scan.date_birth, "2016-07-12 11:11:40") AS age,
-          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = "555-001" AND elin.cp_action = "ppav" AND elin.cp_type="candi" AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1   and ( scpr.grade  >= "4" ) GROUP BY scan.sl_candidatepk  ORDER BY TRIM(scan.lastname) ASC, TRIM(scan.firstname) ASC";
+          TIMESTAMPDIFF(YEAR, scan.date_birth, '2016-07-12 11:11:40') AS age,
+          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1   and ( scpr.grade  >= '4' ) GROUP BY scan.sl_candidatepk  ORDER BY TRIM(scan.lastname) ASC, TRIM(scan.firstname) ASC";
       }
 ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
