@@ -2515,12 +2515,9 @@ class CSl_candidateEx extends CSl_candidate
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
 
-      $exploded = explode('_',$pbInAjax);
-ChromePhp::log($exploded);
-
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
-ChromePhp::log($nHistoryPk);
+
       if($nHistoryPk > 0)
       {
         $this->csSearchId = getValue('searchId');
@@ -2540,8 +2537,6 @@ ChromePhp::log($nHistoryPk);
       //Basic integration of the quick search tyhrough query builder
       if(!$poQB)
         $poQB = $this->_getModel()->getQueryBuilder();
-
-ChromePhp::log($poQB);
 
       // ============================================
       // search and pagination management
@@ -2698,81 +2693,18 @@ ChromePhp::log($poQB);
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      if(isset($exploded[1]))
-      {
-        return "<div id='search_578590f7a3932' class='scrollingContainer' ><div id='578590f843b19' class='hidden' >
-          <div><input type='checkbox'
-          onchange='if($(this).is(':checked')){ listSelectBox('578590f843a33', true); }else{ listSelectBox('578590f843a33', false); }'/>Select all</div><div>Create a folder from [<a href='javascript:;' onclick='
-          listBoxClicked($('#578590f843a33 ul li:first'));
-          sIds = $('.multi_drag').attr('data-ids');
-          if(!sIds)
-            return alert('Nothing selected');
-
-          goPopup.setLayerFromAjax('', 'https://beta.slate.co.jp/index.php5?uid=555-002&ppa=ppaa&ppt=fol&ppk=0&item_type=candi&pg=ajx&ids='+sIds);'>selected items</a>] OR [<a href='javascript:;' onclick='goPopup.setLayerFromAjax('', 'https://beta.slate.co.jp/index.php5?uid=555-002&ppa=ppaa&ppt=fol&ppk=0&item_type=candi&pg=ajx&searchId=search_578590f7a3932');'>All 2 results</a>]</div><div>Move into a folder [<a href='javascript:;' onclick='
-          listBoxClicked($('#578590f843a33 ul li:first'));
-          sIds = $('.multi_drag').attr('data-ids');
-          if(!sIds)
-            return alert('Nothing selected');
-
-          goPopup.setLayerFromAjax('', 'https://beta.slate.co.jp/index.php5?uid=555-002&ppa=ppaa&ppt=folitm&ppk=0&item_type=candi&pg=ajx&ids='+sIds);'>selected items</a>] OR [<a href='javascript:;' onclick='goPopup.setLayerFromAjax('', 'https://beta.slate.co.jp/index.php5?uid=555-002&ppa=ppaa&ppt=folitm&ppk=0&item_type=candi&pg=ajx&searchId=search_578590f7a3932');'>All 2 results</a>]</div><div><a href='javascript:;' onclick='ajaxLayer('https://beta.slate.co.jp/index.php5?uid=665-544&ppa=ppase&ppt=svsrch&ppk=0&action=add&activity_id=0&pg=ajx', 370, 150);'>Save this search</a></div></div><div id='578590f843a33' id='578590f843a33'  data-type='candi'  class='tplListContainer' ><div class='tplListMessageContainer' ><div class='tplListMessage light_shadow tplListTitle' ><div><span class='search_result_title_nb'>2 result(s)</span>  + Mode name collect  ==> (status <= 3) </div></div></div><div class='floatHack' ></div><ul id='tpl_list_578590f843f8d'  class='tplListFullSize'  style='min-width: 232.2px; ' ><li class='tplListRowContainer tplListHeaderContainer tplListHeaderFullSize' ><div class='tplListRow' ><div id='aaaaaa'  class='column_static_20'  column='col_578590f84404b' ><span><a href='javascript:;' onclick='var oCurrentLi = $(this).closest('li');
-
-        if($('> div.list_action_container', oCurrentLi).length)
-        {
-          $('> div.list_action_container', oCurrentLi).fadeToggle();
-        }
-        else
-        {
-          var oAction = $('#578590f843b19').clone().show(0);
-
-          $(oCurrentLi).append('<div class=\'list_action_container hidden\'></div><div class=\'floatHack\' />');
-          $('div.list_action_container', oCurrentLi).append(oAction).fadeIn();
-        }' ><img src='https://beta.slate.co.jp/component/sl_candidate/resources//pictures/list_action.png' title=''  /></a></span></div><div id='bbbbbb'  style='margin: 0;'  class='column_static_43'  column='col_578590f844119'  onclick=' displayFilter(this); ' ><span>ID</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'integer');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'integer');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_16'  column='col_578590f8441eb'  onclick=' displayFilter(this); ' ><span>C</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_40'  column='col_578590f8442b6'  onclick=' displayFilter(this); ' ><span>Status</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_16'  column='col_578590f84437e'  onclick=' displayFilter(this); ' ><span>G</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_16'  column='col_578590f844447'  onclick=' displayFilter(this); ' ><span>R</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_13'  width_%='13%'  column='col_578590f84450f'  onclick=' displayFilter(this); ' ><span>Lastname</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_13'  width_%='13%'  column='col_578590f8445d8'  onclick=' displayFilter(this); ' ><span>Firstname</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_18'  width_%='18%'  column='col_578590f8446a2'  onclick=' displayFilter(this); ' ><span>Company</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_11'  width_%='11%'  column='col_578590f84476c'  onclick=' displayFilter(this); ' ><span>Title</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_10'  width_%='10%'  column='col_578590f844836'  onclick=' displayFilter(this); ' ><span>Department</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_35'  column='col_578590f844900'  onclick=' displayFilter(this); ' ><span>Note</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'value');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_30'  column='col_578590f8449ca'  onclick=' displayFilter(this); ' ><span>Age</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'text');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div><div id=''  class='column_static_42'  column='col_578590f844a94'  onclick=' displayFilter(this); ' ><span>Salary</span><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortAsc' onclick='sortList(this, 'up', 'integer');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_asc.png' title=''  /></a><a href='javascript:;' list-id='tpl_list_578590f843f8d' class='tplListSortDesc' onclick='sortList(this, 'down', 'integer');'><img src='https://beta.slate.co.jp/component/display/resources//pictures/sort_desc.png' title=''  /></a></div></div></li><li class='tplListRowContainer tplListRowFullSize'  onclick='rowClic(this);' ><div class='tplListRow tplCandiRow' ><div class='col_578590f84404b' ><input name='listBox[]' value='416705' id='listBox_416705' class='listBox' type='checkbox' onchange='listBoxClicked(this);' /></div><div class='col_578590f844119 tplCandiRow_small' ><label class='list_item_draggable ' for='listBox_416705' data-ids='416705' data-type='candi' data-title='416705 - dupduuuubudubu minamina'>416705</label></div><div class='col_578590f8441eb tplCandiRow_continuous clickable tplCandi_client'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=416705&pg=ajx');'  title='Work for a client company'  sort_value='1' ></div><div class='col_578590f8442b6 tplCandiRow_continuous clickable tplCandi_status_placed'  title='Candidate has been placed'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=416705&pg=ajx', '#tabLink8');'  sort_value='1' ></div><div class='col_578590f84437e tplCandiRow_continuous clickable tplCandi_grade_met'  sort_value='1'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=416705&pg=ajx');'  title='Met grade candidate' ></div><div class='col_578590f844447 tplCandi_resume'  sort_value='1'  title='Resume'  onclick='window.open('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=doc&ppk=416705&pg=ajx', '_view_res'); ' >&nbsp;</div><div class='col_578590f84450f tplCandiRow_continuous tpl_link_cell tplCandi_woman'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=416705&pg=ajx');' ><a href='javascript:;'>dupduuuubudubu</a></div><div class='col_578590f8445d8 tpl_link_cell'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=416705&pg=ajx');' ><a href='javascript:;'>minamina&nbsp;</a></div><div class='col_578590f8446a2 tpl_link_cell'  onclick='view_comp('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=comp&ppk=79045&pg=ajx');' ><a href='javascript:;'>test</a></div><div class='col_578590f84476c' ></div><div class='col_578590f844836' ></div><div class='col_578590f844900 tplCandi_note'  sort_value='1440158'  title='<div class=\'list_note_title\'>Last entry on the <span>2016-06-29 07:35:11</span></div>&lt;p&gt;test&lt;/p&gt;'  onmouseover=' $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter(); '  onmouseout='$('.closepopup').hide();' ></div><div class='col_578590f8449ca alignCenter' >30</div><div class='col_578590f844a94 list_salary_cell'  sort_value='4000000' >4M</div><div class='rowActionContainer' ><a class='candi_row_edit' title='Edit candidate profile' onclick='edit_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppae&ppt=candi&ppk=416705&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=416705&pg=ajx');' title='Edit candidate'  href='javascript:;'>&nbsp;</a><a class='candi_row_note' title='Add a nore or character note' onclick='add_candi_note('https://beta.slate.co.jp/index.php5?uid=555-004&ppa=ppaa&ppt=event&ppk=0&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=416705&pg=ajx');' href='javascript:;'>&nbsp;</a></div></div><div class='floatHack' ></div></li><li class='tplListRowContainer tplListRowFullSize'  onclick='rowClic(this);' ><div class='tplListRow tplCandiRow' ><div class='col_578590f84404b' ><input name='listBox[]' value='164539' id='listBox_164539' class='listBox' type='checkbox' onchange='listBoxClicked(this);' /></div><div class='col_578590f844119 tplCandiRow_small' ><label class='list_item_draggable ' for='listBox_164539' data-ids='164539' data-type='candi' data-title='164539 - Minaminaka Eiji'>164539</label></div><div class='col_578590f8441eb tplCandiRow_continuous clickable'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=164539&pg=ajx');'  sort_value='2' ></div><div class='col_578590f8442b6 tplCandiRow_continuous clickable'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=164539&pg=ajx', '#tabLink8');'  sort_value='0' ></div><div class='col_578590f84437e tplCandiRow_continuous clickable'  sort_value='0'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=164539&pg=ajx');' ></div><div class='col_578590f844447'  sort_value='0' >&nbsp;</div><div class='col_578590f84450f tplCandiRow_continuous tpl_link_cell tplCandi_man'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=164539&pg=ajx');' ><a href='javascript:;'>Minaminaka</a></div><div class='col_578590f8445d8 tpl_link_cell'  onclick='view_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=164539&pg=ajx');' ><a href='javascript:;'>Eiji&nbsp;</a></div><div class='col_578590f8446a2 tpl_link_cell'  onclick='view_comp('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=comp&ppk=38558&pg=ajx');' ><a href='javascript:;'>GCA Co., Ltd.</a></div><div class='col_578590f84476c' >Analyst</div><div class='col_578590f844836' ></div><div class='col_578590f844900 tplCandi_note'  sort_value='789739'  title='<div class=\'list_note_title\'>Last entry on the <span>2007-07-19 14:54:18</span></div>Eiji Minaminaka&lt;br /&gt;
-&lt;br /&gt;
-A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 2004, he joined Deloitte Touche Tohmatsu and was engaged in statutory audit for companies in various industries and Sarbanes-Oxley Act consulting services. He joined GCA in. July 2007. He is a Japanese Junior CPA.'  onmouseover=' $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter(); '  onmouseout='$('.closepopup').hide();' ></div><div class='col_578590f8449ca alignCenter' ></div><div class='col_578590f844a94 list_salary_cell'  sort_value='0' ></div><div class='rowActionContainer' ><a class='candi_row_edit' title='Edit candidate profile' onclick='edit_candi('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppae&ppt=candi&ppk=164539&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=164539&pg=ajx');' title='Edit candidate'  href='javascript:;'>&nbsp;</a><a class='candi_row_note' title='Add a nore or character note' onclick='add_candi_note('https://beta.slate.co.jp/index.php5?uid=555-004&ppa=ppaa&ppt=event&ppk=0&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=164539&pg=ajx');' href='javascript:;'>&nbsp;</a></div></div><div class='floatHack' ></div></li></ul><div class='floatHack' ></div></div><div class='tplListPagerBottom floatRight' ><div id='pagerId_578590f844eca' class='pagerContainer'><div class='pagerInfo pagerDisplay'><strong>2</strong> results.<br />1 page</div><div class='pagerRowSelector pagerDisplay'></div><div class='floatHack'></div></div></div><div class='floatHack' ></div><script> initDragAndDrop('https://beta.slate.co.jp/index.php5?uid=555-002&ppa=ppasa&ppt=folitm&ppk=0&pg=ajx'); </script><a href='javascript:;' onclick='$(this).parent().find('.query').toggle(); '>query... </a>
-            <span class='hidden query'><br />SELECT  levenshtein('minamina', TRIM(LOWER(scan.lastname))) AS lastname_lev ,  levenshtein('minamina', TRIM(LOWER(scan.firstname))) AS firstname_lev ,  100-(levenshtein('minamina', LOWER(scan.lastname))*100/LENGTH(scan.lastname)) AS ratio ,  100-(levenshtein('minamina', LOWER(scan.firstname))*100/LENGTH(scan.firstname)) AS ratio_rev , scan.*,
-          scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
-          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
-          scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
-          TIMESTAMPDIFF(YEAR, scan.date_birth, '2016-07-12 11:05:50') AS age,
-          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%minamina%' OR  scan.firstname LIKE '%minamina%' )  GROUP BY scan.sl_candidatepk  ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc</span><br /><br /><br /><script>
-          $(function(){
-            var list_container = document.getElementById('search_578590f7a3932');
-            $('.fixedListheader').remove();
-            list_container.scrollTop = 0;
-          });
-        </script>";
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-        ChromePhp::log($sQuery);
-      }
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-      if(isset($exploded[1]))
+      if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
       {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-        $nResult = 2;
-      }
-      else
-      {
-        if(!$bRead || (int)$oDbResult->getFieldValue('nCount') == 0)
-        {
-          $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
-            <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
-          return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
-        }
-
-        $nResult = (int)$oDbResult->getFieldValue('nCount');
-        $sQuery = $poQB->getSql();
+        $sDebug = '<a href="javascript:;" onclick="$(this).parent().find(\'.query\').toggle(); ">query... </a>
+          <span class="hidden query"><br />'.$sQuery.'</span><br /><br /><br />';
+        return $this->_oDisplay->getBlocMessage('No candidate found for: '.implode(', ', $asListMsg)).$sDebug;
       }
 
+      $nResult = (int)$oDbResult->getFieldValue('nCount');
+      $sQuery = $poQB->getSql();
       //dump($sQuery);
 
       if ($nPagerOffset)
@@ -2807,7 +2739,6 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
 
         }
       }
-
         $oldQ = $sQuery;
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
@@ -2907,16 +2838,6 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-        //ChromePhp::log($sQuery);
-      }
-
       $user_id = $oLogin->getUserPk();
 
 //ChromePhp::log($sQuery);
@@ -2927,14 +2848,12 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
-      if(!isset($exploded[1]))
+      if(!$bRead || !$oDbResult->numRows())
       {
-        if(!$bRead || !$oDbResult->numRows())
-        {
-          assert('false; // count query returned results but not the select');
-          return $this->_oDisplay->getBlocMessage('No candidate found.');
-        }
+        assert('false; // count query returned results but not the select');
+        return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
+
 
       //------------------------------------------------------------------
       //------------------------------------------------------------------
@@ -2943,7 +2862,7 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
       $_SESSION['555-001']['query'][$this->csSearchId] = $sQuery;
 
       //save search in history if it's a new search
-      if(!isset($exploded[1]) && empty($nHistoryPk) /*&& !$bLogged*/)
+      if(empty($nHistoryPk) /*&& !$bLogged*/)
       {
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId));
         $sLink = 'javascript: loadAjaxInNewTab(\''.$sURL.'\', \'candi\', \'candidate\');';
@@ -2952,7 +2871,6 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
 
       $asData = array();
       $asPk = array();
-
 
       while($bRead)
       {
@@ -2995,6 +2913,7 @@ A graduate of Ritsumeikan University, Mr. Minaminaka majored in Economics. In 20
 
         $bRead = $oDbResult->readNext();
       }
+
 
       //Template related -- #1
       //params for the sub-templates when required
