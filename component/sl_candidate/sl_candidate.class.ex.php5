@@ -2863,7 +2863,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $user_id = $oLogin->getUserPk();
 
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
@@ -2906,7 +2906,7 @@ class CSl_candidateEx extends CSl_candidate
           scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%minamina%' OR  scan.firstname LIKE '%minamina%' )  GROUP BY scan.sl_candidatepk  ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc";*/
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-ChromePhp::log($oDbResult);
+
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
