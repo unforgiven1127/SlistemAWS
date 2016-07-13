@@ -2506,15 +2506,14 @@ class CSl_candidateEx extends CSl_candidate
     {
       ChromePhp::log('_getCandidateList');
       //ChromePhp::log($poQB->getTitle());
-      $poQBTitle = $poQB->getTitle();
-      ChromePhp::log($poQBTitle);
-      if(isset($poQBTitle))
+
+      if($poQB != null)
       {
         $exploded = explode('_',$poQB->getTitle());
         ChromePhp::log($poQB->getTitle());
         ChromePhp::log($exploded);
       }
-
+ChromePhp::log('pass');
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
