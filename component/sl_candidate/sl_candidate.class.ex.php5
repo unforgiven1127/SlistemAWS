@@ -2886,11 +2886,11 @@ ChromePhp::log($poQB);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
-      if(!$bRead || !$oDbResult->numRows())
+      /*if(!$bRead || !$oDbResult->numRows())
       {
         assert('false; // count query returned results but not the select');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
-      }
+      }*/
 
 ChromePhp::log('TEST');
       //------------------------------------------------------------------
