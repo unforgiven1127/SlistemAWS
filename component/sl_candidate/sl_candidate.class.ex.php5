@@ -2520,7 +2520,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $poQB = unserialize($test1);
       }
-      //ChromePhp::log(unserialize($test2));
+      ChromePhp::log($poQB);
       //ChromePhp::log(unserialize($test3));
 
 
