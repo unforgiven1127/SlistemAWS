@@ -2886,13 +2886,15 @@ ChromePhp::log($poQB);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
-      /*if(!$bRead || !$oDbResult->numRows())
+      if(!isset($exploded[1]))
       {
-        assert('false; // count query returned results but not the select');
-        return $this->_oDisplay->getBlocMessage('No candidate found.');
-      }*/
+        if(!$bRead || !$oDbResult->numRows())
+        {
+          assert('false; // count query returned results but not the select');
+          return $this->_oDisplay->getBlocMessage('No candidate found.');
+        }
+      }
 
-ChromePhp::log('TEST');
       //------------------------------------------------------------------
       //------------------------------------------------------------------
       //Query done, we've got results,  we're about to generate the HTML results
@@ -2900,7 +2902,7 @@ ChromePhp::log('TEST');
       $_SESSION['555-001']['query'][$this->csSearchId] = $sQuery;
 
       //save search in history if it's a new search
-      if(empty($nHistoryPk) /*&& !$bLogged*/)
+      if(!isset($exploded[1]) && empty($nHistoryPk) /*&& !$bLogged*/)
       {
         $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_CANDI, 0, array('searchId' => $this->csSearchId));
         $sLink = 'javascript: loadAjaxInNewTab(\''.$sURL.'\', \'candi\', \'candidate\');';
@@ -2909,6 +2911,8 @@ ChromePhp::log('TEST');
 
       $asData = array();
       $asPk = array();
+
+ChromePhp::log('HERE I AM');
 
       while($bRead)
       {
