@@ -2863,6 +2863,22 @@ class CSl_candidateEx extends CSl_candidate
 
       $user_id = $oLogin->getUserPk();
 
+      if(isset($exploded[1]))
+      {
+        //$pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+
+        $allData = $oDbResult->getAll();
+        $nResult = count($allData);
+        //ChromePhp::log($nResult);
+        //ChromePhp::log($sQuery);
+      }
 ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
@@ -2870,7 +2886,7 @@ ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-
+ChromePhp::log($oDbResult);
       if(!$bRead || !$oDbResult->numRows())
       {
         assert('false; // count query returned results but not the select');
