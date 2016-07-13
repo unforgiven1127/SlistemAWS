@@ -2866,7 +2866,14 @@ class CSl_candidateEx extends CSl_candidate
       $limitlessQuery = $limitlessQuery[0];
 
       $searchTitle = explode(':',$poQB->getTitle());
-      $desc = $searchTitle[1];
+      if(isset($searchTitle[1]))
+      {
+        $desc = $searchTitle[1];
+      }
+      else
+      {
+        $desc = "";
+      }
       if(isset($searchTitle[0]))
       {
         $searchTitle = $searchTitle[0];
