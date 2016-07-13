@@ -2865,7 +2865,7 @@ ChromePhp::log($poQB);
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-ChromePhp::log('TEST');
+
       if(isset($exploded[1]))
       {
         $pbInAjax = false;
@@ -2892,7 +2892,7 @@ ChromePhp::log('TEST');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
 
-
+ChromePhp::log('TEST');
       //------------------------------------------------------------------
       //------------------------------------------------------------------
       //Query done, we've got results,  we're about to generate the HTML results
