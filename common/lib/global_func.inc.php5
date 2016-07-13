@@ -2913,7 +2913,7 @@ var_dump($query);*/
     }
   }
 
-  function insertLog($loginfk, $cp_pk, $text,$table = "user_history")
+  function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '')
   {
     $cp_uid = "555-001";
     $cp_action = "ppasa";
@@ -2924,8 +2924,8 @@ var_dump($query);*/
 
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`)
-               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."')";
+    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`, `description`)
+               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."','".$desctiption."')";
 
 //ChromePhp::log($sQuery);
 
