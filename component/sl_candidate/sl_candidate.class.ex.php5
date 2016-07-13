@@ -3124,7 +3124,7 @@ ChromePhp::log($poQB);
       //===========================================
       //start building the HTML
       $sHTML = '';
-ChromePhp::log('ASDASD');
+
       /* debug
        *
       if(!$bFilteredList)
@@ -3250,7 +3250,8 @@ ChromePhp::log('ASDASD');
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-
+ChromePhp::log('ASDASD');
+ChromePhp::log($sHTML);
       return $sHTML;
     }
 
