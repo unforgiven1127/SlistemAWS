@@ -2887,7 +2887,7 @@ ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 ChromePhp::log($oDbResult);
-      if(!$bRead || !$oDbResult->numRows())
+      if(!$bRead || !isset($nResult))
       {
         assert('false; // count query returned results but not the select');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
