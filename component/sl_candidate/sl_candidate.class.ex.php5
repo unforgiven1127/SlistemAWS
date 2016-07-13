@@ -2912,6 +2912,9 @@ ChromePhp::log($poQB);
       $asData = array();
       $asPk = array();
 
+ChromePhp::log($oDbResult);
+ChromePhp::log($oDbResult->getData());
+ChromePhp::log($bRead);
 
       while($bRead)
       {
