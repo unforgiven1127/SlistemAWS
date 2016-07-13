@@ -2894,7 +2894,6 @@ ChromePhp::log($oDbResult);
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
 
-        ChromePhp::log('DDDDDDDDDDD');
       //------------------------------------------------------------------
       //------------------------------------------------------------------
       //Query done, we've got results,  we're about to generate the HTML results
@@ -2909,6 +2908,7 @@ ChromePhp::log($oDbResult);
         $nHistoryPk = logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => implode(', ', $asListMsg).' (#'.$nResult.' results)', 'link' => $sLink, 'data' => array('qb' => $poQB)), false);
       }
 
+        ChromePhp::log('DDDDDDDDDDD');
 
 // BURAYA KADAR
 
