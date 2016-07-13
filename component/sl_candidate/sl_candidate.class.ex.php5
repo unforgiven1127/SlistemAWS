@@ -2506,7 +2506,8 @@ class CSl_candidateEx extends CSl_candidate
     {
       ChromePhp::log('_getCandidateList');
       //ChromePhp::log($poQB->getTitle());
-      if(isset($poQB->getTitle()))
+      $poQBTitle = $poQB->getTitle();
+      if(isset($poQBTitle))
       {
         $exploded = explode('_',$poQB->getTitle());
         ChromePhp::log($poQB->getTitle());
