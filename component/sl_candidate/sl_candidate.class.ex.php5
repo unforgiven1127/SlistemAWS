@@ -2503,18 +2503,16 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-      ChromePhp::log(serialize($poQB));
 
-      $test = returnSerializedSearch();
-      $test = $test[0]['defaultvalue'];
-      ChromePhp::log($test);
+      if(isset($exploded[1]))
+      {
+        $test = returnSerializedSearch();
+        $test = $test[0]['defaultvalue'];
 
-      $test = unserialize($test);
-      ChromePhp::log($test);
+        $test = unserialize($test);
 
-
-      $test = unserialize(serialize($poQB));
-      ChromePhp::log($test);
+        &$poQB = $test;
+      }
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
@@ -2706,31 +2704,10 @@ class CSl_candidateEx extends CSl_candidate
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      $exploded = explode('_',$pbInAjax);
 
-      if(isset($exploded[1]))
-      {
-        $pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-
-        $oDbResult = $oDb->ExecuteQuery($sQuery);
-        $bRead = $oDbResult->readFirst();
-
-        $allData = $oDbResult->getAll();
-        $nResult = count($allData);
-        //ChromePhp::log($nResult);
-        //ChromePhp::log($sQuery);
-      }
-      else
-      {
-        $oDbResult = $oDb->ExecuteQuery($sQuery);
-        $bRead = $oDbResult->readFirst();
-        $nResult = (int)$oDbResult->getFieldValue('nCount');
-      }
-
+      $oDbResult = $oDb->ExecuteQuery($sQuery);
+      $bRead = $oDbResult->readFirst();
+      $nResult = (int)$oDbResult->getFieldValue('nCount');
 
       if(!$bRead || $nResult == 0)
       {
@@ -2876,22 +2853,6 @@ class CSl_candidateEx extends CSl_candidate
 
       $user_id = $oLogin->getUserPk();
 
-      if(isset($exploded[1]))
-      {
-        //$pbInAjax = false;
-        $searchID = $exploded[1];
-
-        $savedQuery = getLoggedQuery($searchID);
-        $sQuery = $savedQuery[0]['action'];
-
-        $oDbResult = $oDb->ExecuteQuery($sQuery);
-        $bRead = $oDbResult->readFirst();
-
-        $allData = $oDbResult->getAll();
-        $nResult = count($allData);
-        //ChromePhp::log($nResult);
-        //ChromePhp::log($sQuery);
-      }
 //ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
@@ -2928,12 +2889,23 @@ class CSl_candidateEx extends CSl_candidate
       $asData = array();
       $asPk = array();
 
-      /*$sQuery = "SELECT  levenshtein('minamina', TRIM(LOWER(scan.lastname))) AS lastname_lev ,  levenshtein('minamina', TRIM(LOWER(scan.firstname))) AS firstname_lev ,  100-(levenshtein('minamina', LOWER(scan.lastname))*100/LENGTH(scan.lastname)) AS ratio ,  100-(levenshtein('minamina', LOWER(scan.firstname))*100/LENGTH(scan.firstname)) AS ratio_rev , scan.*,
-          scom.name as company_name, scom.sl_companypk, scom.is_client as cp_client,
-          (scpr.salary + scpr.bonus) as full_salary, scpr.grade, scpr.title, scpr._has_doc, scpr._in_play,
-          scpr._pos_status, scpr.department, sind.label as industry, socc.label as occupation,
-          TIMESTAMPDIFF(YEAR, scan.date_birth, '2016-07-12 11:05:50') AS age,
-          scan.sl_candidatepk as PK, count(elin.eventfk) as nb_note, MAX(elin.event_linkpk) as lastNote,  1 as _is_admin  FROM `sl_candidate` as scan LEFT JOIN sl_candidate_profile as scpr ON ((scpr.candidatefk = scan.sl_candidatepk))  LEFT JOIN sl_company as scom ON ((scom.sl_companypk = scpr.companyfk))  LEFT JOIN sl_industry as sind ON ((sind.sl_industrypk = scpr.industryfk))  LEFT JOIN sl_occupation as socc ON ((socc.sl_occupationpk = scpr.occupationfk))  LEFT JOIN event_link as elin ON (((elin.cp_uid = '555-001' AND elin.cp_action = 'ppav' AND elin.cp_type='candi' AND elin.cp_pk = scan.sl_candidatepk)))  WHERE 1  AND ( scan.lastname LIKE '%minamina%' OR  scan.firstname LIKE '%minamina%' )  GROUP BY scan.sl_candidatepk  ORDER BY  IF(MAX(ratio) >= MAX(ratio_rev), ratio, ratio_rev) DESC , lastname desc, firstname desc, PK desc";*/
+      if(isset($exploded[1]))
+      {
+        //$pbInAjax = false;
+        $searchID = $exploded[1];
+
+        $savedQuery = getLoggedQuery($searchID);
+        $sQuery = $savedQuery[0]['action'];
+
+        $oDbResult = $oDb->ExecuteQuery($sQuery);
+        $bRead = $oDbResult->readFirst();
+
+        $allData = $oDbResult->getAll();
+        $nResult = count($allData);
+        //ChromePhp::log($nResult);
+        //ChromePhp::log($sQuery);
+      }
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
