@@ -388,7 +388,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
           goTabs.select(asContainer['number']);";
         //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, -1, array('searchId' => $value['login_system_historypk']));
 
-        $add['newUrl'] = $sURL;
+        $add['newUrl'] = $url;
         $searchLinks[] = $add;
       }
       $mainPageShortcuts = $searchLinks;
