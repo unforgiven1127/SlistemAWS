@@ -3114,7 +3114,7 @@ class CSl_candidateEx extends CSl_candidate
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
       $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
-
+ChromePhp::log($sURL);
       //===========================================
       //===========================================
       //start building the HTML
@@ -3173,7 +3173,7 @@ class CSl_candidateEx extends CSl_candidate
 
           $sHTML.= '<div><a href="javascript:;" onclick="ajaxLayer(\''.$sURL.'\', 370, 150);">Save this search</a></div>';
         }
-ChromePhp::log($nFolderPk);
+
         if(!empty($nFolderPk))
         {
           $folder_obj = CDependency::getComponentByName('sl_folder');
