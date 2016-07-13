@@ -2503,14 +2503,8 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-      $exploded = explode('_',$pbInAjax);
-
-      if(isset($exploded[1]))
-      {
-        $this->_buildCandidateQuickSearch();
-      }
-
       ChromePhp::log($poQB);
+      var_dump($poQB);
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -9362,8 +9356,8 @@ die();*/
       $sOperator = ' OR ';
 
     $asTitle = array();
-    $bWide = false;
-    $sNameFormat = '';
+    $bWide = (bool)getValue('qs_wide', 0);
+    $sNameFormat = getValue('qs_name_format');
     //$sSearchId = getValue('searchId');
     $sSearchId = $name;
 
@@ -9397,7 +9391,7 @@ die();*/
     //$sOperator = ' OR ';
 
     //if there's a ref id, no need for any other search parameter
-    $sCandidate = 'test';
+    $sCandidate = strtolower(trim(getValue('candidate')));
 
     $sRefId = preg_replace('/[^0-9]/', '', $sCandidate);
 
