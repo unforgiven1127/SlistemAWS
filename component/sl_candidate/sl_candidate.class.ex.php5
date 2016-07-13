@@ -2893,7 +2893,7 @@ ChromePhp::log($sQuery);
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-//ChromePhp::log($oDbResult);
+ChromePhp::log($oDbResult);
       if(!$bRead || !isset($nResult))
       {
         //ChromePhp::log('ASDASDASD');
