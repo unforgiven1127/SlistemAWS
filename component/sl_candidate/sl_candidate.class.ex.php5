@@ -2713,7 +2713,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $allData = $oDbResult->getAll();
         $nResult = count($allData);
-        ChromePhp::log($nResult);
+        //ChromePhp::log($nResult);
         //ChromePhp::log($sQuery);
       }
       else
@@ -2884,17 +2884,17 @@ class CSl_candidateEx extends CSl_candidate
         //ChromePhp::log($nResult);
         //ChromePhp::log($sQuery);
       }
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-ChromePhp::log($oDbResult);
+//ChromePhp::log($oDbResult);
       if(!$bRead || !isset($nResult))
       {
-        ChromePhp::log('ASDASDASD');
+        //ChromePhp::log('ASDASDASD');
         assert('false; // count query returned results but not the select');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
