@@ -2912,14 +2912,10 @@ ChromePhp::log($poQB);
       $asData = array();
       $asPk = array();
 
-ChromePhp::log($oDbResult);
-ChromePhp::log($oDbResult->getData());
-ChromePhp::log($bRead);
 
       while($bRead)
       {
         $asCandidate = $oDbResult->getData();
-        ChromePhp::log($asCandidate);
         $asCandidate['g'] = $asCandidate['lastname'].' '.$asCandidate['firstname'];
         $asCandidate['h'] = $asCandidate['company_name'];
 
@@ -2959,6 +2955,7 @@ ChromePhp::log($bRead);
         $bRead = $oDbResult->readNext();
       }
 
+ChromePhp::log($sTemplate);
 
       //Template related -- #1
       //params for the sub-templates when required
