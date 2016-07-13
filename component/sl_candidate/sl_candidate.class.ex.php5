@@ -2866,16 +2866,17 @@ class CSl_candidateEx extends CSl_candidate
       $limitlessQuery = $limitlessQuery[0];
 
       $searchTitle = explode(':',$poQB->getTitle());
+      $desc = $searchTitle[1];
       if(isset($searchTitle[0]))
       {
         $searchTitle = $searchTitle[0];
         if($searchTitle == "QuickSearch")
         {
-          insertLog($user_id, '-1', $limitlessQuery,"quick_search",$poQB->getTitle());
+          insertLog($user_id, '-1', $limitlessQuery,"quick_search",$desc);
         }
         else if($searchTitle == "CpxSearch")
         {
-          insertLog($user_id, '-1', $limitlessQuery,"complex_search",$poQB->getTitle());
+          insertLog($user_id, '-1', $limitlessQuery,"complex_search",$desc);
         }
       }
 
