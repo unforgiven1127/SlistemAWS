@@ -411,7 +411,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
       if($psTitle == "Searches")
       {
         $sURL = $asActivity['newUrl'];
-        $onclick = "'".$sURL."'";
+        $onclick = $sURL;
       }
       else
       {
