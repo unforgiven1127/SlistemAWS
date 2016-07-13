@@ -2508,8 +2508,8 @@ class CSl_candidateEx extends CSl_candidate
       $test = returnSerializedSearch();
       $test = $test[0]['defaultvalue'];
       ChromePhp::log($test);
-      //$test = unserialize($test);
-      //ChromePhp::log($test);
+      $test = unserialize(serialize($poQB));
+      ChromePhp::log($test);
 
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
