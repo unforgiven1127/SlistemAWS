@@ -2949,7 +2949,7 @@ class CSl_candidateEx extends CSl_candidate
         $bRead = $oDbResult->readNext();
       }
 
-
+ChromePhp::log($asData);
       //Template related -- #1
       //params for the sub-templates when required
       switch($sTemplate)
@@ -3114,7 +3114,6 @@ class CSl_candidateEx extends CSl_candidate
       $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
       $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
-ChromePhp::log($sURL);
       //===========================================
       //===========================================
       //start building the HTML
