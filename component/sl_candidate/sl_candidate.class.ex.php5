@@ -2511,8 +2511,8 @@ class CSl_candidateEx extends CSl_candidate
 
         $test = unserialize($test);
         ChromePhp::log($test);
-        $poQB = $test;
-        ChromePhp::log($poQB);
+        //$poQB = $test;
+        //ChromePhp::log($poQB);
       }
 
       global $gbNewSearch;
