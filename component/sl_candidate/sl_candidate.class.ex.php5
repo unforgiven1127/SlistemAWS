@@ -4,6 +4,7 @@ require_once('component/sl_candidate/sl_candidate.class.php5');
 require_once('component/sl_candidate/sl_candidate.model.php5');
 require_once('component/sl_candidate/sl_candidate.model.ex.php5');
 require_once('component/sl_candidate/resources/class/slate_vars.class.php5');
+require_once(__DIR__.'/querybuilder.class.php5');
 
 
 class CSl_candidateEx extends CSl_candidate
@@ -2504,10 +2505,17 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       ChromePhp::log(serialize($poQB));
+      $test1 = new CQueryBuilder(false);
+      $test2 = new CQueryBuilder(true);
 
       $test = returnSerializedSearch();
-      $test = $test[0]['defaultvalue'];
-      ChromePhp::log($test);
+      $test3 = $test[0]['defaultvalue'];
+      $test1 = $test[0]['defaultvalue'];
+      $test2 = $test[0]['defaultvalue'];
+
+      ChromePhp::log($test1);
+      ChromePhp::log($test2);
+      ChromePhp::log($test3);
 
       $test = unserialize($test);
       ChromePhp::log($test);
