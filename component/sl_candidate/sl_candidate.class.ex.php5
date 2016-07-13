@@ -2894,7 +2894,7 @@ ChromePhp::log($oDbResult);
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
 
-
+        ChromePhp::log('DDDDDDDDDDD');
       //------------------------------------------------------------------
       //------------------------------------------------------------------
       //Query done, we've got results,  we're about to generate the HTML results
