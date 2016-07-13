@@ -3228,7 +3228,7 @@ ChromePhp::log($sQuery);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $test_value = getValue('pipe_filter');
-
+ChromePhp::log($test_value);
         if(isset($test_value) && $test_value == "placed")
         {
           // when add new candidate foreach does not work...
