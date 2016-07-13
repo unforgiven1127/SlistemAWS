@@ -514,7 +514,7 @@ function pipeCall(poTag, psUrl)
 {
   var sUser = '&pipe_user='+ $(poTag).closest("li.menu_section").find('#pipe_user').val();
   var asContainer = goTabs.create('pipe', '', '', $(poTag).text());
-alert(psUrl);
+
   AjaxRequest(psUrl+ sUser, 'body', '',  asContainer['id'], '', '', 'initHeaderManager();');
   goTabs.select(asContainer['number']);
 
