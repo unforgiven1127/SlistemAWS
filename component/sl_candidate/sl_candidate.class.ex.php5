@@ -2510,7 +2510,7 @@ class CSl_candidateEx extends CSl_candidate
         $test = $test[0]['defaultvalue'];
 
         $test = unserialize($test);
-
+        ChromePhp::log($test);
         $poQB = $test;
         ChromePhp::log($poQB);
       }
