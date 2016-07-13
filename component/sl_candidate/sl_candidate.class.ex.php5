@@ -2700,6 +2700,7 @@ ChromePhp::log($poQB);
 
       if(isset($exploded[1]))
       {
+        return "<p>TEST</p>";
         $pbInAjax = false;
         $searchID = $exploded[1];
 
@@ -3250,8 +3251,7 @@ ChromePhp::log($poQB);
 
         if($gbNewSearch)
           $sHTML.= $this->_oDisplay->getBlocEnd();
-ChromePhp::log('ASDASD');
-ChromePhp::log($sHTML);
+
       return $sHTML;
     }
 
