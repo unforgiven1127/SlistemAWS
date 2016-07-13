@@ -383,7 +383,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
         $add['log_date'] = $value['date'];
         $add['login_system_historypk'] = $value['login_system_historypk'];
 
-        $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, -1, array('searchId' => $value['login_system_historypk']));
+        $url = "var asContainer = goTabs.create('candi', '', '', 'Candidate QS');
+          AjaxRequest('https://beta.slate.co.jp/index.php5?uid=555-001&ppa=ppasea&ppt=candi&ppk=0&pg=ajx&searchId=".$value['login_system_historypk']."', 'body', 'quickSearchForm',  asContainer['id'], '', '', 'initHeaderManager(); ');
+          goTabs.select(asContainer['number']);";
+        //$sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, -1, array('searchId' => $value['login_system_historypk']));
 
         $add['newUrl'] = $sURL;
         $searchLinks[] = $add;
@@ -408,13 +411,14 @@ Reminder linked to item', '2013-10-05 08:00:00');
       if($psTitle == "Searches")
       {
         $sURL = $asActivity['newUrl'];
+        $onclick = "'".$sURL."'";
       }
       else
       {
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
+        $onclick = 'view_candi(\''.$sURL.'\');';
       }
 
-      $onclick = 'view_candi(\''.$sURL.'\');';
 
       if(!empty($asActivity['log_link']))
       {
