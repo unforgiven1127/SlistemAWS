@@ -2511,7 +2511,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $test = unserialize($test);
 
-        &$poQB = $test;
+        $poQB = $test;
       }
 
       global $gbNewSearch;
