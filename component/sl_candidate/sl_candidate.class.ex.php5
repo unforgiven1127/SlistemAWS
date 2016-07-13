@@ -2512,6 +2512,7 @@ class CSl_candidateEx extends CSl_candidate
         $test = unserialize($test);
 
         $poQB = $test;
+        ChromePhp::log($poQB);
       }
 
       global $gbNewSearch;
@@ -2903,7 +2904,7 @@ class CSl_candidateEx extends CSl_candidate
         $allData = $oDbResult->getAll();
         $nResult = count($allData);
         //ChromePhp::log($nResult);
-        //ChromePhp::log($sQuery);
+        ChromePhp::log($sQuery);
       }
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
