@@ -2975,7 +2975,7 @@ ChromePhp::log($sTemplate);
           $asParam = array('sub_template' => array('CTemplateList' => array(0 => array('row' => array('class' => 'CCandi_row', 'path' => $_SERVER['DOCUMENT_ROOT'].self::getResourcePath().'template/candi_row.tpl.class.php5')))));
           break;
       }
-
+ChromePhp::log('ASDASD');
       //initialize the template
       $oTemplate = $this->_oDisplay->getTemplate('CTemplateList', $asParam);
 
