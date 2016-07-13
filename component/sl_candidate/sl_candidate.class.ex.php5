@@ -2869,7 +2869,7 @@ ChromePhp::log($sQuery);
         }
 
       $user_id = $oLogin->getUserPk();
-
+ChromePhp::log($sQuery);
       if(isset($exploded[1]))
       {
         //$pbInAjax = false;
@@ -2886,7 +2886,7 @@ ChromePhp::log($sQuery);
         //ChromePhp::log($nResult);
         //ChromePhp::log($sQuery);
       }
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
       insertLog($user_id, '-1', $limitlessQuery,"quick_search");
