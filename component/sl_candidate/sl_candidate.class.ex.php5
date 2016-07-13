@@ -2766,7 +2766,7 @@ ChromePhp::log($poQB);
 
         }
       }
-;
+
         $oldQ = $sQuery;
         $sQuery = explode("ORDER BY",$sQuery); // sacma sapan order by ekliyordi sildik
 
@@ -2865,7 +2865,7 @@ ChromePhp::log($poQB);
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-
+ChromePhp::log('TEST');
       if(isset($exploded[1]))
       {
         $pbInAjax = false;
