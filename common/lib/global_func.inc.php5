@@ -2833,6 +2833,41 @@ var_dump($query);*/
 
   }
 
+  function getPositionRelatedUsers($position_id, $exclude_user,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT DISTINCT(slp.candidatefk) as candidate_id FROM sl_position_link slp WHERE slp.active = '1' AND slp.positionfk = '".$position_id."' AND slp.candidatefk <> '".$exclude_user."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $return = multiCandidateFallenOff($result,$position_id.$user_id);
+
+    return $return;
+  }
+
+  function multiCandidateFallenOff($candidates,$position_id,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    foreach ($candidates as $key => $value)
+    {
+      $candidate_id = $value['candidate_id'];
+      $sQuery = "UPDATE sl_position_link SET flag = 'p' WHERE candidatefk = '".$candidate_id."' AND positionfk = '".$position_id."' ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','".$user_id."','200','0','Auto fallen off','".$sDate."','1','".$sDate."',) ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
+
+    return true;
+  }
+
   function returnSerializedSearch()
   {
     $oDB = CDependency::getComponentByName('database');

@@ -1661,6 +1661,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         }
       }
 
+      if($asData['status'] == 101) // aday placed olmus ise diger adaylar fallen off 200 yapilacak
+      {
+        $position_id = $nPositionPk;
+        $candidate_id = $asData['candidatefk'];
+        $user_id = $asData['created_by'];
+
+        getPositionRelatedUsers($position_id, $candidate_id,$user_id);
+      }
 
       /*//Link all saved... We update the candidate status if needed
        ====> check before opening the form status is > 3
