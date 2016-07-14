@@ -2137,10 +2137,38 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
-      $positionData = $oApplicant->getAll();
+      $cancelFlag = true;
+      if($oApplicant->numRows() > 0)
+      {
+        $positionData = $oApplicant->getAll();
+
+        foreach ($positionData as $key => $value)
+        {
+          if($value == '101')
+          {
+            $cancelFlag = false;
+          }
+        }
+      }
+
       ChromePhp::log($positionData);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
+
+        if($cancelFlag)
+        {
+          //duplicate position
+          $duplicate_id = "duplicate_".$pnPositionPk;
+          $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
+          $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
+            goPopup.removeLastByType(\'layer\');
+            var oConf = goPopup.getConfig();
+            oConf.width = 950;
+            oConf.height = 660;
+            goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
+            ">Close</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
+        }
+
         //duplicate position
         $duplicate_id = "duplicate_".$pnPositionPk;
         $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
