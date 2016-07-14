@@ -4414,6 +4414,8 @@ class CSl_statEx extends CSl_stat
           continue;
 
         $user_info = getUserInformaiton($id);
+        $stats_data['consultant'][$id]['kpi_flag'] = $user_info['kpi_flag'];
+
         if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
         {
           if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
@@ -4761,6 +4763,8 @@ class CSl_statEx extends CSl_stat
           continue;
 
         $user_info = getUserInformaiton($id);
+        $stats_data['researcher'][$id]['kpi_flag'] = $user_info['kpi_flag'];
+
         if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
         {
           if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
