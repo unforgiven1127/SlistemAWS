@@ -3017,6 +3017,88 @@ var_dump($query);*/
 
   }
 
+  function getPreStatus($candidate_id, $position_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_position_link slp WHERE slp.candidatefk = '".$candidate_id."' AND slp.positionfk = '".$position_id."' ORDER BY slp.sl_position_linkpk DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    if(isset($result[1]))
+    {
+      $preStatus = $result[1];
+    }
+    else
+    {
+      $preStatus = 0;
+    }
+
+    $statusTitle = getStatusTitle($preStatus);
+
+    return $statusTitle;
+
+  }
+
+  function getStatusTitle($status_id)
+  {
+    if($status_id == '1')
+    {
+      return "Pitch";
+    }
+    else if($status_id == '2')
+    {
+      return "Resume sent";
+    }
+    else if($status_id == '51')
+    {
+      return "CCM1";
+    }
+    else if($status_id == '52')
+    {
+      return "CCM2";
+    }
+    else if($status_id == '53')
+    {
+      return "CCM3";
+    }
+    else if($status_id == '54')
+    {
+      return "CCM4";
+    }
+    else if($status_id > '54' && $status_id <= '70')
+    {
+      return "MCCM";
+    }
+    else if($status_id == '100')
+    {
+      return "Offer";
+    }
+    else if($status_id == '101')
+    {
+      return "Placed";
+    }
+    else if($status_id == '150' || $status_id == '151')
+    {
+      return "Expired";
+    }
+    else if($status_id == '200')
+    {
+      return "Fallen off";
+    }
+    else if($status_id == '201')
+    {
+      return "Not Interested";
+    }
+    else
+    {
+      return "-";
+    }
+
+  }
+
   function getUserInformaiton($user_id)
   {
     $oDB = CDependency::getComponentByName('database');

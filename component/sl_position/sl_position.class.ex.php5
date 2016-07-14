@@ -2320,13 +2320,17 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             else
             {
               ChromePhp::log([$asCandidate]);
+              $candidate_id = $asCandidate['sl_candidatepk'];
+              $position_id = $asCandidate['sl_position_linkpk'];
+              $preStatus = getPreStatus($candidate_id, $position_id);
+
               if($asCandidate['status'] == 251)
               {
-                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].'</b>]<br>[<b>Test</b>]';
+                $sRow.=  ' [<b> '.$asStatus[$asCandidate['app_status']].' </b>]<br>[<b> '.$preStatus.' </b>]';
               }
               else
               {
-                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].'</b>]';
+                $sRow.=  ' [<b> '.$asStatus[$asCandidate['app_status']].' </b>]';
               }
             }
 
