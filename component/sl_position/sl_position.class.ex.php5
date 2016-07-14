@@ -2137,7 +2137,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
-ChromePhp::log($oApplicant);
+      $positionData = $oApplicant->getAll();
+      ChromePhp::log($positionData);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
         //duplicate position
