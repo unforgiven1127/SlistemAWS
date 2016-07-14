@@ -2324,7 +2324,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $position_id = $asCandidate['positionfk'];
               $preStatus = getPreStatus($candidate_id, $position_id);
 
-              if($asCandidate['status'] == 251 || $asCandidate['status'] == 250)
+              if($asCandidate['status'] == 251 || $asCandidate['status'] == 200)
               {
                 $sRow.=  ' [<b> '.$asStatus[$asCandidate['app_status']].' </b>]<br>[<b> '.$preStatus.' </b>]';
               }
