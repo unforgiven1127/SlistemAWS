@@ -2319,8 +2319,15 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.=  ' <span class="in_play">[<b>'.$asStatus[$asCandidate['app_status']].'</b>]</span>';
             else
             {
-              ChromePhp::log($asCandidate);
-              $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].' - </b>]';
+              ChromePhp::log([$asCandidate]);
+              if($asCandidate['status'] == 251)
+              {
+                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].' - </b>]';
+              }
+              else
+              {
+                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].'</b>]';
+              }
             }
 
             $sRow.= $this->_oDisplay->getBlocEnd();
