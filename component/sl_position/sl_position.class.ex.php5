@@ -2322,7 +2322,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               ChromePhp::log([$asCandidate]);
               if($asCandidate['status'] == 251)
               {
-                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].' - </b>]';
+                $sRow.=  ' [<b>'.$asStatus[$asCandidate['app_status']].'</b>]<br>[<b>Test</b>]';
               }
               else
               {
