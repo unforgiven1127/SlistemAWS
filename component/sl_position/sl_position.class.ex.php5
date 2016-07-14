@@ -2137,6 +2137,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
         ">Edit position</a>', array('class' => 'position_edit '.$hiddenClass));
 
+ChromePhp::log($oApplicant);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
         //duplicate position
@@ -2724,7 +2725,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML = $this->_oDisplay->getTitle('Position details', 'h3', true);
       //foreach($asPosition as $sVar => $sValue)
 
-ChromePhp::log($oApplicant);
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_EDIT, CONST_POSITION_TYPE_JD, $pnPositionPk);
       $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
         goPopup.removeLastByType(\'layer\');
