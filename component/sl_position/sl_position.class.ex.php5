@@ -2349,7 +2349,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sHeader = $this->_oDisplay->getBlocStart('', array('class' => 'candidate_detail_row header'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Started', array('class' => 'candidate_detail_date'));
-        $sHeader.= $this->_oDisplay->getBloc('', 'Candidate & company', array('class' => 'candidate_detail_name'));
+        $sHeader.= $this->_oDisplay->getBloc('', 'Candidate & company1', array('class' => 'candidate_detail_name'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Status', array('class' => 'candidate_detail_status'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Ends', array('class' => 'candidate_detail_expire'));
       $sHeader.= $this->_oDisplay->getBlocEnd();
@@ -2920,7 +2920,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sHeader = $this->_oDisplay->getBlocStart('', array('class' => 'candidate_detail_row header'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Started', array('class' => 'candidate_detail_date'));
-        $sHeader.= $this->_oDisplay->getBloc('', 'Candidate & company', array('class' => 'candidate_detail_name'));
+        $sHeader.= $this->_oDisplay->getBloc('', 'Candidate & company2', array('class' => 'candidate_detail_name'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Status', array('class' => 'candidate_detail_status'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Ends', array('class' => 'candidate_detail_expire'));
       $sHeader.= $this->_oDisplay->getBlocEnd();
