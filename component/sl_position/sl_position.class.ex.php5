@@ -2319,7 +2319,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.=  ' <span class="in_play">[<b>'.$asStatus[$asCandidate['app_status']].'</b>]</span>';
             else
             {
-              ChromePhp::log([$asCandidate]);
+              ChromePhp::log($asCandidate);
               $candidate_id = $asCandidate['sl_candidatepk'];
               $position_id = $asCandidate['sl_positionpk'];
               $preStatus = getPreStatus($candidate_id, $position_id);
