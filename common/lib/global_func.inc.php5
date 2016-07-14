@@ -2835,6 +2835,7 @@ var_dump($query);*/
 
   function getPositionRelatedUsers($position_id, $exclude_user,$user_id)
   {
+    ChromePhp::log('HERE 2');
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT DISTINCT(slp.candidatefk) as candidate_id FROM sl_position_link slp WHERE slp.active = '1' AND slp.positionfk = '".$position_id."' AND slp.candidatefk <> '".$exclude_user."' ";
@@ -2842,6 +2843,7 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
+    ChromePhp::log($result);
 
     $return = multiCandidateFallenOff($result,$position_id.$user_id);
 
@@ -2850,6 +2852,7 @@ var_dump($query);*/
 
   function multiCandidateFallenOff($candidates,$position_id,$user_id)
   {
+    ChromePhp::log('HERE 3');
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
 

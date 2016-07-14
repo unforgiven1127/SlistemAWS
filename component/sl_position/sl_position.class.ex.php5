@@ -1661,14 +1661,15 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         }
       }
 
-      if($asData['status'] == 101) // aday placed olmus ise diger adaylar fallen off 200 yapilacak
+      /*if($asData['status'] == 101) // aday placed olmus ise diger adaylar fallen off 200 yapilacak
       {
+        ChromePhp::log('HERE 1');
         $position_id = $nPositionPk;
         $candidate_id = $asData['candidatefk'];
         $user_id = $asData['created_by'];
 
         getPositionRelatedUsers($position_id, $candidate_id,$user_id);
-      }
+      }*/
 
       /*//Link all saved... We update the candidate status if needed
        ====> check before opening the form status is > 3
@@ -1748,10 +1749,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oLogin = CDependency::getComponentByName('login');
 
       //3. add a system fallen off step
-      foreach($asCandidate as $nCanduidatefk)
+      foreach($asCandidate as $nCanduidatefk) // burada adaylar status 251 oluyordu 200 yaptik fallen off oluyor.
       {
         $asLink = array('positionfk' => $nPositionPk, 'candidatefk' => $nCanduidatefk, 'date_created' => $sNow,
-            'status' => 251, 'created_by' => -1, 'comment' => 'Position filled by '.$oLogin->getUserLink($pnUserPk),
+            'status' => 200, 'created_by' => -1, 'comment' => 'Position filled by '.$oLogin->getUserLink($pnUserPk),
                 'date_expire' => $sNow, 'active' => 1);
 
         $this->_getModel()->add($asLink, 'sl_position_link');
