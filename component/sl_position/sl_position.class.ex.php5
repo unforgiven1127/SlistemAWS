@@ -2151,7 +2151,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         }
       }
 
-      ChromePhp::log($positionData);
+      ChromePhp::log($cancelFlag);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
 
