@@ -2319,12 +2319,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.=  ' <span class="in_play">[<b>'.$asStatus[$asCandidate['app_status']].'</b>]</span>';
             else
             {
-              ChromePhp::log($asCandidate);
+              //ChromePhp::log($asCandidate);
               $candidate_id = $asCandidate['candidatefk'];
               $position_id = $asCandidate['positionfk'];
               $preStatus = getPreStatus($candidate_id, $position_id);
 
-              if($asCandidate['status'] == 251)
+              if($asCandidate['status'] == 251 || $asCandidate['status'] == 250)
               {
                 $sRow.=  ' [<b> '.$asStatus[$asCandidate['app_status']].' </b>]<br>[<b> '.$preStatus.' </b>]';
               }
