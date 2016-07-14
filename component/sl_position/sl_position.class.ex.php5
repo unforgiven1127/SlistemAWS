@@ -2321,7 +2321,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             {
               ChromePhp::log([$asCandidate]);
               $candidate_id = $asCandidate['sl_candidatepk'];
-              $position_id = $asCandidate['sl_position_linkpk'];
+              $position_id = $asCandidate['sl_positionpk'];
               $preStatus = getPreStatus($candidate_id, $position_id);
 
               if($asCandidate['status'] == 251)
