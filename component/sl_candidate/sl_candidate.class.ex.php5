@@ -2704,7 +2704,7 @@ ChromePhp::log('pass');
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      if(isset($exploded[1]))
+      if(isset($exploded[1]) && !isset($exploded[2]))
       {
         $searchID = $exploded[1];
 
@@ -2923,7 +2923,7 @@ ChromePhp::log($sQuery);
       $asData = array();
       $asPk = array();
 
-      if(isset($exploded[1]))
+      if(isset($exploded[1]) && !isset($exploded[2]))
       {
         $searchID = $exploded[1];
 
