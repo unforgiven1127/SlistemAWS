@@ -3415,7 +3415,7 @@ ChromePhp::log($test_value);
           else
             $asListMsg[] = 'Active candidates created by '.$oLogin->getUserName($nLoginfk);
 
-          $poQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
+          $poQB->addWhere("( spli.in_play = '1' AND  ( spli.created_by = '".$nLoginfk."' OR ( scan.created_by = '".$nLoginfk."' AND ( scan.statusfk = '1' or scan.statusfk = '5' or scan.statusfk = '6' ) ) ) ) ");
           $poQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status <= 100 ');
           $pbPosField = true;
           break;
