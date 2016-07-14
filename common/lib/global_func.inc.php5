@@ -3029,7 +3029,7 @@ var_dump($query);*/
 
     if(isset($result[1]))
     {
-      $preStatus = $result[1];
+      $preStatus = $result[1]['status'];
     }
     else
     {
