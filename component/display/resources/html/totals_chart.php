@@ -69,6 +69,10 @@
 	{
 		$flag = true;
 	}
+	if($value['kpi_flag'] == "p")
+	{
+		$flag = false;
+	}
 	if ($row_number_rank % 2 === 0)
 		$even = ' even_row';
 	else
