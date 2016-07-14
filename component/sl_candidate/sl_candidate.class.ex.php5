@@ -2929,13 +2929,13 @@ ChromePhp::log($sQuery);
 
         $savedQuery = getLoggedQuery($searchID);
         $sQuery = $savedQuery[0]['action'];
-ChromePhp::log($sQuery);
+
         $oDbResult = $oDb->ExecuteQuery($sQuery);
         $bRead = $oDbResult->readFirst();
         $all = $oDbResult->getAll();
         $nResult = count($all);
       }
-
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
