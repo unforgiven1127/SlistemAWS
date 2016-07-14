@@ -3022,7 +3022,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT * FROM sl_position_link slp WHERE slp.candidatefk = '".$candidate_id."' AND slp.positionfk = '".$position_id."' ORDER BY slp.sl_position_linkpk DESC";
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
