@@ -337,7 +337,7 @@ class CSl_positionEx extends CSl_position
 
       $return = $this->_getModel()->closePosition($pnPositionPk);
 
-      return true;
+      return $return;
     }
 
     private function _getPositionDuplicateForm($pnPositionPk = 0)
