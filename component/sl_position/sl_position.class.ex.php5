@@ -1854,24 +1854,24 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       else
         $asStatus[51] = 'CCM1';
 
-      $asStatus[100] = 'offer';
-      $asStatus[101] = 'placed';
+      $asStatus[100] = 'Offer';
+      $asStatus[101] = 'Placed';
 
       if($pbAll || $pbAddStalled)
       {
-        $asStatus[150] = 'stalled';
-        $asStatus[151] = 'expired';
+        $asStatus[150] = 'Stalled';
+        $asStatus[151] = 'Expired';
       }
 
       if($pnCurrentStatus == 150)
-        $asStatus[150] = 'stalled';
+        $asStatus[150] = 'Stalled';
 
       if($pnCurrentStatus == 151)
-        $asStatus[151] = 'expired';
+        $asStatus[151] = 'Expired';
 
 
-      $asStatus[200] = 'fallen off';
-      $asStatus[201] = 'not interested';
+      $asStatus[200] = 'Fallen off';
+      $asStatus[201] = 'Not interested';
 
       if($pbAll)
       {
