@@ -1723,7 +1723,7 @@ var_dump($query);*/
       {
         $asData[$user_id] = array();
       }
-      if($temp['min_date'] == null || $temp['min_date'] == $temp['sl_meetingpk'])
+      if($temp['min_date'] == '' || $temp['min_date'] == $temp['sl_meetingpk'])
       {
         array_push($asData[$user_id], $temp);
 
