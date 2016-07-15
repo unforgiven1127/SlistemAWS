@@ -2383,7 +2383,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 ChromePhp::log($asCandidate);
           if($asCandidate['status'] < 101)
           {
-            $sRow.= substr($asCandidate['date_created'], 0, 10);
+            $sRow.= substr($asCandidate['app_date'], 0, 10);
             $sRow.= $this->_oDisplay->getBlocEnd();
             $sRow.= $this->_oDisplay->getBlocEnd();
             $asInPlay['active'][] = $sRow;
@@ -2391,9 +2391,9 @@ ChromePhp::log($asCandidate);
           else
           {
             if($asCandidate['status'] == 151)
-              $sRow.= substr($asCandidate['date_created'], 0, 10);
+              $sRow.= substr($asCandidate['app_date'], 0, 10);
             else
-              $sRow.= substr($asCandidate['date_created'], 0, 10);
+              $sRow.= substr($asCandidate['app_date'], 0, 10);
 
             $sRow.= $this->_oDisplay->getBlocEnd();
             $sRow.= $this->_oDisplay->getBlocEnd();
