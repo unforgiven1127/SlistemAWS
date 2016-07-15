@@ -224,7 +224,7 @@ class CSl_positionModelEx extends CSl_positionModel
     {
       $candidate_id = $candidate['candidatefk'];
       ChromePhp::log($candidate_id);
-      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','-1','200','0','Position closed','".$sDate."','1','".$sDate."') ";
+      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','-1','200','0','position_closed','".$sDate."','1','".$sDate."') ";
       ChromePhp::log($sQuery);
       //$this->oDB->executeQuery($sQuery);
     }
