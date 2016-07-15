@@ -1706,8 +1706,8 @@ var_dump($query);*/
         AND m.meeting_done = "0"
         group by m.sl_meetingpk
         order by m.candidatefk';
-//echo '<br><br>';
-//var_dump($query);
+echo '<br><br>';
+var_dump($query);
 
     $oDbResult = array();
 
