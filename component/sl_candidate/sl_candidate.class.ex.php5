@@ -2923,7 +2923,7 @@ ChromePhp::log($sQuery);
       $asData = array();
       $asPk = array();
 
-      if(isset($exploded[1]) && !isset($exploded[2]))
+      if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
         $searchID = $exploded[1];
 
