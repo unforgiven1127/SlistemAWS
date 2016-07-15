@@ -2863,7 +2863,7 @@ var_dump($query);*/
 
       $db_result = $oDB->executeQuery($sQuery);
 
-      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','".$user_id."','200','0','Auto fallen off','".$sDate."','1','".$sDate."',) ";
+      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','".$user_id."','200','0','Auto fallen off','".$sDate."','1','".$sDate."') ";
 
       $db_result = $oDB->executeQuery($sQuery);
     }
