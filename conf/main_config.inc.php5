@@ -350,6 +350,7 @@ define('CONST_ACTION_FASTEDIT', 'ppafe');
 define('CONST_ACTION_EDIT', 'ppae');
 define('CONST_ACTION_ADD', 'ppaa');
 define('CONST_ACTION_DUPLICATE', 'ppad');
+define('CONST_ACTION_CLOSE', 'ppac');
 define('CONTACT_ADD', 'ppaad');
 define('CONTACT_EDIT', 'ppaac');
 define('CONST_ACTION_SAVEADD', 'ppasa');

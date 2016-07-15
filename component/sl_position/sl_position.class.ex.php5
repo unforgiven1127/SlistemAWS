@@ -156,6 +156,10 @@ class CSl_positionEx extends CSl_position
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionDuplicateForm($this->cnPk))));
             break;
 
+          case CONST_ACTION_CLOSE:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_closePosition($this->cnPk))));
+            break;
+
           case CONST_ACTION_SAVEADD:
           case CONST_ACTION_SAVEEDIT:
             return json_encode($this->_oPage->getAjaxExtraContent($this->_savePosition($this->cnPk)));
@@ -325,6 +329,16 @@ class CSl_positionEx extends CSl_position
     //------------------------------------------------------
     //  Private methods
     //------------------------------------------------------
+
+    private function _closePosition($pnPositionPk = 0)
+    {
+      if(!assert('is_integer($pnPositionPk)'))
+        return array('error' => 'Bad parameteres.');
+
+      $return = $this->_getModel()->closePosition($pnPositionPk);
+
+      return true;
+    }
 
     private function _getPositionDuplicateForm($pnPositionPk = 0)
     {
@@ -2155,18 +2169,16 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
 
-        if($cancelFlag)
+        if($cancelFlag && $oLogin->getuserPk() == '101')
         {
-          ChromePhp::log('HERE');
           //duplicate position
-          $duplicate_id = "duplicate_".$pnPositionPk;
-          $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
+          $sURLClose = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_CLOSE, CONST_POSITION_TYPE_JD, $pnPositionPk);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
             goPopup.removeLastByType(\'layer\');
             var oConf = goPopup.getConfig();
             oConf.width = 950;
             oConf.height = 660;
-            goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
+            goPopup.setLayerFromAjax(oConf, \''.$sURLClose.'\');
             ">Close position</a>', array('class' => 'position_edit ','style' => 'top: 140px;'));
         }
 

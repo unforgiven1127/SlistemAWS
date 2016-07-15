@@ -210,6 +210,26 @@ class CSl_positionModelEx extends CSl_positionModel
     return $this->oDB->executeQuery($sQuery);
   }
 
+  public function closePosition($position_id)
+  {
+    $sDate = date('Y-m-d H:i:s');
+    $sQuery = " UPDATE sl_position_link SET active = '0', date_completed = '".$sDate."' WHERE positionfk = '".$position_id."' ";
+    $this->oDB->executeQuery($sQuery);
+
+    $sQuery = " SELECT DISTINCT(slp.candidatefk) as candidatefk FROM sl_position_link slp WHERE positionfk = '".$position_id."' ";
+    $oDbResult = $this->oDB->executeQuery($sQuery);
+    $candidates = $oDbResult->getAll();
+
+    foreach ($candidates as $key => $candidate)
+    {
+      $candidate_id = $candidate['candidatefk'];
+      $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','-1','200','0','Position closed','".$sDate."','1','".$sDate."',) ";
+      $this->oDB->executeQuery($sQuery);
+    }
+
+    return true;
+  }
+
   public function update_date_completed($pre_record_id,$date_completed)
   {
 //    ChromePhp::log($pre_record_id);
