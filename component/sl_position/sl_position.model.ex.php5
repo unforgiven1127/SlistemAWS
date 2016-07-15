@@ -223,10 +223,10 @@ class CSl_positionModelEx extends CSl_positionModel
     foreach ($candidates as $key => $candidate)
     {
       $candidate_id = $candidate['candidatefk'];
-      ChromePhp::log($candidate_id);
+
       $sQuery = "INSERT INTO sl_position_link (positionfk,candidatefk,date_created,created_by,status,in_play,comment,date_expire,active,date_completed)
       VALUES ('".$position_id."','".$candidate_id."','".$sDate."','-1','200','0','position_closed','".$sDate."','1','".$sDate."') ";
-      ChromePhp::log($sQuery);
+
       $this->oDB->executeQuery($sQuery);
     }
 

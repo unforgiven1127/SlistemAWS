@@ -2391,9 +2391,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           else
           {
             if($asCandidate['status'] == 151)
-              $sRow.= ' expired the '.substr($asCandidate['date_expire'], 0, 10);
+              $sRow.= substr($asCandidate['date_created'], 0, 10);
             else
-              $sRow.= ' the '.substr($asCandidate['date_expire'], 0, 10);
+              $sRow.= substr($asCandidate['date_created'], 0, 10);
 
             $sRow.= $this->_oDisplay->getBlocEnd();
             $sRow.= $this->_oDisplay->getBlocEnd();
@@ -2408,7 +2408,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHeader.= $this->_oDisplay->getBloc('', 'Started', array('class' => 'candidate_detail_date'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Candidate & company', array('class' => 'candidate_detail_name'));
         $sHeader.= $this->_oDisplay->getBloc('', 'Status', array('class' => 'candidate_detail_status'));
-        $sHeader.= $this->_oDisplay->getBloc('', 'Ends', array('class' => 'candidate_detail_expire'));
+        $sHeader.= $this->_oDisplay->getBloc('', 'Last update', array('class' => 'candidate_detail_expire'));
       $sHeader.= $this->_oDisplay->getBlocEnd();
 
       if(!empty($asInPlay['active']))
