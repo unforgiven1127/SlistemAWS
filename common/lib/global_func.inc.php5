@@ -1718,6 +1718,7 @@ echo '<br><br>';
     {
       $temp = $oDbResult->getData();
 var_dump($temp);
+echo '<br><br>';
       if(!isset($asData[$user_id]))
       {
         $asData[$user_id] = array();
