@@ -1713,11 +1713,11 @@ var_dump($query);
 
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
-
+echo '<br><br>';
     while($read)
     {
       $temp = $oDbResult->getData();
-
+var_dump($temp);
       if(!isset($asData[$user_id]))
       {
         $asData[$user_id] = array();
