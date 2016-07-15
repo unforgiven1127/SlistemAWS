@@ -2707,7 +2707,7 @@ ChromePhp::log('pass');
       if(isset($exploded[1]) && !isset($exploded[2]))
       {
         $searchID = $exploded[1];
-
+ChromePhp::log($exploded[1]);
         $savedQuery = getLoggedQuery($searchID);
         $sQuery = $savedQuery[0]['action'];
 ChromePhp::log($sQuery);
