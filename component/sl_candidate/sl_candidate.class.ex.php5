@@ -2704,7 +2704,7 @@ ChromePhp::log('pass');
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
-      if(isset($exploded[1]) && !isset($exploded[2]))
+      if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
         $searchID = $exploded[1];
 ChromePhp::log($exploded[1]);
