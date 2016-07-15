@@ -460,6 +460,9 @@ order by m.candidatefk
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
 
+echo '<br><br>';
+var_dump($query);
+
     $data = array();
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
