@@ -27,11 +27,11 @@ class CSl_positionEx extends CSl_position
     for($nCount = 51; $nCount < 61; $nCount++)
       $this->casStatus[$nCount] = 'CCM'.($nCount-50);
 
-    $this->casStatus[100] = 'offer';
-    $this->casStatus[101] = 'placed';
-    $this->casStatus[150] = 'stalled';
-    $this->casStatus[200] = 'fallen off';
-    $this->casStatus[201] = 'not interested';
+    $this->casStatus[100] = 'Offer';
+    $this->casStatus[101] = 'Placed';
+    $this->casStatus[150] = 'Stalled';
+    $this->casStatus[200] = 'Fallen off';
+    $this->casStatus[201] = 'Not interested';
 
     return true;
   }
@@ -2379,8 +2379,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             $sRow.= $this->_oDisplay->getBlocEnd();
 
             $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'candidate_detail_expire'));
-            ChromePhp::log('TEST');
-ChromePhp::log($asCandidate);
+
           if($asCandidate['status'] < 101)
           {
             $sRow.= substr($asCandidate['app_date'], 0, 10);
