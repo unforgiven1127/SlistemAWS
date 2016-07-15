@@ -2505,13 +2505,10 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
       ChromePhp::log('_getCandidateList');
-      //ChromePhp::log($poQB->getTitle());
 
       if($poQB != null)
       {
         $exploded = explode('_',$poQB->getTitle());
-        ChromePhp::log($poQB->getTitle());
-        ChromePhp::log($exploded);
       }
 //ChromePhp::log('pass');
       global $gbNewSearch;
