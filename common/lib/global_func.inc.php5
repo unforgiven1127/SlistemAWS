@@ -1706,19 +1706,19 @@ var_dump($query);*/
         AND m.meeting_done = "0"
         group by m.sl_meetingpk
         order by m.candidatefk';
-echo '<br><br>';
-var_dump($query);
+//echo '<br><br>';
+//var_dump($query);
 
     $oDbResult = array();
 
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
-echo '<br><br>';
+//echo '<br><br>';
     while($read)
     {
       $temp = $oDbResult->getData();
-var_dump($temp);
-echo '<br><br>';
+//var_dump($temp);
+//echo '<br><br>';
       if(!isset($asData[$user_id]))
       {
         $asData[$user_id] = array();
