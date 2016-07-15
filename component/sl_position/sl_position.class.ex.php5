@@ -2362,7 +2362,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.=  ' <span class="in_play">[<b>'.$asStatus[$asCandidate['app_status']].'</b>]</span>';
             else
             {
-              //ChromePhp::log($asCandidate);
               $candidate_id = $asCandidate['candidatefk'];
               $position_id = $asCandidate['positionfk'];
               $preStatus = getPreStatus($candidate_id, $position_id);
@@ -2383,13 +2382,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
           if($asCandidate['status'] < 101)
           {
-            $sRow.= ' expires the '.substr($asCandidate['date_expire'], 0, 10);
+            $sRow.= substr($asCandidate['date_created'], 0, 10);
             $sRow.= $this->_oDisplay->getBlocEnd();
             $sRow.= $this->_oDisplay->getBlocEnd();
             $asInPlay['active'][] = $sRow;
           }
           else
           {
+            ChromePhp::log($asCandidate);
             if($asCandidate['status'] == 151)
               $sRow.= substr($asCandidate['date_created'], 0, 10);
             else
