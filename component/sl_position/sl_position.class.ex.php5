@@ -2157,6 +2157,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         if($cancelFlag)
         {
+          ChromePhp::log('HERE');
           //duplicate position
           $duplicate_id = "duplicate_".$pnPositionPk;
           $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
