@@ -226,10 +226,10 @@ class CSl_positionModelEx extends CSl_positionModel
       ChromePhp::log($candidate_id);
       $sQuery = "INSERT INTO sl_position_link VALUES ('".$position_id."','".$candidate_id."','".$sDate."','-1','200','0','position_closed','".$sDate."','1','".$sDate."') ";
       ChromePhp::log($sQuery);
-      //$this->oDB->executeQuery($sQuery);
+      $this->oDB->executeQuery($sQuery);
     }
 
-    return "Position #".$position_id." Closed";
+    return "Position #".$position_id." closed & all candidates fallen off.";
   }
 
   public function update_date_completed($pre_record_id,$date_completed)
