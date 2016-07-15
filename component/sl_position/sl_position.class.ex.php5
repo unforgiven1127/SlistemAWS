@@ -2379,7 +2379,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             $sRow.= $this->_oDisplay->getBlocEnd();
 
             $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'candidate_detail_expire'));
-
+ChromePhp::log($asCandidate);
           if($asCandidate['status'] < 101)
           {
             $sRow.= substr($asCandidate['date_created'], 0, 10);
@@ -2389,7 +2389,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           }
           else
           {
-            ChromePhp::log($asCandidate);
             if($asCandidate['status'] == 151)
               $sRow.= substr($asCandidate['date_created'], 0, 10);
             else
