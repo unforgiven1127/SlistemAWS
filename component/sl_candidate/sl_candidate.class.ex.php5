@@ -2935,7 +2935,6 @@ ChromePhp::log($sQuery);
         $all = $oDbResult->getAll();
         $nResult = count($all);
       }
-ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
