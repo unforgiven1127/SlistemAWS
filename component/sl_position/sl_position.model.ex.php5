@@ -229,7 +229,7 @@ class CSl_positionModelEx extends CSl_positionModel
       //$this->oDB->executeQuery($sQuery);
     }
 
-    return true;
+    return "Position #".$position_id." Closed";
   }
 
   public function update_date_completed($pre_record_id,$date_completed)
