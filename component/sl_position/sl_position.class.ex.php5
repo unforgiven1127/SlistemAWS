@@ -2167,7 +2167,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             oConf.width = 950;
             oConf.height = 660;
             goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
-            ">Close</a>', array('class' => 'position_edit ','style' => 'top: 130px;'));
+            ">Close position</a>', array('class' => 'position_edit ','style' => 'top: 140px;'));
         }
 
         //duplicate position
