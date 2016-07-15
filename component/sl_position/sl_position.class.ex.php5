@@ -2144,7 +2144,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         foreach ($positionData as $key => $value)
         {
-          if($value == '101')
+          if($value['status'] == '101')
           {
             $cancelFlag = false;
           }
