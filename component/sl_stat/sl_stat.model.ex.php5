@@ -460,8 +460,8 @@ order by m.candidatefk
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch;
 
-echo '<br><br>';
-var_dump($query);
+//echo '<br><br>';
+//var_dump($query);
 
     $data = array();
     $flip_user_ids = array_flip($user_ids);
@@ -518,7 +518,7 @@ var_dump($query);
         }
         if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
         {
-          # do nthng
+          # bir sonraki ayin 5 ini gecmis oluyor o nedenle cancel sayiyoruz
         }
         else
         {
