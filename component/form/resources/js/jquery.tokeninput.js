@@ -458,12 +458,11 @@ $.TokenList = function (input, url_or_data, settings) {
 
     // Inner function to a token to the list
     function insert_token(item) {
-        alert(item)
         var this_token = settings.tokenFormatter(item);
         this_token = $(this_token)
           .addClass(settings.classes.token)
           .insertBefore(input_token);
-
+alert(item.name);
         // The 'delete token' button
         $("<span>" + settings.deleteText + "</span>")
             .addClass(settings.classes.tokenDelete)
@@ -789,7 +788,7 @@ $.TokenList = function (input, url_or_data, settings) {
             //alert('cache');
             populate_dropdown(query, cached_results);
         } else {
-            alert('not cache');
+            //alert('not cache');
             // Are we doing an ajax search or local data search?
             if(settings.url) {
                 var url = computeURL();
