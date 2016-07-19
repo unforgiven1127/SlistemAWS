@@ -279,6 +279,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 case KEY.NUMPAD_ENTER:
                 case KEY.COMMA:
                   if(selected_dropdown_item) {
+                    alert('selected dropdown item');
                     add_token($(selected_dropdown_item).data("tokeninput"));
                     hidden_input.change();
                     return false;
@@ -500,8 +501,6 @@ $.TokenList = function (input, url_or_data, settings) {
     // Add a token to the token list based on user input
     function add_token (item) {
         var callback = settings.onAdd;
-            alert('test 1 2 3');
-            alert(item);
         // See if the token already exists and select it if we don't want duplicates
         if(token_count > 0 && settings.preventDuplicates) {
             var found_existing_token = null;
