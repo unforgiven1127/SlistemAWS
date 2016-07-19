@@ -2477,7 +2477,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _positionList($poQb = null)
     {
-      ChromePhp::log('_positionList');
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
@@ -2612,7 +2611,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bRead)
         return array('data' => 'Could not find any position.', 'sql' => $poQb->getSql());
 
-
+ChromePhp::log($poQb->getSql());
       $asPosition = array();
       if($bSplitted)
         $asPosition = array('free' => array(), 'filled' => array());
@@ -2647,7 +2646,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asData['companyfk']);
         $asData['company_name'] = $oHTML->getLink($asData['name'], 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\');'));
         $asData['language'] = 'E:'.$asData['lvl_english'].'&nbsp;&nbsp; J:'.$asData['lvl_japanese'];
-
+      ChromePhp::log($asData);
         if(empty($asData['salary_from']))
           $asData['salary_from'] = '';
         else
