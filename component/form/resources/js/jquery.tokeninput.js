@@ -462,7 +462,7 @@ $.TokenList = function (input, url_or_data, settings) {
         this_token = $(this_token)
           .addClass(settings.classes.token)
           .insertBefore(input_token);
-alert(item.name);
+
         // The 'delete token' button
         $("<span>" + settings.deleteText + "</span>")
             .addClass(settings.classes.tokenDelete)
@@ -815,6 +815,7 @@ alert(item.name);
                     ajax_params.dataType = "jsonp";
                 }
                 // Attach the success callback
+                console.log(ajax_params);
                 ajax_params.success = function(results) {
                   if($.isFunction(settings.onResult)) {
                       results = settings.onResult.call(hidden_input, results);
