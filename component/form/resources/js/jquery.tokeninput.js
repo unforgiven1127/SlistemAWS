@@ -279,7 +279,6 @@ $.TokenList = function (input, url_or_data, settings) {
                 case KEY.NUMPAD_ENTER:
                 case KEY.COMMA:
                   if(selected_dropdown_item) {
-                    alert('selected dropdown item');
                     add_token($(selected_dropdown_item).data("tokeninput"));
                     hidden_input.change();
                     return false;
@@ -404,6 +403,7 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     this.add = function(item) {
+        alert('selected dropdown item');
         add_token(item);
     }
 
