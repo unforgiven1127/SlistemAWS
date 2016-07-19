@@ -359,7 +359,6 @@ class CRightEx extends CRight
     {
       if(!is_cpValues($psUid))
       {
-        ChromePhp::log('is_cpValues');
         assert('false; // bad parameters');
         return false;
       }

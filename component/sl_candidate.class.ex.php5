@@ -6838,9 +6838,6 @@ class CSl_candidateEx extends CSl_candidate
         $nMaxActiveStatus = (int)$oDbResult->getFieldValue('status');
       }
 
-      //dump($nPlay);
-      //dump($nMaxActiveStatus);
-//ChromePhp::log($nScore);
       if($nScore > 116)
         $nRating = 100;
       else
@@ -6852,7 +6849,7 @@ class CSl_candidateEx extends CSl_candidate
         else if($nRating > 100) // birlestirme sonrasi hesaplama icin MCA
           $nRating = 100;
       }
-//ChromePhp::log($nRating);
+
       $asUpdate = array('_has_doc' => $nDocument, '_in_play' => $nPlay, '_pos_status' => $nMaxActiveStatus,
           'profile_rating' => $nRating, '_date_updated' => date('Y-m-d H:i:s'));
       $bUpdated = $this->_getModel()->update($asUpdate, 'sl_candidate_profile', 'candidatefk = '.$pnCandidatePk);
@@ -7884,7 +7881,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getMergeForm($pnCandidatePk)
     {
-      //ChromePhp::log('merge form 1'); burasi degil merge form 2 ye gidiyor
+      // burasi degil merge form 2 ye gidiyor
       if(!assert('is_key($pnCandidatePk)'))
         return array('error' => 'Wrong parameters');
 

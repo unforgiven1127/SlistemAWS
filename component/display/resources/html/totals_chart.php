@@ -290,8 +290,6 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			//ChromePhp::log($value['position']);
-			//echo $value['position'];
 			if($value['position'] == "Researcher")
 			{$foreachValue = $value['placedRevenue_info'];}
 			else

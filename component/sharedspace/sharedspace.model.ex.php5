@@ -241,7 +241,6 @@ class CSharedSpaceModelEx extends CSharedSpaceModel
 
   public function getDocuments($pnUserPk, $psRight='read', $paCpValues = array(), $paPagination = array())
   {
-    //ChromePhp::log('getDocuments');
     if(!assert('is_integer($pnUserPk)'))
       return array();
 

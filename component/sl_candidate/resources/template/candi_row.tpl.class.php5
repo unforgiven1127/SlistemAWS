@@ -218,7 +218,7 @@ class CCandi_row extends CTemplate
     {
       set_array($pasColumnParam[6]['tag'], '');
       $asOption = array('class' => $pasColumnParam[6]['tag'].' tplCandiRow_continuous tpl_link_cell');
-//ChromePhp::log($asOption);
+
       if($pasData['_sys_status'] > 0)
         $asOption['class'].= ' deleted';
 

@@ -537,9 +537,9 @@ class CNotificationEx extends CNotification
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-//ChromePhp::log($pasUsers);
-//ChromePhp::log($poMail);
-//ChromePhp::log($pasAction);
+ChromePhp::log($pasUsers);
+ChromePhp::log($poMail);
+ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
@@ -552,7 +552,6 @@ class CNotificationEx extends CNotification
       $cc .= $pasUsers[$id]['email'].';';
     }
     $cc = rtrim($cc, ";");
-//ChromePhp::log($cc);
 
     foreach ($pasAction as $id => $user_messages)
     {
@@ -688,7 +687,7 @@ class CNotificationEx extends CNotification
       $poMail->addCCRecipient($cc);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
-//ChromePhp::log($poMail);
+
       if ($nSent)
       {
         foreach ($user_messages as $message_info)

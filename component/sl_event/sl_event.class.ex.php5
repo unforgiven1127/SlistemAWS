@@ -88,12 +88,11 @@ class CSl_eventEx extends CSl_event
 
     foreach ($asNotes as $key => $note)
     {
-      //ChromePhp::log($asNotes[$key]['type']);
+
       $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
       if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
       {
-        //ChromePhp::log($splitted1[0]);
-        //ChromePhp::log($splitted1[1]);
+
         $asNotes[$key]['content'] = $splitted1[1];
 
         $asNotes[$key]['content'] = str_replace("<br />","",$asNotes[$key]['content']);
@@ -173,7 +172,6 @@ class CSl_eventEx extends CSl_event
 
         $asNotes[$key]['content'] = TRIM($asNotes[$key]['content']);*/
 
-//        ChromePhp::log($asNotes[$key]['content']);
     }
 
     //$asNotes = $return['all']; // bos array donunce burada patliyor...
@@ -240,9 +238,8 @@ class CSl_eventEx extends CSl_event
           $addNotes['type'] = "cp_history";
           $addNotes['updated_by'] = '';
 
-          //ChromePhp::log($addNotes);
           array_push($asNotes,$addNotes);
-          //ChromePhp::log($asNotes);
+
         }
       }
 
@@ -268,7 +265,6 @@ class CSl_eventEx extends CSl_event
 
       //$str = 'In My Cart : 11 12 items';
       //preg_match_all('!\d+!', $str, $matches);
-      //ChromePhp::log($matches);
 
       // array gelmezse patliyo... duzelt... MCA
       foreach($asNotes as $asNote)
@@ -279,8 +275,6 @@ class CSl_eventEx extends CSl_event
             preg_match_all('!\d+!', $exploded, $position);
             $position_id = $position[0][0];
             $companyInformation = getPositionInformation($position_id);
-            //ChromePhp::log($position); // pozisyonu aldik.....
-            //ChromePhp::log($position[0][0]);
         }
         if (isset($asNote) && !empty($asNote) && isset($asNote['content']) && strpos($asNote['content'], 'Status changed to') !== false) {
           $asNote['content'] = '<b><i>'.$asNote['content'].' - '.$companyInformation['name'].'</i></b>';
@@ -364,7 +358,7 @@ class CSl_eventEx extends CSl_event
  */
   private function _getNoteForm($pnPk)
   {
-    //ChromePhp::log('_getNoteForm'); // not ekleme kismi buraya geliyor
+    // not ekleme kismi buraya geliyor
     if(!assert('is_integer($pnPk)'))
       return '';
 
@@ -620,12 +614,6 @@ class CSl_eventEx extends CSl_event
 
     $userName = $userInfo['firstname']." ".$userInfo['lastname'];
 
-    //ChromePhp::log($event_type); // note, character, email, meeting, phone, update, cp_history = company history
-    //ChromePhp::log($note_title);
-    //ChromePhp::log($content);
-    //ChromePhp::log($psAction);
-    //ChromePhp::log($userInfo);
-
     if(empty($delete_flag))
     {
       $note = $userName." created a new";
@@ -655,9 +643,6 @@ class CSl_eventEx extends CSl_event
       $note = $userName." edited note #".$this->cnPk;
     }
 
-    //ChromePhp::log($user_id);
-    //ChromePhp::log($candidate_id);
-    //ChromePhp::log($note);
     insertLog($user_id, $candidate_id, $note);
 
     if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))

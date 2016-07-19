@@ -354,19 +354,19 @@ class CSl_candidateModelEx extends CSl_candidateModel
   public function getSlPositionLink($candidatefk)
   {
     $sQuery = " SELECT * FROM sl_position_link pl WHERE pl.candidatefk = '".$candidatefk."'";
-//ChromePhp::log($sQuery);
+
     $returnArray = array();
     $oDbResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
-//ChromePhp::log($bRead);
+
     while($bRead)
     {
       $returnArray = $oDbResult->getData();// get the latest data
       //array_push($returnArray,$oDbResult->getData());
-      //ChromePhp::log($oDbResult->getData());
+
       $bRead = $oDbResult->readNext();
     }
-//ChromePhp::log($result->getData());
+
     return $returnArray;
   }
 
@@ -511,7 +511,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
   public function getDuplicate($candidate_info, $force_target = 0, $merge_data = false, $skip_company = false)
   {
-//ChromePhp::log($candidate_info); // merge ederken sadece candidate id geliyor...
+    // merge ederken sadece candidate id geliyor...
     $candidate_contact_info = array(); // will use for checking duplicates
     if(isset($candidate_info['contact']))
     {
@@ -667,8 +667,6 @@ class CSl_candidateModelEx extends CSl_candidateModel
 
     $query.= ' ORDER BY ratio DESC, lastname_lev ASC, ca.firstname ASC LIMIT 100 OFFSET 0';
 
-//ChromePhp::log($query);
-
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
 
@@ -684,7 +682,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
         $read = $db_result->readNext();
       }
     }
-//ChromePhp::log($duplicate_array);
+
     return $duplicate_array;
   }
 

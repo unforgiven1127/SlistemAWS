@@ -47,7 +47,7 @@ class CQuickSearch
 
   public function _buildCandidateQuickSearch($pbStrict = true)
   {
-    ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya
+    // sort ta da buraya
     if($pbStrict)
       $sOperator = ' AND ';
     else
@@ -92,17 +92,12 @@ class CQuickSearch
     if(isset($_GET['searchId']))
     {
       $searchID = $_GET['searchId'];
-      ChromePhp::log($searchID);
+
       $sCandidate = 'test';
     }
 
     $sRefId = preg_replace('/[^0-9]/', '', $sCandidate);
 
-
-    /*dump($sCandidate);
-    dump($sNameFormat);
-    dump($sFirstField);
-    dump($sSecondField);*/
 
     if(!empty($sRefId) && is_numeric($sRefId))
     {
@@ -119,7 +114,7 @@ class CQuickSearch
       {
         //check if it's a comma separated sting
         $asWords = explode(',', $sCandidate);
-//        ChromePhp::log($asWords);
+
         $this->_cleanArray($asWords);
         $nWord = count($asWords);
         if($nWord > 2)
@@ -344,7 +339,7 @@ class CQuickSearch
               $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
 
           //$sKeyword = explode(",", $sKeyword); // , ile multi search
-          //ChromePhp::log($sKeyword);
+
           /*foreach ($sKeyword as $key => $value) {
             # code...
             $bExactMatch = (bool)getValue('qs_exact_match', 0);

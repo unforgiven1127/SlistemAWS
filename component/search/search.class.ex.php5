@@ -869,7 +869,6 @@ class CSearchEx extends CSearch
     //dump($pasField);
 
     //$time = time();
-    //ChromePhp::log($time);
 
     if(isset($pasField['display']['operator']['params']))
     {
@@ -1198,7 +1197,7 @@ class CSearchEx extends CSearch
 
   public function buildComplexSearchQuery()
   {
-    ChromePhp::log('buildComplexSearchQuery'); // sort ta da buraya
+    // sort ta da buraya
 
     $bComplex = (bool)getValue('complex_mode', 0);
     $sCpUid = getValue('component_uid');

@@ -4781,9 +4781,6 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['position'] = $user_info['position'];
         }
 
-        //var_dump($user_info);
-        //ChromePhp::log($user_info);
-        //exit;
         //$stats_data['researcher'][$id]['position'] = $user_info['position'];
 
         if (!empty($temp_resume_sent[$id]['resumes_sent']))
@@ -4801,9 +4798,6 @@ class CSl_statEx extends CSl_stat
         {
           $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
           $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-
-          //echo '<br><br>';
-          //var_dump($stats_data['researcher']);
 
         }
         else

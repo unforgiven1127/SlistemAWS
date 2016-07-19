@@ -360,12 +360,10 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
     $user_id = $oLogin->getUserPk();
 
-    //ChromePhp::log($psTitle);
     $searchLinks = array();
     if($psTitle == "Searches")
     {
       $searchLogs = getSearchLogs($user_id);
-      //ChromePhp::log($searchLogs);
       foreach ($searchLogs as $key => $value)
       {
         $add = array();
@@ -403,7 +401,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
 
     foreach($mainPageShortcuts as $asActivity)
     {
-////ChromePhp::log($asActivity);
+
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
@@ -500,7 +498,7 @@ Reminder linked to item', '2013-10-05 08:00:00');
   {
     if(!assert('is_key($pnUserPk)'))
       return '';
-//ChromePhp::log('here'); // yazdi gitti !!!
+
     $oChart = CDependency::getComponentByName('charts');
     $oChart->includeChartsJs(true);
 
@@ -516,7 +514,6 @@ Reminder linked to item', '2013-10-05 08:00:00');
     //buraya girdigi icin degisiklikleri algilamiyor.
     /*if($pbAllowCache && isset($_SESSION['HOME_PAGE_CHARTS']) && $_SESSION['HOME_PAGE_CHARTS_DATE'] > strtotime('-8 minutes'))
     {
-      //ChromePhp::log('charts refreshed every few minutes');
       return $_SESSION['HOME_PAGE_CHARTS'];
     }*/
 
@@ -536,9 +533,6 @@ Reminder linked to item', '2013-10-05 08:00:00');
     $sPosition = get_new_positions_in_play($pnUserPk);
     $sPipeline = @file_get_contents(CONST_PATH_ROOT.CONST_PATH_UPLOAD_DIR.'/sl_stat/charts/'.$pnUserPk.'_pipeline.html');
 
-
-//ChromePhp::log('objectives bas');
-    //ChromePhp::log($objectives);
 
     if(!empty($objectives) && $asSettings['home_taregt_tbl'] > 0)
       $sTable.= '

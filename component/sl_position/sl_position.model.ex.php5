@@ -153,8 +153,6 @@ class CSl_positionModelEx extends CSl_positionModel
 
   public function getPositionList($poQb = null, $pnLimit = 250,$afterAdd = false)
   {
-    //ChromePhp::log('getPositionList');
-    //ChromePhp::log($afterAdd);
 
     if($afterAdd != false)
     {
@@ -205,8 +203,6 @@ class CSl_positionModelEx extends CSl_positionModel
       $sQuery = $poQb->getSql();
     }
 
-    //ChromePhp::log($sQuery);
-    //dump($sQuery);
     return $this->oDB->executeQuery($sQuery);
   }
 
@@ -235,7 +231,6 @@ class CSl_positionModelEx extends CSl_positionModel
 
   public function update_date_completed($pre_record_id,$date_completed)
   {
-//    ChromePhp::log($pre_record_id);
     $sQuery = "UPDATE sl_position_link SET date_completed = '".$date_completed."' WHERE sl_position_linkpk = ".$pre_record_id;
     return $this->oDB->executeQuery($sQuery);
   }
@@ -351,7 +346,7 @@ class CSl_positionModelEx extends CSl_positionModel
 
     if (!empty($filter['revenue']))
         $query.= ' WHERE '.implode(' AND ', $filter['revenue']);
-//ChromePhp::log($query);
+
     $raw_revenue_data = $this->executeQuery($query);
 
     $read = $raw_revenue_data->readFirst();

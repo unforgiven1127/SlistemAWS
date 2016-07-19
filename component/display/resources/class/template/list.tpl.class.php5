@@ -120,9 +120,6 @@ class CTemplateList extends CTemplate
 
         foreach($asHeader as $nHeaderPos => $asColumnData)
         {
-//ChromePhp::log($asColumnData['label']); // $asColumnData['label']
-          //var_dump($asColumnData);
-
           if($asColumnData['label'] == "ID" || $asColumnData['label'] == "Salary")
           {
             $type = 'integer';
@@ -182,8 +179,6 @@ class CTemplateList extends CTemplate
             $nListWidth+= $fTotalWidth;
           }
 
-//ChromePhp::log($asColumnData['sort']['ajax']);
-
           unset($asColumnData['params']['width']);
 
           $sAction = '';
@@ -209,7 +204,7 @@ class CTemplateList extends CTemplate
               elseif(isset($asColumnData['sort']['javascript']) && $asColumnData['sort']['javascript'])
               {
 
-//ChromePhp::log($sListId);
+
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$type.'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$type.'\');">'.$sPictDesc.'</a>';
               }

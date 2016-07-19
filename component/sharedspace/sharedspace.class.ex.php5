@@ -1680,7 +1680,6 @@ class CSharedspaceEx extends CSharedspace
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
     $fileNameHidden = getValue('fileNameHidden');
-    //ChromePhp::log($fileNameHidden);
     if($fileNameHidden == '0')
     {
       return array( 'error' => __LINE__.' - Please select a document.');
@@ -1717,8 +1716,6 @@ class CSharedspaceEx extends CSharedspace
       $asDocument[CONST_CP_TYPE] = getValue(CONST_CP_TYPE);
       $asDocument[CONST_CP_PK] = (int)getValue(CONST_CP_PK);
     }
-
-//    ChromePhp::log($asDocument);
 
     if(empty($asDocument['title']) && !$asDocument['fast_upload'])
       return array( 'error' => __LINE__.' - Document title is required.');
@@ -2020,8 +2017,6 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
-
-//    ChromePhp::log('TEST');
 
     return $aOutput;
   }

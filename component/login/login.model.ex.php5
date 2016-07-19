@@ -332,16 +332,14 @@ class CLoginModelEx extends CLoginModel
     if(!assert('is_array($pasParams) && !empty($pasParams)'))
       return array();
 
-/*ChromePhp::log($pasParams['cp_key']);
+/*
     if(isset($pasParams['cp_key']['cp_pk']) && !empty($pasParams['cp_key']['cp_pk']))
     {
-      ChromePhp::log('icerde');
       return $this->_getCandidateList(true);
       //$sQuery = 'SELECT * FROM login_system_history as lshi WHERE '.implode(' AND ', $asWhere);
       //return $this->oDB->ExecuteQuery($sQuery);
     }*/
 
-//ChromePhp::log($pasParams);
     $asWhere = array();
 
     if(isset($pasParams['date_start']) && !empty($pasParams['date_start']))
@@ -409,11 +407,10 @@ class CLoginModelEx extends CLoginModel
     AND action <> ""
     ORDER BY `date` DESC, action ';
 
-    //ChromePhp::log($sQuery);
 
     if(!empty($psLimit))
       $sQuery.= ' LIMIT '.$psLimit;
-    //echo $sQuery;
+
     return $this->oDB->ExecuteQuery($sQuery);
   }
 

@@ -699,9 +699,8 @@ class CSl_positionEx extends CSl_position
      */
     private function _savePosition($pnPositionPk = 0)
     {
-      //ChromePhp::log('_savePosition');
       $lang = getValue('language');
-      //ChromePhp::log($lang);
+
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Missing parameters to save the position.');
 
@@ -802,7 +801,7 @@ class CSl_positionEx extends CSl_position
 
 $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 //setValue('title', $asPosition['positionfk']);
-//ChromePhp::log($GLOBALS['redis']->get('savedPositionTitle'));
+
 
       $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_LIST, CONST_POSITION_TYPE_JD);
       return array('notice' => 'Position successfully saved.', 'action' => '
@@ -1346,8 +1345,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _savePositionLink($pnLinkPk = 0)
     {
-      //ChromePhp::log($pnLinkPk); // bir onceki islemin id sini veriyor
-      $pre_record_id = $pnLinkPk;
+      $pre_record_id = $pnLinkPk;// bir onceki islemin id sini veriyor
       if(!assert('is_integer($pnLinkPk)'))
         return array('error' => 'Missing parameters.');
 
@@ -1479,7 +1477,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $oShareSpace = CDependency::getComponentByName('sharedspace');
           $asDocument = $oShareSpace->getDocuments(0, $asItem);
 
-//          ChromePhp::log($asDocument);
 
           if(empty($asDocument))
             return array('error' => __LINE__.' - There is no resume on this candidate profile. Please upload the resume before adding the candidate to the position.
@@ -1529,10 +1526,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $bUpdate = $this->_getModel()->update($asUpdate, 'sl_position_link', 'positionfk = '.$asCurrentPhase['positionfk'].' AND candidatefk = '.$asCurrentPhase['candidatefk']);
 
           $date_completed = date('Y-m-d H:i:s');
-//ChromePhp::log($date_completed);
 
           $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
-//ChromePhp::log($return);
+
           if(!$bUpdate)
             return array('error' => __LINE__.' - Unable to update the candidate status.');
         }
@@ -1555,7 +1551,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         // -=- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=- =- -=- -=- -=-
         //last status is always the one active
         $asData['active'] = 1;
-//ChromePhp::log('ADD DATA TO SL_POSITION_LINK');
+
         $nLinkPk = $this->_getModel()->add($asData, 'sl_position_link');
         if(empty($nLinkPk))
           return array('error' => __LINE__.' - Could not link the candidate to the position.');
@@ -1677,7 +1673,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       /*if($asData['status'] == 101) // aday placed olmus ise diger adaylar fallen off 200 yapilacak
       {
-        ChromePhp::log('HERE 1');
+
         $position_id = $nPositionPk;
         $candidate_id = $asData['candidatefk'];
         $user_id = $asData['created_by'];
@@ -2132,7 +2128,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getuserPk();
       $userInformation = getUserInformaiton($user_id);
-//ChromePhp::log($userInformation);
+
       if($user_id == $oDbResult->getFieldValue('created_by') || $userInformation['position'] == "Admin" || $userInformation['pseudo'] == "administrator")
       {
         $hiddenClass = ' ';
@@ -2165,7 +2161,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         }
       }
 
-      ChromePhp::log($cancelFlag);
       if($oDbResult->getFieldValue('created_by') == $oLogin->getuserPk() || $oLogin->getuserPk() == '101')
       {
 
@@ -2357,7 +2352,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             $sRow.= $this->_oDisplay->getBlocEnd();
 
             $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'candidate_detail_status'));
-ChromePhp::log($asCandidate['status']);
+
             if($asCandidate['status'] < 101)
               $sRow.=  ' <span class="in_play">[<b>'.$asStatus[$asCandidate['app_status']].'</b>]</span>';
             else
@@ -2501,10 +2496,8 @@ ChromePhp::log($asCandidate['status']);
 
       $afterSaveID = $GLOBALS['redis']->get('savedPositionTitle');
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
-      //ChromePhp::log($afterSaveID);
 
       $bSplitted = empty($poQb);
-      //ChromePhp::log($bSplitted);
 
       if($bSplitted)
       {
@@ -2513,7 +2506,6 @@ ChromePhp::log($asCandidate['status']);
 
         /*if($afterSaveID)
         {
-          //ChromePhp::log($afterSaveID);
           $sTitle = $afterSaveID;
         }*/
 
@@ -2741,20 +2733,17 @@ ChromePhp::log($asCandidate['status']);
 
       if($afterSaveID != false) // yeni pozisyon ise direk onu aciyoruz
       {
-        //ChromePhp::log($afterSaveID);
-        //ChromePhp::log(array('data' => convertToUtf8($this->viewPositionNew((int)$afterSaveID)), 'action' => $sAction));
         return array('data' => convertToUtf8($this->viewPositionNew((int)$afterSaveID)), 'action' => $sAction);
         //return array('data' => convertToUtf8($this->_getPositionForm($afterSaveID)), 'action' => $sAction);
         //return json_encode($this->_oPage->getAjaxExtraContent(array('data' => $this->_getPositionForm($afterSaveID))));
         //return $this->_getPositionForm($afterSaveID);
       }
-      //ChromePhp::log(array('data' => convertToUtf8($sHTML), 'action' => $sAction));
+
       return array('data' => convertToUtf8($sHTML), 'action' => $sAction);
     }
 
     public function viewPositionNew($pnPositionPk)
     {
-      //ChromePhp::log('viewPositionNew');
       if(!assert('is_key($pnPositionPk)'))
         return array('error' => __LINE__.' - bad parameter');
 

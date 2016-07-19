@@ -2836,7 +2836,6 @@ var_dump($query);*/
 
   function getPositionRelatedUsers($position_id, $exclude_user,$user_id)
   {
-    ChromePhp::log('HERE 2');
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT DISTINCT(slp.candidatefk) as candidate_id FROM sl_position_link slp WHERE slp.active = '1' AND slp.positionfk = '".$position_id."' AND slp.candidatefk <> '".$exclude_user."' ";
@@ -2844,7 +2843,6 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-    ChromePhp::log($result);
 
     $return = multiCandidateFallenOff($result,$position_id.$user_id);
 
@@ -2853,7 +2851,6 @@ var_dump($query);*/
 
   function multiCandidateFallenOff($candidates,$position_id,$user_id)
   {
-    ChromePhp::log('HERE 3');
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
 
@@ -2966,7 +2963,6 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`, `description`)
                VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."','".$desctiption."')";
 
-//ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3023,11 +3019,11 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT * FROM sl_position_link slp WHERE slp.candidatefk = '".$candidate_id."' AND slp.positionfk = '".$position_id."' ORDER BY slp.sl_position_linkpk DESC";
-//ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-//ChromePhp::log($result);
+
     if(isset($result[1]))
     {
       $preStatus = $result[1]['status'];
@@ -3038,7 +3034,7 @@ var_dump($query);*/
       $preStatus = 0;
       $preDate = ' - ';
     }
-//ChromePhp::log($preStatus);
+
     $statusTitle = getStatusTitle($preStatus);
 
     $returnArray = array($statusTitle,$preDate);

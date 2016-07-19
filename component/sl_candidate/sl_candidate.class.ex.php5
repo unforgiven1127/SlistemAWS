@@ -243,7 +243,6 @@ class CSl_candidateEx extends CSl_candidate
                 return json_encode(array('alert' => $sError));
             }
 
-//ChromePhp::log(debug_backtrace());
             $candidateList = $this->_getCandidateList(true, $oQB);
 
             $return = $oPage->getAjaxExtraContent(array('data' => convertToUtf8($candidateList), 'action' => 'goPopup.removeActive(\'layer\'); initHeaderManager(); '));
@@ -874,8 +873,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _displayCandidateList($pbInAjax = false)
     {
-      ChromePhp::log('_displayCandidateList');
-      ChromePhp::log($pbInAjax);
+
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
@@ -959,10 +957,6 @@ class CSl_candidateEx extends CSl_candidate
       $logType = $_GET['logType'];
       $user_id = $oLogin->getUserPk();
 
-      ChromePhp::log($candidate_id);
-      ChromePhp::log($logType);
-      ChromePhp::log($user_id);
-
       if($logType == "candiTab2")
       {
         $text = "Contacts viewed";
@@ -990,12 +984,11 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($_GET['searchId']))
       {
         $searchID = $_GET['searchId'];
-        //ChromePhp::log($searchID);
+
         $pbInAjax = 'search_'.$searchID;
         return $this->_displayCandidateList($pbInAjax);
       }
-//ChromePhp::log('_getCandidateView');
-//ChromePhp::log($searchID);
+
       if(!assert('is_key($pnPk)'))
         return '';
 
@@ -1119,9 +1112,6 @@ class CSl_candidateEx extends CSl_candidate
       //a bit slow ?
       //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
 
-      //ChromePhp::log('TEST');
-      //ChromePhp::log($this->csUid);
-      //ChromePhp::log($this->csType);
 
       $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
       $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
@@ -2504,13 +2494,10 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateList($pbInAjax = false, &$poQB = null)
     {
-      ChromePhp::log('_getCandidateList');
-
       if($poQB != null)
       {
         $exploded = explode('_',$poQB->getTitle());
       }
-//ChromePhp::log('pass');
       global $gbNewSearch;
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
@@ -2704,10 +2691,10 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
         $searchID = $exploded[1];
-ChromePhp::log($exploded[1]);
+
         $savedQuery = getLoggedQuery($searchID);
         $sQuery = $savedQuery[0]['action'];
-ChromePhp::log($sQuery);
+
         $oDbResult = $oDb->ExecuteQuery($sQuery);
         $bRead = $oDbResult->readFirst();
         $all = $oDbResult->getAll();
@@ -2889,12 +2876,20 @@ ChromePhp::log($sQuery);
         }
       }
 
+      if(getValue('pipe_filter'))
+      {
+        $pipe_filter = getValue('pipe_filter');
+        if($pipe_filter == "met")
+        {
+          ChromePhp::log("MET HERE");
+        }
+      }
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
-//ChromePhp::log($oDbResult);
+
       if(!$bRead || !isset($nResult))
       {
-        //ChromePhp::log('ASDASDASD');
         assert('false; // count query returned results but not the select');
         return $this->_oDisplay->getBlocMessage('No candidate found.');
       }
@@ -3228,7 +3223,7 @@ ChromePhp::log($sQuery);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $test_value = getValue('pipe_filter');
-ChromePhp::log($test_value);
+
         if(isset($test_value) && $test_value == "placed")
         {
           // when add new candidate foreach does not work...
@@ -9358,7 +9353,7 @@ die();*/
 
   private function _buildCandidateQuickSearch($pbStrict = true, $name = 'test')
   {
-    ChromePhp::log('_buildCandidateQuickSearch'); // sort ta da buraya
+    // sort ta da buraya
     if($pbStrict)
       $sOperator = ' AND ';
     else
@@ -9425,7 +9420,7 @@ die();*/
       {
         //check if it's a comma separated sting
         $asWords = explode(',', $sCandidate);
-//        ChromePhp::log($asWords);
+
         $this->_cleanArray($asWords);
         $nWord = count($asWords);
         if($nWord > 2)
@@ -9650,7 +9645,7 @@ die();*/
               $this->coQb->addWhere(' scpr.keyword LIKE "%'.$sWord.'%" ');
 
           //$sKeyword = explode(",", $sKeyword); // , ile multi search
-          //ChromePhp::log($sKeyword);
+
           /*foreach ($sKeyword as $key => $value) {
             # code...
             $bExactMatch = (bool)getValue('qs_exact_match', 0);

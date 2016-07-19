@@ -328,14 +328,13 @@ class CFolderEx extends CFolder
 
     if($this->cnPk==0)
     {
-      //ChromePhp::log('cnPK = 0'); // aday aradiktan sonra butun adaylari save ederken buraya giriyor.
+      // aday aradiktan sonra butun adaylari save ederken buraya giriyor.
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD);
       $sTitle = "Add a new folder";
       $oResult = new CDbResult;
     }
     else
     {
-      //ChromePhp::log('cnPK != 0');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, '', $this->cnPk);
       $sTitle = "Edit folder";
       $oResult = $this->_getModel()->getFolder($this->cnPk);
@@ -956,8 +955,6 @@ class CFolderEx extends CFolder
 
   protected function _addToFolder($pnFolderFk, $pasItem = array(), $psCallback = '')
   {
-    //ChromePhp::log('_addToFolder');
-    //ChromePhp::log($pasItem);
     if(!assert('is_key($pnFolderFk) && is_array($pasItem)'))
       return array('error' => 'Item could not be added. Wrong folder given.');
 
@@ -1035,7 +1032,7 @@ class CFolderEx extends CFolder
   {
     if(!assert('is_integer($pnPk)'))
       return false;
-//ChromePhp::log($pnPk);
+
     // Saving folder main table
     $aData['parentfolderfk'] = (int)$_POST['parentfolderfk'];
     $aData['label'] = addslashes($_POST['label']);
@@ -1061,7 +1058,7 @@ class CFolderEx extends CFolder
 
       $nPk = $pnPk;
     }
-//ChromePhp::log($aData);
+
     // Saving folder type (link table)
     if(!empty($_POST['type']))
     {

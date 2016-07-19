@@ -475,7 +475,6 @@ class CSl_FolderEx extends CSl_Folder
     //$sType = getValue('item_type');
     $asItem = array();
     $sHTML = '';
-//ChromePhp::log($sIds);
 
     if(!empty($sSearchId))
     {
@@ -488,7 +487,7 @@ class CSl_FolderEx extends CSl_Folder
 
       $sQuery = explode('LIMIT',$sQuery);
       $sQuery = $sQuery[0];
-//ChromePhp::log($sQuery);
+
       $oDbResult = $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
@@ -551,7 +550,7 @@ class CSl_FolderEx extends CSl_Folder
       $sQuery = preg_replace('/LIMIT [0-9]{1,6}[0-9, ]{0,6}/i', '', $sQuery);
       $sQuery = explode('LIMIT',$sQuery);
       $sQuery = $sQuery[0];
-//ChromePhp::log($sQuery);
+
       $oDbResult = $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
@@ -599,7 +598,6 @@ class CSl_FolderEx extends CSl_Folder
 
   private function _addItemToFolder()
   {
-    //ChromePhp::log('_addItemToFolder');
     $nFolderPk = (int)getValue('folderpk', 0);
     if(!assert('is_key($nFolderPk) || $nFolderPk == -1'))
       return array('error' => 'Item could not be added. Wrong folder given.');
