@@ -200,7 +200,7 @@ class CFolderModelEx extends CFolderModel
   // ----------------------------------------------
 
   public function getFolders($pnUserPk, $psRight='read', $paLink = array())
-  {
+  {ChromePhp::log('getFolders');
     if(!assert('is_integer($pnUserPk)') || $pnUserPk < 1)
       return new CDbResult();
 
@@ -532,7 +532,6 @@ class CFolderModelEx extends CFolderModel
 
   public function countFolderItems($pvFolderPk)
   {
-    ChromePhp::log('countFolderItems');
     if(!assert('is_key($pvFolderPk) || is_arrayOfInt($pvFolderPk)'))
       return new CDbResult();
 
