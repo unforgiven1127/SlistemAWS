@@ -17,6 +17,8 @@
 
     $allMeetings = array();
 
+    $count = 0;
+
     while($meetingData = mysql_fetch_assoc($slistemQuery))
     {
         array_push($allMeetings,$meetingData);
@@ -38,9 +40,11 @@
         if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
         {
             echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !!<br>";
+            $count++;
         }
     }
 
+    echo "<br><br>Count: ".$count;
     /*JOBBOARD ISLEMLERI ICIN*/
 
 
