@@ -2477,6 +2477,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _positionList($poQb = null)
     {
+      ChromePhp::log('_positionList');
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
@@ -2651,7 +2652,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $asData['salary_from'] = '';
         else
           $asData['salary_from'] = round($asData['salary_from']/1000000, 1).'M&yen;';
-ChromePhp::log($asData);
+
         if(empty($asData['salary_to']))
           $asData['salary_to'] = '';
         else
