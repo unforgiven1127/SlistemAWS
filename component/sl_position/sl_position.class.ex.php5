@@ -2398,7 +2398,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.= substr($preStatusDate, 0, 10);
             }
             else
-              $sRow.= substr($asCandidate['app_date'], 0, 10);
+              $sRow.= substr($asCandidate['app_date'], 0, 14);
 
             $sRow.= $this->_oDisplay->getBlocEnd();
             $sRow.= $this->_oDisplay->getBlocEnd();
