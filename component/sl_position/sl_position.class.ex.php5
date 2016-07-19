@@ -2605,7 +2605,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $oHTML->getBlocEnd();
       }
 
-
+ChromePhp::log("HERE2");
       $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit,$afterSaveID);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
