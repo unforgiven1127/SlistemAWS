@@ -16,14 +16,31 @@
     $slistemQuery = mysql_query($slistemQuery);
 
     $allMeetings = array();
-    $count = 0;
+
     while($meetingData = mysql_fetch_assoc($slistemQuery))
     {
-        $count ++ ;
         array_push($allMeetings,$meetingData);
     }
 
-    echo $count;
+    foreach ($allMeetings as $key => $meeting)
+    {
+        $create_date = $meeting['date_created'];
+        $month = date("m",strtotime($create_date));
+        $year = date("Y",strtotime($create_date));
+
+        $effectiveDate = date('Y-m-d', strtotime("+1 month", strtotime($create_date)));
+
+        $new_month = date("m",strtotime($effectiveDate));
+        $control_date = $year.'-'.$new_month.'-'.'06 00:00:00';
+
+        $today = date("Y-m-d H:i:s");
+
+        if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+        {
+            echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !!<br>";
+        }
+    }
+
     /*JOBBOARD ISLEMLERI ICIN*/
 
 
