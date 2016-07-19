@@ -786,8 +786,10 @@ $.TokenList = function (input, url_or_data, settings) {
         var cache_key = query + computeURL();
         var cached_results = cache.get(cache_key);
         if(cached_results) {
+            alert('cache');
             populate_dropdown(query, cached_results);
         } else {
+            alert('not cache');
             // Are we doing an ajax search or local data search?
             if(settings.url) {
                 var url = computeURL();
