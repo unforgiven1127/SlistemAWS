@@ -2395,7 +2395,7 @@ ChromePhp::log($asCandidate['status']);
               //$sRow.= substr($asCandidate['app_date'], 0, 10);
             if($asCandidate['status'] == 151 || $asCandidate['status'] == 150 || $asCandidate['status'] == 251 || $asCandidate['status'] == 200)
             {
-              $sRow.= substr($preStatusDate, 0, 14);
+              $sRow.= substr($preStatusDate, 0, 10);
             }
             else
               $sRow.= substr($asCandidate['app_date'], 0, 10);
