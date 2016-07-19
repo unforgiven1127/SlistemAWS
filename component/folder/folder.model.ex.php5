@@ -532,6 +532,7 @@ class CFolderModelEx extends CFolderModel
 
   public function countFolderItems($pvFolderPk)
   {
+    ChromePhp::log('countFolderItems');
     if(!assert('is_key($pvFolderPk) || is_arrayOfInt($pvFolderPk)'))
       return new CDbResult();
 
