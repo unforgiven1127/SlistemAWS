@@ -119,9 +119,9 @@ class CAutocomplete extends CField
        tokenFormatter: function(item)
        {
           if(item.label)
-            return "<li class=\''.$this->csFieldName.'_item\' title=\'"+item.title+"\'><p>" + item.label + "</p></li>";
+            return "<li class=test1 \''.$this->csFieldName.'_item\' title=\'"+item.title+"\'><p>" + item.label + "</p></li>";
           else
-            return "<li class=\''.$this->csFieldName.'_item\' title=\'"+item.title+"\'><p>" + item.name + "</p></li>";
+            return "<li class=test2 \''.$this->csFieldName.'_item\' title=\'"+item.title+"\'><p>" + item.name + "</p></li>";
        },
 
        tokenLimit: "'.$this->casFieldParams['nbresult'].'"';
