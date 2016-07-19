@@ -2613,7 +2613,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bRead)
         return array('data' => 'Could not find any position.', 'sql' => $poQb->getSql());
 
-
       $asPosition = array();
       if($bSplitted)
         $asPosition = array('free' => array(), 'filled' => array());
@@ -2621,7 +2620,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       while($bRead)
       {
         $asData = $oDbResult->getData();
-
+ChromePhp::log($asData);
         if(empty($asData['nb_play']))
           $asData['nb_play'] = '';
 
