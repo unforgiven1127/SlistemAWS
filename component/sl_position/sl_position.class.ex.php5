@@ -2209,7 +2209,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       while($bRead)
       {
         $asPosition = $oDbResult->getData();
-        ChromePhp::log($asPosition);
         $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].'\').fadeIn();" >'.$asPosition['language'].'</a>';
 
         if(!$bFirst)
@@ -2652,7 +2651,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $asData['salary_from'] = '';
         else
           $asData['salary_from'] = round($asData['salary_from']/1000000, 1).'M&yen;';
-
+ChromePhp::log($asData);
         if(empty($asData['salary_to']))
           $asData['salary_to'] = '';
         else
