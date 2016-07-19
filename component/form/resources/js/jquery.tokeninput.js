@@ -458,6 +458,7 @@ $.TokenList = function (input, url_or_data, settings) {
 
     // Inner function to a token to the list
     function insert_token(item) {
+        alert(item)
         var this_token = settings.tokenFormatter(item);
         this_token = $(this_token)
           .addClass(settings.classes.token)
