@@ -380,6 +380,8 @@ $.TokenList = function (input, url_or_data, settings) {
     }
     if(li_data && li_data.length) {
         $.each(li_data, function (index, value) {
+            alert('test 1 2 3');
+            alert(value);
             insert_token(value);
             checkTokenLimit();
         });
