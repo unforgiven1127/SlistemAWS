@@ -403,7 +403,6 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     this.add = function(item) {
-        alert('selected dropdown item');
         add_token(item);
     }
 
@@ -702,6 +701,7 @@ $.TokenList = function (input, url_or_data, settings) {
                     select_dropdown_item($(event.target).closest("li"));
                 })
                 .mousedown(function (event) {
+                    alert('event');
                     add_token($(event.target).closest("li").data("tokeninput"));
                     hidden_input.change();
                     return false;
