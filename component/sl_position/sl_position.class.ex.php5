@@ -2209,6 +2209,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       while($bRead)
       {
         $asPosition = $oDbResult->getData();
+        ChromePhp::log($asPosition);
         $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].'\').fadeIn();" >'.$asPosition['language'].'</a>';
 
         if(!$bFirst)
@@ -2863,7 +2864,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       else
         $sAge = $asPosition['age_from'].' to '.$asPosition['age_to'];
 
-ChromePhp::log($asPosition);
       if(empty($asPosition['salary_from']))
         $sSalary = ' - ';
       else
