@@ -2620,7 +2620,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       while($bRead)
       {
         $asData = $oDbResult->getData();
-ChromePhp::log($asData);
+
         if(empty($asData['nb_play']))
           $asData['nb_play'] = '';
 
