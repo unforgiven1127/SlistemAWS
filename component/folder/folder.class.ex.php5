@@ -1153,6 +1153,7 @@ class CFolderEx extends CFolder
 
   private function _folderSelector()
   {
+    ChromePhp::log('_folderSelector');
     $sSearch = trim(getValue('q'));
     if(empty($sSearch))
       return json_encode(array());

@@ -7179,7 +7179,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _autocompleteSearch($psType)
     {
-      ChromePhp::log('_autocompleteSearch');
       $sSearchString = getValue('q');
       if(empty($sSearchString))
         return array();
