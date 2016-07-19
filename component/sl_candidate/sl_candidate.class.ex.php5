@@ -2881,7 +2881,15 @@ class CSl_candidateEx extends CSl_candidate
         $pipe_filter = getValue('pipe_filter');
         if($pipe_filter == "met")
         {
-          ChromePhp::log("MET HERE");
+          //recently met sectigimizde buraya dusuyor
+          $searchDateStart = strtotime ( '-6 month' , strtotime ( $dateNow ) ) ;
+          $recentlyMetQuery = "SELECT DISTINCT(slm.candidatefk) FROM sl_meeting slm WHERE slm.attendeekf = '".$user_id."'
+          AND slm.meeting_done = '1' AND slm.date_meeting >= '".$searchDateStart."' ";
+
+          $rmResultDB = $oDb->ExecuteQuery($recentlyMetQuery);
+          $rmResult = $rmResultDB->getAll();
+          ChromePhp::log($recentlyMetQuery);
+          ChromePhp::log($rmResult);
         }
       }
 
