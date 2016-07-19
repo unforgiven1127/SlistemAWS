@@ -2656,7 +2656,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         if(empty($asData['salary_to']))
           $asData['salary_to'] = '';
         else
-          $asData['salary_to'] = $asData['salary_from'].'M&yen;';
+          $asData['salary_to'] = round($asData['salary_to']/1000000).'M&yen;';
 
         $asData['salary'] = $asData['salary_from'].' - '.$asData['salary_to'];
         $asData['age'] = $asData['age_from'].' - '.$asData['age_to'];
