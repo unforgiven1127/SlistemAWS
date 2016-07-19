@@ -39,7 +39,7 @@
 
         if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
         {
-            echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !!<br>";
+            echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !! - ControlDate: ".$control_date."<br>";
             $count++;
         }
     }
