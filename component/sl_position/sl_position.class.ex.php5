@@ -2368,7 +2368,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $preStatus = $preStatusArray[0];
               $preStatusDate = $preStatusArray[1];
 
-              if($asCandidate['status'] == 251 || $asCandidate['status'] == 200)
+              if($asCandidate['status'] == 251 || $asCandidate['status'] == 200 || $asCandidate['status'] == 151 || $asCandidate['status'] == 150)
               {
                 $sRow.=  ' [<b> '.$asStatus[$asCandidate['app_status']].' </b>]<br>[<b> '.$preStatus.' </b>]';
               }
