@@ -2611,7 +2611,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bRead)
         return array('data' => 'Could not find any position.', 'sql' => $poQb->getSql());
 
-ChromePhp::log($poQb->getSql());
+ChromePhp::log($poQb);
       $asPosition = array();
       if($bSplitted)
         $asPosition = array('free' => array(), 'filled' => array());
