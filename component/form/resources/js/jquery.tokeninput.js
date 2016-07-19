@@ -808,7 +808,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 } else {
                     ajax_params.url = url;
                 }
-
+                alert(ajax_params.url);
                 // Prepare the request
                 ajax_params.data[settings.queryParam] = query;
                 ajax_params.type = settings.method;
