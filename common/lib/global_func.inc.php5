@@ -3031,15 +3031,18 @@ var_dump($query);*/
     if(isset($result[1]))
     {
       $preStatus = $result[1]['status'];
+      $preDate = $result[1]['date_created'];
     }
     else
     {
       $preStatus = 0;
+      $preDate = ' - ';
     }
 //ChromePhp::log($preStatus);
     $statusTitle = getStatusTitle($preStatus);
 
-    return $statusTitle;
+    $returnArray = array($statusTitle,$preDate);
+    return $returnArray;
 
   }
 

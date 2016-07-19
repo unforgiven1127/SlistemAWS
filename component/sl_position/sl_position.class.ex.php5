@@ -2364,7 +2364,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             {
               $candidate_id = $asCandidate['candidatefk'];
               $position_id = $asCandidate['positionfk'];
-              $preStatus = getPreStatus($candidate_id, $position_id);
+              $preStatusArray = getPreStatus($candidate_id, $position_id);
+              $preStatus = $preStatusArray[0];
+              $preStatusDate = $preStatusArray[1];
 
               if($asCandidate['status'] == 251 || $asCandidate['status'] == 200)
               {
@@ -2391,6 +2393,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           {
             if($asCandidate['status'] == 151)
               $sRow.= substr($asCandidate['app_date'], 0, 10);
+            else if($asCandidate['status'] == 251 || $asCandidate['status'] == 200)
+            {
+              $sRow.= substr($preStatusDate, 0, 10);
+            }
             else
               $sRow.= substr($asCandidate['app_date'], 0, 10);
 
