@@ -2477,10 +2477,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _positionList($poQb = null)
     {
+      ChromePhp::log('_positionList');
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
-ChromePhp::log("_positionList");
+
       $oPage->addCssFile($this->getResourcePath().'css/sl_position.css');
       $oPage->addJsFile($this->getResourcePath().'js/sl_position.js');
 
@@ -2498,12 +2499,12 @@ ChromePhp::log("_positionList");
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
 
       $bSplitted = empty($poQb);
-ChromePhp::log("HERE1");
+
       if($bSplitted)
       {
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
-ChromePhp::log("IN");
+
         /*if($afterSaveID)
         {
           $sTitle = $afterSaveID;
@@ -2605,13 +2606,13 @@ ChromePhp::log("IN");
         $sHTML.= $oHTML->getBlocEnd();
       }
 
-ChromePhp::log("HERE2");
+
       $oDbResult = $this->_getModel()->getPositionList($poQb, $nLimit,$afterSaveID);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
         return array('data' => 'Could not find any position.', 'sql' => $poQb->getSql());
 
-ChromePhp::log($poQb);
+
       $asPosition = array();
       if($bSplitted)
         $asPosition = array('free' => array(), 'filled' => array());
@@ -2646,7 +2647,7 @@ ChromePhp::log($poQb);
         $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asData['companyfk']);
         $asData['company_name'] = $oHTML->getLink($asData['name'], 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\');'));
         $asData['language'] = 'E:'.$asData['lvl_english'].'&nbsp;&nbsp; J:'.$asData['lvl_japanese'];
-      ChromePhp::log($asData);
+
         if(empty($asData['salary_from']))
           $asData['salary_from'] = '';
         else
