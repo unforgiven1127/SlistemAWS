@@ -2884,12 +2884,14 @@ class CSl_candidateEx extends CSl_candidate
           ChromePhp::log($pipe_filter);
           //recently met sectigimizde buraya dusuyor
           $searchDateStart = strtotime ( '-6 month' , strtotime ( $sNow ) ) ;
+          ChromePhp::log($searchDateStart);
           $recentlyMetQuery = "SELECT DISTINCT(slm.candidatefk) FROM sl_meeting slm WHERE slm.attendeekf = '".$user_id."'
           AND slm.meeting_done = '1' AND slm.date_meeting >= '".$searchDateStart."' ";
+          ChromePhp::log($recentlyMetQuery);
 
           $rmResultDB = $oDb->ExecuteQuery($recentlyMetQuery);
           $rmResult = $rmResultDB->getAll();
-          ChromePhp::log($recentlyMetQuery);
+
           ChromePhp::log($rmResult);
         }
       }
