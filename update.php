@@ -39,12 +39,15 @@
 
         if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
         {
-            echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !! - Today: ".$today." ControlDate: ".$control_date."<br>";
+            //echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !! - Today: ".$today." ControlDate: ".$control_date."<br>";
+            $meeting_id = $meeting['sl_meetingpk'];
+            $slistemQueryUpdate = "UPDATE sl_meeting SET meeting_done = '-1', date_updated = '".$today."' WHERE sl_meetingpk = '".$meeting_id."' ";
+            $slistemQueryUpdate = mysql_query($slistemQueryUpdate);
             $count++;
         }
     }
 
-    echo "<br><br>Count: ".$count;
+    echo "<br><br>Updated: ".$count;
     /*JOBBOARD ISLEMLERI ICIN*/
 
 
