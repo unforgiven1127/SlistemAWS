@@ -457,7 +457,9 @@ class CFolderModelEx extends CFolderModel
 
 
   public function searchFolders($pnUserPk, $pnOwnerPk=0, $psSearchString='', $pbRemoveUserFolder = true, $pbDetailRights = false, $pbCountItems = false)
-  {ChromePhp::log('searchFolders');
+  {
+    var_dump($query);
+    exit;
     if(!assert('is_key($pnUserPk) && is_integer($pnOwnerPk) && is_bool($pbRemoveUserFolder) && is_bool($pbCountItems)'))
       return array();
 

@@ -8084,8 +8084,6 @@ die();*/
 
     private function _autocompleteSearch($psType)
     {
-      var_dump('_autocompleteSearch');
-      exit;
       $sSearchString = getValue('q');
       if(empty($sSearchString))
         return array();
