@@ -2876,26 +2876,21 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if(getValue('pipe_filter'))
+      /*if(getValue('pipe_filter')) // met icin tekrar yazacaktim ama dogru calisiyor gibi kontrol
       {
         $pipe_filter = getValue('pipe_filter');
         if($pipe_filter == "met")
         {
-          ChromePhp::log($pipe_filter);
           //recently met sectigimizde buraya dusuyor
           $searchDateStart = strtotime ( '-6 month' , strtotime ( $sNow ) ) ;
           $searchDateStart = date ( 'Y-m-d H:i:s' , $searchDateStart );
-          ChromePhp::log($searchDateStart);
           $recentlyMetQuery = "SELECT DISTINCT(slm.candidatefk) FROM sl_meeting slm WHERE slm.attendeefk = '".$user_id."'
           AND slm.meeting_done = '1' AND slm.date_meeting >= '".$searchDateStart."' ";
-          ChromePhp::log($recentlyMetQuery);
 
           $rmResultDB = $oDb->ExecuteQuery($recentlyMetQuery);
           $rmResult = $rmResultDB->getAll();
-
-          ChromePhp::log($rmResult);
         }
-      }
+      }*/
 
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();

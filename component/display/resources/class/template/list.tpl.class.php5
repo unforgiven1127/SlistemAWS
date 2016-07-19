@@ -204,7 +204,6 @@ class CTemplateList extends CTemplate
               elseif(isset($asColumnData['sort']['javascript']) && $asColumnData['sort']['javascript'])
               {
 
-
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortAsc" onclick="sortList(this, \'up\', \''.$type.'\');">'.$sPictAsc.'</a>';
                 $sAction.= '<a href="javascript:;" list-id="'.$sListId.'" class="tplListSortDesc" onclick="sortList(this, \'down\', \''.$type.'\');">'.$sPictDesc.'</a>';
               }

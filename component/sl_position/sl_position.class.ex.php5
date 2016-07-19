@@ -2863,6 +2863,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       else
         $sAge = $asPosition['age_from'].' to '.$asPosition['age_to'];
 
+ChromePhp::log($asPosition);
       if(empty($asPosition['salary_from']))
         $sSalary = ' - ';
       else
