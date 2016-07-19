@@ -47,7 +47,7 @@
         }
     }
 
-    echo "<br><br>Updated: ".$count;
+    echo "<br><br>Number of updated meetings: ".$count;
     /*JOBBOARD ISLEMLERI ICIN*/
 
 
