@@ -120,7 +120,7 @@ class CItemSelector extends CField
            if(oItem.id == "token_clear")
              $(this).tokenInput("clear");
          },
-         tokenFormatter: function(item){ return "<li class=\''.$this->csFieldName.'_item\'><p>" + item.name + "</p></li>" },
+         tokenFormatter: function(item){ return "<li class=autoSearch \''.$this->csFieldName.'_item\'><p>" + item.name + "</p></li>" },
          tokenLimit: "'.$this->casFieldParams['nbresult'].'" ';
 
       if(!empty($sItemPk))
