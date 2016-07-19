@@ -198,7 +198,7 @@ class CSl_menuEx extends CSl_menu
           <div class="menu_pipe_section">
           <strong>Active candidates</strong><br />
 
-          &nbsp;&nbsp;&nbsp;&nbsp;<a class="pipeLink" href="javascript:;" onclick="pipeCall(this, \''.$sURL.'&pipe_filter=met\');" title="Candidates met during the last 3 months">Recently met</a>&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;<a class="pipeLink" href="javascript:;" onclick="pipeCall(this, \''.$sURL.'&pipe_filter=met\');" title="Candidates met during the last 6 months">Recently met</a>&nbsp;&nbsp;&nbsp;
           <span class="optional">(
           <a class="pipeLink" href="javascript:;" onclick="pipeCall(this, \''.$sURL.'&pipe_filter=met6\');">6m</a> |
           <a class="pipeLink" href="javascript:;" onclick="pipeCall(this, \''.$sURL.'&pipe_filter=met12\');">1y</a> )

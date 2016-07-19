@@ -3379,7 +3379,7 @@ ChromePhp::log($test_value);
           $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months || since'.$sDate.')';
 
           $dateNow = date('Y-m-j');
-          $searchDateStart = strtotime ( '-3 month' , strtotime ( $dateNow ) ) ;
+          $searchDateStart = strtotime ( '-6 month' , strtotime ( $dateNow ) ) ; // -3 month tu -6 yaptik
           $searchDateStart = date ( 'Y-m-j' , $searchDateStart );
 
           $poQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
