@@ -2395,7 +2395,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
               $sRow.= substr($asCandidate['app_date'], 0, 10);
             else if($asCandidate['status'] == 251 || $asCandidate['status'] == 200)
             {
-              $sRow.= substr($preStatusDate, 0, 12);
+              $sRow.= substr($preStatusDate, 0, 10);
             }
             else
               $sRow.= substr($asCandidate['app_date'], 0, 10);
