@@ -831,7 +831,6 @@ $.TokenList = function (input, url_or_data, settings) {
                 // Make the request
                 $.ajax(ajax_params);
             } else if(settings.local_data) {
-                alert(query);
                 // Do the search through local data
                 var results = $.grep(settings.local_data, function (row) {
                     return row[settings.propertyToSearch].toLowerCase().indexOf(query.toLowerCase()) > -1;
