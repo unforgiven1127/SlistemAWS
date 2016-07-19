@@ -693,8 +693,6 @@ $.TokenList = function (input, url_or_data, settings) {
 
     // Populate the results dropdown with some results
     function populate_dropdown (query, results) {
-        alert(query);
-        alert(results);
         if(results && results.length) {
             dropdown.empty();
             var dropdown_ul = $("<ul>")
