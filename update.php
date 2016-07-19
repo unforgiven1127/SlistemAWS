@@ -12,20 +12,18 @@
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
 
 
-    $slistemQuery = " SELECT * FROM login l WHERE l.status = '1' ";
+    $slistemQuery = " SELECT * FROM sl_meeting ";
     $slistemQuery = mysql_query($slistemQuery);
 
-    while($userData = mysql_fetch_assoc($slistemQuery))
+    $allMeetings = array();
+    $count = 0;
+    while($meetingData = mysql_fetch_assoc($slistemQuery))
     {
-        $pass = $userData['password'];
-        $user_id = $userData['loginpk'];
-        $pass_encrypted = sha1($pass);
-
-        echo $user_id." - ".$pass_encrypted;
-        echo "<br><br>";
+        $count ++ ;
+        array_push($allMeetings,$meetingData);
     }
 
-
+    echo $count;
     /*JOBBOARD ISLEMLERI ICIN*/
 
 
