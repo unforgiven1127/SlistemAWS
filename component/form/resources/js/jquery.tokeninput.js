@@ -808,7 +808,6 @@ $.TokenList = function (input, url_or_data, settings) {
                 } else {
                     ajax_params.url = url;
                 }
-                alert(ajax_params.url);
                 // Prepare the request
                 ajax_params.data[settings.queryParam] = query;
                 ajax_params.type = settings.method;
@@ -816,7 +815,7 @@ $.TokenList = function (input, url_or_data, settings) {
                 if(settings.crossDomain) {
                     ajax_params.dataType = "jsonp";
                 }
-
+alert(query);
                 // Attach the success callback
                 ajax_params.success = function(results) {
                   if($.isFunction(settings.onResult)) {
