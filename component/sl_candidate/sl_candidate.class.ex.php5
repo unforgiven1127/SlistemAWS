@@ -2881,6 +2881,7 @@ class CSl_candidateEx extends CSl_candidate
         $pipe_filter = getValue('pipe_filter');
         if($pipe_filter == "met")
         {
+          ChromePhp::log($pipe_filter);
           //recently met sectigimizde buraya dusuyor
           $searchDateStart = strtotime ( '-6 month' , strtotime ( $sNow ) ) ;
           $recentlyMetQuery = "SELECT DISTINCT(slm.candidatefk) FROM sl_meeting slm WHERE slm.attendeekf = '".$user_id."'
