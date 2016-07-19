@@ -2480,7 +2480,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
-
+ChromePhp::log("_positionList");
       $oPage->addCssFile($this->getResourcePath().'css/sl_position.css');
       $oPage->addJsFile($this->getResourcePath().'js/sl_position.js');
 
