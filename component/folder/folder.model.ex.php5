@@ -200,7 +200,7 @@ class CFolderModelEx extends CFolderModel
   // ----------------------------------------------
 
   public function getFolders($pnUserPk, $psRight='read', $paLink = array())
-  {ChromePhp::log('getFolders');
+  {
     if(!assert('is_integer($pnUserPk)') || $pnUserPk < 1)
       return new CDbResult();
 
@@ -457,7 +457,7 @@ class CFolderModelEx extends CFolderModel
 
 
   public function searchFolders($pnUserPk, $pnOwnerPk=0, $psSearchString='', $pbRemoveUserFolder = true, $pbDetailRights = false, $pbCountItems = false)
-  {
+  {ChromePhp::log('searchFolders');
     if(!assert('is_key($pnUserPk) && is_integer($pnOwnerPk) && is_bool($pbRemoveUserFolder) && is_bool($pbCountItems)'))
       return array();
 
