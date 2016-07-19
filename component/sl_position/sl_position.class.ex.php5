@@ -2498,12 +2498,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $GLOBALS['redis']->delete('savedPositionTitle'); // ekleme sonrasi ilk aramadan sonra redisi sil
 
       $bSplitted = empty($poQb);
-
+ChromePhp::log("HERE1");
       if($bSplitted)
       {
         //dump($_SESSION['position_filter']);
         $sTitle = getValue('title');
-
+ChromePhp::log("IN");
         /*if($afterSaveID)
         {
           $sTitle = $afterSaveID;
