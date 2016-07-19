@@ -380,8 +380,6 @@ $.TokenList = function (input, url_or_data, settings) {
     }
     if(li_data && li_data.length) {
         $.each(li_data, function (index, value) {
-            alert('test 1 2 3');
-            alert(value);
             insert_token(value);
             checkTokenLimit();
         });
@@ -502,7 +500,8 @@ $.TokenList = function (input, url_or_data, settings) {
     // Add a token to the token list based on user input
     function add_token (item) {
         var callback = settings.onAdd;
-
+            alert('test 1 2 3');
+            alert(item);
         // See if the token already exists and select it if we don't want duplicates
         if(token_count > 0 && settings.preventDuplicates) {
             var found_existing_token = null;
