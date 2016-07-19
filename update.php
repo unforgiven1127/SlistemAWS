@@ -26,7 +26,7 @@
 
     foreach ($allMeetings as $key => $meeting)
     {
-        $create_date = $meeting['date_created'];
+        $create_date = $meeting['date_meeting'];
         $month = date("m",strtotime($create_date));
         $year = date("Y",strtotime($create_date));
 
