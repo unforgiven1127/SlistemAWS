@@ -8084,6 +8084,7 @@ die();*/
 
     private function _autocompleteSearch($psType)
     {
+      ChromePhp::log('_autocompleteSearch');
       $sSearchString = getValue('q');
       if(empty($sSearchString))
         return array();
