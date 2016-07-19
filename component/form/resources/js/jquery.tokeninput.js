@@ -815,7 +815,6 @@ $.TokenList = function (input, url_or_data, settings) {
                 if(settings.crossDomain) {
                     ajax_params.dataType = "jsonp";
                 }
-alert(query);
                 // Attach the success callback
                 ajax_params.success = function(results) {
                   if($.isFunction(settings.onResult)) {
@@ -832,6 +831,7 @@ alert(query);
                 // Make the request
                 $.ajax(ajax_params);
             } else if(settings.local_data) {
+                alert(query);
                 // Do the search through local data
                 var results = $.grep(settings.local_data, function (row) {
                     return row[settings.propertyToSearch].toLowerCase().indexOf(query.toLowerCase()) > -1;
