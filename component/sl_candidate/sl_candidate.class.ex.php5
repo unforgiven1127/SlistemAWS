@@ -3476,7 +3476,7 @@ ChromePhp::log($sQuery);
         $oDbResult = $oNote->getLastEvent($value, '555-001', 'ppav', 'candi');
 
         $noteArray = $oDbResult->getAll();
-ChromePhp::log($noteArray);
+
         if(!isset($noteArray[0]))
         {
           return true;
@@ -3504,9 +3504,9 @@ ChromePhp::log($noteArray);
         $asData[$nCandidatePk]['note_type'] = $noteArray[0]['type'];
         $asData[$nCandidatePk]['note_title'] = $noteArray[0]['title'];
         $asData[$nCandidatePk]['note_content'] = $noteArray[0]['content'];
-        $asData[$nCandidatePk]['note_date'] = $noteArray[0]['date_created'];
+        $asData[$nCandidatePk]['note_date'] = $noteArray[0]['date_create'];
       }
-
+ChromePhp::log($asData);
       return true;
     }
 
