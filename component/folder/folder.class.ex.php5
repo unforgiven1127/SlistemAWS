@@ -1257,14 +1257,15 @@ class CFolderEx extends CFolder
     {
       while($bRead)
       {
-        $folder_id = $oDbResult->getFieldValue('folderpk');
+        $asData['id'] = $oDbResult->getFieldValue('folderpk');
+
+        $folder_id = $asData['id'];
+        ChromePhp::log($folder_id);
         $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
         ChromePhp::log($itemsQuery);
         $itemsQueryResult = $oDB->ExecuteQuery($sQuery);
         $itemsResult = $itemsQueryResult->getAll();
         ChromePhp::log($itemsResult);
-
-        $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
         if($bShared)
         {
