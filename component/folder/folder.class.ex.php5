@@ -1260,14 +1260,12 @@ class CFolderEx extends CFolder
         $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
         $folder_id = $asData['id'];
-        //ChromePhp::log($folder_id);
+
         $itemsQuery = "SELECT COUNT(*) as count FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
-        //ChromePhp::log($itemsQuery);
 
         $itemsQueryResult = $oDB->ExecuteQuery($itemsQuery);
         $itemsResult = $itemsQueryResult->getAll();
         $itemCount = $itemsResult[0]['count'];
-        //ChromePhp::log($itemsResult);
 
         if($bShared)
         {
