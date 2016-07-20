@@ -1273,6 +1273,7 @@ class CSearchEx extends CSearch
             foreach($asFieldData['sql']['join'] as $asJoin)
             {
               ChromePhp::log($asFieldData);
+              ChromePhp::log($vFieldValue);
 
               $oQB->addJoin($asJoin['type'], $asJoin['table'], $asJoin['alias'], $asJoin['clause']);
 
