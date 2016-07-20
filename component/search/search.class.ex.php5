@@ -1387,6 +1387,7 @@ class CSearchEx extends CSearch
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
+                ChromePhp::log($asFieldData['sql']['field']);
                 if(!empty($vValue))
                   $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
               }
