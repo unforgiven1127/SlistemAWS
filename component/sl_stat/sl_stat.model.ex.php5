@@ -944,7 +944,6 @@ order by m.candidatefk
       $read = $db_result->readFirst();
 //var_dump($query);// 382
 //var_dump('<br><br>');
-//ChromePhp::log($query);
 
 
       $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,

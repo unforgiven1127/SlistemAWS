@@ -2477,8 +2477,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _positionList($poQb = null)
     {
-      ChromePhp::log('_positionList');
-
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
