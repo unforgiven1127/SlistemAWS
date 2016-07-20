@@ -3471,6 +3471,7 @@ ChromePhp::log($sQuery);
       while($bRead)
       {
         //dump($oDbResult);
+        ChromePhp::log($oDbResult->getData());
         if($oDbResult->getFieldValue('title'))
           $sContent = $oDbResult->getFieldValue('title').'<br />'.$oDbResult->getFieldValue('content');
         else
