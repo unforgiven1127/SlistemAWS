@@ -596,6 +596,11 @@ class CSl_eventEx extends CSl_event
 
     $sQuery.= ' GROUP BY elin.cp_uid, elin.cp_action, elin.cp_pk';
     //dump($sQuery);
+    $sQuery = "SELECT el.cp_pk,el.cp_type, e.* FROM event_link el
+              INNER JOIN event e on e.eventpk = el.eventfk
+              WHERE el.cp_pk IN (".implode(',', $panItem).") AND (e.type = 'character' OR e.type = 'note')
+              ORDER BY el.event_linkpk DESC LIMIT 1";
+
     return $this->_getModel()->executeQuery($sQuery);
   }
 
