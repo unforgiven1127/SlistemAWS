@@ -574,10 +574,10 @@ class CSl_eventEx extends CSl_event
 
   public function getLastEvent($panItem, $psItemUid = '', $psItemAction = '', $psItemType = '', $psEventType = '', $pasExcludeType = array())
   {
-    if(!assert('is_arrayOfInt($panItem)'))
-      return false;
+    //if(!assert('is_arrayOfInt($panItem)'))
+      //return false;
 
-    $sQuery = '
+    /*$sQuery = '
       SELECT MAX(elin.event_linkpk), elin.*, even.*
       FROM event_link as elin
       INNER JOIN event as even ON (even.eventpk = elin.eventfk)
@@ -594,13 +594,13 @@ class CSl_eventEx extends CSl_event
       $sQuery.= ' AND even.cp_type NOT IN ("'.implode('","', $pasExcludeType).'") ';
 
 
-    $sQuery.= ' GROUP BY elin.cp_uid, elin.cp_action, elin.cp_pk';
+    $sQuery.= ' GROUP BY elin.cp_uid, elin.cp_action, elin.cp_pk';*/
     //dump($sQuery);
-    /*$sQuery = "SELECT el.cp_pk,el.cp_type, e.* FROM event_link el
+    $sQuery = "SELECT el.cp_pk,el.cp_type, e.* FROM event_link el
               INNER JOIN event e on e.eventpk = el.eventfk
-              WHERE el.cp_pk = '416705' AND (e.type = 'character' OR e.type = 'note')
-              ORDER BY el.event_linkpk DESC";*/
-
+              WHERE el.cp_pk = '".$panItem."' AND (e.type = 'character' OR e.type = 'note')
+              ORDER BY el.event_linkpk DESC";
+ChromePhp::log($sQuery);
     return $this->_getModel()->executeQuery($sQuery);
   }
 

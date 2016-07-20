@@ -3473,7 +3473,7 @@ ChromePhp::log($sQuery);
       //while($bRead)
       foreach ($panPk as $key => $value)
       {
-        $oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
+        $oDbResult = $oNote->getLastEvent($value, '555-001', 'ppav', 'candi');
 
         $noteArray = $oDbResult->getAll();
 
