@@ -44,11 +44,13 @@ class CSl_positionModelEx extends CSl_positionModel
 
     $sQuery.= 'WHERE spli.candidatefk = '.$pnCandidatePk.' '.$sWhere.' ';
 
-    if($pbActiveOnly)
+    /*if($pbActiveOnly)
       $sQuery.= 'ORDER BY spli.sl_position_linkpk DESC';
     else
-      $sQuery.= 'ORDER BY spli.active DESC, spli.positionfk DESC, spli.date_expire DESC';
-ChromePhp::log($sQuery);
+      $sQuery.= 'ORDER BY spli.active DESC, spli.positionfk DESC, spli.date_expire DESC';*/
+
+      $sQuery.= "ORDER BY spli.sl_position_linkpk DESC";
+
     //echo $sQuery;
     return $this->oDB->executeQuery($sQuery);
   }
