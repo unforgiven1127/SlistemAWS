@@ -1249,7 +1249,7 @@ class CFolderEx extends CFolder
                   ORDER BY str_equal DESC, str_start DESC, fold.label, folderpk';
     }
 
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
     //dump($sQuery);
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
@@ -1259,9 +1259,9 @@ ChromePhp::log($sQuery);
       {
         $folder_id = getFieldValue('folderpk');
         $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
-        $itemsQueryResult = $oDB->ExecuteQuery($sQuery);
-        $itemsResult = $itemsQueryResult->getAll();
-        ChromePhp::log($itemsResult);
+        //$itemsQueryResult = $oDB->ExecuteQuery($sQuery);
+        //$itemsResult = $itemsQueryResult->getAll();
+        ChromePhp::log($itemsQuery);
 
         $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
