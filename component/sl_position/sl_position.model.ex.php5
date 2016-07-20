@@ -48,7 +48,7 @@ class CSl_positionModelEx extends CSl_positionModel
       $sQuery.= 'ORDER BY spli.sl_position_linkpk DESC';
     else
       $sQuery.= 'ORDER BY spli.active DESC, spli.positionfk DESC, spli.date_expire DESC';*/
-
+// update e gore siralamamiz istendi
       $sQuery.= "ORDER BY spli.sl_position_linkpk DESC";
 
     //echo $sQuery;

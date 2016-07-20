@@ -6726,7 +6726,14 @@ die();*/
         else
         {
           if(!is_date($asData['date_birth']) || $asData['date_birth'] < '1900-00-00')
+          {
             $asError[] = 'Birth date invalid.';
+          }
+          $ageCalculate = DateTime::createFromFormat('Y-m-d', $asData['date_birth'])->diff(new DateTime('now'))->y;
+          if($ageCalculate < 18)
+          {
+            $asError[] = "Age couldn't be smaller than 18"
+          }
         }
 
         //Stops right here if firstname lastname are incorect
