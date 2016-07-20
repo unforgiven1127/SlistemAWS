@@ -3458,7 +3458,7 @@ ChromePhp::log($sQuery);
       return $sString;
     }
 
-    private function _addNoteData(&$asData, $panPk)
+    private function _addNoteData(&$asData, $)
     {
       $oNote = CDependency::getComponentByName('sl_event');
       $oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
@@ -3468,10 +3468,10 @@ ChromePhp::log($sQuery);
       if(!$bRead)
         return true;
 
+      ChromePhp::log($panPk);
+
       while($bRead)
       {
-        //dump($oDbResult);
-        ChromePhp::log($oDbResult->getData());
         if($oDbResult->getFieldValue('title'))
           $sContent = $oDbResult->getFieldValue('title').'<br />'.$oDbResult->getFieldValue('content');
         else
@@ -3482,7 +3482,7 @@ ChromePhp::log($sQuery);
         $asData[$nCandidatePk]['note_type'] = $oDbResult->getFieldValue('type');
         $asData[$nCandidatePk]['note_title'] = $oDbResult->getFieldValue('title');
         $asData[$nCandidatePk]['note_content'] = $oDbResult->getFieldValue('content');
-        $asData[$nCandidatePk]['note_date'] = $oDbResult->getFieldValue('date_display');
+        $asData[$nCandidatePk]['note_date'] = $oDbResult->getFieldValue('date_created');
         $bRead = $oDbResult->readNext();
       }
 
