@@ -3485,7 +3485,7 @@ ChromePhp::log($noteArray);
         {
           if(isset($noteArray[0]['title']))
           {
-            $sContent = $oDbResult->getFieldValue('title').'<br />'.$noteArray[0]['title'];
+            $sContent = $noteArray[0]['title'].'<br />'.$noteArray[0]['content'];
           }
           else
           {
