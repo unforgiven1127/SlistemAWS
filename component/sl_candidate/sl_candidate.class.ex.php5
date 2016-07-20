@@ -3458,7 +3458,7 @@ ChromePhp::log($sQuery);
       return $sString;
     }
 
-    private function _addNoteData(&$asData, $)
+    private function _addNoteData(&$asData, $panPk)
     {
       $oNote = CDependency::getComponentByName('sl_event');
       $oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
