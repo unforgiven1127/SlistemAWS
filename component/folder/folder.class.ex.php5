@@ -1257,6 +1257,12 @@ ChromePhp::log($sQuery);
     {
       while($bRead)
       {
+        $folder_id = getFieldValue('folderpk');
+        $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
+        $itemsQueryResult = $oDB->ExecuteQuery($sQuery);
+        $itemsResult = $itemsQueryResult->getAll();
+        ChromePhp::log($itemsResult);
+
         $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
         if($bShared)
