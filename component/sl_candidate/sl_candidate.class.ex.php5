@@ -6732,7 +6732,7 @@ die();*/
           $ageCalculate = DateTime::createFromFormat('Y-m-d', $asData['date_birth'])->diff(new DateTime('now'))->y;
           if($ageCalculate < 18)
           {
-            $asError[] = "Age couldn't be smaller than 18";
+            $asError[] = "Age should be higher than 18";
           }
         }
 
