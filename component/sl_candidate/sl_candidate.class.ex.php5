@@ -3476,7 +3476,7 @@ ChromePhp::log($sQuery);
         $oDbResult = $oNote->getLastEvent($value, '555-001', 'ppav', 'candi');
 
         $noteArray = $oDbResult->getAll();
-
+ChromePhp::log($noteArray);
         if(!isset($noteArray[0]))
         {
           return true;
