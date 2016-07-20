@@ -1234,6 +1234,7 @@ class CSearchEx extends CSearch
       $asCondition = array();
       foreach($_POST['field_selector'][$nGroup] as $nRowNumber => $sFieldName)
       {
+        ChromePhp::log($sFieldName);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
 
         if (!is_array($vFieldValue) && !in_array($sFieldName, $ignore_explode))
