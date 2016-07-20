@@ -1257,11 +1257,12 @@ class CFolderEx extends CFolder
     {
       while($bRead)
       {
-        $folder_id = getFieldValue('folderpk');
+        $folder_id = $oDbResult->getFieldValue('folderpk');
         $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
-        //$itemsQueryResult = $oDB->ExecuteQuery($sQuery);
-        //$itemsResult = $itemsQueryResult->getAll();
         ChromePhp::log($itemsQuery);
+        $itemsQueryResult = $oDB->ExecuteQuery($sQuery);
+        $itemsResult = $itemsQueryResult->getAll();
+        ChromePhp::log($itemsResult);
 
         $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
