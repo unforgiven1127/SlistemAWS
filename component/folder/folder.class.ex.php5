@@ -1263,10 +1263,10 @@ class CFolderEx extends CFolder
         ChromePhp::log($folder_id);
         $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
         ChromePhp::log($itemsQuery);
-        var_dump($itemsQuery);
-        //$itemsQueryResult = $oDB->ExecuteQuery($itemsQuery);
-        //$itemsResult = $itemsQueryResult->getAll();
-        //ChromePhp::log($itemsResult);
+
+        $itemsQueryResult = $oDB->ExecuteQuery($itemsQuery);
+        $itemsResult = $itemsQueryResult->getAll();
+        ChromePhp::log($itemsResult);
 
         if($bShared)
         {
