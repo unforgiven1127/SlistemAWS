@@ -1260,13 +1260,14 @@ class CFolderEx extends CFolder
         $asData['id'] = $oDbResult->getFieldValue('folderpk');
 
         $folder_id = $asData['id'];
-        ChromePhp::log($folder_id);
-        $itemsQuery = "SELECT COUNT(*) FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
-        ChromePhp::log($itemsQuery);
+        //ChromePhp::log($folder_id);
+        $itemsQuery = "SELECT COUNT(*) as count FROM folder_item WHERE parentfolderfk = '".$folder_id."' ";
+        //ChromePhp::log($itemsQuery);
 
         $itemsQueryResult = $oDB->ExecuteQuery($itemsQuery);
         $itemsResult = $itemsQueryResult->getAll();
-        ChromePhp::log($itemsResult);
+        $itemCount = $itemsResult[0]['count'];
+        //ChromePhp::log($itemsResult);
 
         if($bShared)
         {
@@ -1275,10 +1276,10 @@ class CFolderEx extends CFolder
           else
             $sUser = $oDbResult->getFieldValue('pseudo');
 
-          $asData['name'] = $oDbResult->getFieldValue('label').' ['.$sUser.'] ('.$oDbResult->getFieldValue('nb_item').')' ;
+          $asData['name'] = $oDbResult->getFieldValue('label').' ['.$sUser.'] ('.$itemCount.')' ;
         }
         else
-          $asData['name'] = $oDbResult->getFieldValue('label').' ('.$oDbResult->getFieldValue('nb_item').')' ;
+          $asData['name'] = $oDbResult->getFieldValue('label').' ('.$itemCount.')' ;
 
         $asJsonData[] = json_encode($asData);
         $bRead = $oDbResult->readNext();
