@@ -1398,7 +1398,7 @@ class CSearchEx extends CSearch
             else
             {
               //dump(' is NOT an array');
-
+ChromePhp::log($asFieldData['sql']['field']);
               if(isset($asFieldData['sql']['field']) && !empty($asFieldData['sql']['field']))
               {
                 $asFieldData['data']['field'] = $asFieldData['sql']['field'];
