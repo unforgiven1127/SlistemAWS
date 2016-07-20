@@ -600,7 +600,7 @@ class CSl_eventEx extends CSl_event
               INNER JOIN event e on e.eventpk = el.eventfk
               WHERE el.cp_pk = '".$panItem."' AND (e.type = 'character' OR e.type = 'note')
               ORDER BY el.event_linkpk DESC";
-ChromePhp::log($sQuery);
+
     return $this->_getModel()->executeQuery($sQuery);
   }
 

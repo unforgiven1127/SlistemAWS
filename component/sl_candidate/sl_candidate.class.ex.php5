@@ -3506,7 +3506,6 @@ ChromePhp::log($sQuery);
         $asData[$nCandidatePk]['note_content'] = $noteArray[0]['content'];
         $asData[$nCandidatePk]['note_date'] = $noteArray[0]['date_create'];
       }
-ChromePhp::log($asData);
       return true;
     }
 
