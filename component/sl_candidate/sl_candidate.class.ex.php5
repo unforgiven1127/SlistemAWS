@@ -3461,29 +3461,50 @@ ChromePhp::log($sQuery);
     private function _addNoteData(&$asData, $panPk)
     {
       $oNote = CDependency::getComponentByName('sl_event');
-      $oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
+      //$oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
       //dump($oDbResult);
 
-      $bRead = $oDbResult->readFirst();
-      if(!$bRead)
-        return true;
+      //$bRead = $oDbResult->readFirst();
+      //if(!$bRead)
+        //return true;
 
-      ChromePhp::log($panPk);
+      //ChromePhp::log($panPk);
 
-      while($bRead)
+      //while($bRead)
+      foreach ($panPk as $key => $value)
       {
-        if($oDbResult->getFieldValue('title'))
+        $oDbResult = $oNote->getLastEvent($panPk, '555-001', 'ppav', 'candi');
+
+        $noteArray = $oDbResult->getAll();
+
+        if(!isset($noteArray[0]))
+        {
+          return true;
+        }
+        else
+        {
+          if(isset($noteArray[0]['title']))
+          {
+            $sContent = $oDbResult->getFieldValue('title').'<br />'.$noteArray[0]['title'];
+          }
+          else
+          {
+            $sContent = $noteArray[0]['content'];
+          }
+        }
+
+        /*if($oDbResult->getFieldValue('title'))
           $sContent = $oDbResult->getFieldValue('title').'<br />'.$oDbResult->getFieldValue('content');
         else
-          $sContent = $oDbResult->getFieldValue('content');
+          $sContent = $oDbResult->getFieldValue('content');*/
 
-        $nCandidatePk = (int)$oDbResult->getFieldValue('cp_pk');
+        //$nCandidatePk = (int)$oDbResult->getFieldValue('cp_pk');
+        $nCandidatePk = (int)$noteArray[0]['cp_pk'];
 
-        $asData[$nCandidatePk]['note_type'] = $oDbResult->getFieldValue('type');
-        $asData[$nCandidatePk]['note_title'] = $oDbResult->getFieldValue('title');
-        $asData[$nCandidatePk]['note_content'] = $oDbResult->getFieldValue('content');
-        $asData[$nCandidatePk]['note_date'] = $oDbResult->getFieldValue('date_created');
-        $bRead = $oDbResult->readNext();
+        $asData[$nCandidatePk]['note_type'] = $noteArray[0]['type'];
+        $asData[$nCandidatePk]['note_title'] = $noteArray[0]['title'];
+        $asData[$nCandidatePk]['note_content'] = $noteArray[0]['content'];
+        $asData[$nCandidatePk]['note_date'] = $noteArray[0]['date_created'];
       }
 
       return true;
