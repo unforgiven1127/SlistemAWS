@@ -689,7 +689,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
-
+ChromePhp::log($user_id);
       $complex_search_counts = getAILogsCount("complex_search",$user_id);
 
       ChromePhp::log($complex_search_counts);
