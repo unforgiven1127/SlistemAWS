@@ -115,7 +115,7 @@ ChromePhp::log($pbAddInvisible);
       $sUserSql = ' AND lgm.loginfk = "'.$pnUserPk.'" ';
     }
 
-    $sQuery = 'SELECT lg.*, lgm.loginfk FROM login_group as lg ';
+    $sQuery = 'SELECT l.contact_flag, lg.*, lgm.loginfk FROM login_group as lg ';
 
     if($pbGetAllGroups)
       $sQuery.= ' LEFT JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
