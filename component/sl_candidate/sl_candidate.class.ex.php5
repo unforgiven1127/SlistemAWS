@@ -5108,8 +5108,6 @@ ChromePhp::log($sQuery);
     private function _getContactFormRow($poForm, $nCount, $asTypes, $pasData, $class = '',$newArea = 0)
     {
       $oLogin = CDependency::getCpLogin();
-ChromePhp::log($pasData);
-ChromePhp::log($asTypes);
 
       if(!empty($pasData))
       {
