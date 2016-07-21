@@ -686,6 +686,16 @@ class CSl_candidateEx extends CSl_candidate
     {
       //keep the file somwhere else, gonna be big
       require_once($_SERVER['DOCUMENT_ROOT'].self::getResourcePath().'conf/field_description.inc.php5');
+
+      $complex_search_counts = getAILogsCount("complex_search");
+      ChromePhp::log($complex_search_counts);
+ChromePhp::log($asFields[CONST_CANDIDATE_TYPE_CANDI]['grade']);
+
+      /*foreach ($complex_search_counts as $key => $value)
+      {
+
+      }*/
+
     }
     else
     {
