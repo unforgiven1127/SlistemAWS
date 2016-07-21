@@ -122,9 +122,9 @@ ChromePhp::log($pbAddInvisible);
     else
       $sQuery.= ' INNER JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
 
-    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginfk";
+    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginfk AND l.contact_flag = 'a'";
 
-    $sQuery.= " WHERE 1 AND l.contact_flag = 'a' ";
+    $sQuery.= " WHERE 1 ";
 
     if(!$pbAddInvisible)
       $sQuery.= ' AND lg.visible = 1 ';
