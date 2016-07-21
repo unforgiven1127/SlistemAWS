@@ -2297,7 +2297,7 @@ class CLoginEx extends CLogin
       $sQuery.= ' ORDER BY l.firstname, l.lastname';
     else
       $sQuery.= ' ORDER BY '.$psSort;
-ChromePhp::log($sQuery);
+
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 

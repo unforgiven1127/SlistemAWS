@@ -152,6 +152,7 @@ class CLoginModelEx extends CLoginModel
   */
   public function getUsersAndGroup($panUserPk, $pbGroup = true, $pbCompact = false, $pbAddInvisible = false)
   {
+    ChromePhp::log('HERE5');
     if(!assert(' (empty($panUserPk) || is_arrayOfInt($panUserPk)) && is_bool($pbGroup) && is_bool($pbCompact)'))
       return array();
 
