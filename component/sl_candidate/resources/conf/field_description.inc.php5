@@ -16,35 +16,6 @@
   $sURLAllUser = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('all_users' => 1));
   $sToday = date('Y-m-d');
 
-  $asFields[CONST_CANDIDATE_TYPE_CANDI]['test'] = array(
-    'display' => array
-    (
-      'fts_type'=> null,
-      'type' => array('select', ''),
-      'label' => '<b>MOST USED SEARCHES</b>',
-      'group' => 'most_used',
-      'operator' => $oSearch->getFieldOperators('numeric'),
-      'default_operator' => 'equal',
-      'option' => $asYesNo,
-      'value' => array(),
-      'default_value' => array(),
-      'multiple' => null,
-      'param' => null,
-      'js_control' => 'jsFieldInteger'
-    ),
-    'data' => array
-    (
-      'type' => 'int',
-      'control' => 'is_integer'
-    ),
-    'sql' => array
-    (
-      'field' => 'scan._sys_status',
-      'join' => null,
-      'fts' => false,
-      'unmanageable' => null
-    )
-  );
 
   $oLogin = CDependency::getCpLogin();
   if($oLogin->isAdmin())

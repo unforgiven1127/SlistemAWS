@@ -583,10 +583,10 @@ class CSearchEx extends CSearch
       {
         $oComponent = CDependency::getComponentByUid($sComponentUid);
         $asFields = $oComponent->getSearchFields('', true);
-ChromePhp::log($asFields);
+
         $asFieldList = array_merge($asFieldList, $asFields);
       }
-
+ChromePhp::log($asFieldList);
       //preserve field in session if no result loadded here
       if(!empty($asFieldList))
       {
