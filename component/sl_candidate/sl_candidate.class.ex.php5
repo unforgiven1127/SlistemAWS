@@ -6549,13 +6549,24 @@ die();*/
           return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
 
 
-        if (!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
+        if(!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
           return array('popupError' => 'Normal user cannot change candidate name');
 
-        if (!$this->_oLogin->isAdmin() && $asData['keyword'] != getValue('keyword'))
-          return array('popupError' => 'Normal user cannot change keyword');
+        if(!$this->_oLogin->isAdmin() && $asData['keyword'] != '')
+        {
+          $oldKey = $asData['keyword'];
+          $newKey = getValue('keyword');
+          if (strpos($newKey, $oldKey) !== false)
+          {
+              #sikinti yok
+          }
+          else
+          {
+            return array('popupError' => 'Normal user cannot delete keyword');
+          }
+        }
 
-        if (!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
+        if(!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
           return array('popupError' => 'Normal user cannot change candidate name');
 
         //Date created is use and overwritten everywhere... so we're using an alias
