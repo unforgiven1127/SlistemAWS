@@ -3039,7 +3039,7 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `ai_logs`(`type`,`data`,`first_activity`,`last_activity`, `user_id`)
                VALUES('".$type."','".$data."','".$sDate."','".$sDate."','".$user_id."')";
 
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     return true;
