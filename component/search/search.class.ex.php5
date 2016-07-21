@@ -397,7 +397,7 @@ class CSearchEx extends CSearch
         {
           $oComponent = CDependency::getComponentByUid($sComponentUid);
           $aTypes = $oComponent->getSearchFields();
-
+ChromePhp::log($aTypes);
           foreach ($aTypes as $sType => $aType)
             $oForm->addOption('datatypes[]', array('value' => $sType, 'label' => $aType['label']));
         }

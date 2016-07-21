@@ -696,7 +696,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "most_used";
       }
-ChromePhp::log($asFields);
+
     }
     else
     {
