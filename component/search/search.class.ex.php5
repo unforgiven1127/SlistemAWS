@@ -1248,7 +1248,7 @@ class CSearchEx extends CSearch
       $asCondition = array();
       foreach($_POST['field_selector'][$nGroup] as $nRowNumber => $sFieldName)
       {
-        ChromePhp::log($sFieldName);
+
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
 
         if(in_array($vFieldValue,$asStatusFlag))
@@ -1279,7 +1279,7 @@ class CSearchEx extends CSearch
           $nCurrentUser = $oLogin->getUserPk();
           $nLoginfk = $nCurrentUser;
           $sFilter = $vFieldValue;
-          ChromePhp::log($vFieldValue);
+
           switch($sFilter)
           {
             case 'in_play_pf':
@@ -1395,8 +1395,6 @@ class CSearchEx extends CSearch
           {
             foreach($asFieldData['sql']['join'] as $asJoin)
             {
-              ChromePhp::log($asFieldData);
-              ChromePhp::log($vFieldValue);
 
               $oQB->addJoin($asJoin['type'], $asJoin['table'], $asJoin['alias'], $asJoin['clause']);
 
@@ -1510,7 +1508,7 @@ class CSearchEx extends CSearch
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
-ChromePhp::log($asFieldData['sql']['field']);
+
                 if(!empty($vValue))
                   $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
               }
@@ -1521,7 +1519,7 @@ ChromePhp::log($asFieldData['sql']['field']);
             else
             {
               //dump(' is NOT an array');
-ChromePhp::log($asFieldData['sql']['field']);
+
               if(isset($asFieldData['sql']['field']) && !empty($asFieldData['sql']['field']))
               {
                 $asFieldData['data']['field'] = $asFieldData['sql']['field'];
