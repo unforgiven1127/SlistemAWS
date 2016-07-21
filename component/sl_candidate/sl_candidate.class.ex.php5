@@ -689,7 +689,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $complex_search_counts = getAILogsCount("complex_search");
       $mostUsedSearches = array();
-      //ChromePhp::log($complex_search_counts);
+      ChromePhp::log($asFields);
       //ChromePhp::log($asFields[CONST_CANDIDATE_TYPE_CANDI]['grade']);
 
       foreach ($complex_search_counts as $key => $value)
@@ -700,8 +700,9 @@ class CSl_candidateEx extends CSl_candidate
       }
       foreach ($mostUsedSearches as $key => $value)
       {
-        $asFields[] = $value;
+        array_push($asFields , $value);
       }
+      ChromePhp::log($asFields);
     }
     else
     {
