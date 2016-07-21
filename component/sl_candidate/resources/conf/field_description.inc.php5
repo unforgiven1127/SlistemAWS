@@ -16,7 +16,7 @@
   $sURLAllUser = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('all_users' => 1));
   $sToday = date('Y-m-d');
 
-  $asFields[CONST_CANDIDATE_TYPE_CANDI]['dba_delete'] = array(
+  $asFields[CONST_CANDIDATE_TYPE_CANDI]['test'] = array(
     'display' => array
     (
       'fts_type'=> null,
