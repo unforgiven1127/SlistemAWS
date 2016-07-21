@@ -722,6 +722,7 @@ ul.contactList li div.contactIcon{ width: 7%; float: right; height: 32px;}
 .contact_type7 {background: transparent url('/component/sl_candidate/resources/pictures/types/facebook.png') no-repeat top left; }
 .contact_type8 {background: transparent url('/component/sl_candidate/resources/pictures/types/linkedin.png') no-repeat top left; }
 .contact_type9 {background: transparent url('/component/sl_candidate/resources/pictures/types/info.png') no-repeat top left; }
+.contact_type10 {background: transparent url('/component/sl_candidate/resources/pictures/types/info.png') no-repeat top left; }
 
 ul.contactList li div.contactData{ width: 63%; float: left; height: 16px; overflow: hidden;}
 ul.contactList li div.contactDescription{ width: 63%; float: left; min-height: 16px;}
