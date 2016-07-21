@@ -3239,7 +3239,7 @@ ChromePhp::log($sQuery);
       $sTitle = 'All Users';
       $aUserList = $this->getUserList(0, false, true, 'l.status DESC, l.firstname, l.lastname');
     }
-
+ChromePhp::log($aUserList);
 
 
     //Full list container
