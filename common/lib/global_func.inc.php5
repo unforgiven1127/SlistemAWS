@@ -3030,6 +3030,32 @@ var_dump($query);*/
 
   }
 
+  function getAILogsCount($type)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT data, COUNT(*) as count FROM ai_logs WHERE type = '".$type."' GROUP BY data ORDER BY count DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getAILogs($type)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM ai_logs WHERE type = '".$type."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function insertAILog($type,$data,$user_id)
   {
 
@@ -3039,7 +3065,6 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `ai_logs` (`type`,`data`,`first_activity`,`last_activity`, `user_id`)
                VALUES('".$type."','".$data."','".$sDate."','".$sDate."','".$user_id."')";
 
-ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     return true;

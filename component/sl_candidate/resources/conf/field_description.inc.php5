@@ -16,6 +16,8 @@
   $sURLAllUser = $this->_oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER, 0, array('all_users' => 1));
   $sToday = date('Y-m-d');
 
+  $complex_search_counts = getAILogsCount("complex_search");
+  ChromePhp::log($complex_search_counts);
 
   $oLogin = CDependency::getCpLogin();
   if($oLogin->isAdmin())
