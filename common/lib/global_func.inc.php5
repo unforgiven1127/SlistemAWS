@@ -3034,7 +3034,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT data, COUNT(*) as count FROM ai_logs WHERE type = '".$type."' GROUP BY data ORDER BY count DESC";
+    $sQuery = "SELECT data, COUNT(*) as count FROM ai_logs WHERE type = '".$type."' GROUP BY data ORDER BY count DESC LIMIT 5";
 
     $db_result = $oDB->executeQuery($sQuery);
 

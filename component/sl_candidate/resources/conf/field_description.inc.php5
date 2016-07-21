@@ -19,6 +19,13 @@
   $complex_search_counts = getAILogsCount("complex_search");
   ChromePhp::log($complex_search_counts);
 
+  ChromePhp::log($asFields[CONST_CANDIDATE_TYPE_CANDI]['status']);
+
+  /*foreach ($complex_search_counts as $key => $value)
+  {
+    
+  }*/
+
   $oLogin = CDependency::getCpLogin();
   if($oLogin->isAdmin())
   {
