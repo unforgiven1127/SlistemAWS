@@ -1429,7 +1429,6 @@ class CSearchEx extends CSearch
                   $nMonth = 6;
 
                 $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
-                $asListMsg[] = $sBy.' Recently met candidates ('.$nMonth.' months || since'.$sDate.')';
 
                 $dateNow = date('Y-m-j');
                 $searchDateStart = strtotime ( '-6 month' , strtotime ( $dateNow ) ) ; // -3 month tu -6 yaptik
