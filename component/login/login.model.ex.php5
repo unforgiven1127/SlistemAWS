@@ -121,7 +121,7 @@ class CLoginModelEx extends CLoginModel
     else
       $sQuery.= ' INNER JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
 
-    $sUserSql.= " INNER JOIN login l on l.loginpk = lgm.loginfk";
+    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginfk";
 
     $sQuery.= ' WHERE 1 ';
 
