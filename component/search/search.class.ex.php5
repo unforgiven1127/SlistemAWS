@@ -1240,6 +1240,7 @@ class CSearchEx extends CSearch
     $asStatusFlag['all_active_pf'] = 'all_active_pf';
     $asStatusFlag['all_pf'] = 'all_pf';
 
+    $oLogin = CDependency::getCpLogin();
     $user_id = $oLogin->getUserPk();
 
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
@@ -1251,7 +1252,7 @@ class CSearchEx extends CSearch
       foreach($_POST['field_selector'][$nGroup] as $nRowNumber => $sFieldName)
       {
 ChromePhp::log($sFieldName);
-        //insertAILog("complex_search",$sFieldName,$user_id);
+        insertAILog("complex_search",$sFieldName,$user_id);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
 
         if(in_array($vFieldValue,$asStatusFlag))
