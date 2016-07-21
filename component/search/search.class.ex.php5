@@ -1242,7 +1242,7 @@ class CSearchEx extends CSearch
 
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
     {
-
+ChromePhp::log($sGroupOperator);
       //$nRow = count($_POST['field_selector']);
       $bFirstRow = true;
       $asCondition = array();
