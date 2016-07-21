@@ -18,39 +18,6 @@
 
 
   $oLogin = CDependency::getCpLogin();
-  if($oLogin->isAdmin())
-  {
-    $asFields[CONST_CANDIDATE_TYPE_CANDI]['dba_delete'] = array(
-      'display' => array
-      (
-        'fts_type'=> null,
-        'type' => array('select', ''),
-        'label' => 'DBA :: Deleted candidates',
-        'group' => 'status',
-        'operator' => $oSearch->getFieldOperators('numeric'),
-        'default_operator' => 'equal',
-        'option' => $asYesNo,
-        'value' => array(),
-        'default_value' => array(),
-        'multiple' => null,
-        'param' => null,
-        'js_control' => 'jsFieldInteger'
-      ),
-      'data' => array
-      (
-        'type' => 'int',
-        'control' => 'is_integer'
-      ),
-      'sql' => array
-      (
-        'field' => 'scan._sys_status',
-        'join' => null,
-        'fts' => false,
-        'unmanageable' => null
-      )
-    );
-  }
-
 
   $asFields[CONST_CANDIDATE_TYPE_CANDI]['grade'] = array(
       'display' => array
@@ -2971,3 +2938,36 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'unmanageable' => null
       )
     );
+
+    if($oLogin->isAdmin())
+    {
+      $asFields[CONST_CANDIDATE_TYPE_CANDI]['dba_delete'] = array(
+        'display' => array
+        (
+          'fts_type'=> null,
+          'type' => array('select', ''),
+          'label' => 'DBA :: Deleted candidates',
+          'group' => 'status',
+          'operator' => $oSearch->getFieldOperators('numeric'),
+          'default_operator' => 'equal',
+          'option' => $asYesNo,
+          'value' => array(),
+          'default_value' => array(),
+          'multiple' => null,
+          'param' => null,
+          'js_control' => 'jsFieldInteger'
+        ),
+        'data' => array
+        (
+          'type' => 'int',
+          'control' => 'is_integer'
+        ),
+        'sql' => array
+        (
+          'field' => 'scan._sys_status',
+          'join' => null,
+          'fts' => false,
+          'unmanageable' => null
+        )
+      );
+    }
