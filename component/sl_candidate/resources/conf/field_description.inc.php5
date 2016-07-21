@@ -20,8 +20,8 @@
     'display' => array
     (
       'fts_type'=> null,
-      'type' => array('select', '<b>MOST USED SEARCHES</b>'),
-      'label' => '',
+      'type' => array('select', ''),
+      'label' => '<b>MOST USED SEARCHES</b>',
       'group' => 'most_used',
       'operator' => $oSearch->getFieldOperators('numeric'),
       'default_operator' => 'equal',
