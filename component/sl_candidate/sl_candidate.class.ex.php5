@@ -700,7 +700,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       foreach ($mostUsedSearches as $key => $value)
       {
-        array_push($asFields , $value);
+        $asFields[] = $value;
       }
       ChromePhp::log($asFields);
     }
