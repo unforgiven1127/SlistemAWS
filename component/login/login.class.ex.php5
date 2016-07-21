@@ -3225,17 +3225,20 @@ ChromePhp::log($sQuery);
 
     if($nGroupFk >= 0 && $nGroupFk < 999)
     {
+      ChromePhp::log('HERE1');
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
         $sTitle = 'Users with no group';
       else
       {
+        ChromePhp::log('HERE2');
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
         $sTitle = $aUserGroups[$nGroupFk]['title'];
       }
     }
     else
     {
+      ChromePhp::log('HERE3');
       $sTitle = 'All Users';
       $aUserList = $this->getUserList(0, false, true, 'l.status DESC, l.firstname, l.lastname');
     }
