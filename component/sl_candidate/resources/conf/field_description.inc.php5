@@ -2910,7 +2910,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       (
         'fts_type'=> null,
         'type' => array('input', 'date'),
-        'label' => 'Note created on',
+        'label' => 'Note Created on',
         'group' => 'note & description',
         'operator' => $oSearch->getFieldOperators('date'),
         'default_operator' => 'superior',
