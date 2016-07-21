@@ -3468,8 +3468,6 @@ ChromePhp::log($sQuery);
       //if(!$bRead)
         //return true;
 
-      //ChromePhp::log($panPk);
-
       //while($bRead)
       foreach ($panPk as $key => $value)
       {
