@@ -1285,7 +1285,7 @@ class CSearchEx extends CSearch
             }
           }
 
-          if(!empty($asFieldData['sql']['select']))
+          if(!empty($asFieldData['sql']['select'])&& $sFieldName != "pipeline_folders")
           {
             $oQB->addSelect($asFieldData['sql']['select']);
           }
@@ -1297,7 +1297,7 @@ class CSearchEx extends CSearch
           }
 
           $sCondition = '';
-          if(!empty($asFieldData['sql']['unmanageable']))
+          if(!empty($asFieldData['sql']['unmanageable'])&& $sFieldName != "pipeline_folders")
           {
             //replace template operator   !!! some type don't have any !!!
             $sOperator = $this->_getSqlOperator($asFieldData['data'], $sFieldOperator, $vFieldValue);
@@ -1371,6 +1371,10 @@ class CSearchEx extends CSearch
               $sCondition =  $sRowOperator.' '. $sCondition .' ';
               //dump($sCondition);
             }
+          }
+          else if($sFieldName == "pipeline_folders")
+          {
+            
           }
           else
           {
