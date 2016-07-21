@@ -2276,7 +2276,7 @@ class CLoginEx extends CLogin
       LEFT JOIN login_group_member lm ON l.loginpk=lm.loginfk ';
 
     if($pbOnlyActive)
-       $sQuery.= ' WHERE l.status > 0';
+       $sQuery.= " WHERE l.status > 0 AND contact_flag = '1' ";
     else
       $sQuery.= ' WHERE 1 ';
 
