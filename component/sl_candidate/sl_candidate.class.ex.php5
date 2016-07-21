@@ -1633,6 +1633,7 @@ class CSl_candidateEx extends CSl_candidate
               case 3:
               case 7:
               case 8:
+              case 10:
 
                 if(preg_match('/$http/i', $asData['value']) !== 0)
                   $asData['value'] = 'http://'.$asData['value'];
