@@ -689,15 +689,16 @@ class CSl_candidateEx extends CSl_candidate
 
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
-ChromePhp::log($user_id);
+
       $complex_search_counts = getAILogsCount("complex_search",$user_id);
 
-      ChromePhp::log($complex_search_counts);
-
-      /*foreach ($complex_search_counts as $key => $value)
+      if(isset($complex_search_counts) && !empty($complex_search_counts))
       {
-        $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*MOST_USED";
-      }*/
+        foreach ($complex_search_counts as $key => $value)
+        {
+          $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*MOST_USED";
+        }
+      }
 
     }
     else
