@@ -3036,7 +3036,7 @@ var_dump($query);*/
     $sDate = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "INSERT INTO `ai_logs`(`type`,`data`,`first_activity`,`last_activity`, `user_id`)
+    $sQuery = "INSERT INTO `ai_logs` (`type`,`data`,`first_activity`,`last_activity`, `user_id`)
                VALUES('".$type."','".$data."','".$sDate."','".$sDate."','".$user_id."')";
 
 ChromePhp::log($sQuery);
