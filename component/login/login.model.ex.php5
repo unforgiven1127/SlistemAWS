@@ -106,7 +106,8 @@ class CLoginModelEx extends CLoginModel
   {
     if(!assert('is_integer($pnUserPk) && is_bool($pbGetAllGroups) && is_array($panGroup)'))
       return array();
-
+ChromePhp::log($panGroup);
+ChromePhp::log($pbAddInvisible);
     if(empty($pnUserPk))
       $sUserSql = '';
     else
@@ -133,7 +134,7 @@ class CLoginModelEx extends CLoginModel
 
     $sQuery.= ' ORDER BY lg.title ';
 
-
+ChromePhp::log($sQuery);
 
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();

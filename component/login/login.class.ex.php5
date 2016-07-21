@@ -3225,25 +3225,20 @@ class CLoginEx extends CLogin
 
     if($nGroupFk >= 0 && $nGroupFk < 999)
     {
-      ChromePhp::log('HERE1');
       $aUserList = $this->getUserByTeam($nGroupFk);
       if($nGroupFk == 0)
         $sTitle = 'Users with no group';
       else
       {
-        ChromePhp::log('HERE2');
         $aUserGroups = $this->_getModel()->getUserGroup(0, true, true);
         $sTitle = $aUserGroups[$nGroupFk]['title'];
       }
     }
     else
     {
-      ChromePhp::log('HERE3');
       $sTitle = 'All Users';
       $aUserList = $this->getUserList(0, false, true, 'l.status DESC, l.firstname, l.lastname');
     }
-ChromePhp::log($aUserList);
-
 
     //Full list container
     $sHTML = $oHTML->getBlocStart('', array('style'=>'position: relative;'));
@@ -3626,7 +3621,7 @@ ChromePhp::log($aUserList);
    * @return array
    */
   public function getUserGroup($pnUserPk, $pbGetAll = false)
-  {ChromePhp::log('HERE99');
+  {
     if(!assert('is_key($pnUserPk) || is_bool($pbGetAll)'))
       return array();
 
