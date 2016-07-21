@@ -3291,6 +3291,7 @@ class CLoginEx extends CLogin
     $nInactive = 0;
     foreach($aUserList as $aUser)
     {
+      ChromePhp::log($aUser);
       $aRow = array();
 
       if((int)$aUser['is_admin'] == 1)

@@ -106,25 +106,20 @@ class CLoginModelEx extends CLoginModel
   {
     if(!assert('is_integer($pnUserPk) && is_bool($pbGetAllGroups) && is_array($panGroup)'))
       return array();
-ChromePhp::log($panGroup);
-ChromePhp::log($pbAddInvisible);
+
     if(empty($pnUserPk))
       $sUserSql = '';
     else
-    {
       $sUserSql = ' AND lgm.loginfk = "'.$pnUserPk.'" ';
-    }
 
-    $sQuery = 'SELECT l.contact_flag, lg.*, lgm.loginfk FROM login_group as lg ';
+    $sQuery = 'SELECT lg.*, lgm.loginfk FROM login_group as lg ';
 
     if($pbGetAllGroups)
       $sQuery.= ' LEFT JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
     else
       $sQuery.= ' INNER JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
 
-    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginfk AND l.contact_flag = 'a'";
-
-    $sQuery.= " WHERE 1 ";
+    $sQuery.= ' WHERE 1 ';
 
     if(!$pbAddInvisible)
       $sQuery.= ' AND lg.visible = 1 ';
@@ -134,7 +129,7 @@ ChromePhp::log($pbAddInvisible);
 
     $sQuery.= ' ORDER BY lg.title ';
 
-ChromePhp::log($sQuery);
+
 
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
@@ -157,7 +152,6 @@ ChromePhp::log($sQuery);
   */
   public function getUsersAndGroup($panUserPk, $pbGroup = true, $pbCompact = false, $pbAddInvisible = false)
   {
-    ChromePhp::log('HERE5');
     if(!assert(' (empty($panUserPk) || is_arrayOfInt($panUserPk)) && is_bool($pbGroup) && is_bool($pbCompact)'))
       return array();
 
@@ -193,7 +187,7 @@ ChromePhp::log($sQuery);
 
     $sQuery.= $sOrder;
 
-ChromePhp::log($sQuery);
+
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
     $asGroup = array();
