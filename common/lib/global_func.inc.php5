@@ -3030,11 +3030,11 @@ var_dump($query);*/
 
   }
 
-  function getAILogsCount($type)
+  function getAILogsCount($type, $user_id)
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT data, COUNT(*) as count FROM ai_logs WHERE type = '".$type."' GROUP BY data ORDER BY count DESC LIMIT 5";
+    $sQuery = "SELECT data, COUNT(*) as count FROM ai_logs WHERE user_id = '".$user_id."' type = '".$type."' GROUP BY data ORDER BY count DESC LIMIT 5";
 
     $db_result = $oDB->executeQuery($sQuery);
 
