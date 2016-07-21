@@ -3291,74 +3291,77 @@ class CLoginEx extends CLogin
     $nInactive = 0;
     foreach($aUserList as $aUser)
     {
-      ChromePhp::log($aUser);
-      $aRow = array();
-
-      if((int)$aUser['is_admin'] == 1)
-        $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/admin_user.png');
-      else
+      if($aUser['contact_flag'] == 'a')
       {
-        if((int)$aUser['status'] == 1)
-          $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/active_user.png');
+        $aRow = array();
+
+        if((int)$aUser['is_admin'] == 1)
+          $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/admin_user.png');
         else
         {
-          $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/inactive_user.png');
-          $aRow['class'] = 'hiddenUser';
-          $nInactive++;
-        }
-       }
+          if((int)$aUser['status'] == 1)
+            $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/active_user.png');
+          else
+          {
+            $aRow['icon'] = $oHTML->getPicture($this->getResourcePath().'/pictures/inactive_user.png');
+            $aRow['class'] = 'hiddenUser';
+            $nInactive++;
+          }
+         }
 
-      $sURL = $oPage->getAjaxUrl('notification', CONST_ACTION_ADD, CONST_NOTIFY_TYPE_MESSAGE, 0, array('loginfk' => $aUser['loginpk']));
-      $aRow['login'] = $this->getUserNamefromData($aUser, false,false,false);
-      $aRow['login'] = $oHTML->getLink($aRow['login'], 'javascript:;', array('onclick' => '
-          var oConf = goPopup.getConfig();
-          oConf.height = 500;
-          oConf.width = 850;
-          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ', 'title' => 'User #'.$aUser['loginpk'].' created on '.$aUser['date_create']));
+        $sURL = $oPage->getAjaxUrl('notification', CONST_ACTION_ADD, CONST_NOTIFY_TYPE_MESSAGE, 0, array('loginfk' => $aUser['loginpk']));
+        $aRow['login'] = $this->getUserNamefromData($aUser, false,false,false);
+        $aRow['login'] = $oHTML->getLink($aRow['login'], 'javascript:;', array('onclick' => '
+            var oConf = goPopup.getConfig();
+            oConf.height = 500;
+            oConf.width = 850;
+            goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ', 'title' => 'User #'.$aUser['loginpk'].' created on '.$aUser['date_create']));
 
-      $aRow['position'] = $aUser['position'];
-      $aRow['email'] = $oHTML->getLink($aUser['email'], 'mailto:'.$aUser['email'], array('target' => '_blank'));
-      $aRow['email'] = $oHTML->getLink($aUser['email'], 'javascript:;', array('onclick' => 'window.open(\'mailto:'.$aUser['email'].'\', \'zm_mail\'); '));
+        $aRow['position'] = $aUser['position'];
+        $aRow['email'] = $oHTML->getLink($aUser['email'], 'mailto:'.$aUser['email'], array('target' => '_blank'));
+        $aRow['email'] = $oHTML->getLink($aUser['email'], 'javascript:;', array('onclick' => 'window.open(\'mailto:'.$aUser['email'].'\', \'zm_mail\'); '));
 
-      $sPhone = $aUser['phone'];
-      if(trim($sPhone) == '')
-        $aRow['phone'] = '&nbsp;';
-      else
-        $aRow['phone'] = $oHTML->getLink($sPhone, 'callto:'.$sPhone);
-
-      if(trim($aUser['phone_ext']) == '')
-        $aRow['ext'] = '&nbsp;';
-      else
-        $aRow['ext'] = $oHTML->getLink($aUser['phone_ext'], 'callto:'.$aUser['phone_ext']);
-
-      if($bAdmin)
-      {
-        $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk']);
-        $sPic = $oHTML->getPicture(CONST_PICTURE_EDIT, $this->casText['LOGIN_EDIT_USER']);
-        $aRow['actions'] = $oHTML->getLink($sPic, 'javascript:;', array('onclick' => 'var oConfig = goPopup.getConfig(); oConfig.width = 900; oConfig.height = 650; goPopup.setLayerFromAjax(oConfig, \''.$sURL.'\');'));
-        $aRow['actions'].= $oHTML->getSpace(2);
-
-        if($aUser['status'] == 1)
-        {
-          $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_DELETE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk'],array('status'=>$aUser['status']));
-          $sPic = $oHTML->getPicture(CONST_PICTURE_DELETE,$this->casText['LOGIN_DEACTIVATE_USER']);
-          $aRow['actions'].= ' '.$oHTML->getLink($sPic, $sURL, array('onclick' => 'if(!window.confirm(\''.$this->casText['LOGIN_DEACTIVATE'].'\')){ return false; }'));
-        }
+        $sPhone = $aUser['phone'];
+        if(trim($sPhone) == '')
+          $aRow['phone'] = '&nbsp;';
         else
+          $aRow['phone'] = $oHTML->getLink($sPhone, 'callto:'.$sPhone);
+
+        if(trim($aUser['phone_ext']) == '')
+          $aRow['ext'] = '&nbsp;';
+        else
+          $aRow['ext'] = $oHTML->getLink($aUser['phone_ext'], 'callto:'.$aUser['phone_ext']);
+
+        if($bAdmin)
         {
-          $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_DELETE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk'],array('status'=>$aUser['status']));
-          $sPic = $oHTML->getPicture(CONST_PICTURE_REACTIVATE,$this->casText['LOGIN_REACTIVATE_USER']);
-          $aRow['actions'] .= ' '.$oHTML->getLink($sPic, $sURL, array('onclick' => 'if(!window.confirm(\''.$this->casText['LOGIN_REACTIVATE'].'\')){ return false; }'));
+          $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_MANAGE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk']);
+          $sPic = $oHTML->getPicture(CONST_PICTURE_EDIT, $this->casText['LOGIN_EDIT_USER']);
+          $aRow['actions'] = $oHTML->getLink($sPic, 'javascript:;', array('onclick' => 'var oConfig = goPopup.getConfig(); oConfig.width = 900; oConfig.height = 650; goPopup.setLayerFromAjax(oConfig, \''.$sURL.'\');'));
+          $aRow['actions'].= $oHTML->getSpace(2);
+
+          if($aUser['status'] == 1)
+          {
+            $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_DELETE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk'],array('status'=>$aUser['status']));
+            $sPic = $oHTML->getPicture(CONST_PICTURE_DELETE,$this->casText['LOGIN_DEACTIVATE_USER']);
+            $aRow['actions'].= ' '.$oHTML->getLink($sPic, $sURL, array('onclick' => 'if(!window.confirm(\''.$this->casText['LOGIN_DEACTIVATE'].'\')){ return false; }'));
+          }
+          else
+          {
+            $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_DELETE, CONST_LOGIN_TYPE_USER, (int)$aUser['loginpk'],array('status'=>$aUser['status']));
+            $sPic = $oHTML->getPicture(CONST_PICTURE_REACTIVATE,$this->casText['LOGIN_REACTIVATE_USER']);
+            $aRow['actions'] .= ' '.$oHTML->getLink($sPic, $sURL, array('onclick' => 'if(!window.confirm(\''.$this->casText['LOGIN_REACTIVATE'].'\')){ return false; }'));
+          }
+
+          //link to right management
+          $sURL = $oPage->getAjaxUrl('settings', CONST_ACTION_ADD, CONST_TYPE_SETTING_RIGHTUSR, (int)$aUser['loginpk']);
+          $sPic = $oHTML->getPicture($this->getResourcePath().'pictures/right_16.png', 'Right management');
+          $aRow['actions'].= $oHTML->getSpace(2);
+          $aRow['actions'].= $oHTML->getLink($sPic, 'javascript:;', array('onclick' => 'var oConfig = goPopup.getConfig(); oConfig.width = 1100; oConfig.height = 650; goPopup.setLayerFromAjax(oConfig, \''.$sURL.'\');'));
         }
 
-        //link to right management
-        $sURL = $oPage->getAjaxUrl('settings', CONST_ACTION_ADD, CONST_TYPE_SETTING_RIGHTUSR, (int)$aUser['loginpk']);
-        $sPic = $oHTML->getPicture($this->getResourcePath().'pictures/right_16.png', 'Right management');
-        $aRow['actions'].= $oHTML->getSpace(2);
-        $aRow['actions'].= $oHTML->getLink($sPic, 'javascript:;', array('onclick' => 'var oConfig = goPopup.getConfig(); oConfig.width = 1100; oConfig.height = 650; goPopup.setLayerFromAjax(oConfig, \''.$sURL.'\');'));
+        $aData[] = $aRow;
       }
-
-      $aData[] = $aRow;
+      
    }
 
 
