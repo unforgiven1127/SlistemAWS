@@ -1395,7 +1395,7 @@ class CSearchEx extends CSearch
               //dump($sCondition);
             }
           }
-          else if($sFieldName == "pipeline_folders")
+          else if($pipelineFlag)
           {
             ChromePhp::log($sFieldName);
             $oLogin = CDependency::getCpLogin();
