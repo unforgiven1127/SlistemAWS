@@ -2497,7 +2497,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'group' => 'Pipeline activity',
         'operator' => $oSearch->getFieldOperators('in'),
         'default_operator' => '=',
-        'option' => $asList,
+        'option' => '',
         'value' => array(),
         'default_value' => array(0),
         'multiple' => 5,
