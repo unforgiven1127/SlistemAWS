@@ -1374,12 +1374,12 @@ class CSearchEx extends CSearch
           }
           else if($sFieldName == "pipeline_folders")
           {
-            ChromePhp::log($asFieldData['sql']['field']);
+            ChromePhp::log($vFieldValue);
             $oLogin = CDependency::getCpLogin();
             $nCurrentUser = $oLogin->getUserPk();
             $nLoginfk = $nCurrentUser;
             $sFilter = $asFieldData['sql']['field'];
-            ChromePhp::log($sFilter);
+            ChromePhp::log($vFieldValue);
             switch($sFilter)
             {
               case 'in_play':
