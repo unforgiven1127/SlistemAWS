@@ -694,7 +694,7 @@ class CSl_candidateEx extends CSl_candidate
 
       foreach ($complex_search_counts as $key => $value)
       {
-        $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "most_used";
+        $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*most_used";
       }
 
     }
