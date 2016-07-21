@@ -1280,6 +1280,8 @@ class CSearchEx extends CSearch
           $nLoginfk = $nCurrentUser;
           $sFilter = $vFieldValue;
 
+          $asStatus = array('in_play_pf' => '< 150', 'pitched_pf' => '= 1', 'resume_sent_pf' => '= 2', 'stalled_pf' => '= 150', 'fallen_off_pf' => '= 200', 'placed_pf' => '= 101');
+
           switch($sFilter)
           {
             case 'in_play_pf':
