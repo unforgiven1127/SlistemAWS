@@ -6552,6 +6552,9 @@ die();*/
         if (!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
           return array('popupError' => 'Normal user cannot change candidate name');
 
+        if (!$this->_oLogin->isAdmin() && $asData['keyword'] != getValue('keyword'))
+          return array('popupError' => 'Normal user cannot change keyword');
+
         if (!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
           return array('popupError' => 'Normal user cannot change candidate name');
 
@@ -6679,6 +6682,7 @@ die();*/
       {
         $nCandidatePk = $pasCandidate['sl_candidatepk'];
         $nProfilePk = $pasCandidate['sl_candidate_profilepk'];
+        $candidate_information = getCandidateInformation($nCandidatePk);
 
         $asData = $pasCandidate;
         $asData['date_updated'] = date('Y-m-d H:i:s');
@@ -6884,7 +6888,6 @@ die();*/
         $asData['keyword'] = filter_var(getValue('keyword'), FILTER_SANITIZE_STRING);
         $asData['play_for'] = (int)getValue('play_for');
         $asData['play_date'] = null;
-
 
         $asData['is_client'] = getValue('client');
         if(empty($asData['is_client']))
