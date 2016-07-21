@@ -2499,7 +2499,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'default_operator' => '=',
         'option' => $asList,
         'value' => array(),
-        'default_value' => array(5),
+        'default_value' => array(0),
         'multiple' => 5,
         'param' => array(),
         'js_control' => 'jsFieldIntegerPositive'
