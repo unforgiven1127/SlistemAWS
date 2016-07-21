@@ -2276,7 +2276,7 @@ class CLoginEx extends CLogin
       LEFT JOIN login_group_member lm ON l.loginpk=lm.loginfk ';
 ChromePhp::log($pbOnlyActive);
     if($pbOnlyActive)
-       $sQuery.= " WHERE contact_flag = '1' ";
+       $sQuery.= " WHERE contact_flag = 'a' ";
     else
       $sQuery.= ' WHERE 1 ';
 ChromePhp::log($sQuery);
