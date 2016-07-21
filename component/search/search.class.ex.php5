@@ -1253,11 +1253,11 @@ class CSearchEx extends CSearch
 
         if(in_array($vFieldValue,$asStatusFlag))
         {
-          $pipelineFlag = false;
+          $pipelineFlag = true;
         }
         else
         {
-          $pipelineFlag = true;
+          $pipelineFlag = false;
         }
 
         if (!is_array($vFieldValue) && !in_array($sFieldName, $ignore_explode))
@@ -1275,7 +1275,6 @@ class CSearchEx extends CSearch
         }
         else if($pipelineFlag)
         {
-          ChromePhp::log($sFieldName);
           $oLogin = CDependency::getCpLogin();
           $nCurrentUser = $oLogin->getUserPk();
           $nLoginfk = $nCurrentUser;
@@ -1392,7 +1391,7 @@ class CSearchEx extends CSearch
 
 
 
-          if(!empty($asFieldData['sql']['join']) && $pipelineFlag)
+          if(!empty($asFieldData['sql']['join']))
           {
             foreach($asFieldData['sql']['join'] as $asJoin)
             {
@@ -1409,7 +1408,7 @@ class CSearchEx extends CSearch
             }
           }
 
-          if(!empty($asFieldData['sql']['select'])&& $pipelineFlag)
+          if(!empty($asFieldData['sql']['select']))
           {
             $oQB->addSelect($asFieldData['sql']['select']);
           }
@@ -1421,7 +1420,7 @@ class CSearchEx extends CSearch
           }
 
           $sCondition = '';
-          if(!empty($asFieldData['sql']['unmanageable']) && $pipelineFlag)
+          if(!empty($asFieldData['sql']['unmanageable']))
           {
             //replace template operator   !!! some type don't have any !!!
             $sOperator = $this->_getSqlOperator($asFieldData['data'], $sFieldOperator, $vFieldValue);
