@@ -3626,7 +3626,7 @@ ChromePhp::log($aUserList);
    * @return array
    */
   public function getUserGroup($pnUserPk, $pbGetAll = false)
-  {
+  {ChromePhp::log('HERE99');
     if(!assert('is_key($pnUserPk) || is_bool($pbGetAll)'))
       return array();
 

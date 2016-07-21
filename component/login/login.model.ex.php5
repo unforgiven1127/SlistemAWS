@@ -103,7 +103,7 @@ class CLoginModelEx extends CLoginModel
    * @return array
   */
   public function getUserGroup($pnUserPk = 0, $pbGetAllGroups = false, $pbAddInvisible = false, $panGroup = array())
-  {
+  {ChromePhp::log('HERE66');
     if(!assert('is_integer($pnUserPk) && is_bool($pbGetAllGroups) && is_array($panGroup)'))
       return array();
 
