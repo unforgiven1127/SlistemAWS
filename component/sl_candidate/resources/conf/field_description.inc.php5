@@ -2495,7 +2495,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'type' => array('select', ''),
         'label' => 'Pipeline folders',
         'group' => 'Pipeline activity',
-        'operator' => $oSearch->getFieldOperators('select'),
+        'operator' => $oSearch->getFieldOperators('in'),
         'default_operator' => '=',
         'option' => $asList,
         'value' => array(),
