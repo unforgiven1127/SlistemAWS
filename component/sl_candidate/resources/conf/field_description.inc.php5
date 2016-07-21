@@ -2488,6 +2488,39 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       )
     );
 
+   $asFields[CONST_CANDIDATE_TYPE_CANDI]['pipeline_folders'] = array(
+      'display' => array
+      (
+        'fts_type'=> null,
+        'type' => array('select', ''),
+        'label' => 'Pipeline folders',
+        'group' => 'Pipeline activity',
+        'operator' => $oSearch->getFieldOperators('select'),
+        'default_operator' => '=',
+        'option' => $asList,
+        'value' => array(),
+        'default_value' => array(5),
+        'multiple' => 5,
+        'param' => array(),
+        'js_control' => 'jsFieldIntegerPositive'
+      ),
+      'data' => array
+      (
+        'type' => 'intList',
+        'control' => 'is_listofInt'
+      ),
+      'sql' => array
+      (
+        'field' => 'spli.status',
+        'join' => array(
+            array('type' => 'inner', 'table' => 'sl_position_link', 'alias' => 'spli',
+             'clause' => 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1', 'select' => 'spli.status as inplay_status', 'where' => '')
+            ),
+        'fts' => false,
+        'unmanageable' => null
+      )
+    );
+
    $asFields[CONST_CANDIDATE_TYPE_CANDI]['play_expires'] = array(
       'display' => array
       (
