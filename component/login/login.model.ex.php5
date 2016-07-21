@@ -103,7 +103,7 @@ class CLoginModelEx extends CLoginModel
    * @return array
   */
   public function getUserGroup($pnUserPk = 0, $pbGetAllGroups = false, $pbAddInvisible = false, $panGroup = array())
-  {ChromePhp::log('HERE66');
+  {
     if(!assert('is_integer($pnUserPk) && is_bool($pbGetAllGroups) && is_array($panGroup)'))
       return array();
 
@@ -118,6 +118,8 @@ class CLoginModelEx extends CLoginModel
       $sQuery.= ' LEFT JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
     else
       $sQuery.= ' INNER JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
+
+    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginf";
 
     $sQuery.= ' WHERE 1 ';
 
