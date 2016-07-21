@@ -688,14 +688,15 @@ class CSl_candidateEx extends CSl_candidate
       require_once($_SERVER['DOCUMENT_ROOT'].self::getResourcePath().'conf/field_description.inc.php5');
 
       $complex_search_counts = getAILogsCount("complex_search");
-      ChromePhp::log($complex_search_counts);
-ChromePhp::log($asFields[CONST_CANDIDATE_TYPE_CANDI]['grade']);
+      $mostUsedSearches = array();
+      //ChromePhp::log($complex_search_counts);
+      //ChromePhp::log($asFields[CONST_CANDIDATE_TYPE_CANDI]['grade']);
 
-      /*foreach ($complex_search_counts as $key => $value)
+      foreach ($complex_search_counts as $key => $value)
       {
-
-      }*/
-
+        $mostUsedSearches[] = $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']];
+      }
+      ChromePhp::log($mostUsedSearches);
     }
     else
     {
