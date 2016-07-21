@@ -110,7 +110,9 @@ class CLoginModelEx extends CLoginModel
     if(empty($pnUserPk))
       $sUserSql = '';
     else
+    {
       $sUserSql = ' AND lgm.loginfk = "'.$pnUserPk.'" ';
+    }
 
     $sQuery = 'SELECT lg.*, lgm.loginfk FROM login_group as lg ';
 
@@ -119,7 +121,7 @@ class CLoginModelEx extends CLoginModel
     else
       $sQuery.= ' INNER JOIN login_group_member as lgm ON (lgm.login_groupfk = lg.login_grouppk '.$sUserSql.')';
 
-    $sQuery.= " INNER JOIN login l on l.loginpk = lgm.loginf";
+    $sUserSql.= " INNER JOIN login l on l.loginpk = lgm.loginfk";
 
     $sQuery.= ' WHERE 1 ';
 
