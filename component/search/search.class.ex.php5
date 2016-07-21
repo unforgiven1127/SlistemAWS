@@ -1268,7 +1268,7 @@ class CSearchEx extends CSearch
 
 
 
-          if(!empty($asFieldData['sql']['join']))
+          if(!empty($asFieldData['sql']['join']) && $sFieldName != "pipeline_folders")
           {
             foreach($asFieldData['sql']['join'] as $asJoin)
             {
@@ -1387,7 +1387,7 @@ class CSearchEx extends CSearch
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
-                ChromePhp::log($asFieldData['sql']['field']);
+ChromePhp::log($asFieldData['sql']['field']);
                 if(!empty($vValue))
                   $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
               }
