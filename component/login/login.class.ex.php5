@@ -2274,12 +2274,12 @@ class CLoginEx extends CLogin
     $oDB = CDependency::getComponentByName('database');
     $sQuery = 'SELECT * FROM `login` l
       LEFT JOIN login_group_member lm ON l.loginpk=lm.loginfk ';
-ChromePhp::log($pbOnlyActive);
+
     if($pbOnlyActive)
        $sQuery.= " WHERE contact_flag = 'a' ";
     else
       $sQuery.= ' WHERE 1 ';
-ChromePhp::log($sQuery);
+
     if(!$pbIncludeRoot)
     {
       $sQuery.= ' AND l.is_admin <> 1 ';
@@ -2297,7 +2297,7 @@ ChromePhp::log($sQuery);
       $sQuery.= ' ORDER BY l.firstname, l.lastname';
     else
       $sQuery.= ' ORDER BY '.$psSort;
-
+ChromePhp::log($sQuery);
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 
