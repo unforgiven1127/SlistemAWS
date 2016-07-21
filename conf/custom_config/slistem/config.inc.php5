@@ -190,7 +190,8 @@
         6 => array('label' => 'Mobile', 'control' => ''),
         7 => array('label' => 'Facebook', 'control' => ''),
         8 => array('label' => 'LinkedIn', 'control' => ''),
-        9 => array('label' => 'Info', 'control' => '')
+        9 => array('label' => 'Info', 'control' => ''),
+        10 => array('label' => 'Skype address', 'control' => '')
        );
   }
 
