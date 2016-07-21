@@ -1832,6 +1832,32 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     }
 
+    public function getPipelineFolders()
+    {
+      $asStatus = array();
+      $asStatus['met'] = 'Recently met';
+      $asStatus['pitched'] = 'Pitched';
+      $asStatus['resume_sent'] = 'Resume sent';
+      $asStatus['ccm'] = 'In play / CCMs';
+      $asStatus['offer'] = 'Offer';
+      $asStatus['placed'] = 'Placed';
+      $asStatus['fallen_off'] = 'Fallen Off';
+      $asStatus['expired'] = 'Stalled & expired';
+      $asStatus['rm'] = 'Following (RM)';
+      $asStatus['meeting'] = 'Meeting scheduled';
+      $asStatus['all_active'] = 'My active candidates';
+      $asStatus['all'] = 'All my candidates';
+
+      $asFormated = array();
+      foreach($asStatus as $nStatus => $sLabel)
+      {
+        $asFormated[] = array('label' => $sLabel, 'value' => $nStatus);
+      }
+
+      return $asFormated;
+
+    }
+
     private function _getStatusList($pnCurrentStatus = 0, $pbAddStalled = false, $pbAll = false)
     {
       $asStatus = array();

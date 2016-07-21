@@ -2488,6 +2488,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       )
     );
 
+   $asListFolders = $oPosition->getPipelineFolders();
    $asFields[CONST_CANDIDATE_TYPE_CANDI]['pipeline_folders'] = array(
       'display' => array
       (
@@ -2497,7 +2498,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'group' => 'Pipeline activity',
         'operator' => $oSearch->getFieldOperators('in'),
         'default_operator' => '=',
-        'option' => '',
+        'option' => $asListFolders,
         'value' => array(),
         'default_value' => array(0),
         'multiple' => 5,
