@@ -1242,13 +1242,13 @@ class CSearchEx extends CSearch
 
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
     {
-ChromePhp::log($sGroupOperator);
+
       //$nRow = count($_POST['field_selector']);
       $bFirstRow = true;
       $asCondition = array();
       foreach($_POST['field_selector'][$nGroup] as $nRowNumber => $sFieldName)
       {
-
+ChromePhp::log($sFieldName);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
 
         if(in_array($vFieldValue,$asStatusFlag))
