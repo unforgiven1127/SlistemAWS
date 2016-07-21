@@ -187,7 +187,7 @@ class CLoginModelEx extends CLoginModel
 
     $sQuery.= $sOrder;
 
-
+ChromePhp::log($sQuery);
     $oResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oResult->readFirst();
     $asGroup = array();
