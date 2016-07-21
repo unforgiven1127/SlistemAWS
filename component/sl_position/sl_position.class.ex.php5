@@ -1371,6 +1371,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $asData['date_created'] = date('Y-m-d H:i:s');
       $asData['date_created'] = date('Y-m-d H:i:s');
 
+      if($asData['status'] == 201 && ($asData['comment'] == null || $asData['comment'] == ''))
+      {
+        return array('error' => __LINE__.' - Missing Note / comment.');
+      }
       /*
       $asData['in_play'] = (int)getValue('in_play', 0);*/
       if($asData['status'] >= 50 && $asData['status'] <= 100)
