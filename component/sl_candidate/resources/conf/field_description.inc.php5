@@ -2913,13 +2913,13 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'label' => 'Note created on',
         'group' => 'note & description',
         'operator' => $oSearch->getFieldOperators('date'),
-        'default_operator' => 'between',
+        'default_operator' => 'superior',
         'option' => array(),
         'value' => array(),
-        'default_value' => array($sToday),
-        'multiple' => null,
-        'param' => array(),
-        'js_control' => ''
+        'default_value' => array(),
+        'multiple' => 10,
+        'param' => array('range' => 1),
+        'js_control' => 'jsFieldTypeDate'
       ),
       'data' => array
       (
