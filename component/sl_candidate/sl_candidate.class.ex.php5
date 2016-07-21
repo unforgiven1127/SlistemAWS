@@ -5937,7 +5937,7 @@ ChromePhp::log($sQuery);
       }
 
       $currency_code = 'jpy';
-
+ChromePhp::log($asCurrency);
       if (!empty($oDbResult->getFieldValue('currency')))
       {
         $tmp_currency_code = $oDbResult->getFieldValue('currency');
