@@ -1226,6 +1226,20 @@ class CSearchEx extends CSearch
     $ignore_explode = array('lastname', 'firstname', 'resume', 'company_name', 'company_prev', 'department', 'title', 'char_note',
       'note', 'all_note', 'resume_all');
 
+    $asStatusFlag = array();
+    $asStatusFlag['met_pf'] = 'met_pf';
+    $asStatusFlag['pitched_pf'] = 'pitched_pf';
+    $asStatusFlag['resume_sent_pf'] = 'resume_sent_pf';
+    $asStatusFlag['ccm_pf'] = 'ccm_pf';
+    $asStatusFlag['offer_pf'] = 'offer_pf';
+    $asStatusFlag['placed_pf'] = 'placed_pf';
+    $asStatusFlag['fallen_off_pf'] = 'fallen_off_pf';
+    $asStatusFlag['expired_pf'] = 'expired_pf';
+    $asStatusFlag['rm_pf'] = 'rm_pf';
+    $asStatusFlag['meeting_pf'] = 'meeting_pf';
+    $asStatusFlag['all_active_pf'] = 'all_active_pf';
+    $asStatusFlag['all_pf'] = 'all_pf';
+
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
     {
 
@@ -1236,6 +1250,15 @@ class CSearchEx extends CSearch
       {
         ChromePhp::log($sFieldName);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
+
+        if(in_array($vFieldValue,$asStatusFlag))
+        {
+          $pipelineFlag = false;
+        }
+        else
+        {
+          $pipelineFlag = true;
+        }
 
         if (!is_array($vFieldValue) && !in_array($sFieldName, $ignore_explode))
         {
@@ -1268,7 +1291,7 @@ class CSearchEx extends CSearch
 
 
 
-          if(!empty($asFieldData['sql']['join']) && $sFieldName != "pipeline_folders")
+          if(!empty($asFieldData['sql']['join']) && $pipelineFlag)
           {
             foreach($asFieldData['sql']['join'] as $asJoin)
             {
@@ -1285,7 +1308,7 @@ class CSearchEx extends CSearch
             }
           }
 
-          if(!empty($asFieldData['sql']['select'])&& $sFieldName != "pipeline_folders")
+          if(!empty($asFieldData['sql']['select'])&& $pipelineFlag)
           {
             $oQB->addSelect($asFieldData['sql']['select']);
           }
@@ -1297,7 +1320,7 @@ class CSearchEx extends CSearch
           }
 
           $sCondition = '';
-          if(!empty($asFieldData['sql']['unmanageable'])&& $sFieldName != "pipeline_folders")
+          if(!empty($asFieldData['sql']['unmanageable']) && $pipelineFlag)
           {
             //replace template operator   !!! some type don't have any !!!
             $sOperator = $this->_getSqlOperator($asFieldData['data'], $sFieldOperator, $vFieldValue);
@@ -1382,47 +1405,47 @@ class CSearchEx extends CSearch
             ChromePhp::log($vFieldValue);
             switch($sFilter)
             {
-              case 'in_play':
+              case 'in_play_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 0 AND spli.status < 101  AND spli.created_by = '.$nLoginfk.'');
                 $oQB->addWhere('(scpr._in_play > 0 AND spli.created_by = '.$nLoginfk.')');
                 $pbPosField = true;
                 break;
 
-              case 'pitched':
-              case 'resume_sent':
+              case 'pitched_pf':
+              case 'resume_sent_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'placed':
+              case 'placed_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'ccm':
+              case 'ccm_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 50 AND spli.status < 100 AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'fallen_off':
+              case 'fallen_off_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (200,201) AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'expired':
+              case 'expired_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (150,151) AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'met':
-              case 'met6':
-              case 'met12':
+              case 'met_pf':
+              case 'met6_pf':
+              case 'met12_pf':
 
                 $nMonth = (int)str_replace('met', '', $sFilter);
                 if(empty($nMonth)) //$nMonth = 3; // mitch asked to be 6 months
@@ -1438,25 +1461,25 @@ class CSearchEx extends CSearch
 
                 break;
 
-              case 'offer':
+              case 'offer_pf':
 
                 $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status = 100 AND spli.created_by = '.$nLoginfk.'');
                 $pbPosField = true;
                 break;
 
-              case 'meeting':
+              case 'meeting_pf':
                 $sDate = date('Y-m-d', strtotime('+3 month'));
                 $asListMsg[] = $sBy.' Scheduled meetings  (next 3 month )';
 
                 $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 0 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_meeting < "'.$sDate.'"');
                 break;
 
-              case 'rm':
+              case 'rm_pf':
 
                 $oQB->addJoin('inner', 'sl_candidate_rm', 'scrm', 'scrm.candidatefk = scan.sl_candidatepk AND scrm.date_expired IS NULL AND scrm.loginfk = '.$nLoginfk);
                 break;
 
-              case 'all_active':
+              case 'all_active_pf':
                 $oLogin = CDependency::getCpLogin();
 
                 $oQB->addWhere("( spli.in_play = '1' AND  ( spli.created_by = '".$nLoginfk."' OR ( scan.created_by = '".$nLoginfk."' AND ( scan.statusfk = '1' or scan.statusfk = '5' or scan.statusfk = '6' ) ) ) ) ");
@@ -1464,7 +1487,7 @@ class CSearchEx extends CSearch
                 $pbPosField = true;
                 break;
 
-              case 'all':
+              case 'all_pf':
               default:
                 $oLogin = CDependency::getCpLogin();
 

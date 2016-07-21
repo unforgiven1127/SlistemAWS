@@ -1835,18 +1835,18 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     public function getPipelineFolders()
     {
       $asStatus = array();
-      $asStatus['met'] = 'Recently met';
-      $asStatus['pitched'] = 'Pitched';
-      $asStatus['resume_sent'] = 'Resume sent';
-      $asStatus['ccm'] = 'In play / CCMs';
-      $asStatus['offer'] = 'Offer';
-      $asStatus['placed'] = 'Placed';
-      $asStatus['fallen_off'] = 'Fallen Off';
-      $asStatus['expired'] = 'Stalled & expired';
-      $asStatus['rm'] = 'Following (RM)';
-      $asStatus['meeting'] = 'Meeting scheduled';
-      $asStatus['all_active'] = 'My active candidates';
-      $asStatus['all'] = 'All my candidates';
+      $asStatus['met_pf'] = 'Recently met';
+      $asStatus['pitched_pf'] = 'Pitched';
+      $asStatus['resume_sent_pf'] = 'Resume sent';
+      $asStatus['ccm_pf'] = 'In play / CCMs';
+      $asStatus['offer_pf'] = 'Offer';
+      $asStatus['placed_pf'] = 'Placed';
+      $asStatus['fallen_off_pf'] = 'Fallen Off';
+      $asStatus['expired_pf'] = 'Stalled & expired';
+      $asStatus['rm_pf'] = 'Following (RM)';
+      $asStatus['meeting_pf'] = 'Meeting scheduled';
+      $asStatus['all_active_pf'] = 'My active candidates';
+      $asStatus['all_pf'] = 'All my candidates';
 
       $asFormated = array();
       foreach($asStatus as $nStatus => $sLabel)
