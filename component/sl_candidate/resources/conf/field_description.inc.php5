@@ -2467,7 +2467,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'option' => $asList,
         'value' => array(),
         'default_value' => array(5),
-        'multiple' => null,
+        'multiple' => 5,
         'param' => array(),
         'js_control' => 'jsFieldIntegerPositive'
       ),
@@ -2501,7 +2501,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'option' => $asListFolders,
         'value' => array(),
         'default_value' => array(0),
-        'multiple' => 5,
+        'multiple' => null,
         'param' => array(),
         'js_control' => 'jsFieldIntegerPositive'
       ),
