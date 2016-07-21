@@ -1273,6 +1273,107 @@ class CSearchEx extends CSearch
         {
           //dump('debug: field ['.$sFieldName.'['.$nRowNumber.']'.'] empty');
         }
+        else if($pipelineFlag)
+        {
+          ChromePhp::log($sFieldName);
+          $oLogin = CDependency::getCpLogin();
+          $nCurrentUser = $oLogin->getUserPk();
+          $nLoginfk = $nCurrentUser;
+          $sFilter = $vFieldValue;
+          ChromePhp::log($vFieldValue);
+          switch($sFilter)
+          {
+            case 'in_play_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 0 AND spli.status < 101  AND spli.created_by = '.$nLoginfk.'');
+              $oQB->addWhere('(scpr._in_play > 0 AND spli.created_by = '.$nLoginfk.')');
+              $pbPosField = true;
+              break;
+
+            case 'pitched_pf':
+            case 'resume_sent_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'placed_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'ccm_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 50 AND spli.status < 100 AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'fallen_off_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (200,201) AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'expired_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (150,151) AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'met_pf':
+            case 'met6_pf':
+            case 'met12_pf':
+
+              $nMonth = (int)str_replace('met', '', $sFilter);
+              if(empty($nMonth)) //$nMonth = 3; // mitch asked to be 6 months
+                $nMonth = 6;
+
+              $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
+
+              $dateNow = date('Y-m-j');
+              $searchDateStart = strtotime ( '-6 month' , strtotime ( $dateNow ) ) ; // -3 month tu -6 yaptik
+              $searchDateStart = date ( 'Y-m-j' , $searchDateStart );
+
+              $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
+
+              break;
+
+            case 'offer_pf':
+
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status = 100 AND spli.created_by = '.$nLoginfk.'');
+              $pbPosField = true;
+              break;
+
+            case 'meeting_pf':
+              $sDate = date('Y-m-d', strtotime('+3 month'));
+              $asListMsg[] = $sBy.' Scheduled meetings  (next 3 month )';
+
+              $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 0 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_meeting < "'.$sDate.'"');
+              break;
+
+            case 'rm_pf':
+
+              $oQB->addJoin('inner', 'sl_candidate_rm', 'scrm', 'scrm.candidatefk = scan.sl_candidatepk AND scrm.date_expired IS NULL AND scrm.loginfk = '.$nLoginfk);
+              break;
+
+            case 'all_active_pf':
+              $oLogin = CDependency::getCpLogin();
+
+              $oQB->addWhere("( spli.in_play = '1' AND  ( spli.created_by = '".$nLoginfk."' OR ( scan.created_by = '".$nLoginfk."' AND ( scan.statusfk = '1' or scan.statusfk = '5' or scan.statusfk = '6' ) ) ) ) ");
+              $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status <= 100 ');
+              $pbPosField = true;
+              break;
+
+            case 'all_pf':
+            default:
+              $oLogin = CDependency::getCpLogin();
+
+              $oQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
+              break;
+
+          }
+        }
         else
         {
           //fetch row data
@@ -1393,107 +1494,6 @@ class CSearchEx extends CSearch
 
               $sCondition =  $sRowOperator.' '. $sCondition .' ';
               //dump($sCondition);
-            }
-          }
-          else if($pipelineFlag)
-          {
-            ChromePhp::log($sFieldName);
-            $oLogin = CDependency::getCpLogin();
-            $nCurrentUser = $oLogin->getUserPk();
-            $nLoginfk = $nCurrentUser;
-            $sFilter = $vFieldValue;
-            ChromePhp::log($vFieldValue);
-            switch($sFilter)
-            {
-              case 'in_play_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 0 AND spli.status < 101  AND spli.created_by = '.$nLoginfk.'');
-                $oQB->addWhere('(scpr._in_play > 0 AND spli.created_by = '.$nLoginfk.')');
-                $pbPosField = true;
-                break;
-
-              case 'pitched_pf':
-              case 'resume_sent_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'placed_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.status '.$asStatus[$sFilter].' AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'ccm_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status > 50 AND spli.status < 100 AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'fallen_off_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (200,201) AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'expired_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status IN (150,151) AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'met_pf':
-              case 'met6_pf':
-              case 'met12_pf':
-
-                $nMonth = (int)str_replace('met', '', $sFilter);
-                if(empty($nMonth)) //$nMonth = 3; // mitch asked to be 6 months
-                  $nMonth = 6;
-
-                $sDate = date('Y-m-d', strtotime('-'.$nMonth.' month'));
-
-                $dateNow = date('Y-m-j');
-                $searchDateStart = strtotime ( '-6 month' , strtotime ( $dateNow ) ) ; // -3 month tu -6 yaptik
-                $searchDateStart = date ( 'Y-m-j' , $searchDateStart );
-
-                $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 1 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_met >= "'.$searchDateStart.'"');// $sDate vardi $searchDateStart yaptik MCA
-
-                break;
-
-              case 'offer_pf':
-
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status = 100 AND spli.created_by = '.$nLoginfk.'');
-                $pbPosField = true;
-                break;
-
-              case 'meeting_pf':
-                $sDate = date('Y-m-d', strtotime('+3 month'));
-                $asListMsg[] = $sBy.' Scheduled meetings  (next 3 month )';
-
-                $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 0 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_meeting < "'.$sDate.'"');
-                break;
-
-              case 'rm_pf':
-
-                $oQB->addJoin('inner', 'sl_candidate_rm', 'scrm', 'scrm.candidatefk = scan.sl_candidatepk AND scrm.date_expired IS NULL AND scrm.loginfk = '.$nLoginfk);
-                break;
-
-              case 'all_active_pf':
-                $oLogin = CDependency::getCpLogin();
-
-                $oQB->addWhere("( spli.in_play = '1' AND  ( spli.created_by = '".$nLoginfk."' OR ( scan.created_by = '".$nLoginfk."' AND ( scan.statusfk = '1' or scan.statusfk = '5' or scan.statusfk = '6' ) ) ) ) ");
-                $oQB->addJoin('inner', 'sl_position_link', 'spli', 'spli.candidatefk = scan.sl_candidatepk AND spli.active = 1 AND spli.status <= 100 ');
-                $pbPosField = true;
-                break;
-
-              case 'all_pf':
-              default:
-                $oLogin = CDependency::getCpLogin();
-
-                $oQB->addWhere('(scan.created_by = '.$nLoginfk.' OR scpr.managerfk = '.$nLoginfk.')');
-                break;
-
             }
           }
           else
