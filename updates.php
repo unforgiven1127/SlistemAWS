@@ -4,10 +4,11 @@
 //echo $sDate;
 
 $url = 'http://www.eltcalendar.com/rss.xml';
-$sxml = simplexml_load_file($url);
-//var_dump($sxml);
 
-foreach ($sxml as $key => $value)
+ $xmlstr = file_get_contents($url);
+ $xmlcont = new SimpleXMLElement($xmlstr);
+
+foreach ($xmlcont as $key => $value)
 {
 	echo $value;
 	echo "<br><br>";
