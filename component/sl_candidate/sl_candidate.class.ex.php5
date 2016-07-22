@@ -5961,10 +5961,10 @@ ChromePhp::log($sQuery);
       }
 
       $allData = $oDbResult->getAll();
+      $currencyCode = $allData[0]['currency'];
       ChromePhp::log($allData);
 
-      $data = array('form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name,
-        'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
+      $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
         'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,
         'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
