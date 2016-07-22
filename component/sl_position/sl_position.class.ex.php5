@@ -2389,6 +2389,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             {
               $candidate_id = $asCandidate['candidatefk'];
               $position_id = $asCandidate['positionfk'];
+
+              ChromePhp::log($candidate_id);
+              ChromePhp::log($position_id);
+
               $preStatusArray = getPreStatus($candidate_id, $position_id);
               $preStatus = $preStatusArray[0];
               $preStatusDate = $preStatusArray[1];
