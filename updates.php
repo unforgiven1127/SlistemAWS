@@ -18,11 +18,11 @@ $url = 'http://www.eltcalendar.com/jnh-rss.xml';
  		$holiday = $xmlcont->channel->item[$i];
  		$holidayName = $holiday->title;
  		$holidayDescription = $holiday->description;
- 		$holidayDate = $holiday->pubDate;
+
 
  		echo "Holiday: ".$holidayName."<br>";
  		echo "Holiday Description: ".$holidayDescription."<br>";
- 		echo "Holiday Date: ".$holidayDate."<br>";
+
  		echo "<br><br>";
  		$i++;
  	}
