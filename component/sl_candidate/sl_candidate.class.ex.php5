@@ -5952,13 +5952,16 @@ ChromePhp::log($sQuery);
       }
 
       $currency_code = 'jpy';
-ChromePhp::log($asCurrency);
+
       if (!empty($oDbResult->getFieldValue('currency')))
       {
         $tmp_currency_code = $oDbResult->getFieldValue('currency');
         if (isset($asCurrency[$tmp_currency_code]))
           $currency_code = $tmp_currency_code;
       }
+
+      $allData = $oDbResult->getAll();
+      ChromePhp::log($allData);
 
       $data = array('form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name,
         'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
