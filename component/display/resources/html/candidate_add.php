@@ -140,7 +140,7 @@
 						<?php
 						foreach ($currency_list as $currency => $rate) {
 							if ($currency == $currency_code) {
-								$selected = ' selected';
+								$selected = ' selected ';
 							}
 							else {
 								$selected = '';
