@@ -691,9 +691,7 @@ class CSl_candidateEx extends CSl_candidate
       $user_id = $oLogin->getUserPk();
 
       $complex_search_counts = getAILogsCount("complex_search",$user_id);
-
-      ChromePhp::log($complex_search_counts);
-
+ChromePhp::log($complex_search_counts);
       if(isset($complex_search_counts) && !empty($complex_search_counts))
       {
         foreach ($complex_search_counts as $key => $value)
@@ -701,7 +699,7 @@ class CSl_candidateEx extends CSl_candidate
           $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*MOST_USED";
         }
       }
-
+ChromePhp::log($asFields);
     }
     else
     {
@@ -5954,7 +5952,8 @@ ChromePhp::log($sQuery);
       }
 
       $currency_code = 'jpy';
-ChromePhp::log($asCurrency);
+      $currencyCode = 'jpy';
+
       if (!empty($oDbResult->getFieldValue('currency')))
       {
         $tmp_currency_code = $oDbResult->getFieldValue('currency');
@@ -5962,8 +5961,17 @@ ChromePhp::log($asCurrency);
           $currency_code = $tmp_currency_code;
       }
 
-      $data = array('form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name,
-        'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
+      if (!empty($oDbResult->getFieldValue('currency')))
+      {
+        $allData = $oDbResult->getAll();
+        if(isset($allData[0]['currency']))
+        {
+          $currencyCode = $allData[0]['currency'];
+        }
+      }
+
+
+      $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
         'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,
         'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
