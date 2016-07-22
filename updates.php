@@ -11,7 +11,7 @@
 	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
 
-    $slistemQuery = "SELECT h.* FROM holidays h ORDER BY h.holiday_date ASC";
+    $slistemQuery = "SELECT h.* FROM holidays h where h.flag = 'a' ORDER BY h.holiday_date ASC";
 
     $slistemQuery = mysql_query($slistemQuery);
 
