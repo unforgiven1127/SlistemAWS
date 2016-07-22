@@ -9,7 +9,7 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  $xmlcont = new SimpleXMLElement($xmlstr);
 
 
- $test = $xmlcont->channel;
+ $test = $xmlcont->channel->item;
 
  var_dump($test);
 
