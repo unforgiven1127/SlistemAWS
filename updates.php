@@ -9,8 +9,11 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  $xmlcont = new SimpleXMLElement($xmlstr);
 
 
-var_dump($xmlstr);
+ $test = $xmlcont->channel;
 
+ var_dump($test);
+
+/*
 echo "<br><br>";
 echo "<br><br>TEST";
 echo "<br><br>";
@@ -27,4 +30,4 @@ foreach ($xmlcont as $key => $value)
 {
 	echo $value;
 	echo "<br><br>";
-}
+}*/
