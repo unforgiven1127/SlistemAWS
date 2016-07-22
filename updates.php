@@ -8,10 +8,19 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  $xmlstr = file_get_contents($url);
  $xmlcont = new SimpleXMLElement($xmlstr);
 
+ $turn = true;
+ $i = 0;
 
- $test = $xmlcont->channel->item;
+ while($turn)
+ {
+ 	if(isset($xmlcont->channel->item[$i]))
+ 	{
+ 		$test = $xmlcont->channel->item[$i];
+ 		var_dump($test);
+ 		echo "<br><br>";
+ 	}
+ }
 
- var_dump($test);
 
 /*
 echo "<br><br>";
