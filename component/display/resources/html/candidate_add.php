@@ -139,13 +139,13 @@
 						<select id="salary_currency" class="salary_manipulation" name="salary_currency">
 						<?php
 						$list = array('aud','cad','eur','hkd','jpy','php','usd');
-echo "<script type='text/javascript'>alert('".$currency_list['aud']."');</script>";
+echo "<script type='text/javascript'>alert('".$currency_code."');</script>";
 						//foreach ($currency_list as $currency => $rate)
 						foreach ($list as $key => $value)
 						{
 							$currency = $value;
 							$rate = $currency_list[$value];
-echo "<script type='text/javascript'>alert('".$currency."');</script>";
+
 							if ($currency == $currency_code)
 							{
 								$selected = ' selected ';
