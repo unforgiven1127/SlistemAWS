@@ -5960,12 +5960,16 @@ ChromePhp::log($sQuery);
           $currency_code = $tmp_currency_code;
       }
 
-      $allData = $oDbResult->getAll();
-      if(isset($allData[0]['currency']))
+      if (!empty($oDbResult->getFieldValue('currency')))
       {
-        $currencyCode = $allData[0]['currency'];
+        $allData = $oDbResult->getAll();
+        if(isset($allData[0]['currency']))
+        {
+          $currencyCode = $allData[0]['currency'];
+        }
+        ChromePhp::log($allData);
       }
-      ChromePhp::log($allData);
+
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
