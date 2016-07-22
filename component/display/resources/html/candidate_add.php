@@ -140,14 +140,14 @@
 						<?php
 						foreach ($currency_list as $currency => $rate) {
 							if ($currency == $currency_code) {
-								$selected = 'selected';
+								$selected = ' selected';
 							}
 							else {
 								$selected = '';
 							}
 
 							$rateNew = 1/$rate;
-							echo "<option value='".$currency."'";
+							echo "<option value='".$currency."' ";
 							echo $selected;
 							echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'>";
 							echo $currency;
