@@ -1351,7 +1351,6 @@ class CSearchEx extends CSearch
 
             case 'meeting_pf':
               $sDate = date('Y-m-d', strtotime('+3 month'));
-              $asListMsg[] = $sBy.' Scheduled meetings  (next 3 month )';
 
               $oQB->addJoin('inner', 'sl_meeting', 'smee', 'smee.candidatefk = scan.sl_candidatepk AND smee.meeting_done = 0 AND smee.attendeefk = '.$nLoginfk.' AND smee.date_meeting < "'.$sDate.'"');
               break;
