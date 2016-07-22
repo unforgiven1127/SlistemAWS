@@ -3,7 +3,7 @@
 //$sDate = date('Y-m-d H:i:s');
 //echo $sDate;
 
-$url = 'http://www.eltcalendar.com/rss.xml';
+$url = 'http://www.eltcalendar.com/jnh-rss.xml';
 
  $xmlstr = file_get_contents($url);
  $xmlcont = new SimpleXMLElement($xmlstr);
