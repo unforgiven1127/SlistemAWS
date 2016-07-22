@@ -138,7 +138,7 @@
 						</select>
 						<select id="salary_currency" class="salary_manipulation" name="salary_currency">
 						<?php
-						var_dump($currency_list);
+						echo "Currency List: ".$currency_list;
 						foreach ($currency_list as $currency => $rate) {
 							if ($currency == $currency_code) {
 								$selected = ' selected ';
