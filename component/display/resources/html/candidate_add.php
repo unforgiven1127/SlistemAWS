@@ -138,20 +138,30 @@
 						</select>
 						<select id="salary_currency" class="salary_manipulation" name="salary_currency">
 						<?php
-						foreach ($currency_list as $currency => $rate) {
-							if ($currency == $currency_code) {
-								$selected = 'selected';
+						$list = array('aud','cad','eur','hkd','jpy','php','usd');
+
+						//foreach ($currency_list as $currency => $rate)
+						foreach ($list as $key => $value)
+						{
+							$currency = $value;
+							$rate = $currency_list[$value];
+
+							if ($currency == $currencyCode)
+							{
+								$selected = ' selected ';
 							}
-							else {
+							else
+							{
 								$selected = '';
 							}
-						?>
-							<option value="<?php echo $currency; ?>"
-								<?php echo $selected; ?>
-								title="<?php echo 'Rate: 1'.$currency.' = '.(1/$rate).'&yen'; ?>">
-								<?php echo $currency; ?>
-							</option>
-						<?php } ?>
+
+							$rateNew = 1/$rate;
+							echo "<option value='".$currency."' ";
+							echo $selected;
+							echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'>";
+							echo $currency;
+							echo "</option>";
+						} ?>
 						</select>
 					</div>
 					<div class="general_form_label add_margin_left_30">Bonus</div>
