@@ -9,13 +9,6 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  $xmlcont = new SimpleXMLElement($xmlstr);
 
 
-var_dump($xmlstr);
-
-echo "<br><br>";
-echo "<br><br>TEST";
-echo "<br><br>";
-echo "<br><br>";
-
 var_dump($xmlcont);
 
 echo "<br><br>";
