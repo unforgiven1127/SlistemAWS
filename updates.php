@@ -2,36 +2,27 @@
 
 //$sDate = date('Y-m-d H:i:s');
 //echo $sDate;
+	require_once('component/jobboard/jobboard.class.php5');
+	require_once('component/taaggregator/resources/lib/encoding_converter.class.php5');
+	require_once('common/lib/phpExcel/Classes/PHPExcel.php');
 
-$url = 'http://www.eltcalendar.com/jnh-rss.xml';
+	define('DB_NAME_SLISTEM','slistem');
+    define('DB_SERVER_SLISTEM', '127.0.0.1');
+    define('DB_USER_SLISTEM', 'slistem');
+    define('DB_PASSWORD_SLISTEM', 'smwXN2RTDm6Zz3hR');
 
- $xmlstr = file_get_contents($url);
- $xmlcont = new SimpleXMLElement($xmlstr);
+	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
+    mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
 
- $turn = true;
- $i = 0;
+    $slistemQuery = "SELECT h.* FROM holidays h ORDER BY h.holiday_date ASC";
 
- while($turn)
- {
- 	if(isset($xmlcont->channel->item[$i]))
- 	{
- 		$holiday = $xmlcont->channel->item[$i];
- 		$holidayName = $holiday->title;
- 		$holidayDescription = $holiday->description;
+    $slistemQuery = mysql_query($slistemQuery);
 
-
- 		echo "Holiday: ".$holidayName."<br>";
- 		echo "Holiday Description: ".$holidayDescription."<br>";
-
- 		echo "<br><br>";
- 		$i++;
- 	}
- 	else
- 	{
- 		$turn = false;
- 	}
- }
-
+    while($data = mysql_fetch_assoc($slistemQuery))
+    {
+    	echo $data['holiday_date']." ".$data['holiday_day']." ".$data['holiday_name'];
+		echo "<br><br>";
+    }
 
 /*
 echo "<br><br>";
