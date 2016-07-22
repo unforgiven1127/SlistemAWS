@@ -145,13 +145,14 @@
 							else {
 								$selected = '';
 							}
-						?>
-							<option value="<?php echo $currency; ?>"
-								<?php echo $selected; ?>
-								title="<?php echo 'Rate: 1'.$currency.' = '.(1/$rate).'&yen'; ?>">
-								<?php echo $currency; ?>
-							</option>
-						<?php } ?>
+
+							$rateNew = 1/$rate;
+							echo "<option value='".$currency."'";
+							echo $selected;
+							echo "title='Rate: 1' ".$currency." = ".$rateNew." &yen";
+							echo $currency;
+							echo "</option>";
+						 } ?>
 						</select>
 					</div>
 					<div class="general_form_label add_margin_left_30">Bonus</div>
