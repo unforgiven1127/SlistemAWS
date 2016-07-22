@@ -147,9 +147,9 @@
 							}
 
 							$rateNew = 1/$rate;
-							echo "<option value='".$currency."'>".$currency;
+							echo "<option value='".$currency."'";
 							echo $selected;
-							echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'";
+							echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'>";
 							echo $currency;
 							echo "</option>";
 						 } ?>
