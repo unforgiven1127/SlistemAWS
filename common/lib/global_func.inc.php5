@@ -3092,7 +3092,7 @@ ChromePhp::log($result);
     }
 
     $statusTitle = getStatusTitle($preStatus);
-
+ChromePhp::log($statusTitle);
     $returnArray = array($statusTitle,$preDate);
     return $returnArray;
 
