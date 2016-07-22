@@ -17,7 +17,7 @@
 
     while($data = mysql_fetch_assoc($slistemQuery))
     {
-    	echo $data['holiday_date']." ".$data['holiday_day']." ".$data['holiday_name'];
+    	echo $data['holiday_date']." ".$data['holiday_day']." ".$data['holiday_name']." ".$data['holiday_type'];
 		echo "<br><br>";
     }
 
