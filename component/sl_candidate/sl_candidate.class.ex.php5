@@ -690,7 +690,7 @@ class CSl_candidateEx extends CSl_candidate
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
-      /*$complex_search_counts = getAILogsCount("complex_search",$user_id);
+      $complex_search_counts = getAILogsCount("complex_search",$user_id);
 
       if(isset($complex_search_counts) && !empty($complex_search_counts))
       {
@@ -698,7 +698,7 @@ class CSl_candidateEx extends CSl_candidate
         {
           $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*MOST_USED";
         }
-      }*/
+      }
 
     }
     else
