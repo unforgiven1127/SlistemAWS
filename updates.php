@@ -18,6 +18,11 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  		$test = $xmlcont->channel->item[$i];
  		var_dump($test);
  		echo "<br><br>";
+ 		$i++;
+ 	}
+ 	else
+ 	{
+ 		$turn = false;
  	}
  }
 
