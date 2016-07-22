@@ -15,8 +15,14 @@ $url = 'http://www.eltcalendar.com/rss.xml';
  {
  	if(isset($xmlcont->channel->item[$i]))
  	{
- 		$test = $xmlcont->channel->item[$i];
- 		var_dump($test);
+ 		$holiday = $xmlcont->channel->item[$i];
+ 		$holidayName = $holiday['title'];
+ 		$holidayDescription = $holiday['description'];
+ 		$holidayDate = $holiday['pubDate'];
+
+ 		echo "Holiday: ".$holidayName."<br>";
+ 		echo "Holiday Description: ".$holidayDescription."<br>";
+ 		echo "Holiday Date: ".$holidayDate."<br>";
  		echo "<br><br>";
  		$i++;
  	}
