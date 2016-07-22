@@ -3080,10 +3080,10 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 ChromePhp::log($result);
-    if(isset($result[1]))
+    if(isset($result[0]))
     {
-      $preStatus = $result[1]['status'];
-      $preDate = $result[1]['date_created'];
+      $preStatus = $result[0]['status'];
+      $preDate = $result[0]['date_created'];
     }
     else
     {
