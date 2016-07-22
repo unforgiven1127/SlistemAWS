@@ -691,7 +691,7 @@ class CSl_candidateEx extends CSl_candidate
       $user_id = $oLogin->getUserPk();
 
       $complex_search_counts = getAILogsCount("complex_search",$user_id);
-ChromePhp::log($complex_search_counts);
+
       if(isset($complex_search_counts) && !empty($complex_search_counts))
       {
         foreach ($complex_search_counts as $key => $value)
@@ -699,7 +699,7 @@ ChromePhp::log($complex_search_counts);
           $asFields[CONST_CANDIDATE_TYPE_CANDI][$value['data']]['display']['group'] = "*MOST_USED";
         }
       }
-ChromePhp::log($asFields);
+
     }
     else
     {
