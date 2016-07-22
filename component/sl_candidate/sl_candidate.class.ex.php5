@@ -5961,7 +5961,10 @@ ChromePhp::log($sQuery);
       }
 
       $allData = $oDbResult->getAll();
-      $currencyCode = $allData[0]['currency'];
+      if(isset($allData[0]['currency']))
+      {
+        $currencyCode = $allData[0]['currency'];
+      }
       ChromePhp::log($allData);
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
