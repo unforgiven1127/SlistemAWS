@@ -3084,11 +3084,10 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
-    ChromePhp::log($result);
     $first = $result[4]; // 5 kayittan ilk olani sectik
     $controlDate = $first['date'];
 
-    $sQuery = "SELECT * FROM  login_system_history lsh
+    $sQuery = "SELECT COUNT(*) as count FROM  login_system_history lsh
                WHERE (lsh.action LIKE '%created a new character note%'
                OR lsh.action LIKE '%created a new email note%'
                OR lsh.action LIKE '%created a new meeting note%'
@@ -3096,8 +3095,8 @@ var_dump($query);*/
                OR lsh.action LIKE '%created a new update note%'
                OR lsh.action LIKE '%created a new company history note%'
                OR lsh.action LIKE '%created a new note%')
-               AND lhs.userfk = '".$user_id."' AND date >'".$controlDate."'";
-ChromePhp::log($sQuery);
+               AND lsh.userfk = '".$user_id."' AND lsh.date > '".$controlDate."'";
+
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
