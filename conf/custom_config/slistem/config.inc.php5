@@ -173,6 +173,7 @@
 
       $user_id = $oLogin->getUserPk();
       securityCheckView($user_id);
+      ChromePhp::log('user_history_all_view');
 
       $oModel = new CModel();
       $oModel->_logChanges(array('action' => 'log user history'), 'user_history_all_view', $sText);
