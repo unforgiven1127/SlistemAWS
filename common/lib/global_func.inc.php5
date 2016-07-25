@@ -3142,7 +3142,7 @@ var_dump($query);*/
     $dNow = date('Y-m-d'); // sadece yil-ay-gun
 
     $holidays = getHolidayCount($dNow);
-    ChromePhp::log($result[0]['count']);
+    ChromePhp::log($holidays[0]['count']);
 
     if(($dayname == 'Saturday' || $dayname == 'Sunday') && $holidays[0]['count'] > 0) //Japan Saturday & Sunday
     {
