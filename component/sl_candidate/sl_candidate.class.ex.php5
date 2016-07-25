@@ -894,7 +894,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
-
+ChromePhp::log($user_id);
       securityCheckSearch($user_id);
 
       $sLiId = uniqid();
