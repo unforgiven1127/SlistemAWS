@@ -4972,10 +4972,21 @@ class CSl_statEx extends CSl_stat
       foreach ($researcher_ids as $id)
       {
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
+        uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['ccm1_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['mccm_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['placedRevenue_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['new_candidate_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['new_position_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['placed_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['offer_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['new_candidate_met_info'], sort_multi_array_by_value('candidate'));
+        //uasort($stats_data['researcher'][$id]['resumes_sent_info'], sort_multi_array_by_value('candidate'));
       }
       foreach ($researcher_ids as $id)
       {
-        var_dump($stats_data['researcher'][$id]['set_meeting_info']);
+        var_dump($stats_data['researcher'][$id]['met_meeting_info']);
         echo "<br><br>";
       }
 
