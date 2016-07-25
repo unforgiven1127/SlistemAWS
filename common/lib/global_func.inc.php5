@@ -3156,6 +3156,8 @@ var_dump($query);*/
       $sQuery = "SELECT count(*) as count FROM  login_system_history lsh
       WHERE lsh.table = 'user_history_all_view' AND lsh.date >= '".$startDate."' AND lsh.date <= '".$endDate."' ";
 
+      ChromePhp::log($sQuery);
+
       $db_result = $oDB->executeQuery($sQuery);
 
       $result = $db_result->getAll();
@@ -3177,7 +3179,7 @@ var_dump($query);*/
         $to      = 'munir@slate-ghc.com';
         $subject = 'Security Allert!!';
         $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
-        $message .= "\r\n"."Action: View more than 50 candidate at holiday.";
+        $message .= "\r\n"."Action: View more than 50 candidates on holiday.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
             'Reply-To: munir@slate-ghc.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
