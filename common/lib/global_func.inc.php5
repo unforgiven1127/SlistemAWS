@@ -3098,7 +3098,7 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-ChromePhp::log($result);
+//ChromePhp::log($result);
     if(isset($result[0]))
     {
       $preStatus = $result[0]['status'];
@@ -3111,7 +3111,7 @@ ChromePhp::log($result);
     }
 
     $statusTitle = getStatusTitle($preStatus);
-ChromePhp::log($statusTitle);
+//ChromePhp::log($statusTitle);
     $returnArray = array($statusTitle,$preDate);
     return $returnArray;
 

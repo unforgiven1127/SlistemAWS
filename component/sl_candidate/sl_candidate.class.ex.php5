@@ -2911,7 +2911,7 @@ class CSl_candidateEx extends CSl_candidate
           $rmResult = $rmResultDB->getAll();
         }
       }*/
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
