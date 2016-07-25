@@ -4974,7 +4974,7 @@ class CSl_statEx extends CSl_stat
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
         uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidatefk'));
         uasort($stats_data['researcher'][$id]['ccm1_info'], sort_multi_array_by_value('candidate,ccm_done_candidate'));
-        //uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('candidate'));
+        uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('candidate,ccm_done_candidate'));
         //uasort($stats_data['researcher'][$id]['mccm_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['placedRevenue_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['new_candidate_info'], sort_multi_array_by_value('candidate'));
@@ -4986,7 +4986,7 @@ class CSl_statEx extends CSl_stat
       }
       foreach ($researcher_ids as $id)
       {
-        var_dump($stats_data['researcher'][$id]['ccm1_info']);
+        var_dump($stats_data['researcher'][$id]['ccm2_info']);
         echo "<br><br>";
       }
 
