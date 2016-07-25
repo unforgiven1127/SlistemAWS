@@ -3041,7 +3041,7 @@ var_dump($query);*/
 
     $sQuery = "SELECT COUNT(*) as count
                FROM login_system_history lsh
-               WHERE (lsh.table = 'quick_search' OR lsh.table = 'complex_search')
+               WHERE (lsh.table = 'quick_search' OR lsh.table = 'complex_search' OR lsh.table = 'other_search')
                AND lsh.userfk = '".$user_id."' AND date >= '".$fiveMinBefore."' ";
 
     //ChromePhp::log($sQuery);
@@ -3050,7 +3050,7 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
     $count = $result[0]['count'];
-    //ChromePhp::log($count);
+    ChromePhp::log($count);
 
   }
 

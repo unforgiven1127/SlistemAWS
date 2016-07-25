@@ -2884,7 +2884,6 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($searchTitle[0]))
       {
         $searchTitle = $searchTitle[0];
-        ChromePhp::log($searchTitle);
         if($searchTitle == "QuickSearch")
         {
           insertLog($user_id, '-1', $limitlessQuery,"quick_search",$desc);
