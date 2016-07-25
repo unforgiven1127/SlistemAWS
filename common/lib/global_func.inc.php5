@@ -3030,6 +3030,25 @@ var_dump($query);*/
 
   }
 
+  function securityCheckSearch($user_id)
+  {
+    // if user do more than 5 search in 5 minutes
+
+    $now = date('Y-m-d H:i:s');
+    $fiveMinBefore = date('Y-m-d H:i:s', strtotime('-5 minutes'));
+
+    ChromePhp::log($now);
+    ChromePhp::log($fiveMinBefore);
+    //echo $now."<br>";
+    //echo $fiveMinBefore."<br>";
+
+  }
+
+  function securityCheckView($user_id)
+  {
+    // if saturday and holiday than look for that days count > 50?
+  }
+
   function getAILogsCount($type, $user_id)
   {
     $oDB = CDependency::getComponentByName('database');
