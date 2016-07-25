@@ -3052,12 +3052,16 @@ var_dump($query);*/
     $count = $result[0]['count'];
     ChromePhp::log($count);
 
-    if($count > 5)
+    if($count >= 5)
     {
+      $dNow = date('Y-m-d H:i:s'); // Japan time
+      $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
+                 VALUES('".$user_id."','search_in_five','".$dNow."')";
+
+      $db_result = $oDB->executeQuery($sQuery);
       ChromePhp::log('MAIL');
       $user_information = getUserInformaiton($user_id);
       $username = $user_information['firstname']." ".$user_information['lastname'];
-      $dNow = date('Y-m-d H:i:s');
 
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $to      = 'munir@slate-ghc.com';
