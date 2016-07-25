@@ -974,6 +974,7 @@ class CSl_candidateEx extends CSl_candidate
       if($logType == "candiTab2")
       {
         $text = "Contacts viewed";
+        securityCheckContactView($user_id);
       }
       else if($logType == "candiTab3")
       {

@@ -3044,13 +3044,10 @@ var_dump($query);*/
                WHERE (lsh.table = 'quick_search' OR lsh.table = 'complex_search' OR lsh.table = 'other_search')
                AND lsh.userfk = '".$user_id."' AND date >= '".$fiveMinBefore."' ";
 
-    //ChromePhp::log($sQuery);
-
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
     $count = $result[0]['count'];
-    ChromePhp::log($count);
 
     if($count >= 5)
     {
@@ -3059,7 +3056,7 @@ var_dump($query);*/
                  VALUES('".$user_id."','search_in_five','".$dNow."')";
 
       $db_result = $oDB->executeQuery($sQuery);
-      ChromePhp::log('MAIL');
+
       $user_information = getUserInformaiton($user_id);
       $username = $user_information['firstname']." ".$user_information['lastname'];
 
@@ -3074,6 +3071,37 @@ var_dump($query);*/
       mail($to, $subject, $message, $headers);
     }
 
+  }
+
+  function securityCheckContactView($user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM  login_system_history lsh WHERE lsh.action = 'Contacts viewed' AND lsh.userfk = '".$user_id."'
+               ORDER BY lsh.login_system_historypk DESC LIMIT 5"; // desc yapmazsak son kayitlara ulasamiyoruz
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $first = $result[4]; // 5 kayittan ilk olani sectik
+    $controlDate = $first['date'];
+
+    $sQuery = "SELECT * FROM  login_system_history lsh
+               WHERE (lsh.action LIKE '%created a new character note%'
+               OR lsh.action LIKE '%created a new email note%'
+               OR lsh.action LIKE '%created a new meeting note%'
+               OR lsh.action LIKE '%created a new phone note%'
+               OR lsh.action LIKE '%created a new update note%'
+               OR lsh.action LIKE '%created a new company history note%'
+               OR lsh.action LIKE '%created a new note%')
+               AND lhs.userfk = '".$user_id."' AND date >'".$controlDate."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+    ChromePhp::log($sQuery);
+    ChromePhp::log($result);
   }
 
   function securityCheckView($user_id)
