@@ -4972,6 +4972,7 @@ class CSl_statEx extends CSl_stat
       foreach ($researcher_ids as $id)
       {
         var_dump($stats_data['researcher'][$id]['set_meeting_info']);
+        echo "<br><br>";
       }
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
