@@ -3049,8 +3049,8 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-
-    ChromePhp::log($result);
+    $count = $result[0]['count'];
+    ChromePhp::log($count);
 
   }
 
