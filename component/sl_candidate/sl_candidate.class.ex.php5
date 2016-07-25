@@ -887,15 +887,10 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _displayCandidateList($pbInAjax = false)
     {
-ChromePhp::log('_displayCandidateList');
+
       $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
-
-      $oLogin = CDependency::getCpLogin();
-      $user_id = $oLogin->getUserPk();
-ChromePhp::log($user_id);
-      securityCheckSearch($user_id);
 
       $sLiId = uniqid();
       if(!$pbInAjax)
@@ -2522,6 +2517,10 @@ ChromePhp::log($user_id);
       $oDb = CDependency::getComponentByName('database');
       $this->_getModel()->loadQueryBuilderClass();
       $oLogin = CDependency::getCpLogin();
+
+      $user_id = $oLogin->getUserPk();
+      ChromePhp::log($user_id);
+      securityCheckSearch($user_id);
 
       $asListMsg = array();
       $sTemplate = getValue('tpl');
