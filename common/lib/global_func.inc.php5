@@ -3057,12 +3057,12 @@ var_dump($query);*/
       ChromePhp::log('MAIL');
       $user_information = getUserInformaiton($user_id);
       $username = $user_information['firstname']." ".$user_information['lastname'];
-      $dNow = date('Y-m-d');
+      $dNow = date('Y-m-d H:i:s');
 
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $to      = 'munir@slate-ghc.com';
       $subject = 'Security Allert!!';
-      $message = "Possible theft attemption user: '".$username."' date: ".$dNow;
+      $message = "Possible theft attemption, user: ".$username." date: ".$dNow;
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
