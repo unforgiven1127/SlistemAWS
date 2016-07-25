@@ -3097,11 +3097,11 @@ var_dump($query);*/
                OR lsh.action LIKE '%created a new company history note%'
                OR lsh.action LIKE '%created a new note%')
                AND lhs.userfk = '".$user_id."' AND date >'".$controlDate."'";
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-    ChromePhp::log($sQuery);
+
     ChromePhp::log($result);
   }
 
