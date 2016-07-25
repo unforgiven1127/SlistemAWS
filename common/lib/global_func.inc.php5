@@ -3063,7 +3063,7 @@ var_dump($query);*/
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $to      = 'munir@slate-ghc.com';
       $subject = 'Security Allert!!';
-      $message = "Possible theft attemption, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+      $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
@@ -3105,9 +3105,11 @@ var_dump($query);*/
       $result = $db_result->getAll();
 
       $count = $result[0]['count'];
+      ChromePhp::log($count);
 
       if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
       {
+        ChromePhp::log('Action: View 5 contact details but not any note entry.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
         $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                    VALUES('".$user_id."','contact_view','".$dNow."')";
@@ -3120,7 +3122,7 @@ var_dump($query);*/
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
         $to      = 'munir@slate-ghc.com';
         $subject = 'Security Allert!!';
-        $message = "Possible theft attemption, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+        $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
             'Reply-To: munir@slate-ghc.com' . "\r\n" .
