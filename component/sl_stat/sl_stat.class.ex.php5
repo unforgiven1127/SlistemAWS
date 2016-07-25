@@ -4986,7 +4986,7 @@ class CSl_statEx extends CSl_stat
       }
       foreach ($researcher_ids as $id)
       {
-        var_dump($stats_data['researcher'][$id]['met_meeting_info']);
+        var_dump($stats_data['researcher'][$id]['ccm1_info']);
         echo "<br><br>";
       }
 
