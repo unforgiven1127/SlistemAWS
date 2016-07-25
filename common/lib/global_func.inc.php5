@@ -3139,11 +3139,41 @@ var_dump($query);*/
     // if saturday and holiday than look for that days count > 50?
     // db holiday table a bugunun tarihini yolla donen olursa holiday flag 1 yap
     $dayname = date('l'); // dayname
+    $dNow = date('Y-m-d'); // sadece yil-ay-gun
+
+    $holidays = getHolidayCount($dNow);
+
     if($dayname == 'Saturday') //Japan saturday
     {
 
     }
-    ChromePhp::log($dayname);
+    ChromePhp::log($holidays);
+  }
+
+  function getHolidayCount($date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT count(*) as count FROM  holidays h WHERE h.flag = 'a' AND holiday_date = '".$date."' ORDER BY h.holiday_date ASC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getHolidays()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM  holidays h WHERE h.flag = 'a' ORDER BY h.holiday_date ASC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
   }
 
   function getAILogsCount($type, $user_id)
