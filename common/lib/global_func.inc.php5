@@ -3148,7 +3148,7 @@ var_dump($query);*/
 
     if($dayname == 'Tuesday' && $holidays[0]['count'] > 0) //Japan Saturday
     {
-
+      ChromePhp::log('HERE INSIDE');
     }
 
   }
