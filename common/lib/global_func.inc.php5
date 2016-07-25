@@ -3049,7 +3049,7 @@ var_dump($query);*/
     $result = $db_result->getAll();
     $count = $result[0]['count'];
 
-    if($count >= 5)
+    if($count > 5)
     {
       $dNow = date('Y-m-d H:i:s'); // Japan time
       $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
@@ -3064,6 +3064,7 @@ var_dump($query);*/
       $to      = 'munir@slate-ghc.com';
       $subject = 'Security Allert!!';
       $message = "Possible theft attemption, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+      $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
@@ -3084,24 +3085,51 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
-    $first = $result[4]; // 5 kayittan ilk olani sectik
-    $controlDate = $first['date'];
+    if(isset($result[4]))
+    {
+      $first = $result[4]; // 5 kayittan ilk olani sectik
+      $controlDate = $first['date'];
 
-    $sQuery = "SELECT COUNT(*) as count FROM  login_system_history lsh
-               WHERE (lsh.action LIKE '%created a new character note%'
-               OR lsh.action LIKE '%created a new email note%'
-               OR lsh.action LIKE '%created a new meeting note%'
-               OR lsh.action LIKE '%created a new phone note%'
-               OR lsh.action LIKE '%created a new update note%'
-               OR lsh.action LIKE '%created a new company history note%'
-               OR lsh.action LIKE '%created a new note%')
-               AND lsh.userfk = '".$user_id."' AND lsh.date > '".$controlDate."'";
+      $sQuery = "SELECT COUNT(*) as count FROM  login_system_history lsh
+                 WHERE (lsh.action LIKE '%created a new character note%'
+                 OR lsh.action LIKE '%created a new email note%'
+                 OR lsh.action LIKE '%created a new meeting note%'
+                 OR lsh.action LIKE '%created a new phone note%'
+                 OR lsh.action LIKE '%created a new update note%'
+                 OR lsh.action LIKE '%created a new company history note%'
+                 OR lsh.action LIKE '%created a new note%')
+                 AND lsh.userfk = '".$user_id."' AND lsh.date > '".$controlDate."'";
 
-    $db_result = $oDB->executeQuery($sQuery);
+      $db_result = $oDB->executeQuery($sQuery);
 
-    $result = $db_result->getAll();
+      $result = $db_result->getAll();
 
-    ChromePhp::log($result);
+      $count = $result[0]['count'];
+
+      if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
+      {
+        $dNow = date('Y-m-d H:i:s'); // Japan time
+        $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
+                   VALUES('".$user_id."','contact_view','".$dNow."')";
+
+        $db_result = $oDB->executeQuery($sQuery);
+
+        $user_information = getUserInformaiton($user_id);
+        $username = $user_information['firstname']." ".$user_information['lastname'];
+
+        //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
+        $to      = 'munir@slate-ghc.com';
+        $subject = 'Security Allert!!';
+        $message = "Possible theft attemption, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+        $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
+        $headers = 'From: slistem@slate.co.jp' . "\r\n" .
+            'Reply-To: munir@slate-ghc.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+      }
+    }
+
   }
 
   function securityCheckView($user_id)
