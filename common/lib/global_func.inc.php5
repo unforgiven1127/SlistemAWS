@@ -3049,7 +3049,7 @@ var_dump($query);*/
     $result = $db_result->getAll();
     $count = $result[0]['count'];
 
-    if($user_id != '101' AND $count > 5)
+    if($user_id != '101' AND $count >= 5) // count starts from 0
     {
       ChromePhp::log('Action: Do more than 5 searches in 5 minutes.');
       $dNow = date('Y-m-d H:i:s'); // Japan time
@@ -3062,8 +3062,8 @@ var_dump($query);*/
       $username = $user_information['firstname']." ".$user_information['lastname'];
 
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-      $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-      $subject = 'Security Allert!!';
+      $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+      $subject = 'Security Alert!!';
       $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
@@ -3120,8 +3120,8 @@ var_dump($query);*/
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $subject = 'Security Allert!!';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+        $subject = 'Security Alert!!';
         $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
@@ -3172,8 +3172,8 @@ var_dump($query);*/
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $subject = 'Security Allert!!';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+        $subject = 'Security Alert!!';
         $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View more than 50 candidates on holiday.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
