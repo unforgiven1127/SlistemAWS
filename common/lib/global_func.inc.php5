@@ -3216,7 +3216,7 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-    if($result[0]['count'] > 0)
+    if($result[0]['count'] > 1)
     {
       return false; // ayni gun mail atmisiz birdaha atmayalim
     }
