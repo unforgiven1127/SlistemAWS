@@ -4972,7 +4972,7 @@ class CSl_statEx extends CSl_stat
       foreach ($researcher_ids as $id)
       {
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
-        uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidate'));
+        uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidatefk'));
         //uasort($stats_data['researcher'][$id]['ccm1_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['mccm_info'], sort_multi_array_by_value('candidate'));
