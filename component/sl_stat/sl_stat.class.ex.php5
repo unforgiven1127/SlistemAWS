@@ -4968,6 +4968,12 @@ class CSl_statEx extends CSl_stat
       uasort($stats_data['researcher'], sort_multi_array_by_value('name'));
       uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
 
+      echo "<br><br>";
+      foreach ($researcher_ids as $id)
+      {
+        var_dump($stats_data['researcher'][$id]['set_meeting_info']);
+      }
+
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
       $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
 
