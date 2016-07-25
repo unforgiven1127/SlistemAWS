@@ -3146,7 +3146,7 @@ var_dump($query);*/
     ChromePhp::log($holidays[0]['count']);
     ChromePhp::log($dayname);
 
-    if($dayname == 'Saturday' && $holidays[0]['count'] > 0) //Japan saturday
+    if($dayname == 'Tuesday' && $holidays[0]['count'] > 0) //Japan Saturday
     {
 
     }
