@@ -3143,12 +3143,47 @@ var_dump($query);*/
 
     $holidays = getHolidayCount($dNow);
 
-    ChromePhp::log($holidays[0]['count']);
-    ChromePhp::log($dayname);
+    //ChromePhp::log($holidays[0]['count']);
+    //ChromePhp::log($dayname);
 
     if($dayname == 'Tuesday' && $holidays[0]['count'] > 0) //Japan Saturday
     {
-      ChromePhp::log('HERE INSIDE');
+      $startDate = $dNow." 00:00:00";
+      $endDate = $dNow." 23:59:59";
+
+      $oDB = CDependency::getComponentByName('database');
+
+      $sQuery = "SELECT count(*) as count FROM  login_system_history lsh
+      WHERE lsh.table = 'user_history_all_view' AND lsh.date >= '".$startDate."' AND lsh.date <= '".$endDate."' ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $result = $db_result->getAll();
+      ChromePhp::log($result[0]['count']);
+
+      if($result[0]['count'] > 50) // 50 den buyuk ise mail
+      {
+        ChromePhp::log('Action: View 5 contact details but not any note entry.');
+        $dNow = date('Y-m-d H:i:s'); // Japan time
+        $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
+                   VALUES('".$user_id."','holiday_fifty_view','".$dNow."')";
+
+        $db_result = $oDB->executeQuery($sQuery);
+
+        $user_information = getUserInformaiton($user_id);
+        $username = $user_information['firstname']." ".$user_information['lastname'];
+
+        //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
+        $to      = 'munir@slate-ghc.com';
+        $subject = 'Security Allert!!';
+        $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+        $message .= "\r\n"."Action: View more than 50 candidate at holiday.";
+        $headers = 'From: slistem@slate.co.jp' . "\r\n" .
+            'Reply-To: munir@slate-ghc.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+
+        mail($to, $subject, $message, $headers);
+      }
     }
 
   }
