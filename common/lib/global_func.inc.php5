@@ -3084,6 +3084,7 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
+    ChromePhp::log($result);
     $first = $result[4]; // 5 kayittan ilk olani sectik
     $controlDate = $first['date'];
 
