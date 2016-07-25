@@ -2893,6 +2893,10 @@ class CSl_candidateEx extends CSl_candidate
         {
           insertLog($user_id, '-1', $limitlessQuery,"complex_search",$desc);
         }
+        else // mainpage search links...
+        {
+          insertLog($user_id, '-1', $limitlessQuery,"other_search",$desc);
+        }
       }
 
       /*if(getValue('pipe_filter')) // met icin tekrar yazacaktim ama dogru calisiyor gibi kontrol
