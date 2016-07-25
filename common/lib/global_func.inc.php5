@@ -3137,7 +3137,12 @@ var_dump($query);*/
   function securityCheckView($user_id)
   {
     // if saturday and holiday than look for that days count > 50?
+    // db holiday table a bugunun tarihini yolla donen olursa holiday flag 1 yap
     $dayname = date('l'); // dayname
+    if($dayname == 'Saturday') //Japan saturday
+    {
+
+    }
     ChromePhp::log($dayname);
   }
 
