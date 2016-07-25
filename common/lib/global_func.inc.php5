@@ -3037,10 +3037,20 @@ var_dump($query);*/
     $now = date('Y-m-d H:i:s');
     $fiveMinBefore = date('Y-m-d H:i:s', strtotime('-5 minutes'));
 
-    ChromePhp::log($now);
-    ChromePhp::log($fiveMinBefore);
-    //echo $now."<br>";
-    //echo $fiveMinBefore."<br>";
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT COUNT(*) as count
+               FROM login_system_history lsh
+               WHERE (lsh.table = 'quick_search' OR lsh.table = 'complex_search')
+               AND lsh.userfk = '".$user_id."' AND date >= '".$fiveMinBefore."' ";
+
+    ChromePhp::log($sQuery);
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    ChromePhp::log($result);
 
   }
 
