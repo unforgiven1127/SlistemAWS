@@ -3051,7 +3051,7 @@ var_dump($query);*/
 
     if($user_id != '101' AND $count >= 5) // count starts from 0
     {
-      ChromePhp::log('Action: Do more than 5 searches in 5 minutes.');
+      //ChromePhp::log('Action: Do more than 5 searches in 5 minutes.');
       $dNow = date('Y-m-d H:i:s'); // Japan time
       $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                  VALUES('".$user_id."','search_in_five','".$dNow."')";
@@ -3113,7 +3113,7 @@ var_dump($query);*/
 
       if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
       {
-        ChromePhp::log('Action: View 5 contact details but not any note entry.');
+        //ChromePhp::log('Action: View 5 contact details but not any note entry.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
         $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                    VALUES('".$user_id."','contact_view','".$dNow."')";
@@ -3169,7 +3169,7 @@ var_dump($query);*/
 
       if($result[0]['count'] > 50) // 50 den buyuk ise mail
       {
-        ChromePhp::log('Action: View more than 50 candidates on holiday.');
+        //ChromePhp::log('Action: View more than 50 candidates on holiday.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
         $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                    VALUES('".$user_id."','holiday_fifty_view','".$dNow."')";
@@ -3210,8 +3210,6 @@ var_dump($query);*/
     $sQuery = "SELECT count(*) as count FROM  security_alert sa
     WHERE sa.user_id = '".$user_id."' AND sa.type = '".$type."'
     AND sa.action_date >= '".$startDate."' AND sa.action_date <= '".$endDate."' ";
-
-    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
