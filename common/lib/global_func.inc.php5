@@ -3063,14 +3063,18 @@ var_dump($query);*/
 
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
-      $subject = 'Security Alert!!';
-      $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+      $subject = 'Slistem Activity Flag';
+      $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
 
-      mail($to, $subject, $message, $headers);
+      $flag = securityMailControl($user_id,'search_in_five');
+      if($flag) // ayni gun mail atilmis mi kontrol ediyoruz
+      {
+        mail($to, $subject, $message, $headers);
+      }
     }
 
   }
@@ -3121,14 +3125,18 @@ var_dump($query);*/
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
         $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
-        $subject = 'Security Alert!!';
-        $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+        $subject = 'Slistem Activity Flag';
+        $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
             'Reply-To: munir@slate-ghc.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        $flag = securityMailControl($user_id,'contact_view');
+        if($flag) // ayni gun mail atilmis mi kontrol ediyoruz
+        {
+          mail($to, $subject, $message, $headers);
+        }
       }
     }
 
@@ -3173,17 +3181,45 @@ var_dump($query);*/
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
         $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
-        $subject = 'Security Alert!!';
-        $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+        $subject = 'Slistem Activity Flag';
+        $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View more than 50 candidates on holiday.";
         $headers = 'From: slistem@slate.co.jp' . "\r\n" .
             'Reply-To: munir@slate-ghc.com' . "\r\n" .
             'X-Mailer: PHP/' . phpversion();
 
-        mail($to, $subject, $message, $headers);
+        $flag = securityMailControl($user_id,'holiday_fifty_view');
+        if($flag) // ayni gun mail atilmis mi kontrol ediyoruz
+        {
+          mail($to, $subject, $message, $headers);
+        }
+
       }
     }
 
+  }
+
+  function securityMailControl($user_id,$type)
+  {
+    $dNow = date('Y-m-d');
+    $startDate = $dNow." 00:00:00";
+    $endDate = $dNow." 23:59:59";
+
+    $sQuery = "SELECT count(*) as count FROM  security_alert sa
+    WHERE sa.user_id = '".$user_id."' AND sa.type = '".$type."'
+    AND sa.action_date >= '".$startDate."' AND sa.action_date <= '".$endDate."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+    if($result[0]['count'] > 0)
+    {
+      return false; // ayni gun mail atmisiz birdaha atmayalim
+    }
+    else
+    {
+      return true;
+    }
   }
 
   function getHolidayCount($date)
