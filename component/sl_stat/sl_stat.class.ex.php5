@@ -4971,6 +4971,10 @@ class CSl_statEx extends CSl_stat
       echo "<br><br>";
       foreach ($researcher_ids as $id)
       {
+        uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
+      }
+      foreach ($researcher_ids as $id)
+      {
         var_dump($stats_data['researcher'][$id]['set_meeting_info']);
         echo "<br><br>";
       }
