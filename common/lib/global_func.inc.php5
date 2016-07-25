@@ -3051,6 +3051,7 @@ var_dump($query);*/
 
     if($user_id != '101' AND $count > 5)
     {
+      ChromePhp::log('Action: Do more than 5 searches in 5 minutes.');
       $dNow = date('Y-m-d H:i:s'); // Japan time
       $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                  VALUES('".$user_id."','search_in_five','".$dNow."')";
@@ -3085,7 +3086,7 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
-    if(isset($result[4]))
+    if($user_id != '101' AND isset($result[4]))
     {
       $first = $result[4]; // 5 kayittan ilk olani sectik
       $controlDate = $first['date'];
@@ -3106,7 +3107,7 @@ var_dump($query);*/
 
       $count = $result[0]['count'];
 
-      if($user_id != '101' AND $count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
+      if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
       {
         ChromePhp::log('Action: View 5 contact details but not any note entry.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
@@ -3154,16 +3155,13 @@ var_dump($query);*/
       WHERE lsh.table = 'user_history_all_view' AND userfk = '".$user_id."'
       AND lsh.date >= '".$startDate."' AND lsh.date <= '".$endDate."' ";
 
-      ChromePhp::log($sQuery);
-
       $db_result = $oDB->executeQuery($sQuery);
 
       $result = $db_result->getAll();
-      ChromePhp::log($result[0]['count']);
 
       if($result[0]['count'] > 50) // 50 den buyuk ise mail
       {
-        ChromePhp::log('Action: View 5 contact details but not any note entry.');
+        ChromePhp::log('Action: View more than 50 candidates on holiday.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
         $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
                    VALUES('".$user_id."','holiday_fifty_view','".$dNow."')";
