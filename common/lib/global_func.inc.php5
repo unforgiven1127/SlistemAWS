@@ -3049,7 +3049,7 @@ var_dump($query);*/
     $result = $db_result->getAll();
     $count = $result[0]['count'];
 
-    if($count > 5)
+    if($user_id != '101' AND $count > 5)
     {
       $dNow = date('Y-m-d H:i:s'); // Japan time
       $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
@@ -3061,7 +3061,7 @@ var_dump($query);*/
       $username = $user_information['firstname']." ".$user_information['lastname'];
 
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-      $to      = 'munir@slate-ghc.com';
+      $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $subject = 'Security Allert!!';
       $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
@@ -3105,9 +3105,8 @@ var_dump($query);*/
       $result = $db_result->getAll();
 
       $count = $result[0]['count'];
-      ChromePhp::log($count);
 
-      if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
+      if($user_id != '101' AND $count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
       {
         ChromePhp::log('Action: View 5 contact details but not any note entry.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
@@ -3120,7 +3119,7 @@ var_dump($query);*/
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $to      = 'munir@slate-ghc.com';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
         $subject = 'Security Allert!!';
         $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
@@ -3141,10 +3140,10 @@ var_dump($query);*/
     $dayname = date('l'); // dayname
     $dNow = date('Y-m-d'); // sadece yil-ay-gun
 
-    $holidays = getHolidayCount($dNow);
-    ChromePhp::log($holidays[0]['count']);
+    $holidays = getHolidayCount($dNow); // 0 gelince patlamiyor...
+    //ChromePhp::log($holidays[0]['count']);
 
-    if(($dayname == 'Saturday' || $dayname == 'Sunday') && $holidays[0]['count'] > 0) //Japan Saturday & Sunday
+    if($user_id != '101' AND ($dayname == 'Saturday' || $dayname == 'Sunday') && $holidays[0]['count'] > 0) //Japan Saturday & Sunday
     {
       $startDate = $dNow." 00:00:00";
       $endDate = $dNow." 23:59:59";
@@ -3175,7 +3174,7 @@ var_dump($query);*/
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
         //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
-        $to      = 'munir@slate-ghc.com';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
         $subject = 'Security Allert!!';
         $message = "Suspicious activity, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View more than 50 candidates on holiday.";
