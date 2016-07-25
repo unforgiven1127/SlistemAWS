@@ -3061,8 +3061,8 @@ var_dump($query);*/
       $user_information = getUserInformaiton($user_id);
       $username = $user_information['firstname']." ".$user_information['lastname'];
 
-      $to      = 'munir@slate-ghc.com';
-      //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+      //$to      = 'munir@slate-ghc.com';
+      $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
       $subject = 'Slistem Activity Flag';
       $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
@@ -3123,8 +3123,8 @@ var_dump($query);*/
         $user_information = getUserInformaiton($user_id);
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
-        $to      = 'munir@slate-ghc.com';
-        //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+        //$to      = 'munir@slate-ghc.com';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
         $subject = 'Slistem Activity Flag';
         $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View 5 contact details but not any note entry.";
@@ -3179,8 +3179,8 @@ var_dump($query);*/
         $user_information = getUserInformaiton($user_id);
         $username = $user_information['firstname']." ".$user_information['lastname'];
 
-        $to      = 'munir@slate-ghc.com';
-        //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+        //$to      = 'munir@slate-ghc.com';
+        $to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com;rkiyamu@slate.co.jp';
         $subject = 'Slistem Activity Flag';
         $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
         $message .= "\r\n"."Action: View more than 50 candidates on holiday.";
@@ -3216,7 +3216,7 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-    if($result[0]['count'] > 1)
+    if($result[0]['count'] > 1) // once kaydettigimiz icin 1 mi diye bakiyoruz
     {
       return false; // ayni gun mail atmisiz birdaha atmayalim
     }
