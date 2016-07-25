@@ -3143,11 +3143,14 @@ var_dump($query);*/
 
     $holidays = getHolidayCount($dNow);
 
-    if($dayname == 'Saturday') //Japan saturday
+    ChromePhp::log($holidays[0]['count']);
+    ChromePhp::log($dayname);
+
+    if($dayname == 'Saturday' && $holidays[0]['count'] > 0) //Japan saturday
     {
 
     }
-    ChromePhp::log($holidays);
+
   }
 
   function getHolidayCount($date)
