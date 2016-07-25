@@ -171,6 +171,9 @@
       if(empty($sText))
         $sText = '';
 
+      $user_id = $oLogin->getUserPk();
+      securityCheckView($user_id);
+
       $oModel = new CModel();
       $oModel->_logChanges(array('action' => 'log user history'), 'user_history_all_view', $sText);
     }
