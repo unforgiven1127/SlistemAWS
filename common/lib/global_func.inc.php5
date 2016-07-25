@@ -3066,7 +3066,7 @@ var_dump($query);*/
       //$to      = 'ray@slate-ghc.com;mmoir@slate-ghc.com;munir@slate-ghc.com';
       $to      = 'munir@slate-ghc.com';
       $subject = 'Security Allert!!';
-      $message = "Possible theft attemption, user: ".$username." date: ".$dNow;
+      $message = "Possible theft attemption, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
