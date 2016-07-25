@@ -3201,6 +3201,8 @@ var_dump($query);*/
 
   function securityMailControl($user_id,$type)
   {
+    $oDB = CDependency::getComponentByName('database');
+
     $dNow = date('Y-m-d');
     $startDate = $dNow." 00:00:00";
     $endDate = $dNow." 23:59:59";
@@ -3208,6 +3210,8 @@ var_dump($query);*/
     $sQuery = "SELECT count(*) as count FROM  security_alert sa
     WHERE sa.user_id = '".$user_id."' AND sa.type = '".$type."'
     AND sa.action_date >= '".$startDate."' AND sa.action_date <= '".$endDate."' ";
+
+    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
