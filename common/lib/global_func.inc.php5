@@ -3154,7 +3154,8 @@ var_dump($query);*/
       $oDB = CDependency::getComponentByName('database');
 
       $sQuery = "SELECT count(*) as count FROM  login_system_history lsh
-      WHERE lsh.table = 'user_history_all_view' AND lsh.date >= '".$startDate."' AND lsh.date <= '".$endDate."' ";
+      WHERE lsh.table = 'user_history_all_view' AND userfk = '".$user_id."'
+      AND lsh.date >= '".$startDate."' AND lsh.date <= '".$endDate."' ";
 
       ChromePhp::log($sQuery);
 
