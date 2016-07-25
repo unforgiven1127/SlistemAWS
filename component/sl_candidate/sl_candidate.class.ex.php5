@@ -892,6 +892,11 @@ class CSl_candidateEx extends CSl_candidate
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       $sHTML = $this->_getTopPageSection();
 
+      $oLogin = CDependency::getCpLogin();
+      $user_id = $oLogin->getUserPk();
+
+      securityCheckSearch($user_id);
+
       $sLiId = uniqid();
       if(!$pbInAjax)
         $this->_oPage->addCustomJs('$(document).ready(function(){  initHeaderManager(); goTabs.preload(\'candi\', \''.$sLiId.'\', true); });');
