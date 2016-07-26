@@ -90,7 +90,7 @@
 			<div class="stat_candi_info">
 			<?php
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div class="<?php echo $even; ?>">
+				<div>
 				<?php
 					if(isset($data['setFlag']))
 					{
