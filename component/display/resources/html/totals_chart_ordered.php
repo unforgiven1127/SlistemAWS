@@ -112,13 +112,21 @@
 			<?php echo $value['met']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['met_meeting_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php if(isset($stat_info['candidate'])){$candidate = $stat_info['candidate'];} else {$candidate = $stat_info['candidatefk'];}
-				$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php if(isset($stat_info['candidate'])){echo $stat_info['candidate'];}
-					else if(isset($stat_info['candidatefk'])){echo $stat_info['candidatefk'];}
-					else {echo $stat_info['candidate'];} ?></a>
+				<?php
+					if(isset($data['metFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
