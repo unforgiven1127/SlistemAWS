@@ -5305,7 +5305,11 @@ class CSl_statEx extends CSl_stat
 //var_dump($allCanidatesArray);
 
 
-
+      foreach ($allCanidatesArray['researcher'] as $key => $value)
+      {
+        var_dump($value);
+        echo '<br><br>';
+      }
 
 
 
@@ -5323,9 +5327,9 @@ class CSl_statEx extends CSl_stat
       $data['allCanidatesArray'] = $allCanidatesArray;
 header_remove('Set-Cookie');
 
-      $html = $this->_oDisplay->render('totals_chart_ordered', $data);
+      //$html = $this->_oDisplay->render('totals_chart_ordered', $data);
 
-      return $html;
+      //return $html;
     }
 
     private function get_call_log_chart()
