@@ -90,7 +90,7 @@
 			<div class="stat_candi_info">
 			<?php
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
-			 	echo "<div>".$data."</div>";
+			 	echo "<div>".var_dump($data)."</div>";
 				echo "<div>";
 
 					if(isset($data['set_meeting_info']))
