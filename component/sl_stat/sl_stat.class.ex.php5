@@ -5107,7 +5107,7 @@ class CSl_statEx extends CSl_stat
         {
           //var_dump($candidate);
           //echo "<br><br>";
-          if(isset($candidate['candidatefk']))
+          if(isset($candidate['positionfk']))
           {
             $candidate_id = $candidate['candidatefk']; // New position
 
