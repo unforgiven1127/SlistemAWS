@@ -4987,7 +4987,7 @@ class CSl_statEx extends CSl_stat
       $allCanidatesArray = array();
       foreach ($consultant_ids as $id)
       {
-        $KPIsArray = $stats_data['researcher'][$id];
+        $KPIsArray = $stats_data['consultant'][$id];
         var_dump($KPIsArray);
         echo "<br><br>";
       }
