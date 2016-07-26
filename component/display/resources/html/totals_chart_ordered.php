@@ -88,10 +88,11 @@
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php echo "<script type='text/javascript'>alert('".$value['user_id']."');</script>";
+			<?php
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
 				<?php
+				echo "<script type='text/javascript'>alert('".$data."');</script>";
 					if(isset($data['set_meeting_info']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
