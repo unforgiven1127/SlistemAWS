@@ -5069,9 +5069,10 @@ class CSl_statEx extends CSl_stat
         }
 
         echo "<br><br>".$id." - ";
-        var_dump($stats_data['consultant'][$id]['mccm_info']);
+        
         foreach ($stats_data['consultant'][$id]['mccm_info'] as $key => $candidate)
         {
+          var_dump($candidate);
           if(isset($candidate['ccm_done_candidate']))
           {
             $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
