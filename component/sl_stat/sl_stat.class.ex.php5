@@ -5301,14 +5301,15 @@ class CSl_statEx extends CSl_stat
       // -- RESEARCHER CANDIDATE LINKS IN ORDER--
 
 
+
+
+
+
+      $data['allCanidates'] = $allCanidatesArray;
+
+
 echo "<br><br>";
-var_dump($allCanidatesArray);
-
-
-
-
-      $data['allCanidatesArray'] = $allCanidatesArray;
-
+var_dump($data['allCanidates']);
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
       $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
