@@ -5301,8 +5301,8 @@ class CSl_statEx extends CSl_stat
       // -- RESEARCHER CANDIDATE LINKS IN ORDER--
 
 
-
-
+echo "<br><br>";
+var_dump($allCanidatesArray);
 
 
 
