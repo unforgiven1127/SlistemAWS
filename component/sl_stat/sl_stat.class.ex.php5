@@ -5077,7 +5077,7 @@ class CSl_statEx extends CSl_stat
           {
             echo "TESTTESTTEST";
             $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
-
+            echo "  -  ".$candidate_id;
             $allCanidatesArray['consultant'][$id][$candidate_id]['mccmDoneFlag'] = '1';
           }
         }
