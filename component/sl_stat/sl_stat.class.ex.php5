@@ -4987,7 +4987,7 @@ class CSl_statEx extends CSl_stat
       $allCanidatesArray = array();
       foreach ($consultant_ids as $key => $id)
       {
-        foreach ($stats_data['researcher'][$id]['set_meeting_info']['candidate'] as $key => $candidate)
+        foreach ($stats_data['researcher'][$id]['set_meeting_info'] as $key => $candidate)
         {
           echo $candidate;
           echo "<br><br>";
