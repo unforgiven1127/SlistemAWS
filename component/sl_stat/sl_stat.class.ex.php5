@@ -5103,6 +5103,8 @@ class CSl_statEx extends CSl_stat
           }
         }
 
+        echo "<br><br>";
+        var_dump($stats_data['consultant'][$id]['new_positions']);
         foreach ($stats_data['consultant'][$id]['new_positions'] as $key => $candidate)
         {
           if(isset($candidate['positionfk']))
