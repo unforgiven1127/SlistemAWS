@@ -5305,11 +5305,11 @@ class CSl_statEx extends CSl_stat
 
 
 
-      $data['allCanidates'] = $allCanidatesArray;
+      /*$data['allCanidates'] = $allCanidatesArray;
 
 
-//echo "<br><br>";
-//var_dump($data['allCanidates']);
+echo "<br><br>";
+var_dump($data['allCanidates']);*/
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
       $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
@@ -5317,8 +5317,8 @@ class CSl_statEx extends CSl_stat
       $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,
-        'end_date_original' => $end_date_original, 'start_date' => $start_date,
-        'page_obj' => $this->_oPage,'allCanidatesArray' => $allCanidatesArray
+        'end_date_original' => $end_date_original, 'start_date' => $start_date,'allCanidatesArray' => $allCanidatesArray,
+        'page_obj' => $this->_oPage
         );
 
       $html = $this->_oDisplay->render('totals_chart_ordered', $data);
