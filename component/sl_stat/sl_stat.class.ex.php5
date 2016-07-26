@@ -5105,13 +5105,13 @@ class CSl_statEx extends CSl_stat
 
         foreach ($stats_data['consultant'][$id]['new_position_info'] as $key => $candidate)
         {
-          var_dump($candidate);
-          echo "<br><br>";
-          if(isset($candidate['positionfk']))
+          //var_dump($candidate);
+          //echo "<br><br>";
+          if(isset($candidate['candidatefk']))
           {
-            $candidate_id = $candidate['positionfk']; // New position
+            $candidate_id = $candidate['candidatefk']; // New position
 
-            $allCanidatesArray['consultant'][$id][$candidate_id]['newPositionPlayFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
           }
         }
 
