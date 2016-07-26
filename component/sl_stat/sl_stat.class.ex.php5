@@ -5301,11 +5301,11 @@ class CSl_statEx extends CSl_stat
       // -- RESEARCHER CANDIDATE LINKS IN ORDER--
 
 
-//echo "<br><br>";
+echo "<br><br>";
 //var_dump($allCanidatesArray);
 
 
-      foreach ($allCanidatesArray['researcher'] as $key => $value)
+      foreach ($allCanidatesArray['researcher']['457'] as $key => $value)
       {
         var_dump($key);
         var_dump($value);
