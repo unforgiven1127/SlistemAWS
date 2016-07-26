@@ -4973,8 +4973,8 @@ class CSl_statEx extends CSl_stat
       {
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
         uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidatefk'));
-        uasort($stats_data['researcher'][$id]['ccm1_info'], sort_multi_array_by_value('ccm_done_candidate,candidate'));
-        uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('ccm_done_candidate,candidate'));
+        uasort($stats_data['researcher'][$id]['ccm1_info'], sort_multi_array_by_value('candidate'));
+        uasort($stats_data['researcher'][$id]['ccm2_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['mccm_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['placedRevenue_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['new_candidate_info'], sort_multi_array_by_value('candidate'));
