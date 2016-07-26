@@ -4969,6 +4969,7 @@ class CSl_statEx extends CSl_stat
       uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
 
       echo "<br><br>";
+      var_dump($stats_data['consultant']);
       /*foreach ($researcher_ids as $id)
       {
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
@@ -4989,9 +4990,74 @@ class CSl_statEx extends CSl_stat
       {
         foreach ($stats_data['consultant'][$id]['set_meeting_info'] as $key => $candidate)
         {
-          var_dump($candidate);
-          echo "<br><br>";
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['candidate'];
+            $allCanidatesArray['consultant'][$candidate_id]['setFlag'] = '1';
+          }
+
         }
+
+        foreach ($stats_data['consultant'][$id]['met_meeting_info'] as $key => $candidate)
+        {
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['candidate'];
+          }
+          else if(isset($candidate['candidatefk']))
+          {
+            $candidate_id = $candidate['candidatefk'];
+          }
+          if(isset($candidate_id))
+          {
+            $allCanidatesArray[$candidate_id]['metFlag'] = '1';
+          }
+        }
+
+        foreach ($stats_data['consultant'][$id]['resumes_sent_info'] as $key => $candidate)
+        {
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['candidate'];
+
+            $allCanidatesArray[$candidate_id]['resumeSentFlag'] = '1';
+
+          }
+
+        }
+
+        foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
+        {
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['candidate']; // CCM1 SET
+
+            $allCanidatesArray[$candidate_id]['ccm1SetFlag'] = '1';
+          }
+
+        }
+
+        foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
+        {
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['ccm_done_candidate']; // CCM1 DONE
+
+            $allCanidatesArray[$candidate_id]['ccm1DoneFlag'] = '1';
+          }
+        }
+
+        foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
+        {
+          if(isset($candidate['candidate']))
+          {
+            $candidate_id = $candidate['candidate']; // CCM1 SET
+
+            $allCanidatesArray[$candidate_id]['ccm1SetFlag'] = '1';
+          }
+
+        }
+
       }
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
