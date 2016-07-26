@@ -121,7 +121,9 @@
 					if(isset($data['metFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -145,7 +147,9 @@
 					if(isset($data['resumeSentFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -169,7 +173,9 @@
 					if(isset($data['ccm1SetFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -193,7 +199,9 @@
 					if(isset($data['ccm1DoneFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -217,7 +225,9 @@
 					if(isset($data['ccm2SetFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -241,7 +251,9 @@
 					if(isset($data['ccm2DoneFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -265,7 +277,9 @@
 					if(isset($data['mccmSetFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -289,7 +303,9 @@
 					if(isset($data['mccmDoneFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -316,7 +332,9 @@
 					if(isset($data['newCandiMetFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -343,7 +361,9 @@
 					if(isset($data['newCandiPlayFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -370,7 +390,10 @@
 					if(isset($data['newPositionPlayFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-005', CONST_ACTION_VIEW, CONST_POSITION_TYPE_JD, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$data['newPositionPlayFlag']."</a>";
+						//echo "<a href='javascript: view_candi(".$url.")'>".$data['newPositionPlayFlag']."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $data['newPositionPlayFlag']; ?></a>
+						<?php
 					}
 					else
 					{
@@ -397,7 +420,9 @@
 					if(isset($data['offerFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
@@ -431,7 +456,9 @@
 					if(isset($data['placedFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+						?>
+						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<?php
 					}
 					else
 					{
