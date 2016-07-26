@@ -88,7 +88,7 @@
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php ChromePhp::log($allCanidatesArray[$arrayPosition][$value['user_id']]);
+			<?php ChromePhp::log($allCanidatesArray[$arrayPosition]);
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $stat_info): ?>
 				<div>
 				<?php
