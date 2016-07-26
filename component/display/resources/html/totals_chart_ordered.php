@@ -88,7 +88,7 @@
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php ChromePhp::log($allCanidatesArray);
+			<?php ChromePhp::log($allCanidatesArray);?>
 			
 			</div>
 		</td>
