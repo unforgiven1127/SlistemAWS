@@ -4985,11 +4985,13 @@ class CSl_statEx extends CSl_stat
         //uasort($stats_data['researcher'][$id]['resumes_sent_info'], sort_multi_array_by_value('candidate'));
       }*/
       $allCanidatesArray = array();
-      foreach ($consultant_ids as $id)
+      foreach ($consultant_ids as $key => $id)
       {
-        $KPIsArray = $stats_data['consultant'][$id];
-        var_dump($KPIsArray);
-        echo "<br><br>";
+        foreach ($stats_data['researcher'][$id]['set_meeting_info']['candidate'] as $key => $candidate)
+        {
+          echo $candidate;
+          echo "<br><br>";
+        }
       }
 
       $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
