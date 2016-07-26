@@ -95,7 +95,8 @@
 					if(isset($data['setFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
-						echo "<a href='javascript: view_candi('".$url."')'>".$candidate_id."</a>";
+						$url = "'".$url."'";
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
 					}
 					else
 					{
