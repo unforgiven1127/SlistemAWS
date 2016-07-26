@@ -5083,16 +5083,13 @@ class CSl_statEx extends CSl_stat
           }
         }
 
-        foreach ($stats_data['consultant'][$id]['new_candidate_met_count'] as $key => $candidate)
+        foreach ($stats_data['consultant'][$id]['new_candidate_met_info'] as $key => $candidate)
         {
           if(isset($candidate['candidatefk']))
           {
-            $candidate_ids = $candidate['candidatefk']; // new candi met
+            $candidate_id = $candidate['candidatefk']; // new candi met
 
-            foreach ($candidate_ids as $key => $candidate_id)
-            {
-              $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
-            }
+            $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
           }
         }
 
