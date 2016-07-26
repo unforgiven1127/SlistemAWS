@@ -5301,7 +5301,7 @@ class CSl_statEx extends CSl_stat
       // -- RESEARCHER CANDIDATE LINKS IN ORDER--
 
 
-echo "<br><br>";
+/*echo "<br><br>";
 //var_dump($allCanidatesArray);
 
 
@@ -5310,7 +5310,7 @@ echo "<br><br>";
         var_dump($key);
         var_dump($value);
         echo '<br><br>';
-      }
+      }*/
 
 
 
@@ -5328,9 +5328,9 @@ echo "<br><br>";
       $data['allCanidatesArray'] = $allCanidatesArray;
 header_remove('Set-Cookie');
 
-      //$html = $this->_oDisplay->render('totals_chart_ordered', $data);
+      $html = $this->_oDisplay->render('totals_chart_ordered', $data);
 
-      //return $html;
+      return $html;
     }
 
     private function get_call_log_chart()
