@@ -82,13 +82,13 @@
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
-		<td class="name_column"><?php var_dump($value); ?></td>
+		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
 			<div class="stat_holder">
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($allCanidatesArray[$arrayPosition][$key] as $candidate_id => $stat_info): ?>
+			<?php foreach ($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $stat_info): ?>
 				<div>
 				<?php
 					if(isset($stat_info['set_meeting_info']))

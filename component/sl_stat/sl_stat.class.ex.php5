@@ -4402,6 +4402,7 @@ class CSl_statEx extends CSl_stat
           {
             $stats_data['consultant'][$id]['promote_date'] = $promote_dates[$id];
           }
+          $stats_data['consultant'][$id]['user_id'] = $id;
 
         }
       }
@@ -4577,6 +4578,7 @@ class CSl_statEx extends CSl_stat
         {
           $stats_data['consultant'][$id]['promote_date'] = $promote_dates[$id];
         }
+        $stats_data['consultant'][$id]['user_id'] = $id;
 
       }
 
@@ -4748,6 +4750,7 @@ class CSl_statEx extends CSl_stat
 
           $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
           $stats_data['researcher'][$id]['promote_date'] = "0";
+          $stats_data['researcher'][$id]['user_id'] = $id;
         }
 
       }
@@ -4963,6 +4966,7 @@ class CSl_statEx extends CSl_stat
 
         $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
         $stats_data['researcher'][$id]['promote_date'] = "0";
+        $stats_data['researcher'][$id]['user_id'] = $id;
       }
 
       uasort($stats_data['researcher'], sort_multi_array_by_value('name'));
