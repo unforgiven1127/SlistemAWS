@@ -368,7 +368,7 @@
 					if(isset($data['newPositionPlayFlag']))
 					{
 						$url = $page_obj->getAjaxUrl('555-005', CONST_ACTION_VIEW, CONST_POSITION_TYPE_JD, (int)$candidate_id);
-						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."(".$data['newPositionPlayFlag'].")"."</a>";
+						echo "<a href='javascript: view_candi(".$url.")'>".$data['newPositionPlayFlag']."</a>";
 					}
 					else
 					{
