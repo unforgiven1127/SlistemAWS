@@ -136,10 +136,21 @@
 			<?php echo $value['resumes_sent']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['resumes_sent_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['resumeSentFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -149,10 +160,21 @@
 			<?php echo $value['ccm1']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm1_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['ccm1SetFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -162,10 +184,21 @@
 			<?php echo $value['ccm1_done']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm1_info'] as $stat_info): if (empty($stat_info['ccm_done_candidate'])) continue; ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['ccm_done_candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['ccm_done_candidate']; ?></a>
+				<?php
+					if(isset($data['ccm1DoneFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -175,10 +208,21 @@
 			<?php echo $value['ccm2']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm2_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['ccm2SetFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -188,10 +232,21 @@
 			<?php echo $value['ccm2_done']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['ccm2_info'] as $stat_info): if (empty($stat_info['ccm_done_candidate'])) continue; ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['ccm_done_candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['ccm_done_candidate']; ?></a>
+				<?php
+					if(isset($data['ccm2DoneFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -201,10 +256,21 @@
 			<?php echo $value['mccm']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['mccm_info'] as $stat_info): if (empty($stat_info['candidate'])) continue; ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['mccmSetFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -215,18 +281,22 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-				foreach ($value['mccm_info'] as $stat_info) {
-					if (empty($stat_info['ccm_done_candidate'])) continue;
-					foreach ($stat_info['ccm_done_candidate'] as $candidate) {
-			?>
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate; ?></a>
-				</div>
-			<?php
+				<?php
+					if(isset($data['mccmDoneFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
 					}
-				}
-			?>
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
+				</div>
+			<?php endforeach ?>
 			</div>
 		</td>
 		<td>
@@ -237,10 +307,21 @@
 			?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['new_candidate_met_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidatefk']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidatefk']; ?></a>
+				<?php
+					if(isset($data['newCandiMetFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -253,10 +334,21 @@
 			?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['new_candidate_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidatefk']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidatefk']; ?></a>
+				<?php
+					if(isset($data['newCandiPlayFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -269,10 +361,21 @@
 			?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['new_position_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-005', CONST_ACTION_VIEW, CONST_POSITION_TYPE_JD, (int)$stat_info['positionfk']); ?>
-					<a href="javascript: view_position('<?php echo $url; ?>')"><?php echo $stat_info['positionfk']; ?></a>
+				<?php
+					if(isset($data['newPositionPlayFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-005', CONST_ACTION_VIEW, CONST_POSITION_TYPE_JD, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -285,10 +388,21 @@
 			?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach ($value['offer_info'] as $stat_info): ?>
+			<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['offerFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
@@ -309,14 +423,20 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			if($value['position'] == "Researcher")
-			{$foreachValue = $value['placedRevenue_info'];}
-			else
-			{$foreachValue = $value['placed_info'];}
-			foreach ($foreachValue as $stat_info): ?>
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
-				<?php $url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$stat_info['candidate']); ?>
-					<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $stat_info['candidate']; ?></a>
+				<?php
+					if(isset($data['placedFlag']))
+					{
+						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
+						echo "<a href='javascript: view_candi(".$url.")'>".$candidate_id."</a>";
+					}
+					else
+					{
+						$url = '';
+						echo "<a href='javascript:'>-</a>";
+					}
+				?>
 				</div>
 			<?php endforeach ?>
 			</div>
