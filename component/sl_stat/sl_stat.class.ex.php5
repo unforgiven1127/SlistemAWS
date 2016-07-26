@@ -5321,7 +5321,7 @@ class CSl_statEx extends CSl_stat
         );
 
       $data['allCanidatesArray'] = $allCanidatesArray;
-
+header_remove('Set-Cookie');
 
       $html = $this->_oDisplay->render('totals_chart_ordered', $data);
 
