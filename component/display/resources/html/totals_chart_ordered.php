@@ -100,7 +100,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>---------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -124,7 +124,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>---------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -148,7 +148,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>---------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -172,7 +172,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>---------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -196,7 +196,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -220,7 +220,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -244,7 +244,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -268,7 +268,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -292,7 +292,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -319,7 +319,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -346,7 +346,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -373,7 +373,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
@@ -400,7 +400,7 @@
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>----------</a>";
+						echo "<a href='javascript:'>-</a>";
 					}
 				?>
 				</div>
