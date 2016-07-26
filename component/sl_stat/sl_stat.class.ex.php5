@@ -5322,9 +5322,11 @@ class CSl_statEx extends CSl_stat
 
       $data['allCanidatesArray'] = $allCanidatesArray;
 
-      $html = $this->_oDisplay->render('totals_chart_ordered', $data);
+      var_dump($data);
 
-      return $html;
+      //$html = $this->_oDisplay->render('totals_chart_ordered', $data);
+
+      //return $html;
     }
 
     private function get_call_log_chart()
