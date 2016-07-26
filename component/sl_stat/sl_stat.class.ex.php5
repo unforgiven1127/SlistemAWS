@@ -4989,7 +4989,7 @@ class CSl_statEx extends CSl_stat
       {
         foreach ($stats_data['researcher'][$id]['set_meeting_info'] as $key => $candidate)
         {
-          echo $candidate;
+          var_dump($candidate);
           echo "<br><br>";
         }
       }
