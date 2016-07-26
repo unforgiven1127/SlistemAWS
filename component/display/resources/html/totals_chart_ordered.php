@@ -389,7 +389,7 @@
 				<?php
 					if(isset($data['newPositionPlayFlag']))
 					{
-						$url = $page_obj->getAjaxUrl('555-005', CONST_ACTION_VIEW, CONST_POSITION_TYPE_JD, (int)$data['newPositionPlayFlag']);
+						$url = $page_obj->getAjaxUrl('555-005',CONST_ACTION_VIEW,CONST_POSITION_TYPE_JD,(int)$data['newPositionPlayFlag']);
 						//echo "<a href='javascript: view_candi(".$url.")'>".$data['newPositionPlayFlag']."</a>";
 						?>
 						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $data['newPositionPlayFlag']; ?></a>

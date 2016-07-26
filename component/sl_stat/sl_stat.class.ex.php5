@@ -5252,7 +5252,7 @@ class CSl_statEx extends CSl_stat
           }
         }
 
-        foreach ($stats_data['researcher'][$id]['new_candidate_met_count'] as $key => $candidate)
+        foreach ($stats_data['researcher'][$id]['new_candidate_met_info'] as $key => $candidate)
         {
           if(isset($candidate['candidatefk']))
           {
@@ -5272,13 +5272,15 @@ class CSl_statEx extends CSl_stat
           }
         }
 
-        foreach ($stats_data['researcher'][$id]['new_positions'] as $key => $candidate)
+        foreach ($stats_data['researcher'][$id]['new_position_info'] as $key => $candidate)
         {
+          //var_dump($candidate);
+          //echo "<br><br>";
           if(isset($candidate['positionfk']))
           {
-            $candidate_id = $candidate['positionfk']; // New position
+            $candidate_id = $candidate['candidatefk']; // New position
 
-            $allCanidatesArray['researcher'][$id][$candidate_id]['newPositionPlayFlag'] = '1';
+            $allCanidatesArray['researcher'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
           }
         }
 
