@@ -89,9 +89,9 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
-				<?php
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+				echo "<div>";
+
 				echo "<script type='text/javascript'>alert('".$data['set_meeting_info']."');</script>";
 					if(isset($data['set_meeting_info']))
 					{
@@ -103,9 +103,9 @@
 						$url = '';
 						echo "<a href='javascript:'>-</a>";
 					}
-				?>
-				</div>
-			<?php endforeach ?>
+
+				echo "</div>";
+			 endforeach ?>
 			</div>
 		</td>
 		<td>
