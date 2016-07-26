@@ -5087,9 +5087,12 @@ class CSl_statEx extends CSl_stat
         {
           if(isset($candidate['candidatefk']))
           {
-            $candidate_id = $candidate['candidatefk']; // new candi met
+            $candidate_ids = $candidate['candidatefk']; // new candi met
 
-            $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
+            foreach ($candidate_ids as $key => $candidate_id)
+            {
+              $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
+            }
           }
         }
 
