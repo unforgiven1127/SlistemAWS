@@ -88,7 +88,7 @@
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
-			<?php foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $stat_info){ ?>
+			<?php foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $stat_info): ?>
 				<div>
 				<?php
 					if(isset($stat_info['set_meeting_info']))
@@ -103,7 +103,7 @@
 					}
 				?>
 				</div>
-			<? } ?>
+			<?php endforeach ?>
 			</div>
 		</td>
 		<td>
