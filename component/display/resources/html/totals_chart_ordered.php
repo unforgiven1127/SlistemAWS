@@ -92,7 +92,7 @@
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
 				<div>
 				<?php
-				echo "<script type='text/javascript'>alert('".$data."');</script>";
+				echo "<script type='text/javascript'>alert('".$data['set_meeting_info']."');</script>";
 					if(isset($data['set_meeting_info']))
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
