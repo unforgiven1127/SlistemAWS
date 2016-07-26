@@ -5075,6 +5075,7 @@ class CSl_statEx extends CSl_stat
           var_dump($candidate);
           if(isset($candidate['ccm_done_candidate']))
           {
+            echo "TESTTESTTEST";
             $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
 
             $allCanidatesArray['consultant'][$id][$candidate_id]['mccmDoneFlag'] = '1';
