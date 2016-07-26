@@ -4969,7 +4969,7 @@ class CSl_statEx extends CSl_stat
       uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
 
       echo "<br><br>";
-      foreach ($researcher_ids as $id)
+      /*foreach ($researcher_ids as $id)
       {
         uasort($stats_data['researcher'][$id]['set_meeting_info'], sort_multi_array_by_value('candidate'));
         uasort($stats_data['researcher'][$id]['met_meeting_info'], sort_multi_array_by_value('candidatefk'));
@@ -4983,10 +4983,12 @@ class CSl_statEx extends CSl_stat
         //uasort($stats_data['researcher'][$id]['offer_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['new_candidate_met_info'], sort_multi_array_by_value('candidate'));
         //uasort($stats_data['researcher'][$id]['resumes_sent_info'], sort_multi_array_by_value('candidate'));
-      }
-      foreach ($researcher_ids as $id)
+      }*/
+      $allCanidatesArray = array();
+      foreach ($consultant_ids as $id)
       {
-        var_dump($stats_data['researcher'][$id]['ccm2_info']);
+        $KPIsArray = $stats_data['researcher'][$id];
+        var_dump($KPIsArray);
         echo "<br><br>";
       }
 
