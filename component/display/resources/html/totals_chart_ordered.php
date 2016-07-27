@@ -93,7 +93,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -126,7 +135,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;?>
@@ -158,7 +176,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;?>
@@ -190,7 +217,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;?>
@@ -222,7 +258,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -255,7 +300,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -288,7 +342,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -321,7 +384,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -354,7 +426,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -390,7 +471,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -426,7 +516,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -462,7 +561,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -499,7 +607,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
@@ -542,7 +659,16 @@
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
 			 	if ($line % 2 === 0)
-					$colored_row = ' colored_row';
+			 	{
+			 		if($even == '')
+			 		{
+			 			$colored_row = ' colored_row';
+			 		}
+					else
+					{
+						$colored_row = ' colored_row2';
+					}
+			 	}
 				else
 					$colored_row = '';
 				$line ++;
