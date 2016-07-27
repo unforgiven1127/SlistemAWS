@@ -1,3 +1,9 @@
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
 <form action="" method="post">
 	<div class="general_form_row" style="font-size: 16px;">
 		<div class="general_form_column">Start date: </div>
@@ -582,7 +588,7 @@
 						$url = $page_obj->getAjaxUrl('555-005',CONST_ACTION_VIEW,CONST_POSITION_TYPE_JD,(int)$data['newPositionPlayFlag']);
 						//echo "<a href='javascript: view_candi(".$url.")'>".$data['newPositionPlayFlag']."</a>";
 						?>
-						<a href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $data['newPositionPlayFlag']; ?></a>
+						<a data-toggle="tooltip" title="<?php echo $candidate_id; ?>" href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $data['newPositionPlayFlag']; ?></a>
 						<?php
 					}
 					else
