@@ -738,7 +738,8 @@ $(document).ready(function(){
 		});
 
 		$('.stat_holder').click(function() {
-			$('.stat_candi_info').toggle();
+			var newClass = $(this).id;
+			$('.'+newClass).toggle();
 			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
 
 			//if (sibling_obj_size > 0)
