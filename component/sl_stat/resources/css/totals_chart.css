@@ -23,6 +23,10 @@
 {
 	background-color: #F9E3B3;
 }
+.hover_row
+{
+  width: 100%;
+}
 .totals_table_footer
 {
 	background-color: #48768F;
@@ -43,7 +47,6 @@
   border-bottom: 2px solid black;
   margin-bottom: 5px;
   display: none;
-  width: 100%;
 }
 .name_column
 {
