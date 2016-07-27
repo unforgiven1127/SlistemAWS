@@ -219,8 +219,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['ccm1DoneFlag']))
 					{
@@ -245,8 +252,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['ccm2SetFlag']))
 					{
@@ -271,8 +285,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['ccm2DoneFlag']))
 					{
@@ -297,8 +318,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['mccmSetFlag']))
 					{
@@ -323,8 +351,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['mccmDoneFlag']))
 					{
@@ -352,8 +387,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['newCandiMetFlag']))
 					{
@@ -381,8 +423,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['newCandiPlayFlag']))
 					{
@@ -410,8 +459,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['newPositionPlayFlag']))
 					{
@@ -440,8 +496,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['offerFlag']))
 					{
@@ -476,8 +539,15 @@
 			</div>
 			<div class="stat_candi_info">
 			<?php
-			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data): ?>
-				<div>
+			$line = 1;
+			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
+			 	if ($line % 2 === 0)
+					$colored_row = ' colored_row';
+				else
+					$colored_row = '';
+				$line ++;
+			 	?>
+				<div class="hover_row <?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['placedFlag']))
 					{
