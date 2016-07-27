@@ -166,7 +166,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -207,7 +207,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -248,7 +248,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -290,7 +290,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -332,7 +332,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -374,7 +374,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -416,7 +416,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -458,7 +458,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -503,7 +503,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -548,7 +548,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -594,7 +594,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -639,7 +639,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -691,7 +691,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
@@ -700,7 +700,7 @@ $(document).ready(function(){
 		</td>
 	</tr>
 	<?php } ?>
-	
+
 	<?php endforeach ?>
 	<tr class="totals_table_footer">
 	<!--<td colspan="15">&nbsp;</td></tr>-->
