@@ -739,7 +739,7 @@ $(document).ready(function(){
 
 		$('.stat_holder').click(function() {
 			var newClass = $(this).attr("id");
-			alert(newClass);
+			//alert(newClass);
 			$('.'+newClass).toggle();
 			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
 
