@@ -2497,7 +2497,6 @@ class CLoginEx extends CLogin
     }
 
     $sQuery.= $sWhere.' ORDER BY lgro.title, l.firstname';
-    ChromePhp::log($sQuery);
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 

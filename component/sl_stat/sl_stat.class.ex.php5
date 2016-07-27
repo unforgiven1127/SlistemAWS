@@ -4233,6 +4233,7 @@ class CSl_statEx extends CSl_stat
             {
               //echo "<br><br>INSIDE";
               $promoted_ids[] = $key;
+              $consultant_ids[] = $key;
 
               $start_date_researcher = $start_date;
               $end_date_researcher = $value['r_to_c_date'];
