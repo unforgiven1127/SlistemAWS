@@ -4984,7 +4984,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['setFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -4993,14 +4995,17 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
+            $candidateInfo = getCandidateInformation($candidate_id);
           }
           else if(isset($candidate['candidatefk']))
           {
             $candidate_id = $candidate['candidatefk'];
+            $candidateInfo = getCandidateInformation($candidate_id);
           }
           if(isset($candidate_id))
           {
             $allCanidatesArray['consultant'][$id][$candidate_id]['metFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5009,8 +5014,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['resumeSentFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
 
           }
         }
@@ -5020,8 +5026,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // CCM1 SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['ccm1SetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5041,8 +5048,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // CCM2 SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['ccm2SetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5063,8 +5071,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // MCCM SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['mccmSetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5121,8 +5130,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // Offer
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['offerFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5131,8 +5141,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // Placed
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['consultant'][$id][$candidate_id]['placedFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5158,7 +5169,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['setFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5167,14 +5180,17 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
+            $candidateInfo = getCandidateInformation($candidate_id);
           }
           else if(isset($candidate['candidatefk']))
           {
             $candidate_id = $candidate['candidatefk'];
+            $candidateInfo = getCandidateInformation($candidate_id);
           }
           if(isset($candidate_id))
           {
             $allCanidatesArray['researcher'][$id][$candidate_id]['metFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5183,8 +5199,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate'];
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['resumeSentFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
 
           }
         }
@@ -5194,8 +5211,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // CCM1 SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['ccm1SetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5215,8 +5233,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // CCM2 SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['ccm2SetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5237,8 +5256,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // MCCM SET
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['mccmSetFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
 
         }
@@ -5290,8 +5310,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // Offer
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['offerFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
@@ -5300,8 +5321,9 @@ class CSl_statEx extends CSl_stat
           if(isset($candidate['candidate']))
           {
             $candidate_id = $candidate['candidate']; // Placed
-
+            $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['placedFlag'] = '1';
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."&#013;".$candidateInfo['title'];
           }
         }
 
