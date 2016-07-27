@@ -19,6 +19,10 @@
 	/*padding: 0 5px;*/
 	vertical-align: top;
 }
+.totals_table td
+{
+	padding: 0 5px;
+}
 .hover_row:hover
 {
 	/*background-color: #F9E3B3;*/
