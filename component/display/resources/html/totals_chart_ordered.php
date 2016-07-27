@@ -119,7 +119,7 @@ $(document).ready(function(){
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
 						?>
-						<a title="<?php echo $data['hoverTooltip']; ?>" onmouseover=' $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter(); ' onmouseout='$('.closepopup').hide();' href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<a onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.closepopup').hide();" data-toggle="tooltip" title="<?php echo $data['hoverTooltip']; ?>"  href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
 						<?php
 					}
 					else
