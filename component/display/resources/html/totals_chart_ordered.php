@@ -84,7 +84,7 @@
 	<!--<td><?php echo $value['position'] ?></td>-->
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
-			<div class="stat_holder">
+			<div style='width: 100%;' class="stat_holder">
 			<?php echo $value['set']; ?>
 			</div>
 			<div style='width: 100%;' class="stat_candi_info">
