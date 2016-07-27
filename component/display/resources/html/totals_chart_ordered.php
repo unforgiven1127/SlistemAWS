@@ -119,7 +119,7 @@ $(document).ready(function(){
 					{
 						$url = $page_obj->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$candidate_id);
 						?>
-						<a data-html="true" data-toggle="tooltip" data-content="<div>This <b>is</b> your div content</div>"  title="<?php echo $data['hoverTooltip']; ?>" href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
+						<a data-toggle="tooltip" data-placement="right" data-html="true" title="1st line of text <br> 2nd line of text" href="javascript: view_candi('<?php echo $url; ?>')"><?php echo $candidate_id; ?></a>
 						<?php
 					}
 					else
