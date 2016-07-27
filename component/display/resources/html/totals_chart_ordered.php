@@ -87,7 +87,7 @@
 			<div class="stat_holder">
 			<?php echo $value['set']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div style='width: 100%;' class="stat_candi_info">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
