@@ -16,7 +16,7 @@
 {
 	font-size: 18px;
 	border-right: 1px solid #D4DADF;
-	padding: 0 5px;
+	/*padding: 0 5px;*/
 	vertical-align: top;
 }
 .hover_row:hover
