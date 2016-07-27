@@ -738,10 +738,11 @@ $(document).ready(function(){
 		});
 
 		$('.stat_holder').click(function() {
-			var sibling_obj_size = $($(this).siblings().get(0)).children().length;
+			$('.stat_candi_info').toggle();
+			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
 
-			if (sibling_obj_size > 0)
-				$(this).siblings().toggle();
+			//if (sibling_obj_size > 0)
+				//$(this).siblings().toggle();
 		});
 	});
 </script>
