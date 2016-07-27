@@ -87,7 +87,7 @@
 			<div class="stat_holder">
 			<?php echo $value['set']; ?>
 			</div>
-			
+			<div class="stat_candi_info">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -97,7 +97,7 @@
 					$colored_row = '';
 				$line ++;
 			 	?>
-				<div class="hover_row<?php echo $colored_row; ?>">
+				<div style='width:100%;' class="hover_row<?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['setFlag']))
 					{
@@ -114,7 +114,7 @@
 				?>
 				</div>
 			<?php endforeach ?>
-			
+			</div>
 		</td>
 		<td>
 			<div class="stat_holder">
