@@ -79,6 +79,7 @@
 		$even = '';
 	?>
 	<?php if($flag){ ?>
+	<?php $row_number_rank += 1; ?>
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
@@ -567,7 +568,7 @@
 		</td>
 	</tr>
 	<?php } ?>
-	<?php $row_number_rank += 1; ?>
+	
 	<?php endforeach ?>
 	<tr class="totals_table_footer">
 	<!--<td colspan="15">&nbsp;</td></tr>-->
