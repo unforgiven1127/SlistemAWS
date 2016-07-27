@@ -1,3 +1,5 @@
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+
 <script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
