@@ -95,6 +95,7 @@
 					$colored_row = ' colored_row';
 				else
 					$colored_row = '';
+				$line ++;
 			 	?>
 				<div class="hover_row<?php echo $colored_row; ?>">
 				<?php
@@ -126,7 +127,8 @@
 			 	if ($line % 2 === 0)
 					$colored_row = ' colored_row';
 				else
-					$colored_row = ''?>
+					$colored_row = '';
+				$line ++;?>
 				<div class="hover_row<?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['metFlag']))
@@ -157,7 +159,8 @@
 			 	if ($line % 2 === 0)
 					$colored_row = ' colored_row';
 				else
-					$colored_row = ''?>
+					$colored_row = '';
+				$line ++;?>
 				<div class="hover_row<?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['resumeSentFlag']))
@@ -188,7 +191,8 @@
 			 	if ($line % 2 === 0)
 					$colored_row = ' colored_row';
 				else
-					$colored_row = ''?>
+					$colored_row = '';
+				$line ++;?>
 				<div class="hover_row<?php echo $colored_row; ?>">
 				<div>
 				<?php
