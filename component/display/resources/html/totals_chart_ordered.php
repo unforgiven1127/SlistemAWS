@@ -194,7 +194,6 @@
 					$colored_row = '';
 				$line ++;?>
 				<div class="hover_row<?php echo $colored_row; ?>">
-				<div>
 				<?php
 					if(isset($data['ccm1SetFlag']))
 					{
