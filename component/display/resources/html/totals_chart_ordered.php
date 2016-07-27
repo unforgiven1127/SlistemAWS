@@ -1,4 +1,4 @@
-<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+<link href="https://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
 
 <script>
 $(document).ready(function(){
