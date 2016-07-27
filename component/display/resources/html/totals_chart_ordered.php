@@ -97,7 +97,7 @@
 					$colored_row = '';
 				$line ++;
 			 	?>
-				<div style='width:100%;' class="hover_row<?php echo $colored_row; ?>">
+				<div class="hover_row<?php echo $colored_row; ?>">
 				<?php
 					if(isset($data['setFlag']))
 					{
