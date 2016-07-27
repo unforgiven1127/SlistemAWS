@@ -2769,8 +2769,8 @@ var_dump($query);*/
     $sQuery = "SELECT slc.*,slcp.*,sc.name as company_name,
                IFNULL(TIMESTAMPDIFF(YEAR, slc.date_birth, '".$sNow."'), '-') AS age
                FROM sl_candidate slc
-               INNER JOIN sl_candidate_profile slcp on slcp.candidatefk = slc.sl_candidatepk
-               INNER JOIN sl_company sc on sc.sl_companypk = slcp.companyfk
+               LEFT JOIN sl_candidate_profile slcp on slcp.candidatefk = slc.sl_candidatepk
+               LEFT JOIN sl_company sc on sc.sl_companypk = slcp.companyfk
                WHERE slc.sl_candidatepk = '".$candidate_id."'";
 
     $db_result = $oDB->executeQuery($sQuery);
