@@ -4829,18 +4829,18 @@ class CSl_statEx extends CSl_stat
            $stats_data['researcher'][$id]['met_meeting_info'] = array();
         }*/
 
-        //if (!empty($temp_ccm[$id]['ccm1']))
-        //{
+        if (!empty($temp_ccm[$id]['ccm1']))
+        {
           $stats_data['researcher'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
           $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
           $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        //}
-        /*else
+        }
+        else
         {
           $stats_data['researcher'][$id]['ccm1'] = 0;
           $stats_data['researcher'][$id]['ccm1_done'] = 0;
           $stats_data['researcher'][$id]['ccm1_info'] = array();
-        }*/
+        }
 
         //if (!empty($temp_ccm[$id]['ccm2']))
         //{
