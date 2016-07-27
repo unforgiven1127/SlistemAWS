@@ -11,7 +11,7 @@
 	overflow: auto;
 	color: white;
 }
-.totals_table td,
+
 .totals_table th
 {
 	font-size: 18px;
@@ -21,7 +21,10 @@
 }
 .totals_table td
 {
+	font-size: 18px;
+	border-right: 1px solid #D4DADF;
 	padding: 0 5px;
+	vertical-align: top;
 }
 .hover_row:hover
 {
