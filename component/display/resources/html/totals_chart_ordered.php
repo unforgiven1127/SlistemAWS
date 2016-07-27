@@ -94,7 +94,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['set']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -136,7 +136,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['met']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -177,7 +177,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['resumes_sent']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -218,7 +218,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -259,7 +259,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1_done']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -301,7 +301,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -343,7 +343,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2_done']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -385,7 +385,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -427,7 +427,7 @@ $(document).ready(function(){
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm_done']; ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -472,7 +472,7 @@ $(document).ready(function(){
 				echo $value['new_candidate_met_count'];
 			?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -517,7 +517,7 @@ $(document).ready(function(){
 				echo $value['new_candidates'];
 			?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -562,7 +562,7 @@ $(document).ready(function(){
 				echo $value['new_positions'];
 			?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -608,7 +608,7 @@ $(document).ready(function(){
 				echo $value['offers_sent'];
 			?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
@@ -660,7 +660,7 @@ $(document).ready(function(){
 				}
 			 ?>
 			</div>
-			<div class="stat_candi_info">
+			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
 			<?php
 			$line = 1;
 			 foreach($allCanidatesArray[$arrayPosition][$value['user_id']] as $candidate_id => $data):
