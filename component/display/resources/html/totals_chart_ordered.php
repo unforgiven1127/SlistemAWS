@@ -740,10 +740,8 @@ $(document).ready(function(){
 		$('.stat_holder').click(function() {
 			var newClass = $(this).attr("id");
 			//alert(newClass);
-			$('.'+newClass).toggle(function() {
-        $(this).animate({height: '200'});
-    }, function() {
-        $(this).animate({height: '100'});			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
+			$('.'+newClass).toggle(500);
+			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
 
 			//if (sibling_obj_size > 0)
 				//$(this).siblings().toggle();
