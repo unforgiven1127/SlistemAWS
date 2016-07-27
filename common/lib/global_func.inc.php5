@@ -2751,7 +2751,8 @@ var_dump($query);*/
     $sNow = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.*,slcp.*,TIMESTAMPDIFF(YEAR, slc.date_birth, '".$sNow."') AS age
+    $sQuery = "SELECT slc.*,slcp.*,
+               IFNULL(TIMESTAMPDIFF(YEAR, slc.date_birth, '".$sNow."'), '-') AS age
                FROM sl_candidate slc
                INNER JOIN sl_candidate_profile slcp on slcp.candidatefk = slc.sl_candidatepk
                WHERE slc.sl_candidatepk = '".$candidate_id."'";
