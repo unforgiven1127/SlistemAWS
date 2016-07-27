@@ -125,7 +125,7 @@ $(document).ready(function(){
 					else
 					{
 						$url = '';
-						echo "<a href='javascript:'>-</a>";
+						echo "<a href='javascript:'><center>-</center></a>";
 					}
 				?>
 				</div>
