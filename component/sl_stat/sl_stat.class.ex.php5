@@ -5323,7 +5323,7 @@ class CSl_statEx extends CSl_stat
             $candidate_id = $candidate['candidate']; // Placed
             $candidateInfo = getCandidateInformation($candidate_id);
             $allCanidatesArray['researcher'][$id][$candidate_id]['placedFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']."<br>".$candidateInfo['title'];
+            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title'];
           }
         }
 
