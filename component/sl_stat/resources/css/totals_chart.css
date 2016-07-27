@@ -17,6 +17,12 @@
 	min-width: 42px;
 }
 
+#head
+{
+	position: fixed;
+	top: 0;
+}
+
 .totals_table td
 {
 	font-size: 18px;

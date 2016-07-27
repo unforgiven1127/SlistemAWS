@@ -34,7 +34,7 @@ $(document).ready(function(){
 	<tr>
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
-	<tr>
+	<tr id="head">
 		<th class="name_column">Name</th>
 		<th>Set</th>
 		<th>Met</th>
