@@ -21,7 +21,7 @@
 }
 .hover_row:hover
 {
-	background-color: #F9E3B3;
+	/*background-color: #F9E3B3;*/
 }
 .hover_row
 {
@@ -67,7 +67,7 @@
 }
 .colored_row
 {
-
+	background-color: #e3e3e3;
 	border-bottom: 1px solid grey;
 }
 .text_right
