@@ -2746,6 +2746,22 @@ var_dump($query);*/
 
   }
 
+  function getCandidateNotes($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT e.* FROM event_link el
+               INNER JOIN event e on e.eventpk = el.eventfk
+               WHERE el.cp_pk ='".$candidate_id."' AND e.type = 'character' ORDER BY e.eventpk DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+    $read = $db_result->readFirst();
+
+    $result = $db_result->getData();
+
+    return $result;
+  }
+
   function getCandidateInformation($candidate_id)
   {
     $sNow = date('Y-m-d H:i:s');
