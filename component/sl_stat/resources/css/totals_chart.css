@@ -25,6 +25,7 @@
 	border-right: 1px solid #D4DADF;
 	padding: 0 5px;
 	vertical-align: top;
+	min-width: 42px;
 }
 .hover_row:hover
 {
