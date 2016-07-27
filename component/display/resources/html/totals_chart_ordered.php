@@ -91,7 +91,7 @@ $(document).ready(function(){
 	<!--<td><?php echo $value['position'] ?></td>-->
 		<td class="name_column"><?php echo $value['name']; ?></td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -133,7 +133,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['met']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -174,7 +174,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['resumes_sent']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -215,7 +215,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -256,7 +256,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1_done']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -298,7 +298,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -340,7 +340,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2_done']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -382,7 +382,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -424,7 +424,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm_done']; ?>
 			</div>
 			<div class="stat_candi_info">
@@ -466,7 +466,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_ncm  = $total_ncm + $value['new_candidate_met_count'];
 				echo $value['new_candidate_met_count'];
@@ -511,7 +511,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_ncip = $total_ncip + $value['new_candidates'];
 				echo $value['new_candidates'];
@@ -556,7 +556,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_npip = $total_npip + $value['new_positions'];
 				echo $value['new_positions'];
@@ -602,7 +602,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_o = $total_o + $value['offers_sent'];
 				echo $value['offers_sent'];
@@ -647,7 +647,7 @@ $(document).ready(function(){
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder">
+			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php
 				if($value['position'] == "Researcher")
 				{
