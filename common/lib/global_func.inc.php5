@@ -2756,7 +2756,6 @@ var_dump($query);*/
 
     $db_result = $oDB->executeQuery($sQuery);
     $read = $db_result->readFirst();
-ChromePhp::log($sQuery);
     $result = $db_result->getData();
 
     return $result;
