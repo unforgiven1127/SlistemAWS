@@ -740,7 +740,9 @@ $(document).ready(function(){
 		$('.stat_holder').click(function() {
 			var newClass = $(this).attr("id");
 			//alert(newClass);
-			$('.'+newClass).toggle(500,"linear");
+			//$('.'+newClass).toggle(500,"linear");
+			var options = {};
+			$('.'+newClass).toggle( 'blind', options, 500 );
 			//var sibling_obj_size = $($(this).siblings().get(0)).children().length;
 
 			//if (sibling_obj_size > 0)
