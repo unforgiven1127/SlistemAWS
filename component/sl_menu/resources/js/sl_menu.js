@@ -152,12 +152,12 @@ function removeClass(gelen,gelen2)
 {
   var x = document.getElementById(gelen);
   var classes = x.className;
-  classes = classes.replace('menuActionBloc2','');
+  classes = classes.replace('menuActionBloc2',' ');
   x.className = classes;
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
-  classes = classes.replace('menuActionBloc2','');
+  classes = classes.replace('menuActionBloc2',' ');
   x.className = classes;
   //x.style.maxHeight = "";
 
