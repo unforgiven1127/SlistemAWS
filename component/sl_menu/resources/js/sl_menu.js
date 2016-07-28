@@ -130,9 +130,13 @@ function clearSelection()
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-function addClass(gelen)
+function addClass(gelen,gelen2)
 {
   var x = document.getElementById(gelen);
+  var classes = x.className;
+  x.className += " menuActionBloc2";
+
+  var x = document.getElementById(gelen2);
   var classes = x.className;
   x.className += " menuActionBloc2";
 }
