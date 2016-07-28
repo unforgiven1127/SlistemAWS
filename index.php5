@@ -49,7 +49,8 @@ echo $oPage->getPage($sUid, $sAction, $sType, $nPk, $sPg);
 //$nNewMemory = memory_get_usage();
 //echo 'size: '.round(($nNewMemory - $nMemory)/1024, 2).'KB';
 
-
+$url = $_SERVER['REQUEST_URI'];
+echo "<script type='text/javascript'>alert('".$url."');</script>"; // php alert
 //uncommnet to use
 //include($_SERVER['DOCUMENT_ROOT'].'/common/maintenance/check_ab_doc.php5');
 
