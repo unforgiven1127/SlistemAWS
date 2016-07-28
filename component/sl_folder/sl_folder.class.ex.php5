@@ -203,12 +203,12 @@ class CSl_FolderEx extends CSl_Folder
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td id="enlargeUserFolders" style="padding-left:50px;" >
-                <a onclick="addClass(\'userFolders\',\'mCSB_1\');"
+                <a onclick="addClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
               <td id="collapseUserFolders" style="padding-left:50px; display:none;" >
-                <a onclick="removeClass(\'userFolders\',\'mCSB_1\');"
+                <a onclick="removeClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
@@ -246,12 +246,12 @@ class CSl_FolderEx extends CSl_Folder
               <td>
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >Shared folders</a>
               </td>
-              <td id="enlargeUserFolders" style="padding-left:50px;" >
+              <td id="enlargeMenuFolders" style="padding-left:50px;" >
                 <a onclick="addClass(\'menu_folder\',\'mCSB_2\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
-              <td id="collapseUserFolders" style="padding-left:50px; display:none;" >
+              <td id="collapseMenuFolders" style="padding-left:50px; display:none;" >
                 <a onclick="removeClass(\'menu_folder\',\'mCSB_2\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>

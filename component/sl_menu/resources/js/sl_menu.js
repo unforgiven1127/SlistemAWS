@@ -130,7 +130,7 @@ function clearSelection()
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-function addClass(gelen,gelen2)
+function addClass(gelen,gelen2,gelen3,gelen4)
 {
   var x = document.getElementById(gelen);
   var classes = x.className;
@@ -141,10 +141,10 @@ function addClass(gelen,gelen2)
   x.className += " menuActionBloc2";
   //x.style.maxHeight = "";
 
-  var d = document.getElementById('enlargeUserFolders');
+  var d = document.getElementById(gelen3);
   d.style.display = 'none';
 
-  var d = document.getElementById('collapseUserFolders');
+  var d = document.getElementById(gelen4);
   d.style.display = 'block';
 }
 
