@@ -139,6 +139,7 @@ function addClass(gelen,gelen2)
   var x = document.getElementById(gelen2);
   var classes = x.className;
   x.className += " menuActionBloc2";
+  x.style.height = "";
 }
 
 function toggleMenu(poElement, psUrl)
