@@ -134,7 +134,7 @@ function addClass(gelen)
 {
   var x = document.getElementById('userFolders');
   var classes = x.className;
-  alert(classes);
+  x.className += " menuActionBloc2";
 }
 
 function toggleMenu(poElement, psUrl)
