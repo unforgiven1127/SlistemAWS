@@ -196,11 +196,11 @@ class CSl_FolderEx extends CSl_Folder
 
      $sHTML.= '
       <li class="menu_section section_workspace">
-        <div class="menuActionMenuContainer" onclick="toggleMenu(this, \''.$sJsURL.'\');"><a href="javascript:;" >My workspace</a></div>
+        <div class="menuActionMenuContainer userFolderNew" onclick="toggleMenu(this, \''.$sJsURL.'\');"><a href="javascript:;" >My workspace</a></div>
         <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
 
       $sURL = $oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_FOLDER, 0);
-      $sHTML.= '<div id="userFolderRow_0" class="userFolderRow userFolderNew sectionClosed" data-folderpk="-1" data-folder-type="candi" >
+      $sHTML.= '<div id="userFolderRow_0" class="userFolderRow " data-folderpk="-1" data-folder-type="candi" >
               <a href="javascript:;" onclick="goPopup.setLayerFromAjax(\'\', \''.$sURL.'\');">Add a new folder</a>
           </div>';
 
