@@ -246,13 +246,13 @@ class CSl_FolderEx extends CSl_Folder
               <td>
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >Shared folders</a>
               </td>
-              <td id="enlargeMenuFolders" style="padding-left:40px;" >
-                <a onclick="addClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
+              <td id="enlargeSharedFolders" style="padding-left:40px;" >
+                <a onclick="addClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeSharedFolders\',\'collapseSharedFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
-              <td id="collapseMenuFolders" style="padding-left:40px; display:none;" >
-                <a onclick="removeClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
+              <td id="collapseSharedFolders" style="padding-left:40px; display:none;" >
+                <a onclick="removeClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeSharedFolders\',\'collapseSharedFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
