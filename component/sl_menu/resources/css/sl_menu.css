@@ -244,6 +244,10 @@ ul.menuActionShort menu_pipeline
   max-height: 150px !important;
 }
 
+.menuActionBloc2{
+  max-height: 250px !important;
+}
+
 #tab_list li a.close_tab
 {
   width: 20px;
