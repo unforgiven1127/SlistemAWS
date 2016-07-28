@@ -196,11 +196,11 @@ class CSl_FolderEx extends CSl_Folder
 
      $sHTML.= '
       <li class="menu_section section_workspace">
-        <div class="menuActionMenuContainer " onclick="toggleMenu(this, \''.$sJsURL.'\');">
+        <div class="menuActionMenuContainer " >
           <table>
             <tr>
               <td>
-                <a class="menuSections" href="javascript:;" >My workspace</a>
+                <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td style="padding-left:40px;" >
                 <a onclick="alert("test");" href="javascript:;" class="expandLogo"><img style="width:15px;" src="/common/pictures/slistem/expand.ico" /></a>
