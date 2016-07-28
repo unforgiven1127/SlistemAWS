@@ -148,7 +148,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   d.style.display = 'block';
 }
 
-function removeClass(gelen,gelen2)
+function removeClass(gelen,gelen2,gelen3,gelen4)
 {
   var x = document.getElementById(gelen);
   var classes = x.className;
@@ -161,10 +161,10 @@ function removeClass(gelen,gelen2)
   x.className = classes;
   //x.style.maxHeight = "";
 
-  var d = document.getElementById('enlargeUserFolders');
+  var d = document.getElementById(gelen3);
   d.style.display = 'block';
 
-  var d = document.getElementById('collapseUserFolders');
+  var d = document.getElementById(gelen4);
   d.style.display = 'none';
 }
 
