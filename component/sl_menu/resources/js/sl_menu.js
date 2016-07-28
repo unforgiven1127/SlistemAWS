@@ -130,6 +130,13 @@ function clearSelection()
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+function addClass(gelen)
+{
+  var x = document.getElementsByClassName(gelen);
+  var classes = x.className;
+  alert(classes);
+}
+
 function toggleMenu(poElement, psUrl)
 {
   var oLi = $(poElement).closest('li');
