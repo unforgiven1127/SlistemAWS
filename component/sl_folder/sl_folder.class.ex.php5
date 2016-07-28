@@ -202,7 +202,7 @@ class CSl_FolderEx extends CSl_Folder
               <td>
                 <a class="menuSections" href="javascript:;" >My workspace</a>
               </td>
-              <td style="padding-left:20px;" >
+              <td style="padding-left:40px;" >
                 <a href="javascript:;" class="expandLogo"><img style="width:15px;" src="/common/pictures/slistem/expand.ico" /></a>
               </td>
             </tr>
