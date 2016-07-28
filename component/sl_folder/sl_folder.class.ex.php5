@@ -240,7 +240,25 @@ class CSl_FolderEx extends CSl_Folder
 
      $sHTML.= '
       <li class="menu_section">
-         <div class="menuActionMenuContainer" onclick="toggleMenu(this, \''.$sJsURL.'\');"><a href="javascript:;">Shared folders</a></div>
+         <div class="menuActionMenuContainer" >
+         <table>
+            <tr>
+              <td>
+                <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >Shared folders</a>
+              </td>
+              <td id="enlargeUserFolders" style="padding-left:50px;" >
+                <a onclick="addClass(\'menu_folder\',\'mCSB_2\');"
+                  href="javascript:;" class="expandLogo"><img style="width:15px;"
+                  src="/common/pictures/slistem/expand.ico" /></a>
+              </td>
+              <td id="collapseUserFolders" style="padding-left:50px; display:none;" >
+                <a onclick="removeClass(\'menu_folder\',\'mCSB_2\');"
+                  href="javascript:;" class="expandLogo"><img style="width:15px;"
+                  src="/common/pictures/slistem/collapse.png" /></a>
+              </td>
+            </tr>
+          </table>
+         </div>
          <div class="menuActionBloc menu_folder menuFolderContainer'.$sClass.'">
 
           <div class="shared_folder_search">
