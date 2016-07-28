@@ -140,6 +140,9 @@ function addClass(gelen,gelen2)
   var classes = x.className;
   x.className += " menuActionBloc2";
   //x.style.maxHeight = "";
+
+  var d = document.getElementById('enlargeUserFolders');
+  d.style.display = 'none';
 }
 
 function toggleMenu(poElement, psUrl)
