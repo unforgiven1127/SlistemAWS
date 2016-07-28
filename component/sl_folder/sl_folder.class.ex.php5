@@ -198,7 +198,7 @@ class CSl_FolderEx extends CSl_Folder
       <li class="menu_section section_workspace">
         <div class="menuActionMenuContainer " onclick="toggleMenu(this, \''.$sJsURL.'\');">
           <a href="javascript:;" >My workspace</a>
-          <a href="javascript:;" class="expandWorkspace test5 ">T</a>
+          <a href="javascript:;" class="expandWorkspace test5 "><img src="/common/pictures/slistem/folder_add_24.png" title="New DBA request"/></a>
         </div>
 
         <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
