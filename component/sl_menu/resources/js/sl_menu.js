@@ -132,7 +132,7 @@ function clearSelection()
 
 function addClass(gelen)
 {
-  var x = document.getElementById('userFolders');
+  var x = document.getElementById(gelen);
   var classes = x.className;
   x.className += " menuActionBloc2";
 }
