@@ -35,7 +35,7 @@ if(url.indexOf(search)>-1)
   window.location.href = res;
   //alert();
 }
-if(url.indexOf(search2)<-1)
+if(url.indexOf(search2)=-1)
 {
   url = window.location.hostname;
   alert(url);
