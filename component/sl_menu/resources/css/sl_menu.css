@@ -179,6 +179,10 @@ ul.menuActionShort menu_pipeline
 {
   border-top: 1px solid #ddd;
 }
+.expandWorkspace
+{
+  background: transparent url("/media/picture/slistem/h4.png") no-repeat left top;
+}
 
 #tab_list
 {
