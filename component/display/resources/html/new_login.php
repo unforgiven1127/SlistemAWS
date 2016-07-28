@@ -35,6 +35,13 @@ if(url.indexOf(search)>-1)
   window.location.href = res;
   //alert();
 }
+alert('test');
+alert(url.indexOf(search2));
+if(url.indexOf(search2)==-1)
+{
+  url = window.location.hostname;
+  alert(url);
+}
 
 if(oran < 85)
 {
