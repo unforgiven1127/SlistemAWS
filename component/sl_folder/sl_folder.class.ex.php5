@@ -203,11 +203,11 @@ class CSl_FolderEx extends CSl_Folder
                 <a href="javascript:;" >My workspace</a>
               </td>
               <td>
-                <a href="javascript:;" class="expandWorkspace test5 "><img src="/common/pictures/slistem/folder_add_24.png" 
+                <a href="javascript:;" class="expandWorkspace test5 "><img src="/common/pictures/slistem/folder_add_24.png" title="New DBA request"/></a>
               </td>
             </tr>
           </table>
-          title="New DBA request"/></a>
+
         </div>
 
         <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
