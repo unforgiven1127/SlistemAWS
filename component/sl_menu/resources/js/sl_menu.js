@@ -143,6 +143,9 @@ function addClass(gelen,gelen2)
 
   var d = document.getElementById('enlargeUserFolders');
   d.style.display = 'none';
+
+  var d = document.getElementById('collapseUserFolders');
+  d.style.display = 'block';
 }
 
 function toggleMenu(poElement, psUrl)
