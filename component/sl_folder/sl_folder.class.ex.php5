@@ -200,7 +200,7 @@ class CSl_FolderEx extends CSl_Folder
           <table>
             <tr>
               <td>
-                <a class="section_workspace" href="javascript:;" >My workspace</a>
+                <a class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td>
                 <a href="javascript:;" class="expandWorkspace test5 "><img src="/common/pictures/slistem/folder_add_24.png" title="New DBA request"/></a>

@@ -183,6 +183,13 @@ ul.menuActionShort menu_pipeline
 {
   background: transparent url("/media/picture/slistem/h4.png") no-repeat left top;
 }
+.menuSections
+{
+  color: #077AC1;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
 
 #tab_list
 {
