@@ -203,7 +203,7 @@ class CSl_FolderEx extends CSl_Folder
                 <a class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td>
-                <a href="javascript:;" class="expandWorkspace test5 "><img style="width:10px;" src="/common/pictures/slistem/expand.ico" title="New DBA request"/></a>
+                <a href="javascript:;" class="expandLogo"><img style="width:20px;" src="/common/pictures/slistem/expand.ico" /></a>
               </td>
             </tr>
           </table>
