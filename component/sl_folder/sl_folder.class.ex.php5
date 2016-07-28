@@ -201,7 +201,7 @@ class CSl_FolderEx extends CSl_Folder
 
         </div>
         <div>
-          <a href="javascript:;" class="mainMenuPic test5 " onclick="window.open("https://beta1.slate.co.jp","_self");"><img src="https://beta1.slate.co.jp/media/picture/slistem/home_48.png" title=""></a>
+          <a href="javascript:;" class="mainMenuPic test5 "></a>
         </div>
         <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
 
