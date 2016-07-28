@@ -132,7 +132,7 @@ function clearSelection()
 
 function addClass(gelen)
 {
-  var x = document.getElementsByClassName(gelen);
+  var x = document.getElementById('userFolders');
   var classes = x.className;
   alert(classes);
 }
