@@ -247,19 +247,19 @@ class CSl_FolderEx extends CSl_Folder
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >Shared folders</a>
               </td>
               <td id="enlargeMenuFolders" style="padding-left:50px;" >
-                <a onclick="addClass(\'sharedFolderList\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
+                <a onclick="addClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
               <td id="collapseMenuFolders" style="padding-left:50px; display:none;" >
-                <a onclick="removeClass(\'sharedFolderList\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
+                <a onclick="removeClass(\'sharedFolderDiv\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
             </tr>
           </table>
          </div>
-         <div class="menuActionBloc menu_folder menuFolderContainer'.$sClass.'">
+         <div id="sharedFolderDiv" class="menuActionBloc menu_folder menuFolderContainer'.$sClass.'">
 
           <div class="shared_folder_search">
           <form id="searchFolder" action="javascript:;" style="padding: 0; margin: 0 auto;">
