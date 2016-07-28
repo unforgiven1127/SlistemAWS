@@ -198,11 +198,9 @@ class CSl_FolderEx extends CSl_Folder
       <li class="menu_section section_workspace">
         <div class="menuActionMenuContainer " onclick="toggleMenu(this, \''.$sJsURL.'\');">
           <a href="javascript:;" >My workspace</a>
+          <a href="javascript:;" class="expandWorkspace test5 ">T</a>
+        </div>
 
-        </div>
-        <div>
-          <a href="javascript:;" class="expandWorkspace test5 "></a>
-        </div>
         <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
 
       $sURL = $oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_FOLDER, 0);
