@@ -148,6 +148,26 @@ function addClass(gelen,gelen2)
   d.style.display = 'block';
 }
 
+function removeClass(gelen,gelen2)
+{
+  var x = document.getElementById(gelen);
+  var classes = x.className;
+  classes = classes.replace('menuActionBloc2','');
+  x.className = classes;
+
+  var x = document.getElementById(gelen2);
+  var classes = x.className;
+  classes = classes.replace('menuActionBloc2','');
+  x.className = classes;
+  //x.style.maxHeight = "";
+
+  var d = document.getElementById('enlargeUserFolders');
+  d.style.display = 'block';
+
+  var d = document.getElementById('collapseUserFolders');
+  d.style.display = 'none';
+}
+
 function toggleMenu(poElement, psUrl)
 {
   var oLi = $(poElement).closest('li');
