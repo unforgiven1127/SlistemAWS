@@ -247,12 +247,12 @@ class CSl_FolderEx extends CSl_Folder
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >Shared folders</a>
               </td>
               <td id="enlargeMenuFolders" style="padding-left:50px;" >
-                <a onclick="addClass(\'menu_folder\',\'mCSB_2\');"
+                <a onclick="addClass(\'sharedFolderList\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
               <td id="collapseMenuFolders" style="padding-left:50px; display:none;" >
-                <a onclick="removeClass(\'menu_folder\',\'mCSB_2\');"
+                <a onclick="removeClass(\'sharedFolderList\',\'mCSB_2\',\'enlargeMenuFolders\',\'collapseMenuFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
