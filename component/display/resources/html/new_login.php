@@ -25,6 +25,7 @@ newOran = newOran+'px';
 
 var url = document.URL;
 var search = "/?";
+var search2 = ",pg=norma";
 
 if(url.indexOf(search)>-1)
 {
@@ -33,6 +34,11 @@ if(url.indexOf(search)>-1)
   //alert(res[0]);
   window.location.href = res;
   //alert();
+}
+if(url.indexOf(search2)<-1)
+{
+  url = window.location.hostname;
+  alert(url);
 }
 
 if(oran < 85)
