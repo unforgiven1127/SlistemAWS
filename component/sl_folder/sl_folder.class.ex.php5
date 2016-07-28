@@ -203,7 +203,9 @@ class CSl_FolderEx extends CSl_Folder
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td style="padding-left:40px;" >
-                <a onclick="document.getElementsByClassName(\'menuActionBloc\').style.height = \'250px important!\';" href="javascript:;" class="expandLogo"><img style="width:15px;" src="/common/pictures/slistem/expand.ico" /></a>
+                <a onclick="var d = document.getElementsByClassName(\'menuActionBloc\'); d.className += \' menuActionBloc2\';"
+                  href="javascript:;" class="expandLogo"><img style="width:15px;"
+                  src="/common/pictures/slistem/expand.ico" /></a>
               </td>
             </tr>
           </table>
