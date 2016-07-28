@@ -136,10 +136,10 @@ function addClass(gelen,gelen2)
   var classes = x.className;
   x.className += " menuActionBloc2";
 
-  /*var x = document.getElementById(gelen2);
+  var x = document.getElementById(gelen2);
   var classes = x.className;
   x.className += " menuActionBloc2";
-  x.style.maxHeight = "";*/
+  //x.style.maxHeight = "";
 }
 
 function toggleMenu(poElement, psUrl)
