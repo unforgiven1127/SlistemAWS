@@ -158,7 +158,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   d.style.display = 'block';
 
 
-  /*if(!classFind)
+  if(x1.style.display != 'none')
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
@@ -167,7 +167,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
     sleep(1000).then(() => {
       $("#"+oc).click();
     });
-  }*/
+  }
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
@@ -191,7 +191,7 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'none';
 
-  /*if(!classFind)
+  if(x1.style.display != 'none')
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
@@ -200,7 +200,7 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
     sleep(1000).then(() => {
       $("#"+oc).click();
     });
-  }*/
+  }
 }
 
 function toggleMenu(poElement, psUrl)
