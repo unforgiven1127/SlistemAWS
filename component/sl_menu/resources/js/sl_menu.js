@@ -145,7 +145,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   x1.className += " menuActionBloc2";
 
   var classFind = hasClass(x1, 'hidden');
-  alert(classFind);
+
   var x = document.getElementById(gelen2);
   var classes = x.className;
   x.className += " menuActionBloc2";
@@ -178,7 +178,6 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   x1.className = classes;
 
   var classFind = hasClass(x1, 'hidden');
-  alert(classFind);
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
