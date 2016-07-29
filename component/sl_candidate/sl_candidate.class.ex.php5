@@ -1118,7 +1118,7 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTopSectRight candiTabContainer'));
-      //$sHTML.= $this->_getCandidateRightTabs($asCandidate);
+      $sHTML.= $this->_getCandidateRightTabs($asCandidate);
       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getFloatHack();
 
@@ -1159,6 +1159,8 @@ class CSl_candidateEx extends CSl_candidate
 
       //gonna be needed for multiple tabs
       $this->casUsers = $this->_oLogin->getUserList(0, false, true);
+
+      ChromePhp::log($this->csTabSettings);
 
       if($this->csTabSettings == 'full')
         return $this->_getRightTabsFull($pasCandidateData);
