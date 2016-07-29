@@ -134,11 +134,18 @@ function sleep (time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
 
+function hasClass(element, cls) {
+    return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+}
+
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
   var x1 = document.getElementById(gelen);
   var classes = x1.className;
   x1.className += " menuActionBloc2";
+
+  var classFind = hasClass(x1, 'hidden');
+  alert(classFind);
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
