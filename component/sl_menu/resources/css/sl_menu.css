@@ -246,7 +246,6 @@ ul.menuActionShort menu_pipeline
 
 .menuActionBloc2{
   max-height: 275px !important;
-  overflow-y:auto !important;
 }
 
 #tab_list li a.close_tab
