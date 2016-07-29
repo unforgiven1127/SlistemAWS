@@ -176,7 +176,25 @@ class CSl_menuEx extends CSl_menu
       $sClass = ' hidden';
 
     $sHTML.= '<li class="menu_section">
-        <div class="menuActionMenuContainer" onclick="toggleMenu(this, \''.$sURL.'\');"><a href="javascript:;">Pipeline</a></div>
+        <div class="menuActionMenuContainer" >
+          <table>
+            <tr>
+              <td>
+                <a onclick="toggleMenu(this, \''.$sURL.'\');" class="menuSections" href="javascript:;" >Pipeline</a>
+              </td>
+              <td id="enlargePipelineFolders" style="padding-left:50px;" >
+                <a onclick="addClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
+                  href="javascript:;" class="expandLogo"><img style="width:15px;"
+                  src="/common/pictures/slistem/expand.ico" /></a>
+              </td>
+              <td id="collapsePipelieFolders" style="padding-left:50px; display:none;" >
+                <a onclick="removeClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
+                  href="javascript:;" class="expandLogo"><img style="width:15px;"
+                  src="/common/pictures/slistem/collapse.png" /></a>
+              </td>
+            </tr>
+          </table>
+        </div>
         <div class="menuActionBloc menu_pipeline '.$sClass.'">
           <select id="pipe_user" name="pipe_user">
           <option value="'.$oLogin->getUserPk().'" selected="selected"> - mine - </option>';
