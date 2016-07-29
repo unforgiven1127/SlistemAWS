@@ -183,19 +183,19 @@ class CSl_menuEx extends CSl_menu
                 <a onclick="toggleMenu(this, \''.$sURL.'\');" class="menuSections" href="javascript:;" > Pipeline</a>
               </td>
               <td id="enlargePipelineFolders" style="padding-left:88px;" >
-                <a onclick="addClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
+                <a onclick="addClass(\'pipelineFolders\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
               <td id="collapsePipelieFolders" style="padding-left:88px; display:none;" >
-                <a onclick="removeClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
+                <a onclick="removeClass(\'pipelineFolders\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
             </tr>
           </table>
         </div>
-        <div class="menuActionBloc menu_pipeline '.$sClass.'">
+        <div id="pipelineFolders" class="menuActionBloc menu_pipeline '.$sClass.'">
           <select id="pipe_user" name="pipe_user">
           <option value="'.$oLogin->getUserPk().'" selected="selected"> - mine - </option>';
 
