@@ -151,10 +151,10 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  sleep(500).then(() => {
+  sleep(200).then(() => {
     $("#toggle_mCSB_1").click();
   });
-  sleep(1000).then(() => {
+  sleep(400).then(() => {
     $("#toggle_mCSB_1").click();
   });
 }
