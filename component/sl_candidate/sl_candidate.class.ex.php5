@@ -1348,9 +1348,11 @@ class CSl_candidateEx extends CSl_candidate
         $sDocSelected = '';
         (empty($sCharSelected) && empty($sNoteSelected) && empty($sContactSelected))? $sJdSelected = 'selected' : '';
       }
-ChromePhp::log($pasCandidateData['sl_candidatepk']);
+
       $asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
-      /*$asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']);
+
+      ChromePhp::log($pasCandidateData['sl_candidatepk']);
+      $asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']); //HATA BURADA
       $asPosition = $this->_getPositionTab($pasCandidateData);
       $sActionTab = $this->_getActionTab($pasCandidateData);
 
@@ -1368,10 +1370,10 @@ ChromePhp::log($pasCandidateData['sl_candidatepk']);
         $sActionTabSelected = '';
 
       if(empty($psClass))
-        $psClass = 'candiFullSizeTabs';*/
+        $psClass = 'candiFullSizeTabs';
 
 
-      /*$sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
+      $sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
 
           $sHTML.= '<li id="tabLink0" onclick="toggleCandiTab(this, \'candiTab0\');" class="tabActionLink tab_action'.$sActionTabSelected.'" title="All the actions to be done on a candidate" />&nbsp;</li>';
@@ -1410,10 +1412,10 @@ ChromePhp::log($pasCandidateData['sl_candidatepk']);
           else
             $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="tab_empty tab_history" title="Displays the company history"></li>';
 
-        $sHTML.= $this->_oDisplay->getListEnd();*/
+        $sHTML.= $this->_oDisplay->getListEnd();
 
 
-        /*$sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTabsContent'));
+        $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTabsContent'));
           $sHTML.= $this->_oDisplay->getBloc('candiTab0', $sActionTab, array('class' => 'aTabContent hidden '.$sActionTabSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab1', $asCharacter['content'], array('class' => 'aTabContent hidden '.$sCharSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab5', $asNotes['content'], array('class' => 'aTabContent hidden '.$sNoteSelected));
@@ -1426,7 +1428,7 @@ ChromePhp::log($pasCandidateData['sl_candidatepk']);
           $sHTML.= $this->_oDisplay->getBloc('candiTab8', $asPosition['content'], array('class' => 'aTabContent hidden '.$sJdSelected));
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
-      $sHTML.= $this->_oDisplay->getBlocEnd();*/
+      $sHTML.= $this->_oDisplay->getBlocEnd();
 
 
       return $sHTML;
@@ -1865,7 +1867,7 @@ ChromePhp::log($pasCandidateData['sl_candidatepk']);
           'uids' => array('555-001', '999-111'),
           );
       $asHistory = $this->_oLogin->getSystemHistoryItem($asComponent, $sLimit);
-
+ChromePhp::log($asHistory);
 
       $sId = 'activity_feed_'.$pnPk.'_'.$pnPage;
       $sHTML = $this->_oDisplay->getSpanStart($sId);
