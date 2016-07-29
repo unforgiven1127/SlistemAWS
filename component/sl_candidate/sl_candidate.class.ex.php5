@@ -1867,7 +1867,6 @@ class CSl_candidateEx extends CSl_candidate
           'uids' => array('555-001', '999-111'),
           );
       $asHistory = $this->_oLogin->getSystemHistoryItem($asComponent, $sLimit);
-ChromePhp::log($asHistory);
 
       $sId = 'activity_feed_'.$pnPk.'_'.$pnPage;
       $sHTML = $this->_oDisplay->getSpanStart($sId);
@@ -1878,7 +1877,9 @@ ChromePhp::log($asHistory);
         $sHTML.= 'No activity found.<br /><br />';
         $sHTML.= $this->_oDisplay->getSpanEnd();
       }
-      else
+      $sHTML.= 'No activity found.<br /><br />';
+      $sHTML.= $this->_oDisplay->getSpanEnd();
+      /*else
       {
         foreach($asHistory as $asHistoryData)
         {
@@ -1924,7 +1925,7 @@ ChromePhp::log($asHistory);
           $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'; $(this).parent().remove();">See previous activities... </a>';
           $sHTML.= '</div>';
         }
-      }
+      }*/
 
       return array('content' => $sHTML, 'nb_result' => $nCount);
     }
