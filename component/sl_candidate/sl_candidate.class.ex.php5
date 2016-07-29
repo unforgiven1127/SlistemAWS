@@ -1333,13 +1333,15 @@ class CSl_candidateEx extends CSl_candidate
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
       }
 
-      $asContact = $this->_getContactTab($pasCandidateData);
+      //$asContact = $this->_getContactTab($pasCandidateData);
 
-      if(empty($asContact['nb_result']))
+      /*if(empty($asContact['nb_result']))
       {
         $sContactSelected = '';
         (empty($sCharSelected) && empty($sNoteSelected))? $sDocSelected = 'selected' : '';
-      }
+      }*/
+
+      $asContact['nb_result'] = 0;
 
       $asDocument = $this->_getDocumentTab($pasCandidateData);
       if(empty($asDocument['nb_result']))
@@ -1384,9 +1386,9 @@ class CSl_candidateEx extends CSl_candidate
           else
             $sHTML.= '<li id="tabLink11" onclick="toggleCandiTab(this, \'candiTab5\');" class="tab_empty '.$sNoteSelected.' tab_note" title="Displays the candidate notes" ></li>';
 
-          if($asContact['nb_result'] > 0)
-            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
-          else
+          //if($asContact['nb_result'] > 0)
+            //$sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
+          //else
             $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
 
           if($asDocument['nb_result'] > 0)
@@ -1415,7 +1417,7 @@ class CSl_candidateEx extends CSl_candidate
           $sHTML.= $this->_oDisplay->getBloc('candiTab0', $sActionTab, array('class' => 'aTabContent hidden '.$sActionTabSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab1', $asCharacter['content'], array('class' => 'aTabContent hidden '.$sCharSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab5', $asNotes['content'], array('class' => 'aTabContent hidden '.$sNoteSelected));
-          $sHTML.= $this->_oDisplay->getBloc('candiTab2', $asContact['content'], array('class' => 'aTabContent hidden '.$sContactSelected));
+          //$sHTML.= $this->_oDisplay->getBloc('candiTab2', $asContact['content'], array('class' => 'aTabContent hidden '.$sContactSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab3', $asDocument['content'], array('class' => 'aTabContent hidden '.$sDocSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab4', $asCompanyFeed['content'], array('class' => 'aTabContent hidden'));
 
