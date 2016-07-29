@@ -178,6 +178,8 @@ function removeClass(gelen,gelen2,gelen3,gelen4,poElement, psUrl)
 
 function toggleMenu(poElement, psUrl)
 {
+  alert(poElement);
+  alert(psUrl);
   var oLi = $(poElement).closest('li');
 
   if(psUrl)
