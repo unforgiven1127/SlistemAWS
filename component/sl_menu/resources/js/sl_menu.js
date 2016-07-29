@@ -132,9 +132,6 @@ function clearSelection()
 
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
-  var targetDiv = document.getElementById(gelen2).getElementsByClassName("mCSB_container")[0];
-  targetDiv.className = '';
-
   var x = document.getElementById(gelen);
   var classes = x.className;
   x.className += " menuActionBloc2";
@@ -150,7 +147,9 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  targetDiv.className = 'mCSB_container';
+  $("#toggle_mCSB_1").click();
+  $("#toggle_mCSB_1").click();
+
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4,poElement, psUrl)
@@ -178,10 +177,8 @@ function removeClass(gelen,gelen2,gelen3,gelen4,poElement, psUrl)
 
 function toggleMenu(poElement, psUrl)
 {
-  alert(poElement);
-  alert(psUrl);
   var oLi = $(poElement).closest('li');
-alert(oLi);
+
   if(psUrl)
   {
     //log last menu item clicked

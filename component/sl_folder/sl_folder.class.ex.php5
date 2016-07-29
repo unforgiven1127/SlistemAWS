@@ -195,12 +195,12 @@ class CSl_FolderEx extends CSl_Folder
 
 
      $sHTML.= '
-      <li id="mCSB_1_li" class="menu_section section_workspace">
+      <li class="menu_section section_workspace">
         <div class="menuActionMenuContainer " >
           <table>
             <tr>
               <td>
-                <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
+                <a id="toggle_mCSB_1" onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td id="enlargeUserFolders" style="padding-left:50px; " >
                 <a onclick="addClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
@@ -239,7 +239,7 @@ class CSl_FolderEx extends CSl_Folder
      $sJsURL = $oPage->getAjaxUrl('sl_menu', CONST_ACTION_UPDATE, 'menu', 0, array('last_menu_clicked' => 'shared_folder'));
 
      $sHTML.= '
-      <li id="mCSB_2_li" class="menu_section">
+      <li class="menu_section">
          <div class="menuActionMenuContainer" >
          <table>
             <tr>
