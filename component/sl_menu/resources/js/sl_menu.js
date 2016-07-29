@@ -154,7 +154,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   d.style.display = 'block';
 
 
-  if(x1.style.display != 'none')
+  if(x1.style.display == 'block' || x1.style.display == '')
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
