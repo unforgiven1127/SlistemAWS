@@ -1877,15 +1877,14 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.= 'No activity found.<br /><br />';
         $sHTML.= $this->_oDisplay->getSpanEnd();
       }
-      $sHTML.= 'No activity found.<br /><br />';
-      $sHTML.= $this->_oDisplay->getSpanEnd();
-      /*else
+      else
       {
         foreach($asHistory as $asHistoryData)
         {
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
           $user_info = getUserInformaiton($asHistoryData['userfk']);
+          ChromePhp::log($user_info['phone_ext']);
           $sHTML.= '<div class="entry">';
             $sHTML.= '<div class="note_header">';
             $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$user_info['phone_ext'].'</span>';
@@ -1925,7 +1924,7 @@ class CSl_candidateEx extends CSl_candidate
           $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'; $(this).parent().remove();">See previous activities... </a>';
           $sHTML.= '</div>';
         }
-      }*/
+      }
 
       return array('content' => $sHTML, 'nb_result' => $nCount);
     }
