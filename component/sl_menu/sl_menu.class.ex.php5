@@ -173,7 +173,7 @@ class CSl_menuEx extends CSl_menu
     if(empty($_SESSION['last_menu_clicked']) || $_SESSION['last_menu_clicked'] == 'pipeline')
       $sClass = '';
     else
-      $sClass = ' hidden';
+      $sClass = ' style=" display: none; "';
 
     $sHTML.= '<li class="menu_section">
         <div class="menuActionMenuContainer" >
@@ -195,7 +195,7 @@ class CSl_menuEx extends CSl_menu
             </tr>
           </table>
         </div>
-        <div id="pipelineFolders" class="menuActionBloc menu_pipeline '.$sClass.'">
+        <div id="pipelineFolders" class="menuActionBloc menu_pipeline "'.$sClass.'>
           <select id="pipe_user" name="pipe_user">
           <option value="'.$oLogin->getUserPk().'" selected="selected"> - mine - </option>';
 
