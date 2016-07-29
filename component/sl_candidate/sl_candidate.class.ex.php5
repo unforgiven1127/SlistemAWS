@@ -1368,7 +1368,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if(empty($psClass))
         $psClass = 'candiFullSizeTabs';
-      ChromePhp::log('HERE');
+
       $sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
 
@@ -1425,7 +1425,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getBlocEnd();
-
+ChromePhp::log('HERE');
 
       return $sHTML;
     }
