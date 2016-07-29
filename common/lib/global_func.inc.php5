@@ -1423,12 +1423,12 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
     //We subtract the holidays
-    foreach($holidays as $holiday){
+    /*foreach($holidays as $holiday){
         $time_stamp=strtotime($holiday);
         //If the holiday doesn't fall in weekend
         if ($startDate <= $time_stamp && $time_stamp <= $endDate && date("N",$time_stamp) != 6 && date("N",$time_stamp) != 7)
             $workingDays--;
-    }
+    }*/
 
     return $workingDays;
   }
