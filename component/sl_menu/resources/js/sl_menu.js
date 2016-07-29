@@ -140,6 +140,8 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var classes = x1.className;
   x1.className += " menuActionBloc2";
 
+  alert(x1.style.display);
+
   var x = document.getElementById(gelen2);
   var classes = x.className;
   x.className += " menuActionBloc2";
