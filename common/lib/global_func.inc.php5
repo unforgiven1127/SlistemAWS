@@ -2988,20 +2988,23 @@ var_dump($query);*/
 
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '')
   {
-    $cp_uid = "555-001";
-    $cp_action = "ppasa";
-    $cp_type = "candi";
-    $sDate = date('Y-m-d H:i:s');
-    $component = "555-001_ppav_candi_".$cp_pk;
-    $uri = "https://slistem.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$cp_pk."&pg=ajx";
+    if($loginfk > 0)
+    {
+      $cp_uid = "555-001";
+      $cp_action = "ppasa";
+      $cp_type = "candi";
+      $sDate = date('Y-m-d H:i:s');
+      $component = "555-001_ppav_candi_".$cp_pk;
+      $uri = "https://slistem.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$cp_pk."&pg=ajx";
 
-    $oDB = CDependency::getComponentByName('database');
+      $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`, `description`)
-               VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."','".$desctiption."')";
+      $sQuery = "INSERT INTO `login_system_history`(`date`,`userfk`,`action`,`component`, `cp_uid`, `cp_action`, `cp_type`, `cp_pk`, `uri`, `table`, `description`)
+                 VALUES('".$sDate."','".$loginfk."','".$text."','".$component."','".$cp_uid."','".$cp_action."','".$cp_type."','".$cp_pk."','".$uri."','".$table."','".$desctiption."')";
 
 
-    $db_result = $oDB->executeQuery($sQuery);
+      $db_result = $oDB->executeQuery($sQuery);
+    }
 
     return true;
   }
