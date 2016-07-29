@@ -1349,8 +1349,8 @@ class CSl_candidateEx extends CSl_candidate
         (empty($sCharSelected) && empty($sNoteSelected) && empty($sContactSelected))? $sJdSelected = 'selected' : '';
       }
 
-      /*$asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
-      $asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']);
+      $asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
+      /*$asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']);
       $asPosition = $this->_getPositionTab($pasCandidateData);
       $sActionTab = $this->_getActionTab($pasCandidateData);
 
