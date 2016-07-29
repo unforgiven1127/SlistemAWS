@@ -191,7 +191,7 @@ class CSl_FolderEx extends CSl_Folder
      if($psSelected == 'my_workspace')
        $sClass = '';
      else
-       $sClass = ' hidden';
+       $sClass = ' style=" display: none; "';
 
 
      $sHTML.= '
@@ -233,7 +233,7 @@ class CSl_FolderEx extends CSl_Folder
      if($psSelected == 'shared_folder')
        $sClass = '';
      else
-       $sClass = ' hidden';
+       $sClass = ' style=" display: none; "';
 
      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0);
      $sJsURL = $oPage->getAjaxUrl('sl_menu', CONST_ACTION_UPDATE, 'menu', 0, array('last_menu_clicked' => 'shared_folder'));
