@@ -132,6 +132,7 @@ function clearSelection()
 
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
+  alert('test');
   var x = document.getElementById(gelen);
   var classes = x.className;
   x.className += " menuActionBloc2";
