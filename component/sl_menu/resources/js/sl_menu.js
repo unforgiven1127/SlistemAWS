@@ -145,7 +145,6 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   x1.className += " menuActionBloc2";
 
   var classFind = hasClass(x1, 'hidden');
-  alert(classFind);
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
@@ -159,7 +158,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   d.style.display = 'block';
 
 
-  if(x1.style.display == 'block' || x1.style.display == '')
+  if(classFind)
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
@@ -178,6 +177,8 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   classes = classes.replace('menuActionBloc2',' ');
   x1.className = classes;
 
+  var classFind = hasClass(x1, 'hidden');
+
   var x = document.getElementById(gelen2);
   var classes = x.className;
   classes = classes.replace('menuActionBloc2',' ');
@@ -190,7 +191,7 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'none';
 
-  if(x1.style.display == 'block' || x1.style.display == '')
+  if(classFind)
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
