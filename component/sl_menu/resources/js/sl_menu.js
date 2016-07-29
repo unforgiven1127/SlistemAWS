@@ -136,9 +136,9 @@ function sleep (time) {
 
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
-  var x = document.getElementById(gelen);
-  var classes = x.className;
-  x.className += " menuActionBloc2";
+  var x1 = document.getElementById(gelen);
+  var classes = x1.className;
+  x1.className += " menuActionBloc2";
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
@@ -151,21 +151,24 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  var oc = "toggle_"+gelen2;
-  sleep(500).then(() => {
-    $("#"+oc).click();
-  });
-  sleep(1000).then(() => {
-    $("#"+oc).click();
-  });
+  if(x1.style.display == 'block')
+  {
+    var oc = "toggle_"+gelen2;
+    sleep(500).then(() => {
+      $("#"+oc).click();
+    });
+    sleep(1000).then(() => {
+      $("#"+oc).click();
+    });
+  }
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
 {
-  var x = document.getElementById(gelen);
-  var classes = x.className;
+  var x1 = document.getElementById(gelen);
+  var classes = x1.className;
   classes = classes.replace('menuActionBloc2',' ');
-  x.className = classes;
+  x1.className = classes;
 
   var x = document.getElementById(gelen2);
   var classes = x.className;
@@ -179,6 +182,16 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'none';
 
+  if(x1.style.display == 'block')
+  {
+    var oc = "toggle_"+gelen2;
+    sleep(500).then(() => {
+      $("#"+oc).click();
+    });
+    sleep(1000).then(() => {
+      $("#"+oc).click();
+    });
+  }
 }
 
 function toggleMenu(poElement, psUrl)

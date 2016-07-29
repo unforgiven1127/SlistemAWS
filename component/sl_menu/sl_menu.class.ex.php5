@@ -180,7 +180,7 @@ class CSl_menuEx extends CSl_menu
           <table>
             <tr>
               <td>
-                <a onclick="toggleMenu(this, \''.$sURL.'\');" class="menuSections" href="javascript:;" > Pipeline</a>
+                <a id="toggle_mCSB_3" onclick="toggleMenu(this, \''.$sURL.'\');" class="menuSections" href="javascript:;" > Pipeline</a>
               </td>
               <td id="enlargePipelineFolders" style="padding-left:88px;" >
                 <a onclick="addClass(\'pipelineFolders\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
