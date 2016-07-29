@@ -130,6 +130,10 @@ function clearSelection()
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
   var x = document.getElementById(gelen);
@@ -147,9 +151,10 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  $("#toggle_mCSB_1").click();
-  $("#toggle_mCSB_1").click();
-
+  sleep(500).then(() => {
+    $("#toggle_mCSB_1").click();
+    $("#toggle_mCSB_1").click();
+  })
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
