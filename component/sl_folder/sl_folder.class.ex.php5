@@ -207,7 +207,7 @@ class CSl_FolderEx extends CSl_Folder
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
-              <td align:right; id="collapseUserFolders" style="padding-left:50px; display:none;" >
+              <td align="right" id="collapseUserFolders" style="padding-left:50px; display:none;" >
                 <a onclick="removeClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
