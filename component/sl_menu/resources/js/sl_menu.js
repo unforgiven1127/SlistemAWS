@@ -181,7 +181,7 @@ function toggleMenu(poElement, psUrl)
   alert(poElement);
   alert(psUrl);
   var oLi = $(poElement).closest('li');
-
+alert(oLi);
   if(psUrl)
   {
     //log last menu item clicked
@@ -196,6 +196,7 @@ function toggleMenu(poElement, psUrl)
   }
 
   var oUl = $(poElement).closest('ul');
+alert(oUl);
   var nVisible = $('.menuActionBloc:visible', oUl).length;
 
   if(nVisible)
