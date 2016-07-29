@@ -90,6 +90,7 @@ class CSl_eventEx extends CSl_event
     {
 
       $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+      ChromePhp::log($splitted1);
       if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
       {
 

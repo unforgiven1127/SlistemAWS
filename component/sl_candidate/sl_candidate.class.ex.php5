@@ -1425,7 +1425,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getBlocEnd();
-ChromePhp::log('HERE');
+
 
       return $sHTML;
     }
