@@ -151,6 +151,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
+  alert(x1.style.display);
   if(x1.style.display == 'block')
   {
     var oc = "toggle_"+gelen2;
