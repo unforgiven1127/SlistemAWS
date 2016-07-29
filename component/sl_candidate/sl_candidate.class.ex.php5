@@ -1312,7 +1312,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $sHTML = "";
 
-      /*$sCharSelected =  'selected';
+      $sCharSelected =  'selected';
       $sDocSelected = $sContactSelected = $sJdSelected = $sNoteSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
@@ -1342,7 +1342,7 @@ class CSl_candidateEx extends CSl_candidate
         (empty($sCharSelected) && empty($sNoteSelected))? $sDocSelected = 'selected' : '';
       }
 
-      $asDocument = $this->_getDocumentTab($pasCandidateData);
+      /*$asDocument = $this->_getDocumentTab($pasCandidateData);
       if(empty($asDocument['nb_result']))
       {
         $sDocSelected = '';
