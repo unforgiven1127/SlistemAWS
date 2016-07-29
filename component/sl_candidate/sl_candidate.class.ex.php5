@@ -1003,7 +1003,7 @@ class CSl_candidateEx extends CSl_candidate
         $pbInAjax = 'search_'.$searchID;
         return $this->_displayCandidateList($pbInAjax);
       }
-
+ChromePhp::log($pnPk);
       if(!assert('is_key($pnPk)'))
         return '';
 
