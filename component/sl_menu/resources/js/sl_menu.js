@@ -132,8 +132,8 @@ function clearSelection()
 
 function addClass(gelen,gelen2,gelen3,gelen4)
 {
-  var targetDiv = document.getElementById("mCSB_1").getElementsByClassName("mCSB_container")[0];
-  alert(targetDiv.className);
+  var targetDiv = document.getElementById(gelen2).getElementsByClassName("mCSB_container")[0];
+  targetDiv.className = '';
 
   var x = document.getElementById(gelen);
   var classes = x.className;
@@ -149,6 +149,8 @@ function addClass(gelen,gelen2,gelen3,gelen4)
 
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
+
+  //targetDiv.className = 'mCSB_container';
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
