@@ -1883,8 +1883,10 @@ class CSl_candidateEx extends CSl_candidate
         {
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
+
+          ChromePhp::log($asHistoryData['userfk']);
           $user_info = getUserInformaiton($asHistoryData['userfk']);
-          //ChromePhp::log($user_info['phone_ext']);
+
           if(isset($user_info['phone_ext']))
           {
             $phone_ext = $user_info['phone_ext'];
