@@ -217,7 +217,7 @@ class CSl_FolderEx extends CSl_Folder
 
         </div>
 
-        <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer hidden '.$sClass.'" url="'.$sURL.'">';
+        <div id="userFolders" class="menuActionBloc menu_workspace menuFolderContainer'.$sClass.'" url="'.$sURL.'">';
 
       $sURL = $oPage->getAjaxUrl('sl_folder', CONST_ACTION_ADD, CONST_FOLDER_TYPE_FOLDER, 0);
       $sHTML.= '<div id="userFolderRow_0" class="userFolderRow " data-folderpk="-1" data-folder-type="candi" >
@@ -259,7 +259,7 @@ class CSl_FolderEx extends CSl_Folder
             </tr>
           </table>
          </div>
-         <div id="sharedFolderDiv" class="menuActionBloc menu_folder menuFolderContainer hidden '.$sClass.'">
+         <div id="sharedFolderDiv" class="menuActionBloc menu_folder menuFolderContainer'.$sClass.'">
 
           <div class="shared_folder_search">
           <form id="searchFolder" action="javascript:;" style="padding: 0; margin: 0 auto;">
