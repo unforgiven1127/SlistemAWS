@@ -152,7 +152,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
 
 }
 
-function removeClass(gelen,gelen2,gelen3,gelen4,poElement, psUrl)
+function removeClass(gelen,gelen2,gelen3,gelen4)
 {
   var x = document.getElementById(gelen);
   var classes = x.className;
@@ -171,8 +171,6 @@ function removeClass(gelen,gelen2,gelen3,gelen4,poElement, psUrl)
   var d = document.getElementById(gelen4);
   d.style.display = 'none';
 
-  toggleMenu(poElement, psUrl);
-  toggleMenu(poElement, psUrl);
 }
 
 function toggleMenu(poElement, psUrl)
