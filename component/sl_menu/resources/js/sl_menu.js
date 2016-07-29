@@ -150,7 +150,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  //targetDiv.className = 'mCSB_container';
+  targetDiv.className = 'mCSB_container';
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
