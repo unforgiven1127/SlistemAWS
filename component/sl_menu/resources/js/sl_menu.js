@@ -154,9 +154,6 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   sleep(500).then(() => {
     $("#toggle_mCSB_1").click();
   });
-  sleep(500).then(() => {
-    $("#toggle_mCSB_1").click();
-  });
 }
 
 function removeClass(gelen,gelen2,gelen3,gelen4)
