@@ -1369,7 +1369,9 @@ class CSl_candidateEx extends CSl_candidate
       if(empty($psClass))
         $psClass = 'candiFullSizeTabs';
 
-      $sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
+      $sHTML = "";
+
+      /*$sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
 
           $sHTML.= '<li id="tabLink0" onclick="toggleCandiTab(this, \'candiTab0\');" class="tabActionLink tab_action'.$sActionTabSelected.'" title="All the actions to be done on a candidate" />&nbsp;</li>';
@@ -1408,7 +1410,7 @@ class CSl_candidateEx extends CSl_candidate
           else
             $sHTML.= '<li id="tabLink7" onclick="toggleCandiTab(this, \'candiTab7\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="tab_empty tab_history" title="Displays the company history"></li>';
 
-        $sHTML.= $this->_oDisplay->getListEnd();
+        $sHTML.= $this->_oDisplay->getListEnd();*/
 
 
         /*$sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTabsContent'));
