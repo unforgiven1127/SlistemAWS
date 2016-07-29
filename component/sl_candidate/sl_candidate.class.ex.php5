@@ -1310,8 +1310,9 @@ class CSl_candidateEx extends CSl_candidate
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
+      $sHTML = "";
 
-      $sCharSelected =  'selected';
+      /*$sCharSelected =  'selected';
       $sDocSelected = $sContactSelected = $sJdSelected = $sNoteSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
@@ -1367,9 +1368,8 @@ class CSl_candidateEx extends CSl_candidate
         $sActionTabSelected = '';
 
       if(empty($psClass))
-        $psClass = 'candiFullSizeTabs';
+        $psClass = 'candiFullSizeTabs';*/
 
-      $sHTML = "";
 
       /*$sHTML = $this->_oDisplay->getBlocStart('', array('class' => $psClass.' candiRightTabsContainer'));
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
