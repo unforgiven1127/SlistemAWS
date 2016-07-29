@@ -158,7 +158,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   d.style.display = 'block';
 
 
-  if(classFind)
+  if(!classFind)
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
@@ -191,7 +191,7 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'none';
 
-  if(classFind)
+  if(!classFind)
   {
     var oc = "toggle_"+gelen2;
     sleep(500).then(() => {
