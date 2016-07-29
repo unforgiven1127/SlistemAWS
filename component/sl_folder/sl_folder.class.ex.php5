@@ -202,12 +202,12 @@ class CSl_FolderEx extends CSl_Folder
               <td>
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
-              <td id="enlargeUserFolders" style="padding-left:50px;" >
+              <td align="right" id="enlargeUserFolders"  >
                 <a onclick="addClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
-              <td align="right" id="collapseUserFolders" style="padding-left:50px; display:none;" >
+              <td  id="collapseUserFolders" style="padding-left:50px; display:none;" >
                 <a onclick="removeClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
