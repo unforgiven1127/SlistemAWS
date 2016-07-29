@@ -151,7 +151,7 @@ function addClass(gelen,gelen2,gelen3,gelen4)
   var d = document.getElementById(gelen4);
   d.style.display = 'block';
 
-  var oc = "toggle_"+gelen;
+  var oc = "toggle_"+gelen2;
   sleep(500).then(() => {
     $("#"+oc).click();
   });
