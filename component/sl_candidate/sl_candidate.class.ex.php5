@@ -1884,10 +1884,18 @@ class CSl_candidateEx extends CSl_candidate
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
           $user_info = getUserInformaiton($asHistoryData['userfk']);
-          ChromePhp::log($user_info['phone_ext']);
+          //ChromePhp::log($user_info['phone_ext']);
+          if(isset($user_info['phone_ext']))
+          {
+            $phone_ext = $user_info['phone_ext'];
+          }
+          else
+          {
+            $phone_ext = '';
+          }
           $sHTML.= '<div class="entry">';
             $sHTML.= '<div class="note_header">';
-            $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$user_info['phone_ext'].'</span>';
+            $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$phone_ext.'</span>';
             $sHTML.= '<span class="note_date"> : '.$asHistoryData['date'].'</span>';
             $sHTML.= '</div>';
 
