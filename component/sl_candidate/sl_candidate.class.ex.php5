@@ -1003,7 +1003,7 @@ class CSl_candidateEx extends CSl_candidate
         $pbInAjax = 'search_'.$searchID;
         return $this->_displayCandidateList($pbInAjax);
       }
-ChromePhp::log($pnPk);
+
       if(!assert('is_key($pnPk)'))
         return '';
 
@@ -1031,7 +1031,7 @@ ChromePhp::log($pnPk);
         if(!$oRight->canAccess($this->csUid, 'sys_dba', CONST_CANDIDATE_TYPE_CANDI))
           return $this->_getCandidateView((int)$asCandidate['_sys_redirect'], $asCandidate);
       }
-
+ChromePhp::log($asCandidate);
       //converting language attributes
       if(isset($asCandidate['attribute']['candi_lang']))
       {
