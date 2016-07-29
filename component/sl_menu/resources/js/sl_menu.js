@@ -191,7 +191,7 @@ function toggleMenu(poElement, psUrl)
   }
 
   var oUl = $(poElement).closest('ul');
-alert(oUl);
+
   var nVisible = $('.menuActionBloc:visible', oUl).length;
 
   if(nVisible)
