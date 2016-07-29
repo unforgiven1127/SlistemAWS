@@ -1327,7 +1327,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $asNotes = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, '', array('character', 'cp_history', 'cp_hidden'), true, 'note');
-      if(empty($asNotes['nb_result']))
+      if(!isset($asNotes['nb_result']) || empty($asNotes['nb_result']))
       {
         $sNoteSelected = '';
         (empty($sCharSelected))? $sContactSelected = 'selected' : '';
