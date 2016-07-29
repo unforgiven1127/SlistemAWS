@@ -178,8 +178,6 @@ function removeClass(gelen,gelen2,gelen3,gelen4)
   classes = classes.replace('menuActionBloc2',' ');
   x1.className = classes;
 
-  alert(x1.style.display);
-
   var x = document.getElementById(gelen2);
   var classes = x.className;
   classes = classes.replace('menuActionBloc2',' ');
