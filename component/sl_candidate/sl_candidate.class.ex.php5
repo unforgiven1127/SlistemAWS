@@ -1350,8 +1350,8 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
-      /*$asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']);
-      $asPosition = $this->_getPositionTab($pasCandidateData);
+      $asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']);
+      /*$asPosition = $this->_getPositionTab($pasCandidateData);
       $sActionTab = $this->_getActionTab($pasCandidateData);
 
       $asCpHistory = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'cp_history', array(), false);
