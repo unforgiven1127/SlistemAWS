@@ -1160,8 +1160,6 @@ class CSl_candidateEx extends CSl_candidate
       //gonna be needed for multiple tabs
       $this->casUsers = $this->_oLogin->getUserList(0, false, true);
 
-      ChromePhp::log($this->csTabSettings);
-
       if($this->csTabSettings == 'full')
         return $this->_getRightTabsFull($pasCandidateData);
 
@@ -1319,7 +1317,8 @@ class CSl_candidateEx extends CSl_candidate
 
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
-      $asCharacter = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
+      //$asCharacter = $oNotes->displayNotes($pasCandidateData['sl_candidatepk'], CONST_CANDIDATE_TYPE_CANDI, 'character', array(), true, 'character');
+      $asCharacter['nb_result'] = '';
       if(empty($asCharacter['nb_result']))
       {
         //$sCharSelected = '';
