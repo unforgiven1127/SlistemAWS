@@ -182,12 +182,12 @@ class CSl_menuEx extends CSl_menu
               <td>
                 <a onclick="toggleMenu(this, \''.$sURL.'\');" class="menuSections" href="javascript:;" > Pipeline</a>
               </td>
-              <td id="enlargePipelineFolders" style="padding-left:90px;" >
+              <td id="enlargePipelineFolders" style="padding-left:88px;" >
                 <a onclick="addClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
-              <td id="collapsePipelieFolders" style="padding-left:90px; display:none;" >
+              <td id="collapsePipelieFolders" style="padding-left:88px; display:none;" >
                 <a onclick="removeClass(\'menu_pipeline\',\'mCSB_3\',\'enlargePipelineFolders\',\'collapsePipelieFolders\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
