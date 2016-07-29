@@ -203,14 +203,16 @@ class CSl_FolderEx extends CSl_Folder
                 <a onclick="toggleMenu(this, \''.$sJsURL.'\');" class="menuSections" href="javascript:;" >My workspace</a>
               </td>
               <td id="enlargeUserFolders" style="padding-left:50px; " >
-                <a onclick="addClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');
-                  toggleMenu(this, \''.$sJsURL.'\'); toggleMenu(this, \''.$sJsURL.'\');"
+                <a onclick="toggleMenu(this, \''.$sJsURL.'\');
+                addClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');
+                toggleMenu(this, \''.$sJsURL.'\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/expand.ico" /></a>
               </td>
               <td  id="collapseUserFolders" style="padding-left:50px; display:none;" >
-                <a onclick="removeClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');
-                  toggleMenu(this, \''.$sJsURL.'\'); toggleMenu(this, \''.$sJsURL.'\');"
+                <a onclick="toggleMenu(this, \''.$sJsURL.'\');
+                removeClass(\'userFolders\',\'mCSB_1\',\'enlargeUserFolders\',\'collapseUserFolders\');
+                toggleMenu(this, \''.$sJsURL.'\');"
                   href="javascript:;" class="expandLogo"><img style="width:15px;"
                   src="/common/pictures/slistem/collapse.png" /></a>
               </td>
