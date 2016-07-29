@@ -89,9 +89,9 @@ class CSl_eventEx extends CSl_event
     foreach ($asNotes as $key => $note)
     {
 
-      $splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
-      //ChromePhp::log($splitted1);
-      /*if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
+      /*$splitted1 = explode("Content-Type: multipart/related;",$asNotes[$key]['content']);
+
+      if($asNotes[$key]['type'] == "email_sent" && isset($splitted1[1]) && !empty($splitted1[1]))
       {
 
         $asNotes[$key]['content'] = $splitted1[1];
