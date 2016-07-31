@@ -4022,7 +4022,7 @@ class CSl_statEx extends CSl_stat
 
     private function get_revenue_chart()
     {
-      //echo 'test'; // mca MCA
+      echo 'test'; // mca MCA
       //exit;
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
@@ -4047,6 +4047,7 @@ class CSl_statEx extends CSl_stat
       {
         var_dump($value);
         echo "<br><br>";
+        ChromePhp::log($value);
       }
       $this->_oPage->addCssFile($this->getResourcePath().'/css/revenue.css');
 
