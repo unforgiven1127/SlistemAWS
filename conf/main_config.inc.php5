@@ -181,7 +181,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     case 'beta1.slate.co.jp':
     case 'beta2.slate.co.jp':
 
-
+    $_SERVER['SERVER_NAME'] = $_SERVER['SERVER_NAME']."/";
     define('DB_NAME', 'slistem');
     define('DB_SERVER', '127.0.0.1');
     define('DB_USER', 'slistem');
@@ -191,8 +191,8 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('CONST_APP_NAME', 'Sl[i]stem');
     define('CONST_MAINTENANCE', 0);
 
-    define('CONST_CRM_HOST', $_SERVER['SERVER_NAME'].'/');
-    define('CONST_CRM_DOMAIN', 'https://'.$_SERVER['SERVER_NAME'])."/";
+    define('CONST_CRM_HOST', $_SERVER['SERVER_NAME'].'');
+    define('CONST_CRM_DOMAIN', 'https://'.$_SERVER['SERVER_NAME']);
     define('CONST_CRM_MAIL_SENDER', 'slistem@slate.co.jp');
     define('CONST_DEV_SERVER', 1);  //debug bar, mail to developer, and other developer features
     define('CONST_SQL_PROFILING', 0);
