@@ -880,8 +880,6 @@ order by m.candidatefk
     $sQuery.= ' GROUP BY created_by, candidatefk, positionfk, status, sMonth
       ORDER BY sMonth DESC ';
 
-    echo "<br><br><br><br>";
-    echo $sQuery;
     $asData = array();
 
     $oDbResult = $this->oDB->executeQuery($sQuery);
@@ -946,6 +944,9 @@ order by m.candidatefk
 //var_dump($query);// 382
 //var_dump('<br><br>');
 
+
+    echo "<br><br><br><br>";
+    echo $sQuery;
 
       $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
