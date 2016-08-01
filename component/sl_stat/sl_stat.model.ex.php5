@@ -1335,9 +1335,9 @@ $flag = 0;
     $query .= ' ORDER BY ccm_create_date DESC';
 
 
-    echo "<br><br><br><br>";
+   /* echo "<br><br><br><br>";
     echo $query;
-    echo "<br><br><br><br>";
+    echo "<br><br><br><br>";*/
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
