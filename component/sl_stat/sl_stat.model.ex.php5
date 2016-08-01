@@ -958,7 +958,7 @@ order by m.candidatefk
 
         $user_id = $row['loginpk'];
 
-        if($user_id == '457' || $user_id == '481') // saruul un hem consultant hem researcher da gorunebilmesi icin...
+        if($user_id == '457' || $user_id == '481' || $user_id == '466') // saruul un hem consultant hem researcher da gorunebilmesi icin...
         {
           $row['position'] = "Researcher";
         }
