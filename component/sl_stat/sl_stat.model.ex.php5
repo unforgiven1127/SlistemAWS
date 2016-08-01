@@ -945,10 +945,6 @@ order by m.candidatefk
 //var_dump('<br><br>');
 
 
-    echo "<br><br><br><br>";
-    echo $query;
-    echo "<br><br><br><br>";
-
       $revenue_data['Consultant']['former'] = array('name' => 'Former', 'nationality' => 0, 'do_not_count_placed' => array(), 'total_amount' => 0,
         'placed' => 0, 'paid' => 0, 'signed' => 0, 'team' => 'Not defined', 'userPosition' => 'Not defined');
 
@@ -1338,6 +1334,10 @@ $flag = 0;
 
     $query .= ' ORDER BY ccm_create_date DESC';
 
+
+    echo "<br><br><br><br>";
+    echo $query;
+    echo "<br><br><br><br>";
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
