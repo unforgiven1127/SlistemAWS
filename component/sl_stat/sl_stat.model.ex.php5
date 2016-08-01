@@ -880,7 +880,7 @@ order by m.candidatefk
     $sQuery.= ' GROUP BY created_by, candidatefk, positionfk, status, sMonth
       ORDER BY sMonth DESC ';
 
-    echo "<br><br>";
+    echo "<br><br><br><br>";
     echo $sQuery;
     $asData = array();
 
