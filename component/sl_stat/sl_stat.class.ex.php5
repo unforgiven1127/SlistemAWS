@@ -4043,10 +4043,14 @@ class CSl_statEx extends CSl_stat
       $revenue_data = $this->_getModel()->get_revenue_data($year);
       //var_dump($revenue_data);
       //exit;
-      foreach ($revenue_data as $key => $value)
+      foreach ($revenue_data as $key => $inside)
       {
-        var_dump($value);
-        echo "<br><br>";
+        foreach ($inside as $key => $value)
+        {
+          var_dump($value);
+          echo "<br><br>";
+        }
+
       }
       $this->_oPage->addCssFile($this->getResourcePath().'/css/revenue.css');
 
