@@ -192,7 +192,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('CONST_MAINTENANCE', 0);
 
     define('CONST_CRM_HOST', $_SERVER['SERVER_NAME'].'');
-    define('CONST_CRM_DOMAIN', 'https://'.$_SERVER['SERVER_NAME']);
+    define('CONST_CRM_DOMAIN', 'https://'.$_SERVER['SERVER_NAME'])."/";
     define('CONST_CRM_MAIL_SENDER', 'slistem@slate.co.jp');
     define('CONST_DEV_SERVER', 1);  //debug bar, mail to developer, and other developer features
     define('CONST_SQL_PROFILING', 0);
