@@ -5981,6 +5981,8 @@ class CSl_candidateEx extends CSl_candidate
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
 
+ChromePhp::log($oDbResult->getFieldValue('currency'));
+
       if (!empty($oDbResult->getFieldValue('currency')))
       {
         $tmp_currency_code = $oDbResult->getFieldValue('currency');
