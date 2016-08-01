@@ -333,7 +333,8 @@ class CCandi_row extends CTemplate
           $asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}).mouseenter(); ';
           //$asOption['onmouseover'] = ' $(this).tooltip({content: function(){ return $(this).attr(\'title\'); }}); ';
           //$asOption['onmouseout'] = "alert('test')"; // works
-          $asOption['onmouseout'] = "$('.closepopup').hide();"; // sometimes notes are not closed, so I added this part and it works
+          //$asOption['onmouseout'] = "$('.closepopup').hide();"; // sometimes notes are not closed, so I added this part and it works
+          $asOption['onmouseout'] = "$('.ui-tooltip-content').parents('div').remove();";
         }
 
         $sHTML.= $oDisplay->getBloc('', '', $asOption);
