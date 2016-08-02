@@ -3324,6 +3324,12 @@ class CSl_candidateEx extends CSl_candidate
     {
       $nFolderPk = (int)getValue('folderpk');
 
+      if(!isset($nFolderPk) || $nFolderPk == '' || $nFolderPk == 0)
+      {
+        $asListMsg[] = $this->_oDisplay->getBlocMessage('Please select consultant again.');
+        return 0;
+      }
+
       $oFolder = CDependency::getComponentByName('sl_folder');
       $oDbFolder = $oFolder->getFolder($nFolderPk);
       $bRead = $oDbFolder->readFirst();

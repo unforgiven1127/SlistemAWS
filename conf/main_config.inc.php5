@@ -181,7 +181,6 @@ switch(trim($_SERVER['SERVER_NAME']))
     case 'beta1.slate.co.jp':
     case 'beta2.slate.co.jp':
 
-    $_SERVER['SERVER_NAME'] = $_SERVER['SERVER_NAME']."/";
     define('DB_NAME', 'slistem');
     define('DB_SERVER', '127.0.0.1');
     define('DB_USER', 'slistem');
