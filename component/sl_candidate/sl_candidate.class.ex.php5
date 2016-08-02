@@ -3324,6 +3324,8 @@ class CSl_candidateEx extends CSl_candidate
     {
       $nFolderPk = (int)getValue('folderpk');
 
+      ChromePhp::log($nFolderPk);
+
       if(!isset($nFolderPk) || $nFolderPk == '' || $nFolderPk == 0)
       {
         $asListMsg[] = $this->_oDisplay->getBlocMessage('Please select consultant again.');
