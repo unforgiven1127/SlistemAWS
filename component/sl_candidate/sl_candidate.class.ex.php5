@@ -2640,7 +2640,9 @@ class CSl_candidateEx extends CSl_candidate
       //-----------------------------------------------------------------------------
       //-----------------------------------------------------------------------------
       //add to the queryBuilder specific conditions for pipe or other custom filters
+      ChromePhp::log('HERE');
       $nFolderPk = getValue('folderpk');
+      ChromePhp::log($nFolderPk);
       if(!empty($nFolderPk))
       {
         //$bLogged = $this->_addFolderFilter($asListMsg, $poQB);
