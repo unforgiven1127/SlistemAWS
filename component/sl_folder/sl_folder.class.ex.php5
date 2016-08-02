@@ -444,7 +444,7 @@ class CSl_FolderEx extends CSl_Folder
     $oPage = CDependency::getCpPage();
 
     $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_LIST, '');
-
+ChromePhp::log($sURL);
     $asList = array();
     foreach($asFolders as $asFolder)
     {
