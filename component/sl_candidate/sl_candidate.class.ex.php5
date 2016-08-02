@@ -3322,6 +3322,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _addFolderFilter(&$asListMsg, &$poQB)
     {
+      ChromePhp::log('_addFolderFilter');
       $nFolderPk = (int)getValue('folderpk');
 
       ChromePhp::log($nFolderPk);
