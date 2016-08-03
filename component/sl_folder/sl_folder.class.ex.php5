@@ -281,8 +281,6 @@ class CSl_FolderEx extends CSl_Folder
             {
               $sHTML.= '<option value="'.$nLoginPk.'"> '.$oLogin->getUserNameFromData($asData).' </option>';
             }
-ChromePhp::log($sURL);
-ChromePhp::log($sURL1);
 
             $sHTML.= '</select>
               <input type="text" name="folder_name" class="hidden"/>
@@ -457,6 +455,8 @@ ChromePhp::log($sURL1);
 
       if(empty($asFolder['cp_type']))
         $asFolder['cp_type'] = 'candi';
+
+ChromePhp::log($sURL);
 
       $asList[$asFolder['firstname'].' '.$asFolder['lastname']][] = '
         <li data-folder-type="'.$asFolder['cp_type'].'" data-folderpk="'.$asFolder['folderpk'].'" class="userFolderRow" id="userFolderRow_'.$asFolder['folderpk'].'">
