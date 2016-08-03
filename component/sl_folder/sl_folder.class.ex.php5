@@ -404,7 +404,7 @@ class CSl_FolderEx extends CSl_Folder
       return array();
 
       $asActivity = $oLogin->getUserActivity($nUserPk, $this->csUid, CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0, 1);
-
+ChromePhp::log($asActivity);
       if(!empty($asActivity) && !empty($asActivity[0]['data']))
         return array('data' => $asActivity[0]['data']);
 
