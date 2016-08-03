@@ -236,6 +236,7 @@ class CSl_FolderEx extends CSl_Folder
        $sClass = ' style=" display: none; "';
 
      $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0);
+     $sURL1 = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0);
      $sJsURL = $oPage->getAjaxUrl('sl_menu', CONST_ACTION_UPDATE, 'menu', 0, array('last_menu_clicked' => 'shared_folder'));
 
      $sHTML.= '
@@ -280,6 +281,8 @@ class CSl_FolderEx extends CSl_Folder
             {
               $sHTML.= '<option value="'.$nLoginPk.'"> '.$oLogin->getUserNameFromData($asData).' </option>';
             }
+ChromePhp::log($sURL);
+ChromePhp::log($sURL1);
 
             $sHTML.= '</select>
               <input type="text" name="folder_name" class="hidden"/>
@@ -365,7 +368,7 @@ class CSl_FolderEx extends CSl_Folder
           $pnLevel = 1;
 
         $sUid.= '_'.$pnLevel.'-'.$asFolder['label'].'-'.$asFolder['folderpk'];
-ChromePhp::log($sURL1);
+
         //data-uid="'.$sUid.'"
         $asList[$sUid] = '<div id="userFolderRow_'.$asFolder['folderpk'].'" class="userFolderRow fol_lvl_'.$pnLevel.' '.$sClass.'"
           data-folderpk="'.$asFolder['folderpk'].'" data-folder-type="'.$asFolder['cp_type'].'" data-folder-parent="'.$asFolder['parentfolderfk'].'" >
