@@ -401,10 +401,10 @@ class CSl_FolderEx extends CSl_Folder
     //reload last search done and save in teh user activity table
     if($pbReloadLast)
     {
-      return array();
 
       $asActivity = $oLogin->getUserActivity($nUserPk, $this->csUid, CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0, 1);
 ChromePhp::log($asActivity);
+return array();
       if(!empty($asActivity) && !empty($asActivity[0]['data']))
         return array('data' => $asActivity[0]['data']);
 
