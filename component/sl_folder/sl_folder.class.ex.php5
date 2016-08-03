@@ -365,7 +365,7 @@ class CSl_FolderEx extends CSl_Folder
           $pnLevel = 1;
 
         $sUid.= '_'.$pnLevel.'-'.$asFolder['label'].'-'.$asFolder['folderpk'];
-
+ChromePhp::log($sURL1);
         //data-uid="'.$sUid.'"
         $asList[$sUid] = '<div id="userFolderRow_'.$asFolder['folderpk'].'" class="userFolderRow fol_lvl_'.$pnLevel.' '.$sClass.'"
           data-folderpk="'.$asFolder['folderpk'].'" data-folder-type="'.$asFolder['cp_type'].'" data-folder-parent="'.$asFolder['parentfolderfk'].'" >
@@ -444,7 +444,7 @@ class CSl_FolderEx extends CSl_Folder
     $oPage = CDependency::getCpPage();
 
     $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_LIST, '');
-ChromePhp::log($sURL);
+
     $asList = array();
     foreach($asFolders as $asFolder)
     {
