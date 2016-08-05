@@ -367,6 +367,60 @@
 						<textarea id="character_note" name="character_note"></textarea>
 					</div>
 				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
+				<div class="general_form_row add_margin_top_10">
+					<div class="general_form_label">Character note</div>
+					<div class="general_form_column">
+						<textarea id="character_note" name="character_note"></textarea>
+					</div>
+				</div>
 				<div class="general_form_row">
 					<div class="general_form_label">Note</div>
 					<div class="general_form_column">
