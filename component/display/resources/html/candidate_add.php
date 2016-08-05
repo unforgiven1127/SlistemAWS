@@ -364,13 +364,13 @@
 				<div class="general_form_row add_margin_top_10">
 					<div class="general_form_label">Personality & Communication</div>
 					<div class="general_form_column">
-						<textarea id="personality_note" name="personality_note"></textarea>
+						<textarea id="personality_note" name="personality_note" minlength="5"></textarea>
 					</div>
 				</div>
 				<div class="general_form_row">
 					<div class="general_form_label">Current Position & Responsibilities</div>
 					<div class="general_form_column">
-						<textarea id="current_podition_note" name="current_podition_note"></textarea>
+						<textarea id="current_podition_note" name="current_podition_note"minlength="5"></textarea>
 					</div>
 				</div>
 				<div class="general_form_row">
