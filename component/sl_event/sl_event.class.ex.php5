@@ -87,6 +87,7 @@ class CSl_eventEx extends CSl_event
 
     ChromePhp::log($psNoteType);
 
+    $asNotes = array();
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
     if($psNoteType == 'character')
