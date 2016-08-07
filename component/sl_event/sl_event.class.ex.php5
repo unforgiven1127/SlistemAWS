@@ -103,10 +103,10 @@ class CSl_eventEx extends CSl_event
       $allAreas['past_note'] = 'past_note';
       $allAreas['education_note'] = 'education_note';
 
-      foreach ($allAreas as $key => $psNoteType)
+      foreach ($allAreas as $key => $value)
       {
-        ChromePhp::log($psNoteType);
-        $addNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+        ChromePhp::log($value);
+        $addNotes = $this->getNotes($pnItemPk, $psItemType, $value, $pasExcludeType);
         ChromePhp::log($addNotes);
         array_push($asNotes,$addNotes);
       }
