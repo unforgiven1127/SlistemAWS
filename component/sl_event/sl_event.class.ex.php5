@@ -85,7 +85,6 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
 
-    ChromePhp::log($psNoteType);
 
     $asNotes = array();
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
@@ -106,7 +105,9 @@ class CSl_eventEx extends CSl_event
 
       foreach ($allAreas as $key => $psNoteType)
       {
+        ChromePhp::log($psNoteType);
         $addNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+        ChromePhp::log($addNotes);
         array_push($asNotes,$addNotes);
       }
     }
