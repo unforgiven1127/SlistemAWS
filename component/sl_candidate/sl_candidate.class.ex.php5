@@ -7323,8 +7323,25 @@ die();*/
     {
       $asError = array();
 
-      $sCharacter = getValue('character_note');
+      //$sCharacter = getValue('character_note');
       $sNote = getValue('note');
+
+      $personality_note = getValue('personality_note');
+      $current_podition_note = getValue('current_podition_note');
+      $product_exp_note = getValue('product_exp_note');
+      $compensation_note = getValue('compensation_note');
+      $move_note = getValue('move_note');
+      $career_note = getValue('career_note');
+      $timeline_note = getValue('timeline_note');
+      $keywants_note = getValue('keywants_note');
+      $past_note = getValue('past_note');
+      $education_note = getValue('education_note');
+
+      $candidate_id = $pasCandidate['candidatefk'];// daha once tamamlanmis meeting varmi yok mu bakalim.
+      //varsa 8 alanin doldurulmasi yetecek yoksa 10 ve her alanda 20 karakter olmak zorunda...
+
+      $completedMeetings = getCompletedMeetings($candidate_id);
+      ChromePhp::log($completedMeetings);
 
       if(empty($sCharacter) && empty($sNote))
         $asError[] = 'You have to input at least a note or a character note.';
