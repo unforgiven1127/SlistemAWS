@@ -108,7 +108,10 @@ class CSl_eventEx extends CSl_event
         ChromePhp::log($value);
         $addNotes = $this->getNotes($pnItemPk, $psItemType, $value, $pasExcludeType);
         ChromePhp::log($addNotes);
-        array_push($asNotes,$addNotes);
+        if(isset($addNotes) && !empty($addNotes))
+        {
+          array_push($asNotes,$addNotes);
+        }
       }
     }
 
