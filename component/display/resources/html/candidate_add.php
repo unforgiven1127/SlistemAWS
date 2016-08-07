@@ -358,8 +358,8 @@
 				<div class="general_form_row">
 					<span style="font-size: 10px; color: blue;">
 						* If the candidate has been "assessed", the character note is required.<br/>
-						* In the other case, one of those fields is required.
-						** Required
+						* In the other case, one of those fields is required.<br/>
+						** Always required.
 					</span>
 				</div>
 				<div class="general_form_row add_margin_top_10">
