@@ -71,6 +71,7 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return false;
 
+
     $asParams = $this->casCpParam;
     $asParams[CONST_CP_TYPE] = $psItemType;
     $asParams[CONST_CP_PK] = $pnItemPk;
@@ -83,6 +84,8 @@ class CSl_eventEx extends CSl_event
   {
     if(!assert('is_key($pnItemPk) && !empty($psItemType)'))
       return array();
+
+    ChromePhp::log($psNoteType);
 
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
