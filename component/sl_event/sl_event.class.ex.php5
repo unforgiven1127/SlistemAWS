@@ -105,9 +105,7 @@ class CSl_eventEx extends CSl_event
 
       foreach ($allAreas as $key => $value)
       {
-        ChromePhp::log($value);
         $addNotes = $this->getNotes($pnItemPk, $psItemType, $value, $pasExcludeType);
-        ChromePhp::log($addNotes);
         if(isset($addNotes) && !empty($addNotes))
         {
           array_push($asNotes,$addNotes[0]);
