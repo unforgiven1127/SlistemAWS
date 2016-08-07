@@ -87,6 +87,8 @@ class CSl_eventEx extends CSl_event
 
     ChromePhp::log($psNoteType);
 
+    $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+
     if($psNoteType == 'character')
     {
       $allAreas = array();
@@ -106,10 +108,6 @@ class CSl_eventEx extends CSl_event
         $addNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
         array_push($asNotes,$addNotes);
       }
-    }
-    else
-    {
-      $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
     }
 
     foreach ($asNotes as $key => $note)
