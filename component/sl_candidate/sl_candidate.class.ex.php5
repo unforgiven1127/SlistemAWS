@@ -7372,7 +7372,7 @@ die();*/
 
       if(empty($personality_note) || empty($current_podition_note) || empty($product_exp_note) || empty($compensation_note) || empty($move_note) || empty($career_note) || empty($timeline_note) || empty($keywants_note) || empty($past_note) || empty($education_note))
       {
-        $asError[] = 'All note sections should have at least 25 characters.';
+        $asError[] = 'All note sections must be filled.';
       }
       else
       {
