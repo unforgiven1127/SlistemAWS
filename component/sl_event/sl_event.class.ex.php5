@@ -87,7 +87,30 @@ class CSl_eventEx extends CSl_event
 
     ChromePhp::log($psNoteType);
 
-    $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+    if($psNoteType == 'character')
+    {
+      $allAreas = array();
+      $allAreas['personality_note'] = 'personality_note';
+      $allAreas['current_podition_note'] = 'current_podition_note';
+      $allAreas['product_exp_note'] = 'product_exp_note';
+      $allAreas['compensation_note'] = 'compensation_note';
+      $allAreas['move_note'] = 'move_note';
+      $allAreas['career_note'] = 'career_note';
+      $allAreas['timeline_note'] = 'timeline_note';
+      $allAreas['keywants_note'] = 'keywants_note';
+      $allAreas['past_note'] = 'past_note';
+      $allAreas['education_note'] = 'education_note';
+
+      foreach ($allAreas as $key => $psNoteType)
+      {
+        $addNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+        array_push($asNotes,$addNotes);
+      }
+    }
+    else
+    {
+      $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
+    }
 
     foreach ($asNotes as $key => $note)
     {
