@@ -460,7 +460,7 @@ class CSl_eventEx extends CSl_event
       /*$oForm->addField('select', 'event_type', array('label'=>'Note type', 'onchange' => 'if($(this).val() == \'character\'){ $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').show(); } else { $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').hide(); } '));
       $oForm->setFieldControl('event_type', array('jsFieldNotEmpty' => ''));*/
 
-      if(empty($sEventType))
+      /*if(empty($sEventType))
         $sEventType = getValue('default_type', 'note');
 
       foreach($asEvent as $asEvents)
@@ -469,7 +469,7 @@ class CSl_eventEx extends CSl_event
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
         else
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group']));
-      }
+      }*/
     }
 
 
@@ -539,12 +539,12 @@ class CSl_eventEx extends CSl_event
         }
         </script>
         ';
-    }
+    }*/
 
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
     return $sHTML;
-  }*/
+  }
 
 
   /**
