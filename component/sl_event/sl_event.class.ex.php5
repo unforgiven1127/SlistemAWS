@@ -541,6 +541,11 @@ class CSl_eventEx extends CSl_event
         ';
     }
 
+    if($sEventType == 'character')
+    {
+      $sHTML = $this->_oDisplay->render('character_note_add', $data);
+    }
+
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
     return $sHTML;
