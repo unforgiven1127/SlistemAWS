@@ -539,9 +539,9 @@ class CSl_eventEx extends CSl_event
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
 
-      $sHTML.= "<script>
+      /*$sHTML.= "<script>
                   document.getElementById('event_typeId').disabled = true;
-                </script>";
+                </script>";*/
 
       /*$sHTML.= '<b style="padding-left: 60px;">Tips:</b><br />
         <div id="'.$sId.'" data-id="'.$sId.'" class="note_tip_container" >
