@@ -476,10 +476,13 @@ class CSl_eventEx extends CSl_event
         }
         else if($sEventType == 'character')
         {
-          if($asEvents['value'] == $sEventType)
-            $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
-          else
-            $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group']));
+          if($asEvents['value'] == 'character')
+          {
+            if($asEvents['value'] == $sEventType)
+              $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
+            else
+              $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group']));
+          }
         }
       }
     }
@@ -542,9 +545,9 @@ class CSl_eventEx extends CSl_event
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
 
-      $sHTML.= "<script>
+      /*$sHTML.= "<script>
                   document.getElementById('event_typeId').disabled = true;
-                </script>";
+                </script>";*/
 
       /*$sHTML.= '<b style="padding-left: 60px;">Tips:</b><br />
         <div id="'.$sId.'" data-id="'.$sId.'" class="note_tip_container" >
