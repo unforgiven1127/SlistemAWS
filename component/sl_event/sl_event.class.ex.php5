@@ -467,7 +467,7 @@ class CSl_eventEx extends CSl_event
       foreach($asEvent as $asEvents)
       {
         ChromePhp::log($asEvents);
-        if($sEventType == 'note' && $asEvents != 'character')
+        if($sEventType == 'note' && $asEvents['value'] != 'character')
         {
           if($asEvents['value'] == $sEventType)
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
