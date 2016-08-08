@@ -446,7 +446,15 @@ class CSl_eventEx extends CSl_event
 
     $asEvent = getEventTypeList(false, $sCp_Type, CDependency::getCpLogin()->isAdmin());
     $sEventType = $oDbResult->getFieldValue('type');
-
+    ChromePhp::log($sEventType);
+    if($sEventType != 'character')
+    {
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
+    }
+    else
+    {
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character notes'));
+    }
 
     if(!empty($sEventType) && !isset($asEvent[$sEventType]))
     {
@@ -489,7 +497,6 @@ class CSl_eventEx extends CSl_event
 
     if($sEventType != 'character')
     {
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
       $oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
       $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));
 
@@ -499,8 +506,6 @@ class CSl_eventEx extends CSl_event
 
     if($sEventType == 'character')
     {
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character notes'));
-
       $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
       $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
