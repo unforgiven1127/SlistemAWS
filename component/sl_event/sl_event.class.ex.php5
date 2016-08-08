@@ -466,7 +466,7 @@ class CSl_eventEx extends CSl_event
 
       foreach($asEvent as $asEvents)
       {
-        //ChromePhp::log($sEventType);
+        ChromePhp::log($asEvents);
         if($sEventType == 'note' && $asEvents != 'character')
         {
           if($asEvents['value'] == $sEventType)
