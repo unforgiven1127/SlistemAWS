@@ -117,6 +117,7 @@ class CSl_eventEx extends CSl_event
     }
 
     ChromePhp::log($asNotes);
+    uasort($asNotes, sort_multi_array_by_value('date_create'));
 
     foreach ($asNotes as $key => $note)
     {
