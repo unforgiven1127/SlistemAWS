@@ -91,6 +91,7 @@ class CSl_eventEx extends CSl_event
     $asNotes = array();
     $asNotes = $this->getNotes($pnItemPk, $psItemType, $psNoteType, $pasExcludeType);
 
+
     if($psNoteType == 'character')
     {
       $allAreas = array();
@@ -114,6 +115,8 @@ class CSl_eventEx extends CSl_event
         }
       }
     }
+
+    ChromePhp::log($asNotes);
 
     foreach ($asNotes as $key => $note)
     {
@@ -466,7 +469,6 @@ class CSl_eventEx extends CSl_event
 
       foreach($asEvent as $asEvents)
       {
-        ChromePhp::log($asEvents);
         if($sEventType == 'note' && $asEvents['value'] != 'character')
         {
           if($asEvents['value'] == $sEventType)
@@ -734,7 +736,6 @@ class CSl_eventEx extends CSl_event
 
     insertLog($user_id, $candidate_id, $note);
 
-    ChromePhp::log($event_type);
     if($event_type == 'character')
     {
       $characterNoteArray = array();
@@ -750,8 +751,6 @@ class CSl_eventEx extends CSl_event
       $characterNoteArray['keywants_note'] = purify_html(getValue('keywants_note'));
       $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
       $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
-
-      ChromePhp::log($characterNoteArray);
 
       $oEvent = CDependency::getComponentByName('sl_event');
 

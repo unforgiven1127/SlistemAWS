@@ -469,7 +469,6 @@ class CSl_FolderEx extends CSl_Folder
       if(empty($asFolder['cp_type']))
         $asFolder['cp_type'] = 'candi';
 
-ChromePhp::log($sURL);
 
       $asList[$asFolder['firstname'].' '.$asFolder['lastname']][] = '
         <li data-folder-type="'.$asFolder['cp_type'].'" data-folderpk="'.$asFolder['folderpk'].'" class="userFolderRow" id="userFolderRow_'.$asFolder['folderpk'].'">

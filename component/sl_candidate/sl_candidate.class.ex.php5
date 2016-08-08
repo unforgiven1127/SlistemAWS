@@ -1351,7 +1351,6 @@ class CSl_candidateEx extends CSl_candidate
 
       $asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
 
-      ChromePhp::log($pasCandidateData['sl_candidatepk']);
       $asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']); //HATA BURADA
       $asPosition = $this->_getPositionTab($pasCandidateData);
       $sActionTab = $this->_getActionTab($pasCandidateData);
