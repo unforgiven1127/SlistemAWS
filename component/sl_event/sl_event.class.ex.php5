@@ -435,7 +435,7 @@ class CSl_eventEx extends CSl_event
     $oForm->addField('input', CONST_CP_TYPE, array('type' => 'hidden', 'value' => $sCp_Type));
     $oForm->addField('input', CONST_CP_PK, array('type' => 'hidden', 'value' => $nCp_Pk));
     $oForm->addField('input', 'no_candi_refresh', array('type' => 'hidden', 'value' => getValue('no_candi_refresh', 0)));
-    $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
+    $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character note'));
 
 
     if(!empty($pnPk) && CDependency::getCpLogin()->isAdmin())
@@ -483,11 +483,38 @@ class CSl_eventEx extends CSl_event
    $oForm->addField('input', 'date_event', array('type' => 'hidden', 'label'=>'Date', 'value' => $sDate));
 
 
-    $oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
-    $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));
+    /*$oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
+    $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));*/
 
-    $oForm->addField('textarea', 'content', array('label'=>'Description', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
-    $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+    $oForm->addField('textarea', 'content', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Current Position & Responsibilities', 'value' => $oDbResult->getFieldValue('current_podition_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('current_podition_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Product or Technical Expertise', 'value' => $oDbResult->getFieldValue('product_exp_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('product_exp_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Compensation Breakdown', 'value' => $oDbResult->getFieldValue('compensation_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Reason for moving', 'value' => $oDbResult->getFieldValue('move_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('move_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Information on earlier career', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Move timeline', 'value' => $oDbResult->getFieldValue('timeline_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('timeline_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Key Wants', 'value' => $oDbResult->getFieldValue('keywants_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('keywants_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Companies introduced within past 6 – 12 months', 'value' => $oDbResult->getFieldValue('past_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+    $oForm->addField('textarea', 'content', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
+    $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
 
     $sHTML = '';
