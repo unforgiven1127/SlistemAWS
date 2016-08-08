@@ -437,15 +437,6 @@ class CSl_eventEx extends CSl_event
     $oForm->addField('input', CONST_CP_TYPE, array('type' => 'hidden', 'value' => $sCp_Type));
     $oForm->addField('input', CONST_CP_PK, array('type' => 'hidden', 'value' => $nCp_Pk));
     $oForm->addField('input', 'no_candi_refresh', array('type' => 'hidden', 'value' => getValue('no_candi_refresh', 0)));
-    if($sEventType != 'character')
-    {
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
-    }
-    else
-    {
-      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character notes'));
-    }
-
 
     if(!empty($pnPk) && CDependency::getCpLogin()->isAdmin())
     {
@@ -455,6 +446,15 @@ class CSl_eventEx extends CSl_event
 
     $asEvent = getEventTypeList(false, $sCp_Type, CDependency::getCpLogin()->isAdmin());
     $sEventType = $oDbResult->getFieldValue('type');
+
+    if($sEventType != 'character')
+    {
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
+    }
+    else
+    {
+      $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character notes'));
+    }
 
     if(!empty($sEventType) && !isset($asEvent[$sEventType]))
     {
