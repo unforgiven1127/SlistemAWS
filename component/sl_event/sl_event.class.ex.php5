@@ -485,24 +485,27 @@ class CSl_eventEx extends CSl_event
    $oForm->addField('input', 'date_event', array('type' => 'hidden', 'label'=>'Date', 'value' => $sDate));
 
 
-    $oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
-    $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Description', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
-    $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
 
     $sHTML = '';
 
+    if($sEventType != 'character')
+    {
+      $oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
+      $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));
+
+      $oForm->addField('textarea', 'content', array('label'=>'Description', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+      $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+    }
+
     if($sEventType == 'character')
     {
-      $oForm->addField('textarea', 'test', array('label'=>'Test', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+      $oForm->addField('textarea', 'test', array('label'=>'Test', 'value' => $oDbResult->getFieldValue('test'), 'isTinymce' => 1));
       $oForm->setFieldControl('test', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
 
-      $sHTML.= '<b style="padding-left: 60px;">Tips:</b><br />
+      /*$sHTML.= '<b style="padding-left: 60px;">Tips:</b><br />
         <div id="'.$sId.'" data-id="'.$sId.'" class="note_tip_container" >
         <ul class="note_tip_list">
         <li> >>&nbsp;&nbsp;<span style="color: red; font-size: inherit;">Meeting assessement</span>: use the dedicated meeting feature and set your meeting "done". [
@@ -543,7 +546,7 @@ class CSl_eventEx extends CSl_event
           setTimeout(" autoscroll_'.$sId.'("+(pnIteration+1)+");", 4500);
         }
         </script>
-        ';
+        ';*/
     }
 
     /*if($sEventType == 'character')
