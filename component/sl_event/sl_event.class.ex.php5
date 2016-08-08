@@ -5,12 +5,14 @@ require_once('component/sl_event/sl_event.class.php5');
 class CSl_eventEx extends CSl_event
 {
   private $casCpParam = array();
+  private $_oDisplay = null;
 
   public function __construct()
   {
     parent::__construct();
 
     $sCandiUid = CDependency::getComponentUidByName('sl_candidate');
+    $this->_oDisplay = CDependency::getCpHtml();
     $this->casCpParam = array(CONST_CP_UID => $sCandiUid, CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => '', CONST_CP_PK => 0);
 
     return true;
