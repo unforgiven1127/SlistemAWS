@@ -451,16 +451,16 @@ class CSl_eventEx extends CSl_event
     {
       //a type that is not available for user selection
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sEventType.' (can not be changed)', 'style' => 'position: absolute; right: 0;'));
-      $oForm->addField('input', '', array('label'=>'Note type', 'value' => $sEventType.'     (can\'t be changed)', 'readonly' => 'readonly', 'style' => 'width: 250px; background-color: #efefef; font-style: italic;'));
+      /*$oForm->addField('input', '', array('label'=>'Note type', 'value' => $sEventType.'     (can\'t be changed)', 'readonly' => 'readonly', 'style' => 'width: 250px; background-color: #efefef; font-style: italic;'));
       $oForm->addField('hidden', 'event_type', array('value' => $sEventType));
-      $oForm->addField('hidden', 'custom_type', array('value' => 1));
+      $oForm->addField('hidden', 'custom_type', array('value' => 1));*/
     }
     else
     {
-      $oForm->addField('select', 'event_type', array('label'=>'Note type', 'onchange' => 'if($(this).val() == \'character\'){ $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').show(); } else { $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').hide(); } '));
-      $oForm->setFieldControl('event_type', array('jsFieldNotEmpty' => ''));
+      /*$oForm->addField('select', 'event_type', array('label'=>'Note type', 'onchange' => 'if($(this).val() == \'character\'){ $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').show(); } else { $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').hide(); } '));
+      $oForm->setFieldControl('event_type', array('jsFieldNotEmpty' => ''));*/
 
-      if(empty($sEventType))
+      /*if(empty($sEventType))
         $sEventType = getValue('default_type', 'note');
 
       foreach($asEvent as $asEvents)
@@ -469,7 +469,7 @@ class CSl_eventEx extends CSl_event
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
         else
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group']));
-      }
+      }*/
     }
 
 
@@ -492,7 +492,7 @@ class CSl_eventEx extends CSl_event
 
     $sHTML = '';
 
-    if($sEventType == 'character')
+    /*if($sEventType == 'character')
     {
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
@@ -544,7 +544,7 @@ class CSl_eventEx extends CSl_event
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
     return $sHTML;
-  }
+  }*/
 
 
   /**
