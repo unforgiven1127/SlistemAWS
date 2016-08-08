@@ -496,6 +496,9 @@ class CSl_eventEx extends CSl_event
 
     if($sEventType == 'character')
     {
+      $oForm->addField('textarea', 'test', array('label'=>'Test', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+      $oForm->setFieldControl('test', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
 
@@ -543,10 +546,10 @@ class CSl_eventEx extends CSl_event
         ';
     }
 
-    if($sEventType == 'character')
+    /*if($sEventType == 'character')
     {
       $sHTML = $this->_oDisplay->render('character_note_add');
-    }
+    }*/
 
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
