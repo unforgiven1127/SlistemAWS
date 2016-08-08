@@ -435,7 +435,7 @@ class CSl_eventEx extends CSl_event
     $oForm->addField('input', CONST_CP_TYPE, array('type' => 'hidden', 'value' => $sCp_Type));
     $oForm->addField('input', CONST_CP_PK, array('type' => 'hidden', 'value' => $nCp_Pk));
     $oForm->addField('input', 'no_candi_refresh', array('type' => 'hidden', 'value' => getValue('no_candi_refresh', 0)));
-    $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add character note'));
+    $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a note'));
 
 
     if(!empty($pnPk) && CDependency::getCpLogin()->isAdmin())
@@ -451,16 +451,16 @@ class CSl_eventEx extends CSl_event
     {
       //a type that is not available for user selection
       //$oForm->addField('misc', '', array('type' => 'text', 'text' => $sEventType.' (can not be changed)', 'style' => 'position: absolute; right: 0;'));
-      /*$oForm->addField('input', '', array('label'=>'Note type', 'value' => $sEventType.'     (can\'t be changed)', 'readonly' => 'readonly', 'style' => 'width: 250px; background-color: #efefef; font-style: italic;'));
+      $oForm->addField('input', '', array('label'=>'Note type', 'value' => $sEventType.'     (can\'t be changed)', 'readonly' => 'readonly', 'style' => 'width: 250px; background-color: #efefef; font-style: italic;'));
       $oForm->addField('hidden', 'event_type', array('value' => $sEventType));
-      $oForm->addField('hidden', 'custom_type', array('value' => 1));*/
+      $oForm->addField('hidden', 'custom_type', array('value' => 1));
     }
     else
     {
-      /*$oForm->addField('select', 'event_type', array('label'=>'Note type', 'onchange' => 'if($(this).val() == \'character\'){ $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').show(); } else { $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').hide(); } '));
-      $oForm->setFieldControl('event_type', array('jsFieldNotEmpty' => ''));*/
+      $oForm->addField('select', 'event_type', array('label'=>'Note type', 'onchange' => 'if($(this).val() == \'character\'){ $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').show(); } else { $(this).closest(\'.ui-dialog\').find(\'.note_tip_container\').hide(); } '));
+      $oForm->setFieldControl('event_type', array('jsFieldNotEmpty' => ''));
 
-      /*if(empty($sEventType))
+      if(empty($sEventType))
         $sEventType = getValue('default_type', 'note');
 
       foreach($asEvent as $asEvents)
@@ -469,7 +469,7 @@ class CSl_eventEx extends CSl_event
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
         else
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group']));
-      }*/
+      }
     }
 
 
@@ -483,102 +483,16 @@ class CSl_eventEx extends CSl_event
    $oForm->addField('input', 'date_event', array('type' => 'hidden', 'label'=>'Date', 'value' => $sDate));
 
 
-    /*$oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
-    $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));*/
+    $oForm->addField('input', 'title', array('label'=>'Note title', 'value' => $oDbResult->getFieldValue('title')));
+    $oForm->setFieldControl('title', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 255));
 
-    /*$oForm->addField('textarea', 'content', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Current Position & Responsibilities', 'value' => $oDbResult->getFieldValue('current_podition_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('current_podition_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Product or Technical Expertise', 'value' => $oDbResult->getFieldValue('product_exp_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('product_exp_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Compensation Breakdown', 'value' => $oDbResult->getFieldValue('compensation_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Reason for moving', 'value' => $oDbResult->getFieldValue('move_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('move_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Information on earlier career', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Move timeline', 'value' => $oDbResult->getFieldValue('timeline_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('timeline_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Key Wants', 'value' => $oDbResult->getFieldValue('keywants_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('keywants_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Companies introduced within past 6 – 12 months', 'value' => $oDbResult->getFieldValue('past_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-    $oForm->addField('textarea', 'content', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
-    $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));*/
+    $oForm->addField('textarea', 'content', array('label'=>'Description', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+    $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
 
-    $sHTML = "<div class='general_form_row add_margin_top_10'>
-          <div class='general_form_label'>** Personality & Communication</div>
-          <div class='general_form_column'>
-            <textarea id='personality_note' name='personality_note' ></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Current Position & Responsibilities</div>
-          <div class='general_form_column'>
-            <textarea id='current_podition_note' name='current_podition_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Product or Technical Expertise</div>
-          <div class='general_form_column'>
-            <textarea id='product_exp_note' name='product_exp_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Compensation Breakdown</div>
-          <div class='general_form_column'>
-            <textarea id='compensation_note' name='compensation_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Reason for moving</div>
-          <div class='general_form_column'>
-            <textarea id='move_note' name='move_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Information on earlier career</div>
-          <div class='general_form_column'>
-            <textarea id='career_note' name='career_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Move timeline</div>
-          <div class='general_form_column'>
-            <textarea id='timeline_note' name='timeline_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Key Wants</div>
-          <div class='general_form_column'>
-            <textarea id='keywants_note' name='keywants_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Companies introduced within past 6 – 12 months</div>
-          <div class='general_form_column'>
-            <textarea id='past_note' name='past_note'></textarea>
-          </div>
-        </div>
-        <div class='general_form_row'>
-          <div class='general_form_label'>** Education – Higher Educations</div>
-          <div class='general_form_column'>
-            <textarea id='education_note' name='education_note'></textarea>
-          </div>
-        </div>";
+    $sHTML = '';
 
-    /*if($sEventType == 'character')
+    if($sEventType == 'character')
     {
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
@@ -625,7 +539,7 @@ class CSl_eventEx extends CSl_event
         }
         </script>
         ';
-    }*/
+    }
 
     $sHTML.= $oForm->getDisplay();
     $sHTML.= $oHTML->getBlocEnd();
