@@ -731,6 +731,7 @@ class CSl_eventEx extends CSl_event
 
     insertLog($user_id, $candidate_id, $note);
 
+    ChromePhp::log($event_type);
     if($event_type == 'character')
     {
       $characterNoteArray = array();
@@ -746,6 +747,8 @@ class CSl_eventEx extends CSl_event
       $characterNoteArray['keywants_note'] = purify_html(getValue('keywants_note'));
       $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
       $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
+
+      ChromePhp::log($characterNoteArray);
 
       $oEvent = CDependency::getComponentByName('sl_event');
 
