@@ -545,7 +545,7 @@ class CSl_eventEx extends CSl_event
 
     if($sEventType == 'character')
     {
-      $sHTML = $this->_oDisplay->render('character_note_add', $data);
+      $sHTML = $this->_oDisplay->render('character_note_add');
     }
 
     $sHTML.= $oForm->getDisplay();
