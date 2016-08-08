@@ -731,51 +731,86 @@ class CSl_eventEx extends CSl_event
 
     insertLog($user_id, $candidate_id, $note);
 
-    if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
-      return array('error' => __LINE__.' - Can not create empty notes.');
-
-    $oPage = CDependency::getCpPage();
-    $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
-
-
-    if(!empty($this->cnPk) && getValue('delete_note') && CDependency::getCpLogin()->isAdmin())
+    if($event_type == 'character')
     {
-      $asResult = parent::_getEventDelete($this->cnPk);
+      $characterNoteArray = array();
+      $addedFlag = true;
 
-      $asResult['action'] = ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
-      unset($asResult['reload']);
-      return $oPage->getAjaxExtraContent($asResult);
+      $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
+      $characterNoteArray['current_podition_note'] = purify_html(getValue('current_podition_note'));
+      $characterNoteArray['product_exp_note'] = purify_html(getValue('product_exp_note'));
+      $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
+      $characterNoteArray['career_note'] = purify_html(getValue('career_note'));
+      $characterNoteArray['timeline_note'] = purify_html(getValue('timeline_note'));
+      $characterNoteArray['keywants_note'] = purify_html(getValue('keywants_note'));
+      $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
+      $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
+
+      $oEvent = CDependency::getComponentByName('sl_event');
+
+      foreach ($characterNoteArray as $key => $value)
+      {
+        if(isset($value) && !empty($value))
+        {
+          $asResult = $oEvent->addNote((int)$candidate_id, $key, $value);
+          $addedFlag = false;
+        }
+      }
+      if($addedFlag) // hepsi bos geldi ekleme yapilmadi
+      {
+        return array('error' => __LINE__.' - Can not create empty notes.');
+      }
     }
-
-    $asResult = parent::_getEventSave($this->cnPk);
-    if(isset($asResult['error']))
-      return $oPage->getAjaxExtraContent($asResult);
-
-
-    $sType = getValue('event_type');
-    if($sType == 'cp_history')
-    {
-      $oMail = CDependency::getComponentByName('mail');
-      $oMail->createNewEmail();
-      $oMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM);
-      $oMail->addRecipient(CONST_DEV_EMAIL, CONST_DEV_EMAIL);
-
-      if($psAction == CONST_ACTION_SAVEADD)
-        $oResult = $oMail->send('Slistem - note cp_history manually created', 'Please add a cp_hidden note with the company name for '.$sURL);
-      else
-        $oResult = $oMail->send('Slistem - note cp_history manually updated', 'Please check the cp_hidden matches the cp_history note for '.$sURL);
-    }
-
-    set_array($asResult['action'], '');
-
-
-    if((bool)getValue('no_candi_refresh', 0))
-      $asResult['action'].= ' goPopup.removeLastByType(\'layer\'); ';
     else
-      $asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+    {
+      if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
+        return array('error' => __LINE__.' - Can not create empty notes.');
 
-    $asResult['timedUrl'] = '';
-    $asResult['url'] = '';
+      $oPage = CDependency::getCpPage();
+      $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
+
+
+      if(!empty($this->cnPk) && getValue('delete_note') && CDependency::getCpLogin()->isAdmin())
+      {
+        $asResult = parent::_getEventDelete($this->cnPk);
+
+        $asResult['action'] = ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+        unset($asResult['reload']);
+        return $oPage->getAjaxExtraContent($asResult);
+      }
+
+      $asResult = parent::_getEventSave($this->cnPk);
+      if(isset($asResult['error']))
+        return $oPage->getAjaxExtraContent($asResult);
+
+
+      $sType = getValue('event_type');
+      if($sType == 'cp_history')
+      {
+        $oMail = CDependency::getComponentByName('mail');
+        $oMail->createNewEmail();
+        $oMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM);
+        $oMail->addRecipient(CONST_DEV_EMAIL, CONST_DEV_EMAIL);
+
+        if($psAction == CONST_ACTION_SAVEADD)
+          $oResult = $oMail->send('Slistem - note cp_history manually created', 'Please add a cp_hidden note with the company name for '.$sURL);
+        else
+          $oResult = $oMail->send('Slistem - note cp_history manually updated', 'Please check the cp_hidden matches the cp_history note for '.$sURL);
+      }
+
+      set_array($asResult['action'], '');
+
+
+      if((bool)getValue('no_candi_refresh', 0))
+        $asResult['action'].= ' goPopup.removeLastByType(\'layer\'); ';
+      else
+        $asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+
+      $asResult['timedUrl'] = '';
+      $asResult['url'] = '';
+    }
+
 
     return $asResult;
   }
