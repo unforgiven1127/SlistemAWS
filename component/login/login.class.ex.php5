@@ -1133,9 +1133,15 @@ class CLoginEx extends CLogin
       $asUpdate['user_id'] = $pnLoginPk;
       $return = addNewClient($asUpdate);
 
-      ChromePhp::log($return);
+      if($return)
+      {
+        return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
+      }
+      else
+      {
+        return array('error' => 'Email already added');
+      }
 
-      return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
     }
 
     else

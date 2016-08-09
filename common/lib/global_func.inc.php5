@@ -3017,6 +3017,26 @@ var_dump($query);*/
     }
   }
 
+  function clientExistCheck($email)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT COUNT(*) as count FROM client_login cl WHERE cl.email = '".$email."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    if($result[0]['count'] == 0)//ekleyebiliriz
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
   function addNewClient($array)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3032,16 +3052,23 @@ var_dump($query);*/
     $first_activity = $sDate;
     $last_activity = $sDate;
 
-    $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`
+    $addFlag = clientExistCheck($email);
+
+    if($addFlag)
+    {
+      $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`
               , `first_activity`,`last_activity`)
                VALUES('".$email."','".$firstname."','".$lastname."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
-ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
-ChromePhp::log($db_result);
-      $result = $db_result->getAll();
 
-      return $result;
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
   }
 
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '')
