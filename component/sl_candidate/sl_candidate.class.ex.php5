@@ -4159,7 +4159,7 @@ class CSl_candidateEx extends CSl_candidate
                   Please add at least '".$atLeast."' different character notes to continue.
                 </div>
                 <br><br><br>
-                <div style='font-size:20px;'>
+                <div style='font-size:20px; text-decoration: underline;'>
                   *At least 25 characters long and added in last 12 months
                 </div>";
         return array('data' => $html, 'error' => '');
