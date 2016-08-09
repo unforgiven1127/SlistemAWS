@@ -1124,9 +1124,10 @@ class CLoginEx extends CLogin
       }
     }
 
+    ChromePhp::log($clientFlag);
     if($clientFlag)
     {
-
+      return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
     }
 
     else
@@ -1176,7 +1177,6 @@ class CLoginEx extends CLogin
       return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
     }
 
-    
   }
 
   /**
