@@ -1117,16 +1117,16 @@ class CLoginEx extends CLogin
     $clientFlag = false;
     foreach ($asGroups as $key => $value)
     {
-      ChromePhp::log($value);
       if($value == '117')
       {
         $clientFlag = true;
       }
     }
 
-    ChromePhp::log($clientFlag);
     if($clientFlag)
     {
+      $asUpdate['user_id'] = $pnLoginPk;
+
       return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
     }
 

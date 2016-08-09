@@ -3017,6 +3017,30 @@ var_dump($query);*/
     }
   }
 
+  function addNewClient($array)
+  {
+    $sDate = date('Y-m-d H:i:s');
+
+    $email = $array['email'];
+    $firstname = $array['firstname'];
+    $lastname = $array['lastname'];
+    $password = $array['password_crypted'];
+    $company = $array['position'];
+    $user_id = $array['user_id'];
+    $first_activity = $sDate;
+    $last_activity = $sDate;
+
+    $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`, `first_activity`, `         last_activity`)
+               VALUES('".$email."','".$firstname."','".$lastname."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
+
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $result = $db_result->getAll();
+
+      return $result;
+  }
+
   function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '')
   {
     if($loginfk > 0)
