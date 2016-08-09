@@ -1114,49 +1114,69 @@ class CLoginEx extends CLogin
     $asUpdate['position'] = getValue('position');
 // eski value ile karsilastir researcher to consultant ise tarihi update et
 
-    if(!empty($pnLoginPk) && $pnLoginPk != 0)
+    $clientFlag = false;
+    foreach ($asGroups as $key => $value)
     {
-      $user_info = getUserInformaiton($pnLoginPk);
-
-      if($user_info['position'] == "Researcher" && $asUpdate['position'] == "Consultant")
+      ChromePhp::log($value);
+      if($value == '117')
       {
-        $asUpdate['r_to_c_date'] = date('Y-m-d').' 00:00:00';
-
+        $clientFlag = true;
       }
     }
 
-    if(empty($pnLoginPk))
+    if($clientFlag)
     {
-      $_POST['date_passwd_changed'] = date('Y-m-d');
-      $pnLoginPk = (int)$this->_getModel()->add($asUpdate, 'login');
 
-      if(empty($pnLoginPk))
-        return array('error' => 'Adding user failed.');
     }
+
     else
     {
+      if(!empty($pnLoginPk) && $pnLoginPk != 0)
+      {
+        $user_info = getUserInformaiton($pnLoginPk);
 
-      if(!assert('is_key($pnLoginPk)'))
-        return array('error' => 'No User found.');
+        if($user_info['position'] == "Researcher" && $asUpdate['position'] == "Consultant")
+        {
+          $asUpdate['r_to_c_date'] = date('Y-m-d').' 00:00:00';
 
-      $asUpdate['loginpk'] = $pnLoginPk;
-      $bUpdated = $this->_getModel()->update($asUpdate, 'login');
+        }
+      }
 
-      if(!$bUpdated)
-        return array('error' => 'Updating user failed.');
+      if(empty($pnLoginPk))
+      {
+        $_POST['date_passwd_changed'] = date('Y-m-d');
+        $pnLoginPk = (int)$this->_getModel()->add($asUpdate, 'login');
+
+        if(empty($pnLoginPk))
+          return array('error' => 'Adding user failed.');
+      }
+      else
+      {
+
+        if(!assert('is_key($pnLoginPk)'))
+          return array('error' => 'No User found.');
+
+        $asUpdate['loginpk'] = $pnLoginPk;
+        $bUpdated = $this->_getModel()->update($asUpdate, 'login');
+
+        if(!$bUpdated)
+          return array('error' => 'Updating user failed.');
+      }
+
+      if($bmanager)
+      {
+        $bSaved =  $this->_getModel()->saveUserGroups($pnLoginPk, $asGroups);
+        if(!$bSaved)
+          return array('error' => 'Sorry, could not save user groups.');
+      }
+
+      //re-create the shared view to let other componet access logins data
+      $this->_getModel()->createMySqlView();
+
+      return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
     }
 
-    if($bmanager)
-    {
-      $bSaved =  $this->_getModel()->saveUserGroups($pnLoginPk, $asGroups);
-      if(!$bSaved)
-        return array('error' => 'Sorry, could not save user groups.');
-    }
-
-    //re-create the shared view to let other componet access logins data
-    $this->_getModel()->createMySqlView();
-
-    return array('notice' => $this->casText['LOGIN_ACCOUNT_SAVE'], 'action' => 'goPopup.removeByType(\'layer\'); $(\'#settings li[rel=users]\').click();');
+    
   }
 
   /**
