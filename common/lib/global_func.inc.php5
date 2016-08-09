@@ -3032,7 +3032,7 @@ var_dump($query);*/
 
     $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`, `first_activity`, `         last_activity`)
                VALUES('".$email."','".$firstname."','".$lastname."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
-
+ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
 
