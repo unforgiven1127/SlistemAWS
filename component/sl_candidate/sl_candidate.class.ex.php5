@@ -4151,11 +4151,11 @@ class CSl_candidateEx extends CSl_candidate
         $atLeast = 8 - (int)$validCharacterNotesLength;
 
         $html = "<br><br><br>
-                <div style='font-size:15px;'>
-                  <strong>Warning!</strong> The candidate should have at least 8 character notes with 25 characters.
+                <div style='font-size:20px;'>
+                  <strong>Warning!</strong> The candidate should have at least 8 character notes with 25 characters length.
                 </div>
                 <br>
-                <div style='font-size:15px;'>
+                <div style='font-size:20px;'>
                   Please add at least '".$atLeast."' different character notes to continue.
                 </div>";
         return array('data' => $html, 'error' => '');
