@@ -4031,8 +4031,8 @@ class CSl_candidateEx extends CSl_candidate
       $validCharacterNotes = getCharacterNotes($pnCandiPk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      ChromePhp::log($validCharacterNotes);
-      ChromePhp::log($validCharacterNotesLength);
+      //ChromePhp::log($validCharacterNotes);
+      //ChromePhp::log($validCharacterNotesLength);
 
       if($validCharacterNotesLength >= 8)
       {
@@ -4146,10 +4146,11 @@ class CSl_candidateEx extends CSl_candidate
 
         return array('data' => $oForm->getDisplay(), 'error' => '');
       }
-
       else
       {
-        return array('error' => 'The candidate should have at least 8 character notes with 25 characters');
+        ChromePhp::log($validCharacterNotesLength);
+        return array('error' => 'Sorry, an error occured.');
+        //return array('error' => 'The candidate should have at least 8 character notes with 25 characters');
       }
 
     }
