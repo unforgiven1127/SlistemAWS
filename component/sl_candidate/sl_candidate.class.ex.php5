@@ -4034,115 +4034,124 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($validCharacterNotes);
       ChromePhp::log($validCharacterNotesLength);
 
-      if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
-        return array('error' => 'Sorry, an error occured.');
-
-      $oCandidateData = $this->_getModel()->getByPk($pnCandiPk, 'sl_candidate');
-      if(!$oCandidateData)
-        return array('error' => 'Sorry, could not fetch the candidate\'s data.');
-
-      $oCandidateData->readFirst();
-      $sName = $oCandidateData->getFieldValue('lastname'). ' '.$oCandidateData->getFieldValue('firstname');
-
-      $oPage = CDependency::getCpPage();
-
-      if(!empty($pnMeetingPk))
+      if($validCharacterNotesLength >= 8)
       {
-        $oDbMeeting = $this->_getModel()->getByPk($pnMeetingPk, 'sl_meeting');
-        if(!$oDbMeeting || ! $oDbMeeting->readFirst())
-          return array('error' => 'Counld not find the meeting.');
+        if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
+          return array('error' => 'Sorry, an error occured.');
 
-        $oForm = $this->_oDisplay->initForm('meetingAddForm');
-        $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $pnMeetingPk);
+        $oCandidateData = $this->_getModel()->getByPk($pnCandiPk, 'sl_candidate');
+        if(!$oCandidateData)
+          return array('error' => 'Sorry, could not fetch the candidate\'s data.');
 
-        $oForm->setFormParams('meetingAddForm', true, array('action' => $sURL, 'class' => 'fullPageForm', 'submitLabel'=>'Update meeting', 'noCancelButton' => true));
-        $oForm->setFormDisplayParams(array('noCancelButton' => true));
-        $oForm->addField('input', 'meetingpk', array('type' => 'hidden','value'=> $pnMeetingPk));
-        $oForm->addField('hidden', 'creatorfk', array('value' => $oDbMeeting->getFieldValue('creatorfk')));
+        $oCandidateData->readFirst();
+        $sName = $oCandidateData->getFieldValue('lastname'). ' '.$oCandidateData->getFieldValue('firstname');
 
-        $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Update meeting with <b>'.$sName.'</b>'));
+        $oPage = CDependency::getCpPage();
+
+        if(!empty($pnMeetingPk))
+        {
+          $oDbMeeting = $this->_getModel()->getByPk($pnMeetingPk, 'sl_meeting');
+          if(!$oDbMeeting || ! $oDbMeeting->readFirst())
+            return array('error' => 'Counld not find the meeting.');
+
+          $oForm = $this->_oDisplay->initForm('meetingAddForm');
+          $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $pnMeetingPk);
+
+          $oForm->setFormParams('meetingAddForm', true, array('action' => $sURL, 'class' => 'fullPageForm', 'submitLabel'=>'Update meeting', 'noCancelButton' => true));
+          $oForm->setFormDisplayParams(array('noCancelButton' => true));
+          $oForm->addField('input', 'meetingpk', array('type' => 'hidden','value'=> $pnMeetingPk));
+          $oForm->addField('hidden', 'creatorfk', array('value' => $oDbMeeting->getFieldValue('creatorfk')));
+
+          $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Update meeting with <b>'.$sName.'</b>'));
+        }
+        else
+        {
+          $oDbMeeting = new CDbResult();
+
+          $oForm = $this->_oDisplay->initForm('meetingAddForm');
+          $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_MEETING, $pnMeetingPk);
+
+          $oForm->setFormParams('meetingAddForm', true, array('action' => $sURL, 'class' => 'fullPageForm', 'submitLabel'=>'Save meeting'));
+          $oForm->setFormDisplayParams(array('noCancelButton' => true));
+          $oForm->addField('input', 'meetingpk', array('type' => 'hidden','value'=> 0));
+          $oForm->addField('hidden', 'creatorfk', array('value' => $this->casUserData['pk']));
+
+          $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Set a new meeting...'));
+        }
+
+        $oLogin = CDependency::getCpLogin();
+
+        $oForm->addField('hidden', 'candidatefk', array('value' => $pnCandiPk));
+        $oForm->addField('hidden', 'pclose', array('value' => getValue('pclose')));
+        $oForm->addField('misc', '', array('label' => 'Candidate', 'type' => 'text', 'text' => '#'.$pnCandiPk.' - '.$sName, 'class'  => 'readOnlyField'));
+
+        $nType = (int)$oDbMeeting->getFieldValue('type');
+        $oForm->addField('select', 'meeting_type', array('label'=> 'Meeting type'));
+        $oForm->addOption('meeting_type', array('label'=> 'In person', 'value' => 1, 'selected' => 'selected'));
+        if($nType === 2)
+          $oForm->addOption('meeting_type', array('label'=> 'By phone', 'value' => 2, 'selected' => 'selected'));
+        else
+          $oForm->addOption('meeting_type', array('label'=> 'By phone', 'value' => 2));
+
+        if($nType === 3)
+          $oForm->addOption('meeting_type', array('label'=> 'Video chat', 'value' => 3, 'selected' => 'selected'));
+        else
+          $oForm->addOption('meeting_type', array('label'=> 'Video chat', 'value' => 3));
+
+        $oForm->addOption('meeting_type', array('label'=> 'Other', 'value' => 4));
+
+        $sDate = $oDbMeeting->getFieldValue('date_meeting');
+        $sPickerDate = substr($sDate, 0, strlen($sDate)-3);
+        if(empty($pnMeetingPk))
+          $sJavascript = '';
+        else
+          $sJavascript = 'if($(this).val() != \''.$sPickerDate.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
+
+        $oForm->addField('input', 'date_meeting', array('type' => 'datetime', 'label'=> 'Meeting date',
+          'value' => $sPickerDate, 'onchange' => $sJavascript, 'minDate' => 'now'));
+
+        $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
+
+        $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
+        $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
+        if(empty($nAttendee))
+          $nAttendee = $oLogin->getUserPk();
+
+        $sJavascript = 'if($(this).val() != '.$oLogin->getUserPk().'){ $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').attr(\'checked\', \'checked\'); } ';
+        $sJavascript.= 'else { $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').removeProp(\'checked\'); } ';
+
+        if(!empty($pnMeetingPk))
+          $sJavascript.= ' if($(this).val() != \''.$nAttendee.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
+
+        $oForm->addField('selector', 'attendee', array('label'=>'Attendees', 'url' => $sURL, 'onchange' => $sJavascript));
+        $oForm->setFieldControl('attendee', array('jsFieldTypeIntegerPositive' => ''));
+
+        $oForm->addOption('attendee', array('label' => $oLogin->getUserNameFromPk($nAttendee), 'value' => $nAttendee));
+
+
+        $oForm->addField('textarea', 'description', array('label'=> 'Description', 'value' => $oDbMeeting->getFieldValue('description')));
+
+        $oForm->addField('checkbox', 'notify_attendee', array('label' => 'Send a notification to attendee when saving'));
+        $oForm->addField('checkbox', 'add_reminder1', array('label' => 'Set a reminder  - the day of the meeting'));
+        $oForm->addField('checkbox', 'add_reminder2', array('label' => 'Set a reminder  - 2 hours before the meeting'));
+        $oForm->addField('checkbox', 'add_reminder3', array('label' => 'Set a reminder  - after the meeting (to update the candidate)'));
+
+        if(!empty($pnMeetingPk))
+        {
+          $oForm->addSection('confirm_changes', array('class' => 'hidden', 'id' => 'confirm_changes'));
+          $oForm->addField('misc', '', array('type' => 'text', 'label' => '', 'text' => '<br /><div style="padding-left: 150px;" class="text_small italic">If the meeting date or attendee change, all the existing reminders will be deleted and new ones will be created.</div>'));
+          $oForm->addField('checkbox', 'delete_reminder', array('label' => 'Delete previous reminders'));
+          $oForm->closeSection();
+        }
+
+        return array('data' => $oForm->getDisplay(), 'error' => '');
       }
+
       else
       {
-        $oDbMeeting = new CDbResult();
-
-        $oForm = $this->_oDisplay->initForm('meetingAddForm');
-        $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_MEETING, $pnMeetingPk);
-
-        $oForm->setFormParams('meetingAddForm', true, array('action' => $sURL, 'class' => 'fullPageForm', 'submitLabel'=>'Save meeting'));
-        $oForm->setFormDisplayParams(array('noCancelButton' => true));
-        $oForm->addField('input', 'meetingpk', array('type' => 'hidden','value'=> 0));
-        $oForm->addField('hidden', 'creatorfk', array('value' => $this->casUserData['pk']));
-
-        $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Set a new meeting...'));
+        return array('error' => 'The candidate should have at least 8 character notes with 25 characters');
       }
 
-      $oLogin = CDependency::getCpLogin();
-
-      $oForm->addField('hidden', 'candidatefk', array('value' => $pnCandiPk));
-      $oForm->addField('hidden', 'pclose', array('value' => getValue('pclose')));
-      $oForm->addField('misc', '', array('label' => 'Candidate', 'type' => 'text', 'text' => '#'.$pnCandiPk.' - '.$sName, 'class'  => 'readOnlyField'));
-
-      $nType = (int)$oDbMeeting->getFieldValue('type');
-      $oForm->addField('select', 'meeting_type', array('label'=> 'Meeting type'));
-      $oForm->addOption('meeting_type', array('label'=> 'In person', 'value' => 1, 'selected' => 'selected'));
-      if($nType === 2)
-        $oForm->addOption('meeting_type', array('label'=> 'By phone', 'value' => 2, 'selected' => 'selected'));
-      else
-        $oForm->addOption('meeting_type', array('label'=> 'By phone', 'value' => 2));
-
-      if($nType === 3)
-        $oForm->addOption('meeting_type', array('label'=> 'Video chat', 'value' => 3, 'selected' => 'selected'));
-      else
-        $oForm->addOption('meeting_type', array('label'=> 'Video chat', 'value' => 3));
-
-      $oForm->addOption('meeting_type', array('label'=> 'Other', 'value' => 4));
-
-      $sDate = $oDbMeeting->getFieldValue('date_meeting');
-      $sPickerDate = substr($sDate, 0, strlen($sDate)-3);
-      if(empty($pnMeetingPk))
-        $sJavascript = '';
-      else
-        $sJavascript = 'if($(this).val() != \''.$sPickerDate.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
-
-      $oForm->addField('input', 'date_meeting', array('type' => 'datetime', 'label'=> 'Meeting date',
-        'value' => $sPickerDate, 'onchange' => $sJavascript, 'minDate' => 'now'));
-
-      $oForm->addField('input', 'where', array('type' => 'text', 'label'=> 'Location', 'value' => $oDbMeeting->getFieldValue('location')));
-
-      $sURL = $oPage->getAjaxUrl('login', CONST_ACTION_SEARCH, CONST_LOGIN_TYPE_USER);
-      $nAttendee = (int)$oDbMeeting->getFieldValue('attendeefk');
-      if(empty($nAttendee))
-        $nAttendee = $oLogin->getUserPk();
-
-      $sJavascript = 'if($(this).val() != '.$oLogin->getUserPk().'){ $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').attr(\'checked\', \'checked\'); } ';
-      $sJavascript.= 'else { $(this).closest(\'form\').find(\'#notify_attendee_0_Id\').removeProp(\'checked\'); } ';
-
-      if(!empty($pnMeetingPk))
-        $sJavascript.= ' if($(this).val() != \''.$nAttendee.'\'){ $(this).closest(\'form\').find(\'#confirm_changes\').show(0); } ';
-
-      $oForm->addField('selector', 'attendee', array('label'=>'Attendees', 'url' => $sURL, 'onchange' => $sJavascript));
-      $oForm->setFieldControl('attendee', array('jsFieldTypeIntegerPositive' => ''));
-
-      $oForm->addOption('attendee', array('label' => $oLogin->getUserNameFromPk($nAttendee), 'value' => $nAttendee));
-
-
-      $oForm->addField('textarea', 'description', array('label'=> 'Description', 'value' => $oDbMeeting->getFieldValue('description')));
-
-      $oForm->addField('checkbox', 'notify_attendee', array('label' => 'Send a notification to attendee when saving'));
-      $oForm->addField('checkbox', 'add_reminder1', array('label' => 'Set a reminder  - the day of the meeting'));
-      $oForm->addField('checkbox', 'add_reminder2', array('label' => 'Set a reminder  - 2 hours before the meeting'));
-      $oForm->addField('checkbox', 'add_reminder3', array('label' => 'Set a reminder  - after the meeting (to update the candidate)'));
-
-      if(!empty($pnMeetingPk))
-      {
-        $oForm->addSection('confirm_changes', array('class' => 'hidden', 'id' => 'confirm_changes'));
-        $oForm->addField('misc', '', array('type' => 'text', 'label' => '', 'text' => '<br /><div style="padding-left: 150px;" class="text_small italic">If the meeting date or attendee change, all the existing reminders will be deleted and new ones will be created.</div>'));
-        $oForm->addField('checkbox', 'delete_reminder', array('label' => 'Delete previous reminders'));
-        $oForm->closeSection();
-      }
-
-      return array('data' => $oForm->getDisplay(), 'error' => '');
     }
 
     private function _getMeetingDoneForm($pnCandiPk, $pnMeetingPk)
