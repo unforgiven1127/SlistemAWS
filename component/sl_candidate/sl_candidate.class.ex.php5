@@ -4152,7 +4152,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $html = "<br><br><br>
                 <div style='font-size:20px;'>
-                  <strong>Warning!</strong> The candidate should have at least 8 <strong>*</strong>valid character notes
+                  <strong>Warning!</strong> The candidate should have at least 8 <strong>[1]</strong>valid character notes
                 </div>
                 <br>
                 <div style='font-size:20px;'>
@@ -4160,7 +4160,7 @@ class CSl_candidateEx extends CSl_candidate
                 </div>
                 <br><br><br>
                 <div style='font-size:20px; text-decoration: underline;'>
-                  <strong>*</strong>At least 25 characters long and added in last 12 months
+                  <strong>[1]</strong>At least 25 characters long and added in last 12 months
                 </div>";
         return array('data' => $html, 'error' => '');
       }
