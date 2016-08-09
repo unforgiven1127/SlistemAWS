@@ -4028,6 +4028,8 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateMeetingForm($pnCandiPk, $pnMeetingPk = 0)
     {
+      $characterNotes = getCharacterNotes($pnCandiPk);
+
       if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
         return array('error' => 'Sorry, an error occured.');
 
