@@ -1535,7 +1535,7 @@ class CLoginEx extends CLogin
     $oForm->addField('input', 'phone_ext', array('label'=> $this->casText['LOGIN_EXTENSION'], 'value' => $oResult->getFieldValue('phone_ext')));
     $oForm->setFieldControl('phone_ext', array('jsFieldMinSize' => 4, 'jsFieldTypeInteger' => 'jsFieldTypeInteger'));
 
-    $oForm->addField('input', 'position', array('label'=> $this->casText['LOGIN_POSITION'], 'value' => $oResult->getFieldValue('position')));
+    $oForm->addField('input', 'position', array('label'=> 'Position / Company', 'value' => $oResult->getFieldValue('position')));
     $oForm->setFieldControl('position', array('jsFieldNotEmpty' => '','jsFieldMinSize' => 2));
 
 
