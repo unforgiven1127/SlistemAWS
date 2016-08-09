@@ -3019,6 +3019,8 @@ var_dump($query);*/
 
   function addNewClient($array)
   {
+    $oDB = CDependency::getComponentByName('database');
+
     $sDate = date('Y-m-d H:i:s');
 
     $email = $array['email'];
