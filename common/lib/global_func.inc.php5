@@ -1438,9 +1438,17 @@ function _live_dump($pvTrace, $psTitle = null)
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
     $sDate = strtotime($sDate.' -1 years');
-    $sDate = date('Y-m-d H:i:s',$sDate);
+    $sDate = date('Y-m-d',$sDate);
+    $sDate .= " 00:00:00";
 
-    ChromePhp::log($sDate);
+    $sQuery = "SELECT * FROM event e INNER JOIN event_link el on el.eventfk = e.eventpk WHERE el.cp_pk = '".$candidate_id."' AND e.type in('personality_note','current_podition_note','product_exp_note','compensation_note','move_note','career_note','timeline_note','keywants_note','past_note','education_note') AND e.date_create > '".$sDate."'  AND LENGTH(e.content) > 25
+      GROUP BY e.type";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
 
   }
 
