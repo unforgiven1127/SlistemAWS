@@ -4148,7 +4148,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $html = "<div class='alert alert-warning'>
+        $html = "<div style='font-size:15px;'>
                   <strong>Warning!</strong> The candidate should have at least 8 character notes with 25 characters.
                 </div>";
         return array('data' => $html, 'error' => '');
