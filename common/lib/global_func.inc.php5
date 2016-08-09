@@ -3038,7 +3038,7 @@ var_dump($query);*/
 ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
-
+ChromePhp::log($db_result);
       $result = $db_result->getAll();
 
       return $result;
