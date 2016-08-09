@@ -1433,6 +1433,17 @@ function _live_dump($pvTrace, $psTitle = null)
     return $workingDays;
   }
 
+  function getCharacterNotes($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+    $sDate = strtotime($sDate.' -1 years');
+    $sDate = date('Y-m-d H:i:s',$sDate);
+
+    ChromePhp::log($sDate);
+
+  }
+
   function getCompletedMeetings($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');
