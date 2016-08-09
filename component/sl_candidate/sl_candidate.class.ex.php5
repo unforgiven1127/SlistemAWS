@@ -4148,8 +4148,13 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+        $atLeast = 8 - (int)$validCharacterNotesLength;
+
         $html = "<div style='font-size:15px;'>
                   <strong>Warning!</strong> The candidate should have at least 8 character notes with 25 characters.
+                </div>
+                <div style='font-size:15px;'>
+                  Please add at least '".$atLeast."' different character notes to continue.
                 </div>";
         return array('data' => $html, 'error' => '');
         //ChromePhp::log($validCharacterNotesLength);
