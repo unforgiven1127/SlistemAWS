@@ -3030,7 +3030,8 @@ var_dump($query);*/
     $first_activity = $sDate;
     $last_activity = $sDate;
 
-    $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`, `first_activity`, `         last_activity`)
+    $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`
+              , `first_activity`,`last_activity`)
                VALUES('".$email."','".$firstname."','".$lastname."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
 ChromePhp::log($sQuery);
 
