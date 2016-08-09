@@ -4160,7 +4160,7 @@ class CSl_candidateEx extends CSl_candidate
                 </div>
                 <br><br><br>
                 <div style='font-size:20px; text-decoration: underline;'>
-                  <strong>[1]</strong>At least 25 characters long and added in last 12 months
+                  <strong>[1] </strong>At least 25 characters long and added in last 12 months
                 </div>";
         return array('data' => $html, 'error' => '');
       }

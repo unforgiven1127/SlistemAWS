@@ -3104,7 +3104,7 @@ var_dump($query);*/
     $result = $db_result->getAll();
     $count = $result[0]['count'];
 
-    if($user_id != '101' AND $count >= 5) // count starts from 0
+    if($user_id != '101' AND $count >= 10) // count starts from 0
     {
       //ChromePhp::log('Action: Do more than 5 searches in 5 minutes.');
       $dNow = date('Y-m-d H:i:s'); // Japan time
@@ -3120,7 +3120,7 @@ var_dump($query);*/
       $to      = 'ray@slate-ghc.com;mmoir@slate.co.jp;munir@slate-ghc.com;rkiyamu@slate.co.jp';
       $subject = 'Slistem Activity Flag';
       $message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
-      $message .= "\r\n"."Action: Do more than 5 searches in 5 minutes.";
+      $message .= "\r\n"."Action: Do more than 10 searches in 5 minutes.";
       $headers = 'From: slistem@slate.co.jp' . "\r\n" .
           'Reply-To: munir@slate-ghc.com' . "\r\n" .
           'X-Mailer: PHP/' . phpversion();
