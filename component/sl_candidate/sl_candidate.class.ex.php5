@@ -4152,7 +4152,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $html = "<br><br><br>
                 <div style='font-size:20px;'>
-                  <strong>Warning!</strong> The candidate should have at least 8 <strong>[1]</strong>valid character notes
+                  <strong>Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes
                 </div>
                 <br>
                 <div style='font-size:20px;'>
