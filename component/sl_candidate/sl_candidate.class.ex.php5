@@ -4148,7 +4148,9 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $html = "The candidate should have at least 8 character notes with 25 characters";
+        $html = "<div class='alert alert-warning'>
+                  <strong>Warning!</strong> The candidate should have at least 8 character notes with 25 characters.
+                </div>";
         return array('data' => $html, 'error' => '');
         //ChromePhp::log($validCharacterNotesLength);
         //return array('error' => 'Sorry, an error occured.');
