@@ -1055,20 +1055,41 @@ class CLoginEx extends CLogin
     $bmanager = $oRight->canAccess($this->csUid, 'ppam');
     $asUpdate = array();
 
+    $clientFlag = false;
+
     if($bmanager)
     {
+      if(!isset($_POST['group']))
+        $asGroups = array();
+      else
+        $asGroups = $_POST['group'];
+
+      if(!empty($asGroups) && !is_arrayOfInt($asGroups))
+        return array('error' => $oHTML->getBlocMessage($this->casText['LOGIN_GROUP_INVALID']));
+
+      foreach ($asGroups as $key => $value)
+      {
+        if($value == '117')
+        {
+          $clientFlag = true;
+        }
+      }
+
       $sEmail = getValue('email');
       if(empty($sEmail) || !isValidEmail($sEmail, FILTER_VALIDATE_EMAIL))
         return array('error' => $oHTML->getBlocMessage($this->casText['LOGIN_NO_EMAIL']));
 
-      if($this->_getModel()->exists('email', $_POST['email'], $pnLoginPk))
+      if(!$clientFlag)
+      {
+        if($this->_getModel()->exists('email', $_POST['email'], $pnLoginPk))
         return array('error' => 'A user using the email '.$_POST['email'].' already exists. Please choose a different one.');
 
-      if($this->_getModel()->exists('id', $_POST['id'], $pnLoginPk))
-        return array('error' => 'A user using the login '.$_POST['id'].' already exists. Please choose a different one.');
+        if($this->_getModel()->exists('id', $_POST['id'], $pnLoginPk))
+          return array('error' => 'A user using the login '.$_POST['id'].' already exists. Please choose a different one.');
 
-      if(empty($_POST['id']) || strlen($_POST['id']) < 3)
-        return array('error' => 'Login has to contains at least 4 characters.');
+        if(empty($_POST['id']) || strlen($_POST['id']) < 3)
+          return array('error' => 'Login has to contains at least 4 characters.');
+      }
 
       if(empty($_POST['password']) || strlen($_POST['password']) < 5)
         return array('error' => 'password has to contains at least 5 characters.');
@@ -1078,14 +1099,6 @@ class CLoginEx extends CLogin
       $_POST['status'] = (int)$_POST['status'];
       if($_POST['status'] < 0 || $_POST['status'] > 1)
         return array('error' => __LINE__.' - Error.');
-
-      if(!isset($_POST['group']))
-        $asGroups = array();
-      else
-        $asGroups = $_POST['group'];
-
-      if(!empty($asGroups) && !is_arrayOfInt($asGroups))
-        return array('error' => $oHTML->getBlocMessage($this->casText['LOGIN_GROUP_INVALID']));
 
       $asUpdate['email'] = $sEmail;
       $asUpdate['id'] = getValue('id');
@@ -1114,14 +1127,6 @@ class CLoginEx extends CLogin
     $asUpdate['position'] = getValue('position');
 // eski value ile karsilastir researcher to consultant ise tarihi update et
 
-    $clientFlag = false;
-    foreach ($asGroups as $key => $value)
-    {
-      if($value == '117')
-      {
-        $clientFlag = true;
-      }
-    }
 
     if($clientFlag)
     {
