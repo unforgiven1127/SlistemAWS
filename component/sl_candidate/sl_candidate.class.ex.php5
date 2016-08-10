@@ -2178,7 +2178,7 @@ class CSl_candidateEx extends CSl_candidate
          - <span> created by '.$this->_oLogin->getUserLink($this->casUsers[$pasPosition['created_by']], true).'</span>
          <span class="note_date"><em class="light">'.$sDate.'</em></span>
         </div>
-        <div class="note_content" style="margin-left: 0px;">
+        <div class="note_content" style="margin-left: 0px; height:90px !important;">
 
           <div class="position_row">
 
