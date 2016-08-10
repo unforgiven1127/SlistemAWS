@@ -2963,6 +2963,22 @@ var_dump($query);*/
     return $result;
   }
 
+  function getCandidateInformation($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT c.*,cp.*
+               FROM sl_candidate c
+               INNER JOIN sl_candidate_profile cp on cp.candidatefk = c.sl_candidatepk
+               WHERE c.sl_candidatepk = '".$candidate_id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getLoggedQuery($searchID)
   {
     $oDB = CDependency::getComponentByName('database');

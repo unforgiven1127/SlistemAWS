@@ -4918,98 +4918,131 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => 'Could not find the meeting');
 
       $nCandidatefk = (int)getValue('candidatefk');
-      if(!assert('is_key($nCandidatefk)'))
-        return array('error' => __LINE__.' - Could not find the candidate data');
 
-      $sNotify = getValue('notify_meeting_done');
-      $sNote = trim(getValue('meeting_note'));
-      $nCreator = 0;
+      $candidate_info = getCandidateInformation($nCandidatefk);
 
-      if(!empty($sNotify))
+      $skillArray = array();
+      $skillArray[] = $candidate_info[0]['skill_ag'];
+      $skillArray[] = $candidate_info[0]['skill_ap'];
+      $skillArray[] = $candidate_info[0]['skill_am'];
+      $skillArray[] = $candidate_info[0]['skill_mp'];
+      $skillArray[] = $candidate_info[0]['skill_in'];
+      $skillArray[] = $candidate_info[0]['skill_ex'];
+      $skillArray[] = $candidate_info[0]['skill_fx'];
+      $skillArray[] = $candidate_info[0]['skill_ch'];
+      $skillArray[] = $candidate_info[0]['skill_ed'];
+      $skillArray[] = $candidate_info[0]['skill_pl'];
+      $skillArray[] = $candidate_info[0]['skill_e'];
+
+      $skillFlag = true;
+
+      foreach ($skillArray as $key => $value)
       {
-        $nCreator = (int)getValue('creatorfk');
-        if(!assert('is_key($nCreator)'))
-          return array('error' => 'Could not find the meeting creator data.');
-      }
-
-      $asCandidate = $this->getCandidateData($nCandidatefk);
-      if(empty($asCandidate) || $asCandidate['_sys_status'] > 0)
-        return array('error' => __LINE__.' - Could not find the candidate data');
-
-      //field tested, time for update, email and note
-      $oMeeting = $this->_getModel()->getByPk($pnMeetingPk, 'sl_meeting');
-      $bRead = $oMeeting->readFirst();
-      if(!$bRead)
-        return array('error' => __LINE__.' - Could not find the meeting data');
-
-
-      $asMeetingData = array();
-      $asMeetingData['meeting_done']= 1;
-      $asMeetingData['date_met'] = getValue('date_met', date('Y-m-d H:i:s'));
-
-      if(getValue('meeting_type'))
-        $asMeetingData['type'] = (int)getValue('meeting_type');
-
-
-      $bUpdate = $this->_getModel()->update($asMeetingData, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
-      if(!$bUpdate)
-        return array('error' => __LINE__.' - Could not update the meeting');
-
-      $asMeetingData['sl_meetingpk'] = $pnMeetingPk;
-      foreach($oMeeting->getData() as $sField => $vValue)
-      {
-        if(!isset($asMeetingData[$sField]))
-          $asMeetingData[$sField] = $vValue;
-      }
-
-      $oLogin = CDependency::getCpLogin();
-      $nCurrentUser = $oLogin->getUserPk();
-
-
-      if(!empty($sNotify) /*&& $nCurrentUser != $nCreator*/)
-      {
-        $asUserData = $oLogin->getUserDataByPk($nCreator);
-
-        if(isset($asUserData))
+        if(!isset($value) || empty($value))
         {
-          $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $nCandidatefk);
-          $sLink = $this->_oDisplay->getLink('#'.$nCandidatefk, $sURL);
-
-          $sContent = 'Dear '.$asUserData['firstname'].',<br /><br />';
-          $sContent.= $oLogin->getUserLink($nCurrentUser).' has met the candidate '.$sLink.' thanks to the meeting you\'ve set for him.<br />';
-          $sContent.= 'This meeting has been credited to your KPI stats.' ;
-
-          if(!empty($sNote))
-          {
-            $sContent.= '<br /><br />A character note has been created at this occasion:<br /><br />';
-            $sContent.= $sNote;
-          }
-
-          $oMail = CDependency::getComponentByName('mail');
-          $oMail->createNewEmail();
-          $oMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM);
-
-          $oMail->addRecipient($asUserData['email'], $asUserData['lastname'].' '.$asUserData['firstname']);
-          $oMail->send('Candidate #'.$nCandidatefk.' - Meeting done', $sContent);
+          $skillFlag = false;
         }
       }
 
-      if(!empty($sNote))
+      if($skillFlag)
       {
-        $oNote = CDependency::getComponentByName('sl_event');
-        $asResult = $oNote->addNote($nCandidatefk, 'character', $sNote, $nCurrentUser);
+        if(!assert('is_key($nCandidatefk)'))
+          return array('error' => __LINE__.' - Could not find the candidate data');
 
-        if(isset($asResult['error']))
-          return $asResult;
+        $sNotify = getValue('notify_meeting_done');
+        $sNote = trim(getValue('meeting_note'));
+        $nCreator = 0;
+
+        if(!empty($sNotify))
+        {
+          $nCreator = (int)getValue('creatorfk');
+          if(!assert('is_key($nCreator)'))
+            return array('error' => 'Could not find the meeting creator data.');
+        }
+
+        $asCandidate = $this->getCandidateData($nCandidatefk);
+        if(empty($asCandidate) || $asCandidate['_sys_status'] > 0)
+          return array('error' => __LINE__.' - Could not find the candidate data');
+
+        //field tested, time for update, email and note
+        $oMeeting = $this->_getModel()->getByPk($pnMeetingPk, 'sl_meeting');
+        $bRead = $oMeeting->readFirst();
+        if(!$bRead)
+          return array('error' => __LINE__.' - Could not find the meeting data');
+
+
+        $asMeetingData = array();
+        $asMeetingData['meeting_done']= 1;
+        $asMeetingData['date_met'] = getValue('date_met', date('Y-m-d H:i:s'));
+
+        if(getValue('meeting_type'))
+          $asMeetingData['type'] = (int)getValue('meeting_type');
+
+
+        $bUpdate = $this->_getModel()->update($asMeetingData, 'sl_meeting', 'sl_meetingpk = '.$pnMeetingPk);
+        if(!$bUpdate)
+          return array('error' => __LINE__.' - Could not update the meeting');
+
+        $asMeetingData['sl_meetingpk'] = $pnMeetingPk;
+        foreach($oMeeting->getData() as $sField => $vValue)
+        {
+          if(!isset($asMeetingData[$sField]))
+            $asMeetingData[$sField] = $vValue;
+        }
+
+        $oLogin = CDependency::getCpLogin();
+        $nCurrentUser = $oLogin->getUserPk();
+
+
+        if(!empty($sNotify) /*&& $nCurrentUser != $nCreator*/)
+        {
+          $asUserData = $oLogin->getUserDataByPk($nCreator);
+
+          if(isset($asUserData))
+          {
+            $sURL = $this->_oPage->getUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $nCandidatefk);
+            $sLink = $this->_oDisplay->getLink('#'.$nCandidatefk, $sURL);
+
+            $sContent = 'Dear '.$asUserData['firstname'].',<br /><br />';
+            $sContent.= $oLogin->getUserLink($nCurrentUser).' has met the candidate '.$sLink.' thanks to the meeting you\'ve set for him.<br />';
+            $sContent.= 'This meeting has been credited to your KPI stats.' ;
+
+            if(!empty($sNote))
+            {
+              $sContent.= '<br /><br />A character note has been created at this occasion:<br /><br />';
+              $sContent.= $sNote;
+            }
+
+            $oMail = CDependency::getComponentByName('mail');
+            $oMail->createNewEmail();
+            $oMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM);
+
+            $oMail->addRecipient($asUserData['email'], $asUserData['lastname'].' '.$asUserData['firstname']);
+            $oMail->send('Candidate #'.$nCandidatefk.' - Meeting done', $sContent);
+          }
+        }
+
+        if(!empty($sNote))
+        {
+          $oNote = CDependency::getComponentByName('sl_event');
+          $asResult = $oNote->addNote($nCandidatefk, 'character', $sNote, $nCurrentUser);
+
+          if(isset($asResult['error']))
+            return $asResult;
+        }
+
+        $this->_meetingUpdateCandiStatus(1, $asCandidate, $asMeetingData);
+
+        // remove reminders
+        $oNotification = CDependency::getComponentByName('notification');
+        $oNotification->cancelNotification(array('cp_uid' => '555-001', 'cp_action' => 'ppav', 'cp_type' => 'meet', 'cp_pk' => $pnMeetingPk));
+
+        return array('notice' => 'Meeting updated.', 'action' => 'goPopup.removeByType(\'layer\'); refresh_candi('.$nCandidatefk.'); ');
       }
-
-      $this->_meetingUpdateCandiStatus(1, $asCandidate, $asMeetingData);
-
-      // remove reminders
-      $oNotification = CDependency::getComponentByName('notification');
-      $oNotification->cancelNotification(array('cp_uid' => '555-001', 'cp_action' => 'ppav', 'cp_type' => 'meet', 'cp_pk' => $pnMeetingPk));
-
-      return array('notice' => 'Meeting updated.', 'action' => 'goPopup.removeByType(\'layer\'); refresh_candi('.$nCandidatefk.'); ');
+      else
+      {
+        return array('error' => __LINE__.' - Please fill all skill areas (AG, FX, AP, etc.)');
+      }
     }
 
 
