@@ -4922,17 +4922,17 @@ class CSl_candidateEx extends CSl_candidate
       $candidate_info = getCandidateInformation($nCandidatefk);
 
       $skillArray = array();
-      $skillArray[] = $candidate_info[0]['skill_ag'];
-      $skillArray[] = $candidate_info[0]['skill_ap'];
-      $skillArray[] = $candidate_info[0]['skill_am'];
-      $skillArray[] = $candidate_info[0]['skill_mp'];
-      $skillArray[] = $candidate_info[0]['skill_in'];
-      $skillArray[] = $candidate_info[0]['skill_ex'];
-      $skillArray[] = $candidate_info[0]['skill_fx'];
-      $skillArray[] = $candidate_info[0]['skill_ch'];
-      $skillArray[] = $candidate_info[0]['skill_ed'];
-      $skillArray[] = $candidate_info[0]['skill_pl'];
-      $skillArray[] = $candidate_info[0]['skill_e'];
+      $skillArray[] = $candidate_info['skill_ag'];
+      $skillArray[] = $candidate_info['skill_ap'];
+      $skillArray[] = $candidate_info['skill_am'];
+      $skillArray[] = $candidate_info['skill_mp'];
+      $skillArray[] = $candidate_info['skill_in'];
+      $skillArray[] = $candidate_info['skill_ex'];
+      $skillArray[] = $candidate_info['skill_fx'];
+      $skillArray[] = $candidate_info['skill_ch'];
+      $skillArray[] = $candidate_info['skill_ed'];
+      $skillArray[] = $candidate_info['skill_pl'];
+      $skillArray[] = $candidate_info['skill_e'];
 
       $skillFlag = true;
 
