@@ -3051,14 +3051,15 @@ var_dump($query);*/
     $user_id = $array['user_id'];
     $first_activity = $sDate;
     $last_activity = $sDate;
+    $phone = $array['phone'];
 
     $addFlag = clientExistCheck($email);
 
     if($addFlag)
     {
-      $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`password`, `company`, `user_id`
+      $sQuery = "INSERT INTO `client_login`(`email`,`firstname`,`lastname`,`phone`,`password`, `company`, `user_id`
               , `first_activity`,`last_activity`)
-               VALUES('".$email."','".$firstname."','".$lastname."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
+               VALUES('".$email."','".$firstname."','".$lastname."','".$phone."','".$password."','".$company."','".$user_id."','".$first_activity."','".$last_activity."')";
 
       $db_result = $oDB->executeQuery($sQuery);
 
