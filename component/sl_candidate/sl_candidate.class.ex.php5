@@ -2191,7 +2191,7 @@ class CSl_candidateEx extends CSl_candidate
               <div class="row"><div class="title">Company: </div><div class="data">'.$sCompany.'</div></div>
               <div class="row"><div class="title">Update: </div><div class="data">by&nbsp;&nbsp;&nbsp;'.$pasPosition['link_creator'].'
                 &nbsp;&nbsp;&nbsp;&nbsp;on the&nbsp;&nbsp;&nbsp;'.$pasPosition['link_date'].'</div></div>
-              <div class="row"><div class="title">Send to client: </div><div class="data">'.$sCompany.'</div></div>
+              <div class="row"><div class="title">Client: </div><div class="data">'.$sCompany.'</div></div>
             </div>
 
             <div class="position_view" onclick="'.$sOnclick.'"><span>View & edit</span></div>
