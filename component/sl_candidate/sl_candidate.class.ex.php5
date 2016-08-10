@@ -5041,7 +5041,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        return array('error' => __LINE__.' - Please fill all skill areas (AG, FX, AP, etc.)');
+        return array('error' => __LINE__.' - Please fill all skill areas (AG, FX, AP, etc.) to update the meeting.');
       }
     }
 
