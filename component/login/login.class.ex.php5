@@ -1130,7 +1130,10 @@ class CLoginEx extends CLogin
 
     if($clientFlag)
     {
-      $asUpdate['user_id'] = $pnLoginPk;
+      $oLogin = CDependency::getCpLogin();
+      $user_id = $oLogin->getUserPk();
+
+      $asUpdate['user_id'] = $user_id;
       $return = addNewClient($asUpdate);
 
       if($return)
@@ -1139,7 +1142,7 @@ class CLoginEx extends CLogin
       }
       else
       {
-        return array('error' => 'Email already added');
+        return array('error' => 'User already added with the same email.');
       }
 
     }
