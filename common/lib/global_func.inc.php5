@@ -2963,7 +2963,7 @@ var_dump($query);*/
     return $result;
   }
 
-  function getCandidateInformation($candidate_id)
+  /*function getCandidateInformation($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');
 
@@ -2977,7 +2977,7 @@ var_dump($query);*/
     $result = $db_result->getAll();
 
     return $result;
-  }
+  }*/
 
   function getLoggedQuery($searchID)
   {
