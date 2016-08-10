@@ -2182,7 +2182,7 @@ class CSl_candidateEx extends CSl_candidate
 
           <div class="position_row">
 
-            <div style="height:90px !important;" class="position_status '.$sClass.'" onclick="'.$sOnclick.'">
+            <div style="height:80px !important;" class="position_status '.$sClass.'" onclick="'.$sOnclick.'">
               <div>'.$pasPosition['status_label'].'</div>
 
          </div>
