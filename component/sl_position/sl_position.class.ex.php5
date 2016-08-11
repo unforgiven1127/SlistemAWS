@@ -3132,7 +3132,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= "<table>
                     <tr>
-                      <td style='padding-top:20px; text-align: left;'>
+                      <td style='padding-top:20px; text-align: right;'>
                         Select a client:
                       </td>
                       <td style='padding-top:20px; padding-left:10px;'>
@@ -3145,7 +3145,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                     </tr>
                     <tr>
-                      <td valign='top' style='padding-top:10px; text-align: left;'>
+                      <td valign='top' style='padding-top:10px; text-align: right;'>
                         Note:
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
