@@ -3109,7 +3109,106 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
     {
       ChromePhp::log('_sendToCandidate');
-      $sHtml = "TEST";
+      if(!assert('is_key($pnLinkPk)'))
+        return array('error' => __LINE__.' - bad parameter');
+
+      $asPosition = $this->_getModel()->getPositionByLinkPk($pnLinkPk);
+      if(empty($asPosition))
+        return __LINE__.' - could not find the position/application';
+
+      //look for the application history
+      $oDbResult = $this->_getModel()->getByWhere('sl_position_link', 'sl_position_linkpk <> '.$pnLinkPk.' AND positionfk = '.(int)$asPosition['positionfk'].' AND candidatefk = '.$asPosition['candidatefk'], '*', 'date_created DESC');
+      $bHistory = $oDbResult->readFirst();
+
+      $oLogin = CDependency::getCpLogin();
+      $asStatus = $this->_getStatusList(0, false, true);
+      $sStart = substr($asPosition['date_created'], 0, 10);
+      $sEnd = substr($asPosition['date_expire'], 0, 10);
+
+
+      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
+
+        $sHTML.= $this->_oDisplay->getTitle('Current status...', 'h3', true);
+        $sHTML.= '<div style="background-color: #f0f0f0; width: 80%; padding: 10px; margin: 20px auto 0 auto; line-height: 20px;">';
+
+        if($asPosition['active'] && $asPosition['in_play'])
+          $sHTML.= 'Candidate playing for '.$oLogin->getuserLink((int)$asPosition['created_by']).'.<br />';
+        else
+          $sHTML.= 'Last update from '.$oLogin->getuserLink((int)$asPosition['created_by']).'.<br />Not currently in play for this position.<br />';
+
+        $sHTML.= 'Status set to <span style="color: #BD4646;">'.$asStatus[$asPosition['status']].'</span> on the '.$sStart.', and expires on the <span style="color: #BD4646;">'.$sEnd.'</span>.';
+
+        if(!empty($asPosition['comment']))
+        {
+          $sHTML.= '<br />Comment:<br />
+            <div style="border-left: 2px solid #bbb; margin-left: 20px; padding-left: 8px; font-style: italic;">'.$asPosition['comment'].'</div>';
+        }
+        else
+           $sHTML.= '<br />';
+
+        $sHTML.= '<br /><span style="font-style: italic; color: #999; font-size: 10px;">expiring date : the date the status will automaticlally shift to "stalled".</span>
+        </div>';
+
+        if(CDependency::getComponentByName('right')->canAccess($this->csUid, 'admin'))
+        {
+          $bAdmin = true;
+          $sPic = $this->_oDisplay->getPicture($this->getResourcePath().'pictures/delete_16.png');
+          $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_LINK, (int)$asPosition['sl_position_linkpk']);
+
+          if($bHistory)
+            $sMessage = 'Are you sure you want to delete this stage ? <br />Status will roll back to previous stage.';
+          else
+            $sMessage = 'Are you sure you want to delete this application ? <br />The candidate will not be in play for this position anymore. ';
+
+           $sHTML.= $this->_oDisplay->getLink('Delete '.$sPic, 'javascript:;', array('class' => 'position_delete', 'style' => 'position: relative; float: right;',
+                'onclick' => ' goPopup.setPopupConfirm(\''.$sMessage.'\', \' AjaxRequest(\\\''.$sURL.'\\\'); \'); '));
+        }
+        else
+        {
+          $bAdmin = false;
+          $sPic = '';
+        }
+
+
+        if($bHistory)
+        {
+          $nCount = $oDbResult->numRows();
+          $sHTML.= '<br />';
+          $sHTML.= $this->_oDisplay->getLink('Previous stages ('.$nCount.')', 'javascript:;', array('id' => 'position_history_link', 'onclick' => '$(\'#position_history\').fadeToggle();  $(this).hide();', 'style' => 'margin-left: 75px;'));
+
+          $sHTML.= $this->_oDisplay->getBlocStart('position_history', array('class' => 'hidden'));
+          $sHTML.= '<br />'.$this->_oDisplay->getTitle('History...', 'h3', true, array('onclick' => '$(\'#position_history_link, #position_history\').fadeToggle();', 'style' => 'cursor: pointer;'));
+
+          while($bHistory)
+          {
+            $asHistory = $oDbResult->getData();
+
+            if($asHistory['in_play'])
+              $sPrefix = '<span class="play_status">In play</span>';
+            else
+              $sPrefix = '<span class="play_status">Not in play</span>';
+
+            $sHTML.= '<div class="position_step_list">'.$sPrefix.'The '.substr($asHistory['date_created'], 0, 10).' candidate was set in&nbsp;&nbsp;&nbsp;<b>'.$asStatus[$asHistory['status']].'</b>&nbsp;&nbsp;&nbsp; by '.$oLogin->getUserLink((int)$asHistory['created_by']);
+
+            if($bAdmin)
+            {
+              $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_LINK, (int)$asHistory['sl_position_linkpk']);
+              $sMessage = 'Are you sure you want to delete this stage ? <br />Status will roll back to previous stage.';
+
+              $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('class' => 'position_delete',
+                'onclick' => ' goPopup.setPopupConfirm(\''.$sMessage.'\', \' AjaxRequest(\\\''.$sURL.'\\\'); \'); '));
+            }
+
+            $sHTML.= '</div>';
+            $bHistory = $oDbResult->readNext();
+          }
+
+          $sHTML.= $this->_oDisplay->getBlocEnd();
+        }
+
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+
+      $sHTML.= $this->_linkPositionForm($asPosition);
       return $sHTML;
     }
 
