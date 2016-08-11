@@ -3132,11 +3132,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= "<table>
                     <tr>
-                      <td style='padding-top:20px;'>
+                      <td style='padding-top:20px; text-align: left;'>
                         Select a client:
                       </td>
-                      <td style='padding-top:20px;'>
-                        <select style='width:400px;'>
+                      <td style='padding-top:20px; padding-left:10px;'>
+                        <select style='width:405px;'>
                           <option value=''>Test</option>
                           <option value=''>Test</option>
                           <option value=''>Test</option>
@@ -3145,10 +3145,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                     </tr>
                     <tr>
-                      <td valign='top' style='padding-top:10px;'>
+                      <td valign='top' style='padding-top:10px; text-align: left;'>
                         Note:
                       </td>
-                      <td valign='top' style='padding-top:10px;'>
+                      <td valign='top' style='padding-top:10px; padding-left:10px;'>
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
                       </td>
                     </tr>
