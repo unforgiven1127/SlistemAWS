@@ -3108,6 +3108,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
     {
+      ChromePhp::log('_sendToCandidate');
       $sHtml = "TEST";
       return $sHTML;
     }
