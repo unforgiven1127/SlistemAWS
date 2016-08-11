@@ -206,6 +206,10 @@ class CSl_positionEx extends CSl_position
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_editLinkstatus($this->cnPk)))));
             break;
 
+          case CONST_ACTION_SEND:
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->cnPk)))));
+            break;
+
           case CONST_ACTION_DELETE:
             return json_encode($this->_oPage->getAjaxExtraContent($this->_deleteLinkstatus($this->cnPk)));
             break;
@@ -3101,6 +3105,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       return $oTemplate->getDisplay($pasPosition);
     }
 
+
+    private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
+    {
+      $sHtml = "TEST";
+      return $sHTML;
+    }
 
     private function _editLinkStatus($pnLinkPk)
     {

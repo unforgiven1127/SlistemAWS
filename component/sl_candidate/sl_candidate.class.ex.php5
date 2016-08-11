@@ -2171,6 +2171,9 @@ class CSl_candidateEx extends CSl_candidate
       else
         $sClass = 'stopped';
 
+      $sSendCandiView = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_SEND, CONST_POSITION_TYPE_LINK, (int)$pasPosition['sl_position_linkpk'], array('positionfk' => (int)$pasPosition['positionfk'], 'candidatefk' => $pnCandidatePk));
+      $sOnclickSendCandi = 'view_position(\''.$sSendCandiView.'\'); ';
+
       $sHTML = '<div class="entry">
         <div class="note_header">
         &rarr;&nbsp;&nbsp;
@@ -2191,7 +2194,7 @@ class CSl_candidateEx extends CSl_candidate
               <div class="row"><div class="title">Company: </div><div class="data">'.$sCompany.'</div></div>
               <div class="row"><div class="title">Update: </div><div class="data">by&nbsp;&nbsp;&nbsp;'.$pasPosition['link_creator'].'
                 &nbsp;&nbsp;&nbsp;&nbsp;on the&nbsp;&nbsp;&nbsp;'.$pasPosition['link_date'].'</div></div>
-              <div class="row"><div class="title">Client: </div><div class="data"><a onclick="'.$sOnclick.'" href="#">Send to the client</a></div></div>
+              <div class="row"><div class="title">Client: </div><div class="data"><a onclick="'.$sOnclickSendCandi.'" href="#">Send to the client</a></div></div>
             </div>
 
             <div class="position_view" onclick="'.$sOnclick.'"><span>View & edit</span></div>
