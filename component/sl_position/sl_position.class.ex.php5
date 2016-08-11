@@ -3125,7 +3125,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sStart = substr($asPosition['date_created'], 0, 10);
       $sEnd = substr($asPosition['date_expire'], 0, 10);
 
-
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
@@ -3133,7 +3132,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= "<table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
-                        Select a client:
+                        <b>Select a client:</b>
                       </td>
                       <td style='padding-top:20px; padding-left:10px;'>
                         <select style='width:405px;'>
@@ -3146,10 +3145,15 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                     <tr>
                       <td valign='top' style='padding-top:10px; text-align: right;'>
-                        Note:
+                        <b>Note:</b>
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div>
                       </td>
                     </tr>
                  </table>";
