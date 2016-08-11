@@ -3153,7 +3153,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                     <tr>
                       <td>
-                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div>
+                      </td>
+                      <td>
+                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send' onclick=''><div class='floatHack'></div> </div>
                       </td>
                     </tr>
                  </table>";
