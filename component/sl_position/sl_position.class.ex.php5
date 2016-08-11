@@ -3130,6 +3130,30 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
+        $sHTML.= "<table>
+                    <tr>
+                      <td>
+                        Select a client:
+                      </td>
+                      <td>
+                        <select>
+                          <option value=''>Test</option>
+                          <option value=''>Test</option>
+                          <option value=''>Test</option>
+                          <option value=''>Test</option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Note:
+                      </td>
+                      <td>
+                        <textarea style='width:250px;' rows='10' cols='50'></textarea>
+                      </td>
+                    </tr>
+                 </table>";
+
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
