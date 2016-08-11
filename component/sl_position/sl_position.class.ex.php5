@@ -206,7 +206,7 @@ class CSl_positionEx extends CSl_position
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_editLinkstatus($this->cnPk)))));
             break;
 
-          case CONST_ACTION_SEND:
+          case CONST_ACTION_SEND_CLIENT:
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->cnPk)))));
             break;
 

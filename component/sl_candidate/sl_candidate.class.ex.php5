@@ -2171,7 +2171,7 @@ class CSl_candidateEx extends CSl_candidate
       else
         $sClass = 'stopped';
 
-      $sSendCandiView = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_SEND, CONST_POSITION_TYPE_LINK, (int)$pasPosition['sl_position_linkpk'], array('positionfk' => (int)$pasPosition['positionfk'], 'candidatefk' => $pnCandidatePk));
+      $sSendCandiView = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_SEND_CLIENT, CONST_POSITION_TYPE_LINK, (int)$pasPosition['sl_position_linkpk'], array('positionfk' => (int)$pasPosition['positionfk'], 'candidatefk' => $pnCandidatePk));
       $sOnclickSendCandi = 'view_position(\''.$sSendCandiView.'\'); ';
 
       $sHTML = '<div class="entry">
