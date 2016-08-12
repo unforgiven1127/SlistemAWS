@@ -3138,12 +3138,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_SUGGEST, CONST_POSITION_TYPE_LINK, (int)$pnLinkPk);
 
+
+      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
+
       $oForm = $this->_oDisplay->initForm('linkPositionForm');
       $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
       $oForm->setFormDisplayParams(array('noCancelButton' => true));
-
-
-      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
