@@ -3164,13 +3164,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       <td>
                       </td>
                       <td>
-                        <div class='submitBtnClass formFieldWidth1'> <input type='button' value='Send'
-                            onclick='AjaxRequest(\'".$sURL."\')'>
-                          <div class='floatHack'></div>
+                        <div class='submitBtnClass formFieldWidth1'> <input type='button' value='Send'";
+
+                          $sHTML.= '  onclick="AjaxRequest(\\\''.$sURL.'\\\'); ">
+                          <div class="floatHack"></div>
                         </div>
                       </td>
                     </tr>
-                 </table>";
+                 </table>';
 
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
