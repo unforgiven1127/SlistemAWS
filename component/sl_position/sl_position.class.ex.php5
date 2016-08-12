@@ -3112,9 +3112,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _suggestCandidate($pnLinkPk)
     {
       $sl_position_linkpk = $_GET['ppk'];
-      $client = $_GET['client'];
+      $client = getValue('client');
       $oLogin = CDependency::getCpLogin();
 
+      ChromePhp::log($sl_position_linkpk);
       ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
