@@ -3120,7 +3120,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getUserPk();
 
-      return array('error' => 'Candidate suggested successfully.');
+      echo 'test';
+      //return array('error' => 'Candidate suggested successfully.');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
@@ -3142,7 +3143,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' submitajax='1' action='".$sURL."' method='POST' id='suggestPositionFormId' onbeforesubmit='' onsubmit=''>
+        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' submitajax='1' action='".$sURL."' method='POST'>
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
