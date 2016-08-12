@@ -3175,7 +3175,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       //$sHTML.= $this->_linkPositionForm($asPosition);
-      return $sHTML;
+      return $sHTML . $oForm->getDisplay();
     }
 
     private function _editLinkStatus($pnLinkPk)
