@@ -3112,15 +3112,15 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _suggestCandidate($pnLinkPk)
     {
       $sl_position_linkpk = $_GET['ppk'];
-      $client = $_POST['client'];
+      //$client = $_POST['client'];
       $oLogin = CDependency::getCpLogin();
 
-      ChromePhp::log($sl_position_linkpk);
-      ChromePhp::log($client);
+      //ChromePhp::log($sl_position_linkpk);
+      //ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
 
-      return array('error' => 'Candidate suggested successfully.');
+      return array('error' => __LINE__.' - It seems that candidate is already in play for this position.');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
