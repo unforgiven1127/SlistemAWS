@@ -3169,7 +3169,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       <td>
                         <div class='submitBtnClass formFieldWidth1'> <input type='button' value='Send'";
 
-                          $sHTML.= '  onclick="AjaxRequest(\''.$sURL.'&client=document.getElementById("client").value;'.'\'); ">
+                          $sHTML.= '  onclick="AjaxRequest(\''.$sURL.'&client=document.getElementById(\'client\').value;'.'\'); ">
                           <div class="floatHack"></div>
                         </div>
                       </td>
