@@ -3111,7 +3111,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _suggestCandidate($pnLinkPk)
     {
-
+      $sl_position_linkpk = $_GET['ppk'];
+      ChromePhp::log($sl_position_linkpk);
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
@@ -3161,7 +3162,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                     <tr>
                       <td>
-                        <input value='".$pnLinkPk."' ></input>
                       </td>
                       <td>
                         <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send' onclick='".$sURL."'>
