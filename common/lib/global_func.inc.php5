@@ -2794,6 +2794,19 @@ var_dump($query);*/
     return $result;
   }
 
+  function getClientUsers()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM client_login cl WHERE cl.flag = 'a' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getCandidateInformation($candidate_id)
   {
     $sNow = date('Y-m-d H:i:s');

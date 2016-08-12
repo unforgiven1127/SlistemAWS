@@ -3121,9 +3121,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $bHistory = $oDbResult->readFirst();
 
       $oLogin = CDependency::getCpLogin();
-      $asStatus = $this->_getStatusList(0, false, true);
-      $sStart = substr($asPosition['date_created'], 0, 10);
-      $sEnd = substr($asPosition['date_expire'], 0, 10);
+
+      $clients = getClientUsers();
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
@@ -3135,12 +3134,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <b>Select a client:</b>
                       </td>
                       <td style='padding-top:20px; padding-left:10px;'>
-                        <select style='width:405px;'>
-                          <option value=''>Test</option>
-                          <option value=''>Test</option>
-                          <option value=''>Test</option>
-                          <option value=''>Test</option>
-                        </select>
+                        <select style='width:405px;'>";
+                        foreach ($clients as $key => $value)
+                        {
+                          $sHTML.= "<option value='".$value['id']."'>".$value['firstname']." ".$value['lastname']."</option>";
+                        }
+                        $sHTML.= "</select>
                       </td>
                     </tr>
                     <tr>
