@@ -3117,7 +3117,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $msg = '<div style=" font-size:15px; width: 300px; color:#585858; font-weight: bold; background-color:#89C35C;" role="alert">
                 Candidate suggested successfully
               </div>';
-      _sendToCandidate($pnLinkPk, $msg);
+      $this->_sendToCandidate($sl_position_linkpk, $msg);
     }
 
     private function _sendToCandidate($pnLinkPk, $msg='')//posizyon ve candidate bu bilgi icinde mevcut
