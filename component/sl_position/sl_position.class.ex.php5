@@ -3144,7 +3144,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
-      $sHTML.=$oForm;
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
@@ -3188,7 +3187,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       //$sHTML.= $this->_linkPositionForm($asPosition);
-      return $sHTML;
+      return $sHTML . $oForm->getDisplay();
     }
 
     private function _editLinkStatus($pnLinkPk)
