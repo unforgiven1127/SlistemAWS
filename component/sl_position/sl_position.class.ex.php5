@@ -3114,14 +3114,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
-        $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
-      $sHTML.= $this->_oDisplay->getBlocEnd();
-
-      //$sHTML.= $this->_linkPositionForm($asPosition);
-      return $sHTML;
-
-      //$this->_sendToCandidate($sl_position_linkpk, $msg);
+      $asError = array();
+      $asError[] = 'test';
+      return array('popupError' => implode("\n", $asError));
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
@@ -3132,10 +3127,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $asPosition = $this->_getModel()->getPositionByLinkPk($pnLinkPk);
       if(empty($asPosition))
         return __LINE__.' - could not find the position/application';
-
-      //look for the application history
-      $oDbResult = $this->_getModel()->getByWhere('sl_position_link', 'sl_position_linkpk <> '.$pnLinkPk.' AND positionfk = '.(int)$asPosition['positionfk'].' AND candidatefk = '.$asPosition['candidatefk'], '*', 'date_created DESC');
-      $bHistory = $oDbResult->readFirst();
 
       $oLogin = CDependency::getCpLogin();
 
