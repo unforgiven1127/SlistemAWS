@@ -3112,7 +3112,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _suggestCandidate($pnLinkPk)
     {
       $sl_position_linkpk = $_GET['ppk'];
-      ChromePhp::log($sl_position_linkpk);
+      $client = $_GET['client'];
+      $oLogin = CDependency::getCpLogin();
+
+      ChromePhp::log($client);
+
+      $user_id = $oLogin->getUserPk();
 
       return array('error' => 'Candidate suggested successfully.');
     }
@@ -3142,7 +3147,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <b>Select a client:</b>
                       </td>
                       <td style='padding-top:20px; padding-left:10px;'>
-                        <select style='width:405px;'>";
+                        <select id='client' name='client' style='width:405px;'>";
                         foreach ($clients as $key => $value)
                         {
                           $sHTML.= "<option value='".$value['id']."'>".$value['firstname']." ".$value['lastname']."</option>";
@@ -3164,7 +3169,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       <td>
                         <div class='submitBtnClass formFieldWidth1'> <input type='button' value='Send'";
 
-                          $sHTML.= '  onclick="AjaxRequest(\''.$sURL.'\'); ">
+                          $sHTML.= '  onclick="AjaxRequest(\''.$sURL.'&client=document.getElementById("client").value;'.'\'); ">
                           <div class="floatHack"></div>
                         </div>
                       </td>
