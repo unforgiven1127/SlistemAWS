@@ -3144,11 +3144,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oForm = $this->_oDisplay->initForm('linkPositionForm');
       $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
       $oForm->setFormDisplayParams(array('noCancelButton' => true));
-      $oForm->addSection('', array('class' => 'test'));
 
-        $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
+        $oForm->getDisplay().= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "
+        $oForm->getDisplay().= "
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
@@ -3158,9 +3157,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <select id='client' name='client' style='width:405px;'>";
                         foreach ($clients as $key => $value)
                         {
-                          $sHTML.= "<option value='".$value['id']."'>".$value['firstname']." ".$value['lastname']."</option>";
+                          $oForm->getDisplay().= "<option value='".$value['id']."'>".$value['firstname']." ".$value['lastname']."</option>";
                         }
-                        $sHTML.= "</select>
+                        $oForm->getDisplay().= "</select>
                       </td>
                     </tr>
                     <tr>
@@ -3173,7 +3172,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>";
 
-      $oForm->closeSection();
       $sHTML.= $oForm->getDisplay();
       $sHTML.= $this->_oDisplay->getBlocEnd();
       //$sHTML.= $this->_linkPositionForm($asPosition);
