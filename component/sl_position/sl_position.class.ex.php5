@@ -3112,7 +3112,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _suggestCandidate($pnLinkPk)
     {
       $sl_position_linkpk = $_GET['ppk'];
-      $client = $_POST['client'];
+      $client = $_GET['client'];
       $oLogin = CDependency::getCpLogin();
 
       ChromePhp::log($sl_position_linkpk);
@@ -3138,15 +3138,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_SUGGEST, CONST_POSITION_TYPE_LINK, (int)$pnLinkPk);
 
-      $oForm = $this->_oDisplay->initForm('suggestPositionForm');
-      $oForm->setFormParams('suggestPositionForm', true, array('action' => $sURL));
-      $oForm->setFormDisplayParams(array('noCancelButton' => true));
-
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<table>
+        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' submitajax='1' action='".$sURL."' method='POST' id='suggestPositionFormId' onbeforesubmit='' onsubmit=''>
+                  <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
                         <b>Select a client:</b>
@@ -3168,14 +3165,24 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
                       </td>
                     </tr>
-                    
-                 </table>";
+                    <tr>
+                      <td>
+                      </td>
+                      <td>
+                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send'";
+
+                          $sHTML.= ' >
+                          <div class="floatHack"></div>
+                        </div>
+                      </td>
+                    </tr>
+                 </table></form>';
 
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       //$sHTML.= $this->_linkPositionForm($asPosition);
-      return $sHTML . $oForm->getDisplay();
+      return $sHTML;
     }
 
     private function _editLinkStatus($pnLinkPk)
