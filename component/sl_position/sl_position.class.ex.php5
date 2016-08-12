@@ -3184,9 +3184,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>';
 
-      $sHTML.= $this->_oDisplay->getBlocEnd();
-
       $sHTML.= $oForm->getDisplay();
+      $sHTML.= $this->_oDisplay->getBlocEnd();
       //$sHTML.= $this->_linkPositionForm($asPosition);
       return $sHTML;
     }
