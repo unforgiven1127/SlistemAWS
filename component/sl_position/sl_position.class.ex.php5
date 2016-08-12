@@ -3172,6 +3172,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>";
 
+      $sHTML.= $oForm->getDisplay();
       $sHTML.= "<form name='linkPositionForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=51317&amp;pg=ajx' method='POST' id='linkPositionFormId' onbeforesubmit='' onsubmit=''><div id='linkPositionFormInnerId' class='innerForm'><div class='formFieldLinebreaker formFieldWidth1'>&nbsp;</div> <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div><div class='floatHack'></div></div><div class='floatHack'></div></form>";
       $sHTML.= $this->_oDisplay->getBlocEnd();
       //$sHTML.= $this->_linkPositionForm($asPosition);
