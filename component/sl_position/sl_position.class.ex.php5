@@ -3142,7 +3142,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
       $oForm->setFormDisplayParams(array('noCancelButton' => true));
 
-      $sHTML.= $oForm->getDisplay();
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
@@ -3185,9 +3184,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>';
 
-
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
+      $sHTML.= $oForm->getDisplay();
       //$sHTML.= $this->_linkPositionForm($asPosition);
       return $sHTML;
     }
