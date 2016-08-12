@@ -3171,18 +3171,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
                       </td>
                     </tr>
-                    <tr>
-                      <td>
-                      </td>
-                      <td>
-                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send'";
-
-                          $sHTML.= ' >
-                          <div class="floatHack"></div>
-                        </div>
-                      </td>
-                    </tr>
-                 </table>';
+                 </table>";
 
       $sHTML.= $oForm->getDisplay();
       $sHTML.= $this->_oDisplay->getBlocEnd();
