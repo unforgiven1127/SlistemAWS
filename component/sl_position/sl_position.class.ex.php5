@@ -3260,7 +3260,13 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
-      return array('error' => 'Missing parameters.');
+      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
+
+        $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
+        $sHTML.= $this->_oDisplay->getBlocEnd();
+
+      //$sHTML.= $this->_linkPositionForm($asPosition);
+      return $sHTML;
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
