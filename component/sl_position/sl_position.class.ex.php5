@@ -3118,7 +3118,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                 Candidate suggested successfully
               </div>';
 
-      return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->pnLinkPk)))));
+      return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->sl_position_linkpk)))));
       //$this->_sendToCandidate($sl_position_linkpk, $msg);
     }
 
