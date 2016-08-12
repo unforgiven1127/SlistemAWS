@@ -3114,11 +3114,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      $msg = '<div style=" font-size:15px; width: 300px; color:#585858; font-weight: bold; background-color:#89C35C;" role="alert">
-                Candidate suggested successfully
-              </div>';
+      echo "<script>
+            alert('There are no fields to generate a report');
+            window.location.href='admin/ahm/panel';
+            </script>";
 
-      return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->sl_position_linkpk)))));
       //$this->_sendToCandidate($sl_position_linkpk, $msg);
     }
 
