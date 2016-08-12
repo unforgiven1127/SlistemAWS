@@ -3139,8 +3139,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_SUGGEST, CONST_POSITION_TYPE_LINK, (int)$pnLinkPk);
 
       $oForm = $this->_oDisplay->initForm('linkPositionForm');
-      $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
-      $oForm->setFormDisplayParams(array('noCancelButton' => true));
+      //$oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
+      //$oForm->setFormDisplayParams(array('noCancelButton' => true));
 
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
@@ -3148,7 +3148,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "
+        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=51317&amp;pg=ajx' method='POST' id='suggestPositionFormId' onbeforesubmit='' onsubmit=''>
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
@@ -3182,7 +3182,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         </div>
                       </td>
                     </tr>
-                 </table>';
+                 </table></form>';
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
