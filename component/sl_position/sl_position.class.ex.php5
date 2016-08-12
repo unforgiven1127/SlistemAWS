@@ -3115,8 +3115,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       //$client = $_POST['client'];
       $oLogin = CDependency::getCpLogin();
 
-      //ChromePhp::log($sl_position_linkpk);
-      //ChromePhp::log($client);
+      ChromePhp::log($sl_position_linkpk);
+      ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
 
@@ -3172,7 +3172,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>";
 
-      $sHTML.= $oForm->getDisplay();
+      //$sHTML.= $oForm->getDisplay();
       $sHTML.= "<div id='linkPositionFormInnerId' class='innerForm'><div class='formFieldLinebreaker formFieldWidth1'>&nbsp;</div> <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div><div class='floatHack'></div></div><div class='floatHack'></div></form>";
       $sHTML.= $this->_oDisplay->getBlocEnd();
       //$sHTML.= $this->_linkPositionForm($asPosition);
