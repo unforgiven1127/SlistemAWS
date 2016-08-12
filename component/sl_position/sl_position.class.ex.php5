@@ -3260,13 +3260,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
-      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
-        $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
-        $sHTML.= $this->_oDisplay->getBlocEnd();
-
-      //$sHTML.= $this->_linkPositionForm($asPosition);
-      return $sHTML;
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
@@ -3290,7 +3284,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' submitajax='1' action='".$sURL."' method='POST'>
+        $sHTML.= "<form name='suggestPositionForm' enctype='multipart/form-data' action='".$sURL."' method='POST'>
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
