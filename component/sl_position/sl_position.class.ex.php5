@@ -3261,7 +3261,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getUserPk();
 
-      return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateView('416705')))));
+      return json_encode($this->_oPage->getAjaxExtraContent(array('data'=>convertToUtf8($this->_sendToCandidate('416705')))));
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
