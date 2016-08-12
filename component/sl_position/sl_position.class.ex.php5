@@ -3114,7 +3114,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      return 'test';
+      echo __LINE__.'No expiring position today.';
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
