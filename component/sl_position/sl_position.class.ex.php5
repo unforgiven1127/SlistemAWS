@@ -3114,9 +3114,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      $asError = array();
-      $asError[] = 'test';
-      return array('popupError' => implode("\n", $asError));
+      return array('error' => __LINE__.' - could not find the position/application');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
