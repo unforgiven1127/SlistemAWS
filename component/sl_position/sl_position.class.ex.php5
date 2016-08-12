@@ -3105,6 +3105,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       return $oTemplate->getDisplay($pasPosition);
     }
 
+    private function _suggestCandidate($pnLinkPk)
+    {
+
+    }
 
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
     {
@@ -3152,6 +3156,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                     <tr>
                       <td>
+                        <input value='".$pnLinkPk."' ></input>
                       </td>
                       <td>
                         <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send' onclick=''><div class='floatHack'></div> </div>
