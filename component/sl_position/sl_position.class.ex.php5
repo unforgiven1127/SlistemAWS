@@ -2513,6 +2513,147 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       return array('data' => convertToUtf8($sHTML));
     }
 
+    private function _getCandidateView($pnPk, $pasRedirected = array())
+    {
+      //$searchID = $_GET['searchId'];
+      if(isset($_GET['searchId']))
+      {
+        $searchID = $_GET['searchId'];
+
+        $pbInAjax = 'search_'.$searchID;
+        return $this->_displayCandidateList($pbInAjax);
+      }
+
+      if(!assert('is_key($pnPk)'))
+        return '';
+
+      $sHTML = '';
+
+      //-----------------------------------------------------------------------
+      //check the candidate profile and update _has_doc, in_play, quality_ratio
+      if(getValue('check_profile'))
+      {
+        $asCandidate = $this->updateCandidateProfile($pnPk);
+      }
+
+      $sViewURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $pnPk);
+      if(getValue('preview'))
+      {
+        $sHTML.= $this->_oDisplay->getBloc('', '
+          <a href="javascript:;" class="candi-pop-link" onclick="goPopup.removeAll(true); view_candi(\''.$sViewURL.'\');">close <b>all</b> popops & view in page<img src="/component/sl_candidate/resources/pictures/goto_16.png" /></a>
+          ', array('class' => 'close_preview'));
+      }
+
+      $asCandidate = $this->_getModel()->getCandidateData($pnPk, true);
+      if(!empty($asCandidate['_sys_redirect']))
+      {
+        $oRight = CDependency::getComponentByName('right');
+        if(!$oRight->canAccess($this->csUid, 'sys_dba', CONST_CANDIDATE_TYPE_CANDI))
+          return $this->_getCandidateView((int)$asCandidate['_sys_redirect'], $asCandidate);
+      }
+
+      //converting language attributes
+      if(isset($asCandidate['attribute']['candi_lang']))
+      {
+        $asLanguage = $this->getVars()->getLanguageList();
+        foreach($asCandidate['attribute']['candi_lang'] as $nKey => $nLanguageFk)
+              $asCandidate['attribute']['candi_lang'][$nKey] = $asLanguage[$nLanguageFk];
+      }
+
+      if(empty($asCandidate))
+      {
+        return $this->_oDisplay->getBlocMessage('<div class="no-candidate">
+          Candidate #'.$pnPk.' not found.<br /><br />
+            This candidate may have been deleted or access to its data may be restricted.<br />
+            If you think it\'s an error report a bug using the link in the menu.</div>');
+      }
+
+      //----------------------------------------------------------------------
+      //fetch other data that are not in the candidate table
+      //TODO: same queries/functions used again when creatign tabs ...
+      $asCandidate['rm'] = $this->_getModel()->getCandidateRm($pnPk);
+      $asCandidate['redirected'] = $pasRedirected;
+
+
+
+      $oPosition = CDependency::getComponentByName('sl_position');
+      $asPlayFor = $oPosition->getApplication($pnPk, false, true);
+
+      $asCandidate['in_play'] = count($asPlayFor['active']);
+      set_array($asPlayFor['inactive'], 0);
+
+      if(empty($asCandidate['in_play']))
+      {
+        $asCandidate['in_play'] = 0 - count($asPlayFor['inactive']);
+      }
+      if(empty($asCandidate['in_play']))
+      {
+        $asCandidate['in_play'] = 0;
+      }
+
+
+      $asCandidate['nb_meeting'] = 0;
+      $asCandidate['date_meeting'] = '';
+      $asCandidate['last_meeting'] = array('date' => '', 'status' => '');
+
+      $oDbResult = $this->_getModel()->getByFk($pnPk, 'sl_meeting', 'candidate', '*', 'meeting_done, date_meeting');
+      $bRead = $oDbResult->readFirst();
+      while($bRead)
+      {
+        //$sMeetingDate = $oDbResult->getFieldValue('date_meeting');
+        $sMeetingDate = $oDbResult->getFieldValue('date_met');
+        $nStatus = (int)$oDbResult->getFieldValue('meeting_done');
+
+        if($nStatus > 0)
+        {
+          if(empty($asCandidate['last_meeting']['date']) || $asCandidate['last_meeting']['date'] < $sMeetingDate)
+            $asCandidate['last_meeting'] = array('date' => $sMeetingDate);
+        }
+        else
+        {
+          if(empty($asCandidate['date_meeting']) || $asCandidate['date_meeting'] > $sMeetingDate)
+            $asCandidate['date_meeting'] = $sMeetingDate;
+        }
+
+        $asCandidate['last_meeting']['status'] = $nStatus;
+
+        $asCandidate['nb_meeting']++;
+
+        $bRead = $oDbResult->readNext();
+      }
+
+      //----------------------------------------------------------------------
+
+      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTopSectLeft'));
+      $sHTML.= $this->_getCandidateProfile($asCandidate);
+
+      //store a description of the current item for later use in javascript
+      $sLabel = preg_replace('/[^a-z0-9 \.&]/i', ' ', $asCandidate['lastname'].' '.$asCandidate['firstname']);
+      $sHTML.= $this->_oDisplay->getBloc('', '', array('class' => 'itemDataDescription hidden',
+          'data-type' => 'candi',
+          'data-pk' => $pnPk,
+          'data-label' => $sLabel,
+          'data-cp_item_selector' => '555-001|@|ppav|@|candi|@|'.$pnPk));
+
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+
+      $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTopSectRight candiTabContainer'));
+      $sHTML.= $this->_getCandidateRightTabs($asCandidate);
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+      $sHTML.= $this->_oDisplay->getFloatHack();
+
+      //fired before all the code is loaded ->
+      //$sHTML.='<script> $(".candiTabsContent").mCustomScrollbar(); </script>';
+      //a bit slow ?
+      //$sHTML.='<script>$(".aTabContent").mCustomScrollbar({advanced:{updateOnContentResize: true}}); </script>';
+
+
+      $sLink = 'javascript: view_candi(\''.$sViewURL.'\'); ';
+      $sName = $asCandidate['lastname'].' '.$asCandidate['firstname'];
+      logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => 'view - '.$sName.' (#'.$pnPk.')', 'link' => $sLink));
+
+      return $sHTML;
+    }
 
     private function _positionList($poQb = null)
     {
@@ -3120,7 +3261,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getUserPk();
 
-      echo 'test';
+      $this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
 
