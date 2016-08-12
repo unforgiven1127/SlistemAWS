@@ -210,6 +210,10 @@ class CSl_positionEx extends CSl_position
             return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_sendToCandidate($this->cnPk)))));
             break;
 
+          case CONST_ACTION_SUGGEST:
+            return json_encode($this->_oPage->getAjaxExtraContent($this->_suggestCandidate($this->cnPk)));
+            break;
+
           case CONST_ACTION_DELETE:
             return json_encode($this->_oPage->getAjaxExtraContent($this->_deleteLinkstatus($this->cnPk)));
             break;
@@ -3112,7 +3116,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
     {
-      ChromePhp::log('_sendToCandidate');
       if(!assert('is_key($pnLinkPk)'))
         return array('error' => __LINE__.' - bad parameter');
 
@@ -3127,6 +3130,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oLogin = CDependency::getCpLogin();
 
       $clients = getClientUsers();
+
+      $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_SUGGEST, CONST_POSITION_TYPE_LINK, (int)$pnLinkPk);
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
@@ -3159,7 +3164,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <input value='".$pnLinkPk."' ></input>
                       </td>
                       <td>
-                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send' onclick=''><div class='floatHack'></div> </div>
+                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send' onclick='".$sURL."'>
+                          <div class='floatHack'></div>
+                        </div>
                       </td>
                     </tr>
                  </table>";
