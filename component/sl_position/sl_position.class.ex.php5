@@ -3260,7 +3260,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       ChromePhp::log($client);
 
       $user_id = $oLogin->getUserPk();
-
+      return array('error' => 'Missing parameters.');
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
