@@ -3171,11 +3171,16 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
                       </td>
                     </tr>
+                    <tr>
+                      <td>
+                        <div id='linkPositionFormInnerId' class='innerForm'><div class='formFieldLinebreaker formFieldWidth1'>&nbsp;</div> <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div><div class='floatHack'></div></div><div class='floatHack'></div>
+                      </td>
+                    </tr>
                  </table>";
 
-      $sHTML.= $oForm->getDisplay();
-      $sHTML.= "<div id='linkPositionFormInnerId' class='innerForm'><div class='formFieldLinebreaker formFieldWidth1'>&nbsp;</div> <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div><div class='floatHack'></div></div><div class='floatHack'></div></form>";
+      $sHTML.= "</form>";
       $sHTML.= $this->_oDisplay->getBlocEnd();
+      $sHTML.= $oForm->getDisplay();
       //$sHTML.= $this->_linkPositionForm($asPosition);
       return $sHTML;
     }
