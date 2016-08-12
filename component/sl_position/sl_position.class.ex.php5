@@ -3261,6 +3261,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getUserPk();
 
+      $url = $this->_oPage->getUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, '416705');
+      header("Location:"$url);
+      exit();
+
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
