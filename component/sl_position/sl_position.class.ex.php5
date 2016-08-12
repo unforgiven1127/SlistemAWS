@@ -3141,7 +3141,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<table>
+        $sHTML.= "<form action='".$sURL."'><table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
                         <b>Select a client:</b>
@@ -3167,14 +3167,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       <td>
                       </td>
                       <td>
-                        <div class='submitBtnClass formFieldWidth1'> <input type='button' value='Send'";
+                        <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Send'";
 
-                          $sHTML.= '  onclick="AjaxRequest(\''.$sURL.'&client=document.getElementById(\'client\').value'.'\'); ">
+                          $sHTML.= ' >
                           <div class="floatHack"></div>
                         </div>
                       </td>
                     </tr>
-                 </table>';
+                 </table></form>';
 
 
       $sHTML.= $this->_oDisplay->getBlocEnd();
