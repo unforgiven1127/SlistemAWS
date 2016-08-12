@@ -3261,13 +3261,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $user_id = $oLogin->getUserPk();
 
-      $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_LIST, CONST_POSITION_TYPE_JD);
-      return array('notice' => 'Position successfully saved.', 'action' => '
-        goPopup.removeLastByType(\'layer\');
-        var oConf = goPopup.getConfig();
-        oConf.height = 725;  oConf.width = 1080;
-        goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');
-        ');
       //$this->_getCandidateView('416705');
       //return array('error' => 'Candidate suggested successfully.');
     }
