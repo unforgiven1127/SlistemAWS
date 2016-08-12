@@ -3112,7 +3112,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     private function _suggestCandidate($pnLinkPk)
     {
       $sl_position_linkpk = $_GET['ppk'];
-      //$client = $_POST['client'];
+      $client = $_POST['client'];
       $oLogin = CDependency::getCpLogin();
 
       ChromePhp::log($sl_position_linkpk);
@@ -3144,6 +3144,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oForm = $this->_oDisplay->initForm('linkPositionForm');
       $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
       $oForm->setFormDisplayParams(array('noCancelButton' => true));
+      $oForm->setFormDisplayParams(array('noSubmitButton' => true));
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
@@ -3172,7 +3173,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                     </tr>
                  </table>";
 
-      //$sHTML.= $oForm->getDisplay();
+      $sHTML.= $oForm->getDisplay();
       $sHTML.= "<div id='linkPositionFormInnerId' class='innerForm'><div class='formFieldLinebreaker formFieldWidth1'>&nbsp;</div> <div class='submitBtnClass formFieldWidth1'> <input type='submit' value='Validate' onclick=''><div class='floatHack'></div> </div><div class='floatHack'></div></div><div class='floatHack'></div></form>";
       $sHTML.= $this->_oDisplay->getBlocEnd();
       //$sHTML.= $this->_linkPositionForm($asPosition);
