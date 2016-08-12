@@ -211,7 +211,7 @@ class CSl_positionEx extends CSl_position
             break;
 
           case CONST_ACTION_SUGGEST:
-            return json_encode($this->_oPage->getAjaxExtraContent($this->_suggestCandidate($this->cnPk)));
+            return json_encode($this->_oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_suggestCandidate($this->cnPk)))));
             break;
 
           case CONST_ACTION_DELETE:
