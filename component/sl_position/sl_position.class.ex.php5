@@ -3114,10 +3114,13 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      echo __LINE__.'No expiring position today.';
+      $msg = '<div style=" font-size:15px; width: 300px; color:#585858; font-weight: bold; background-color:#89C35C;" role="alert">
+                Candidate suggested successfully
+              </div>';
+      _sendToCandidate($pnLinkPk, $msg);
     }
 
-    private function _sendToCandidate($pnLinkPk)//posizyin ve candidate bu bilgi icinde mevcut
+    private function _sendToCandidate($pnLinkPk, $msg='')//posizyon ve candidate bu bilgi icinde mevcut
     {
       if(!assert('is_key($pnLinkPk)'))
         return array('error' => __LINE__.' - bad parameter');
@@ -3160,6 +3163,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        ".$msg."
                       </td>
                     </tr>
                     <tr>
