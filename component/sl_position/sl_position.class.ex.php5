@@ -3114,15 +3114,17 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sl_position_linkpk = $_GET['ppk'];
       ChromePhp::log($sl_position_linkpk);
 
-      echo "<script>
-            alert('There are no fields to generate a report');
-            window.location.href='admin/ahm/panel';
-            </script>";
+      $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
+        $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
+      $sHTML.= $this->_oDisplay->getBlocEnd();
+
+      //$sHTML.= $this->_linkPositionForm($asPosition);
+      return $sHTML;
 
       //$this->_sendToCandidate($sl_position_linkpk, $msg);
     }
 
-    private function _sendToCandidate($pnLinkPk, $msg='')//posizyon ve candidate bu bilgi icinde mevcut
+    private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
     {
       if(!assert('is_key($pnLinkPk)'))
         return array('error' => __LINE__.' - bad parameter');
@@ -3165,11 +3167,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
                         <textarea style='width:400px;' rows='10' cols='50'></textarea>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        ".$msg."
                       </td>
                     </tr>
                     <tr>
