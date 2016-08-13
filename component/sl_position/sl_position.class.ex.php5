@@ -3113,20 +3113,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     {
       $sl_position_linkpk = $_GET['ppk'];
       $client = $_POST['client'];
-      $note = $_POST['note'];
-
       $oLogin = CDependency::getCpLogin();
+
+      ChromePhp::log($sl_position_linkpk);
+      ChromePhp::log($client);
+
       $user_id = $oLogin->getUserPk();
 
-      $array = array();
-      $array['client_id'] = $client;
-      $array['sl_position_linkpk'] = $sl_position_linkpk;
-      $array['note'] = $note;
-      $array['user_id'] = $user_id;
-
-      suggestCandidate($array);
-
-      return array('error' => __LINE__.' - bad parameter');
+      return array('error' => __LINE__.'Candidate suggestes successfully');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
@@ -3147,14 +3141,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       $sHTML = $this->_oDisplay->getBlocStart('', array('style' => 'padding: 0 10px;'));
 
-      $oForm = $this->_oDisplay->initForm('suggestCandidateForm');
-      $oForm->setFormParams('suggestCandidateForm', true, array('action' => $sURL));
+      $oForm = $this->_oDisplay->initForm('linkPositionForm');
+      $oForm->setFormParams('linkPositionForm', true, array('action' => $sURL));
       $oForm->setFormDisplayParams(array('noCancelButton' => true));
       $oForm->setFormDisplayParams(array('noSubmitButton' => true));
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<form name='suggestCandidateForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=51317&amp;pg=ajx' method='POST' id='suggestCandidateForm' onbeforesubmit='' onsubmit=''>
+        $sHTML.= "<form name='linkPositionForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=51317&amp;pg=ajx' method='POST' id='linkPositionFormId' onbeforesubmit='' onsubmit=''>
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
@@ -3170,7 +3164,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                     </tr>
                     <tr>
-                      <td valign='top' name='note' style='padding-top:10px; text-align: right;'>
+                      <td valign='top' style='padding-top:10px; text-align: right;'>
                         <b>Note:</b>
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
