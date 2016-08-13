@@ -3118,11 +3118,13 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
-      $array = array();
-      $array['client_id'] = $client;
-      $array['sl_position_linkpk'] = $sl_position_linkpk;
-      $array['note'] = $note;
-      $array['user_id'] = $user_id;
+      $oDB = CDependency::getComponentByName('database');
+      $sDate = date('Y-m-d H:i:s');
+
+      $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
+                 VALUES('".$client."','".$sl_position_linkpk."','".$note."','".$user_id."','".$sDate."','".$sDate."')";
+
+      $oDB->executeQuery($sQuery);
 
       //suggestCandidate($array);
 
