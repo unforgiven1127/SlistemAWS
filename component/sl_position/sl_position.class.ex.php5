@@ -3124,19 +3124,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['note'] = $note;
       $array['user_id'] = $user_id;
 
-      $return = suggestCandidate($array);
+      suggestCandidate($array);
 
-      ChromePhp::log($return);
-
-      if($return)
-      {
-        return array('error' => 'Candidate suggestes successfully');
-      }
-
-      else
-      {
-        return array('error' => 'It seems there is a problem please try again.');
-      }
+      return array('error' => 'Candidate suggestes successfully');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
