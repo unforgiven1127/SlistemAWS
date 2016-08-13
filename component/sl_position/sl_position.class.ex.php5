@@ -3124,9 +3124,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['note'] = $note;
       $array['user_id'] = $user_id;
 
-      $return = suggestCandidate($array);
+      suggestCandidate($array);
 
-      return array('error' => __LINE__.' - Candidate suggestes successfully');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut

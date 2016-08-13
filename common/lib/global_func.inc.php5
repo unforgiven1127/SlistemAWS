@@ -2809,7 +2809,7 @@ var_dump($query);*/
 
     $db_result = $oDB->executeQuery($sQuery);
 
-    return true;
+    return array('error' => __LINE__.' - Candidate suggestes successfully');
 
   }
 
