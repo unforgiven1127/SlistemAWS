@@ -3124,18 +3124,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['note'] = $note;
       $array['user_id'] = $user_id;
 
-      $oDB = CDependency::getComponentByName('database');
-      $sDate = date('Y-m-d H:i:s');
-      $client_id = $array['client_id'];
-      $position_link_id = $array['sl_position_linkpk'];
-      $consultant_note = $array['consultant_note'];
-      $user_id = $array['user_id'];
-      $note = $array['note'];
-
-      $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
-                 VALUES('".$client_id."','".$position_link_id."','".$note."','".$user_id."','".$sDate."','".$sDate."')";
-
-      $db_result = $oDB->executeQuery($sQuery);
 
       return array('error' => __LINE__.' - Candidate suggestes successfully');
     }
