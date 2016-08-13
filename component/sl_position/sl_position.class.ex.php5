@@ -3124,7 +3124,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['note'] = $note;
       $array['user_id'] = $user_id;
 
-      suggestCandidate($array);
+      //suggestCandidate($array);
 
       return array('error' => __LINE__.' - Candidate suggestes successfully');
     }
