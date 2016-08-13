@@ -3126,7 +3126,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       suggestCandidate($array);
 
-      return array('error' => 'Candidate suggestes successfully');
+      return array('error' => __LINE__.' - bad parameter')
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
