@@ -2794,6 +2794,27 @@ var_dump($query);*/
     return $result;
   }
 
+  function suggestCandidate($array)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+    $client_id = $array['client_id'];
+    $position_link_id = $array['position_link_id'];
+    $consultant_note = $array['consultant_note'];
+    $user_id = $array['user_id'];
+
+    $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
+               VALUES('".$client_id."','".$position_link_id."','".$user_id."','".$sDate."','".$sDate."')";
+
+    //$db_result = $oDB->executeQuery($sQuery);
+    $oDbResult = $oDB->ExecuteQuery($sQuery);
+    if(!$oDbResult)
+      return false;
+
+    return true;
+
+  }
+
   function getClientUsers()
   {
     $oDB = CDependency::getComponentByName('database');
