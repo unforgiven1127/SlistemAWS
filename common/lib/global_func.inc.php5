@@ -2809,10 +2809,9 @@ var_dump($query);*/
 
     ChromePhp::log($sQuery);
 
-    //$db_result = $oDB->executeQuery($sQuery);
-    $oDbResult = $oDB->ExecuteQuery($sQuery);
-    if(!$oDbResult)
-      return false;
+    $db_result = $oDB->executeQuery($sQuery);
+
+    ChromePhp::log($db_result);
 
     return true;
 
