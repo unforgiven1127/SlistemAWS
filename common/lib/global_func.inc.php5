@@ -2807,7 +2807,7 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
                VALUES('".$client_id."','".$position_link_id."','".$note."','".$user_id."','".$sDate."','".$sDate."')";
 
-    $db_result = $oDB->executeQuery($sQuery);
+    $oDB->executeQuery($sQuery);
 
   }
 
