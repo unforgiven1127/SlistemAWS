@@ -2802,9 +2802,10 @@ var_dump($query);*/
     $position_link_id = $array['sl_position_linkpk'];
     $consultant_note = $array['consultant_note'];
     $user_id = $array['user_id'];
+    $note = $array['note'];
 
     $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
-               VALUES('".$client_id."','".$position_link_id."','".$user_id."','".$sDate."','".$sDate."')";
+               VALUES('".$client_id."','".$position_link_id."','".$note."','".$user_id."','".$sDate."','".$sDate."')";
 
     ChromePhp::log($sQuery);
 
