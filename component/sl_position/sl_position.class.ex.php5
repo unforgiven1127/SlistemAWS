@@ -3123,6 +3123,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['sl_position_linkpk'] = $sl_position_linkpk;
       $array['note'] = $note;
       $array['user_id'] = $user_id;
+
+      ChromePhp::log($array);
+
       $return = suggestCandidate($array);
 
       if($return)

@@ -2806,6 +2806,8 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `suggested_candidates` (`client_id`,`position_link_id`, `consultant_note`, `user_id`,`first_activity`,`last_activity`)
                VALUES('".$client_id."','".$position_link_id."','".$user_id."','".$sDate."','".$sDate."')";
 
+    ChromePhp::log($sQuery);
+
     //$db_result = $oDB->executeQuery($sQuery);
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     if(!$oDbResult)
