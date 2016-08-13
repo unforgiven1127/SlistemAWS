@@ -3113,14 +3113,20 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     {
       $sl_position_linkpk = $_GET['ppk'];
       $client = $_POST['client'];
+      $note = $_POST['note'];
+
       $oLogin = CDependency::getCpLogin();
-
-      ChromePhp::log($sl_position_linkpk);
-      ChromePhp::log($client);
-
       $user_id = $oLogin->getUserPk();
 
-      return array('error' => __LINE__.'Candidate suggestes successfully');
+      $array = array();
+      $array['client_id'] = $client;
+      $array['sl_position_linkpk'] = $sl_position_linkpk;
+      $array['note'] = $note;
+      $array['user_id'] = $user_id;
+
+      $return = suggestCandidate($array);
+
+      return array('error' => __LINE__.' - Candidate suggestes successfully');
     }
 
     private function _sendToCandidate($pnLinkPk)//posizyon ve candidate bu bilgi icinde mevcut
