@@ -3124,6 +3124,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $array['note'] = $note;
       $array['user_id'] = $user_id;
 
+      suggestCandidate($array);
 
       return array('error' => __LINE__.' - Candidate suggestes successfully');
     }
@@ -3169,7 +3170,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                     </tr>
                     <tr>
-                      <td valign='top' style='padding-top:10px; text-align: right;'>
+                      <td valign='top' name='note' style='padding-top:10px; text-align: right;'>
                         <b>Note:</b>
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
