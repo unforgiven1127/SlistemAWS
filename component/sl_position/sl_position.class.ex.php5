@@ -3170,11 +3170,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
                       </td>
                     </tr>
                     <tr>
-                      <td valign='top' name='note' style='padding-top:10px; text-align: right;'>
+                      <td valign='top' style='padding-top:10px; text-align: right;'>
                         <b>Note:</b>
                       </td>
                       <td valign='top' style='padding-top:10px; padding-left:10px;'>
-                        <textarea style='width:400px;' rows='10' cols='50'></textarea>
+                        <textarea name='note' style='width:400px;' rows='10' cols='50'></textarea>
                       </td>
                     </tr>
                     <tr>
