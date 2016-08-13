@@ -2799,7 +2799,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
     $client_id = $array['client_id'];
-    $position_link_id = $array['position_link_id'];
+    $position_link_id = $array['sl_position_linkpk'];
     $consultant_note = $array['consultant_note'];
     $user_id = $array['user_id'];
 
