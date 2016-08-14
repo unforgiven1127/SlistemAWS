@@ -3128,7 +3128,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
       if(!$result)
       {
-        return array('error' => __LINE__.' - Problem');
+        return array('error' => __LINE__.' - Could not suggest the candidate');
       }
       else
       {
@@ -3163,7 +3163,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sHTML.= $this->_oDisplay->getTitle('Send to the client...', 'h3', true);
 
-        $sHTML.= "<form name='linkPositionForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=51317&amp;pg=ajx' method='POST' id='linkPositionFormId' onbeforesubmit='' onsubmit=''>
+        $sHTML.= "<form name='linkPositionForm' enctype='multipart/form-data' submitajax='1' action='https://beta1.slate.co.jp/index.php5?uid=555-005&amp;ppa=ppasg&amp;ppt=link&amp;ppk=".$pnLinkPk."&amp;pg=ajx' method='POST' id='linkPositionFormId' onbeforesubmit='' onsubmit=''>
                   <table>
                     <tr>
                       <td style='padding-top:20px; text-align: right;'>
