@@ -1443,11 +1443,11 @@ function _live_dump($pvTrace, $psTitle = null)
 
     $sQuery = "SELECT * FROM event e INNER JOIN event_link el on el.eventfk = e.eventpk WHERE el.cp_pk = '".$candidate_id."' AND e.type in('character') AND e.date_create > '".$sDate."'  AND LENGTH(e.content) >= 180
       GROUP BY e.type";
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-
+ChromePhp::log($result);
     return $result;
 
   }
