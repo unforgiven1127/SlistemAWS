@@ -95,7 +95,7 @@ class CSl_eventEx extends CSl_event
     if($psNoteType == 'character')
     {
       $allAreas = array();
-      $allAreas['character_note'] = 'character_note_new';
+      $allAreas['character_note'] = 'character_note';
      /* $allAreas['current_podition_note'] = 'current_podition_note';
       $allAreas['product_exp_note'] = 'product_exp_note';
       $allAreas['compensation_note'] = 'compensation_note';
@@ -768,7 +768,7 @@ class CSl_eventEx extends CSl_event
           $characterNoteFlag  = true;
           $title = str_replace('_',' ',$key);
           $title .= " :";
-          $characterNote .= $title .$value."<br>";
+          $characterNote .= "<br>".$title."</br>".$value."<br>";
         }
         else
         {
@@ -777,7 +777,7 @@ class CSl_eventEx extends CSl_event
       }
       if($characterNoteFlag)
       {
-          $asResult = $oEvent->addNote((int)$candidate_id, 'character_note_new', $characterNote);
+          $asResult = $oEvent->addNote((int)$candidate_id, 'character_note', $characterNote);
           $addedFlag = false;
       }
       if($addedFlag) // hepsi bos geldi ekleme yapilmadi

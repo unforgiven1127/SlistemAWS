@@ -7465,7 +7465,7 @@ die();*/
         }
         if($characterNoteFlag)
         {
-          $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note_new', $characterNote);
+          $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note', $characterNote);
         }*/
 
         if(!empty($sCharacter))
