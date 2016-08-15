@@ -7436,7 +7436,7 @@ die();*/
       $noteFlag1 = false;
       $noteflag2 = false;
 
-      if(empty($personality_note) && empty($current_podition_note) && empty($product_exp_note) && empty($compensation_note) && empty($move_note) && empty($career_note) && empty($timeline_note) && empty($keywants_note) && empty($past_note) && empty($education_note) && empty($education_note))
+      if(empty($personality_note) && empty($current_podition_note) && empty($product_exp_note) && empty($compensation_note) && empty($move_note) && empty($career_note) && empty($timeline_note) && empty($keywants_note) && empty($past_note) && empty($education_note) && empty($sNote))
       {
         $asError[] = 'You have to input at least a note or a character note.';
       }
