@@ -4040,7 +4040,6 @@ class CSl_candidateEx extends CSl_candidate
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
-        $count = 0;
         $contantArray = array();
         $contantArray[] = 'Personality and communication';
         $contantArray[] = 'Current position and responsibilities';
@@ -4054,18 +4053,22 @@ class CSl_candidateEx extends CSl_candidate
         $contantArray[] = 'Education – higher educations';
 
         $characterNoteContent = $validCharacterNotes[0]['content'];
-ChromePhp::log($characterNoteContent);
-        foreach ($contantArray as $key => $value)
+        foreach ($validCharacterNotes as $key => $validCharacterNote)
         {
-          if(strpos($characterNoteContent,$value))
+          $count = 0;
+          $characterNoteContent = $validCharacterNote['content'];
+
+          foreach ($contantArray as $key => $value)
           {
-            $count ++;
+            if(strpos($characterNoteContent,$value))
+            {
+              $count ++;
+            }
           }
-        }
-ChromePhp::log($count);
-        if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
-        {
-          $characterNoteControlFlag = true;
+          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          {
+            $characterNoteControlFlag = true;
+          }
         }
 
       }
