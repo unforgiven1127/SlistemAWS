@@ -777,7 +777,7 @@ class CSl_eventEx extends CSl_event
       }
       if($characterNoteFlag)
       {
-          $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+          $asResult = $oEvent->addNote((int)$candidate_id, 'character_new', $characterNote);
           $addedFlag = false;
       }
       if($addedFlag) // hepsi bos geldi ekleme yapilmadi
