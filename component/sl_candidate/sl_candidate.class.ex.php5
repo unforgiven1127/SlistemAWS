@@ -4052,13 +4052,13 @@ class CSl_candidateEx extends CSl_candidate
         $contantArray[] = 'Companies introduced within past 6–12 months';
         $contantArray[] = 'Education – higher educations';
 
-        $characterNoteContent = $validCharacterNotes[0]['content'];
-        foreach ($validCharacterNotes as $key => $validCharacterNote)
+        //$characterNoteContent = $validCharacterNotes[0]['content'];
+        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
         {
           $count = 0;
           $characterNoteContent = $validCharacterNote['content'];
 
-          foreach ($contantArray as $key => $value)
+          foreach ($contantArray as $key2 => $value)
           {
             if(strpos($characterNoteContent,$value))
             {
