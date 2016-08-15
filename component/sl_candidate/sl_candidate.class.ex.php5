@@ -4054,7 +4054,7 @@ class CSl_candidateEx extends CSl_candidate
         $contantArray[] = 'Education – higher educations';
 
         $characterNoteContent = $validCharacterNotes[0]['content'];
-
+ChromePhp::log($characterNoteContent);
         foreach ($contantArray as $key => $value)
         {
           if(strpos($characterNoteContent,$value))
@@ -4062,7 +4062,7 @@ class CSl_candidateEx extends CSl_candidate
             $count ++;
           }
         }
-
+ChromePhp::log($count);
         if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
         {
           $characterNoteControlFlag = true;
