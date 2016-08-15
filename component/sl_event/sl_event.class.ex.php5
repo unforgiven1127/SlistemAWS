@@ -770,6 +770,10 @@ class CSl_eventEx extends CSl_event
           $title .= " :";
           $characterNote .= $title .$value."<br>";
         }
+        else
+        {
+          return array('error' => __LINE__.' - Can not create empty notes.');
+        }
       }
       if($characterNoteFlag)
       {
