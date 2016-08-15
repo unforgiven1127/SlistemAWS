@@ -4057,7 +4057,7 @@ class CSl_candidateEx extends CSl_candidate
         {
           $count = 0;
           $characterNoteContent = $validCharacterNote['content'];
-
+ChromePhp::log($characterNoteContent);
           foreach ($contantArray as $key2 => $value)
           {
             if(strpos($characterNoteContent,$value))
