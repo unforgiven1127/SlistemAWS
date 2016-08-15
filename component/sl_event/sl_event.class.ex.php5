@@ -95,8 +95,8 @@ class CSl_eventEx extends CSl_event
     if($psNoteType == 'character')
     {
       $allAreas = array();
-      $allAreas['personality_note'] = 'personality_note';
-      $allAreas['current_podition_note'] = 'current_podition_note';
+      $allAreas['character_note'] = 'character_note_new';
+     /* $allAreas['current_podition_note'] = 'current_podition_note';
       $allAreas['product_exp_note'] = 'product_exp_note';
       $allAreas['compensation_note'] = 'compensation_note';
       $allAreas['move_note'] = 'move_note';
@@ -104,7 +104,7 @@ class CSl_eventEx extends CSl_event
       $allAreas['timeline_note'] = 'timeline_note';
       $allAreas['keywants_note'] = 'keywants_note';
       $allAreas['past_note'] = 'past_note';
-      $allAreas['education_note'] = 'education_note';
+      $allAreas['education_note'] = 'education_note';*/
 
       foreach ($allAreas as $key => $value)
       {
@@ -741,26 +741,36 @@ class CSl_eventEx extends CSl_event
       $characterNoteArray = array();
       $addedFlag = true;
 
-      $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
-      $characterNoteArray['current_podition_note'] = purify_html(getValue('current_podition_note'));
-      $characterNoteArray['product_exp_note'] = purify_html(getValue('product_exp_note'));
-      $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
-      $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
-      $characterNoteArray['career_note'] = purify_html(getValue('career_note'));
-      $characterNoteArray['timeline_note'] = purify_html(getValue('timeline_note'));
-      $characterNoteArray['keywants_note'] = purify_html(getValue('keywants_note'));
-      $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
-      $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
+      $characterNoteArray['Personality_and_communication'] = purify_html(getValue('personality_note'));
+      $characterNoteArray['Current_position_and_responsibilities'] = purify_html(getValue('current_podition_note'));
+      $characterNoteArray['Product_or_technical_expertise'] = purify_html(getValue('product_exp_note'));
+      $characterNoteArray['Compensation_breakdown'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['Reason_for_moving'] = purify_html(getValue('move_note'));
+      $characterNoteArray['Information_on_earlier_career'] = purify_html(getValue('career_note'));
+      $characterNoteArray['Move_timeline'] = purify_html(getValue('timeline_note'));
+      $characterNoteArray['Key_wants'] = purify_html(getValue('keywants_note'));
+      $characterNoteArray['Companies_introduced_within_past_6–12_months'] = purify_html(getValue('past_note'));
+      $characterNoteArray['Education_–_higher_educations'] = purify_html(getValue('education_note'));
 
       $oEvent = CDependency::getComponentByName('sl_event');
+
+      $characterNoteFlag = false;
+      $characterNote = "";
 
       foreach ($characterNoteArray as $key => $value)
       {
         if(isset($value) && !empty($value))
         {
-          $asResult = $oEvent->addNote((int)$candidate_id, $key, $value);
-          $addedFlag = false;
+          $characterNoteFlag  = true;
+          $title = str_replace('_',' ',$key);
+          $title .= " :";
+          $characterNote .= "<b>".$title."</b>" .$value."<br>";
         }
+      }
+      if($characterNoteFlag)
+      {
+          $asResult = $oEvent->addNote((int)$candidate_id, 'character_note_new', $characterNote);
+          $addedFlag = false;
       }
       if($addedFlag) // hepsi bos geldi ekleme yapilmadi
       {

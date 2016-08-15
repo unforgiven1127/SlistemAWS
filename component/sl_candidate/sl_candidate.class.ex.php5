@@ -4038,7 +4038,7 @@ class CSl_candidateEx extends CSl_candidate
       //ChromePhp::log($validCharacterNotes);
       //ChromePhp::log($validCharacterNotesLength);
 
-      if($validCharacterNotesLength >= 8)
+      if($validCharacterNotesLength >= 1)
       {
         if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
           return array('error' => 'Sorry, an error occured.');
@@ -4152,7 +4152,6 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $atLeast = 8 - (int)$validCharacterNotesLength;
 
         $html = "<br><br><br>
                 <div style='font-size:20px;'>
@@ -4160,11 +4159,11 @@ class CSl_candidateEx extends CSl_candidate
                 </div>
                 <br>
                 <div style='font-size:20px;'>
-                  Please add at least '".$atLeast."' different character notes to continue.
+                  Please add character notes to continue.
                 </div>
                 <br><br><br>
                 <div style='font-size:20px; text-decoration: underline;'>
-                  <strong>[1] </strong>At least 25 characters long and added in last 12 months
+                  <strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months
                 </div>";
         return array('data' => $html, 'error' => '');
       }
@@ -7466,7 +7465,7 @@ die();*/
         }
         if($characterNoteFlag)
         {
-          $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note', $characterNote);
+          $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note_new', $characterNote);
         }
 
         /*if(!empty($sCharacter))
