@@ -761,10 +761,14 @@ class CSl_eventEx extends CSl_event
       {
         if(isset($value) && !empty($value))
         {
+          if(strlen($value) < 25)
+          {
+            return array('error' => __LINE__.' - All areas should have 25 caracters');
+          }
           $characterNoteFlag  = true;
           $title = str_replace('_',' ',$key);
           $title .= " :";
-          $characterNote .= "<b>".$title."</b>" .$value."<br>";
+          $characterNote .= $title .$value."<br>";
         }
       }
       if($characterNoteFlag)
