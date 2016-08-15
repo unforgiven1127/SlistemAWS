@@ -359,16 +359,15 @@
 					<span style="font-size: 10px; color: blue;">
 						* If the candidate has been "assessed", the character note is required.<br/>
 						* In the other case, one of those fields is required.<br/>
-						** Always required.
 					</span>
 				</div>
 				<div class="general_form_row add_margin_top_10">
-					<div class="general_form_label">** Personality & Communication</div>
+					<div class="general_form_label">Character Note</div>
 					<div class="general_form_column">
-						<textarea id="personality_note" name="personality_note" ></textarea>
+						<textarea id="character_note" name="character_note" ></textarea>
 					</div>
 				</div>
-				<div class="general_form_row">
+				<!--<div class="general_form_row">
 					<div class="general_form_label">** Current Position & Responsibilities</div>
 					<div class="general_form_column">
 						<textarea id="current_podition_note" name="current_podition_note"></textarea>
@@ -421,7 +420,7 @@
 					<div class="general_form_column">
 						<textarea id="education_note" name="education_note"></textarea>
 					</div>
-				</div>
+				</div>-->
 				<div class="general_form_row">
 					<div class="general_form_label">Note</div>
 					<div class="general_form_column">
