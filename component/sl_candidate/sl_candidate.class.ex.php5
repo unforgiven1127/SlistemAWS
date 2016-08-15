@@ -4037,8 +4037,40 @@ class CSl_candidateEx extends CSl_candidate
 
       //ChromePhp::log($validCharacterNotes);
       //ChromePhp::log($validCharacterNotesLength);
+      $characterNoteControlFlag = false;
+      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      {
+        $count = 0;
+        $contantArray = array();
+        $contantArray[] = 'Personality and communication';
+        $contantArray[] = 'Current position and responsibilities';
+        $contantArray[] = 'Product or technical expertise';
+        $contantArray[] = 'Compensation breakdown';
+        $contantArray[] = 'Reason for moving';
+        $contantArray[] = 'Information on earlier career';
+        $contantArray[] = 'Move timeline';
+        $contantArray[] = 'Key wants';
+        $contantArray[] = 'Companies introduced within past 6–12 months';
+        $contantArray[] = 'Education – higher educations';
 
-      if($validCharacterNotesLength >= 1)
+        $characterNoteContent = $validCharacterNotes[0]['content'];
+
+        foreach ($contantArray as $key => $value)
+        {
+          if(strpos($characterNoteContent,$value))
+          {
+            $count ++;
+          }
+        }
+
+        if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+        {
+          $characterNoteControlFlag = true;
+        }
+
+      }
+
+      if($characterNoteControlFlag)
       {
         if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
           return array('error' => 'Sorry, an error occured.');
