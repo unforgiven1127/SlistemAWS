@@ -7405,16 +7405,16 @@ die();*/
       $education_note = getValue('education_note');
 
       $allAreas = array();
-      $allAreas['personality_note'] = $personality_note;
-      $allAreas['current_podition_note'] = $current_podition_note;
-      $allAreas['product_exp_note'] = $product_exp_note;
-      $allAreas['compensation_note'] = $compensation_note;
-      $allAreas['move_note'] = $move_note;
-      $allAreas['career_note'] = $career_note;
-      $allAreas['timeline_note'] = $timeline_note;
-      $allAreas['keywants_note'] = $keywants_note;
-      $allAreas['past_note'] = $past_note;
-      $allAreas['education_note'] = $education_note;
+      $allAreas['Personality_and_communication'] = $personality_note;
+      $allAreas['Current_position_and_responsibilities'] = $current_podition_note;
+      $allAreas['Product_or_technical_expertise'] = $product_exp_note;
+      $allAreas['Compensation_breakdown'] = $compensation_note;
+      $allAreas['Reason_for_moving'] = $move_note;
+      $allAreas['Information_on_earlier_career'] = $career_note;
+      $allAreas['Move_timeline'] = $timeline_note;
+      $allAreas['Key_wants'] = $keywants_note;
+      $allAreas['Companies_introduced_within_past_6–12_months'] = $past_note;
+      $allAreas['Education_–_higher_educations'] = $education_note;
 
       //$candidate_id = $pasCandidate['candidatefk'];// daha once tamamlanmis meeting varmi yok mu bakalim.
       //varsa 8 alanin doldurulmasi yetecek yoksa 10 ve her alanda 20 karakter olmak zorunda...
@@ -7437,22 +7437,9 @@ die();*/
       $noteFlag1 = false;
       $noteflag2 = false;
 
-      if(empty($personality_note) || empty($current_podition_note) || empty($product_exp_note) || empty($compensation_note) || empty($move_note) || empty($career_note) || empty($timeline_note) || empty($keywants_note) || empty($past_note) || empty($education_note))
+      if(empty($personality_note) && empty($current_podition_note) && empty($product_exp_note) && empty($compensation_note) && empty($move_note) && empty($career_note) && empty($timeline_note) && empty($keywants_note) && empty($past_note) && empty($education_note) && empty($education_note))
       {
-        $asError[] = 'All note sections must be filled.';
-      }
-      else
-      {
-        $noteFlag1 = true;
-      }
-
-      if($pnL < 25 || $cpL < 25 || $peL < 25 || $cnL < 25 || $mnL < 25 || $caL < 25 || $tnL < 25 || $knL < 25 || $paL < 25 || $enL < 25)
-      {
-        $asError[] = 'All note sections should have at least 25 characters.';
-      }
-      else
-      {
-        $noteflag2 = true;
+        $asError[] = 'You have to input at least a note or a character note.';
       }
 
       //if(empty($sCharacter) && empty($sNote))
@@ -7461,16 +7448,25 @@ die();*/
       if(!empty($asError))
         return $asError;
 
+      $characterNoteFlag = false;
+      $characterNote = "";
       if($pbSave)
       {
         $oEvent = CDependency::getComponentByName('sl_event');
 
-        if($noteFlag1 && $noteflag2)
+        foreach ($allAreas as $key => $value)
         {
-          foreach ($allAreas as $key => $value)
+          if(!empty($value))
           {
-            $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], $key, $value);
+            $characterNoteFlag  = true;
+            $title = str_replace('_',' ',$key);
+            $title .= " :";
+            $characterNote .= "<b>".$title."</b>" .$value."<br>";
           }
+        }
+        if($characterNoteFlag)
+        {
+          $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note', $characterNote);
         }
 
         /*if(!empty($sCharacter))
