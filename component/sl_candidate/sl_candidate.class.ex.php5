@@ -7389,10 +7389,10 @@ die();*/
     {
       $asError = array();
 
-      //$sCharacter = getValue('character_note');
+      $sCharacter = getValue('character_note');
       $sNote = getValue('note');
 
-      $personality_note = getValue('personality_note');
+      /*$personality_note = getValue('personality_note');
       $current_podition_note = getValue('current_podition_note');
       $product_exp_note = getValue('product_exp_note');
       $compensation_note = getValue('compensation_note');
@@ -7413,7 +7413,7 @@ die();*/
       $allAreas['Move_timeline'] = $timeline_note;
       $allAreas['Key_wants'] = $keywants_note;
       $allAreas['Companies_introduced_within_past_6–12_months'] = $past_note;
-      $allAreas['Education_–_higher_educations'] = $education_note;
+      $allAreas['Education_–_higher_educations'] = $education_note;*/
 
       //$candidate_id = $pasCandidate['candidatefk'];// daha once tamamlanmis meeting varmi yok mu bakalim.
       //varsa 8 alanin doldurulmasi yetecek yoksa 10 ve her alanda 20 karakter olmak zorunda...
@@ -7422,7 +7422,7 @@ die();*/
       //ChromePhp::log($completedMeetings);
       // bu kisimda aday zaten ilk dea ekleniyor o nedenle hepsi doldurulacak ve minimum 25 character olacak.
 
-      $pnL = strlen($personality_note);
+      /*$pnL = strlen($personality_note);
       $cpL = strlen($current_podition_note);
       $peL = strlen($product_exp_note);
       $cnL = strlen($compensation_note);
@@ -7439,10 +7439,10 @@ die();*/
       if(empty($personality_note) && empty($current_podition_note) && empty($product_exp_note) && empty($compensation_note) && empty($move_note) && empty($career_note) && empty($timeline_note) && empty($keywants_note) && empty($past_note) && empty($education_note) && empty($sNote))
       {
         $asError[] = 'You have to input at least a note or a character note.';
-      }
+      }*/
 
-      //if(empty($sCharacter) && empty($sNote))
-        //$asError[] = 'You have to input at least a note or a character note.';
+      if(empty($sCharacter) && empty($sNote))
+        $asError[] = 'You have to input at least a note or a character note.';
 
       if(!empty($asError))
         return $asError;
@@ -7453,7 +7453,7 @@ die();*/
       {
         $oEvent = CDependency::getComponentByName('sl_event');
 
-        foreach ($allAreas as $key => $value)
+        /*foreach ($allAreas as $key => $value)
         {
           if(!empty($value))
           {
@@ -7466,14 +7466,14 @@ die();*/
         if($characterNoteFlag)
         {
           $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character_note_new', $characterNote);
-        }
+        }*/
 
-        /*if(!empty($sCharacter))
+        if(!empty($sCharacter))
         {
           $asResult = $oEvent->addNote((int)$pasCandidate['candidatefk'], 'character', $sCharacter);
           if(isset($asResult['error']))
             return $asResult;
-        }*/
+        }
 
         if(!empty($sNote))
         {
