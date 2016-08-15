@@ -768,7 +768,7 @@ class CSl_eventEx extends CSl_event
           $characterNoteFlag  = true;
           $title = str_replace('_',' ',$key);
           $title .= " :";
-          $characterNote .= "<br>".$title."</br>".$value;
+          $characterNote .= "<b>".$title."</b>".$value;
         }
         else
         {
