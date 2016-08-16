@@ -2227,7 +2227,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           oConf.width = 950;
           oConf.height = 660;
           goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
-          ">Duplicate</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
+          ">Duplicate.</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
 
         //delete position
         if($oApplicant->numRows() == 0) // altinda aday yoksa silebiliyoruz...
