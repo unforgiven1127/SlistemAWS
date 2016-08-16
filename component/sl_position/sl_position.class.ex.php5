@@ -2236,7 +2236,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 ChromePhp::log($sURLDelete);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
             if(window.confirm(\'Delete this position ?\'))
-            { alert("test"); "
+            { alert(\'test\'); "
             >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 110px;'));
         }
 
@@ -2250,7 +2250,7 @@ ChromePhp::log($sURLDelete);
       while($bRead)
       {
         $asPosition = $oDbResult->getData();
-        $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].'\').fadeIn();" >'.$asPosition['language'].'</a>';
+        $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].').fadeIn();" >'.$asPosition['language'].'</a>';
 
         if(!$bFirst)
           $sClass = 'hidden';
