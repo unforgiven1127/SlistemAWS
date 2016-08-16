@@ -5066,7 +5066,7 @@ ChromePhp::log($skillFlag);
       $characterNoteFlag = false;
       $characterNote = "";
 
-      if(empty($simpleCharacterNote))
+      if(!$characterNoteControlFlag)
       {
         foreach ($characterNoteArray as $key => $value)
         {
@@ -5094,7 +5094,7 @@ ChromePhp::log($skillFlag);
             $characterNoteControlFlag = true;
         }
       }
-      else
+      if(!empty($simpleCharacterNote))
       {
         $asResult = $oEvent->addNote((int)$candidate_id, 'meeting_note', $simpleCharacterNote);
         $addedFlag = false;
