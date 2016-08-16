@@ -4998,7 +4998,7 @@ class CSl_candidateEx extends CSl_candidate
           $skillFlag = false;
         }
       }
-
+      $candidate_id = $nCandidatefk;
       $validCharacterNotes = getCharacterNotes($nCandidatefk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
@@ -5032,12 +5032,68 @@ class CSl_candidateEx extends CSl_candidate
               $count ++;
             }
           }
-          if($count > 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          if($count > 7)//sql sonucu olan karakter note >200 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;
           }
         }
 
+      }
+
+      //character notunu burada eklemek istedik...
+      $characterNoteArray = array();
+      $addedFlag = true;
+
+      $characterNoteArray['Personality_and_communication'] = purify_html(getValue('personality_note'));
+      $characterNoteArray['Current_position_and_responsibilities'] = purify_html(getValue('current_podition_note'));
+      $characterNoteArray['Product_or_technical_expertise'] = purify_html(getValue('product_exp_note'));
+      $characterNoteArray['Compensation_breakdown'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['Reason_for_moving'] = purify_html(getValue('move_note'));
+      $characterNoteArray['Information_on_earlier_career'] = purify_html(getValue('career_note'));
+      $characterNoteArray['Move_timeline'] = purify_html(getValue('timeline_note'));
+      $characterNoteArray['Key_wants'] = purify_html(getValue('keywants_note'));
+      $characterNoteArray['Companies_introduced_within_past_6–12_months'] = purify_html(getValue('past_note'));
+      $characterNoteArray['Education_–_higher_educations'] = purify_html(getValue('education_note'));
+
+      $simpleCharacterNote = purify_html(getValue('meeting_note'));
+
+      $oEvent = CDependency::getComponentByName('sl_event');
+
+      $characterNoteFlag = false;
+      $characterNote = "";
+
+      if(empty($simpleCharacterNote))
+      {
+        foreach ($characterNoteArray as $key => $value)
+        {
+          if(isset($value) && !empty($value))
+          {
+            if(strlen($value) < 25)
+            {
+              return array('error' => __LINE__.' - All areas should have 25 caracters');
+            }
+            $characterNoteFlag  = true;
+            $title = str_replace('_',' ',$key);
+            $title .= " : ";
+            $value = str_replace('<p>','',$value);
+            $characterNote .= "<b>".$title."</b>".$value."<br>";
+          }
+          else
+          {
+            return array('error' => __LINE__.' - The candidate must have 10 character notes. Please fill all areas.');
+          }
+        }
+        if($characterNoteFlag)
+        {
+            $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            $addedFlag = false;
+            $characterNoteControlFlag = true;
+        }
+      }
+      else
+      {
+        $asResult = $oEvent->addNote((int)$candidate_id, 'meeting_note', $simpleCharacterNote);
+        $addedFlag = false;
       }
 
       if(!$characterNoteControlFlag)
