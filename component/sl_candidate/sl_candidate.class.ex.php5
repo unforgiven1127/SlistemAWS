@@ -4206,7 +4206,87 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addOption('meeting_type', array('label' => 'Video Chat', 'value' => 3), ($nType === 3));
       $oForm->addOption('meeting_type', array('label' => 'Other', 'value' => 4), ($nType === 4));
 
-      $oForm->addField('textarea', 'meeting_note', array('label' => 'add a character note'));
+      //$oForm->addField('textarea', 'meeting_note', array('label' => 'add a character note'));
+      //
+      //
+      $validCharacterNotes = getCharacterNotes($pnCandiPk);
+      $validCharacterNotesLength = count($validCharacterNotes);
+
+      //ChromePhp::log($validCharacterNotes);
+      //ChromePhp::log($pnPk);
+      $characterNoteControlFlag = false;
+      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      {
+        $contantArray = array();
+        $contantArray[] = 'Personality and communication';
+        $contantArray[] = 'Current position and responsibilities';
+        $contantArray[] = 'Product or technical expertise';
+        $contantArray[] = 'Compensation breakdown';
+        $contantArray[] = 'Reason for moving';
+        $contantArray[] = 'Information on earlier career';
+        $contantArray[] = 'Move timeline';
+        $contantArray[] = 'Key wants';
+        $contantArray[] = 'Companies introduced within past 6–12 months';
+        $contantArray[] = 'Education – higher educations';
+
+        //$characterNoteContent = $validCharacterNotes[0]['content'];
+        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
+        {
+          $count = 0;
+          $characterNoteContent = $validCharacterNote['content'];
+
+          foreach ($contantArray as $key2 => $value)
+          {
+            if(strpos($characterNoteContent,$value))
+            {
+              $count ++;
+            }
+          }
+          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          {
+            $characterNoteControlFlag = true;
+          }
+        }
+
+      }
+      if($characterNoteControlFlag)
+      {
+
+        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+        $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+      }
+      else
+      {
+        $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'current_podition_note', array('label'=>'Current Position & Responsibilities', 'value' => $oDbResult->getFieldValue('current_podition_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('current_podition_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'product_exp_note', array('label'=>'Product or Technical Expertise', 'value' => $oDbResult->getFieldValue('product_exp_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('product_exp_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'compensation_note', array('label'=>'Compensation Breakdown', 'value' => $oDbResult->getFieldValue('compensation_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'move_note', array('label'=>'Reason for moving', 'value' => $oDbResult->getFieldValue('move_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('move_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'career_note', array('label'=>'Information on earlier career', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'timeline_note', array('label'=>'Move timeline', 'value' => $oDbResult->getFieldValue('timeline_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('timeline_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'keywants_note', array('label'=>'Key Wants', 'value' => $oDbResult->getFieldValue('keywants_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('keywants_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'past_note', array('label'=>'Companies introduced within past 6 – 12 monthson', 'value' => $oDbResult->getFieldValue('past_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addField('textarea', 'education_note', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
+        $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+      }
 
 
       return $oForm->getDisplay().'<br /><span style="float: right; font-style:italic; color: #777; font-size: 85%;" >
