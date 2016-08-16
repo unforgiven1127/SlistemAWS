@@ -4212,7 +4212,7 @@ class CSl_candidateEx extends CSl_candidate
       $validCharacterNotes = getCharacterNotes($pnCandiPk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      //ChromePhp::log($validCharacterNotes);
+      ChromePhp::log($validCharacterNotes);
       //ChromePhp::log($pnPk);
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
