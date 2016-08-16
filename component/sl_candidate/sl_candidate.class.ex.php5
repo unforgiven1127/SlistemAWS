@@ -4977,7 +4977,7 @@ class CSl_candidateEx extends CSl_candidate
                   <strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months
                 </div>";
         return array('data' => $html, 'error' => '');*/
-        return array('error' => __LINE__.' - Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes.<br>Please add character notes to continue<br><strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months');
+        return array('error' => __LINE__.' - Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes.<br><br>Please add character notes to continue<br><br><strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months');
       }
 
       if($skillFlag)
