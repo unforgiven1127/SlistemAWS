@@ -4251,9 +4251,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       if($characterNoteControlFlag)
       {
-
-        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
-        $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+        $oForm->addField('textarea', 'meeting_note', array('label' => 'add a note'));
       }
       else
       {
