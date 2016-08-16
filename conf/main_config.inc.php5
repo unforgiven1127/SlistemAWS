@@ -358,7 +358,7 @@ define('CONST_ACTION_SAVEADD', 'ppasa');
 define('CONST_ACTION_OLD', 'ppaao');
 define('CONST_ACTION_SAVEEDIT', 'ppase');
 define('CONST_ACTION_VALIDATE', 'ppava');
-define('CONST_ACTION_DELETE', 'ppad');
+define('CONST_ACTION_DELETE', 'ppadd');
 define('CONST_ACTION_RESET', 'ppares');
 define('CONST_ACTION_REFRESH', 'pparef');
 define('CONST_ACTION_SEND', 'ppasen');
