@@ -800,34 +800,45 @@ class CSl_eventEx extends CSl_event
       $characterNoteArray['Companies_introduced_within_past_6–12_months'] = purify_html(getValue('past_note'));
       $characterNoteArray['Education_–_higher_educations'] = purify_html(getValue('education_note'));
 
+      $simpleCharacterNote = purify_html(getValue('character'));
+
       $oEvent = CDependency::getComponentByName('sl_event');
 
       $characterNoteFlag = false;
       $characterNote = "";
 
-      foreach ($characterNoteArray as $key => $value)
+      if(empty($simpleCharacterNote))
       {
-        if(isset($value) && !empty($value))
+        foreach ($characterNoteArray as $key => $value)
         {
-          if(strlen($value) < 25)
+          if(isset($value) && !empty($value))
           {
-            return array('error' => __LINE__.' - All areas should have 25 caracters');
+            if(strlen($value) < 25)
+            {
+              return array('error' => __LINE__.' - All areas should have 25 caracters');
+            }
+            $characterNoteFlag  = true;
+            $title = str_replace('_',' ',$key);
+            $title .= " :";
+            $characterNote .= "<b>".$title."</b>".$value;
           }
-          $characterNoteFlag  = true;
-          $title = str_replace('_',' ',$key);
-          $title .= " :";
-          $characterNote .= "<b>".$title."</b>".$value;
+          else
+          {
+            return array('error' => __LINE__.' - Can not create empty notes.');
+          }
         }
-        else
+        if($characterNoteFlag)
         {
-          return array('error' => __LINE__.' - Can not create empty notes.');
+            $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            $addedFlag = false;
         }
       }
-      if($characterNoteFlag)
+      else
       {
-          $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
-          $addedFlag = false;
+        $asResult = $oEvent->addNote((int)$candidate_id, 'character', $simpleCharacterNote);
+        $addedFlag = false;
       }
+
       if($addedFlag) // hepsi bos geldi ekleme yapilmadi
       {
         return array('error' => __LINE__.' - Can not create empty notes.');
