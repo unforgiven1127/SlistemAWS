@@ -826,7 +826,7 @@ ChromePhp::log($sQuery);
           }
           else
           {
-            return array('error' => __LINE__.' - Can not create empty notes.');
+            return array('error' => __LINE__.' - The candidate must have 10 character notes.');
           }
         }
         if($characterNoteFlag)
