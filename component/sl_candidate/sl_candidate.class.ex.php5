@@ -5098,6 +5098,7 @@ ChromePhp::log($skillFlag);
       {
         $asResult = $oEvent->addNote((int)$candidate_id, 'meeting_note', $simpleCharacterNote);
         $addedFlag = false;
+        $characterNoteControlFlag = true;
       }
 
       if(!$characterNoteControlFlag)
