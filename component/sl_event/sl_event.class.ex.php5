@@ -518,7 +518,7 @@ class CSl_eventEx extends CSl_event
       $validCharacterNotesLength = count($validCharacterNotes);
 
       ChromePhp::log($validCharacterNotes);
-      //ChromePhp::log($validCharacterNotesLength);
+      ChromePhp::log($pnPk);
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
