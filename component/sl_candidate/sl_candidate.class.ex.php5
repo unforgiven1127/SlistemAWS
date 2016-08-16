@@ -4993,11 +4993,15 @@ class CSl_candidateEx extends CSl_candidate
 
       foreach ($skillArray as $key => $value)
       {
+        ChromePhp::log($value);
         if(!isset($value) || empty($value))
         {
           $skillFlag = false;
         }
       }
+
+ChromePhp::log($skillFlag);
+
       $candidate_id = $nCandidatefk;
       $validCharacterNotes = getCharacterNotes($nCandidatefk);
       $validCharacterNotesLength = count($validCharacterNotes);
@@ -5113,7 +5117,7 @@ class CSl_candidateEx extends CSl_candidate
         return array('data' => $html, 'error' => '');*/
         return array('error' => __LINE__.' - Warning!</strong> The candidate should have 10 valid<strong>[1]</strong> character notes.<br><br>Please add character notes to continue<br><strong>[1] </strong>Each at least 25 (total 250) characters long and added in last 12 months');
       }
-
+ChromePhp::log($skillFlag);
       if($skillFlag)
       {
         if(!assert('is_key($nCandidatefk)'))
