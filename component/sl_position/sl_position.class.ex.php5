@@ -824,6 +824,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _deletePosition($pnPositionPk = 0)
     {
+      ChromePhp::log('_deletePosition');
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Missing parameters to save the position.');
 
