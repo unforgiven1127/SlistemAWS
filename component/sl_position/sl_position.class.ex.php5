@@ -2220,14 +2220,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         //duplicate position
         $duplicate_id = "duplicate_".$pnPositionPk;
-        $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
+        $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
         $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
           goPopup.removeLastByType(\'layer\');
           var oConf = goPopup.getConfig();
           oConf.width = 950;
           oConf.height = 660;
           goPopup.setLayerFromAjax(oConf, \''.$sURLDuplicate.'\');
-          ">Duplicate.</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
+          ">Duplicate</a>', array('class' => 'position_edit ','style' => 'top: 80px;'));
 
         //delete position
         if($oApplicant->numRows() == 0) // altinda aday yoksa silebiliyoruz...
