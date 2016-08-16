@@ -821,6 +821,7 @@ ChromePhp::log($sQuery);
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
             $title .= " :";
+            $value = str_replace('<p>','',$value);
             $characterNote .= "<b>".$title."</b>".$value;
           }
           else
