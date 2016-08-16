@@ -4964,7 +4964,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if(!$characterNoteControlFlag)
       {
-        $html = "<br><br><br>
+        /*$html = "<br><br><br>
                 <div style='font-size:20px;'>
                   <strong>Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes
                 </div>
@@ -4976,7 +4976,8 @@ class CSl_candidateEx extends CSl_candidate
                 <div style='font-size:20px; text-decoration: underline;'>
                   <strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months
                 </div>";
-        return array('data' => $html, 'error' => '');
+        return array('data' => $html, 'error' => '');*/
+        return array('error' => __LINE__.' - Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes.<br>Please add character notes to continue<br><strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months');
       }
 
       if($skillFlag)
