@@ -827,6 +827,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!assert('is_integer($pnPositionPk)'))
         return array('error' => 'Missing parameters to save the position.');
 
+      ChromePhp::log($pnPositionPk);
+
       $oDbResult = $this->_getModel()->getPositionByPk($pnPositionPk);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
