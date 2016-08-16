@@ -4996,6 +4996,7 @@ class CSl_candidateEx extends CSl_candidate
         ChromePhp::log($value);
         if(!isset($value) || empty($value))
         {
+          ChromePhp::log('INSIDE');
           $skillFlag = false;
         }
       }
