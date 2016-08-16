@@ -556,7 +556,8 @@ ChromePhp::log($sQuery);
       }
       if($characterNoteControlFlag)
       {
-        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('character'), 'isTinymce' => 1));
+
+        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
       }
       else
