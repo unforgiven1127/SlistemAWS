@@ -4032,49 +4032,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCandidateMeetingForm($pnCandiPk, $pnMeetingPk = 0)
     {
-      $validCharacterNotes = getCharacterNotes($pnCandiPk);
-      $validCharacterNotesLength = count($validCharacterNotes);
 
-      //ChromePhp::log($validCharacterNotes);
-      //ChromePhp::log($validCharacterNotesLength);
-      $characterNoteControlFlag = false;
-      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
-      {
-        $contantArray = array();
-        $contantArray[] = 'Personality and communication';
-        $contantArray[] = 'Current position and responsibilities';
-        $contantArray[] = 'Product or technical expertise';
-        $contantArray[] = 'Compensation breakdown';
-        $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Information on earlier career';
-        $contantArray[] = 'Move timeline';
-        $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies introduced within past 6–12 months';
-        $contantArray[] = 'Education – higher educations';
-
-        //$characterNoteContent = $validCharacterNotes[0]['content'];
-        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
-        {
-          $count = 0;
-          $characterNoteContent = $validCharacterNote['content'];
-
-          foreach ($contantArray as $key2 => $value)
-          {
-            if(strpos($characterNoteContent,$value))
-            {
-              $count ++;
-            }
-          }
-          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
-          {
-            $characterNoteControlFlag = true;
-          }
-        }
-
-      }
-
-      if($characterNoteControlFlag)
-      {
         if(!assert('is_key($pnCandiPk) && is_integer($pnMeetingPk)'))
           return array('error' => 'Sorry, an error occured.');
 
@@ -4184,24 +4142,6 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         return array('data' => $oForm->getDisplay(), 'error' => '');
-      }
-      else
-      {
-
-        $html = "<br><br><br>
-                <div style='font-size:20px;'>
-                  <strong>Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes
-                </div>
-                <br>
-                <div style='font-size:20px;'>
-                  Please add character notes to continue.
-                </div>
-                <br><br><br>
-                <div style='font-size:20px; text-decoration: underline;'>
-                  <strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months
-                </div>";
-        return array('data' => $html, 'error' => '');
-      }
 
     }
 
@@ -4979,6 +4919,64 @@ class CSl_candidateEx extends CSl_candidate
         {
           $skillFlag = false;
         }
+      }
+
+      $validCharacterNotes = getCharacterNotes($pnCandiPk);
+      $validCharacterNotesLength = count($validCharacterNotes);
+
+      //ChromePhp::log($validCharacterNotes);
+      //ChromePhp::log($validCharacterNotesLength);
+      $characterNoteControlFlag = false;
+      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      {
+        $contantArray = array();
+        $contantArray[] = 'Personality and communication';
+        $contantArray[] = 'Current position and responsibilities';
+        $contantArray[] = 'Product or technical expertise';
+        $contantArray[] = 'Compensation breakdown';
+        $contantArray[] = 'Reason for moving';
+        $contantArray[] = 'Information on earlier career';
+        $contantArray[] = 'Move timeline';
+        $contantArray[] = 'Key wants';
+        $contantArray[] = 'Companies introduced within past 6–12 months';
+        $contantArray[] = 'Education – higher educations';
+
+        //$characterNoteContent = $validCharacterNotes[0]['content'];
+        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
+        {
+          $count = 0;
+          $characterNoteContent = $validCharacterNote['content'];
+
+          foreach ($contantArray as $key2 => $value)
+          {
+            if(strpos($characterNoteContent,$value))
+            {
+              $count ++;
+            }
+          }
+          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          {
+            $characterNoteControlFlag = true;
+          }
+        }
+
+      }
+
+      if(!$characterNoteControlFlag)
+      {
+        $html = "<br><br><br>
+                <div style='font-size:20px;'>
+                  <strong>Warning!</strong> The candidate should have at least 8 valid<strong>[1]</strong> character notes
+                </div>
+                <br>
+                <div style='font-size:20px;'>
+                  Please add character notes to continue.
+                </div>
+                <br><br><br>
+                <div style='font-size:20px; text-decoration: underline;'>
+                  <strong>[1] </strong>Each at least 25 (total 200) characters long and added in last 12 months
+                </div>";
+        return array('data' => $html, 'error' => '');
       }
 
       if($skillFlag)
