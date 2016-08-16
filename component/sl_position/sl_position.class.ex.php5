@@ -2220,7 +2220,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         //duplicate position
         $duplicate_id = "duplicate_".$pnPositionPk;
-        $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DUPLICATE, CONST_POSITION_TYPE_JD, $pnPositionPk);
+        $sURLDuplicate = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
         $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" onclick="
           goPopup.removeLastByType(\'layer\');
           var oConf = goPopup.getConfig();
