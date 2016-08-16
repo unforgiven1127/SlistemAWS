@@ -2233,9 +2233,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         if($oApplicant->numRows() == 0) // altinda aday yoksa silebiliyoruz...
         {
           $sURLDelete = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
-ChromePhp::log($sURLDelete);
+
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;"
-            onclick="if(window.confirm(\'Delete this position ?\')){ alert(\'test\');}"
+            onclick="if(window.confirm(\'Delete this position ?\')){ AjaxRequest(\''.$sURLDelete.'\');}"
             >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 110px;'));
         }
 
@@ -2249,7 +2249,7 @@ ChromePhp::log($sURLDelete);
       while($bRead)
       {
         $asPosition = $oDbResult->getData();
-        $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].').fadeIn();" >'.$asPosition['language'].'</a>';
+        $asLanguage[] = '<a href="javascript:;" onclick="$(\'.pos_detail_lang\').hide(0); $(\'#pos_detail_'.$asPosition['language'].'\').fadeIn();" >'.$asPosition['language'].'</a>';
 
         if(!$bFirst)
           $sClass = 'hidden';
