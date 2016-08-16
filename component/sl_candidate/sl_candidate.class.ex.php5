@@ -4994,7 +4994,7 @@ class CSl_candidateEx extends CSl_candidate
       foreach ($skillArray as $key => $value)
       {
         ChromePhp::log($value);
-        if(!isset($value) || empty($value))
+        if(!isset($value) || $value == null)
         {
           ChromePhp::log('INSIDE');
           $skillFlag = false;
