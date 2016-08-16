@@ -2232,10 +2232,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         //delete position
         if($oApplicant->numRows() == 0) // altinda aday yoksa silebiliyoruz...
         {
-          $sURLDelete = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
+          $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
 
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;"
-            onclick="if(window.confirm(\'Delete this position ?\')){ AjaxRequest(\''.$sURLDelete.'\'); }"
+            onclick="if(window.confirm(\'Delete this position ?\')){ AjaxRequest(\''.$sURL.'\'); }"
             >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 110px;'));
         }
 
