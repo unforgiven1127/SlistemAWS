@@ -517,8 +517,8 @@ class CSl_eventEx extends CSl_event
       $validCharacterNotes = getCharacterNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      ChromePhp::log($validCharacterNotes);
-      ChromePhp::log($pnPk);
+      //ChromePhp::log($validCharacterNotes);
+      //ChromePhp::log($pnPk);
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
@@ -556,7 +556,7 @@ class CSl_eventEx extends CSl_event
       }
       if($characterNoteControlFlag)
       {
-        $oForm->addField('textarea', 'character', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('character'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('character'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
       }
       else
