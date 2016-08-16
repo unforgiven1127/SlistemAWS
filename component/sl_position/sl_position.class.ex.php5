@@ -2235,8 +2235,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sURLDelete = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
 ChromePhp::log($sURLDelete);
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
-            if(window.confirm(\'Delete this position ?\'))
-            { AjaxRequest(\''.$sURLDelete.'\'); }"
+            AjaxRequest(\''.$sURLDelete.'\'); "
             >Delete position</a>', array('class' => 'position_edit', 'style' => 'top: 110px;'));
         }
 
