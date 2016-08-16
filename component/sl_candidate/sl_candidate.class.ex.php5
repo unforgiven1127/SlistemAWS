@@ -4921,7 +4921,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      $validCharacterNotes = getCharacterNotes($pnCandiPk);
+      $validCharacterNotes = getCharacterNotes($nCandidatefk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
       //ChromePhp::log($validCharacterNotes);
