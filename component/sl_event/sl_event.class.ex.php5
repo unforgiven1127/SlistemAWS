@@ -393,7 +393,7 @@ class CSl_eventEx extends CSl_event
     // not ekleme kismi buraya geliyor
     if(!assert('is_integer($pnPk)'))
       return '';
-
+ChromePhp::log($pnPk);
     $oHTML = CDependency::getCpHtml();
 
     //Fetch the data from the calling component
