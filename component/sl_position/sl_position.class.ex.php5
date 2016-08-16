@@ -2234,7 +2234,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
 
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
-            if(window.confirm(\'Delete this position ?\'))
+            if(window.confirm(\'Delete this position ??\'))
             { AjaxRequest(\''.$sURL.'\'); }"
             >Delete position</a>', array('class' => 'position_edit test2', 'style' => 'top: 110px;'));
         }
@@ -2817,7 +2817,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sURL = $this->_oPage->getAjaxUrl('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_JD, $pnPositionPk);
 
           $sHTML.= $this->_oDisplay->getBloc('', '<a href="javascript:;" style="color: red;" onclick="
-            if(window.confirm(\'Delete this position ?\'))
+            if(window.confirm(\'Delete this position ???\'))
             { AjaxRequest(\''.$sURL.'\'); }"
             >Delete position</a>', array('class' => 'position_edit test4', 'style' => 'top: 80px;'));
         }
