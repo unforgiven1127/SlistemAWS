@@ -820,7 +820,7 @@ ChromePhp::log($sQuery);
             }
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
-            $title .= " :";
+            $title .= " : ";
             $value = str_replace('<p>','',$value);
             $characterNote .= "<b>".$title."</b>".$value;
           }
