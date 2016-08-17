@@ -212,6 +212,7 @@ class CFormEx extends CForm
 
   public function addHtml($html)
   {
+    ChromePhp::log($html);
     $this->caoFormFields['textarea'] = $html;
 
     return true;
