@@ -579,10 +579,10 @@ class CSl_eventEx extends CSl_event
         $addHtml = "
         <div class='general_form_row add_margin_top_10'>
           <div class='spinner_holder skill_field'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:20px !important;'>
               AG
             </div>
-            <input type='text' name='skill_ag' value='  $skill_ag ' />
+            <input type='text' style='width:20px !important;' name='skill_ag' value='  $skill_ag ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
