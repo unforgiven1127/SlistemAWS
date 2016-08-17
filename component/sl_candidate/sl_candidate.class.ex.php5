@@ -3988,7 +3988,7 @@ class CSl_candidateEx extends CSl_candidate
 
               $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
               $asButtons[] = array('url' => '', 'label' => 'Edit meeting', 'pic' => $this->getResourcePath().'pictures/edit_16.png',
-                  'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 650; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\'); ');
+                  'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\'); ');
 
               $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEEDIT, CONST_CANDIDATE_TYPE_MEETING, $nMeetingPk, array('fast_edit' => 1, 'status' => -1));
               $asButtons[] = array('url' => '', 'label' => 'Cancel meeting', 'pic' => $this->getResourcePath().'pictures/delete_16.png',
