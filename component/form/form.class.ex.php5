@@ -579,6 +579,8 @@ class CFormEx extends CForm
       ChromePhp::log($this->casFormParams);
       foreach ($this->casFormParams as $sKey => $vValue)
       {
+        ChromePhp::log($sKey);
+        ChromePhp::log($vValue);
         $sHtml.= ' '.$sKey.'="'.$vValue.'" ';
       }
 
