@@ -210,6 +210,13 @@ class CFormEx extends CForm
     return true;
   }
 
+  public function addHtml($html)
+  {
+    $this->caoFormFields['htmlField'] = $html;
+
+    return true;
+  }
+
   public function addSection($psFieldName = '', $pasFieldParams = array(), $psTitle = '')
   {
     if(!assert('is_string($psFieldName)'))

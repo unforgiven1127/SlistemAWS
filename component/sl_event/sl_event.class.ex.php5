@@ -415,7 +415,7 @@ class CSl_eventEx extends CSl_event
     {
       $sQuery = 'SELECT * FROM event as ev ';
       $sQuery.= 'INNER JOIN event_link as el ON (el.eventfk = ev.eventpk AND el.eventfk = '.$pnPk.') ';
-
+ChromePhp::log($sQuery);
       $oDbResult = $oDB->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
@@ -517,23 +517,93 @@ class CSl_eventEx extends CSl_event
       $validCharacterNotes = getCharacterNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      $skill_ag = '0';
-      $skill_ap = '0';
-      $skill_am = '0';
-      $skill_mp = '0';
-      $skill_in = '0';
-      $skill_ex = '0';
-      $skill_fx = '0';
-      $skill_ch = '0';
-      $skill_ed = '0';
-      $skill_pl = '0';
-      $skill_e = '0';
-
       //ChromePhp::log($validCharacterNotes);
       //ChromePhp::log($pnPk);
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
+
+        $skill_ag = '0';
+        $skill_ap = '0';
+        $skill_am = '0';
+        $skill_mp = '0';
+        $skill_in = '0';
+        $skill_ex = '0';
+        $skill_fx = '0';
+        $skill_ch = '0';
+        $skill_ed = '0';
+        $skill_pl = '0';
+        $skill_e = '0';
+
+        $addHtml = "<div class='general_form_row add_margin_top_10'>
+          <div class='spinner_holder skill_field'>
+            <div class='spinner_label'>
+              AG
+            </div>
+            <input type='text' name='skill_ag' value='  $skill_ag ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              AP
+            </div>
+            <input type='text' name='skill_ap' value='  $skill_ap ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              AM
+            </div>
+            <input type='text' name='skill_am' value='  $skill_am ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              MP
+            </div>
+            <input type='text' name='skill_mp' value='  $skill_mp ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              IN
+            </div>
+            <input type='text' name='skill_in' value='  $skill_in ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              EX
+            </div>
+            <input type='text' name='skill_ex' value='  $skill_ex ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              FX
+            </div>
+            <input type='text' name='skill_fx' value='  $skill_fx ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              CH
+            </div>
+            <input type='text' name='skill_ch' value='  $skill_ch ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              ED
+            </div>
+            <input type='text' name='skill_ed' value='  $skill_ed ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              PL
+            </div>
+            <input type='text' name='skill_pl' value='  $skill_pl ' />
+          </div>
+          <div class='spinner_holder skill_field add_margin_left_10'>
+            <div class='spinner_label'>
+              E
+            </div>
+            <input type='text' name='skill_e' value='  $skill_e ' />
+          </div>
+        </div>";
+
         $contantArray = array();
         $contantArray[] = 'Personality and communication';
         $contantArray[] = 'Current position and responsibilities';
@@ -604,17 +674,8 @@ class CSl_eventEx extends CSl_event
         $oForm->addField('textarea', 'education_note', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('input', 'skill_ag', array( 'value' => $skill_ag, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_ap', array( 'value' => $skill_ap, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_am', array( 'value' => $skill_am, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_mp', array( 'value' => $skill_mp, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_in', array( 'value' => $skill_in, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_ex', array( 'value' => $skill_ex, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_fx', array( 'value' => $skill_fx, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_ch', array( 'value' => $skill_ch, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_ed', array( 'value' => $skill_ed, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_pl', array( 'value' => $skill_pl, 'style' => 'width:50px;'));
-        $oForm->addField('input', 'skill_e', array( 'value' => $skill_e, 'style' => 'width:50px;'));
+        $oForm->addHtml($addHtml);
+
       }
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
