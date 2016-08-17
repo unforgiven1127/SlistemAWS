@@ -902,7 +902,7 @@ class CSl_eventEx extends CSl_event
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            else if($key == 'Compensation_breakdown' && strlen($value) < 10)
+            if($key == 'Compensation_breakdown' && strlen($value) < 10)
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
