@@ -580,17 +580,17 @@ class CSl_eventEx extends CSl_event
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
             <tr>
-             <td class='spinner_label2' style='width:30px !important;' >AG</td>
-             <td class='spinner_label2' style='width:30px !important;' >AP</td>
-             <td class='spinner_label2' style='width:30px !important;' >AM</td>
-             <td class='spinner_label2' style='width:30px !important;' >MP</td>
-             <td class='spinner_label2' style='width:30px !important;' >IN</td>
-             <td class='spinner_label2' style='width:30px !important;' >EX</td>
-             <td class='spinner_label2' style='width:30px !important;' >FX</td>
-             <td class='spinner_label2' style='width:30px !important;' >CH</td>
-             <td class='spinner_label2' style='width:30px !important;' >ED</td>
-             <td class='spinner_label2' style='width:30px !important;' >PL</td>
-             <td class='spinner_label2' style='width:30px !important;' >E</td>
+             <td class='' style='width:30px !important;' >AG</td>
+             <td class='' style='width:30px !important;' >AP</td>
+             <td class='' style='width:30px !important;' >AM</td>
+             <td class='' style='width:30px !important;' >MP</td>
+             <td class='' style='width:30px !important;' >IN</td>
+             <td class='' style='width:30px !important;' >EX</td>
+             <td class='' style='width:30px !important;' >FX</td>
+             <td class='' style='width:30px !important;' >CH</td>
+             <td class='' style='width:30px !important;' >ED</td>
+             <td class='' style='width:30px !important;' >PL</td>
+             <td class='' style='width:30px !important;' >E</td>
             </tr>
             <tr>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='$skill_ag'/></td>
