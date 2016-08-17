@@ -919,7 +919,7 @@ class CSl_eventEx extends CSl_event
         if($characterNoteFlag)
         {
             $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
-            // skill update edecegiz...
+            updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
         }
       }

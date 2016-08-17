@@ -2946,9 +2946,29 @@ var_dump($query);*/
     return $return;
   }
 
-  function updateCandidateSkills($skillArray)
+  function updateCandidateSkills($candidate_id, $skillArray)
   {
+    $oDB = CDependency::getComponentByName('database');
 
+    $skill_ag = $skillArray['skill_ag'];
+    $skill_ap = $skillArray['skill_ap'];
+    $skill_am = $skillArray['skill_am'];
+    $skill_mp = $skillArray['skill_mp'];
+    $skill_in = $skillArray['skill_in'];
+    $skill_ex = $skillArray['skill_ex'];
+    $skill_fx = $skillArray['skill_fx'];
+    $skill_ch = $skillArray['skill_ch'];
+    $skill_ed = $skillArray['skill_ed'];
+    $skill_pl = $skillArray['skill_pl'];
+    $skill_e  = $skillArray['skill_e'];
+
+    $sQuery = "UPDATE  sl_candidate SET skill_ag = '".$skill_ag."',skill_ap = '".$skill_ap."'
+    ,skill_am = '".$skill_am."',skill_mp = '".$skill_mp."',skill_in = '".$skill_in."'
+    ,skill_ex = '".$skill_ex."',skill_fx = '".$skill_fx."',skill_ch = '".$skill_ch."'
+    ,skill_ed = '".$skill_ed."',skill_pl = '".$skill_pl."',skill_e = '".$skill_e."',
+    WHERE sl_candidatepk = '".$candidate_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
   }
 
   function multiCandidateFallenOff($candidates,$position_id,$user_id)
