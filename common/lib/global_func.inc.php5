@@ -2965,7 +2965,7 @@ var_dump($query);*/
     $sQuery = "UPDATE  sl_candidate SET skill_ag = '".$skill_ag."',skill_ap = '".$skill_ap."'
     ,skill_am = '".$skill_am."',skill_mp = '".$skill_mp."',skill_in = '".$skill_in."'
     ,skill_ex = '".$skill_ex."',skill_fx = '".$skill_fx."',skill_ch = '".$skill_ch."'
-    ,skill_ed = '".$skill_ed."',skill_pl = '".$skill_pl."',skill_e = '".$skill_e."',
+    ,skill_ed = '".$skill_ed."',skill_pl = '".$skill_pl."',skill_e = '".$skill_e."'
     WHERE sl_candidatepk = '".$candidate_id."' ";
 
     ChromePhp::log($sQuery);
