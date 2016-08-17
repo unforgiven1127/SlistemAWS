@@ -576,9 +576,10 @@ class CFormEx extends CForm
       $sHtml.= ' onsubmit="'.$sOnSubmit.'">';
     }
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
-    $sHtml.= $addHtml; // sonuna html eklemek icin
 
     $sHtml.= $this->_getFormFields($this->coHTML);
+
+    $sHtml.= $addHtml; // sonuna html eklemek icin
 
     if($this->cbFormAddButtons && !$skip_form_creation &&
       (!$this->cbSubmitHidden || $this->cbFormCancelButton || $this->cbFormCloseButton || !empty($this->casCustomButton)))
