@@ -1273,11 +1273,11 @@ div.mce-flow-layout .mce-path div
 .spinner_label2
 {
   background: transparent linear-gradient(to right, #FFF6E5 0%, #FFEFD3 100%) repeat scroll 0% 0%;
-  /*border: 1px dotted #CFCFCF;
+  border: 1px dotted #CFCFCF;
   border-radius: 3px;
   text-align: center;
   font-size: 11px;
-  text-transform: uppercase;*/
+  text-transform: uppercase;
 }
 
 .man,
