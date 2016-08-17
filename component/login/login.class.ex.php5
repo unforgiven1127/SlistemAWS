@@ -1555,15 +1555,15 @@ class CLoginEx extends CLogin
     $oForm->addField('input', 'position', array('label'=> 'Position / Company', 'value' => $oResult->getFieldValue('position')));
     $oForm->setFieldControl('position', array('jsFieldNotEmpty' => '','jsFieldMinSize' => 2));
 
-    $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
+    $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
     $oForm->addField('selector', 'companyfk', array('label' => 'Company', 'url' => $sURL));
     $oForm->setFieldControl('companyfk', array('jsFieldNotEmpty'));
     $nCompanyFk = (int)$oResult->getFieldValue('companyfk');
-    /*if($nCompanyFk)
+    if($nCompanyFk)
     {
       $asCompany = $this->oCandidate->getItemDescription($nCompanyFk, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP);
       $oForm->addOption('companyfk', array('label' => $asCompany[$nCompanyFk]['label'], 'value' => $nCompanyFk));
-    }*/
+    }
 
     //manage status: inactive by default
     if($bmanager)
