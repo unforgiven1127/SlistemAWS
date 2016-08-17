@@ -675,6 +675,8 @@ class CSl_eventEx extends CSl_event
         $oForm->addField('textarea', 'education_note', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
+        $oForm->addCustomHtml($addHtml);
+
       }
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
@@ -733,7 +735,7 @@ class CSl_eventEx extends CSl_event
       $sHTML = $this->_oDisplay->render('character_note_add');
     }*/
 
-    $sHTML.= $oForm->getDisplay(false,$addHtml);
+    $sHTML.= $oForm->getDisplay();
 
 
     $sHTML.= $oHTML->getBlocEnd();
