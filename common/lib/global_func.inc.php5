@@ -2835,6 +2835,8 @@ var_dump($query);*/
                LEFT JOIN sl_company sc on sc.sl_companypk = slcp.companyfk
                WHERE slc.sl_candidatepk = '".$candidate_id."'";
 
+ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
     $read = $db_result->readFirst();
 
