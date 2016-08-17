@@ -604,17 +604,17 @@ class CSl_eventEx extends CSl_event
         $oForm->addField('textarea', 'education_note', array('label'=>'Education – Higher Educations', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('input',  array( 'value' => $skill_ag, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_ap, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_am, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_mp, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_in, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_ex, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_fx, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_ch, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_ed, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_pl, 'style' => 'width:50px;'));
-        $oForm->addField('input',  array( 'value' => $skill_e, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_ag', array( 'value' => $skill_ag, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_ap', array( 'value' => $skill_ap, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_am', array( 'value' => $skill_am, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_mp', array( 'value' => $skill_mp, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_in', array( 'value' => $skill_in, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_ex', array( 'value' => $skill_ex, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_fx', array( 'value' => $skill_fx, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_ch', array( 'value' => $skill_ch, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_ed', array( 'value' => $skill_ed, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_pl', array( 'value' => $skill_pl, 'style' => 'width:50px;'));
+        $oForm->addField('input', 'skill_e', array( 'value' => $skill_e, 'style' => 'width:50px;'));
       }
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
