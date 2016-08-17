@@ -204,18 +204,8 @@ class CFormEx extends CForm
       $psFieldName = uniqid();
 
     $oField = $this->getField($psFieldType, $psFieldName, $pasFieldParams);
-ChromePhp::log($psFieldName);
-ChromePhp::log($oField);
-    $this->caoFormFields[$psFieldName] = $oField;
-ChromePhp::log($this->caoFormFields);
-ChromePhp::log($this->caoFormFields[$psFieldName]);
-    return true;
-  }
 
-  public function addHtml($html)
-  {
-    ChromePhp::log($html);
-    $this->caoFormFields['textarea'] = $html;
+    $this->caoFormFields[$psFieldName] = $oField;
 
     return true;
   }
@@ -485,7 +475,7 @@ ChromePhp::log($this->caoFormFields[$psFieldName]);
   /**
   * @return string : the html code of the form
   */
-  public function getDisplay($skip_form_creation = false)
+  public function getDisplay($skip_form_creation = false, $addHtml='')
   {
     //-----------------------------------
     // Fetching form parameters
@@ -578,11 +568,8 @@ ChromePhp::log($this->caoFormFields[$psFieldName]);
     if (!$skip_form_creation)
     {
       $sHtml.= '<form name="'.$this->csFormName.'" enctype="multipart/form-data" submitAjax="'.(int)$this->cbFormAjax.'" ';
-      ChromePhp::log($this->casFormParams);
       foreach ($this->casFormParams as $sKey => $vValue)
       {
-        ChromePhp::log($sKey);
-        ChromePhp::log($vValue);
         $sHtml.= ' '.$sKey.'="'.$vValue.'" ';
       }
 
@@ -622,6 +609,8 @@ ChromePhp::log($this->caoFormFields[$psFieldName]);
       $sHtml.= ' </div>';
     }
     $sHtml.= $this->coHTML->getFloatHack();
+
+    $sHtml.= $addHtml; // sonuna html eklemek icin
 
     $sHtml.= $this->coHTML->getBlocEnd();
     $sHtml.= $this->coHTML->getFloatHack();
