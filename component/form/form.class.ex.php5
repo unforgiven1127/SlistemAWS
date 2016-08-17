@@ -586,11 +586,11 @@ class CFormEx extends CForm
 
     $sHtml.= $this->_getFormFields($this->coHTML);
 ChromePhp::log($sHtml);
-ChromePhp::log($customFormFields);
-    if(!empty($customFormFields) && count($customFormFields) > 0)
+ChromePhp::log($this->customFormFields);
+    if(!empty($this->customFormFields) && count($this->customFormFields) > 0)
     {
 ChromePhp::log('ICERDE');
-      foreach ($customFormFields as $key => $value)
+      foreach ($this->customFormFields as $key => $value)
       {
         $sHtml.= $value;
       }
