@@ -204,9 +204,11 @@ class CFormEx extends CForm
       $psFieldName = uniqid();
 
     $oField = $this->getField($psFieldType, $psFieldName, $pasFieldParams);
-
+ChromePhp::log($psFieldName);
+ChromePhp::log($oField);
     $this->caoFormFields[$psFieldName] = $oField;
-
+ChromePhp::log($this->caoFormFields);
+ChromePhp::log($this->caoFormFields[$psFieldName]);
     return true;
   }
 
