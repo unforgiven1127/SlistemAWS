@@ -215,7 +215,6 @@ class CFormEx extends CForm
   public function addCustomHtml($html)
   {
     $this->customFormFields['add'] = $html;
-    ChromePhp::log($this->customFormFields);
   }
 
   public function addSection($psFieldName = '', $pasFieldParams = array(), $psTitle = '')

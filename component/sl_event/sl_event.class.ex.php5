@@ -576,6 +576,7 @@ class CSl_eventEx extends CSl_event
         $skill_pl = '0';
         $skill_e = '0';
 
+        ChromePhp::log($nCp_Pk);
         $user_info = getUserInformaiton($nCp_Pk);
         ChromePhp::log($user_info);
 
