@@ -593,7 +593,7 @@ class CSl_eventEx extends CSl_event
              <td class='spinner_label2' style='width:30px !important;' >E</td>
             </tr>
             <tr>
-              <td><input type='text' style='width:46px;text-align: center;' name='skill_ag' value='$skill_ag'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='$skill_ag'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ap' value='$skill_ap'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_am' value='$skill_am'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_mp' value='$skill_mp'/></td>
