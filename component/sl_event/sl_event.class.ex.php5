@@ -576,6 +576,8 @@ class CSl_eventEx extends CSl_event
         $skill_pl = '0';
         $skill_e = '0';
 
+        $info = $oDbResult->getAll();
+
         $addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
