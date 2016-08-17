@@ -651,6 +651,18 @@ ChromePhp::log($sQuery);
 
     $sHTML.= $oForm->getDisplay();
 
+    $skill_ag = '0';
+    $skill_ap = '0';
+    $skill_am = '0';
+    $skill_mp = '0';
+    $skill_in = '0';
+    $skill_ex = '0';
+    $skill_fx = '0';
+    $skill_ch = '0';
+    $skill_ed = '0';
+    $skill_pl = '0';
+    $skill_e = '0';
+
     $sHTML.= "<div class='general_form_row add_margin_top_10'>
           <div class='spinner_holder skill_field'>
             <div class='spinner_label'>
