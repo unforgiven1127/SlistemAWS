@@ -610,7 +610,7 @@ class CSl_eventEx extends CSl_event
               <td><input type='text' style='width:30px;text-align: center;' name='skill_mp' value='".$skillArray['skill_mp']."'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_in' value='".$skillArray['skill_in']."'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ex' value='".$skillArray['skill_ex']."'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_fx' value='".$skillArray['skill_fx']."'/></td>>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_fx' value='".$skillArray['skill_fx']."'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ch' value='".$skillArray['skill_ch']."'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ed' value='".$skillArray['skill_ed']."'/></td>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_pl' value='".$skillArray['skill_pl']."'/></td>
