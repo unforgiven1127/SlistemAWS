@@ -576,7 +576,8 @@ class CSl_eventEx extends CSl_event
         $skill_pl = '0';
         $skill_e = '0';
 
-        $addHtml = "<div class='general_form_row add_margin_top_10'>
+        $addHtml = "
+        <div class='general_form_row add_margin_top_10'>
           <div class='spinner_holder skill_field'>
             <div class='spinner_label'>
               AG

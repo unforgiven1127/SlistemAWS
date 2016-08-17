@@ -585,6 +585,7 @@ class CFormEx extends CForm
 
     $sHtml.= $this->_getFormFields($this->coHTML);
 ChromePhp::log($sHtml);
+ChromePhp::log($customFormFields);
     if(!empty($customFormFields) && count($customFormFields) > 0)
     {
 ChromePhp::log('ICERDE');
