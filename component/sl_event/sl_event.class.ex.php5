@@ -523,6 +523,46 @@ ChromePhp::log($sQuery);
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
 
+        $contantArray = array();
+        $contantArray[] = 'Personality and communication';
+        $contantArray[] = 'Current position and responsibilities';
+        $contantArray[] = 'Product or technical expertise';
+        $contantArray[] = 'Compensation breakdown';
+        $contantArray[] = 'Reason for moving';
+        $contantArray[] = 'Information on earlier career';
+        $contantArray[] = 'Move timeline';
+        $contantArray[] = 'Key wants';
+        $contantArray[] = 'Companies introduced within past 6–12 months';
+        $contantArray[] = 'Education – higher educations';
+
+        //$characterNoteContent = $validCharacterNotes[0]['content'];
+        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
+        {
+          $count = 0;
+          $characterNoteContent = $validCharacterNote['content'];
+
+          foreach ($contantArray as $key2 => $value)
+          {
+            if(strpos($characterNoteContent,$value))
+            {
+              $count ++;
+            }
+          }
+          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          {
+            $characterNoteControlFlag = true;
+          }
+        }
+
+      }
+      if($characterNoteControlFlag)
+      {
+
+        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
+        $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+      }
+      else
+      {
         $skill_ag = '0';
         $skill_ap = '0';
         $skill_am = '0';
@@ -605,47 +645,7 @@ ChromePhp::log($sQuery);
         </div>";
 
         ChromePhp::log($addHtml);
-
-        $contantArray = array();
-        $contantArray[] = 'Personality and communication';
-        $contantArray[] = 'Current position and responsibilities';
-        $contantArray[] = 'Product or technical expertise';
-        $contantArray[] = 'Compensation breakdown';
-        $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Information on earlier career';
-        $contantArray[] = 'Move timeline';
-        $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies introduced within past 6–12 months';
-        $contantArray[] = 'Education – higher educations';
-
-        //$characterNoteContent = $validCharacterNotes[0]['content'];
-        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
-        {
-          $count = 0;
-          $characterNoteContent = $validCharacterNote['content'];
-
-          foreach ($contantArray as $key2 => $value)
-          {
-            if(strpos($characterNoteContent,$value))
-            {
-              $count ++;
-            }
-          }
-          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
-          {
-            $characterNoteControlFlag = true;
-          }
-        }
-
-      }
-      if($characterNoteControlFlag)
-      {
-
-        $oForm->addField('textarea', 'character', array('label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
-        $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-      }
-      else
-      {
+        
         $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
