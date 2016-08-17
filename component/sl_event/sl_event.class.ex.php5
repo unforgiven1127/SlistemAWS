@@ -604,6 +604,8 @@ ChromePhp::log($sQuery);
           </div>
         </div>";
 
+        ChromePhp::log($addHtml);
+
         $contantArray = array();
         $contantArray[] = 'Personality and communication';
         $contantArray[] = 'Current position and responsibilities';
