@@ -605,12 +605,13 @@ class CFormEx extends CForm
         $sHtml.= implode(' ', $this->casCustomButton);
       }
 
+      $sHtml.= $addHtml; // sonuna html eklemek icin
+
       $sHtml.= $this->coHTML->getFloatHack();
       $sHtml.= ' </div>';
     }
     $sHtml.= $this->coHTML->getFloatHack();
 
-    $sHtml.= $addHtml; // sonuna html eklemek icin
 
     $sHtml.= $this->coHTML->getBlocEnd();
     $sHtml.= $this->coHTML->getFloatHack();
