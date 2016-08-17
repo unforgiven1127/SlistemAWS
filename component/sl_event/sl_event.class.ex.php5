@@ -577,7 +577,7 @@ class CSl_eventEx extends CSl_event
         $skill_e = '0';
 
         $addHtml = "
-        <div style='margin-left:130px;' class='general_form_row add_margin_top_10'>
+        <div style='margin-left:150px;' class='general_form_row add_margin_top_10'>
           <table>
             <tr>
              <td class='spinner_label' style='width:30px !important;' >AG</td>
@@ -593,17 +593,17 @@ class CSl_eventEx extends CSl_event
              <td class='spinner_label' style='width:30px !important;' >E</td>
             </tr>
             <tr>
-              <td><input type='text' style='width:30px !important;' name='skill_ag' value='  $skill_ag ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_ap' value='  $skill_ap ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_am' value='  $skill_am ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_mp' value='  $skill_mp ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_in' value='  $skill_in ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_ex' value='  $skill_ex ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_fx' value='  $skill_fx ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_ch' value='  $skill_ch ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_ed' value='  $skill_ed ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_pl' value='  $skill_pl ' /></td>
-              <td><input type='text' style='width:30px !important;' name='skill_e' value='  $skill_e ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_ag' value='  $skill_ag ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_ap' value='  $skill_ap ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_am' value='  $skill_am ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_mp' value='  $skill_mp ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_in' value='  $skill_in ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_ex' value='  $skill_ex ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_fx' value='  $skill_fx ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_ch' value='  $skill_ch ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_ed' value='  $skill_ed ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_pl' value='  $skill_pl ' /></td>
+              <td><input type='text' style='width:40px !important;' name='skill_e' value='  $skill_e ' /></td>
             </tr>
           </table>
         </div>";
