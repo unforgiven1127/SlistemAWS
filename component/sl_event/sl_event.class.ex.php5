@@ -580,7 +580,7 @@ class CSl_eventEx extends CSl_event
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
             <tr>
-             <td class='' style='width:30px !important;' >AG</td>
+             <td class='' style='width:30px !important;' ><p class='spinner_label2'>AG</p></td>
              <td class='' style='width:30px !important;' >AP</td>
              <td class='' style='width:30px !important;' >AM</td>
              <td class='' style='width:30px !important;' >MP</td>
