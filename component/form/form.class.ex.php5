@@ -589,9 +589,10 @@ ChromePhp::log($sHtml);
 ChromePhp::log($this->customFormFields);
     if(!empty($this->customFormFields) && count($this->customFormFields) > 0)
     {
-ChromePhp::log('ICERDE');
       foreach ($this->customFormFields as $key => $value)
       {
+        ChromePhp::log('ICERDE');
+        ChromePhp::log($value);
         $sHtml.= $value;
       }
     }
