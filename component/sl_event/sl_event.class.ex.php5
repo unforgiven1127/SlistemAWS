@@ -577,7 +577,7 @@ class CSl_eventEx extends CSl_event
         $skill_e = '0';
 
         $addHtml = "
-        <div style='margin-left:100px;' class='general_form_row add_margin_top_10'>
+        <div style='margin-left:130px;' class='general_form_row add_margin_top_10'>
           <table>
             <tr>
              <td class='spinner_label' style='width:30px !important;' >AG</td>
