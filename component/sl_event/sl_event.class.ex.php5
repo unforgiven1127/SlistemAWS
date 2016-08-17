@@ -564,21 +564,28 @@ class CSl_eventEx extends CSl_event
       }
       else
       {
-        $skill_ag = '0';
-        $skill_ap = '0';
-        $skill_am = '0';
-        $skill_mp = '0';
-        $skill_in = '0';
-        $skill_ex = '0';
-        $skill_fx = '0';
-        $skill_ch = '0';
-        $skill_ed = '0';
-        $skill_pl = '0';
-        $skill_e = '0';
+        $skillArray = array();
+        $skillArray['skill_ag'] = '0';
+        $skillArray['skill_ap'] = '0';
+        $skillArray['skill_am'] = '0';
+        $skillArray['skill_mp'] = '0';
+        $skillArray['skill_in'] = '0';
+        $skillArray['skill_ex'] = '0';
+        $skillArray['skill_fx'] = '0';
+        $skillArray['skill_ch'] = '0';
+        $skillArray['skill_ed'] = '0';
+        $skillArray['skill_pl'] = '0';
+        $skillArray['skill_e'] = '0';
 
-        ChromePhp::log($nCp_Pk);
         $candidate_info = getCandidateInformation($nCp_Pk);
-        ChromePhp::log($candidate_info);
+
+        foreach ($skillArray as $key => $value)
+        {
+          if(!empty($candidate_info[$key]))
+          {
+            $skillArray[$key] = $candidate_info[$key];
+          }
+        }
 
         $addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
@@ -597,17 +604,17 @@ class CSl_eventEx extends CSl_event
              <td style='width:30px !important;' ><p class='spinner_label2'>E</p></td>
             </tr>
             <tr>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='$skill_ag'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_ap' value='$skill_ap'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_am' value='$skill_am'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_mp' value='$skill_mp'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_in' value='$skill_in'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_ex' value='$skill_ex'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_fx' value='$skill_fx'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_ch' value='$skill_ch'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_ed' value='$skill_ed'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_pl' value='$skill_pl'/></td>
-              <td><input type='text' style='width:30px;text-align: center;' name='skill_e' value='$skill_e'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='".$skillArray['skill_ag']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ap' value='".$skillArray['skill_ap']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_am' value='".$skillArray['skill_am']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_mp' value='".$skillArray['skill_mp']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_in' value='".$skillArray['skill_in']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ex' value='".$skillArray['skill_ex']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_fx' value='".$skillArray['skill_fx']."'/></td>>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ch' value='".$skillArray['skill_ch']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ed' value='".$skillArray['skill_ed']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_pl' value='".$skillArray['skill_pl']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_e' value='".$skillArray['skill_e']."'/></td>
             </tr>
           </table>
         </div>";
