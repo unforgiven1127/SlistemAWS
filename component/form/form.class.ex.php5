@@ -572,8 +572,8 @@ class CFormEx extends CForm
       {
         $sHtml.= ' '.$sKey.'="'.$vValue.'" ';
       }
-      $sHtml.= $addHtml; // sonuna html eklemek icin
       $sHtml.= ' onsubmit="'.$sOnSubmit.'">';
+      $sHtml.= $addHtml; // sonuna html eklemek icin
     }
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
 
