@@ -579,70 +579,70 @@ class CSl_eventEx extends CSl_event
         $addHtml = "
         <div class='general_form_row add_margin_top_10'>
           <div class='spinner_holder skill_field'>
-            <div class='spinner_label' style='width:20px !important;'>
+            <div class='spinner_label' style='width:30px !important;'>
               AG
             </div>
-            <input type='text' style='width:20px !important;' name='skill_ag' value='  $skill_ag ' />
+            <input type='text' style='width:30px !important;' name='skill_ag' value='  $skill_ag ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               AP
             </div>
-            <input type='text' name='skill_ap' value='  $skill_ap ' />
+            <input type='text' style='width:30px !important;' name='skill_ap' value='  $skill_ap ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               AM
             </div>
-            <input type='text' name='skill_am' value='  $skill_am ' />
+            <input type='text' style='width:30px !important;' name='skill_am' value='  $skill_am ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               MP
             </div>
-            <input type='text' name='skill_mp' value='  $skill_mp ' />
+            <input type='text' style='width:30px !important;' name='skill_mp' value='  $skill_mp ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               IN
             </div>
-            <input type='text' name='skill_in' value='  $skill_in ' />
+            <input type='text' style='width:30px !important;' name='skill_in' value='  $skill_in ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               EX
             </div>
-            <input type='text' name='skill_ex' value='  $skill_ex ' />
+            <input type='text' style='width:30px !important;' name='skill_ex' value='  $skill_ex ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               FX
             </div>
-            <input type='text' name='skill_fx' value='  $skill_fx ' />
+            <input type='text' style='width:30px !important;' name='skill_fx' value='  $skill_fx ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               CH
             </div>
-            <input type='text' name='skill_ch' value='  $skill_ch ' />
+            <input type='text' style='width:30px !important;' name='skill_ch' value='  $skill_ch ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               ED
             </div>
-            <input type='text' name='skill_ed' value='  $skill_ed ' />
+            <input type='text' style='width:30px !important;' name='skill_ed' value='  $skill_ed ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               PL
             </div>
-            <input type='text' name='skill_pl' value='  $skill_pl ' />
+            <input type='text' style='width:30px !important;' name='skill_pl' value='  $skill_pl ' />
           </div>
           <div class='spinner_holder skill_field add_margin_left_10'>
-            <div class='spinner_label'>
+            <div class='spinner_label' style='width:30px !important;'>
               E
             </div>
-            <input type='text' name='skill_e' value='  $skill_e ' />
+            <input type='text' style='width:30px !important;' name='skill_e' value='  $skill_e ' />
           </div>
         </div>";
 
