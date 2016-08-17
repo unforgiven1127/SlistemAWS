@@ -29,6 +29,8 @@ class CFormEx extends CForm
   private $casMultipleFields = array();
   private $coHTML = null;
 
+  private $customFormFields = array();
+
   public function __construct($psFormName = '')
   {
     if(empty($psFormName))
@@ -208,6 +210,11 @@ class CFormEx extends CForm
     $this->caoFormFields[$psFieldName] = $oField;
 
     return true;
+  }
+
+  public function addCustomHtml($html)
+  {
+    $customFormFields[] = $html;
   }
 
   public function addSection($psFieldName = '', $pasFieldParams = array(), $psTitle = '')
@@ -475,7 +482,7 @@ class CFormEx extends CForm
   /**
   * @return string : the html code of the form
   */
-  public function getDisplay($skip_form_creation = false, $addHtml='')
+  public function getDisplay($skip_form_creation = false)
   {
     //-----------------------------------
     // Fetching form parameters
@@ -573,12 +580,18 @@ class CFormEx extends CForm
         $sHtml.= ' '.$sKey.'="'.$vValue.'" ';
       }
       $sHtml.= ' onsubmit="'.$sOnSubmit.'">';
-      $sHtml.= $addHtml; // sonuna html eklemek icin
     }
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
 
     $sHtml.= $this->_getFormFields($this->coHTML);
 
+    if(!empty($customFormFields) && count($customFormFields) > 0)
+    {
+      foreach ($customFormFields as $key => $value)
+      {
+        $sHtml.= $value;
+      }
+    }
 
     if($this->cbFormAddButtons && !$skip_form_creation &&
       (!$this->cbSubmitHidden || $this->cbFormCancelButton || $this->cbFormCloseButton || !empty($this->casCustomButton)))
