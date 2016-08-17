@@ -1558,7 +1558,7 @@ class CLoginEx extends CLogin
     $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
     $oForm->addField('selector', 'companyfk', array('label' => 'Company', 'url' => $sURL));
     $oForm->setFieldControl('companyfk', array('jsFieldNotEmpty'));
-    $nCompanyFk = (int)$oDbResult->getFieldValue('companyfk');
+    $nCompanyFk = (int)$oResult->getFieldValue('companyfk');
     if($nCompanyFk)
     {
       $asCompany = $this->oCandidate->getItemDescription($nCompanyFk, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP);
