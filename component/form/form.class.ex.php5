@@ -585,15 +585,14 @@ class CFormEx extends CForm
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
 
     $sHtml.= $this->_getFormFields($this->coHTML);
-ChromePhp::log($sHtml);
-ChromePhp::log($this->customFormFields);
+
     if(!empty($this->customFormFields) && count($this->customFormFields) > 0)
     {
       foreach ($this->customFormFields as $key => $value)
       {
-        ChromePhp::log('ICERDE');
-        ChromePhp::log($value);
+        $sHtml.= "<div class='floatHack' >";
         $sHtml.= $value;
+        $sHtml.= "</div>";
       }
     }
 
