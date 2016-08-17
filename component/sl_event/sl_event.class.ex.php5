@@ -644,8 +644,6 @@ ChromePhp::log($sQuery);
           </div>
         </div>";
 
-        ChromePhp::log($addHtml);
-        
         $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
@@ -736,7 +734,7 @@ ChromePhp::log($sQuery);
       $sHTML = $this->_oDisplay->render('character_note_add');
     }*/
 
-    $sHTML.= $oForm->getDisplay();
+    //$sHTML.= $oForm->getDisplay();
 
 
     $sHTML.= $oHTML->getBlocEnd();
