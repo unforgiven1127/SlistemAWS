@@ -911,7 +911,7 @@ class CSl_eventEx extends CSl_event
             $title = str_replace('_',' ',$key);
             $title .= " : ";
             $value = str_replace('<p>','',$value);
-            $characterNote .= "<b>".$title."</b>".$value."<br>";
+            $characterNote .= "<b>".$title."</b>".$value;
           }
           else
           {
