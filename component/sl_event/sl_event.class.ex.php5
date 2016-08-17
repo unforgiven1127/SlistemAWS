@@ -863,6 +863,19 @@ class CSl_eventEx extends CSl_event
       $characterNoteArray['Companies_introduced_within_past_6–12_months'] = purify_html(getValue('past_note'));
       $characterNoteArray['Education_–_higher_educations'] = purify_html(getValue('education_note'));
 
+      $skillValues = array();
+      $skillValues['skill_ag'] = getValue('skill_ag');
+      $skillValues['skill_ap'] = getValue('skill_ap');
+      $skillValues['skill_am'] = getValue('skill_am');
+      $skillValues['skill_mp'] = getValue('skill_mp');
+      $skillValues['skill_in'] = getValue('skill_in');
+      $skillValues['skill_ex'] = getValue('skill_ex');
+      $skillValues['skill_fx'] = getValue('skill_fx');
+      $skillValues['skill_ch'] = getValue('skill_ch');
+      $skillValues['skill_ed'] = getValue('skill_ed');
+      $skillValues['skill_pl'] = getValue('skill_pl');
+      $skillValues['skill_e'] = getValue('skill_e');
+
       $simpleCharacterNote = purify_html(getValue('character'));
 
       $oEvent = CDependency::getComponentByName('sl_event');
@@ -872,13 +885,25 @@ class CSl_eventEx extends CSl_event
 
       if(empty($simpleCharacterNote))
       {
+        foreach ($skillValues as $key => $skill)
+        {
+          if(empty($skill) || $skill < 0 || $skill > 9)
+          {
+            return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+          }
+        }
+
         foreach ($characterNoteArray as $key => $value)
         {
           if(isset($value) && !empty($value))
           {
-            if(strlen($value) < 25)
+            if($key != 'Compensation_breakdown' && strlen($value) < 25)
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
+            }
+            else if($key == 'Compensation_breakdown' && strlen($value) < 10)
+            {
+              return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
@@ -894,6 +919,7 @@ class CSl_eventEx extends CSl_event
         if($characterNoteFlag)
         {
             $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            // skill update edecegiz...
             $addedFlag = false;
         }
       }

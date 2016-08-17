@@ -2835,8 +2835,6 @@ var_dump($query);*/
                LEFT JOIN sl_company sc on sc.sl_companypk = slcp.companyfk
                WHERE slc.sl_candidatepk = '".$candidate_id."'";
 
-ChromePhp::log($sQuery);
-
     $db_result = $oDB->executeQuery($sQuery);
     $read = $db_result->readFirst();
 
@@ -2946,6 +2944,11 @@ ChromePhp::log($sQuery);
     $return = multiCandidateFallenOff($result,$position_id.$user_id);
 
     return $return;
+  }
+
+  function updateCandidateSkills($skillArray)
+  {
+
   }
 
   function multiCandidateFallenOff($candidates,$position_id,$user_id)
