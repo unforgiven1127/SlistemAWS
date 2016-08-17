@@ -1559,11 +1559,11 @@ class CLoginEx extends CLogin
     $oForm->addField('selector', 'companyfk', array('label' => 'Company', 'url' => $sURL));
     $oForm->setFieldControl('companyfk', array('jsFieldNotEmpty'));
     $nCompanyFk = (int)$oResult->getFieldValue('companyfk');
-    if($nCompanyFk)
+    /*if($nCompanyFk)
     {
       $asCompany = $this->oCandidate->getItemDescription($nCompanyFk, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP);
       $oForm->addOption('companyfk', array('label' => $asCompany[$nCompanyFk]['label'], 'value' => $nCompanyFk));
-    }
+    }*/
 
     //manage status: inactive by default
     if($bmanager)
