@@ -6276,18 +6276,8 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
       );
 
-      $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
-      $oForm->addField('selector', 'companyfk', array('label' => 'Company', 'url' => $sURL));
-      $oForm->setFieldControl('companyfk', array('jsFieldNotEmpty'));
-      /*$nCompanyFk = (int)$oDbResult->getFieldValue('companyfk');
-      if($nCompanyFk)
-      {
-        $asCompany = $this->oCandidate->getItemDescription($nCompanyFk, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP);
-        $oForm->addOption('companyfk', array('label' => $asCompany[$nCompanyFk]['label'], 'value' => $nCompanyFk));
-      }*/
-
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
-      $sHTML = $oForm->getDisplay();
+
       return $sHTML;
     }
 
