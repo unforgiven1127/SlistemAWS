@@ -394,6 +394,7 @@ class CSl_eventEx extends CSl_event
     if(!assert('is_integer($pnPk)'))
       return '';
 
+    $addHtm = '';
     $oHTML = CDependency::getCpHtml();
 
     //Fetch the data from the calling component
@@ -415,7 +416,7 @@ class CSl_eventEx extends CSl_event
     {
       $sQuery = 'SELECT * FROM event as ev ';
       $sQuery.= 'INNER JOIN event_link as el ON (el.eventfk = ev.eventpk AND el.eventfk = '.$pnPk.') ';
-ChromePhp::log($sQuery);
+
       $oDbResult = $oDB->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
