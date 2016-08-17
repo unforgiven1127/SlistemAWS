@@ -576,6 +576,7 @@ class CFormEx extends CForm
     if (!$skip_form_creation)
     {
       $sHtml.= '<form name="'.$this->csFormName.'" enctype="multipart/form-data" submitAjax="'.(int)$this->cbFormAjax.'" ';
+      ChromePhp::log($this->casFormParams);
       foreach ($this->casFormParams as $sKey => $vValue)
       {
         $sHtml.= ' '.$sKey.'="'.$vValue.'" ';

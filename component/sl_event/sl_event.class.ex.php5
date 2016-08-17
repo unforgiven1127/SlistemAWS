@@ -734,7 +734,7 @@ ChromePhp::log($sQuery);
       $sHTML = $this->_oDisplay->render('character_note_add');
     }*/
 
-    //$sHTML.= $oForm->getDisplay();
+    $sHTML.= $oForm->getDisplay();
 
 
     $sHTML.= $oHTML->getBlocEnd();
