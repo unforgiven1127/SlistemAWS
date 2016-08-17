@@ -212,7 +212,7 @@ class CFormEx extends CForm
 
   public function addHtml($html)
   {
-    $this->caoFormFields['htmlField'] = $html;
+    $this->caoFormFields['textarea'] = $html;
 
     return true;
   }
