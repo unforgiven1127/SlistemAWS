@@ -576,10 +576,8 @@ class CSl_eventEx extends CSl_event
         $skill_pl = '0';
         $skill_e = '0';
 
-        $result = $oDbResult->getAll();
-        $row = $oDbResult->getData();
-        ChromePhp::log($result);
-        ChromePhp::log($row);
+        $user_info = getUserInformaiton($nCp_Pk);
+        ChromePhp::log($user_info);
 
         $addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
