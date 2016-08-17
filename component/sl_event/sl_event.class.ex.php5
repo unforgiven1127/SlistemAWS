@@ -649,8 +649,6 @@ ChromePhp::log($sQuery);
       $sHTML = $this->_oDisplay->render('character_note_add');
     }*/
 
-    $sHTML.= $oForm->getDisplay();
-
     $skill_ag = '0';
     $skill_ap = '0';
     $skill_am = '0';
@@ -668,69 +666,72 @@ ChromePhp::log($sQuery);
             <div class='spinner_label'>
               AG
             </div>
-            <input type='text' name='skill_ag' value='  $skill_ag; ' />
+            <input type='text' name='skill_ag' value='  $skill_ag ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               AP
             </div>
-            <input type='text' name='skill_ap' value='  $skill_ap; ' />
+            <input type='text' name='skill_ap' value='  $skill_ap ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               AM
             </div>
-            <input type='text' name='skill_am' value='  $skill_am; ' />
+            <input type='text' name='skill_am' value='  $skill_am ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               MP
             </div>
-            <input type='text' name='skill_mp' value='  $skill_mp; ' />
+            <input type='text' name='skill_mp' value='  $skill_mp ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               IN
             </div>
-            <input type='text' name='skill_in' value='  $skill_in; ' />
+            <input type='text' name='skill_in' value='  $skill_in ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               EX
             </div>
-            <input type='text' name='skill_ex' value='  $skill_ex; ' />
+            <input type='text' name='skill_ex' value='  $skill_ex ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               FX
             </div>
-            <input type='text' name='skill_fx' value='  $skill_fx; ' />
+            <input type='text' name='skill_fx' value='  $skill_fx ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               CH
             </div>
-            <input type='text' name='skill_ch' value='  $skill_ch; ' />
+            <input type='text' name='skill_ch' value='  $skill_ch ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               ED
             </div>
-            <input type='text' name='skill_ed' value='  $skill_ed; ' />
+            <input type='text' name='skill_ed' value='  $skill_ed ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               PL
             </div>
-            <input type='text' name='skill_pl' value='  $skill_pl; ' />
+            <input type='text' name='skill_pl' value='  $skill_pl ' />
           </div>
-          <div class='spinner_holder skill_field add_margin_left_20'>
+          <div class='spinner_holder skill_field add_margin_left_10'>
             <div class='spinner_label'>
               E
             </div>
-            <input type='text' name='skill_e' value='  $skill_e; ' />
+            <input type='text' name='skill_e' value='  $skill_e ' />
           </div>
         </div>";
+
+    $sHTML.= $oForm->getDisplay();
+
 
     $sHTML.= $oHTML->getBlocEnd();
     return $sHTML;
