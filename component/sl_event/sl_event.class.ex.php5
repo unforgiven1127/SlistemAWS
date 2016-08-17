@@ -578,72 +578,34 @@ class CSl_eventEx extends CSl_event
 
         $addHtml = "
         <div class='general_form_row add_margin_top_10'>
-          <div class=''>
-            <div class='spinner_label' style='width:30px !important;'>
-              AG
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_ag' value='  $skill_ag ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              AP
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_ap' value='  $skill_ap ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              AM
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_am' value='  $skill_am ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              MP
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_mp' value='  $skill_mp ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              IN
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_in' value='  $skill_in ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              EX
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_ex' value='  $skill_ex ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              FX
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_fx' value='  $skill_fx ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              CH
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_ch' value='  $skill_ch ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              ED
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_ed' value='  $skill_ed ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              PL
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_pl' value='  $skill_pl ' />
-          </div>
-          <div class=' add_margin_left_10'>
-            <div class='spinner_label' style='width:30px !important;'>
-              E
-            </div>
-            <input type='text' style='width:30px !important;' name='skill_e' value='  $skill_e ' />
-          </div>
+          <table>
+            <tr>
+             <td class='spinner_label' style='width:30px !important;' >AG</td>
+             <td class='spinner_label' style='width:30px !important;' >AP</td>
+             <td class='spinner_label' style='width:30px !important;' >AM</td>
+             <td class='spinner_label' style='width:30px !important;' >MP</td>
+             <td class='spinner_label' style='width:30px !important;' >IN</td>
+             <td class='spinner_label' style='width:30px !important;' >EX</td>
+             <td class='spinner_label' style='width:30px !important;' >FX</td>
+             <td class='spinner_label' style='width:30px !important;' >CH</td>
+             <td class='spinner_label' style='width:30px !important;' >ED</td>
+             <td class='spinner_label' style='width:30px !important;' >PL</td>
+             <td class='spinner_label' style='width:30px !important;' >E</td>
+            </tr>
+            <tr>
+              <td><input type='text' style='width:30px !important;' name='skill_ag' value='  $skill_ag ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_ap' value='  $skill_ap ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_am' value='  $skill_am ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_mp' value='  $skill_mp ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_in' value='  $skill_in ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_ex' value='  $skill_ex ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_fx' value='  $skill_fx ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_ch' value='  $skill_ch ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_ed' value='  $skill_ed ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_pl' value='  $skill_pl ' /></td>
+              <td><input type='text' style='width:30px !important;' name='skill_e' value='  $skill_e ' /></td>
+            </tr>
+          </table>
         </div>";
 
         $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
