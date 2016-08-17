@@ -580,17 +580,17 @@ class CSl_eventEx extends CSl_event
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
             <tr>
-             <td class='' style='width:30px !important;' ><p class='spinner_label2'>AG</p></td>
-             <td class='' style='width:30px !important;' >AP</td>
-             <td class='' style='width:30px !important;' >AM</td>
-             <td class='' style='width:30px !important;' >MP</td>
-             <td class='' style='width:30px !important;' >IN</td>
-             <td class='' style='width:30px !important;' >EX</td>
-             <td class='' style='width:30px !important;' >FX</td>
-             <td class='' style='width:30px !important;' >CH</td>
-             <td class='' style='width:30px !important;' >ED</td>
-             <td class='' style='width:30px !important;' >PL</td>
-             <td class='' style='width:30px !important;' >E</td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AG</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AP</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AM</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>MP</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>IN</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>EX</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>FX</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>CH</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>ED</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>PL</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>E</p></td>
             </tr>
             <tr>
               <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='$skill_ag'/></td>
