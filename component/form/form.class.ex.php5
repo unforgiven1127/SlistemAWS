@@ -576,7 +576,7 @@ class CFormEx extends CForm
       $sHtml.= ' onsubmit="'.$sOnSubmit.'">';
     }
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
-
+    $sHtml.= $addHtml; // sonuna html eklemek icin
 
     $sHtml.= $this->_getFormFields($this->coHTML);
 
@@ -604,8 +604,6 @@ class CFormEx extends CForm
       {
         $sHtml.= implode(' ', $this->casCustomButton);
       }
-
-      $sHtml.= $addHtml; // sonuna html eklemek icin
 
       $sHtml.= $this->coHTML->getFloatHack();
       $sHtml.= ' </div>';
