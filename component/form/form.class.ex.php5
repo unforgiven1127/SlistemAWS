@@ -214,7 +214,7 @@ class CFormEx extends CForm
 
   public function addCustomHtml($html)
   {
-    $customFormFields[] = $html;
+    $this->customFormFields['add'] = $html;
   }
 
   public function addSection($psFieldName = '', $pasFieldParams = array(), $psTitle = '')
@@ -584,9 +584,10 @@ class CFormEx extends CForm
     $sHtml.= $this->coHTML->getBlocStart($this->csFormName.'InnerId',array('class'=>'innerForm'));
 
     $sHtml.= $this->_getFormFields($this->coHTML);
-
+ChromePhp::log($sHtml);
     if(!empty($customFormFields) && count($customFormFields) > 0)
     {
+ChromePhp::log('ICERDE');
       foreach ($customFormFields as $key => $value)
       {
         $sHtml.= $value;
