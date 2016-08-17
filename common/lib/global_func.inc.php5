@@ -2968,6 +2968,8 @@ var_dump($query);*/
     ,skill_ed = '".$skill_ed."',skill_pl = '".$skill_pl."',skill_e = '".$skill_e."',
     WHERE sl_candidatepk = '".$candidate_id."' ";
 
+    ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
   }
 
