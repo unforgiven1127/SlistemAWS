@@ -243,7 +243,7 @@ class CSl_eventEx extends CSl_event
     {
       $candidate_id = $pnItemPk;
       $companyHistory = getCompanyHistory($candidate_id);
-
+ChromePhp::log($companyHistory);
       if(isset($companyHistory) && !empty($companyHistory) && !empty($companyHistory['table']))
       {
         foreach ($companyHistory as $key => $value)
@@ -276,7 +276,7 @@ class CSl_eventEx extends CSl_event
       }
 
     }
-
+ChromePhp::log($asNotes);
     if(empty($asNotes))
     {
       $sHTML.= '<div class="entry"><div class="note_content"><em>No entry found.</em></div></div>';
