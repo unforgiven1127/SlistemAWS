@@ -7141,7 +7141,7 @@ die();*/
 
         foreach ($skillValues as $key => $skill)
         {
-          if($skill != '-' && (!is_int($skill) || $skill < 0 || $skill > 9))
+          if($skill != '-' && (!is_numeric($skill) || $skill < 0 || $skill > 9))
           {
             $asError[] = 'All skill areas should have a value between 0 - 9.';
           }
