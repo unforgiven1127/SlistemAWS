@@ -4269,7 +4269,7 @@ class CSl_candidateEx extends CSl_candidate
         $skillArray['skill_pl'] = '0';
         $skillArray['skill_e'] = '0';
 
-        $candidate_info = getCandidateInformation($nCp_Pk);
+        $candidate_info = getCandidateInformation($pnCandiPk);
 
         foreach ($skillArray as $key => $value)
         {
