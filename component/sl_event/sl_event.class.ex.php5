@@ -855,14 +855,14 @@ class CSl_eventEx extends CSl_event
 
       $characterNoteArray['Personality_and_communication'] = purify_html(getValue('personality_note'));
       $characterNoteArray['Current_position_and_responsibilities'] = purify_html(getValue('current_podition_note'));
+      $characterNoteArray['Career_history'] = purify_html(getValue('career_note'));
       $characterNoteArray['Product_or_technical_expertise'] = purify_html(getValue('product_exp_note'));
-      $characterNoteArray['Compensation_breakdown'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['Education_and_training'] = purify_html(getValue('education_note'));
       $characterNoteArray['Reason_for_moving'] = purify_html(getValue('move_note'));
-      $characterNoteArray['Information_on_earlier_career'] = purify_html(getValue('career_note'));
       $characterNoteArray['Move_timeline'] = purify_html(getValue('timeline_note'));
+      $characterNoteArray['Compensation_breakdown'] = purify_html(getValue('compensation_note'));
       $characterNoteArray['Key_wants'] = purify_html(getValue('keywants_note'));
-      $characterNoteArray['Companies_introduced_within_past_6–12_months'] = purify_html(getValue('past_note'));
-      $characterNoteArray['Education_–_higher_educations'] = purify_html(getValue('education_note'));
+      $characterNoteArray['Companies_–_introduced_recently_/_bing_pitched'] = purify_html(getValue('past_note'));
 
       $skillValues = array();
       $skillValues['skill_ag'] = getValue('skill_ag');
