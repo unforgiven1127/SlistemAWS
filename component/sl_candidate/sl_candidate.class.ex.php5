@@ -5148,11 +5148,11 @@ class CSl_candidateEx extends CSl_candidate
         {
           if(isset($value) && !empty($value))
           {
-            if($key != 'Compensation_breakdown' && strlen($value) < 25)
+            if($key != 'Compensation_breakdown' && strlen($value) < 32)
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            if($key == 'Compensation_breakdown' && strlen($value) < 10)
+            if($key == 'Compensation_breakdown' && strlen($value) < 17)
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
