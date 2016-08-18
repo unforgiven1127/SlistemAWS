@@ -5200,7 +5200,8 @@ class CSl_candidateEx extends CSl_candidate
         return array('error' => __LINE__.' - Warning!</strong> The candidate should have 10 valid<strong>[1]</strong> character notes.<br><br>Please add character notes to continue<br><strong>[1] </strong>Each at least 25 (total 250) characters long and added in last 12 months');
       }
 
-      if($skillFlag)
+      //if($skillFlag)
+      if(1) // skill eklemesini buraya tasidigimiz icin gerek kalmadi bu kontrole
       {
         if(!assert('is_key($nCandidatefk)'))
           return array('error' => __LINE__.' - Could not find the candidate data');
