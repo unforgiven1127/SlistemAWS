@@ -897,7 +897,6 @@ class CSl_eventEx extends CSl_event
         {
           if(isset($value) && !empty($value))
           {
-            ChromePhp::log($key);
             if($key != 'Compensation_breakdown' && strlen($value) < 25)
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
@@ -906,7 +905,6 @@ class CSl_eventEx extends CSl_event
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
-            ChromePhp::log('HERE');
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
             $title .= " : ";

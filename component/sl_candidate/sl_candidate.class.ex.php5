@@ -4255,6 +4255,62 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+
+        $skillArray = array();
+        $skillArray['skill_ag'] = '0';
+        $skillArray['skill_ap'] = '0';
+        $skillArray['skill_am'] = '0';
+        $skillArray['skill_mp'] = '0';
+        $skillArray['skill_in'] = '0';
+        $skillArray['skill_ex'] = '0';
+        $skillArray['skill_fx'] = '0';
+        $skillArray['skill_ch'] = '0';
+        $skillArray['skill_ed'] = '0';
+        $skillArray['skill_pl'] = '0';
+        $skillArray['skill_e'] = '0';
+
+        $candidate_info = getCandidateInformation($nCp_Pk);
+
+        foreach ($skillArray as $key => $value)
+        {
+          if(!empty($candidate_info[$key]))
+          {
+            $skillArray[$key] = $candidate_info[$key];
+          }
+        }
+
+        $addHtml = "
+        <div style='margin-left:150px; margim-top:10px;'>
+          <table>
+            <tr>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AG</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AP</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>AM</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>MP</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>IN</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>EX</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>FX</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>CH</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>ED</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>PL</p></td>
+             <td style='width:30px !important;' ><p class='spinner_label2'>E</p></td>
+            </tr>
+            <tr>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ag' value='".$skillArray['skill_ag']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ap' value='".$skillArray['skill_ap']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_am' value='".$skillArray['skill_am']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_mp' value='".$skillArray['skill_mp']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_in' value='".$skillArray['skill_in']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ex' value='".$skillArray['skill_ex']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_fx' value='".$skillArray['skill_fx']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ch' value='".$skillArray['skill_ch']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_ed' value='".$skillArray['skill_ed']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_pl' value='".$skillArray['skill_pl']."'/></td>
+              <td><input type='text' style='width:30px;text-align: center;' name='skill_e' value='".$skillArray['skill_e']."'/></td>
+            </tr>
+          </table>
+        </div>";
+
         $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
@@ -4284,6 +4340,8 @@ class CSl_candidateEx extends CSl_candidate
 
         $oForm->addField('textarea', 'education_note', array('label'=>'Education – Higher Educations','isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+
+        $oForm->addCustomHtml($addHtml);
       }
 
 
@@ -5058,6 +5116,19 @@ class CSl_candidateEx extends CSl_candidate
 
       $simpleCharacterNote = purify_html(getValue('meeting_note'));
 
+      $skillValues = array();
+      $skillValues['skill_ag'] = getValue('skill_ag');
+      $skillValues['skill_ap'] = getValue('skill_ap');
+      $skillValues['skill_am'] = getValue('skill_am');
+      $skillValues['skill_mp'] = getValue('skill_mp');
+      $skillValues['skill_in'] = getValue('skill_in');
+      $skillValues['skill_ex'] = getValue('skill_ex');
+      $skillValues['skill_fx'] = getValue('skill_fx');
+      $skillValues['skill_ch'] = getValue('skill_ch');
+      $skillValues['skill_ed'] = getValue('skill_ed');
+      $skillValues['skill_pl'] = getValue('skill_pl');
+      $skillValues['skill_e'] = getValue('skill_e');
+
       $oEvent = CDependency::getComponentByName('sl_event');
 
       $characterNoteFlag = false;
@@ -5065,19 +5136,31 @@ class CSl_candidateEx extends CSl_candidate
 
       if(!$characterNoteControlFlag)
       {
+        foreach ($skillValues as $key => $skill)
+        {
+          if($skill == null || $skill < 0 || $skill > 9)
+          {
+            return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+          }
+        }
+
         foreach ($characterNoteArray as $key => $value)
         {
           if(isset($value) && !empty($value))
           {
-            if(strlen($value) < 25)
+            if($key != 'Compensation_breakdown' && strlen($value) < 25)
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
+            }
+            if($key == 'Compensation_breakdown' && strlen($value) < 10)
+            {
+              return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
             $title .= " : ";
             $value = str_replace('<p>','',$value);
-            $characterNote .= "<b>".$title."</b>".$value."<br>";
+            $characterNote .= "<b>".$title."</b>".$value;
           }
           else
           {
@@ -5087,6 +5170,7 @@ class CSl_candidateEx extends CSl_candidate
         if($characterNoteFlag)
         {
             $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
             $characterNoteControlFlag = true;
         }
