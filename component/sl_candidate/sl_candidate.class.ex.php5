@@ -7713,7 +7713,7 @@ die();*/
         ChromePhp::log($skill);
         if($skill != '-' && ($skill < 0 || $skill > 9))
         {
-          return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+          $asError[] = 'All skill areas should have a value between 0 - 9.';
         }
       }
 
