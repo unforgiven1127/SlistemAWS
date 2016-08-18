@@ -5148,11 +5148,11 @@ class CSl_candidateEx extends CSl_candidate
         {
           if(isset($value) && !empty($value))
           {
-            if($key != 'Compensation_breakdown' && strlen($value) < 32)
+            if($key != 'Compensation_breakdown' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            if($key == 'Compensation_breakdown' && strlen($value) < 17)
+            if($key == 'Compensation_breakdown' && strlen($value) < 17)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
@@ -7055,7 +7055,7 @@ die();*/
     }
 
 
-    private function _saveCandidateData($pnCandidatePk = 0, $pbTest = true, $pbSave = false, $pasCandidate = array())
+    private function _saveCandidateData($pnCandidatePk = 0,$pbTest = true, $pbSave = false, $pasCandidate = array())
     {
       if(!assert('is_integer($pnCandidatePk)'))
         return array('error' => 'Bad parameters.');
@@ -7126,6 +7126,26 @@ die();*/
           $this->_getModel()->executeQuery($sQuery);
         }
 
+        $skillValues = array();
+        $skillValues['skill_ag'] = getValue('skill_ag');
+        $skillValues['skill_ap'] = getValue('skill_ap');
+        $skillValues['skill_am'] = getValue('skill_am');
+        $skillValues['skill_mp'] = getValue('skill_mp');
+        $skillValues['skill_in'] = getValue('skill_in');
+        $skillValues['skill_ex'] = getValue('skill_ex');
+        $skillValues['skill_fx'] = getValue('skill_fx');
+        $skillValues['skill_ch'] = getValue('skill_ch');
+        $skillValues['skill_ed'] = getValue('skill_ed');
+        $skillValues['skill_pl'] = getValue('skill_pl');
+        $skillValues['skill_e'] = getValue('skill_e');
+
+        foreach ($skillValues as $key => $skill)
+        {
+          if($skill != '-' && ($skill < 0 || $skill > 9))
+          {
+            $asError[] = 'All skill areas should have a value between 0 - 9.';
+          }
+        }
 
         if(empty($asData['firstname']) || strlen($asData['firstname']) < 2)
           $asError[] = 'Firstname empty or too short.';
@@ -7696,26 +7716,6 @@ die();*/
         $asError[] = 'You have to input at least a note or a character note.';
       }*/
 
-      $skillValues = array();
-      $skillValues['skill_ag'] = getValue('skill_ag');
-      $skillValues['skill_ap'] = getValue('skill_ap');
-      $skillValues['skill_am'] = getValue('skill_am');
-      $skillValues['skill_mp'] = getValue('skill_mp');
-      $skillValues['skill_in'] = getValue('skill_in');
-      $skillValues['skill_ex'] = getValue('skill_ex');
-      $skillValues['skill_fx'] = getValue('skill_fx');
-      $skillValues['skill_ch'] = getValue('skill_ch');
-      $skillValues['skill_ed'] = getValue('skill_ed');
-      $skillValues['skill_pl'] = getValue('skill_pl');
-      $skillValues['skill_e'] = getValue('skill_e');
-
-      foreach ($skillValues as $key => $skill)
-      {
-        if($skill != '-' && ($skill < 0 || $skill > 9))
-        {
-          $asError[] = 'All skill areas should have a value between 0 - 9.';
-        }
-      }
 
       if(empty($sCharacter) && empty($sNote))
         $asError[] = 'You have to input at least a note or a character note.';

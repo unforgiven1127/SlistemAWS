@@ -898,11 +898,11 @@ class CSl_eventEx extends CSl_event
         {
           if(isset($value) && !empty($value))
           {
-            if($key != 'Compensation_breakdown' && strlen($value) < 32)
+            if($key != 'Compensation_breakdown' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            if($key == 'Compensation_breakdown' && strlen($value) < 17)
+            if($key == 'Compensation_breakdown' && strlen($value) < 17)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
             }
