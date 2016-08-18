@@ -4223,11 +4223,11 @@ class CSl_candidateEx extends CSl_candidate
         $contantArray[] = 'Product or technical expertise';
         $contantArray[] = 'Compensation breakdown';
         $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Information on earlier career';
+        $contantArray[] = 'Career history';
         $contantArray[] = 'Move timeline';
         $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies introduced within past 6–12 months';
-        $contantArray[] = 'Education – higher educations';
+        $contantArray[] = 'Companies – introduced recently / bing pitched';
+        $contantArray[] = 'Education and training';
 
         //$characterNoteContent = $validCharacterNotes[0]['content'];
         foreach ($validCharacterNotes as $key1 => $validCharacterNote)
