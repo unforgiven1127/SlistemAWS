@@ -7695,6 +7695,28 @@ die();*/
         $asError[] = 'You have to input at least a note or a character note.';
       }*/
 
+      $skillValues = array();
+      $skillValues['skill_ag'] = getValue('skill_ag');
+      $skillValues['skill_ap'] = getValue('skill_ap');
+      $skillValues['skill_am'] = getValue('skill_am');
+      $skillValues['skill_mp'] = getValue('skill_mp');
+      $skillValues['skill_in'] = getValue('skill_in');
+      $skillValues['skill_ex'] = getValue('skill_ex');
+      $skillValues['skill_fx'] = getValue('skill_fx');
+      $skillValues['skill_ch'] = getValue('skill_ch');
+      $skillValues['skill_ed'] = getValue('skill_ed');
+      $skillValues['skill_pl'] = getValue('skill_pl');
+      $skillValues['skill_e'] = getValue('skill_e');
+
+      foreach ($skillValues as $key => $skill)
+      {
+        ChromePhp::log($skill);
+        if($skill != '-' && ($skill < 0 || $skill > 9))
+        {
+          return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+        }
+      }
+
       if(empty($sCharacter) && empty($sNote))
         $asError[] = 'You have to input at least a note or a character note.';
 
