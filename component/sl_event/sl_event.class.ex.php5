@@ -705,19 +705,23 @@ class CSl_eventEx extends CSl_event
         ';*/
     }
 
-    /*if($sEventType == 'character')
+    if(!$characterNoteControlFlag)
     {
       $sHTML = $this->_oDisplay->render('character_note_add');
-    }*/
+    }
 
-    $sHTML.= $oForm->getDisplay();
+    else
+    {
+      $sHTML.= $oForm->getDisplay();
 
-    ChromePhp::log($sHTML);
+      //ChromePhp::log($sHTML);
 
-    $sHTML = str_replace('<p><br data-mce-bogus="1"></p>','<p data-placeholder="Insert text here..." contenteditable></p>',$sHTML);
+      //$sHTML = str_replace('<p><br data-mce-bogus="1"></p>','<p data-placeholder="Insert text here..." contenteditable></p>',$sHTML);
 
 
-    $sHTML.= $oHTML->getBlocEnd();
+      $sHTML.= $oHTML->getBlocEnd();
+    }
+
     return $sHTML;
   }
 
