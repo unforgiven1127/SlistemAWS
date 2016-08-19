@@ -4311,7 +4311,7 @@ class CSl_candidateEx extends CSl_candidate
           </table>
         </div>";
 
-        $oForm->addField('textarea', 'personality_note', array('label'=>'Personality & Communication', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'test','label'=>'Personality & Communication', 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'current_podition_note', array('label'=>'Current Position & Responsibilities', 'isTinymce' => 1));
