@@ -628,7 +628,7 @@ class CSl_eventEx extends CSl_event
         $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Career History', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'product_exp_note', array'placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.',('label'=>'Product or Technical Expertise', 'value' => $oDbResult->getFieldValue('product_exp_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'product_exp_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.',('label'=>'Product or Technical Expertise', 'value' => $oDbResult->getFieldValue('product_exp_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('product_exp_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'education_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Education & Training', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
