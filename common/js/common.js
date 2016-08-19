@@ -1387,6 +1387,7 @@ function initMce(psFieldName, pbAdvanced, editor_width)
   {
     tinyMCE.init(
     {
+      placeholder : 'test',
       mode : "exact",
       elements : psFieldName,
       theme : "modern",
@@ -1415,6 +1416,7 @@ function initMce(psFieldName, pbAdvanced, editor_width)
   {
     tinyMCE.init(
     {
+      placeholder : 'test',
       mode : "exact",
       elements : psFieldName,
       theme : "modern",
