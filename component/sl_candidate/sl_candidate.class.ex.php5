@@ -5148,13 +5148,17 @@ class CSl_candidateEx extends CSl_candidate
         {
           if(isset($value) && !empty($value))
           {
-            if($key != 'Compensation_breakdown' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
-            {
+            if($key != 'Compensation_breakdown' && $key != 'Companies_–_introduced_recently_/_bing_pitched' && strlen($value) < 32)
+            {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
             if($key == 'Compensation_breakdown' && strlen($value) < 17)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
+            }
+            if($key == 'Companies_–_introduced_recently_/_bing_pitched' && strlen($value) < 17)
+            { //<p></p> icinde geldigi icin +7 ekledik
+              return array('error' => __LINE__.' - Companies introduced should have 10 caracters');
             }
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
