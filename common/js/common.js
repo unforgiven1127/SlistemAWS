@@ -1387,11 +1387,10 @@ function initMce(psFieldName, pbAdvanced, editor_width)
   {
     tinyMCE.init(
     {
-      placeholder : 'test',
       mode : "exact",
       elements : psFieldName,
       theme : "modern",
-      plugins : "save,layer,table,hr,textcolor,link,emoticons,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,template,code",
+      plugins : "placeholder,save,layer,table,hr,textcolor,link,emoticons,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,template,code",
 
       gecko_spellcheck : true,
 
@@ -1416,11 +1415,10 @@ function initMce(psFieldName, pbAdvanced, editor_width)
   {
     tinyMCE.init(
     {
-      placeholder : 'test',
       mode : "exact",
       elements : psFieldName,
       theme : "modern",
-      plugins : "save,autosave,layer,table,hr,textcolor,link,emoticons,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,template,code",
+      plugins : "placeholder,save,autosave,layer,table,hr,textcolor,link,emoticons,media,searchreplace,print,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,template,code",
 
       gecko_spellcheck : true,
       paste_as_text: true,
