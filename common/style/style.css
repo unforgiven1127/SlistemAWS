@@ -6,6 +6,10 @@ body
   color:#333;
 }
 
+p:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+}
+
 a
 {
   text-decoration:none;
