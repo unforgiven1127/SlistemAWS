@@ -712,6 +712,8 @@ class CSl_eventEx extends CSl_event
 
     $sHTML.= $oForm->getDisplay();
 
+    ChromePhp::log($sHTML);
+
     $sHTML = str_replace('<p><br data-mce-bogus="1"></p>','<p data-placeholder="Insert text here..." contenteditable></p>',$sHTML);
 
 
