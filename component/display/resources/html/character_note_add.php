@@ -53,7 +53,7 @@
 		<div class="formFieldContainer fieldNamepersonality_note formFieldWidth1 " >
 			<div class="formLabel">Personality & Communication</div>
 			<div class="formField">
-				<textarea name="personality_note"  placeholder="test"  isTinymce="1"  inajax=""  id="personality_noteId"  class=" tinymce hidden "  jsControl="jsFieldMinSize@2|jsFieldMaxSize@9000|"  ></textarea>
+				<textarea name="personality_note"  placeholder="test"  isTinymce="1"  inajax=""  id="personality_noteId"  class="  "  jsControl="jsFieldMinSize@2|jsFieldMaxSize@9000|"  ></textarea>
 			</div>
 			<div class="floatHack" ></div>
 		</div>
