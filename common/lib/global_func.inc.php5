@@ -2780,9 +2780,13 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT e.* FROM event_link el
+    /*$sQuery = "SELECT e.* FROM event_link el
                INNER JOIN event e on e.eventpk = el.eventfk
-               WHERE el.cp_pk ='".$candidate_id."' AND e.type = 'character' ORDER BY e.eventpk DESC";
+               WHERE el.cp_pk ='".$candidate_id."' AND e.type = 'character' ORDER BY e.eventpk DESC";*/
+
+   $sQuery = "SELECT LEFT(e.content,500) as content FROM event_link el
+   INNER JOIN event e on e.eventpk = el.eventfk
+   WHERE el.cp_pk ='".$candidate_id."' AND e.type = 'character' ORDER BY e.eventpk DESC";
 
     $db_result = $oDB->executeQuery($sQuery);
     $read = $db_result->readFirst();
