@@ -20,6 +20,10 @@
 		width:300px !important;
 	}
 
+	table {
+    	border-collapse: collapse;
+	}
+
 </style>
 
 
