@@ -21,7 +21,7 @@
 	}
 
 	.tdTitle{
-	    padding-top: 300px !important;
+	    padding-top: 30px !important;
 	}
 
 
