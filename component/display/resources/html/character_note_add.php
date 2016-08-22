@@ -5,9 +5,9 @@
 	$('.formLabel').css({'margin-left':'-158px'});
 
 	$('.inputsSkill').change(function(){
-		//var val = $(this).value();
-		//alert(val);
-		alert('test');
+		var val = $(this).value();
+		alert(val);
+		//alert('test');
 	});
 
 </script>
