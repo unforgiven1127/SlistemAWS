@@ -37,7 +37,7 @@
 	    border-left: 1px solid grey;
 		border-right: 1px solid grey;
 		border-top: 1px solid grey;
-		border-bottom: 1px solid grey;
+		/*border-bottom: 1px solid grey;*/
 
 	}
 
@@ -57,6 +57,10 @@
 
 	.tdTitleSkill{
 		padding-top: 30px !important;
+	}
+
+	.inputsSkillTd{
+		margin-top: -5px;
 	}
 
 
