@@ -521,7 +521,7 @@ class CSl_eventEx extends CSl_event
       $candidateActiveMeetings = getCandidateActiveMeetings($pnCandiPk);
       $candidateActiveMeetingsLength = count($candidateActiveMeetings);
 
-      ChromePhp::log($candidateActiveMeetings);
+      //ChromePhp::log($candidateActiveMeetings);
       ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
