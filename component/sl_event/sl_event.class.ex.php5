@@ -844,7 +844,7 @@ class CSl_eventEx extends CSl_event
 
     insertLog($user_id, $candidate_id, $note);
 
-    if($event_type == 'character')
+    if($event_type == 'character' && empty($delete_flag))
     {
       $characterNoteArray = array();
       $addedFlag = true;
