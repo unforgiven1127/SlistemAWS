@@ -30,8 +30,8 @@
 	.titlesSkill{
 		text-align: center !important;
 		background-color: #EEEEEE !important;
-		width:50px !important;
-		height:20px !important;
+		width:52px !important;
+		height:15px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
 	    border-left: 1px solid grey;
@@ -42,7 +42,7 @@
 
 	.inputsSkill{
 		width:50px !important;
-		margin-top: -10px;
+		margin-top: -17px;
 	}
 
 	.inputs{
