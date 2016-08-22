@@ -1,7 +1,14 @@
 
+<style>
+	.box {
+	    margin: 0 auto !important;
+	    margin-top:15px !important;
+	}
+
+</style>
 
 
-<table>
+<table class="box" align="center">
 	<tr>
 		<td><p>Personality & Communication</p></td>
 		<td><p>Career Expertise – Present, Past & Future</p></td>
