@@ -2,8 +2,9 @@
 <script type="text/javascript">
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
-	$('.formFieldTitle').css({'width':'930px'});
-	$('.formLabel').css({'margin-left':'-156px'});
+	$('.formFieldTitle').css({'width':'935px'});
+	$('.formLabel').hide();
+	//$('.formLabel').css({'margin-left':'-156px'});
 
 	$('.inputsSkill').change(function(){
 		var val = $(this).val();
