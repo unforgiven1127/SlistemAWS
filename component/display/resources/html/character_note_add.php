@@ -57,6 +57,7 @@
 
 	.tdTitleSkill{
 		padding-top: 30px !important;
+		z-index: 999;
 	}
 
 	.inputsSkillTd{
