@@ -4,6 +4,7 @@
 	    /*margin: 0 auto !important;*/
 	    /*margin-top:15px !important;*/
 	    margin-left: -100px !important;
+	    padding-top:10px !important;
 	}
 
 	.titles{
