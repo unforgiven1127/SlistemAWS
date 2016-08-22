@@ -3,7 +3,7 @@
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
 	$('.formFieldTitle').css({'width':'935px'});
-	$('.formFieldTitle').innerHtml('Test');
+	$('.formFieldTitle').html('Test');
 	$('.formLabel').hide();
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
