@@ -1,4 +1,10 @@
 
+<script type="text/javascript">
+
+$('.formFieldTitle').css({'margin-left':'-100px'});
+
+</script>
+
 <style>
 	.box {
 	    /*margin: 0 auto !important;*/
