@@ -1,7 +1,8 @@
 
 <script type="text/javascript">
 
-$('.formFieldTitle').css({'margin-left':'-100px'});
+	$('.formFieldTitle').css({'margin-left':'-90px'});
+	$('.formLabel').css({'margin-left':'-90px'});
 
 </script>
 
