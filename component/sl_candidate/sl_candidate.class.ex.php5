@@ -5089,7 +5089,7 @@ class CSl_candidateEx extends CSl_candidate
       $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
       $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
       $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
-      //$characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
+      $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
 
       $simpleCharacterNote = purify_html(getValue('meeting_note'));
 
@@ -5115,7 +5115,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         foreach ($characterNoteArray as $key => $value)
         {
-          if(isset($value) && !empty($value))
+          if($key == 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' || (isset($value) && !empty($value)))
           {
             if($key != 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' && $key != 'EDUCATION_AND_TRAINING' && $key != 'COMPENSATION_BREAKDOWN' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
