@@ -3,7 +3,7 @@
 	.box {
 	    /*margin: 0 auto !important;*/
 	    /*margin-top:15px !important;*/
-	    margin-left: -150px !important;
+	    margin-left: -100px !important;
 	}
 
 </style>
