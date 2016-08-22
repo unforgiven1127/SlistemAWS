@@ -14,9 +14,7 @@
 		height:30px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
-		border-left: 1px black;
-		border-right: 1px black;
-		border-top: 1px black;
+
 	}
 
 	.inputs{
@@ -26,6 +24,9 @@
 
 	.tdTitle{
 	    padding-top: 30px !important;
+	    border-left: 1px black;
+		border-right: 1px black;
+		border-top: 1px black;
 	}
 
 
