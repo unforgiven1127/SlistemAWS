@@ -825,6 +825,10 @@ class CEventEx extends CEvent
       $asEvent['type'] = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
       $asEvent['title'] = purify_html(getValue('title'));
       $asEvent['content'] = getValue('content');
+      if(empty($asEvent['content']))
+      {
+        $asEvent['content'] = getValue('content');
+      }
       $asEvent['coworker'] = (array)getValue('link_to', array());
       $asEvent['notify'] = getValue('notify');
       $asEvent['add_calendar'] = getValue('addCalendar', 0);
