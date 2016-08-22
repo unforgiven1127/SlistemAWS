@@ -5069,14 +5069,14 @@ class CSl_candidateEx extends CSl_candidate
         $contantArray = array();
         $contantArray[] = 'Personality and communication';
         $contantArray[] = 'Current position and responsibilities';
+        $contantArray[] = 'Career history';
         $contantArray[] = 'Product or technical expertise';
-        $contantArray[] = 'Compensation breakdown';
+        $contantArray[] = 'Education and training';
         $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Information on earlier career';
         $contantArray[] = 'Move timeline';
+        $contantArray[] = 'Compensation breakdown';
         $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies introduced within past 6–12 months';
-        $contantArray[] = 'Education – higher educations';
+        $contantArray[] = 'Companies – introduced recently / bing pitched';
 
         //$characterNoteContent = $validCharacterNotes[0]['content'];
         foreach ($validCharacterNotes as $key1 => $validCharacterNote)
