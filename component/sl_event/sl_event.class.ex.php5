@@ -518,11 +518,11 @@ class CSl_eventEx extends CSl_event
       $validCharacterNotes = getCharacterNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      $candidateActiveMeetings = getCandidateActiveMeetings($pnCandiPk);
-      $candidateActiveMeetingsLength = count($candidateActiveMeetings);
+      //$candidateActiveMeetings = getCandidateActiveMeetings($pnCandiPk);
+      //$candidateActiveMeetingsLength = count($candidateActiveMeetings);
 
       //ChromePhp::log($candidateActiveMeetings);
-      ChromePhp::log($candidateActiveMeetingsLength);
+      //ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
