@@ -1397,7 +1397,7 @@ function initMce(psFieldName, pbAdvanced, editor_width)
       // Theme options
       menubar:false,
       toolbar1 : "bold,italic,underline,strikethrough,|,forecolor,|,cut,copy,|,bullist,numlist,|,link,unlink,|,fullscreen,|,code",
-      toolbar2 : "styleselect,formatselect,fontselect,fontsizeselect,|,outdent,indent,|,pastetext",
+      //toolbar2 : "styleselect,formatselect,fontselect,fontsizeselect,|,outdent,indent,|,pastetext",
 
       save_enablewhendirty: true,
       paste_as_text: true,
