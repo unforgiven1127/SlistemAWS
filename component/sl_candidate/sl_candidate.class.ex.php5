@@ -5039,20 +5039,12 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $candidate_id = $nCandidatefk;
-      $validCharacterNotes = getCharacterNotes($candidate_id);
+      $validCharacterNotes = getCharacterNotes($nCandidatefk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      $candidateActiveMeetings = getCandidateActiveMeetings($candidate_id);
-      $candidateActiveMeetingsLength = count($candidateActiveMeetings);
-
-      //ChromePhp::log($candidateActiveMeetings);
-      //ChromePhp::log($candidateActiveMeetingsLength);
-
+      //ChromePhp::log($validCharacterNotes);
+      //ChromePhp::log($validCharacterNotesLength);
       $characterNoteControlFlag = false;
-      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
-      {
-        $characterNoteControlFlag = true;
-      }
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
         $contantArray = array();
