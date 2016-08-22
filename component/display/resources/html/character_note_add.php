@@ -5,6 +5,7 @@
 	    /*margin-top:15px !important;*/
 	    margin-left: -100px !important;
 	    padding-top: 20px !important;
+	    border-collapse: collapse;
 	}
 
 	.titles{
@@ -20,14 +21,11 @@
 		width:300px !important;
 	}
 
-	table {
-    	border-collapse: collapse;
-	}
 
 </style>
 
 
-<table border='1' class="box" align="center">
+<table class="box" align="center">
 	<tr>
 		<td><p class='titles'>Personality & Communication</p></td>
 		<td><p class='titles'>Career Expertise – Present, Past & Future</p></td>
