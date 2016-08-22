@@ -4,7 +4,7 @@
 	    /*margin: 0 auto !important;*/
 	    /*margin-top:15px !important;*/
 	    margin-left: -100px !important;
-	    padding-top: 20px !important;
+	    padding-top: 100px !important;
 	    border-collapse: collapse;
 	}
 
