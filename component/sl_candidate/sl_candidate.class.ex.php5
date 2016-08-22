@@ -7131,7 +7131,7 @@ die();*/
         {
           if($skill != '-' && (!is_numeric($skill) || $skill < 1 || $skill > 9))
           {
-            $asError[] = 'All skill areas should have a value between 0 - 9.';
+            $asError[] = 'All skill areas should have a value between 1 - 9.';
           }
         }
 
