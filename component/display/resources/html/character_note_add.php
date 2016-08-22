@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
-	$('.formLabel').css({'margin-left':'-90px'});
+	$('.formLabel').css({'margin-left':'-150px'});
 
 </script>
 
