@@ -31,7 +31,7 @@ var CPopup = function()
 
       width: 380,
       height: 190,
-      maxHeight:780,
+      maxHeight:900,
       maxWidth:1380,
       minHeight:40,
       minWidth:70,
