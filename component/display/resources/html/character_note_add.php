@@ -13,6 +13,7 @@
 		width:306px !important;
 		height:30px !important;
 		font-weight: bold !important;
+		margin-top: 5px;
 	}
 
 	.inputs{
