@@ -90,9 +90,9 @@
 
 <table class="box" align="center">
 	<tr>
-		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
-		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
-		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
 		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'></textarea></td>
