@@ -37,14 +37,13 @@
 	    border-left: 1px solid grey;
 		border-right: 1px solid grey;
 		border-top: 1px solid grey;
-		/*border-bottom: 1px solid grey;*/
+		border-bottom: 2px solid grey;
 
 	}
 
 	.inputsSkill{
 		width:50px !important;
 		margin-top: -50px;
-		border-top: 1px solid grey;
 	}
 
 	.inputs{
