@@ -180,6 +180,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     case 'beta.slate.co.jp':
     case 'beta1.slate.co.jp':
     case 'beta2.slate.co.jp':
+    case 'talentatlas.com':
 
     define('DB_NAME', 'slistem');
     define('DB_SERVER', '127.0.0.1');
