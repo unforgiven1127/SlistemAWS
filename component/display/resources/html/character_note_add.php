@@ -13,7 +13,7 @@
 		width:306px !important;
 		height:30px !important;
 		font-weight: bold !important;
-		padding-top: 5px;
+		padding-top: 10px;
 	}
 
 	.inputs{
@@ -23,7 +23,7 @@
 </style>
 
 
-<table class="box" align="center">
+<table border='1' class="box" align="center">
 	<tr>
 		<td><p class='titles'>Personality & Communication</p></td>
 		<td><p class='titles'>Career Expertise – Present, Past & Future</p></td>
