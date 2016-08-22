@@ -545,7 +545,7 @@ class CSl_eventEx extends CSl_event
         {
           $count = 0;
           $characterNoteContent = $validCharacterNote['content'];
-          ChromePhp::log($characterNoteContent);
+
           foreach ($contantArray as $key2 => $value)
           {
             if(strpos($characterNoteContent,$value))
@@ -553,7 +553,8 @@ class CSl_eventEx extends CSl_event
               $count ++;
             }
           }
-          if($count >= 5)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          ChromePhp::log($count);
+          if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;
           }

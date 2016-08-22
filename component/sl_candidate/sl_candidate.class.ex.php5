@@ -4235,7 +4235,7 @@ class CSl_candidateEx extends CSl_candidate
               $count ++;
             }
           }
-          if($count >= 5)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;
           }
