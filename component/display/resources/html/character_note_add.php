@@ -54,6 +54,10 @@
 	    padding-top: 30px !important;
 	}
 
+	.tdTitleSkill{
+		padding-top: 30px !important;
+	}
+
 
 </style>
 
