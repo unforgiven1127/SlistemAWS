@@ -804,6 +804,11 @@ class CSl_eventEx extends CSl_event
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
 
+    if(empty($content))
+    {
+      $content = purify_html(getValue('chracter'));
+    }
+
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
     $candidate_id = (int)getValue(CONST_CP_PK);
