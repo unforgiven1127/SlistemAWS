@@ -44,6 +44,7 @@
 	.inputsSkill{
 		width:50px !important;
 		margin-top: -50px;
+		border-top: 1px solid grey;
 	}
 
 	.inputs{
@@ -62,7 +63,6 @@
 
 	.inputsSkillTd{
 		margin-top: -10px !important;
-		border-top: 1px solid grey;
 	}
 
 
