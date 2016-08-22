@@ -11,7 +11,8 @@
 		text-align: center !important;
 		background-color: #EEEEEE !important;
 		width:306px !important;
-		height:20px !important;
+		height:30px !important;
+		font-weight: bold !important;
 	}
 
 	.inputs{
