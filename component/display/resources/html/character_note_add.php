@@ -3,7 +3,7 @@
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
 	$('.formFieldTitle').css({'width':'935px'});
-	$('.formFieldTitle').html('Test');
+	$('.formFieldTitle').html('Add character note');
 	$('.formLabel').hide();
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
@@ -76,7 +76,7 @@
 	}
 
 	.tdTitleSkill{
-		padding-top: 30px !important;
+		padding-top: 30px;
 		z-index: 999;
 	}
 
@@ -90,9 +90,9 @@
 
 <table class="box" align="center">
 	<tr>
-		<td class='tdTitle'><p class='titles'>Personality & Communication</p></td>
-		<td class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
-		<td class='tdTitle'><p class='titles'>Education & Training</p></td>
+		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
+		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
+		<td style='padding-top: 10px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
 		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'></textarea></td>
