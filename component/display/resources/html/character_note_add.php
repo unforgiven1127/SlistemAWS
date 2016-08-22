@@ -62,6 +62,7 @@
 
 	.inputsSkillTd{
 		margin-top: -10px !important;
+		border-top: 1px solid grey;
 	}
 
 
