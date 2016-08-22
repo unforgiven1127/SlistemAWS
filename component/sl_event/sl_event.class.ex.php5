@@ -937,6 +937,10 @@ class CSl_eventEx extends CSl_event
     }
     else
     {
+      ChromePhp::log($event_type);
+      ChromePhp::log(getValue('delete_note'));
+      ChromePhp::log($content);
+
       if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
         return array('error' => __LINE__.' - Can not create empty notes.');
 
