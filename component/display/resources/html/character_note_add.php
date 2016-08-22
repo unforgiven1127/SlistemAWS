@@ -4,7 +4,6 @@
 	    /*margin: 0 auto !important;*/
 	    /*margin-top:15px !important;*/
 	    margin-left: -100px !important;
-	    padding-top: 100px !important;
 	    border-collapse: collapse;
 	}
 
@@ -14,7 +13,7 @@
 		width:306px !important;
 		height:30px !important;
 		font-weight: bold !important;
-		padding-top: 10px;
+		padding-top: 50px;
 	}
 
 	.inputs{
