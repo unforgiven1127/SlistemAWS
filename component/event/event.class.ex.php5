@@ -827,7 +827,7 @@ class CEventEx extends CEvent
       $asEvent['content'] = getValue('content');
       if(empty($asEvent['content']))
       {
-        $asEvent['content'] = getValue('content');
+        $asEvent['content'] = getValue('character');
       }
       $asEvent['coworker'] = (array)getValue('link_to', array());
       $asEvent['notify'] = getValue('notify');
