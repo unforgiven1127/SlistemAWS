@@ -627,22 +627,22 @@ class CSl_eventEx extends CSl_event
           </table>
         </div>";
 
-        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Career Expertise – Present, Past and Future.', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Career Expertise – Present, Past and Future.', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'education_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Education & Training', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'education_note', array('placeholder'=>'Sections must be filled.  Minimum of 15 characters.','label'=>'Education & Training', 'value' => $oDbResult->getFieldValue('education_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'move_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Move – Reason & Timing', 'value' => $oDbResult->getFieldValue('move_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'move_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Move – Reason & Timing', 'value' => $oDbResult->getFieldValue('move_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('move_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'compensation_note', array('placeholder'=>'Sections must be filled.  If not completed with 10 characters or more will not be able to save.','label'=>'Compensation Breakdown', 'value' => $oDbResult->getFieldValue('compensation_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'compensation_note', array('placeholder'=>'Sections must be filled.  Minimum of 15 characters.','label'=>'Compensation Breakdown', 'value' => $oDbResult->getFieldValue('compensation_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'past_note', array('placeholder'=>'Sections must be filled.  If not completed with 10 characters or more will not be able to save.','label'=>'Companies – Recently Met & Introduced', 'value' => $oDbResult->getFieldValue('past_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'past_note', array('label'=>'Companies – Recently Met & Introduced', 'value' => $oDbResult->getFieldValue('past_note'), 'isTinymce' => 1));
         $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
 
