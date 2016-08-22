@@ -43,7 +43,7 @@
 
 	.inputsSkill{
 		width:50px !important;
-		margin-top: -22px;
+		margin-top: -50px;
 	}
 
 	.inputs{
@@ -57,7 +57,6 @@
 
 	.tdTitleSkill{
 		padding-top: 30px !important;
-		margin-top: 5px !important;
 	}
 
 
