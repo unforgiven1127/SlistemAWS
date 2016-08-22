@@ -14,9 +14,9 @@
 		height:30px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
-	    border-left: 1px solid black;
-		border-right: 1px solid black;
-		border-top: 1px solid black;
+	    border-left: 1px solid grey;
+		border-right: 1px solid grey;
+		border-top: 1px solid grey;
 
 	}
 
