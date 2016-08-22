@@ -42,7 +42,7 @@
 
 	.inputsSkill{
 		width:50px !important;
-		margin-top: -20px;
+		margin-top: -22px;
 	}
 
 	.inputs{
