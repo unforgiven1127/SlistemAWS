@@ -43,7 +43,7 @@ var CPopup = function()
       closeText: '',
       dialogClass: '',
       draggable: true,
-      resizable: false,
+      resizable: true,
 
       hide: {effect: 'fade', delay: 0, duration: 100},
       show:{effect: 'fade', delay: 0, duration: 250},
