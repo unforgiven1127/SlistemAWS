@@ -234,7 +234,7 @@ class CSl_eventEx extends CSl_event
         $sLabel = 'Add a note';
 
       $sURL = $oPage->getAjaxUrl('sl_event', CONST_ACTION_ADD, CONST_EVENT_TYPE_EVENT, 0, $asItem);
-      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+      $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
       $sHTML.= '<a href="javascript:;" onclick="'.$sJavascript.'">'.$sLabel.'</a>';
       $sHTML.= '</div>';
     }
@@ -370,7 +370,7 @@ class CSl_eventEx extends CSl_event
               $sHTML.= $oHTML->getBloc('', $sPic, array('class' => 'note_edit_link', 'onclick' => '
                 var oConf = goPopup.getConfig();
                 oConf.width = 950;
-                oConf.height = 550;
+                oConf.height = 750;
                 goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');'));
             }
           }
