@@ -58,3 +58,32 @@
 		<td><textarea class='inputs'></textarea></td>
 	</tr>
 </table>
+
+<table class="box" align="center">
+	<tr>
+		<td class='tdTitleSkill'><p class='titles'>AG</p></td>
+		<td class='tdTitleSkill'><p class='titles'>FX</p></td>
+		<td class='tdTitleSkill'><p class='titles'>AP</p></td>
+		<td class='tdTitleSkill'><p class='titles'>CH</p></td>
+		<td class='tdTitleSkill'><p class='titles'>AM</p></td>
+		<td class='tdTitleSkill'><p class='titles'>ED</p></td>
+		<td class='tdTitleSkill'><p class='titles'>MP</p></td>
+		<td class='tdTitleSkill'><p class='titles'>PL</p></td>
+		<td class='tdTitleSkill'><p class='titles'>IN</p></td>
+		<td class='tdTitleSkill'><p class='titles'>ENG</p></td>
+		<td class='tdTitleSkill'><p class='titles'>EX</p></td>
+	<tr>
+	<tr>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+		<td><input type='number' class='inputsSkill'></input></td>
+	</tr>
+</table>
