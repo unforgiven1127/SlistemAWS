@@ -15,7 +15,7 @@
 	}
 
 	.inputs{
-		width:306px !important;
+		width:300px !important;
 	}
 
 </style>
