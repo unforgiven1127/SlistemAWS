@@ -4207,13 +4207,10 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addOption('meeting_type', array('label' => 'Other', 'value' => 4), ($nType === 4));
 
       //$oForm->addField('textarea', 'meeting_note', array('label' => 'add a character note'));
-      //
-      //
+
       $validCharacterNotes = getCharacterNotes($pnCandiPk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      ChromePhp::log($validCharacterNotes);
-      //ChromePhp::log($pnPk);
       $characterNoteControlFlag = false;
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
