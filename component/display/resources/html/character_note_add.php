@@ -24,9 +24,9 @@
 
 	.tdTitle{
 	    padding-top: 30px !important;
-	    border-left: 1px black;
-		border-right: 1px black;
-		border-top: 1px black;
+	    border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-top: 1px solid black;
 	}
 
 
