@@ -4308,34 +4308,22 @@ class CSl_candidateEx extends CSl_candidate
           </table>
         </div>";
 
-        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Personality & Communication', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled. Minimum of 25 characters.','label'=>'Personality & Communication', 'isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'current_podition_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Current Position & Responsibilities', 'isTinymce' => 1));
-        $oForm->setFieldControl('current_podition_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-        $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Career History', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled. Minimum of 25 characters.','label'=>'Career Expertise – Present, Past and Future.', 'isTinymce' => 1));
         $oForm->setFieldControl('career_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'product_exp_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Product or Technical Expertise', 'isTinymce' => 1));
-        $oForm->setFieldControl('product_exp_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-        $oForm->addField('textarea', 'education_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Education & Training', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'education_note', array('placeholder'=>'Sections must be filled. Minimum of 15 characters.','label'=>'Education & Training', 'isTinymce' => 1));
         $oForm->setFieldControl('education_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'move_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Reason for moving', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'move_note', array('placeholder'=>'Sections must be filled. Minimum of 25 characters.','label'=>'Move – Reason & Timing', 'isTinymce' => 1));
         $oForm->setFieldControl('move_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'timeline_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Move timeline', 'isTinymce' => 1));
-        $oForm->setFieldControl('timeline_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-        $oForm->addField('textarea', 'compensation_note', array('placeholder'=>'Sections must be filled.  If not completed with 10 characters or more will not be able to save.','label'=>'Compensation Breakdown', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'compensation_note', array('placeholder'=>'Sections must be filled. Minimum of 15 characters.','label'=>'Compensation Breakdown', 'isTinymce' => 1));
         $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
-        $oForm->addField('textarea', 'keywants_note', array('placeholder'=>'Sections must be filled.  If not completed with 25 characters or more will not be able to save.','label'=>'Key Wants', 'isTinymce' => 1));
-        $oForm->setFieldControl('keywants_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-
-        $oForm->addField('textarea', 'past_note', array('placeholder'=>'Sections must be filled.  If not completed with 10 characters or more will not be able to save.','label'=>'Companies – introduced recently / bing pitched', 'isTinymce' => 1));
+        $oForm->addField('textarea', 'past_note', array('label'=>'Companies – Recently Met & Introduced', 'isTinymce' => 1));
         $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addCustomHtml($addHtml);
@@ -5100,16 +5088,12 @@ class CSl_candidateEx extends CSl_candidate
       $characterNoteArray = array();
       $addedFlag = true;
 
-      $characterNoteArray['Personality_and_communication'] = purify_html(getValue('personality_note'));
-      $characterNoteArray['Current_position_and_responsibilities'] = purify_html(getValue('current_podition_note'));
-      $characterNoteArray['Career_history'] = purify_html(getValue('career_note'));
-      $characterNoteArray['Product_or_technical_expertise'] = purify_html(getValue('product_exp_note'));
-      $characterNoteArray['Education_and_training'] = purify_html(getValue('education_note'));
-      $characterNoteArray['Reason_for_moving'] = purify_html(getValue('move_note'));
-      $characterNoteArray['Move_timeline'] = purify_html(getValue('timeline_note'));
-      $characterNoteArray['Compensation_breakdown'] = purify_html(getValue('compensation_note'));
-      $characterNoteArray['Key_wants'] = purify_html(getValue('keywants_note'));
-      $characterNoteArray['Companies_–_introduced_recently_/_bing_pitched'] = purify_html(getValue('past_note'));
+      $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
+      $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
+      $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
+      $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
+      $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
 
       $simpleCharacterNote = purify_html(getValue('meeting_note'));
 
@@ -5137,27 +5121,27 @@ class CSl_candidateEx extends CSl_candidate
         {
           if(isset($value) && !empty($value))
           {
-            if($key != 'Compensation_breakdown' && $key != 'Companies_–_introduced_recently_/_bing_pitched' && strlen($value) < 32)
+            if($key != 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' && $key != 'EDUCATION_AND_TRAINING' && $key != 'COMPENSATION_BREAKDOWN' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            if($key == 'Compensation_breakdown' && strlen($value) < 17)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'EDUCATION_AND_TRAINING' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Compensation breakdowns should have 10 caracters');
+              return array('error' => __LINE__.' - Education should have 15 caracters');
             }
-            if($key == 'Companies_–_introduced_recently_/_bing_pitched' && strlen($value) < 17)
+            if($key == 'COMPENSATION_BREAKDOWN' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - Companies introduced should have 10 caracters');
+              return array('error' => __LINE__.' - Compensation should have 15 caracters');
             }
             $characterNoteFlag  = true;
             $title = str_replace('_',' ',$key);
-            $title .= " : ";
+            $title .= ": ";
             $value = str_replace('<p>','',$value);
-            $characterNote .= "<b>".$title."</b>".$value;
+            $characterNote .= $title.$value;
           }
           else
           {
-            return array('error' => __LINE__.' - The candidate must have 10 character notes. Please fill all areas.');
+            return array('error' => __LINE__.' - The candidate must have 5 character notes. Please fill all required areas.');
           }
         }
         if($characterNoteFlag)
