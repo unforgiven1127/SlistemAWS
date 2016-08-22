@@ -91,9 +91,9 @@
 		<td class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
-		<td><textarea class='inputs'></textarea></td>
-		<td><textarea class='inputs'></textarea></td>
-		<td><textarea class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='career_note' name='career_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='education_note' name='education_note' class='inputs'></textarea></td>
 	</tr>
 </table>
 
@@ -104,9 +104,9 @@
 		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
 	<tr>
 	<tr>
-		<td><textarea class='inputs'></textarea></td>
-		<td><textarea class='inputs'></textarea></td>
-		<td><textarea class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='move_note' name='move_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="" id='past_note' name='past_note' class='inputs'></textarea></td>
 	</tr>
 </table>
 
@@ -125,16 +125,16 @@
 		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_fx']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ap']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ch']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_am']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ed']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_mp']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_pl']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_in']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_e']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ex']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_fx']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_ap']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_ch']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_am']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_ed']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_mp']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_pl']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_in']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_e']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input id='' name='' value='<?php echo $skillArray['skill_ex']; ?>' type='number' class='inputsSkill'></input></td>
 	</tr>
 </table>
