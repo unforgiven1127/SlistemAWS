@@ -1,8 +1,9 @@
 
 <style>
 	.box {
-	    margin: 0 auto !important;
+	    /*margin: 0 auto !important;*/
 	    margin-top:15px !important;
+	    margin-left: -200px !important;
 	}
 
 </style>
