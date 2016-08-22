@@ -5042,9 +5042,17 @@ class CSl_candidateEx extends CSl_candidate
       $validCharacterNotes = getCharacterNotes($nCandidatefk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      //ChromePhp::log($validCharacterNotes);
-      //ChromePhp::log($validCharacterNotesLength);
+      $candidateActiveMeetings = getCandidateActiveMeetings($nCandidatefk);
+      $candidateActiveMeetingsLength = count($candidateActiveMeetings);
+
+      //ChromePhp::log($candidateActiveMeetings);
+      //ChromePhp::log($candidateActiveMeetingsLength);
+
       $characterNoteControlFlag = false;
+      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
+      {
+        $characterNoteControlFlag = true;
+      }
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
         $contantArray = array();
@@ -5072,7 +5080,7 @@ class CSl_candidateEx extends CSl_candidate
           {
             $characterNoteControlFlag = true;
           }
-        }}
+         }
         }
 
       }
