@@ -553,7 +553,6 @@ class CSl_eventEx extends CSl_event
               $count ++;
             }
           }
-          ChromePhp::log($count);
           if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;

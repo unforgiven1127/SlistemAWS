@@ -5039,25 +5039,29 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $candidate_id = $nCandidatefk;
-      $validCharacterNotes = getCharacterNotes($nCandidatefk);
+      $validCharacterNotes = getCharacterNotes($candidate_id);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      //ChromePhp::log($validCharacterNotes);
-      //ChromePhp::log($validCharacterNotesLength);
+      $candidateActiveMeetings = getCandidateActiveMeetings($candidate_id);
+      $candidateActiveMeetingsLength = count($candidateActiveMeetings);
+
+      //ChromePhp::log($candidateActiveMeetings);
+      //ChromePhp::log($candidateActiveMeetingsLength);
+
       $characterNoteControlFlag = false;
+      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
+      {
+        $characterNoteControlFlag = true;
+      }
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
         $contantArray = array();
-        $contantArray[] = 'Personality and communication';
-        $contantArray[] = 'Current position and responsibilities';
-        $contantArray[] = 'Career history';
-        $contantArray[] = 'Product or technical expertise';
-        $contantArray[] = 'Education and training';
-        $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Move timeline';
-        $contantArray[] = 'Compensation breakdown';
-        $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies – introduced recently / bing pitched';
+        $contantArray[] = 'PERSONALITY AND COMMUNICATION';
+        $contantArray[] = 'CAREER EXPERTISE – PRESENT, PAST AND FUTURE';
+        $contantArray[] = 'EDUCATION AND TRAINING';
+        $contantArray[] = 'MOVE – REASON AND TIMING';
+        $contantArray[] = 'COMPENSATION BREAKDOWN';
+        //$contantArray[] = 'COMPANIES – RECENTLY MET AND INTRODUCED';// zorunlu alan degil
 
         //$characterNoteContent = $validCharacterNotes[0]['content'];
         foreach ($validCharacterNotes as $key1 => $validCharacterNote)
@@ -5072,10 +5076,11 @@ class CSl_candidateEx extends CSl_candidate
               $count ++;
             }
           }
-          if($count > 7)//sql sonucu olan karakter note >200 oldugu icin sadece bu kontrol yeterli
+          if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;
           }
+        }}
         }
 
       }
