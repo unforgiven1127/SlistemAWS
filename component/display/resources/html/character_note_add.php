@@ -76,7 +76,7 @@
 	}
 
 	.tdTitleSkill{
-		padding-top: 30px;
+		padding-top: 50px;
 		z-index: 999;
 	}
 
