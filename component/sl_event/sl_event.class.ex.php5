@@ -899,10 +899,14 @@ class CSl_eventEx extends CSl_event
               return array('error' => __LINE__.' - Compensation should have 15 caracters');
             }
             $characterNoteFlag  = true;
-            $title = str_replace('_',' ',$key);
-            $title .= ": ";
-            $value = str_replace('<p>','',$value);
-            $characterNote .= $title.$value;
+            if((isset($value) && !empty($value)))
+            {
+              $title = str_replace('_',' ',$key);
+              $title .= ": ";
+              $value = str_replace('<p>','',$value);
+              $characterNote .= $title.$value;
+            }
+
           }
           else
           {
