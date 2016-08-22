@@ -37,7 +37,7 @@
 	    border-left: 1px solid grey;
 		border-right: 1px solid grey;
 		border-top: 1px solid grey;
-		border-bottom: 2px solid grey;
+		border-bottom: 1px solid grey;
 
 	}
 
@@ -109,16 +109,16 @@
 		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
 	</tr>
 </table>
