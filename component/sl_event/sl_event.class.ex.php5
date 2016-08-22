@@ -595,6 +595,8 @@ class CSl_eventEx extends CSl_event
           }
         }
 
+        $data['skillArray'] = $skillArray;
+
         $addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
@@ -627,7 +629,7 @@ class CSl_eventEx extends CSl_event
           </table>
         </div>";
 
-        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), '_isTinymce' => 1));
+        /*$oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), '_isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Career Expertise – Present, Past and Future.', 'value' => $oDbResult->getFieldValue('career_note'), '_isTinymce' => 1));
@@ -643,10 +645,11 @@ class CSl_eventEx extends CSl_event
         $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'past_note', array('label'=>'Companies – Recently Met & Introduced', 'value' => $oDbResult->getFieldValue('past_note'), '_isTinymce' => 1));
-        $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+        $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));*/
 
-
-        $oForm->addCustomHtml($addHtml);
+        $add_note_html = $this->_oDisplay->render('character_note_add', $data);
+        //$oForm->addCustomHtml($addHtml);
+        $oForm->addCustomHtml($add_note_html);
 
       }
 
