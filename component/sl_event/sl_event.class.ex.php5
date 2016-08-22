@@ -806,7 +806,7 @@ class CSl_eventEx extends CSl_event
 
     if(empty($content))
     {
-      $content = purify_html(getValue('chracter'));
+      $content = purify_html(getValue('character'));
     }
 
     $note_title = purify_html(getValue('title'));
