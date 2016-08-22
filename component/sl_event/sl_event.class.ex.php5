@@ -533,16 +533,12 @@ class CSl_eventEx extends CSl_event
       {
 
         $contantArray = array();
-        $contantArray[] = 'Personality and communication';
-        $contantArray[] = 'Current position and responsibilities';
-        $contantArray[] = 'Product or technical expertise';
-        $contantArray[] = 'Compensation breakdown';
-        $contantArray[] = 'Reason for moving';
-        $contantArray[] = 'Career history';
-        $contantArray[] = 'Move timeline';
-        $contantArray[] = 'Key wants';
-        $contantArray[] = 'Companies – introduced recently / bing pitched';
-        $contantArray[] = 'Education and training';
+        $contantArray[] = 'PERSONALITY AND COMMUNICATION';
+        $contantArray[] = 'CAREER EXPERTISE – PRESENT, PAST AND FUTURE';
+        $contantArray[] = 'EDUCATION AND TRAINING';
+        $contantArray[] = 'MOVE – REASON AND TIMING';
+        $contantArray[] = 'COMPENSATION BREAKDOWN';
+        //$contantArray[] = 'COMPANIES – RECENTLY MET AND INTRODUCED';// zorunlu alan degil
 
         //$characterNoteContent = $validCharacterNotes[0]['content'];
         foreach ($validCharacterNotes as $key1 => $validCharacterNote)
@@ -557,7 +553,7 @@ class CSl_eventEx extends CSl_event
               $count ++;
             }
           }
-          if($count >= 7)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
+          if($count >= 5)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
           {
             $characterNoteControlFlag = true;
           }
