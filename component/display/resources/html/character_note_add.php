@@ -20,6 +20,24 @@
 
 	}
 
+	.titlesSkill{
+		text-align: center !important;
+		background-color: #EEEEEE !important;
+		width:50px !important;
+		height:30px !important;
+		font-weight: bold !important;
+		padding-top: 10px;
+	    border-left: 1px solid grey;
+		border-right: 1px solid grey;
+		border-top: 1px solid grey;
+
+	}
+
+	.inputsSkill{
+		width:50px !important;
+		margin-top: -10px;
+	}
+
 	.inputs{
 		width:300px !important;
 		margin-top: -10px;
@@ -61,17 +79,17 @@
 
 <table class="box" align="center">
 	<tr>
-		<td class='tdTitleSkill'><p class='titles'>AG</p></td>
-		<td class='tdTitleSkill'><p class='titles'>FX</p></td>
-		<td class='tdTitleSkill'><p class='titles'>AP</p></td>
-		<td class='tdTitleSkill'><p class='titles'>CH</p></td>
-		<td class='tdTitleSkill'><p class='titles'>AM</p></td>
-		<td class='tdTitleSkill'><p class='titles'>ED</p></td>
-		<td class='tdTitleSkill'><p class='titles'>MP</p></td>
-		<td class='tdTitleSkill'><p class='titles'>PL</p></td>
-		<td class='tdTitleSkill'><p class='titles'>IN</p></td>
-		<td class='tdTitleSkill'><p class='titles'>ENG</p></td>
-		<td class='tdTitleSkill'><p class='titles'>EX</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>AG</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>FX</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>AP</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>CH</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>AM</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>ED</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>MP</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>PL</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>IN</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>ENG</p></td>
+		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
 		<td><input type='number' class='inputsSkill'></input></td>
