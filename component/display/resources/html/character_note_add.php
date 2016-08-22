@@ -3,7 +3,7 @@
 	.box {
 	    /*margin: 0 auto !important;*/
 	    margin-top:15px !important;
-	    margin-left: -200px !important;
+	    margin-left: -150px !important;
 	}
 
 </style>
@@ -22,7 +22,7 @@
 	</tr>
 </table>
 
-<table>
+<table class="box" align="center">
 	<tr>
 		<td><p>Move – Reason & Timing</p></td>
 		<td><p>Compensation Breakdown & Desire</p></td>
