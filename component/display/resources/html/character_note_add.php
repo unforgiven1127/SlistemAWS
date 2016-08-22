@@ -10,7 +10,7 @@
 	.titles{
 		text-align: center !important;
 		background-color: #EEEEEE !important;
-		width:305px !important;
+		width:304px !important;
 		height:30px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
