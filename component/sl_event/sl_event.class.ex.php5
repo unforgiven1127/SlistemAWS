@@ -627,7 +627,7 @@ class CSl_eventEx extends CSl_event
           </table>
         </div>";
 
-        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), 'isTinymce' => 1));
+        $oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), '_isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'career_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Career Expertise – Present, Past and Future.', 'value' => $oDbResult->getFieldValue('career_note'), 'isTinymce' => 1));
