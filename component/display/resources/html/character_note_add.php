@@ -104,16 +104,16 @@
 		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
-		<td><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input type='number' class='inputsSkill'></input></td>
 	</tr>
 </table>
