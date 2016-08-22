@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
-	$('.formFieldTitle').css({'width':'1000px'});
+	$('.formFieldTitle').css({'width':'900px'});
 	$('.formLabel').css({'margin-left':'-158px'});
 
 	$('.inputsSkill').change(function(){
