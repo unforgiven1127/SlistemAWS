@@ -14,6 +14,9 @@
 		height:30px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
+	    border-left: 1px solid black;
+		border-right: 1px solid black;
+		border-top: 1px solid black;
 
 	}
 
@@ -24,9 +27,6 @@
 
 	.tdTitle{
 	    padding-top: 30px !important;
-	    border-left: 1px solid black;
-		border-right: 1px solid black;
-		border-top: 1px solid black;
 	}
 
 
