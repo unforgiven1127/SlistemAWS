@@ -33,7 +33,7 @@
 		width:52px !important;
 		height:15px !important;
 		font-weight: bold !important;
-		padding-top: 10px;
+		/*padding-top: 10px;*/
 	    border-left: 1px solid grey;
 		border-right: 1px solid grey;
 		border-top: 1px solid grey;
@@ -42,7 +42,7 @@
 
 	.inputsSkill{
 		width:50px !important;
-		margin-top: -17px;
+		margin-top: -20px;
 	}
 
 	.inputs{
