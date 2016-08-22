@@ -7,6 +7,13 @@
 	    border-collapse: collapse;
 	}
 
+	.box2 {
+	    /*margin: 0 auto !important;*/
+	    /*margin-top:15px !important;*/
+	    /*margin-left: -50px !important;*/
+	    border-collapse: collapse;
+	}
+
 	.titles{
 		text-align: center !important;
 		background-color: #EEEEEE !important;
@@ -24,7 +31,7 @@
 		text-align: center !important;
 		background-color: #EEEEEE !important;
 		width:50px !important;
-		height:30px !important;
+		height:20px !important;
 		font-weight: bold !important;
 		padding-top: 10px;
 	    border-left: 1px solid grey;
@@ -77,7 +84,7 @@
 	</tr>
 </table>
 
-<table class="box" align="center">
+<table class="box2" align="center">
 	<tr>
 		<td class='tdTitleSkill'><p class='titlesSkill'>AG</p></td>
 		<td class='tdTitleSkill'><p class='titlesSkill'>FX</p></td>
