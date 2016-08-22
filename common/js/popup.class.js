@@ -26,7 +26,7 @@ var CPopup = function()
       forceRefresh: false,
 
       //jquery-ui settings
-      title: null,
+      title: 'test',
       buttons: {},
 
       width: 380,
