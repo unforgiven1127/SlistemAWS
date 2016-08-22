@@ -5152,9 +5152,9 @@ class CSl_candidateEx extends CSl_candidate
         {
           foreach ($skillValues as $key => $skill)
           {
-            if($skill == null || $skill < 0 || $skill > 9)
+            if($skill == null || $skill < 1 || $skill > 9)
             {
-              return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+              return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
             }
           }
           $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
@@ -7129,7 +7129,7 @@ die();*/
 
         foreach ($skillValues as $key => $skill)
         {
-          if($skill != '-' && (!is_numeric($skill) || $skill < 0 || $skill > 9))
+          if($skill != '-' && (!is_numeric($skill) || $skill < 1 || $skill > 9))
           {
             $asError[] = 'All skill areas should have a value between 0 - 9.';
           }

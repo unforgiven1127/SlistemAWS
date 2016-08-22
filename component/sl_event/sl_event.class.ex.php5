@@ -885,9 +885,9 @@ class CSl_eventEx extends CSl_event
       {
         foreach ($skillValues as $key => $skill)
         {
-          if($skill == null || $skill < 0 || $skill > 9)
+          if($skill == null || $skill < 1 || $skill > 9)
           {
-            return array('error' => __LINE__.' - All skill areas should have a value between 0 - 9');
+            return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
           }
         }
 
