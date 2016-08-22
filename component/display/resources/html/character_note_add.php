@@ -33,7 +33,7 @@
 		width:52px !important;
 		height:15px !important;
 		font-weight: bold !important;
-		padding-top: 2px;
+		/*padding-top: 10px;*/
 	    border-left: 1px solid grey;
 		border-right: 1px solid grey;
 		border-top: 1px solid grey;
@@ -57,6 +57,7 @@
 
 	.tdTitleSkill{
 		padding-top: 30px !important;
+		margin-top: 5px !important;
 	}
 
 
