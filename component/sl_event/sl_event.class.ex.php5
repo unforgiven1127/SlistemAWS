@@ -529,6 +529,10 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
+      if(isset($pnPk) && $pnPk > 0)
+      {
+        $characterNoteControlFlag = true;
+      }
       if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
 
