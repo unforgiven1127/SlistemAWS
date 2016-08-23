@@ -1446,7 +1446,7 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getListStart();
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $pasCandidateData['sl_candidatepk']);
-        $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1050; oConf.height = 650;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+        $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1080; oConf.height = 725;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
         $sHTML.= '<li><a href="javascript:;" onclick=" '.$sJavascript.'"><img title="Edit candidate" src="/component/sl_candidate/resources/pictures/tabs/character_24.png"> Edit candidate</a></li>';
 
 
@@ -3983,7 +3983,7 @@ class CSl_candidateEx extends CSl_candidate
               {
                 $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_DONE, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
                 $asButtons[] = array('url' => '', 'label' => 'Meeting done', 'pic' => $this->getResourcePath().'pictures/done_16.png',
-                    'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 850; oConf.height = 750; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');');
+                    'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 1050; oConf.height = 750; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');');
               }
 
               $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
