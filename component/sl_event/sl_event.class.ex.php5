@@ -959,6 +959,7 @@ class CSl_eventEx extends CSl_event
       else
       {
         $asResult = $oEvent->addNote((int)$candidate_id, 'character', $simpleCharacterNote);
+        ChromePhp::log($asResult);
         $addedFlag = false;
       }
 
