@@ -67,7 +67,7 @@
 	}
 
 	.inputs{
-		width:400px !important;
+		width:300px !important;
 		margin-top: -10px;
 	}
 
