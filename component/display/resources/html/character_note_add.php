@@ -43,6 +43,7 @@
 	}
 
 	.titles{
+		font-size: 12pt;
 		text-align: center !important;
 		background-color: #EEEEEE !important;
 		width:304px !important;
