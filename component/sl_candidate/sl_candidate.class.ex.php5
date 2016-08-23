@@ -1446,7 +1446,7 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getListStart();
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $pasCandidateData['sl_candidatepk']);
-        $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1080; oConf.height = 725;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
+        $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 1050; oConf.height = 650;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
         $sHTML.= '<li><a href="javascript:;" onclick=" '.$sJavascript.'"><img title="Edit candidate" src="/component/sl_candidate/resources/pictures/tabs/character_24.png"> Edit candidate</a></li>';
 
 
@@ -4272,7 +4272,9 @@ class CSl_candidateEx extends CSl_candidate
           }
         }
 
-        $addHtml = "
+        $data['skillArray'] = $skillArray;
+
+        /*$addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
             <tr>
@@ -4320,9 +4322,11 @@ class CSl_candidateEx extends CSl_candidate
         $oForm->setFieldControl('compensation_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
 
         $oForm->addField('textarea', 'past_note', array('label'=>'Companies – Recently Met & Introduced', 'isTinymce' => 1));
-        $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
+        $oForm->setFieldControl('past_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));*/
 
-        $oForm->addCustomHtml($addHtml);
+        $add_note_html = $this->_oDisplay->render('character_note_add', $data);
+        //$oForm->addCustomHtml($addHtml);
+        $oForm->addCustomHtml($add_note_html);
       }
 
 

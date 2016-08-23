@@ -597,7 +597,7 @@ class CSl_eventEx extends CSl_event
 
         $data['skillArray'] = $skillArray;
 
-        $addHtml = "
+        /*$addHtml = "
         <div style='margin-left:150px; margim-top:10px;'>
           <table>
             <tr>
@@ -627,7 +627,7 @@ class CSl_eventEx extends CSl_event
               <td><input type='text' style='width:30px;text-align: center;' name='skill_e' value='".$skillArray['skill_e']."'/></td>
             </tr>
           </table>
-        </div>";
+        </div>";*/
 
         /*$oForm->addField('textarea', 'personality_note', array('placeholder'=>'Sections must be filled.  Minimum of 25 characters.','label'=>'Personality & Communication', 'value' => $oDbResult->getFieldValue('personality_note'), '_isTinymce' => 1));
         $oForm->setFieldControl('personality_note', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
