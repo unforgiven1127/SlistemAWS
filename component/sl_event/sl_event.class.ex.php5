@@ -886,13 +886,6 @@ class CSl_eventEx extends CSl_event
 
       if(empty($simpleCharacterNote))
       {
-        foreach ($skillValues as $key => $skill)
-        {
-          if($skill == null || $skill < 1 || $skill > 9)
-          {
-            return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
-          }
-        }
 
         foreach ($characterNoteArray as $key => $value)
         {
@@ -923,6 +916,13 @@ class CSl_eventEx extends CSl_event
           else
           {
             return array('error' => __LINE__.' - The candidate must have 5 character notes. Please fill all required areas.');
+          }
+        }
+        foreach ($skillValues as $key => $skill)
+        {
+          if($skill == null || $skill < 1 || $skill > 9)
+          {
+            return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
           }
         }
         if($characterNoteFlag)
