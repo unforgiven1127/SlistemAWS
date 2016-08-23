@@ -2019,9 +2019,9 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
-    return array( 'error' => __LINE__.' - Test.');
+
     //return array( 'error' => __LINE__.' - Document uploaded successfully.');
-    //return $aOutput;
+    return $aOutput;
   }
 
 
