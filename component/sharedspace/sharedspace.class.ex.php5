@@ -2012,7 +2012,7 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= $asDocument['callback'];
     }
-    ChromePhp::log('popup');
+    ChromePhp::log($asDocument['callback']);
     //if action called, we close the edit popup
     if(empty($asDocument['callback']))
     {
