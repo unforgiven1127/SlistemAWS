@@ -3478,10 +3478,10 @@ var_dump($query);*/
     $sDate = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
-    $candidate_id = $array[''];
-    $type = $array[''];
-    $content = $array[''];
-    $user_id = $array[''];
+    $candidate_id = $array['candidate_id'];
+    $type = $array['type'];
+    $content = $array['content'];
+    $user_id = $array['user_id'];
 
     $sQuery = "INSERT INTO `sl_notes` (`candidate_id`,`type`,`content`,`user_id`, `first_activity`, `last_activity`)
                VALUES('".$candidate_id."','".$type."','".$content."','".$user_id."','".$sDate."','".$sDate."')";
