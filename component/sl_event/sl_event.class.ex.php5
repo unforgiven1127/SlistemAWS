@@ -930,7 +930,19 @@ class CSl_eventEx extends CSl_event
         }
         if($characterNoteFlag)
         {
-            $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            foreach ($characterNoteArray as $key => $value)
+            {
+              if((isset($value) && !empty($value)))
+              {
+                $array = array();
+                $array['candidate_id'] = $candidate_id;
+                $array['type'] = $key;
+                $array['content'] = $value;
+                $array['user_id'] = $user_id;
+                insertNote($array);
+              }
+            }
             updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
         }

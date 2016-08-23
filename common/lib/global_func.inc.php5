@@ -3473,6 +3473,24 @@ var_dump($query);*/
     return $result;
   }
 
+  function insertNote($array)
+  {
+    $sDate = date('Y-m-d H:i:s');
+    $oDB = CDependency::getComponentByName('database');
+
+    $candidate_id = $array[''];
+    $type = $array[''];
+    $content = $array[''];
+    $user_id = $array[''];
+
+    $sQuery = "INSERT INTO `sl_notes` (`candidate_id`,`type`,`content`,`user_id`, `first_activity`, `last_activity`)
+               VALUES('".$candidate_id."','".$type."','".$content."','".$user_id."','".$sDate."','".$sDate."')";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    return true;
+  }
+
   function insertAILog($type,$data,$user_id)
   {
 
