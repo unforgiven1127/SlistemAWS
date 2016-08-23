@@ -853,12 +853,12 @@ class CSl_eventEx extends CSl_event
     insertLog($user_id, $candidate_id, $note);
 
     //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
-    $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
-    $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
-    $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
-    $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
-    $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
-    $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
+    $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html($_POST['personality_note']);
+    $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html($_POST['career_note']);
+    $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html($_POST['education_note']);
+    $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html($_POST['move_note']);
+    $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html($_POST['compensation_note']);
+    $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html($_POST['past_note']);
 
     $skillValues = array();
     $skillValues['skill_ag'] = getValue('skill_ag');
