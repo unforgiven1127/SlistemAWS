@@ -13,8 +13,8 @@
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
 	$('#topTextP').css({'margin-left':'-90px'});
+	$('#topTextP').css({'margin-bottom':'-40px'});
 	$('#meeting_typeId').css({'margin-left':'-90px'});
-	$('#meeting_typeId').css({'margin-top':'-20px'});
 	$('#meetingDate').css({'margin-left':'-90px'});
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character note');
