@@ -78,6 +78,7 @@
 	.inputs{
 		/*width:300px !important;*/
 		margin-top: -10px;
+		height: 100px;
 	}
 
 	.tdTitle{
