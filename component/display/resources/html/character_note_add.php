@@ -68,6 +68,7 @@
 
 	.inputs{
 		width:300px !important;
+		-moz-width: 304px !important;
 		margin-top: -10px;
 	}
 

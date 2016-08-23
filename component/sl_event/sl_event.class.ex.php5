@@ -852,30 +852,33 @@ class CSl_eventEx extends CSl_event
 
     insertLog($user_id, $candidate_id, $note);
 
+    //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
+    $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
+    $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
+    $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
+    $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
+    $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
+    $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
+
+    $skillValues = array();
+    $skillValues['skill_ag'] = getValue('skill_ag');
+    $skillValues['skill_ap'] = getValue('skill_ap');
+    $skillValues['skill_am'] = getValue('skill_am');
+    $skillValues['skill_mp'] = getValue('skill_mp');
+    $skillValues['skill_in'] = getValue('skill_in');
+    $skillValues['skill_ex'] = getValue('skill_ex');
+    $skillValues['skill_fx'] = getValue('skill_fx');
+    $skillValues['skill_ch'] = getValue('skill_ch');
+    $skillValues['skill_ed'] = getValue('skill_ed');
+    $skillValues['skill_pl'] = getValue('skill_pl');
+    $skillValues['skill_e'] = getValue('skill_e');
+    //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
+
     if($event_type == 'character' && empty($delete_flag) && empty($this->cnPk))
     {
       $characterNoteArray = array();
+
       $addedFlag = true;
-
-      $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
-      $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
-      $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
-      $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
-      $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
-      $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
-
-      $skillValues = array();
-      $skillValues['skill_ag'] = getValue('skill_ag');
-      $skillValues['skill_ap'] = getValue('skill_ap');
-      $skillValues['skill_am'] = getValue('skill_am');
-      $skillValues['skill_mp'] = getValue('skill_mp');
-      $skillValues['skill_in'] = getValue('skill_in');
-      $skillValues['skill_ex'] = getValue('skill_ex');
-      $skillValues['skill_fx'] = getValue('skill_fx');
-      $skillValues['skill_ch'] = getValue('skill_ch');
-      $skillValues['skill_ed'] = getValue('skill_ed');
-      $skillValues['skill_pl'] = getValue('skill_pl');
-      $skillValues['skill_e'] = getValue('skill_e');
 
       $simpleCharacterNote = purify_html(getValue('character'));
 
@@ -915,7 +918,7 @@ class CSl_eventEx extends CSl_event
           }
           else
           {
-            return array('error' => __LINE__.' - The candidate must have 5 character notes. Please fill all required areas.');
+            return array('error' => __LINE__.' - Please fill all required areas.');
           }
         }
         foreach ($skillValues as $key => $skill)
@@ -945,9 +948,6 @@ class CSl_eventEx extends CSl_event
     }
     else
     {
-      ChromePhp::log($event_type);
-      ChromePhp::log(getValue('delete_note'));
-      ChromePhp::log($content);
 
       if((empty($event_type) && !getValue('delete_note')) || (empty($content) && !getValue('delete_note')))
         return array('error' => __LINE__.' - Can not create empty notes.');
