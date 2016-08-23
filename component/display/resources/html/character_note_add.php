@@ -2,11 +2,11 @@
 <script type="text/javascript">
 
 	if($.browser.chrome) {
-	   alert(1);
+	   $('.inputs').css({'width':'300px'});
 	} else if ($.browser.mozilla) {
-	   alert(2);
+	   $('.inputs').css({'width':'302px'});
 	} else if ($.browser.msie) {
-	   alert(3);
+	   $('.inputs').css({'width':'300px'});
 	}
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
