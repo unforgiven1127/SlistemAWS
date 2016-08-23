@@ -65,6 +65,7 @@
 		width:50px !important;
 		margin-top: -50px;
 	}
+	<?php $browser = get_browser(null, true); echo $browser['browser']; ?>
 
 	.inputs{
 		width:300px !important;
