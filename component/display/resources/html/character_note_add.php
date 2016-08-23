@@ -12,6 +12,7 @@
 	}
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
+	$('#topText').css({'margin-left':'-90px'});
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character note');
 	$('.formLabel').hide();
