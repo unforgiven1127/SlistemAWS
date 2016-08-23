@@ -944,7 +944,7 @@ class CSl_eventEx extends CSl_event
                 insertNote($array);
               }
             }
-            updateCandidateSkills($candidate_id,$skillValues);
+            $asResult =updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
 
             $oPage = CDependency::getCpPage();
