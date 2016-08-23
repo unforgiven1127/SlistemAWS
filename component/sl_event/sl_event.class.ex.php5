@@ -928,6 +928,7 @@ class CSl_eventEx extends CSl_event
             return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
           }
         }
+        ChromePhp::log($characterNoteFlag);
         if($characterNoteFlag)
         {
             //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
