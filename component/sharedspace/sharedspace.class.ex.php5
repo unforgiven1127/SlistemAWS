@@ -1625,6 +1625,7 @@ class CSharedspaceEx extends CSharedspace
 
     //dump($_POST);
     //dump($_FILES);
+    ChromePhp::log('saveLocalDocument');
     $asReturn = $this->_saveDocument(0, true);
 
     if(isset($asReturn['error']))
@@ -1663,6 +1664,7 @@ class CSharedspaceEx extends CSharedspace
     $asDoc['has_cp_link'] = $pasItemLink;
     $asDoc['doc_type'] = $doc_type;
 
+    ChromePhp::log('quickAddDocument');
     return $this->_saveDocument(0, false, $asDoc);
   }
 
@@ -1675,7 +1677,6 @@ class CSharedspaceEx extends CSharedspace
   */
   private function _saveDocument($pnPk = 0, $pbExternalFile = false, $pasDocData = array())
   {
-    ChromePhp::log('_saveDocument');
     if(!assert('is_integer($pnPk)'))
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
@@ -1979,7 +1980,6 @@ class CSharedspaceEx extends CSharedspace
       $this->_notifyUsers($nDocPk, $asNotify);
     }
 
-    ChromePhp::log('notify');
     //Everything went well, log history, manage message and actions
     $aOutput = array('notice' => $asDocument['title'].' has been saved.', 'action' => '');
 
@@ -2012,16 +2012,15 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= $asDocument['callback'];
     }
-    ChromePhp::log($asDocument['callback']);
+
     //if action called, we close the edit popup
     if(empty($asDocument['callback']))
     {
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
 
-    ChromePhp::log($aOutput);
-    return array( 'error' => __LINE__.' - Document uploaded successfully.');
-    //return $aOutput;
+    //return array( 'error' => __LINE__.' - Document uploaded successfully.');
+    return $aOutput;
   }
 
 
