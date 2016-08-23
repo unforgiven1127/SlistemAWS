@@ -946,13 +946,15 @@ class CSl_eventEx extends CSl_event
             }
             $asResult = updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
+
             $oPage = CDependency::getCpPage();
             $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
+
             if((bool)getValue('no_candi_refresh', 0))
               $asResult['action'].= ' goPopup.removeLastByType(\'layer\'); ';
             else
               $asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
-
+        }
       }
       else
       {
