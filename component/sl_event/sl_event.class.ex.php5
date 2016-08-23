@@ -944,7 +944,7 @@ class CSl_eventEx extends CSl_event
                 insertNote($array);
               }
             }
-            $asResult = updateCandidateSkills($candidate_id,$skillValues);
+            updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
 
             $oPage = CDependency::getCpPage();
@@ -952,8 +952,9 @@ class CSl_eventEx extends CSl_event
 
             ChromePhp::log($sURL);
 
-            //$asResult = array();
-            //$asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+            $asResult = array();
+            $asResult['notice'] = "Activity saved successfully.";
+            $asResult['timedUrl'] = "https://beta1.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
         }
       }
       else
