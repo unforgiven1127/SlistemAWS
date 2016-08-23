@@ -854,12 +854,12 @@ class CSl_eventEx extends CSl_event
 
     //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
     $characterNoteArray = array();
-    $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
-    $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
-    $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
-    $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
-    $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
-    $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
+    $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
+    $characterNoteArray['career_note,career_note'] = purify_html(getValue('career_note'));
+    $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
+    $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
+    $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
+    $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
 
     $skillValues = array();
     $skillValues['skill_ag'] = getValue('skill_ag');
@@ -889,7 +889,7 @@ class CSl_eventEx extends CSl_event
 
       if(empty($simpleCharacterNote))
       {
-ChromePhp::log($characterNoteArray);
+
         foreach ($characterNoteArray as $key => $value)
         {
           if($key == 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' || (isset($value) && !empty($value)))
@@ -928,7 +928,7 @@ ChromePhp::log($characterNoteArray);
             return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
           }
         }
-        ChromePhp::log($characterNoteFlag);
+
         if($characterNoteFlag)
         {
             //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
@@ -944,7 +944,7 @@ ChromePhp::log($characterNoteArray);
                 insertNote($array);
               }
             }
-            updateCandidateSkills($candidate_id,$skillValues);
+            $asResult = updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
         }
       }
