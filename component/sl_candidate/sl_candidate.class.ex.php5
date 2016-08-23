@@ -5015,7 +5015,9 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_key($pnMeetingPk)'))
         return array('error' => 'Could not find the meeting');
 
+      $oLogin = CDependency::getCpLogin();
       $nCandidatefk = (int)getValue('candidatefk');
+      $user_id = $oLogin->getUserPk();
 
       $candidate_info = getCandidateInformation($nCandidatefk);
 
@@ -5093,12 +5095,12 @@ class CSl_candidateEx extends CSl_candidate
       $characterNoteArray = array();
       $addedFlag = true;
 
-      $characterNoteArray['PERSONALITY_AND_COMMUNICATION'] = purify_html(getValue('personality_note'));
-      $characterNoteArray['CAREER_EXPERTISE_–_PRESENT,_PAST_AND_FUTURE'] = purify_html(getValue('career_note'));
-      $characterNoteArray['EDUCATION_AND_TRAINING'] = purify_html(getValue('education_note'));
-      $characterNoteArray['MOVE_–_REASON_AND_TIMING'] = purify_html(getValue('move_note'));
-      $characterNoteArray['COMPENSATION_BREAKDOWN'] = purify_html(getValue('compensation_note'));
-      $characterNoteArray['COMPANIES_–_RECENTLY_MET_AND_INTRODUCED'] = purify_html(getValue('past_note'));
+      $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
+      $characterNoteArray['career_note'] = purify_html(getValue('career_note'));
+      $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
+      $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
+      $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
+      $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
 
       $simpleCharacterNote = purify_html(getValue('meeting_note'));
 
@@ -5124,17 +5126,17 @@ class CSl_candidateEx extends CSl_candidate
       {
         foreach ($characterNoteArray as $key => $value)
         {
-          if($key == 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' || (isset($value) && !empty($value)))
+          if($key == 'past_note' || (isset($value) && !empty($value)))
           {
-            if($key != 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' && $key != 'EDUCATION_AND_TRAINING' && $key != 'COMPENSATION_BREAKDOWN' && strlen($value) < 32)
+            if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - All areas should have 25 caracters');
             }
-            if($key == 'EDUCATION_AND_TRAINING' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
               return array('error' => __LINE__.' - Education should have 15 caracters');
             }
-            if($key == 'COMPENSATION_BREAKDOWN' && strlen($value) < 22)
+            if($key == 'compensation_note' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - Compensation should have 15 caracters');
             }
