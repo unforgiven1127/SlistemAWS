@@ -3,8 +3,10 @@
 
 	if($.browser.chrome) {
 	   $('.inputs').css({'width':'300px'});
+	   $('.inputsSkill').css({'width':'50px'});
 	} else if ($.browser.mozilla) {
 	   $('.inputs').css({'width':'302px'});
+	   $('.inputsSkill').css({'width':'48px'});
 	} else if ($.browser.msie) {
 	   $('.inputs').css({'width':'300px'});
 	}
@@ -71,7 +73,7 @@
 	}
 
 	.inputsSkill{
-		width:50px !important;
+		/*width:50px !important;*/
 		margin-top: -50px;
 	}
 
