@@ -947,14 +947,9 @@ class CSl_eventEx extends CSl_event
             updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
 
-            $oPage = CDependency::getCpPage();
-            $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
-
-            ChromePhp::log($sURL);
-
             $asResult = array();
             $asResult['notice'] = "Activity saved successfully.";
-            $asResult['timedUrl'] = "https://beta1.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
+            $asResult['timedUrl'] = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
         }
       }
       else
