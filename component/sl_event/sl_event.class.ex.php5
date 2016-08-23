@@ -900,15 +900,15 @@ class CSl_eventEx extends CSl_event
           {
             if($key != 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' && $key != 'EDUCATION_AND_TRAINING' && $key != 'COMPENSATION_BREAKDOWN' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - All areas should have 25 caracters');
+              return array('error' => __LINE__.' - Please fill all required areas');
             }
             if($key == 'EDUCATION_AND_TRAINING' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Education should have 15 caracters');
+              return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'COMPENSATION_BREAKDOWN' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - Compensation should have 15 caracters');
+              return array('error' => __LINE__.' - Compensation Breakdown should have 15 caracters');
             }
             $characterNoteFlag  = true;
             if((isset($value) && !empty($value)))
