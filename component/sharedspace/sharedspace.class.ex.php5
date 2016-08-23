@@ -1677,6 +1677,7 @@ class CSharedspaceEx extends CSharedspace
   */
   private function _saveDocument($pnPk = 0, $pbExternalFile = false, $pasDocData = array())
   {
+    return array( 'error' => __LINE__.' - Test.');
     if(!assert('is_integer($pnPk)'))
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
@@ -1959,8 +1960,6 @@ class CSharedspaceEx extends CSharedspace
 
         if(!$nLinkPk)
           return array('error' => 'Could not save link values. Please contact your administrator.');
-        else
-          return array('error' => 'Document added successfully');
 
       }
     }
