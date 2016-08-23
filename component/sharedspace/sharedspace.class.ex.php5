@@ -1677,7 +1677,7 @@ class CSharedspaceEx extends CSharedspace
   */
   private function _saveDocument($pnPk = 0, $pbExternalFile = false, $pasDocData = array())
   {
-    return array( 'error' => __LINE__.' - Test.');
+
     if(!assert('is_integer($pnPk)'))
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
@@ -2019,9 +2019,9 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= 'var oPopup = $(\'#documentFormId\').closest(\'.ui-dialog-content\'); goPopup.remove(oPopup); ';
     }
-
+    return array( 'error' => __LINE__.' - Test.');
     //return array( 'error' => __LINE__.' - Document uploaded successfully.');
-    return $aOutput;
+    //return $aOutput;
   }
 
 
