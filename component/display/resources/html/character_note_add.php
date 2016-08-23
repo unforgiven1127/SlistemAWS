@@ -67,8 +67,7 @@
 	}
 
 	.inputs{
-		-webkit-column-width:400px !important;
-		-moz-column-width: 404px !important;
+		width:400px !important;
 		margin-top: -10px;
 	}
 
