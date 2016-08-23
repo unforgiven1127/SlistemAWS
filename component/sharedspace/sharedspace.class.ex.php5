@@ -1955,6 +1955,7 @@ class CSharedspaceEx extends CSharedspace
         );
 
         $nLinkPk = $this->_getModel()->add($aCpValues, 'document_link');
+        ChromePhp::log($nLinkPk);
         if(!$nLinkPk)
           return array('error' => 'Could not save link values. Please contact your administrator.');
 
@@ -1978,7 +1979,7 @@ class CSharedspaceEx extends CSharedspace
       $this->_notifyUsers($nDocPk, $asNotify);
     }
 
-
+    ChromePhp::log('notify');
     //Everything went well, log history, manage message and actions
     $aOutput = array('notice' => $asDocument['title'].' has been saved.', 'action' => '');
 
@@ -2011,7 +2012,7 @@ class CSharedspaceEx extends CSharedspace
     {
       $aOutput['action'].= $asDocument['callback'];
     }
-
+    ChromePhp::log('popup');
     //if action called, we close the edit popup
     if(empty($asDocument['callback']))
     {
