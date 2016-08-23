@@ -6,7 +6,7 @@
 	   $('.inputsSkill').css({'width':'50px'});
 	} else if ($.browser.mozilla) {
 	   $('.inputs').css({'width':'302px'});
-	   $('.inputsSkill').css({'width':'45px'});
+	   $('.inputsSkill').css({'width':'46px'});
 	} else if ($.browser.msie) {
 	   $('.inputs').css({'width':'300px'});
 	}
