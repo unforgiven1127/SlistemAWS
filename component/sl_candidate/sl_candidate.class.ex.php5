@@ -4198,7 +4198,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('select', 'meeting_type', array('label' => 'Meeting type'));
 
       $default_date = date('Y-m-d H:i');
-      $oForm->addField('input', 'date_met', array('type' => 'datetime', 'label'=> 'Meeting date',
+      $oForm->addField('input', 'date_met', array('id'=>'meetingDate','type' => 'datetime', 'label'=> 'Meeting date',
         'value' => $default_date, 'minDate' => '-4 day', 'maxDate' => 'now'));
 
       $oForm->addOption('meeting_type', array('label' => 'In person', 'value' => 1), ($nType === 1));
