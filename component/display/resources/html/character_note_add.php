@@ -16,6 +16,7 @@
 	$('#topTextP').css({'margin-bottom':'-40px'});
 	$('#meeting_typeId').css({'margin-left':'-90px'});
 	$('#meetingDate').css({'margin-left':'-90px'});
+	$('#meetingDate').css({'margin-bottom':'10px'});
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character note');
 	$('.formLabel').hide();
