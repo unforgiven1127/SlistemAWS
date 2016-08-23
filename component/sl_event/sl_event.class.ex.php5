@@ -944,12 +944,13 @@ class CSl_eventEx extends CSl_event
                 insertNote($array);
               }
             }
-            $asResult = updateCandidateSkills($candidate_id,$skillValues);
+            updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
 
             $oPage = CDependency::getCpPage();
             $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
 
+            $asResult = array();
             $asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
         }
       }
