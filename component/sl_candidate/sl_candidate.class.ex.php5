@@ -5161,10 +5161,25 @@ class CSl_candidateEx extends CSl_candidate
               return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
             }
           }
-          $asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+          foreach ($characterNoteArray as $key => $value)
+          {
+            if((isset($value) && !empty($value)))
+            {
+              $array = array();
+              $array['candidate_id'] = $candidate_id;
+              $array['type'] = $key;
+              $array['content'] = $value;
+              $array['user_id'] = $user_id;
+              insertNote($array);
+            }
+          }
           updateCandidateSkills($candidate_id,$skillValues);
           $addedFlag = false;
           $characterNoteControlFlag = true;
+
+          $asResult = array();
+          $asResult['notice'] = "Activity saved successfully.";
+          $asResult['timedUrl'] = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
         }
       }
       if(!empty($simpleCharacterNote))
