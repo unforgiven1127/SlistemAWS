@@ -1,6 +1,14 @@
 
 <script type="text/javascript">
 
+	if($.browser.chrome) {
+	   alert(1);
+	} else if ($.browser.mozilla) {
+	   alert(2);
+	} else if ($.browser.msie) {
+	   alert(3);
+	}
+
 	$('.formFieldTitle').css({'margin-left':'-90px'});
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character note');
@@ -65,10 +73,9 @@
 		width:50px !important;
 		margin-top: -50px;
 	}
-	<?php $browser = get_browser(null, true); echo $browser['browser']; ?>
 
 	.inputs{
-		width:300px !important;
+		/*width:300px !important;*/
 		margin-top: -10px;
 	}
 
