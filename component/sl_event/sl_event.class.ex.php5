@@ -889,7 +889,7 @@ class CSl_eventEx extends CSl_event
 
       if(empty($simpleCharacterNote))
       {
-
+ChromePhp::log($characterNoteArray);
         foreach ($characterNoteArray as $key => $value)
         {
           if($key == 'COMPANIES_–_RECENTLY_MET_AND_INTRODUCED' || (isset($value) && !empty($value)))
