@@ -1956,9 +1956,11 @@ class CSharedspaceEx extends CSharedspace
         );
 
         $nLinkPk = $this->_getModel()->add($aCpValues, 'document_link');
-        ChromePhp::log($nLinkPk);
+
         if(!$nLinkPk)
           return array('error' => 'Could not save link values. Please contact your administrator.');
+        else
+          return array('error' => 'Document added successfully');
 
       }
     }
