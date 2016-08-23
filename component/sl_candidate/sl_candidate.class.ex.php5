@@ -3983,7 +3983,7 @@ class CSl_candidateEx extends CSl_candidate
               {
                 $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_DONE, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
                 $asButtons[] = array('url' => '', 'label' => 'Meeting done', 'pic' => $this->getResourcePath().'pictures/done_16.png',
-                    'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 1050; oConf.height = 750; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');');
+                    'onclick' => 'oConf = goPopup.getConfig(); oConf.width = 1050; oConf.height = 800; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');');
               }
 
               $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk, array('meetingpk' => $nMeetingPk));
