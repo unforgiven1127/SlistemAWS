@@ -4180,7 +4180,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm->addField('input', 'loginfk', array('type' => 'hidden', 'value' => $nCreator));
       $oForm->addField('input', 'candidatefk', array('type' => 'hidden', 'value' => $pnCandiPk));
 
-      $sMessage = '<br />By changing this meeting status to "done", you\'re atomatically changing the candidate status to "met"&sup1; .<br/>';
+      $sMessage = '<br /><p id="topTextP">By changing this meeting status to "done", you\'re atomatically changing the candidate status to "met"&sup1; .</p><br/>';
       if($nCreator != $oLogin->getUserPk())
       {
         $sMessage.= 'Plus, you\'ll credit&sup2; this meeting to '.$oLogin->getUserLink($nCreator).' who set the meeting up for you.<br/>';
