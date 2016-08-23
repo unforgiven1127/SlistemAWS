@@ -5187,6 +5187,7 @@ class CSl_candidateEx extends CSl_candidate
       if(!empty($simpleCharacterNote))
       {
         $asResult = $oEvent->addNote((int)$candidate_id, 'meeting_note', $simpleCharacterNote);
+        ChromePhp::log($asResult);
         $addedFlag = false;
         $characterNoteControlFlag = true;
       }
