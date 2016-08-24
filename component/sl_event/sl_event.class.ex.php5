@@ -270,7 +270,7 @@ class CSl_eventEx extends CSl_event
         $addNotes['cp_type'] = "candi";
         $addNotes['cp_uid'] = "555-001";
         $addNotes['created_by'] = $createdBy;
-        $addNotes['custom_type'] = "";
+        $addNotes['custom_type'] = "character";
         $addNotes['date_create'] = $first_activity;
         $addNotes['date_display'] = $first_activity;
         $addNotes['date_update'] = $last_activity;
