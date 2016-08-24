@@ -3551,6 +3551,38 @@ var_dump($query);*/
 
   }
 
+  function getNoteTitle($type)
+  {
+    if($type == 'personality_note')
+    {
+      return "PERSONALITY";
+    }
+    else if($type == 'career_note')
+    {
+      return "CAREER";
+    }
+    else if($type == 'education_note')
+    {
+      return "EDUCATION";
+    }
+    else if($type == 'move_note')
+    {
+      return "MOVE";
+    }
+    else if($type == 'compensation_note')
+    {
+      return "COMPENSATIONS";
+    }
+    else if($type == 'past_note')
+    {
+      return "COMPANIES";
+    }
+    else
+    {
+      return $type;
+    }
+  }
+
   function getStatusTitle($status_id)
   {
     if($status_id == '1')

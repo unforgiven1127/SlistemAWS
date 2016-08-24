@@ -240,37 +240,48 @@ class CSl_eventEx extends CSl_event
     }
 
     if($psNoteType == 'character')
-    {
+    {// girilen 6 not birlestiriliyor ve id lerini ; ile birlestiriyoruz
       $candidate_id = $pnItemPk;
       $characterNotes = getSlNotes($candidate_id);
       if(isset($characterNotes))
       {
+        $allCharacterNotes = "";
+        $allIDs = "";
+        $createdBy = '';
+        $first_activity = '';
+        $last_activity = '';
         foreach($characterNotes as $key => $value)
         {
-          $addNotes = array();
-
-          $addNotes['_fts'] = $value['content'];
-          $addNotes['companyName'] = "";
-          $addNotes['content'] = $value['content'];
-          $addNotes['cp_action'] = "ppav";
-          $addNotes['cp_params'] = "";
-          $addNotes['cp_pk'] = (string)$candidate_id;
-          $addNotes['cp_type'] = "candi";
-          $addNotes['cp_uid'] = "555-001";
-          $addNotes['created_by'] = $value['user_id'];
-          $addNotes['custom_type'] = "";
-          $addNotes['date_create'] = $value['first_activity'];
-          $addNotes['date_display'] = $value['first_activity'];
-          $addNotes['date_update'] = $value['last_activity'];
-          $addNotes['event_linkpk'] = "";
-          $addNotes['eventfk'] = "";
-          $addNotes['eventpk'] = "";
-          $addNotes['title'] = "";
-          $addNotes['type'] = "character";
-          $addNotes['updated_by'] = '';
-
-          array_push($asNotes,$addNotes);
+          $title = getNoteTitle($value['type']);
+          $allCharacterNotes .= $title.": ".$value['content']."<br>";
+          $allIDs .= $value['id'].";";
+          $createdBy = $value['user_id'];
+          $first_activity = $value['first_activity'];
+          $last_activity = $value['last_activity'];
         }
+        $addNotes = array();
+
+        $addNotes['_fts'] = $allCharacterNotes;
+        $addNotes['companyName'] = "";
+        $addNotes['content'] = $allCharacterNotes;
+        $addNotes['cp_action'] = "ppav";
+        $addNotes['cp_params'] = "";
+        $addNotes['cp_pk'] = (string)$candidate_id;
+        $addNotes['cp_type'] = "candi";
+        $addNotes['cp_uid'] = "555-001";
+        $addNotes['created_by'] = $createdBy;
+        $addNotes['custom_type'] = "";
+        $addNotes['date_create'] = $first_activity;
+        $addNotes['date_display'] = $first_activity;
+        $addNotes['date_update'] = $last_activity;
+        $addNotes['event_linkpk'] = "";
+        $addNotes['eventfk'] = "";
+        $addNotes['eventpk'] = "";
+        $addNotes['title'] = "";
+        $addNotes['type'] = "character";
+        $addNotes['updated_by'] = '';
+
+        array_push($asNotes,$addNotes);
       }
     }
 
@@ -863,7 +874,7 @@ class CSl_eventEx extends CSl_event
     //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
     $characterNoteArray = array();
     $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
-    $characterNoteArray['career_note,career_note'] = purify_html(getValue('career_note'));
+    $characterNoteArray['career_note'] = purify_html(getValue('career_note'));
     $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
     $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
     $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
