@@ -5102,17 +5102,30 @@ class CSl_candidateEx extends CSl_candidate
         {
           if($key == 'past_note' || (isset($value) && !empty($value)))
           {
-            if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
+            /*if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - All areas should have at least 25 caracters');
+            }*/
+            if($key == 'personality_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            {
+              return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
+            if($key == 'career_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            {
+              return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
+            }
+            if($key == 'move_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            {
+              return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
+            }
+
             if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Education should have 15 caracters');
+              return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - Compensation should have 15 caracters');
+              return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
             $characterNoteFlag  = true;
             if((isset($value) && !empty($value)))
