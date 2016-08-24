@@ -239,10 +239,39 @@ class CSl_eventEx extends CSl_event
       $sHTML.= '</div>';
     }
 
-    ChromePhp::log($psNoteType);
     if($psNoteType == 'character')
     {
+      $candidate_id = $pnItemPk;
+      $characterNotes = getSlNotes($candidate_id);
+      if(isset($characterNotes))
+      {
+        foreach($characterNotes as $key => $value)
+        {
+          $addNotes = array();
 
+          $addNotes['_fts'] = $value['content'];
+          $addNotes['companyName'] = "";
+          $addNotes['content'] = $value['content'];
+          $addNotes['cp_action'] = "ppav";
+          $addNotes['cp_params'] = "";
+          $addNotes['cp_pk'] = (string)$candidate_id;
+          $addNotes['cp_type'] = "candi";
+          $addNotes['cp_uid'] = "555-001";
+          $addNotes['created_by'] = $value['user_id'];
+          $addNotes['custom_type'] = "";
+          $addNotes['date_create'] = $value['first_activity'];
+          $addNotes['date_display'] = $value['first_activity'];
+          $addNotes['date_update'] = $value['last_activity'];
+          $addNotes['event_linkpk'] = "";
+          $addNotes['eventfk'] = "";
+          $addNotes['eventpk'] = "";
+          $addNotes['title'] = "";
+          $addNotes['type'] = "character";
+          $addNotes['updated_by'] = '';
+
+          array_push($asNotes,$addNotes);
+        }
+      }
     }
 
     if($psNoteType == 'cp_history')

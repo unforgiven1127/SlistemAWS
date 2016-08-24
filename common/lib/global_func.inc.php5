@@ -3481,7 +3481,7 @@ var_dump($query);*/
     //$sDate = date('Y-m-d',$sDate);
     //$sDate .= " 00:00:00";
 
-    $sQuery = "SELECT * FROM sl_notes n WHERE n.candidate_id = '".$candidate_id."'";
+    $sQuery = "SELECT * FROM sl_notes n WHERE n.candidate_id = '".$candidate_id."' ORDER BY n.id DESC";
 
     $db_result = $oDB->executeQuery($sQuery);
 
