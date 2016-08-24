@@ -947,11 +947,11 @@ class CSl_eventEx extends CSl_event
 
       $characterNoteFlag = false;
       $characterNote = "";
+      $errorArray = "";
 
       if(empty($simpleCharacterNote))
       {
 
-        $errorArray = "";
         foreach ($characterNoteArray as $key => $value)
         {
           if($key == 'past_note' || (isset($value) && !empty($value)))
@@ -986,11 +986,6 @@ class CSl_eventEx extends CSl_event
               $errorArray .= 'Compensation Breakdown & Desire should have 25 caracters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
-            ChromePhp::log($errorArray);
-            if(!empty($errorArray))
-            {
-              return array('error' => __LINE__.$errorArray);
-            }
             $characterNoteFlag  = true;
             if((isset($value) && !empty($value)))
             {
@@ -1005,6 +1000,11 @@ class CSl_eventEx extends CSl_event
           {
             return array('error' => __LINE__.' - Please fill all required areas.');
           }
+        }
+        ChromePhp::log($errorArray);
+        if(!empty($errorArray))
+        {
+          return array('error' => __LINE__.$errorArray);
         }
         foreach ($skillValues as $key => $skill)
         {
