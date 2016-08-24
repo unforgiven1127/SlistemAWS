@@ -449,7 +449,12 @@ class CSl_eventEx extends CSl_event
     $addHtm = '';
     $oHTML = CDependency::getCpHtml();
 
-    $combinedIDs = $_GET['combinedIDs'];
+    $combinedIDs = '';
+    if(isset($_GET['combinedIDs']))
+    {
+      $combinedIDs = $_GET['combinedIDs'];
+    }
+
     ChromePhp::log($combinedIDs);
 
     //Fetch the data from the calling component
