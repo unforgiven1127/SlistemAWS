@@ -455,6 +455,7 @@ class CSl_eventEx extends CSl_event
     {
       $combinedIDs = $_GET['combinedIDs'];
       $pnPk = null;
+      $sEventType = 'character';
     }
 
     //Fetch the data from the calling component
@@ -511,6 +512,10 @@ class CSl_eventEx extends CSl_event
 
     $asEvent = getEventTypeList(false, $sCp_Type, CDependency::getCpLogin()->isAdmin());
     $sEventType = $oDbResult->getFieldValue('type');
+    if(isset($_GET['combinedIDs']))
+    {
+      $sEventType = 'character';
+    }
 
     if(!empty($sEventType) && !isset($asEvent[$sEventType]))
     {
@@ -573,7 +578,7 @@ class CSl_eventEx extends CSl_event
       $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
     }
 
-    if($sEventType == 'character' || (isset($combinedIDs) && !empty($combinedIDs)))
+    if($sEventType == 'character')
     {// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
       $validCharacterNotes = getSlNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
@@ -603,6 +608,7 @@ class CSl_eventEx extends CSl_event
       {
         $combinedIDs = explode('_',$combinedIDs);
         ChromePhp::log($combinedIDs);
+        $characterNoteControlFlag = false;
       }
 
       if($characterNoteControlFlag)
