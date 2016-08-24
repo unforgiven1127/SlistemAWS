@@ -986,6 +986,7 @@ class CSl_eventEx extends CSl_event
               $errorArray .= 'Compensation Breakdown & Desire should have 25 caracters';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
+            ChromePhp::log($errorArray);
             if(!empty($errorArray))
             {
               return array('error' => __LINE__.$errorArray);
