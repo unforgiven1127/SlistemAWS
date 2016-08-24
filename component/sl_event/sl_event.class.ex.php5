@@ -276,7 +276,7 @@ class CSl_eventEx extends CSl_event
         $addNotes['date_update'] = $last_activity;
         $addNotes['event_linkpk'] = "";
         $addNotes['eventfk'] = "";
-        $addNotes['eventpk'] = $allIDs;
+        $addNotes['eventpk'] = '';
         $addNotes['title'] = "";
         $addNotes['type'] = "character";
         $addNotes['updated_by'] = '';
@@ -453,7 +453,6 @@ class CSl_eventEx extends CSl_event
     if(isset($_GET['combinedIDs']))
     {
       $combinedIDs = $_GET['combinedIDs'];
-      $pnPk = '';
     }
 
     ChromePhp::log($combinedIDs);
