@@ -254,7 +254,7 @@ class CSl_eventEx extends CSl_event
         {
           $title = getNoteTitle($value['type']);
           $allCharacterNotes .= $title.": ".$value['content']."<br>";
-          $allIDs .= $value['id'].";";
+          $allIDs .= $value['id']."_";
           $createdBy = $value['user_id'];
           $first_activity = $value['first_activity'];
           $last_activity = $value['last_activity'];
@@ -276,7 +276,7 @@ class CSl_eventEx extends CSl_event
         $addNotes['date_update'] = $last_activity;
         $addNotes['event_linkpk'] = "";
         $addNotes['eventfk'] = "";
-        $addNotes['eventpk'] = "";
+        $addNotes['eventpk'] = $allIDs;
         $addNotes['title'] = "";
         $addNotes['type'] = "character";
         $addNotes['updated_by'] = '';
