@@ -978,12 +978,12 @@ class CSl_eventEx extends CSl_event
 
             if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Education & Training should have 25 caracters<br>';
+              $errorArray .= 'Education & Training should have 15 caracters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
-              $errorArray .= 'Compensation Breakdown & Desire should have 25 caracters<br>';
+              $errorArray .= 'Compensation Breakdown & Desire should have 15 caracters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
             $characterNoteFlag  = true;
@@ -1004,7 +1004,7 @@ class CSl_eventEx extends CSl_event
         ChromePhp::log($errorArray);
         if(!empty($errorArray))
         {
-          return array('error' => __LINE__.$errorArray);
+          return array('error' => $errorArray);
         }
         foreach ($skillValues as $key => $skill)
         {
