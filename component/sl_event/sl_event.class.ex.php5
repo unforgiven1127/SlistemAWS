@@ -270,7 +270,7 @@ class CSl_eventEx extends CSl_event
         $addNotes['cp_type'] = "candi";
         $addNotes['cp_uid'] = "555-001";
         $addNotes['created_by'] = $createdBy;
-        $addNotes['custom_type'] = "character";
+        $addNotes['custom_type'] = "";
         $addNotes['date_create'] = $first_activity;
         $addNotes['date_display'] = $first_activity;
         $addNotes['date_update'] = $last_activity;
@@ -457,9 +457,6 @@ class CSl_eventEx extends CSl_event
       $pnPk = null;
     }
 
-    ChromePhp::log($combinedIDs);
-    ChromePhp::log($pnPk);
-
     //Fetch the data from the calling component
     $sCp_Uid = getValue(CONST_CP_UID);
     if(empty($sCp_Uid))
@@ -576,10 +573,8 @@ class CSl_eventEx extends CSl_event
       $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
     }
 
-    ChromePhp::log($combinedIDs);
-    ChromePhp::log($sEventType);
-    if($sEventType == 'character')// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
-    {
+    if($sEventType == 'character' || (isset($combinedIDs) && !empty($combinedIDs)))
+    {// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
       $validCharacterNotes = getSlNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
