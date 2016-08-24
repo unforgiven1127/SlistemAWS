@@ -3522,6 +3522,21 @@ var_dump($query);*/
     return true;
   }
 
+  function editNote($editCandidate,$array)
+  {
+    $sDate = date('Y-m-d H:i:s');
+    $oDB = CDependency::getComponentByName('database');
+
+    $candidate_id = $array['candidate_id'];
+    $type = $array['type'];
+    $content = $array['content'];
+    $user_id = $array['user_id'];
+
+    $sQuery="UPDATE sl_notes SET content = '".$content."',updated_by = '".$user_id."' last_activity = '".$sDate."' WHERE candidate_id = '".$editCandidate."' AND type = '".$type."'";
+
+      $db_result = $oDB->executeQuery($sQuery);
+  }
+
   function insertAILog($type,$data,$user_id)
   {
 

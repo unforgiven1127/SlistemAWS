@@ -448,6 +448,7 @@ class CSl_eventEx extends CSl_event
       return '';
 
     $addHtm = '';
+    $editNewCharacterNotes = false;
     $oHTML = CDependency::getCpHtml();
 
     $combinedIDs = '';
@@ -456,6 +457,7 @@ class CSl_eventEx extends CSl_event
       $combinedIDs = $_GET['combinedIDs'];
       $pnPk = null;
       $sEventType = 'character';
+      $editNewCharacterNotes = true;
     }
 
     //Fetch the data from the calling component
@@ -489,6 +491,10 @@ class CSl_eventEx extends CSl_event
     {
       $oDbResult = new CDbResult();
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_EVENT_TYPE_EVENT);
+      if($editNewCharacterNotes)
+      {
+        $sURL .= "&editCharacterNote=".$nCp_Pk;
+      }
     }
 
 
@@ -606,6 +612,7 @@ class CSl_eventEx extends CSl_event
 
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
+
         $combinedIDs = explode('_',$combinedIDs);
         $characterNoteControlFlag = false;
         foreach ($combinedIDs as $key => $value)
@@ -995,7 +1002,17 @@ class CSl_eventEx extends CSl_event
                 $array['type'] = $key;
                 $array['content'] = $value;
                 $array['user_id'] = $user_id;
-                insertNote($array);
+
+                $editFlag = false;
+                if(isset($_GET['editCharacterNote']))
+                {
+                  $editCandidate = $_GET['editCharacterNote'];
+                  editNote($editCandidate,$array);
+                }
+                else
+                {
+                  insertNote($array);
+                }
               }
             }
             updateCandidateSkills($candidate_id,$skillValues);
