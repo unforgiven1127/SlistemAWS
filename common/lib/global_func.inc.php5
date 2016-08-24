@@ -3473,6 +3473,19 @@ var_dump($query);*/
     return $result;
   }
 
+  function getSelectedSlNote($id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_notes n WHERE id = '".$id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getSlNotes($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');

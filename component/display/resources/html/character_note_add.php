@@ -112,9 +112,9 @@
 		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='career_note' name='career_note' class='inputs'></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='education_note' name='education_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='career_note' name='career_note' class='inputs'><?php if(isset($career_note)){echo $career_note;} ?></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='education_note' name='education_note' class='inputs'><?php if(isset($education_note)){echo $education_note;} ?></textarea></td>
 	</tr>
 </table>
 
@@ -125,9 +125,9 @@
 		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
 	<tr>
 	<tr>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='move_note' name='move_note' class='inputs'></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'></textarea></td>
-		<td><textarea placeholder="" id='past_note' name='past_note' class='inputs'></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
+		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'><?php if(isset($compensation_note)){echo $compensation_note;} ?></textarea></td>
+		<td><textarea placeholder="" id='past_note' name='past_note' class='inputs'><?php if(isset($past_note)){echo $past_note;} ?></textarea></td>
 	</tr>
 </table>
 

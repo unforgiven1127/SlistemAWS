@@ -607,8 +607,16 @@ class CSl_eventEx extends CSl_event
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
         $combinedIDs = explode('_',$combinedIDs);
-        ChromePhp::log($combinedIDs);
         $characterNoteControlFlag = false;
+        foreach ($combinedIDs as $key => $value)
+        {
+          if(!empty($value))
+          {
+            $selectedNote = getSelectedSlNote($value);
+            $selectedNote = $selectedNote[0];
+            $data[$selectedNote['type']] = $value['content'];
+          }
+        }
       }
 
       if($characterNoteControlFlag)
