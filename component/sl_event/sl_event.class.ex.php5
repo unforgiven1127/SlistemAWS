@@ -283,6 +283,7 @@ class CSl_eventEx extends CSl_event
 
         array_push($asNotes,$addNotes);
       }
+      $allIDs = "";
     }
 
     if($psNoteType == 'cp_history')
