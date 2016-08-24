@@ -453,6 +453,7 @@ class CSl_eventEx extends CSl_event
     if(isset($_GET['combinedIDs']))
     {
       $combinedIDs = $_GET['combinedIDs'];
+      $pnPk = '';
     }
 
     ChromePhp::log($combinedIDs);
