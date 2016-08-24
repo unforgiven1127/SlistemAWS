@@ -577,6 +577,7 @@ class CSl_eventEx extends CSl_event
     }
 
     ChromePhp::log($combinedIDs);
+    ChromePhp::log($sEventType);
     if($sEventType == 'character')// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
     {
       $validCharacterNotes = getSlNotes($nCp_Pk);
