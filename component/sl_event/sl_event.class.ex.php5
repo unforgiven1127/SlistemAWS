@@ -614,7 +614,7 @@ class CSl_eventEx extends CSl_event
           {
             $selectedNote = getSelectedSlNote($value);
             $selectedNote = $selectedNote[0];
-            $data[$selectedNote['type']] = $value['content'];
+            $data[$selectedNote['type']] = $selectedNote['content'];
           }
         }
       }
