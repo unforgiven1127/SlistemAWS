@@ -280,10 +280,10 @@ class CSl_eventEx extends CSl_event
         $addNotes['title'] = "";
         $addNotes['type'] = "character";
         $addNotes['updated_by'] = '';
+        $addNotes['allIDs'] = $allIDs;
 
         array_push($asNotes,$addNotes);
       }
-      $allIDs = "";
     }
 
     if($psNoteType == 'cp_history')
@@ -415,9 +415,9 @@ class CSl_eventEx extends CSl_event
                 CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => $psItemType, CONST_CP_PK => $pnItemPk);
               $sURL = $oPage->getAjaxurl($this->csUid, CONST_ACTION_EDIT, CONST_EVENT_TYPE_EVENT, (int)$asNote['eventpk'], $asCpParam);
 
-              if(isset($allIDs) && !empty($allIDs))
+              if(isset($asNote['allIDs']) && !empty($asNote['allIDs']))
               {
-                $sURL .= '&combinedIDs='.$allIDs;
+                $sURL .= '&combinedIDs='.$asNote['allIDs'];
               }
 
               $sHTML.= $oHTML->getBloc('', $sPic, array('class' => 'note_edit_link', 'onclick' => '
