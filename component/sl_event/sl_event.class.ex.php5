@@ -515,7 +515,7 @@ class CSl_eventEx extends CSl_event
 
     if($sEventType == 'character')// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
     {
-      $validCharacterNotes = getCharacterNotes($nCp_Pk);
+      $validCharacterNotes = getSlNotes($nCp_Pk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
       $candidateActiveMeetings = getCandidateActiveMeetings($nCp_Pk);
@@ -533,40 +533,12 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
-      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      if($validCharacterNotesLength > 0)
       {
-
-        $contantArray = array();
-        $contantArray[] = 'PERSONALITY AND COMMUNICATION';
-        $contantArray[] = 'CAREER EXPERTISE – PRESENT, PAST AND FUTURE';
-        $contantArray[] = 'EDUCATION AND TRAINING';
-        $contantArray[] = 'MOVE – REASON AND TIMING';
-        $contantArray[] = 'COMPENSATION BREAKDOWN';
-        //$contantArray[] = 'COMPANIES – RECENTLY MET AND INTRODUCED';// zorunlu alan degil
-
-        //$characterNoteContent = $validCharacterNotes[0]['content'];
-        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
-        {
-          $count = 0;
-          $characterNoteContent = $validCharacterNote['content'];
-
-          foreach ($contantArray as $key2 => $value)
-          {
-            if(strpos($characterNoteContent,$value))
-            {
-              $count ++;
-            }
-          }
-          if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
-          {
-            $characterNoteControlFlag = true;
-          }
-        }
-
+        $characterNoteControlFlag = true;
       }
       if($characterNoteControlFlag)
       {
-
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
       }

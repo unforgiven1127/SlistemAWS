@@ -3473,6 +3473,24 @@ var_dump($query);*/
     return $result;
   }
 
+  function getSlNotes($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    //$sDate = date('Y-m-d H:i:s');
+    //$sDate = strtotime($sDate.' -1 years');
+    //$sDate = date('Y-m-d',$sDate);
+    //$sDate .= " 00:00:00";
+
+    $sQuery = "SELECT * FROM sl_notes n WHERE n.candidate_id = '".$candidate_id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+
+  }
+
   function insertNote($array)
   {
     $sDate = date('Y-m-d H:i:s');
