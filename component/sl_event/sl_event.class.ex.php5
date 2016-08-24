@@ -412,7 +412,7 @@ class CSl_eventEx extends CSl_event
             {
               $asCpParam = array(CONST_CP_UID => '555-001',
                 CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => $psItemType, CONST_CP_PK => $pnItemPk);
-              $sURL = $oPage->getAjaxurl($this->csUid, CONST_ACTION_EDIT, CONST_EVENT_TYPE_EVENT, (int)$asNote['eventpk'], $asCpParam);
+              $sURL = $oPage->getAjaxurl($this->csUid, CONST_ACTION_EDIT, CONST_EVENT_TYPE_EVENT, $asNote['eventpk'], $asCpParam);
 
               $sHTML.= $oHTML->getBloc('', $sPic, array('class' => 'note_edit_link', 'onclick' => '
                 var oConf = goPopup.getConfig();
