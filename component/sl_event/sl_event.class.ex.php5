@@ -229,7 +229,8 @@ class CSl_eventEx extends CSl_event
         'cp_type' => $psItemType, 'cp_pk' => $pnItemPk, 'default_type' => $psLinkDefaultType);
 
       if($psLinkDefaultType == 'character')
-        $sLabel = 'Add character assessment';
+        $sLabel = 'Add a character note';
+      //$sLabel = 'Add character assessment';
       else
         $sLabel = 'Add a note';
 
