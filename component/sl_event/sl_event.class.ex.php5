@@ -962,28 +962,28 @@ class CSl_eventEx extends CSl_event
             $errorArray = "";
             if($key == 'personality_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Personality & Communication should have 25 caracters.<br>';
+              $errorArray .= 'Personality & Communication should have 25 caracters/n';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             if($key == 'career_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Career Expertise – Present, Past & Future should have 25 caracters<br>';
+              $errorArray .= 'Career Expertise – Present, Past & Future should have 25 caracters/n';
               //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
             }
             if($key == 'move_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Move – Reason & Timing should have 25 caracters<br>';
+              $errorArray .= 'Move – Reason & Timing should have 25 caracters/n';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
             if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Education & Training should have 25 caracters<br>';
+              $errorArray .= 'Education & Training should have 25 caracters/n';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 22)
             { //<p></p> icinde geldigi icin +7 ekledik
-              $errorArray .= 'Compensation Breakdown & Desire should have 25 caracters<br>';
+              $errorArray .= 'Compensation Breakdown & Desire should have 25 caracters/n';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
             if(!empty($errorArray))
