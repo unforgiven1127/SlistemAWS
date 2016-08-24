@@ -239,6 +239,12 @@ class CSl_eventEx extends CSl_event
       $sHTML.= '</div>';
     }
 
+    ChromePhp::log($psNoteType);
+    if($psNoteType == 'character')
+    {
+
+    }
+
     if($psNoteType == 'cp_history')
     {
       $candidate_id = $pnItemPk;
