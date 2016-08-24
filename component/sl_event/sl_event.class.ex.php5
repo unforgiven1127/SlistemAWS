@@ -422,8 +422,8 @@ class CSl_eventEx extends CSl_event
 
               $sHTML.= $oHTML->getBloc('', $sPic, array('class' => 'note_edit_link', 'onclick' => '
                 var oConf = goPopup.getConfig();
-                oConf.width = 950;
-                oConf.height = 750;
+                oConf.width = 1050;
+                oConf.height = 650;
                 goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');'));
             }
           }
