@@ -4211,10 +4211,10 @@ class CSl_candidateEx extends CSl_candidate
       $validCharacterNotes = getSlNotes($pnCandiPk);
       $validCharacterNotesLength = count($validCharacterNotes);
 
-      $characterNoteControlFlag = true;
-      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      $characterNoteControlFlag = false;
+      if($validCharacterNotesLength > 0)
       {
-        $characterNoteControlFlag = false;
+        $characterNoteControlFlag = true;
       }
       if($characterNoteControlFlag)
       {
