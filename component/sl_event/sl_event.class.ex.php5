@@ -456,6 +456,9 @@ class CSl_eventEx extends CSl_event
       $pnPk = null;
     }
 
+    ChromePhp::log($combinedIDs);
+    ChromePhp::log($pnPk);
+
     //Fetch the data from the calling component
     $sCp_Uid = getValue(CONST_CP_UID);
     if(empty($sCp_Uid))
