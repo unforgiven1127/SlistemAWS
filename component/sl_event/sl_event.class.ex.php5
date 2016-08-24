@@ -576,6 +576,7 @@ class CSl_eventEx extends CSl_event
       $oForm->setFieldControl('content', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
     }
 
+    ChromePhp::log($combinedIDs);
     if($sEventType == 'character')// eklenmis 10 lu varsa eskisi gibi sadece tek alan gosterilecek
     {
       $validCharacterNotes = getSlNotes($nCp_Pk);
@@ -601,7 +602,7 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
-      ChromePhp::log($combinedIDs);
+
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
         $combinedIDs = explode('_',$combinedIDs);
