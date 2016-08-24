@@ -962,7 +962,7 @@ class CSl_eventEx extends CSl_event
             $errorArray = "";
             if($key == 'personality_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
             {
-              $errorArray .= 'Personality & Communication should have 25 caracters<br>';
+              $errorArray .= 'Personality & Communication should have 25 caracters.<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             if($key == 'career_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
