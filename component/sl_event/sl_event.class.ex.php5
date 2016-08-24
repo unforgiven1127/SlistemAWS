@@ -243,7 +243,7 @@ class CSl_eventEx extends CSl_event
     {// girilen 6 not birlestiriliyor ve id lerini ; ile birlestiriyoruz
       $candidate_id = $pnItemPk;
       $characterNotes = getSlNotes($candidate_id);
-      if(isset($characterNotes))
+      if(isset($characterNotes) && !empty($characterNotes))
       {
         $allCharacterNotes = "";
         $allIDs = "";
