@@ -18,7 +18,7 @@
 	$('#meetingDate').css({'margin-left':'-90px'});
 	$('#meetingDate').css({'margin-bottom':'10px'});
 	$('.formFieldTitle').css({'width':'935px'});
-	$('.formFieldTitle').html('Add character note');
+	$('.formFieldTitle').html('Add character assessment');
 	$('.formLabel').hide();
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
