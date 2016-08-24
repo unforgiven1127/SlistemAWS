@@ -455,8 +455,6 @@ class CSl_eventEx extends CSl_event
       $combinedIDs = $_GET['combinedIDs'];
     }
 
-    ChromePhp::log($combinedIDs);
-
     //Fetch the data from the calling component
     $sCp_Uid = getValue(CONST_CP_UID);
     if(empty($sCp_Uid))
@@ -597,6 +595,11 @@ class CSl_eventEx extends CSl_event
       if($validCharacterNotesLength > 0)
       {
         $characterNoteControlFlag = true;
+      }
+      if(isset($combinedIDs) && !empty($combinedIDs))
+      {
+        $combinedIDs = explode('_',$combinedIDs);
+        ChromePhp::log($combinedIDs);
       }
 
       if($characterNoteControlFlag)
