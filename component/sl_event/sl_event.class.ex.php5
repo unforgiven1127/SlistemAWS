@@ -318,6 +318,7 @@ class CSl_eventEx extends CSl_event
     }
     else
     {
+      uasort($asNotes, sort_multi_array_by_value('date_create', 'reverse'));
       $nCurrentUser = $oLogin->getUserPk();
       $asEventType = getEventTypeList();
 
