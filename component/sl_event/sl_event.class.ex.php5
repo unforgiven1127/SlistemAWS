@@ -412,7 +412,12 @@ class CSl_eventEx extends CSl_event
             {
               $asCpParam = array(CONST_CP_UID => '555-001',
                 CONST_CP_ACTION => CONST_ACTION_VIEW, CONST_CP_TYPE => $psItemType, CONST_CP_PK => $pnItemPk);
-              $sURL = $oPage->getAjaxurl($this->csUid, CONST_ACTION_EDIT, CONST_EVENT_TYPE_EVENT, $asNote['eventpk'], $asCpParam);
+              $sURL = $oPage->getAjaxurl($this->csUid, CONST_ACTION_EDIT, CONST_EVENT_TYPE_EVENT, (int)$asNote['eventpk'], $asCpParam);
+
+              if(isset($allIDs) && !empty($allIDs))
+              {
+                $sURL .= '&combinedIDs='.$allIDs;
+              }
 
               $sHTML.= $oHTML->getBloc('', $sPic, array('class' => 'note_edit_link', 'onclick' => '
                 var oConf = goPopup.getConfig();
@@ -437,13 +442,15 @@ class CSl_eventEx extends CSl_event
  */
   private function _getNoteForm($pnPk)
   {
-    ChromePhp::log($pnPk);
     // not ekleme kismi buraya geliyor
     if(!assert('is_integer($pnPk)'))
       return '';
 
     $addHtm = '';
     $oHTML = CDependency::getCpHtml();
+
+    $combinedIDs = $_GET['combinedIDs'];
+    ChromePhp::log($combinedIDs);
 
     //Fetch the data from the calling component
     $sCp_Uid = getValue(CONST_CP_UID);
@@ -586,6 +593,7 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
+
       if($characterNoteControlFlag)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
