@@ -601,6 +601,7 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
+      ChromePhp::log($combinedIDs);
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
         $combinedIDs = explode('_',$combinedIDs);
