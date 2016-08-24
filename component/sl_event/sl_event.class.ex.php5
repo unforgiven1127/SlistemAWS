@@ -1003,10 +1003,10 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = $value;
                 $array['user_id'] = $user_id;
 
-                $editFlag = false;
                 if(isset($_GET['editCharacterNote']))
                 {
                   $editCandidate = $_GET['editCharacterNote'];
+                  ChromePhp::log($editCandidate);
                   editNote($editCandidate,$array);
                 }
                 else

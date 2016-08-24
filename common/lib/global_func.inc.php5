@@ -3524,6 +3524,8 @@ var_dump($query);*/
 
   function editNote($editCandidate,$array)
   {
+    ChromePhp::log($editCandidate);
+    ChromePhp::log($array);
     $sDate = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
@@ -3534,7 +3536,9 @@ var_dump($query);*/
 
     $sQuery="UPDATE sl_notes SET content = '".$content."',updated_by = '".$user_id."' last_activity = '".$sDate."' WHERE candidate_id = '".$editCandidate."' AND type = '".$type."'";
 
-      $db_result = $oDB->executeQuery($sQuery);
+    ChromePhp::log($sQuery);
+
+    $db_result = $oDB->executeQuery($sQuery);
   }
 
   function insertAILog($type,$data,$user_id)
