@@ -453,7 +453,7 @@ class CSl_eventEx extends CSl_event
     if(isset($_GET['combinedIDs']))
     {
       $combinedIDs = $_GET['combinedIDs'];
-      $pnPk = '';
+      $pnPk = null;
     }
 
     //Fetch the data from the calling component
