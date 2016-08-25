@@ -128,7 +128,9 @@ function openExtra(open)
 
 
   <body>
-  <div id='slLoadingScreen' class='ani'></div>
+  <div id='slLoadingScreen'>
+      <div class='ani'></div>
+  </div>
   <table style="width: 100%; margin-left: -10px;">
     <tr>
       <td valign="middle" align="middle" class="half" style=" width: 50%;">
