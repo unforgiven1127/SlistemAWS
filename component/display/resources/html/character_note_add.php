@@ -39,24 +39,46 @@
 		if(personality_length < 25)
 		{
 			$('#personality_note').css({'border-color':'red'});
-			//$('#personality_note').css('borderWidth', '2px');
-			$('#personality_note').css('boxShadow', 'red');
 		}
+		else
+		{
+			$('#personality_note').css({'border-color':'grey'});
+		}
+
 		if(career_length < 25)
 		{
-
+			$('#career_note').css({'border-color':'red'});
 		}
+		else
+		{
+			$('#career_note').css({'border-color':'grey'});
+		}
+
 		if(education_length < 15)
 		{
-
+			$('#education_note').css({'border-color':'red'});
 		}
+		else
+		{
+			$('#education_note').css({'border-color':'grey'});
+		}
+
 		if(move_length < 25)
 		{
-
+			$('#move_note').css({'border-color':'red'});
 		}
+		else
+		{
+			$('#move_note').css({'border-color':'grey'});
+		}
+
 		if(compensation_length < 15)
 		{
-
+			$('#compensation_note').css({'border-color':'red'});
+		}
+		else
+		{
+			$('#compensation_note').css({'border-color':'grey'});
 		}
 	});
 
