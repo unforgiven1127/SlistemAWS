@@ -929,11 +929,14 @@ class CDisplayEx extends CDisplay
     <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>';
 
     $sessionStatus = session_status();
+    //0 = PHP_SESSION_DISABLED
+    //1 = PHP_SESSION_NONE
+    //2 = PHP_SESSION_ACTIVE
     $selfUrl = CONST_CRM_DOMAIN;
     $sHTML.= "<script type='text/javascript'>
 
                   var sessionStatus = ".$sessionStatus."
-                  if(sessionStatus == 0)
+                  if(sessionStatus != 2)
                   {
                     window.location.href = '".$selfUrl."';
                   }
