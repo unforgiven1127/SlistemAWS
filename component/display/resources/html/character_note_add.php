@@ -24,7 +24,17 @@
 	//$('.formLabel').css({'margin-left':'-156px'});
 
 	$('#formSubmitButton').click(function(){
-		alert('formSubmitButton clicked');
+		var personality = $('#personality_note').val();
+		var career = $('#career_note').val();
+		var education = $('#education_note').val();
+		var move = $('#move_note').val();
+		var compensation = $('#compensation_note').val();
+
+		alert(personality);
+		alert(career);
+		alert(education);
+		alert(move);
+		alert(compensation);
 	});
 
 	$('.inputsSkill').change(function(){
