@@ -930,7 +930,7 @@ class CDisplayEx extends CDisplay
 
     $sHTML.= "<script type='text/javascript'>
                 <?php
-                  if(isset($_SESSION) || !empty($_SESSION))
+                  if(count($_SESSION)>0)
                   {?>
                       alert('test');
                   <?php }
