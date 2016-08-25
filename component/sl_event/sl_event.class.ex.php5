@@ -939,8 +939,6 @@ class CSl_eventEx extends CSl_event
 
     if($event_type == 'character' && empty($delete_flag) && empty($this->cnPk))
     {
-      $oPage = CDependency::getCpPage();
-      $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, getValue(CONST_CP_TYPE), (int)getValue(CONST_CP_PK));
       $addedFlag = true;
 
       $simpleCharacterNote = purify_html(getValue('character'));
@@ -1046,13 +1044,13 @@ class CSl_eventEx extends CSl_event
             $asResult = array();
             $asResult['notice'] = "Activity saved successfully.";
             $asResult['timedUrl'] = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
-            $asResult['action'] = ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+            $asResult['action'] = 'view_candi("'.CONST_CRM_DOMAIN.'/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk='.$candidate_id.'&pg=ajx", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
         }
       }
       else
       {
         $asResult = $oEvent->addNote((int)$candidate_id, 'character', $simpleCharacterNote);
-        $asResult['action'] = ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
+        $asResult['action'] = 'view_candi("'.CONST_CRM_DOMAIN.'/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk='.$candidate_id.'&pg=ajx", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
         $addedFlag = false;
       }
 
