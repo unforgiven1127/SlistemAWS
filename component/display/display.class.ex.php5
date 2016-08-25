@@ -930,12 +930,11 @@ class CDisplayEx extends CDisplay
 
     $sessionCount = count($_SESSION);
     $sHTML.= "<script type='text/javascript'>
-                <?php
+
                   if(".$sessionCount.">0)
-                  {?>
+                  {
                       alert('test');
-                  <?php }
-                ?>
+                  }
               </script>";
 
     $asJsFile[] = CONST_PATH_JS_JQUERY;
