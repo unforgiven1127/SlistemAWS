@@ -1043,7 +1043,7 @@ class CSl_eventEx extends CSl_event
 
             $asResult = array();
             $asResult['notice'] = "Activity saved successfully.";
-            $asResult['timedUrl'] = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
+            //$asResult['timedUrl'] = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$candidate_id."#candi_tab_eventId";
             $asResult['action'] = 'view_candi("'.CONST_CRM_DOMAIN.'/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk='.$candidate_id.'&pg=ajx", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
         }
       }
