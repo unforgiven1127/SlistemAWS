@@ -102,7 +102,7 @@ function control()
   }
 }
   control();
-  setInterval ( control, 3000 );
+  setInterval ( control, 1000 );
 
 </script>
 
