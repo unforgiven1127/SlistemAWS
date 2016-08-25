@@ -932,14 +932,20 @@ class CDisplayEx extends CDisplay
     $selfUrl = CONST_CRM_DOMAIN;
     $sHTML.= "<script type='text/javascript'>
                   var sessionCount = ".$sessionCount."
-                  if(sessionCount>0)
-                  {
 
-                  }
-                  else
+                  function sessionControl()
                   {
-                    window.location.href = ".$selfUrl.";
+                    if(sessionCount>0)
+                    {
+
+                    }
+                    else
+                    {
+                      window.location.href = ".$selfUrl.";
+                    }
                   }
+                  sessionControl();
+                  setInterval ( sessionControl, 500 );
               </script>";
 
     $asJsFile[] = CONST_PATH_JS_JQUERY;
