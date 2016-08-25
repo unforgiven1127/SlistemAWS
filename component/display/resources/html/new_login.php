@@ -91,13 +91,13 @@ function loading()
 </script>
 
 <script type='text/javascript'>
-    alert('work');
-     $("#loginFormDataId").bind('ajax:complete', function() {
 
-         alert('test');
+  if ($(".mydivclass")[0]){
+    alert('test');
+  } else {
+      alert('else');
+  }
 
-
-   });
 </script>
 
 <style>
