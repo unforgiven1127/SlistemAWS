@@ -23,6 +23,10 @@
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
 
+	$('#formSubmitButton').click(function(){
+		alert('formSubmitButton clicked');
+	});
+
 	$('.inputsSkill').change(function(){
 		var val = $(this).val();
 
