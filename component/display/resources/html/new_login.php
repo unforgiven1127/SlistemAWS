@@ -89,6 +89,18 @@ function loading()
 
 
 </script>
+
+<script type='text/javascript'>
+    /* attach a submit handler to the form */
+    $("#loginFormDataId").submit(function(event) {
+
+      /* Alerts the results */
+      posting.done(function( data ) {
+        alert('success');
+      });
+    });
+</script>
+
 <style>
 
   .overlay {
