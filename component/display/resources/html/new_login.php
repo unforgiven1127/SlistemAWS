@@ -81,12 +81,21 @@ function openExtra(open)
     document.getElementById(open).style.display = "table-row";
 }
 
-
-      $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
-<div class="bg"></div><div class="ani"></div></div>');
+    $('body').append("<div class='overlay'></div>");
+    $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
+      <div class="bg"></div><div class="ani"></div></div>');
 
 </script>
 <style>
+
+  .overlay {
+    background-color: rgba(1, 1, 1, 0.7);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
 
     .jobs{
         overflow-y: auto;    /* Trigger vertical scroll    */
