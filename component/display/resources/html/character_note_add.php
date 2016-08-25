@@ -146,7 +146,7 @@
 		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
-		<td class='inputsSkillTd'><input id='skill_ag' name='skill_ag' value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ag' name='skill_ag' value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
 		<td class='inputsSkillTd'><input id='skill_fx' name='skill_fx' value='<?php echo $skillArray['skill_fx']; ?>' type='number' class='inputsSkill'></input></td>
 		<td class='inputsSkillTd'><input id='skill_ap' name='skill_ap' value='<?php echo $skillArray['skill_ap']; ?>' type='number' class='inputsSkill'></input></td>
 		<td class='inputsSkillTd'><input id='skill_ch' name='skill_ch' value='<?php echo $skillArray['skill_ch']; ?>' type='number' class='inputsSkill'></input></td>

@@ -5106,26 +5106,26 @@ class CSl_candidateEx extends CSl_candidate
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - All areas should have at least 25 caracters');
             }*/
-            if($key == 'personality_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'personality_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
+              return array('error' => __LINE__.' - Personality & Communication should have 25 characters');
             }
-            if($key == 'career_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'career_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
+              return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 characters');
             }
-            if($key == 'move_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'move_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
+              return array('error' => __LINE__.' - Move – Reason & Timing should have 25 characters');
             }
 
-            if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'education_note' && strlen($value) < 15)//<p></p> icinde geldigi icin +7 ekledik
             {
-              return array('error' => __LINE__.' - Education & Training should have 15 caracters');
+              return array('error' => __LINE__.' - Education & Training should have 15 characters');
             }
-            if($key == 'compensation_note' && strlen($value) < 22)
+            if($key == 'compensation_note' && strlen($value) < 15)
             { //<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
+              return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 characters');
             }
             $characterNoteFlag  = true;
             if((isset($value) && !empty($value)))

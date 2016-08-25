@@ -961,30 +961,30 @@ class CSl_eventEx extends CSl_event
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - Please fill all required areas at least 25 characters');
             }*/
-            if($key == 'personality_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'personality_note' && strlen($value) < 25)
             {
-              $errorArray .= 'Personality & Communication should have 25 caracters<br>';
+              $errorArray .= 'Personality & Communication should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
-            if($key == 'career_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'career_note' && strlen($value) < 25)
             {
-              $errorArray .= 'Career Expertise – Present, Past & Future should have 25 caracters<br>';
+              $errorArray .= 'Career Expertise – Present, Past & Future should have 25 characters<br>';
               //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
             }
-            if($key == 'move_note' && strlen($value) < 32)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'move_note' && strlen($value) < 25)
             {
-              $errorArray .= 'Move – Reason & Timing should have 25 caracters<br>';
+              $errorArray .= 'Move – Reason & Timing should have 25 characters<br>';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
-            if($key == 'education_note' && strlen($value) < 22)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'education_note' && strlen($value) < 15)
             {
-              $errorArray .= 'Education & Training should have 15 caracters<br>';
+              $errorArray .= 'Education & Training should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
-            if($key == 'compensation_note' && strlen($value) < 22)
+            if($key == 'compensation_note' && strlen($value) < 15)
             { //<p></p> icinde geldigi icin +7 ekledik
-              $errorArray .= 'Compensation Breakdown & Desire should have 15 caracters<br>';
+              $errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
             $characterNoteFlag  = true;
