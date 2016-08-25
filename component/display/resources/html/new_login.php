@@ -81,12 +81,12 @@ function openExtra(open)
     document.getElementById(open).style.display = "table-row";
 }
 
-$('#loginButton').click(function(){
-      $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
+function loading()
+{
+        $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
       <div class="bg"></div><div class="ani"></div></div>');
     $('body').append("<div class='overlay'></div>");
-});
-
+}
 
 
 </script>
@@ -164,7 +164,7 @@ $('#loginButton').click(function(){
          <div style="width: 300px;">
             <span class="alert">Invalid Credentials</span>
             <!--<a class="link" href=<?php echo "'".$lost."'"; ?> >Lost your password?</a>-->
-            <button type="submit" id="loginButton" class="log-btn" >Log in</button>
+            <button type="submit" id="loginButton" onclick="loading();" class="log-btn" >Log in</button>
          </div>
         </form>
 

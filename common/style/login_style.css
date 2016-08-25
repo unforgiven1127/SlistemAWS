@@ -156,7 +156,7 @@ h1 {
   position: absolute;
   top: 25%;
   left: 0;
-  background: transparent url('/common/pictures/slistem/loading_home.gif') no-repeat center 46%;
+  background: transparent url('/component/portal/resources/pictures/slistem/home_loading.gif') no-repeat center 46%;
   width: 100%;
   min-height: 200px;
 }
