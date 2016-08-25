@@ -405,7 +405,7 @@ class CSl_eventEx extends CSl_event
           else
             $sHTML.= $oHTML->getBloc('', $asNote['title'].$asNote['content'], array('class' => 'note_content'));
 
-          if ($psNoteType != 'cp_history' || $oLogin->isAdmin())
+          if ($oLogin->isAdmin()) // $psNoteType != 'cp_history' || bunu cikarttik
           {
             //Should we Display the link to edit notes
             //Right to do so or creator and note has been created a bit (allow fix typos)
