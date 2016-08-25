@@ -92,7 +92,7 @@ function loading()
 <style>
 
   .overlay {
-    background-color: rgba(1, 1, 1, 0.3);
+    background-color: rgba(1, 1, 1, 0.2);
     bottom: 0;
     left: 0;
     position: fixed;
