@@ -928,6 +928,15 @@ class CDisplayEx extends CDisplay
     <script type="text/javascript" src="/common/lib/verticalSlider/js/jquery.totemticker.js"></script>
     <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>';
 
+    $sHTML.= "<script type='text/javascript'>
+                <?php
+                  if(isset($_SESSION) || !empty($_SESSION))
+                  {
+                      alert('test');
+                  }
+                ?>
+              </script>";
+
     $asJsFile[] = CONST_PATH_JS_JQUERY;
     $asJsFile[] = CONST_PATH_JS_JQUERYUI;
     $asJsFile[] = '/component/form/resources/js/tiny_mce/jquery.tinymce.js';
