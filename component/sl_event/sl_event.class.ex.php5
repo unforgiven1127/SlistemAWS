@@ -1113,7 +1113,7 @@ class CSl_eventEx extends CSl_event
       $asResult['url'] = '';
     }
 
-    ChromePhp::log($asResult['action']);
+    ChromePhp::log($asResult);
     return $asResult;
   }
 
