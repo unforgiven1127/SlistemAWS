@@ -39,7 +39,8 @@
 		if(personality_length < 25)
 		{
 			$('#personality_note').css({'border-color':'red'});
-			$('#personality_note').css('borderWidth', '2px');
+			//$('#personality_note').css('borderWidth', '2px');
+			$('#personality_note').css('box-shadow', '10px 10px 5px #888');
 		}
 		if(career_length < 25)
 		{
