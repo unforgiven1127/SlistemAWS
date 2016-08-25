@@ -100,8 +100,8 @@ function control()
       alert('else');
   }
 }
-  update();
-  setInterval ( update, 3000 );
+  control();
+  setInterval ( control, 3000 );
 
 </script>
 
