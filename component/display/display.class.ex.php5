@@ -928,9 +928,10 @@ class CDisplayEx extends CDisplay
     <script type="text/javascript" src="/common/lib/verticalSlider/js/jquery.totemticker.js"></script>
     <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>';
 
+    $sessionCount = count($_SESSION);
     $sHTML.= "<script type='text/javascript'>
                 <?php
-                  if(count($_SESSION)>0)
+                  if(".$sessionCount.">0)
                   {?>
                       alert('test');
                   <?php }
