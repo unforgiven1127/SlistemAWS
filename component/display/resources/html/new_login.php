@@ -93,7 +93,7 @@ function loading()
 <script type='text/javascript'>
     /* attach a submit handler to the form */
     $("#loginFormDataId").submit(function(event) {
-
+      alert('test');
       /* Alerts the results */
       posting.done(function( data ) {
         alert('success');
