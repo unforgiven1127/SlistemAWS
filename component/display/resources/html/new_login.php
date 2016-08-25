@@ -91,14 +91,12 @@ function loading()
 </script>
 
 <script type='text/javascript'>
-    /* attach a submit handler to the form */
-    $("#loginFormDataId").submit(function(event) {
-      alert('test');
-      /* Alerts the results */
-      posting.done(function( data ) {
-        alert('success');
-      });
-    });
+     $("#loginFormDataId").bind('ajax:complete', function() {
+
+         alert('test');
+
+
+   });
 </script>
 
 <style>
