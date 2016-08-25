@@ -388,7 +388,7 @@ class CSl_eventEx extends CSl_event
 
             $sHTML.= $oHTML->getSpanEnd();
 
-            $sHTML.= $oHTML->getSpanStart('', array('class' => 'note_chronology'));
+            $sHTML.= $oHTML->getSpanStart('', array('style'=>'margin-right:10px;','class' => 'note_chronology'));
             $sHTML.= substr($asNote['date_display'], 0,-3);
             $sHTML.= $oHTML->getSpanEnd();
 
