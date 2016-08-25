@@ -928,6 +928,7 @@ class CDisplayEx extends CDisplay
     <script type="text/javascript" src="/common/lib/verticalSlider/js/jquery.totemticker.js"></script>
     <script type="text/javascript" src="'.CONST_PATH_JS_COMMON.$sTime.'"></script>';
 
+    session_destroy();
     $sessionCount = count($_SESSION);
     $selfUrl = CONST_CRM_DOMAIN;
     $sHTML.= "<script type='text/javascript'>
