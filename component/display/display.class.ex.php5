@@ -933,7 +933,7 @@ class CDisplayEx extends CDisplay
     $sHTML.= "<script type='text/javascript'>
 
                   var sessionStatus = ".$sessionStatus."
-                  if(sessionStatus == 2)
+                  if(sessionStatus == 0)
                   {
                     window.location.href = '".$selfUrl."';
                   }
