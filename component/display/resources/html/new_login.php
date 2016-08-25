@@ -84,7 +84,7 @@ function openExtra(open)
 function loading()
 {
     $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
-    $('body').append("<div class='overlay'></div>");
+    $('body').append("<div id='overlay' class='overlay'></div>");
 }
 
 
@@ -94,10 +94,11 @@ function loading()
 
 function control()
 {
-  if ($(".mydivclass")[0]){
-    alert('test');
-  } else {
-      alert('else');
+  if ($(".popupMessage")[0])
+  {
+    //alert('test');
+    $('#slLoadingScreen').remove();
+    $('#overlay').remove();
   }
 }
   control();
