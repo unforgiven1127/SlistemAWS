@@ -1002,7 +1002,6 @@ class CSl_eventEx extends CSl_event
             return array('error' => __LINE__.' - Please fill all required areas.');
           }
         }
-        ChromePhp::log($errorArray);
         if(!empty($errorArray))
         {
           return array('error' => $errorArray);
@@ -1102,12 +1101,10 @@ class CSl_eventEx extends CSl_event
 
       if((bool)getValue('no_candi_refresh', 0))
       {
-        ChromePhp::log('no_candi_refresh');
         $asResult['action'].= ' goPopup.removeLastByType(\'layer\'); ';
       }
       else
       {
-        ChromePhp::log('refresh');
         $asResult['action'].= ' view_candi("'.$sURL.'", "#tabLink1"); goPopup.removeByType(\'layer\'); ';
       }
 
@@ -1115,7 +1112,7 @@ class CSl_eventEx extends CSl_event
       $asResult['url'] = '';
     }
 
-
+    ChromePhp::log($asResult['action']);
     return $asResult;
   }
 
