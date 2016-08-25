@@ -128,7 +128,7 @@ function openExtra(open)
 
 
   <body>
-
+  <div id='slLoadingScreen'></div>
   <table style="width: 100%; margin-left: -10px;">
     <tr>
       <td valign="middle" align="middle" class="half" style=" width: 50%;">
@@ -146,7 +146,7 @@ function openExtra(open)
          <div style="width: 300px;">
             <span class="alert">Invalid Credentials</span>
             <!--<a class="link" href=<?php echo "'".$lost."'"; ?> >Lost your password?</a>-->
-            <button type="submit" class="log-btn" >Log in</button>
+            <button type="submit" id="loginButton" class="log-btn" >Log in</button>
          </div>
         </form>
 
