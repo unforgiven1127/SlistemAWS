@@ -38,23 +38,23 @@
 
 		if(personality_length < 25)
 		{
-			alert('1');
+			$('#personality_note').css({'border-color':'red'});
 		}
 		if(career_length < 25)
 		{
-			alert('2');
+
 		}
 		if(education_length < 15)
 		{
-			alert('3');
+
 		}
 		if(move_length < 25)
 		{
-			alert('4');
+
 		}
 		if(compensation_length < 15)
 		{
-			alert('5');
+
 		}
 	});
 
