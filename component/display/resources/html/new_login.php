@@ -81,9 +81,12 @@ function openExtra(open)
     document.getElementById(open).style.display = "table-row";
 }
 
-    $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
+$('#loginButton').click(function(){
+      $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">\n\
       <div class="bg"></div><div class="ani"></div></div>');
     $('body').append("<div class='overlay'></div>");
+});
+
 
 
 </script>
