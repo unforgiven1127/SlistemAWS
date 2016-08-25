@@ -83,7 +83,7 @@ function openExtra(open)
 
 function loading()
 {
-        $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
+    $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
     $('body').append("<div class='overlay'></div>");
 }
 
@@ -92,7 +92,7 @@ function loading()
 <style>
 
   .overlay {
-    background-color: rgba(1, 1, 1, 0.7);
+    background-color: rgba(1, 1, 1, 0.3);
     bottom: 0;
     left: 0;
     position: fixed;
