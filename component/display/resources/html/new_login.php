@@ -92,11 +92,16 @@ function loading()
 
 <script type='text/javascript'>
 
+function control()
+{
   if ($(".mydivclass")[0]){
     alert('test');
   } else {
       alert('else');
   }
+}
+  update();
+  setInterval ( update, 3000 );
 
 </script>
 
