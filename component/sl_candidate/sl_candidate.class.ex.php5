@@ -7254,6 +7254,8 @@ die();*/
             $oNote = CDependency::getComponentByName('sl_event');
             $asNote = $oNote->getNotes($pnCandidatePk, CONST_CANDIDATE_TYPE_CANDI, 'character');
             $newCharacterNotes = getSlNotes($pnCandidatePk);
+            ChromePhp::log($asNote);
+            ChromePhp::log($newCharacterNotes);
             if(empty($asNote) && empty($newCharacterNotes))
             {
               //index.php5?uid=555-004&ppa=ppaa&ppt=event&ppk=0&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=400006&default_type=note&pg=ajx
