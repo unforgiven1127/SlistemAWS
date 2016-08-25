@@ -5019,7 +5019,8 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $candidate_id = $nCandidatefk;
-      $validCharacterNotes = getCharacterNotes($candidate_id);
+
+      $validCharacterNotes = getSlNotes($candidate_id);
       $validCharacterNotesLength = count($validCharacterNotes);
 
       $candidateActiveMeetings = getCandidateActiveMeetings($candidate_id);
@@ -5034,35 +5035,9 @@ class CSl_candidateEx extends CSl_candidate
         $characterNoteControlFlag = true;
       }
       $characterNoteControlFlag = false;
-      if($validCharacterNotesLength >= 1) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
+      if($validCharacterNotesLength > 0) // ilgili bolumleri iceriyor mu bakmamiz gerekiyor.
       {
-        $contantArray = array();
-        $contantArray[] = 'PERSONALITY AND COMMUNICATION';
-        $contantArray[] = 'CAREER EXPERTISE – PRESENT, PAST AND FUTURE';
-        $contantArray[] = 'EDUCATION AND TRAINING';
-        $contantArray[] = 'MOVE – REASON AND TIMING';
-        $contantArray[] = 'COMPENSATION BREAKDOWN';
-        //$contantArray[] = 'COMPANIES – RECENTLY MET AND INTRODUCED';// zorunlu alan degil
-
-        //$characterNoteContent = $validCharacterNotes[0]['content'];
-        foreach ($validCharacterNotes as $key1 => $validCharacterNote)
-        {
-          $count = 0;
-          $characterNoteContent = $validCharacterNote['content'];
-
-          foreach ($contantArray as $key2 => $value)
-          {
-            if(strpos($characterNoteContent,$value))
-            {
-              $count ++;
-            }
-          }
-          if($count >= 4)//sql sonucu olan karakter note >180 oldugu icin sadece bu kontrol yeterli
-          {
-            $characterNoteControlFlag = true;
-          }
-        }
-
+        $characterNoteControlFlag = true;
       }
 
       //character notunu burada eklemek istedik...
