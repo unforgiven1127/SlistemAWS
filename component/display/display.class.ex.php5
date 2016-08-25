@@ -938,7 +938,7 @@ class CDisplayEx extends CDisplay
                   }
                   else
                   {
-                    window.location.href = ".$selfUrl.";
+                    window.location.href = '".$selfUrl."';
                   }
               </script>";
 
