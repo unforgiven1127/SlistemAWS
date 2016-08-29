@@ -4183,10 +4183,10 @@ class CSl_candidateEx extends CSl_candidate
       $sMessage = '<br /><p id="topTextP">By changing this meeting status to "done", you\'re atomatically changing the candidate status to "met"&sup1; .</p><br/>';
       if($nCreator != $oLogin->getUserPk())
       {
-        $sMessage.= 'Plus, you\'ll credit&sup2; this meeting to '.$oLogin->getUserLink($nCreator).' who set the meeting up for you.<br/>';
-        $oForm->addField('misc', '', array('id'=>'topText2','type' => 'text', 'label' => '', 'text' => $sMessage.'<br /><br />'));
+        $sMessage.= '<p id="topTextP2">Plus, you\'ll credit&sup2; this meeting to '.$oLogin->getUserLink($nCreator).' who set the meeting up for you.</p><br/>';
+        $oForm->addField('misc', '', array('id'=>'topText','type' => 'text', 'label' => '', 'text' => $sMessage.'<br /><br />'));
 
-        $oForm->addField('checkbox', 'notify_meeting_done', array('legend' => 'Notification', 'label' => 'Email '.$oLogin->getUserLink($nCreator).' about this meeting'));
+        $oForm->addField('checkbox', 'notify_meeting_done', array('id'=>'notifyBox','legend' => 'Notification', 'label' => 'Email '.$oLogin->getUserLink($nCreator).' about this meeting'));
         $oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
       }
       else
