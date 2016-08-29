@@ -553,6 +553,8 @@ ChromePhp::log($pasAction);
     }
     $cc = rtrim($cc, ";");
 
+ChromePhp::log($cc);
+
     foreach ($pasAction as $id => $user_messages)
     {
 
