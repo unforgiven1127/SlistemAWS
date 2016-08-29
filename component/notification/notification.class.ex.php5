@@ -1595,6 +1595,8 @@ ChromePhp::log($pasAction);
       $oForm = $oHTML->initForm('reminderAddForm');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_NOTIFY_TYPE_NOTIFICATION, 0);
 
+      ChromePhp::log('send message _getReminderForm');
+
       if($pbAsMessage)
       {
         $sTitle = 'Send a message';
