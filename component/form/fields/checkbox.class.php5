@@ -99,10 +99,11 @@ class CCheckbox extends CField
         {
           if($asOption['textbefore'])
           {
+            $checkID = $sId."_ID";
             $sHTML.=' <div class="formLabel '.$sClass.'">
               <label for="'.$sId.'" class="form-label">'.$sLabel.'</label>
             </div>
-            <div class="formField">'.$sBox.'<label id="'.$sId.'" for="'.$sId.'" class="css-label" >&nbsp;</label>';
+            <div class="formField">'.$sBox.'<label id="'.$checkID.'" for="'.$sId.'" class="css-label" >&nbsp;</label>';
 
             if(!empty($sLegend))
             {
