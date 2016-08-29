@@ -13,7 +13,7 @@
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
 	$('#topTextP').css({'margin-left':'-90px'});
-	$('#topTextP').css({'margin-bottom':'-30px'});
+	$('#topTextP').css({'margin-bottom':'-10px'});
 	$('#topTextP2').css({'margin-left':'-90px'});
 	//$('#topTextP2').css({'margin-bottom':'20px'});
 	//$('#topTextP2').css({'margin-top':'10px'});
