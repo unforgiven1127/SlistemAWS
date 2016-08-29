@@ -58,6 +58,8 @@ class CCheckbox extends CField
       else
         $sId = $this->csFieldName.'_'.$nKey.'_'.'Id';
 
+      $checkID = $sId."_ID";
+
       set_array($asOption['textbefore'], 0);
 
       //manage text/box display option
@@ -99,7 +101,7 @@ class CCheckbox extends CField
         {
           if($asOption['textbefore'])
           {
-            $checkID = $sId."_ID";
+
             $sHTML.=' <div class="formLabel '.$sClass.'">
               <label for="'.$sId.'" class="form-label">'.$sLabel.'</label>
             </div>
@@ -136,7 +138,7 @@ class CCheckbox extends CField
             $sHTML.= '<label for="'.$sId.'" class="form-label">'.$sLabel.'</label> ' .$sBox.'<label for="'.$sId.'" class="css-label" >&nbsp;</label> '.$sLegend;
           }
           else
-            $sHTML.= $sLegend.' '.$sBox.'<label for="'.$sId.'" class="css-label" >&nbsp;</label>
+            $sHTML.= $sLegend.' '.$sBox.'<label id="'.$checkID.'" for="'.$sId.'" class="css-label" >&nbsp;</label>
               <label for="'.$sId.'" class="form-label">'.$sLabel.'</label>';
 
           $sHTML.= '</div>';
@@ -151,9 +153,9 @@ class CCheckbox extends CField
 
           if($asOption['textbefore'])
             $sHTML.= '<label for="'.$sId.'">'.$sLabel.'</label>
-              '.$sBox.'<label for="'.$sId.'" class="css-label" >&nbsp;</label>';
+              '.$sBox.'<label id="'.$checkID.'" for="'.$sId.'" class="css-label" >&nbsp;</label>';
           else
-            $sHTML.= $sBox.'<label for="'.$sId.'" class="css-label" >&nbsp;</label>
+            $sHTML.= $sBox.'<label id="'.$checkID.'" for="'.$sId.'" class="css-label" >&nbsp;</label>
               <label for="'.$sId.'" class="form-label">'.$sLabel.'</label>';
 
           $sHTML.= '</div>';
