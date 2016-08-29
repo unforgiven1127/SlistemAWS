@@ -16,7 +16,8 @@
 	$('#topTextP').css({'margin-bottom':'-10px'});
 	$('#topTextP2').css({'margin-left':'-90px'});
 	$('#notifyBox_ID').parent().css({'margin-left':'-90px'});
-	$('#notifyBox_ID').parent().css({'margin-top':'-20px'});
+	$('#notifyBox_ID').parent().css({'margin-top':'-40px'});
+	$('#notifyBox_ID').parent().css({'margin-bottom':'-40px'});
 
 	$('#meeting_typeId').css({'margin-left':'-90px'});
 	$('#meetingDate').css({'margin-left':'-90px'});
