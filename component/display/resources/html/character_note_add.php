@@ -15,11 +15,11 @@
 	$('#topTextP').css({'margin-left':'-90px'});
 	$('#topTextP').css({'margin-bottom':'-10px'});
 	$('#topTextP2').css({'margin-left':'-90px'});
-	$('#topTextP2').css({'margin-bottom':'-10px'});
 	$('#notifyBox_ID').parent().css({'margin-left':'-90px'});
 	$('#notifyBox_ID').parent().css({'margin-top':'-40px'});
 
 	$('#meeting_typeId').css({'margin-left':'-90px'});
+	$('#meeting_typeId').css({'margin-top':'-20px'});
 	$('#meetingDate').css({'margin-left':'-90px'});
 	$('#meetingDate').css({'margin-bottom':'10px'});
 	$('.formFieldTitle').css({'width':'935px'});
