@@ -688,6 +688,8 @@ ChromePhp::log($cc);
       $poMail->addRecipient($sEmail, $sRecipient);
       $poMail->addCCRecipient($cc);
 
+ChromePhp::log($poMail);
+
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
       if ($nSent)
