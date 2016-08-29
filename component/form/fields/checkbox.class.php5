@@ -102,7 +102,7 @@ class CCheckbox extends CField
             $sHTML.=' <div class="formLabel '.$sClass.'">
               <label for="'.$sId.'" class="form-label">'.$sLabel.'</label>
             </div>
-            <div class="formField">'.$sBox.'<label for="'.$sId.'" class="css-label" >&nbsp;</label>';
+            <div class="formField">'.$sBox.'<label id="'.$sId.'" for="'.$sId.'" class="css-label" >&nbsp;</label>';
 
             if(!empty($sLegend))
             {
