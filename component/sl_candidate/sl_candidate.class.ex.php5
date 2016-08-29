@@ -4186,7 +4186,7 @@ class CSl_candidateEx extends CSl_candidate
         $sMessage.= '<p id="topTextP2">Plus, you\'ll credit&sup2; this meeting to '.$oLogin->getUserLink($nCreator).' who set the meeting up for you.</p><br/>';
         $oForm->addField('misc', '', array('id'=>'topText','type' => 'text', 'label' => '', 'text' => $sMessage.'<br /><br />'));
 
-        $oForm->addField('checkbox', 'notify_meeting_done', array('class'=>'notifyBoxClass','id'=>'notifyBox','legend' => 'Notification', 'label' => 'Email '.$oLogin->getUserLink($nCreator).' about this meeting'));
+        $oForm->addField('checkbox', 'notify_meeting_done','notifyBoxClass', array('id'=>'notifyBox','legend' => 'Notification', 'label' => 'Email '.$oLogin->getUserLink($nCreator).' about this meeting'));
         $oForm->addField('misc', '', array('type' => 'text', 'text' => ''));
       }
       else
