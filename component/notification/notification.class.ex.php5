@@ -1600,7 +1600,7 @@ ChromePhp::log($pasAction);
       if($pbAsMessage)
       {
         $sTitle = 'Send a message';
-        $sBtnLabel = 'Send';
+        $sBtnLabel = 'Send.';
       }
       else
       {
@@ -1858,9 +1858,15 @@ ChromePhp::log($pasAction);
       $sTitle = 'DBA request from '. $oLogin->getUserName(0, false);
 
       if(empty($asItem))
+      {
+        ChromePhp::log('if');
         $nPk = $this->addMessage($sId, $asReminder['recipient'], $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
+      }
       else
+      {
+        ChromePhp::log('else');
         $nPk = $this->addItemMessage($sId, $asReminder['recipient'], $asItem, $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
+      }
 
       // write DBA to actions MCA
       $user_id = $oLogin->getUserPk();
