@@ -207,6 +207,8 @@ class CFormEx extends CForm
 
     $oField = $this->getField($psFieldType, $psFieldName, $pasFieldParams);
 
+    ChromePhp::log($oField);
+
     $this->caoFormFields[$psFieldName] = $oField;
 
     return true;
