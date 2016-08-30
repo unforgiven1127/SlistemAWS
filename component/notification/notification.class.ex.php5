@@ -695,7 +695,11 @@ class CNotificationEx extends CNotification
       {
         if(!empty($sendCCString))
         {
-          $poMail->setReplyTo($sendCCString);
+          foreach ($sendCC as $key => $value)
+          {
+            $poMail->setReplyTo($value);
+          }
+          //$poMail->setReplyTo($sendCCString);
           //ChromePhp::log($sendCCString);
         }
         else
