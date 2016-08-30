@@ -37,7 +37,7 @@
 
         $today = date("Y-m-d H:i:s");
 
-        if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+        if($meeting['meeting_done'] == 0 && strtotime($today) >= strtotime($control_date ) )
         {
             //echo "Meeting ID: ".$meeting['sl_meetingpk']." - SHOULD BE CANCELLED !! - Today: ".$today." ControlDate: ".$control_date."<br>";
             $meeting_id = $meeting['sl_meetingpk'];
