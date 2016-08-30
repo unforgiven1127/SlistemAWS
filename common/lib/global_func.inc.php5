@@ -3188,6 +3188,7 @@ var_dump($query);*/
 
     $candidate_id = $asPosition['candidatefk'];
     $company_id = $asPosition['companyfk'];
+    $position_id = $asPosition['positionfk'];
 
 
     if($asPosition['status'] == '101') // placement geri alinmissa silecegiz
