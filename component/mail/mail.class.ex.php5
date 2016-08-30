@@ -262,7 +262,6 @@ class CMailEx extends CMail
         $bAdded = $this->coPhpMailer->AddAnAddress($asRecipient['type'], $asRecipient['email'], $asRecipient['name']);
         if($bAdded)
         {
-          ChromePhp::log($asRecipient);
           switch($asRecipient['type'])
           {
             case 'to':
@@ -514,8 +513,6 @@ class CMailEx extends CMail
       {
         $ekle = "";
       }
-
-      ChromePhp::log($ekle);
 
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,

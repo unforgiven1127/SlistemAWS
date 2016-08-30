@@ -1625,7 +1625,7 @@ class CSharedspaceEx extends CSharedspace
 
     //dump($_POST);
     //dump($_FILES);
-    ChromePhp::log('saveLocalDocument');
+
     $asReturn = $this->_saveDocument(0, true);
 
     if(isset($asReturn['error']))
@@ -1664,7 +1664,6 @@ class CSharedspaceEx extends CSharedspace
     $asDoc['has_cp_link'] = $pasItemLink;
     $asDoc['doc_type'] = $doc_type;
 
-    ChromePhp::log('quickAddDocument');
     return $this->_saveDocument(0, false, $asDoc);
   }
 
