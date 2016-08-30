@@ -3224,9 +3224,9 @@ var_dump($query);*/
 
       foreach ($result2 as $key => $value)
       {
-        ChromePhp::log($value);
+
         $sQuery3 = "UPDATE login_system_history SET flag = 'p' WHERE login_system_historypk = '".$value['login_system_historypk']."'";
-        ChromePhp::log($sQuery3);
+
         $db_result3 = $oDB->executeQuery($sQuery3);
       }
     }
