@@ -537,9 +537,9 @@ class CNotificationEx extends CNotification
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-ChromePhp::log($pasUsers);
-ChromePhp::log($poMail);
-ChromePhp::log($pasAction);
+//ChromePhp::log($pasUsers);
+//ChromePhp::log($poMail);
+//ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
@@ -682,13 +682,13 @@ ChromePhp::log($pasAction);
 
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
-      $poMail->addRecipient($sEmail, $sRecipient);
+      //$poMail->addRecipient($sEmail, $sRecipient);
 
       foreach ($ccArray as $key => $value)
       {
-        ChromePhp::log($value);
+        //ChromePhp::log($value);
         $cc = $value;
-        $poMail->addCCRecipient($cc);
+        $poMail->addRecipient($cc);
         //$poMail->addBCCRecipient($cc);
         //$poMail->addCCRecipient('munir_anameric@hotmail.com');
       }
@@ -696,7 +696,7 @@ ChromePhp::log($pasAction);
 
 //ChromePhp::log($cc);
 
-ChromePhp::log($poMail);
+//ChromePhp::log($poMail);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 

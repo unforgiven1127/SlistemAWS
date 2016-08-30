@@ -262,6 +262,7 @@ class CMailEx extends CMail
         $bAdded = $this->coPhpMailer->AddAnAddress($asRecipient['type'], $asRecipient['email'], $asRecipient['name']);
         if($bAdded)
         {
+          ChromePhp::log($asRecipient);
           switch($asRecipient['type'])
           {
             case 'to':
