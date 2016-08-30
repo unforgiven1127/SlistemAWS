@@ -540,7 +540,6 @@ class CNotificationEx extends CNotification
 //ChromePhp::log($pasUsers);
 //ChromePhp::log($poMail);
 //ChromePhp::log($pasAction);
-    ChromePhp::log('_executeAction');
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
@@ -718,8 +717,6 @@ class CNotificationEx extends CNotification
 
 
       $sSubject .= '__'.$sendCCString;
-
-      ChromePhp::log($poMail);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
