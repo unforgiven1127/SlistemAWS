@@ -714,6 +714,8 @@ class CNotificationEx extends CNotification
 
       $sSubject .= '__'.$sendCCString;
 
+      ChromePhp::log($poMail);
+
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
       if($nSent)

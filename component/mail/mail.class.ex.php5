@@ -513,6 +513,9 @@ class CMailEx extends CMail
         $ekle = "";
       }
 
+      ChromePhp::log($ekle);
+      ChromePhp::log($this->_stringifyEmail($this->coPhpMailer->to));
+
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,
      "From: slistem@slate.co.jp\r\n" . "To: ".$this->_stringifyEmail($this->coPhpMailer->to)."\r\n" .$ekle.
