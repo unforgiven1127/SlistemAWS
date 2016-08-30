@@ -504,15 +504,15 @@ class CMailEx extends CMail
         return false;
       }
 
-      if(!empty($manualCC))
+      /*if(!empty($manualCC))
       {
         $ekle = "Reply-To:".$manualCC."\r\n";
       }
       else
       {
         $ekle = "";
-      }
-
+      }*/
+      $ekle = "";
       ChromePhp::log($ekle);
       ChromePhp::log($this->_stringifyEmail($this->coPhpMailer->to));
 
