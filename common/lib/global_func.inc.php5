@@ -3189,11 +3189,9 @@ var_dump($query);*/
     $candidate_id = $asPosition['candidatefk'];
     $company_id = $asPosition['companyfk'];
 
-    ChromePhp::log($asPosition);
 
     if($asPosition['status'] == '101') // placement geri alinmissa silecegiz
     {
-      ChromePhp::log('HERE');
       $now = date('Y-m-d H:i:s');
 
       $sQuery = "SELECT e.* FROM event e
@@ -3213,18 +3211,20 @@ var_dump($query);*/
 
         $db_result = $oDB->executeQuery($sQuery);
       }
+
+
+      $sQuery2 = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
+                AND ( action LIKE '%[placed]%') AND (action LIKE '%#".$position_id."%')";
+
+      ChromePhp::log($sQuery2);
+
+      $db_result2 = $oDB->executeQuery($sQuery2);
+
+      $result2 = $db_result2->getAll();
     }
 
     /*
 
-
-    $sQuery = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
-                AND (action LIKE '%Placement !%' OR action LIKE '%[placed]%') AND (action LIKE '%#".$position_id."%')";
-
-
-    $db_result = $oDB->executeQuery($sQuery);
-
-    $result = $db_result->getAll();
 
     foreach ($result as $key => $value)
     {
