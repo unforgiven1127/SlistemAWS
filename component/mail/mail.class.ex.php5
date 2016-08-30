@@ -353,6 +353,7 @@ class CMailEx extends CMail
   {
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
+   ChromePhp::log($manualCC);
 
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
@@ -492,7 +493,7 @@ class CMailEx extends CMail
         assert('false; // could not connect to '.CONST_MAIL_IMAP_LOG_PARAM_INBOX);
         return false;
       }
-ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
+//ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
 
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,
