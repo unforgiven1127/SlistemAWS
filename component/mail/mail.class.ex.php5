@@ -516,7 +516,7 @@ class CMailEx extends CMail
 
       if(!empty($manualCC))
       {
-        $ekle = "CC:".$manualCC."\r\n";
+        $ekle = "Reply-To:".$manualCC."\r\n";
       }
       else
       {
