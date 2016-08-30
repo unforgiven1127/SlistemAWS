@@ -3025,7 +3025,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT * FROM login_system_history lhs WHERE lhs.table = 'company_history' AND lhs.cp_pk = '".$candidate_id."' WHERE lhs.flag = 'a'";
+    $sQuery = "SELECT * FROM login_system_history lhs WHERE lhs.table = 'company_history' AND lhs.cp_pk = '".$candidate_id."' AND lhs.flag = 'a'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
