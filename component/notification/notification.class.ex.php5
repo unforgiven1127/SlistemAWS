@@ -692,10 +692,19 @@ class CNotificationEx extends CNotification
       //add a reply-to if the reminder comes from someone else
       if(!empty($sUser) && $email_count == 1)
       {
-        $sReply = $pasUsers[$message_info['creatorfk']]['email'];
-        $poMail->setReplyTo($sReply, $this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
-        ChromePhp::log($sReply);
-        ChromePhp::log($this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
+        if(!empty($sendCCString))
+        {
+          $poMail->setReplyTo($sendCCString);
+          ChromePhp::log($sendCCString);
+        }
+        else
+        {
+          $sReply = $pasUsers[$message_info['creatorfk']]['email'];
+          $poMail->setReplyTo($sReply, $this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
+          ChromePhp::log($sReply);
+          //ChromePhp::log($this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
+        }
+
       }
 
       //We manage the replyTo above, so we don't add the sender automatically
