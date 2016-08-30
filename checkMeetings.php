@@ -26,7 +26,7 @@
 
     foreach ($allMeetings as $key => $meeting)
     {
-        $create_date = $meeting['date_meeting'];
+        $create_date = $meeting['date_meeting']; //gorusmenin yapilacagi tarihi aldik o nedenle update e bakmamiza gerek yok
         $month = date("m",strtotime($create_date));
         $year = date("Y",strtotime($create_date));
 
