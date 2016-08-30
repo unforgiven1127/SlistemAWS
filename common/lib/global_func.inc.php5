@@ -3191,25 +3191,30 @@ var_dump($query);*/
 
     ChromePhp::log($asPosition);
 
-    /*$now = date('Y-m-d H:i:s');
-
-    $sQuery = "SELECT e.* FROM event e
-               INNER JOIN event_link el on el.eventfk = e.eventpk
-               WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement%' OR content LIKE '%[placed]%')
-               AND (content LIKE '%".$company_id."%')";
-
-    $db_result = $oDB->executeQuery($sQuery);
-
-    $result = $db_result->getAll();
-
-
-    foreach ($result as $key => $value)
+    if($asPosition['status'] == '101') // placement geri alinmissa silecegiz
     {
-      $event_id = $value['eventpk'];
-      $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."' WHERE eventpk = '".$event_id."'";
+      $now = date('Y-m-d H:i:s');
+
+      $sQuery = "SELECT e.* FROM event e
+                 INNER JOIN event_link el on el.eventfk = e.eventpk
+                 WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement%' OR content LIKE '%[placed]%')
+                 AND (content LIKE '%".$company_id."%')";
 
       $db_result = $oDB->executeQuery($sQuery);
+
+      $result = $db_result->getAll();
+
+
+      foreach ($result as $key => $value)
+      {
+        $event_id = $value['eventpk'];
+        $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."' WHERE eventpk = '".$event_id."'";
+
+        $db_result = $oDB->executeQuery($sQuery);
+      }
     }
+
+    /*
 
 
     $sQuery = " SELECT * FROM login_system_history lsh WHERE lsh.cp_pk = '".$candidate_id."'
