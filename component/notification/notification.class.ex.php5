@@ -695,13 +695,13 @@ class CNotificationEx extends CNotification
         if(!empty($sendCCString))
         {
           $poMail->setReplyTo($sendCCString);
-          ChromePhp::log($sendCCString);
+          //ChromePhp::log($sendCCString);
         }
         else
         {
           $sReply = $pasUsers[$message_info['creatorfk']]['email'];
           $poMail->setReplyTo($sReply, $this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
-          ChromePhp::log($sReply);
+          //ChromePhp::log($sReply);
           //ChromePhp::log($this->coLogin->getUserNameFromData($pasUsers[$message_info['creatorfk']], false, true));
         }
 

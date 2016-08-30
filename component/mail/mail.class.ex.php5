@@ -503,7 +503,6 @@ class CMailEx extends CMail
         assert('false; // could not connect to '.CONST_MAIL_IMAP_LOG_PARAM_INBOX);
         return false;
       }
-//ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
 
       if(!empty($manualCC))
       {
