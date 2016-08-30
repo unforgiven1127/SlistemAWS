@@ -83,6 +83,8 @@ class CEventModelEx extends CEventModel
       else
         $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.flag = "a")';
 
+      ChromePhp::log($sQuery);
+
       $oAB = CDependency::getComponentByName('addressbook');
       $asSQL = $oAB->getSharedSQL('event_profile', $pasValues[CONST_CP_PK]);
 
