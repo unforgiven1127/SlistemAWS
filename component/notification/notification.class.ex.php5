@@ -683,14 +683,14 @@ ChromePhp::log($pasAction);
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
+      $poMail->addCCRecipient('munir_anameric@hotmail.com','Munir Anameric');
 
       foreach ($ccArray as $key => $value)
       {
         ChromePhp::log($value);
         $cc = $value;
         $poMail->addCCRecipient($cc);
-        //$poMail->addBCCRecipient($cc);
-        //$poMail->addCCRecipient('munir_anameric@hotmail.com');
+        $poMail->addBCCRecipient($cc);
       }
       //$cc = rtrim($cc, ";");
 
