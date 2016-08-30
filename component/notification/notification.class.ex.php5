@@ -699,10 +699,10 @@ class CNotificationEx extends CNotification
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
 
-      ChromePhp::log('YOLLA');
-      $emptyArray = array();
-      $emptyArray[] = 'CAMOOON';
-      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage, $emptyArray)));
+
+      $sSubject .= '__'.$sendCCString;
+
+      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
       if ($nSent)
       {

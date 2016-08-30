@@ -349,18 +349,30 @@ class CMailEx extends CMail
   /*
    * Will return the email pk after email sent and logged in DB
   */
-  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = "mnr")
+  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array())
   {
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
 
-   ChromePhp::log($psSubject);
-   ChromePhp::log($psContent);
-   //ChromePhp::log($psTextContent);
-   //ChromePhp::log($pasAttachement);
-   //ChromePhp::log($psTemplate);
-   //ChromePhp::log($pasTemplateVar);
-   //ChromePhp::log($manualCC);
+    ChromePhp::log($psSubject);
+    //ChromePhp::log($psContent);
+    //ChromePhp::log($psTextContent);
+    //ChromePhp::log($pasAttachement);
+    //ChromePhp::log($psTemplate);
+    //ChromePhp::log($pasTemplateVar);
+    //ChromePhp::log($manualCC);
+
+    $exploded = explode('__',$psSubject);
+    $psSubject = $exploded[0];
+
+    $manualCC = '';
+    if(isset($exploded[1]))
+    {
+       $manualCC = $exploded[1];
+    }
+
+    ChromePhp::log($psSubject);
+    ChromePhp::log($manualCC);
 
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
