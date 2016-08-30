@@ -79,9 +79,9 @@ class CEventModelEx extends CEventModel
     if($pasValues[CONST_CP_TYPE] == CONST_AB_TYPE_COMPANY)
     {
       if(!empty($psEventType))
-        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.type = "'.$psEventType.'")';
+        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.type = "'.$psEventType.'" AND even.flag = "a")';
       else
-        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk)';
+        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.flag = "a")';
 
       $oAB = CDependency::getComponentByName('addressbook');
       $asSQL = $oAB->getSharedSQL('event_profile', $pasValues[CONST_CP_PK]);
@@ -93,9 +93,9 @@ class CEventModelEx extends CEventModel
     else
     {
       if(!empty($psEventType))
-        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.type = "'.$psEventType.'")';
+        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.type = "'.$psEventType.'" AND even.flag = "a")';
       else
-        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk)';
+        $sQuery.= ' INNER JOIN event as even ON (even.eventpk = elin.eventfk AND even.flag = "a")';
 
       $sQuery.= ' WHERE elin.cp_uid = "'.$pasValues[CONST_CP_UID].'" AND elin.cp_action = "'.$pasValues[CONST_CP_ACTION].'" AND elin.cp_type="'.$pasValues[CONST_CP_TYPE].'" AND elin.cp_pk = '.(int)$pasValues[CONST_CP_PK];
     }
