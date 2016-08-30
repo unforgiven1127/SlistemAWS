@@ -354,8 +354,6 @@ class CMailEx extends CMail
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
 
-   ChromePhp::log($manualCC);
-
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
       $this->coPhpMailer->Subject = mb_convert_encoding($psSubject, 'utf8');
