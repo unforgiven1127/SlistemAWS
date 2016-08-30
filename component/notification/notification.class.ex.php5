@@ -532,25 +532,36 @@ class CNotificationEx extends CNotification
       $bRead = $oDbResult->readNext();
     }
 
+    $ccArray = array();
+    foreach ($message_array as $id => $value)
+    {
+      $ccArray[] = $pasUsers[$id]['email'];
+    }
+    foreach ($ccArray as $key => $value)
+    {
+      ChromePhp::log($value);
+      $oMail->addCCRecipient($value);
+    }
+
     $bExec = $this->_executeAction($message_array, $oMail, $asUsers);
   }
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-ChromePhp::log($pasUsers);
-ChromePhp::log($poMail);
-ChromePhp::log($pasAction);
+//ChromePhp::log($pasUsers);
+//ChromePhp::log($poMail);
+//ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
 
     $sSubject = CONST_APP_NAME . ' daily reminders';
 
-    $ccArray = array();
+    /*$ccArray = array();
     foreach ($pasAction as $id => $value)
     {
       $ccArray[] = $pasUsers[$id]['email'];
-    }
+    }*/
 
     foreach ($pasAction as $id => $user_messages)
     {
@@ -683,14 +694,14 @@ ChromePhp::log($pasAction);
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
 
-      if($sEmail == 'munir@slate-ghc.com')
+      /*if($sEmail == 'munir@slate-ghc.com')
       {
         $poMail->addCCRecipient('munir_anameric@hotmail.com','Munir Anameric');
       }
       else
-      {
+      {*/
         $poMail->addRecipient($sEmail, $sRecipient);
-      }
+      //}
 
 
       /*foreach ($ccArray as $key => $value)
@@ -708,7 +719,7 @@ ChromePhp::log($poMail);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
-      if ($nSent)
+      if($nSent)
       {
         foreach ($user_messages as $message_info)
         {
