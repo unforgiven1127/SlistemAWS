@@ -3187,14 +3187,14 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
 
     $candidate_id = $asPosition['candidatefk'];
-    $position_id = $asPosition['positionfk'];
+    $company_id = $asPosition['companyfk'];
 
     $now = date('Y-m-d H:i:s');
 
     $sQuery = "SELECT e.* FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
-               WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement !%' OR content LIKE '%[placed]%')
-               AND (content LIKE '%".$position_id."%')";
+               WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement%' OR content LIKE '%[placed]%')
+               AND (content LIKE '%".$company_id."%')";
 
     ChromePhp::log($sQuery);
 
@@ -3207,6 +3207,8 @@ var_dump($query);*/
     {
       $event_id = $value['eventpk'];
       $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."' WHERE eventpk = '".$event_id."'";
+
+      ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
     }
