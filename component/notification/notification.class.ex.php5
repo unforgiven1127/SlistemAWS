@@ -681,8 +681,9 @@ ChromePhp::log($pasAction);
 
       foreach ($pasAction as $id => $user_messages)
       {
-        $cc = $pasUsers[$id]['email'].';';
+        $cc = $pasUsers[$id]['email'];
         $poMail->addCCRecipient($cc);
+        $poMail->addBCCRecipient($cc);
       }
       //$cc = rtrim($cc, ";");
 
