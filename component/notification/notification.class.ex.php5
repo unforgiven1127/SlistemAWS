@@ -1612,7 +1612,6 @@ class CNotificationEx extends CNotification
       $oForm = $oHTML->initForm('reminderAddForm');
       $sURL = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_NOTIFY_TYPE_NOTIFICATION, 0);
 
-      ChromePhp::log('send message _getReminderForm');
 
       if($pbAsMessage)
       {
@@ -1876,12 +1875,10 @@ class CNotificationEx extends CNotification
 
       if(empty($asItem))
       {
-        ChromePhp::log('if');
         $nPk = $this->addMessage($sId, $asReminder['recipient'], $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
       }
       else
       {
-        ChromePhp::log('else');
         $nPk = $this->addItemMessage($sId, $asReminder['recipient'], $asItem, $asReminder['message'], $sTitle, $asReminder['naggy'], $asReminder['naggy_frequency']);
       }
 

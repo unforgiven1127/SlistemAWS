@@ -604,7 +604,6 @@ class CSl_eventEx extends CSl_event
       }
       if(isset($pnPk) && $pnPk > 0)
       {
-        ChromePhp::log($pnPk);
         $characterNoteControlFlag = true;
       }
       if($validCharacterNotesLength > 0)
@@ -1030,7 +1029,7 @@ class CSl_eventEx extends CSl_event
                 if(isset($_GET['editCharacterNote']))
                 {
                   $editCandidate = $_GET['editCharacterNote'];
-                  ChromePhp::log($editCandidate);
+
                   editNote($editCandidate,$array);
                 }
                 else
@@ -1119,7 +1118,6 @@ class CSl_eventEx extends CSl_event
       $asResult['url'] = '';
     }
 
-    ChromePhp::log($asResult);
     return $asResult;
   }
 

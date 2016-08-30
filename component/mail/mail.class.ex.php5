@@ -354,14 +354,6 @@ class CMailEx extends CMail
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
 
-    ChromePhp::log($psSubject);
-    //ChromePhp::log($psContent);
-    //ChromePhp::log($psTextContent);
-    //ChromePhp::log($pasAttachement);
-    //ChromePhp::log($psTemplate);
-    //ChromePhp::log($pasTemplateVar);
-    //ChromePhp::log($manualCC);
-
     $exploded = explode('__',$psSubject);
     $psSubject = $exploded[0];
 

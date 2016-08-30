@@ -3788,7 +3788,6 @@ class CSl_candidateEx extends CSl_candidate
       //add a link to create meeting on the top right
       $sUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_MEETING, $pnCandiPk);
 
-      ChromePhp::log($sUrl);
 
       $sLink = $this->_oDisplay->getLink('Set a new meeting', 'javascript:;', array('onclick' => 'goPopup.removeActive(); var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sUrl.'\');'));
       $sHTML.= $this->_oDisplay->getBloc('', $sLink, array('style' => 'float: right; padding: 3px 5px; margin-bottom: 5px; background-color: #f0f0f0; border: 1px solid #ddd;'));
