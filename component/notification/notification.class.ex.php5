@@ -572,9 +572,9 @@ ChromePhp::log($pasAction);
       }
       if(!empty($sendCC))
       {
-        foreach ($variable as $key => $value)
+        foreach ($ccArray as $key => $value)
         {
-          $sendCCString .=$value.";";
+          $sendCCString .= $value.";";
         }
       }
       $sendCCString = rtrim($sendCCString, ";");
