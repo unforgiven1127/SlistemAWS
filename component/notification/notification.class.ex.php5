@@ -700,7 +700,7 @@ ChromePhp::log($pasAction);
       $poMail->addRecipient($sEmail, $sRecipient);
 
 
-      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage,$sendCCString)));
+      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage,'',$sendCCString)));
 
       if ($nSent)
       {
