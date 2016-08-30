@@ -544,7 +544,6 @@ class CNotificationEx extends CNotification
 
     $oPage = CDependency::getCpPage();
 
-    $sSubject = CONST_APP_NAME . ' daily reminders';
 
     $ccArray = array();
     foreach ($pasAction as $id => $value)
@@ -554,6 +553,8 @@ class CNotificationEx extends CNotification
 
     foreach ($pasAction as $id => $user_messages)
     {
+
+      $sSubject = CONST_APP_NAME . ' daily reminders';
 
       if (empty($pasUsers[$id]))
         continue;
