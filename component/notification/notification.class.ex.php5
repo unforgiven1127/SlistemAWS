@@ -700,8 +700,8 @@ class CNotificationEx extends CNotification
       $poMail->addRecipient($sEmail, $sRecipient);
 
       //ChromePhp::log($sendCCString);
-      $emptyArray = array();
-      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage, $emptyArray,$sendCCString)));
+      $emptyArray = 'test';
+      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage, $emptyArray)));
 
       if ($nSent)
       {

@@ -349,11 +349,12 @@ class CMailEx extends CMail
   /*
    * Will return the email pk after email sent and logged in DB
   */
-  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = '')
+  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = "")
   {
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
    ChromePhp::log($manualCC);
+   ChromePhp::log($pasTemplateVar);
 
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
