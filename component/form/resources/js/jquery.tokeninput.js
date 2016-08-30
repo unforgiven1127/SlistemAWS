@@ -815,7 +815,7 @@ $.TokenList = function (input, url_or_data, settings) {
                     ajax_params.dataType = "jsonp";
                 }
                 // Attach the success callback
-                console.log(ajax_params);
+                //console.log(ajax_params);
                 ajax_params.success = function(results) {
                   if($.isFunction(settings.onResult)) {
                       results = settings.onResult.call(hidden_input, results);
