@@ -371,8 +371,8 @@ class CMailEx extends CMail
        $manualCC = $exploded[1];
     }
 
-    ChromePhp::log($psSubject);
-    ChromePhp::log($manualCC);
+    //ChromePhp::log($psSubject);
+    //ChromePhp::log($manualCC);
 
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
@@ -514,9 +514,18 @@ class CMailEx extends CMail
       }
 //ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
 
+      if(!empty($manualCC))
+      {
+        $ekle = "CC:".$manualCC."\r\n";
+      }
+      else
+      {
+        $ekle = "";
+      }
+
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,
-     "From: slistem@slate.co.jp\r\n" . "To: ".$this->_stringifyEmail($this->coPhpMailer->to)."\r\n" .
+     "From: slistem@slate.co.jp\r\n" . "To: ".$this->_stringifyEmail($this->coPhpMailer->to)."\r\n" .$ekle.
      "Subject: ".$this->coPhpMailer->Subject."\r\n" . "Date: ".date("r", strtotime("now"))."\r\n" .
      'Content-Type: text/html; charset=utf-8' . "\r\n" . "Content-Transfer-Encoding: 8bit \r\n" .
      "\r\n".$this->coPhpMailer->Body."\r\n", '\\Seen' );
