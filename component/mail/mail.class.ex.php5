@@ -356,11 +356,11 @@ class CMailEx extends CMail
 
    ChromePhp::log($psSubject);
    ChromePhp::log($psContent);
-   ChromePhp::log($psTextContent);
-   ChromePhp::log($pasAttachement);
-   ChromePhp::log($psTemplate);
-   ChromePhp::log($pasTemplateVar);
-   ChromePhp::log($manualCC);
+   //ChromePhp::log($psTextContent);
+   //ChromePhp::log($pasAttachement);
+   //ChromePhp::log($psTemplate);
+   //ChromePhp::log($pasTemplateVar);
+   //ChromePhp::log($manualCC);
 
     $sEncoding = mb_check_encoding($psSubject);
     if($sEncoding != 'UTF8')
