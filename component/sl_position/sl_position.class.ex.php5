@@ -3289,7 +3289,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             if($bAdmin)
             {
               $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_LINK, (int)$asHistory['sl_position_linkpk']);
-              $sMessage = 'Are you sure you want to delete this stage ? <br />Status will roll back to previous stage.';
+              $sMessage = 'Are you sure you want to delete this stage ?? <br />Status will roll back to previous stage.';
 
               $sHTML.= $this->_oDisplay->getLink($sPic, 'javascript:;', array('class' => 'position_delete',
                 'onclick' => ' goPopup.setPopupConfirm(\''.$sMessage.'\', \' AjaxRequest(\\\''.$sURL.'\\\'); \'); '));
