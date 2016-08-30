@@ -349,7 +349,7 @@ class CMailEx extends CMail
   /*
    * Will return the email pk after email sent and logged in DB
   */
-  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array())
+  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = '')
   {
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
@@ -425,7 +425,7 @@ class CMailEx extends CMail
       }
     }
 
-    if(!$this->_send())
+    if(!$this->_send($manualCC))
     {
       $this->casError[] = __LINE__.' - Error sending email [ imap:'.(int)CONST_MAIL_IMAP_SEND.' / log:'.CONST_MAIL_IMAP_LOG_SENT.'] ';
       return 0;
@@ -437,7 +437,7 @@ class CMailEx extends CMail
   }
 
 
-  private function _send()
+  private function _send($manualCC = '')
   {
     if(CONST_DEV_SERVER == 1)
     {
@@ -493,6 +493,13 @@ class CMailEx extends CMail
         return false;
       }
 ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
+ChromePhp::log($manualCC);
+
+    if(!empty($manualCC))
+    {
+
+    }
+
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,
      "From: slistem@slate.co.jp\r\n" . "To: ".$this->_stringifyEmail($this->coPhpMailer->to)."\r\n" .
