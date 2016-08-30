@@ -492,7 +492,7 @@ class CMailEx extends CMail
         assert('false; // could not connect to '.CONST_MAIL_IMAP_LOG_PARAM_INBOX);
         return false;
       }
-
+ChromePhp::log('MAIL GONDERMEK ICIN BURAYA GELIYOR');
       $nTimeout = imap_timeout(IMAP_WRITETIMEOUT, 3);
       imap_append($oMailBox, CONST_MAIL_IMAP_LOG_PARAM_SENT,
      "From: slistem@slate.co.jp\r\n" . "To: ".$this->_stringifyEmail($this->coPhpMailer->to)."\r\n" .
