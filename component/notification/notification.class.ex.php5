@@ -699,8 +699,8 @@ ChromePhp::log($pasAction);
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
 
-
-      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage,"\n",$sendCCString)));
+      $emptyArray = array();
+      $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage, $emptyArray,$sendCCString)));
 
       if ($nSent)
       {
