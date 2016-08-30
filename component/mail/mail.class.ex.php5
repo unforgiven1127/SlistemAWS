@@ -268,7 +268,10 @@ class CMailEx extends CMail
               $this->casMailStatus['hasRecipient'] = true;
               $this->casRecipient[] = array($asRecipient['email'], $asRecipient['name']);
               break;
-            case 'cc': $this->casMailStatus['hasCC'] = true; break;
+            case 'cc':
+              $this->casMailStatus['hasCC'] = true;
+              $this->casRecipient[] = array($asRecipient['email'], $asRecipient['name']);
+              break;
             case 'bcc': $this->casMailStatus['hasBCC'] = true; break;
             case 'ReplyTo': $this->casMailStatus['hasReplyTo'] = true; break;
             default:

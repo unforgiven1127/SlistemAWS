@@ -532,38 +532,25 @@ class CNotificationEx extends CNotification
       $bRead = $oDbResult->readNext();
     }
 
-    $ccArray = array();
-    foreach($message_array as $id => $value)
-    {
-      //ChromePhp::log($value);
-      $ccArray[] = $value[0]['email'];
-    }
-    foreach($ccArray as $key => $value)
-    {
-      ChromePhp::log($value);
-      $oMail->addCCRecipient($value);
-    }
-
-    ChromePhp::log($oMail);
     $bExec = $this->_executeAction($message_array, $oMail, $asUsers);
   }
 
   private function _executeAction($pasAction, $poMail, $pasUsers)
   {
-//ChromePhp::log($pasUsers);
-//ChromePhp::log($poMail);
-//ChromePhp::log($pasAction);
+ChromePhp::log($pasUsers);
+ChromePhp::log($poMail);
+ChromePhp::log($pasAction);
     $sNow = date('Y-m-d H:i:s');
 
     $oPage = CDependency::getCpPage();
 
     $sSubject = CONST_APP_NAME . ' daily reminders';
 
-    /*$ccArray = array();
+    $ccArray = array();
     foreach ($pasAction as $id => $value)
     {
       $ccArray[] = $pasUsers[$id]['email'];
-    }*/
+    }
 
     foreach ($pasAction as $id => $user_messages)
     {
@@ -695,24 +682,16 @@ class CNotificationEx extends CNotification
 
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
+      $poMail->addRecipient($sEmail, $sRecipient);
 
-      /*if($sEmail == 'munir@slate-ghc.com')
-      {
-        $poMail->addCCRecipient('munir_anameric@hotmail.com','Munir Anameric');
-      }
-      else
-      {*/
-        $poMail->addRecipient($sEmail, $sRecipient);
-      //}
-
-
-      /*foreach ($ccArray as $key => $value)
+      foreach ($ccArray as $key => $value)
       {
         ChromePhp::log($value);
         $cc = $value;
         $poMail->addCCRecipient($cc);
-        $poMail->addBCCRecipient($cc);
-      }*/
+        //$poMail->addBCCRecipient($cc);
+        //$poMail->addCCRecipient('munir_anameric@hotmail.com');
+      }
       //$cc = rtrim($cc, ";");
 
 //ChromePhp::log($cc);
@@ -721,7 +700,7 @@ ChromePhp::log($poMail);
 
       $nSent = $poMail->send($sSubject, $sMessage, strip_tags(str_ireplace(array('<br>', '<br/>', '<br />'), "\n", $sMessage)));
 
-      if($nSent)
+      if ($nSent)
       {
         foreach ($user_messages as $message_info)
         {
