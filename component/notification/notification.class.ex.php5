@@ -535,13 +535,14 @@ class CNotificationEx extends CNotification
     $ccArray = array();
     foreach($message_array as $id => $value)
     {
-      $ccArray[] = $value['email'];
+      ChromePhp::log($value);
+      //$ccArray[] = $value['email'];
     }
-    foreach($ccArray as $key => $value)
+    /*foreach($ccArray as $key => $value)
     {
       ChromePhp::log($value);
       $oMail->addCCRecipient($value);
-    }
+    }*/
 
     $bExec = $this->_executeAction($message_array, $oMail, $asUsers);
   }
