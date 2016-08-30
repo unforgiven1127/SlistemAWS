@@ -349,7 +349,7 @@ class CMailEx extends CMail
   /*
    * Will return the email pk after email sent and logged in DB
   */
-  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = "")
+  public function send($psSubject, $psContent, $psTextContent = '', $pasAttachement = array(), $psTemplate = '', $pasTemplateVar = array() ,$manualCC = "mnr")
   {
     if(!assert('!empty($psSubject) && !empty($psContent)'))
      return 0;
