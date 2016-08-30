@@ -533,11 +533,11 @@ class CNotificationEx extends CNotification
     }
 
     $ccArray = array();
-    foreach ($message_array as $id => $value)
+    foreach($message_array as $id => $value)
     {
-      $ccArray[] = $pasUsers[$id]['email'];
+      $ccArray[] = $value['email'];
     }
-    foreach ($ccArray as $key => $value)
+    foreach($ccArray as $key => $value)
     {
       ChromePhp::log($value);
       $oMail->addCCRecipient($value);
