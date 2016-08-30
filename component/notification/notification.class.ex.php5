@@ -546,6 +546,11 @@ ChromePhp::log($pasAction);
 
     $sSubject = CONST_APP_NAME . ' daily reminders';
 
+    $ccArray = array();
+    foreach ($pasAction as $id => $value)
+    {
+      $ccArray[] = $pasUsers[$id]['email'];
+    }
 
     foreach ($pasAction as $id => $user_messages)
     {
@@ -679,11 +684,13 @@ ChromePhp::log($pasAction);
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
 
-      foreach ($pasAction as $id => $user_messages)
+      foreach ($ccArray as $key => $value)
       {
-        $cc = $pasUsers[$id]['email'];
+        ChromePhp::log($value);
+        $cc = $value;
         $poMail->addCCRecipient($cc);
-        $poMail->addBCCRecipient($cc);
+        //$poMail->addBCCRecipient($cc);
+        //$poMail->addCCRecipient('munir_anameric@hotmail.com');
       }
       //$cc = rtrim($cc, ";");
 
