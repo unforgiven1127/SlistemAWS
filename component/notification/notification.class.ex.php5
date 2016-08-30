@@ -546,14 +546,6 @@ ChromePhp::log($pasAction);
 
     $sSubject = CONST_APP_NAME . ' daily reminders';
 
-    $cc = "";
-    foreach ($pasAction as $id => $user_messages)
-    {
-      $cc .= $pasUsers[$id]['email'].';';
-    }
-    $cc = rtrim($cc, ";");
-
-ChromePhp::log($cc);
 
     foreach ($pasAction as $id => $user_messages)
     {
@@ -686,7 +678,15 @@ ChromePhp::log($cc);
       //We manage the replyTo above, so we don't add the sender automatically
       $poMail->setFrom(CONST_PHPMAILER_EMAIL, CONST_PHPMAILER_DEFAULT_FROM, false);
       $poMail->addRecipient($sEmail, $sRecipient);
-      $poMail->addCCRecipient($cc);
+
+      foreach ($pasAction as $id => $user_messages)
+      {
+        $cc = $pasUsers[$id]['email'].';';
+        $poMail->addCCRecipient($cc);
+      }
+      //$cc = rtrim($cc, ";");
+
+//ChromePhp::log($cc);
 
 ChromePhp::log($poMail);
 
