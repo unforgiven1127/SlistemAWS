@@ -3189,14 +3189,14 @@ var_dump($query);*/
     $candidate_id = $asPosition['candidatefk'];
     $company_id = $asPosition['companyfk'];
 
-    $now = date('Y-m-d H:i:s');
+    ChromePhp::log($asPosition);
+
+    /*$now = date('Y-m-d H:i:s');
 
     $sQuery = "SELECT e.* FROM event e
                INNER JOIN event_link el on el.eventfk = e.eventpk
                WHERE el.cp_pk = '".$candidate_id."' AND (content LIKE '%Placement%' OR content LIKE '%[placed]%')
                AND (content LIKE '%".$company_id."%')";
-
-    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3207,8 +3207,6 @@ var_dump($query);*/
     {
       $event_id = $value['eventpk'];
       $sQuery = "UPDATE event SET flag = 'p' , date_update = '".$now."' , updated_by = '".$user_id."' WHERE eventpk = '".$event_id."'";
-
-      ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
     }
@@ -3226,7 +3224,7 @@ var_dump($query);*/
     {
       $sQuery = "UPDATE login_system_history SET flag = 'p' WHERE login_system_historypk = '".$value['login_system_historypk']."'";
       $db_result = $oDB->executeQuery($sQuery);
-    }
+    }*/
 
   }
 
