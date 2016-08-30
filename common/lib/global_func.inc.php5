@@ -3193,6 +3193,7 @@ var_dump($query);*/
 
     if($asPosition['status'] == '101') // placement geri alinmissa silecegiz
     {
+      ChromePhp::log('HERE');
       $now = date('Y-m-d H:i:s');
 
       $sQuery = "SELECT e.* FROM event e
