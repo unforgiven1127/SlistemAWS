@@ -3515,6 +3515,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bDeleted)
         return array('error' => __LINE__.' - could not delete the position/application');
 
+      $userInfo = getUserInformaiton($user_id);
+      $note = "Status # ".$pnLinkPk." deleted";
+      $target_candidate_id = $asPosition['candidatefk'];
+      $insertNote = insertLog($user_id, $target_candidate_id, $note);
 
       return array('data' => 'ok', 'notice' => 'Application / stage deleted', 'action' => ' goPopup.removeByType(\'layer\'); refresh_candi('.(int)$asPosition['candidatefk'].', true);');
     }
