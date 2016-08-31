@@ -3515,8 +3515,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bDeleted)
         return array('error' => __LINE__.' - could not delete the position/application');
 
+      $statusID = $asPosition['status'];
+      $status_title = getStatusTitle($statusID);
+
       $userInfo = getUserInformaiton($user_id);
-      $note = "Status # ".$pnLinkPk." deleted";
+      $note = "Status ".$status_title."(#".$pnLinkPk.") deleted";
       $target_candidate_id = $asPosition['candidatefk'];
       $insertNote = insertLog($user_id, $target_candidate_id, $note);
 
