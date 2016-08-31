@@ -3182,6 +3182,19 @@ var_dump($query);*/
     return true;
   }
 
+  function getCandidateOldCompanies($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * from sl_candidate_old_companies oc WHERE oc.candidate_id = '".$candidate_id."' ORDER BY oc.id DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function deletePlacementNote($asPosition,$user_id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3229,6 +3242,15 @@ var_dump($query);*/
 
         $db_result3 = $oDB->executeQuery($sQuery3);
       }
+
+      $old_companies = getCandidateOldCompanies($candidate_id);
+      ChromePhp::log($old_companies);
+      if(isset($old_companies[1]))
+      {
+        $previousCompany = $old_companies[1];// 0 suanki company oluyor.
+        ChromePhp::log($previousCompany);
+      }
+
     }
 
 
