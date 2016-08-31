@@ -6689,12 +6689,15 @@ class CSl_candidateEx extends CSl_candidate
         $nHistoryPk = logUserHistory($this->csUid, $this->csAction, $this->csType, $this->cnPk, array('text' => implode(', ', $asListMsg).' (#'.$nResult.' results)', 'link' => $sLink, 'data' => array('qb' => $oQb)), false);
       }
 
-      $oDbResult = $this->_getModel()->executeQuery($oQb->getSql());
+      //$oDbResult = $this->_getModel()->executeQuery($oQb->getSql());
+      $oDbResult = $this->_getModel()->executeQuery($sql);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
       {
-        assert('false; // no company found in select, but count = '.$nResult.' ['.$oQb->getSql().']');
-        return array('data' => 'no company found.', 'sql' => $oQb->getSql());
+        //assert('false; // no company found in select, but count = '.$nResult.' ['.$oQb->getSql().']');
+        assert('false; // no company found in select, but count = '.$nResult.' ['.$sql.']');
+        //return array('data' => 'no company found.', 'sql' => $oQb->getSql());
+        return array('data' => 'no company found.', 'sql' => $sql);
       }
 
       $asRow = array();
