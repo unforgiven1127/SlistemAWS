@@ -3519,7 +3519,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $status_title = getStatusTitle($statusID);
 
       $userInfo = getUserInformaiton($user_id);
-      $note = "Status ".$status_title."(#".$pnLinkPk.") deleted";
+      $note = "Status ".$status_title." (#".$pnLinkPk.") deleted";
       $target_candidate_id = $asPosition['candidatefk'];
       $insertNote = insertLog($user_id, $target_candidate_id, $note);
 
