@@ -6661,7 +6661,7 @@ class CSl_candidateEx extends CSl_candidate
       else
         $oQb->addOrder('scom.name DESC');
 
-
+      ChromePhp::log($oQb->getSql());
       // multi industries --> we need to group by companypk --> number result = numrows
       $oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
       $bRead = $oDbResult->readFirst();
