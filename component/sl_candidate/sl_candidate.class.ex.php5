@@ -6566,6 +6566,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyList($poQB = null)
     {
+      ChromePhp::log('_getCompanyList');
       global $gbNewSearch;
 
       $oLogin = CDependency::getCpLogin();

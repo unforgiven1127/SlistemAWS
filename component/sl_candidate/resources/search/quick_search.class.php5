@@ -207,7 +207,6 @@ class CQuickSearch
 
 
       $sCompany = trim(getValue('company'));
-      ChromePhp::log($sCompany);
 
       if($sCompany == 'Company')
         $sCompany = '';
