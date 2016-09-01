@@ -3515,7 +3515,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if(!$bDeleted)
         return array('error' => __LINE__.' - could not delete the position/application');
 
-      $statusTite = getStatusTitle($asData['status']);
+      ChromePhp::log($asData);
+      $statusTite = getStatusTitle($pnLinkPk);
       $note = "Status ".$statusTite." (#".$pnLinkPk.") deleted";
       $addLog = insertLog($user_id, $asPosition['candidatefk'], $note);
 
