@@ -7140,6 +7140,8 @@ die();*/
         if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
 
+        $company_id = $asData['companyfk'];
+
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
           $asData['date_birth'] = 'NULL';
@@ -7360,7 +7362,9 @@ die();*/
             assert('false; // Could not add the candidate.');
             return array('error' => __LINE__.' - An error occurred. Could not add the candidate.');
           }
-ChromePhp::log($nKey);
+
+          updateOldCompany($nKey,$company_id);
+
           if(empty($asData['locationfk']))
             $sLocation = 'TOK';
           else
