@@ -1620,6 +1620,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if($asData['status'] == 101)
       {
 
+        updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
+
         $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'], (int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');

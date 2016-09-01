@@ -3251,24 +3251,31 @@ var_dump($query);*/
         $previous_company_id = $previousCompany['company_id'];
         //ChromePhp::log($previousCompany); // hem old company yenilenecek hem candidate...
 
-        $dateNow = date('Y-m-d H:i:s');
-        $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
-
-        $this->_getModel()->executeQuery($sQuery);
-
-        $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
-                   VALUES ('".$candidate_id."','".$previous_company_id."','".$dateNow."','".$dateNow."')";
-
-        $this->_getModel()->executeQuery($sQuery);
+        updateOldCompany($candidate_id,$previous_company_id);
 
         $sQuery = "UPDATE sl_candidate_profile SET companyfk = '".$previous_company_id."'  WHERE candidatefk = '".$candidate_id."'";
 
         $this->_getModel()->executeQuery($sQuery);
 
+
       }
 
     }
+  }
 
+  function updateOldCompany($candidate_id,$company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $dateNow = date('Y-m-d H:i:s');
+    $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
+
+    $this->_getModel()->executeQuery($sQuery);
+
+    $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
+               VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
+
+    $this->_getModel()->executeQuery($sQuery);
 
   }
 
