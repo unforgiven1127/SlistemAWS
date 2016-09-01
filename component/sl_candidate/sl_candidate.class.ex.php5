@@ -7363,12 +7363,6 @@ die();*/
             return array('error' => __LINE__.' - An error occurred. Could not add the candidate.');
           }
 
-          ChromePhp::log($nKey);
-          $candidate_info = getCandidateInformation($nKey);
-          ChromePhp::log($candidate_info);
-          //$this->_addOldCompany($nKey,$asData['companyfk']);
-          //updateOldCompany($nKey,$company_id);
-
           if(empty($asData['locationfk']))
             $sLocation = 'TOK';
           else
@@ -7406,6 +7400,12 @@ die();*/
           //$this->casCandidateData['profile']['uid'].= 'LOC'.date('y').$asMonth[(int)date('m')].$this->casCandidateData['profile']['candidatefk'];
 
           $bSaved = (bool)$this->_getModel()->add($this->casCandidateData['profile'], 'sl_candidate_profile');
+
+          ChromePhp::log($nKey);
+          $candidate_info = getCandidateInformation($nKey);
+          ChromePhp::log($candidate_info);
+          //$this->_addOldCompany($nKey,$asData['companyfk']);
+          //updateOldCompany($nKey,$company_id);
         }
         else
         {
