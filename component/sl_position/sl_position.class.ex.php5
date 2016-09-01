@@ -1636,12 +1636,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $result = $oDB->executeQuery($sQuery);
 
-        /*$bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
+        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
 
         // Add company history log entry
-        $oNote = CDependency::getComponentByName('sl_event');
+        /*$oNote = CDependency::getComponentByName('sl_event');
         $sNote = 'Placement !<br />';
         $sNote.= 'The '.date('Y-m-d').', this candidate has moved from [ #'.$asCandidate['sl_companypk'].' - '.$asCandidate['company_name'].'] ';
         $sNote.= 'to '.$asCompany[$nCompanyPk]['label'].'<br />';
