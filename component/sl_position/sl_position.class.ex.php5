@@ -1620,8 +1620,24 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if($asData['status'] == 101)
       {
         ChromePhp::log($asData);
-        ChromePhp::log($asCandidate['sl_companypk']);
-        $return = updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
+        //$return = updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
+
+        $candidate_id = $asData['candidatefk'];
+        $position_id = $asData['positionfk'];
+        $company_info = getPositionInformation($position_id);
+        $company_id = $company_info['sl_companypk'];
+        $oDB = CDependency::getComponentByName('database');
+
+        $dateNow = date('Y-m-d H:i:s');
+        $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
+    ChromePhp::log($sQuery);
+        $oDB->executeQuery($sQuery);
+
+        $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
+                   VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
+    ChromePhp::log($sQuery);
+        $oDB->executeQuery($sQuery);
+
 
         $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
