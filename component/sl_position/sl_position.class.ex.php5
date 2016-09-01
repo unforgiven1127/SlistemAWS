@@ -1660,14 +1660,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
         // open form update
-        $sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
+        /*$sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
         $asReturn = array('notice' => __LINE__.' - Candidate updated.',
           'action' => ' alert(\'Candidate company has been changed, please update the rest of his profile.\');
             goPopup.removeLastByType(\'layer\');
             view_candi(\''.$sURL.'\', \'#tabLink8\');
             var oConf = goPopup.getConfig(); oConf.height = 725; oConf.width = 1080;
             goPopup.setLayerFromAjax(oConf, \''.$sEditURL.'\');
-            ');
+            ');*/
       }
 
       //Finally: notify people the candidate status has changed (remove the current user obviosuly)
