@@ -7364,8 +7364,9 @@ die();*/
           }
 
           ChromePhp::log($nKey);
-          ChromePhp::log($asData['companyfk']);
-          $this->_addOldCompany($nKey,$asData['companyfk']);
+          $candidate_info = getCandidateInformation($nKey);
+          ChromePhp::log($candidate_info);
+          //$this->_addOldCompany($nKey,$asData['companyfk']);
           //updateOldCompany($nKey,$company_id);
 
           if(empty($asData['locationfk']))
