@@ -1619,10 +1619,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       //Lot of things to do when placing a candidate... big update coming next
       if($asData['status'] == 101)
       {
-        ChromePhp::log('HERE');
-        updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
+        ChromePhp::log($asData);
+        ChromePhp::log($asCandidate['sl_companypk']);
+        $return = updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
 
-        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'], (int)$asData['created_by']);
+        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
 

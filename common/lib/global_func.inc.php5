@@ -3278,6 +3278,8 @@ ChromePhp::log($sQuery);
 ChromePhp::log($sQuery);
     $oDB->executeQuery($sQuery);
 
+    return true;
+
   }
 
   function securityCheckSearch($user_id)
