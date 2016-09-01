@@ -1796,14 +1796,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
       $oLogin = CDependency::getComponentByName('login');
-      ChromePhp::log($oLogin->getUserLink($pnUserPk));
+      //ChromePhp::log($oLogin->getUserLink($pnUserPk));
       //3. add a system fallen off step
       foreach($asCandidate as $nCanduidatefk) // burada adaylar status 251 oluyor position filled
       {
         $asLink = array('positionfk' => $nPositionPk, 'candidatefk' => $nCanduidatefk, 'date_created' => $sNow,
-            'status' => 251, 'created_by' => -1, 'comment' => 'Position filled by '.$oLogin->getUserLink($pnUserPk),
+            'status' => 251, 'created_by' => 101, 'comment' => 'Position filled by '.$oLogin->getUserLink($pnUserPk),
                 'date_expire' => $sNow, 'active' => 1);
-
+        // created by -1 idi 101 yaptim hata almamak icin
         $this->_getModel()->add($asLink, 'sl_position_link');
       }
 
