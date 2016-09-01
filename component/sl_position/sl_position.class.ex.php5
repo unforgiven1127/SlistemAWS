@@ -1629,18 +1629,18 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $dateNow = date('Y-m-d H:i:s');
         $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
 
-        $oDB->executeQuery($sQuery);
+        $result = $oDB->executeQuery($sQuery);
 
         $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
                    VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
 
-        $oDB->executeQuery($sQuery);
+        $result = $oDB->executeQuery($sQuery);
 
 
         $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
-ChromePhp::log('HERE1');
+
         // Add company history log entry
         $oNote = CDependency::getComponentByName('sl_event');
         $sNote = 'Placement !<br />';
@@ -1651,7 +1651,6 @@ ChromePhp::log('HERE1');
         $oNote->addNote($asData['candidatefk'], 'cp_history', $sNote, $nUser);
         $oNote->addNote($asData['candidatefk'], 'cp_hidden', $asCandidate['company_name'], $nUser);
 
-ChromePhp::log('HERE2');
         //Update candidate company... least we can do to make sure data is correct, we'll open the form after
         //update industry with position industry too ?
         $asUpdate = array('companyfk' => $nCompanyPk);
@@ -1659,7 +1658,6 @@ ChromePhp::log('HERE2');
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update candidate company.');
 
-ChromePhp::log('HERE3');
         // open form update
         $sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
         $asReturn = array('notice' => __LINE__.' - Candidate updated.',
