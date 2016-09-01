@@ -7140,7 +7140,7 @@ die();*/
         if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
 
-        $company_id = $asData['companyfk'];
+        ChromePhp::log($asData['companyfk']);
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
@@ -7364,8 +7364,8 @@ die();*/
           }
 
           ChromePhp::log($nKey);
-          ChromePhp::log($company_id);
-          $this->_addOldCompany($nKey,$company_id);
+          ChromePhp::log($asData['companyfk']);
+          $this->_addOldCompany($nKey,$asData['companyfk']);
           //updateOldCompany($nKey,$company_id);
 
           if(empty($asData['locationfk']))
