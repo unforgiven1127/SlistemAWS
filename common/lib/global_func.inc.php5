@@ -3265,16 +3265,17 @@ var_dump($query);*/
 
   function updateOldCompany($candidate_id,$company_id)
   {
+    ChromePhp::log('updateOldCompany');
     $oDB = CDependency::getComponentByName('database');
 
     $dateNow = date('Y-m-d H:i:s');
     $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
-
+ChromePhp::log($sQuery);
     $this->_getModel()->executeQuery($sQuery);
 
     $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
                VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
-
+ChromePhp::log($sQuery);
     $this->_getModel()->executeQuery($sQuery);
 
   }
