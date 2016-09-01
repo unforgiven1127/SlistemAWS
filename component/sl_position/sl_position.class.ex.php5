@@ -1619,8 +1619,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       //Lot of things to do when placing a candidate... big update coming next
       if($asData['status'] == 101)
       {
-        ChromePhp::log($asData);
-        //$return = updateOldCompany($asData['candidatefk'],$asCandidate['sl_companypk']);
 
         $candidate_id = $asData['candidatefk'];
         $position_id = $asData['positionfk'];
@@ -1630,19 +1628,19 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $dateNow = date('Y-m-d H:i:s');
         $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
-    ChromePhp::log($sQuery);
+
         $oDB->executeQuery($sQuery);
 
         $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
                    VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
-    ChromePhp::log($sQuery);
+
         $oDB->executeQuery($sQuery);
 
 
         $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
-
+ChromePhp::log('HERE1');
         // Add company history log entry
         $oNote = CDependency::getComponentByName('sl_event');
         $sNote = 'Placement !<br />';
@@ -1653,7 +1651,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $oNote->addNote($asData['candidatefk'], 'cp_history', $sNote, $nUser);
         $oNote->addNote($asData['candidatefk'], 'cp_hidden', $asCandidate['company_name'], $nUser);
 
-
+ChromePhp::log('HERE2');
         //Update candidate company... least we can do to make sure data is correct, we'll open the form after
         //update industry with position industry too ?
         $asUpdate = array('companyfk' => $nCompanyPk);
@@ -1661,7 +1659,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update candidate company.');
 
-
+ChromePhp::log('HERE3');
         // open form update
         $sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
         $asReturn = array('notice' => __LINE__.' - Candidate updated.',
@@ -1725,7 +1723,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $this->_getModel()->_logChanges(array('statusfk' => '6'), 'user_history', 'Candidate '.$asTmp['date_meeting'].'.<br /> &rarr; status changed to [Interview set]', '',
               array('cp_uid' =>$this->csUid, 'cp_action' => 'ppae', 'cp_type' => CONST_CANDIDATE_TYPE_CANDI, 'cp_pk' => $asTmp['candidatefk']));
       }*/
-
+ChromePhp::log('HERE4');
       if(!empty($asReturn))
         return $asReturn;
 
