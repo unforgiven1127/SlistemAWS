@@ -7363,7 +7363,10 @@ die();*/
             return array('error' => __LINE__.' - An error occurred. Could not add the candidate.');
           }
 
-          updateOldCompany($nKey,$company_id);
+          ChromePhp::log($nKey);
+          ChromePhp::log($company_id);
+          $this->_addOldCompany($nKey,$company_id);
+          //updateOldCompany($nKey,$company_id);
 
           if(empty($asData['locationfk']))
             $sLocation = 'TOK';
@@ -7646,6 +7649,20 @@ die();*/
       }
       return $asError;
     }*/
+
+  private function _addOldCompany($candidate_id,$company_id)
+  {
+
+    $oDB = CDependency::getComponentByName('database');
+
+    $dateNow = date('Y-m-d H:i:s');
+
+    $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
+               VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
+
+    $oDB->executeQuery($sQuery);
+
+  }
 
     private function _saveNotes($pbTest = true, $pbSave = false, $pasCandidate = array())
     {
