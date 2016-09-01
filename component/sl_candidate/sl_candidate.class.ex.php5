@@ -7401,11 +7401,10 @@ die();*/
 
           $bSaved = (bool)$this->_getModel()->add($this->casCandidateData['profile'], 'sl_candidate_profile');
 
-          ChromePhp::log($nKey);
           $candidate_info = getCandidateInformation($nKey);
-          ChromePhp::log($candidate_info);
-          //$this->_addOldCompany($nKey,$asData['companyfk']);
-          //updateOldCompany($nKey,$company_id);
+          $company_id = $candidate_info['companyfk'];
+          $this->_addOldCompany($nKey,$company_id);
+
         }
         else
         {
