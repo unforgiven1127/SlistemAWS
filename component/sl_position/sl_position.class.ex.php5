@@ -1773,14 +1773,16 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sURL = $this->_oPage->getUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$oDbResult->getFieldValue('candidatefk'));
 
         $nLoginPk = (int)$oDbResult->getFieldValue('created_by');
-        $asConsultant[$nLoginPk]['email'] = $oDbResult->getFieldValue('email');
-        $asConsultant[$nLoginPk]['firstname'] = $oDbResult->getFieldValue('firstname');
-        $asConsultant[$nLoginPk]['lastname'] = $oDbResult->getFieldValue('lastname');
-        $asConsultant[$nLoginPk]['candidate'][] = '<a href="'.$sURL.'">#'.$oDbResult->getFieldValue('candidatefk').'</a>&nbsp;&nbsp; - &nbsp;&nbsp;<a href="'.$sURL.'">'.$oDbResult->getFieldValue('candi_lastname').' '.$oDbResult->getFieldValue('candi_firstname').'</a>';
+        if($nLoginPk > 0)
+        {
+          $asConsultant[$nLoginPk]['email'] = $oDbResult->getFieldValue('email');
+          $asConsultant[$nLoginPk]['firstname'] = $oDbResult->getFieldValue('firstname');
+          $asConsultant[$nLoginPk]['lastname'] = $oDbResult->getFieldValue('lastname');
+          $asConsultant[$nLoginPk]['candidate'][] = '<a href="'.$sURL.'">#'.$oDbResult->getFieldValue('candidatefk').'</a>&nbsp;&nbsp; - &nbsp;&nbsp;<a href="'.$sURL.'">'.$oDbResult->getFieldValue('candi_lastname').' '.$oDbResult->getFieldValue('candi_firstname').'</a>';
 
-        $pre_record_id =$oDbResult->getFieldValue('sl_position_linkpk');
-        $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
-
+          $pre_record_id =$oDbResult->getFieldValue('sl_position_linkpk');
+          $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
+        }
         $bRead = $oDbResult->readnext();
       }
 
