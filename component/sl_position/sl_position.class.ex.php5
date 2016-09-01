@@ -1783,6 +1783,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $pre_record_id =$oDbResult->getFieldValue('sl_position_linkpk');
           $return = $this->_getModel()->update_date_completed($pre_record_id,$date_completed);
         }
+
         $bRead = $oDbResult->readnext();
       }
 
