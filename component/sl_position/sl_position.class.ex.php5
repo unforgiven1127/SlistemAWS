@@ -1620,24 +1620,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if($asData['status'] == 101)
       {
 
-        /*$candidate_id = $asData['candidatefk'];
-        $position_id = $asData['positionfk'];
-        $company_info = getPositionInformation($position_id);
-        $company_id = $company_info['sl_companypk'];
-        $oDB = CDependency::getComponentByName('database');
-
-        $dateNow = date('Y-m-d H:i:s');
-        $sQuery = "UPDATE sl_candidate_old_companies SET flag = 'p' , last_activity = '".$dateNow."' WHERE candidate_id = '".$candidate_id."'";
-
-        $result = $oDB->executeQuery($sQuery);
-
-        $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
-                   VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
-
-        $result = $oDB->executeQuery($sQuery);*/
-
-
-        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
+        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'], (int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
 
@@ -1651,12 +1634,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $oNote->addNote($asData['candidatefk'], 'cp_history', $sNote, $nUser);
         $oNote->addNote($asData['candidatefk'], 'cp_hidden', $asCandidate['company_name'], $nUser);
 
+
         //Update candidate company... least we can do to make sure data is correct, we'll open the form after
         //update industry with position industry too ?
         $asUpdate = array('companyfk' => $nCompanyPk);
         $bUpdate = $this->oCandidate->quickUpdateProfile($asUpdate, $asData['candidatefk'], true);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update candidate company.');
+
 
         // open form update
         $sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
@@ -1721,7 +1706,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $this->_getModel()->_logChanges(array('statusfk' => '6'), 'user_history', 'Candidate '.$asTmp['date_meeting'].'.<br /> &rarr; status changed to [Interview set]', '',
               array('cp_uid' =>$this->csUid, 'cp_action' => 'ppae', 'cp_type' => CONST_CANDIDATE_TYPE_CANDI, 'cp_pk' => $asTmp['candidatefk']));
       }*/
-ChromePhp::log('HERE4');
+
       if(!empty($asReturn))
         return $asReturn;
 
@@ -3267,7 +3252,7 @@ ChromePhp::log('HERE4');
           $sURL = $this->_oPage->getAjaxURL('555-005', CONST_ACTION_DELETE, CONST_POSITION_TYPE_LINK, (int)$asPosition['sl_position_linkpk']);
 
           if($bHistory)
-            $sMessage = 'Are you sure you want to delete this stage ?? <br />Status will roll back to previous stage.';
+            $sMessage = 'Are you sure you want to delete this stage ? <br />Status will roll back to previous stage.';
           else
             $sMessage = 'Are you sure you want to delete this application ? <br />The candidate will not be in play for this position anymore. ';
 
@@ -3530,13 +3515,6 @@ ChromePhp::log('HERE4');
       if(!$bDeleted)
         return array('error' => __LINE__.' - could not delete the position/application');
 
-      $statusID = $asPosition['status'];
-      $status_title = getStatusTitle($statusID);
-
-      $userInfo = getUserInformaiton($user_id);
-      $note = "Status ".$status_title." (#".$pnLinkPk.") deleted";
-      $target_candidate_id = $asPosition['candidatefk'];
-      $insertNote = insertLog($user_id, $target_candidate_id, $note);
 
       return array('data' => 'ok', 'notice' => 'Application / stage deleted', 'action' => ' goPopup.removeByType(\'layer\'); refresh_candi('.(int)$asPosition['candidatefk'].', true);');
     }
