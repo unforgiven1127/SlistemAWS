@@ -1636,7 +1636,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $result = $oDB->executeQuery($sQuery);
 
-        $bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
+        /*$bUpdate = $this->_updatePlacedposition($asPosition, (int)$asData['candidatefk'],(int)$asData['created_by']);
         if(!$bUpdate)
           return array('error' => __LINE__.' - Could update position data.');
 
@@ -1660,7 +1660,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
         // open form update
-        /*$sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
+        $sEditURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk']);
         $asReturn = array('notice' => __LINE__.' - Candidate updated.',
           'action' => ' alert(\'Candidate company has been changed, please update the rest of his profile.\');
             goPopup.removeLastByType(\'layer\');
