@@ -1641,7 +1641,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           return array('error' => __LINE__.' - Could update position data.');
 
         // Add company history log entry
-        /*$oNote = CDependency::getComponentByName('sl_event');
+        $oNote = CDependency::getComponentByName('sl_event');
         $sNote = 'Placement !<br />';
         $sNote.= 'The '.date('Y-m-d').', this candidate has moved from [ #'.$asCandidate['sl_companypk'].' - '.$asCandidate['company_name'].'] ';
         $sNote.= 'to '.$asCompany[$nCompanyPk]['label'].'<br />';
@@ -1667,7 +1667,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             view_candi(\''.$sURL.'\', \'#tabLink8\');
             var oConf = goPopup.getConfig(); oConf.height = 725; oConf.width = 1080;
             goPopup.setLayerFromAjax(oConf, \''.$sEditURL.'\');
-            ');*/
+            ');
       }
 
       //Finally: notify people the candidate status has changed (remove the current user obviosuly)
@@ -1733,6 +1733,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _updatePlacedposition($pasPosition, $pnCandidatePk, $pnUserPk)
     {
+      ChromePhp::log($pasPosition);
+      ChromePhp::log($pnCandidatePk);
+      ChromePhp::log($pnUserPk);
       if(!assert('is_array($pasPosition) && is_key($pnUserPk)'))
         return false;
 
@@ -1743,6 +1746,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $nPositionPk = (int)$pasPosition['sl_positionpk'];
       $nCandidatePk = (int)$pnCandidatePk;
 
+      ChromePhp::log($nPositionPk);
+
       //1. get all pso_link/candidates still active on this position (except currenlty placed one).
       $sQuery = 'SELECT DISTINCT(spli.positionfk || spli.candidatefk) as link_key, spli.*, slog.email,
         slog.firstname, slog.lastname,
@@ -1751,6 +1756,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         LEFT JOIN shared_login as slog ON (slog.loginpk = spli.created_by)
         LEFT JOIN sl_candidate as scan ON (scan.sl_candidatepk = spli.candidatefk)
         WHERE spli.active = 1 AND spli.candidatefk != '.$nCandidatePk.' AND spli.positionfk = '.$nPositionPk;
+
+      ChromePhp::log($sQuery);
 
       $oDbResult =  $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
@@ -1786,7 +1793,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
       $oLogin = CDependency::getComponentByName('login');
-
+      ChromePhp::log($oLogin->getUserLink($pnUserPk));
       //3. add a system fallen off step
       foreach($asCandidate as $nCanduidatefk) // burada adaylar status 251 oluyor position filled
       {
