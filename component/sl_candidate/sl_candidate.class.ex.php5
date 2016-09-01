@@ -7360,7 +7360,7 @@ die();*/
             assert('false; // Could not add the candidate.');
             return array('error' => __LINE__.' - An error occurred. Could not add the candidate.');
           }
-
+ChromePhp::log($nKey);
           if(empty($asData['locationfk']))
             $sLocation = 'TOK';
           else
