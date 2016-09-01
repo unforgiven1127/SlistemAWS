@@ -7094,6 +7094,8 @@ die();*/
         $asData['occupationfk'] = (int)getValue('occupationpk');
         $asData['industryfk'] = (int)getValue('industrypk');
 
+        ChromePhp::log($nNewCompanyFk);
+
         if($pnCandidatePk > 0)
         {
           $dateNow = date('Y-m-d H:i:s');
