@@ -470,7 +470,7 @@ order by m.candidatefk
     if($view_name != 'false')
     {
       $queryView = "CREATE VIEW ".$view_name." AS ".$query;
-      $view_result = $this->oDB->executeQuery($query);
+      $view_result = $this->oDB->executeQuery($queryView);
     }
 
     $db_result = $this->oDB->executeQuery($query);
