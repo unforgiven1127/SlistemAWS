@@ -4225,9 +4225,6 @@ class CSl_statEx extends CSl_stat
       $data = array();
       $submit_totals = getValue('submit_totals');
 
-      ChromePhp::log($submit_totals);
-      ChromePhp::log($generatedKPIsCount);
-
       if($submit_totals == 'Get totals' || $generatedKPIsCount == 0)
       {
         $all_ids = $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
