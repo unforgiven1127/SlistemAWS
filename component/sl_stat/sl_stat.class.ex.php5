@@ -5406,7 +5406,7 @@ class CSl_statEx extends CSl_stat
           $viewEnd = str_replace('-','_',$viewEnd);
 
           $jsonData = json_encode($stats_data);
-          //ChromePhp::log($jsonData);
+ChromePhp::log($stats_data);
           $oLogin = CDependency::getCpLogin();
           $created_by_id = $oLogin->getUserPk();
           $added = insertGeneratedKpi($jsonData,$created_by_id,'kpi');
@@ -5436,7 +5436,7 @@ ChromePhp::log($allCanidatesArray);
         'page_obj' => $this->_oPage
         );
 
-      $data['allCanidatesArray'] = $allCanidatesArray;
+      //$data['allCanidatesArray'] = $allCanidatesArray;
       header_remove('Set-Cookie');
 
       $html = $this->_oDisplay->render('totals_chart_ordered', $data);
