@@ -445,7 +445,7 @@ order by m.candidatefk
     return $asData;
   }
 
-  public function getKpiSetVsMet($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function getKpiSetVsMet($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     if(!assert('is_arrayOfInt($user_ids)'))
       return array();
@@ -466,6 +466,12 @@ order by m.candidatefk
     $data = array();
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
+
+    if($view_name != 'false')
+    {
+      $queryView = "CREATE VIEW ".$view_name." AS ".$query;
+      $db_result = $this->oDB->executeQuery($query);
+    }
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
