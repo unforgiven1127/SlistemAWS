@@ -3597,7 +3597,7 @@ var_dump($query);*/
 
     $candidate_id = $array['candidate_id'];
     $type = $array['type'];
-    $content = mysqli_real_escape_string($array['content']);
+    $content = $array['content'];
     $user_id = $array['user_id'];
 
     $sQuery="UPDATE `sl_notes` SET `content` = '".$content."',`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
