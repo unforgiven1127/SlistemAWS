@@ -916,12 +916,19 @@ class CSl_eventEx extends CSl_event
 
     //EDIT KISMINDA DA KULLANABILMEK ICIN DISARI ADIK
     $characterNoteArray = array();
-    $characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
+    /*$characterNoteArray['personality_note'] = purify_html(getValue('personality_note'));
     $characterNoteArray['career_note'] = purify_html(getValue('career_note'));
     $characterNoteArray['education_note'] = purify_html(getValue('education_note'));
     $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
     $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
-    $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
+    $characterNoteArray['past_note'] = purify_html(getValue('past_note'));*/
+
+    $characterNoteArray['personality_note'] = (getValue('personality_note'));
+    $characterNoteArray['career_note'] = (getValue('career_note'));
+    $characterNoteArray['education_note'] = (getValue('education_note'));
+    $characterNoteArray['move_note'] = (getValue('move_note'));
+    $characterNoteArray['compensation_note'] = (getValue('compensation_note'));
+    $characterNoteArray['past_note'] = (getValue('past_note'));
 
     $skillValues = array();
     $skillValues['skill_ag'] = getValue('skill_ag');

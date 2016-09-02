@@ -3263,6 +3263,18 @@ var_dump($query);*/
     }
   }
 
+  function insertGeneratedKpi($json_date,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $dateTimeNow = date('Y-m-d H:i:s');
+    $dateNow = date('Y-m-d');
+
+    $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
+               VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
+
+    $oDB->executeQuery($sQuery);
+  }
+
   function updateOldCompany($candidate_id,$company_id)
   {
 
