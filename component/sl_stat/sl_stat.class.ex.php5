@@ -4219,92 +4219,242 @@ class CSl_statEx extends CSl_stat
       else
         $end_date .= ' 23:59:59';
 
-
+      $dateNow = date('Y-m-d');
+      $generatedKPIs = getGeneratedKpi($dateNow);
+      $generatedKPIsCount = count($generatedKPIs);
       $data = array();
 
-      $all_ids = $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
-      $stats_data = array();
-      $consultant_skip_id = array(389, 315, 354, 186);
-      $researcher_skip_id = array(301, 423, 475, 315, 474, 487, 486, 259);
-
-      // generate consultant data
-      foreach ($this->casUserByGroup[108] as $key => $value)
+      if($submit_totals != 'Get totals' && $generatedKPIsCount == 0)
       {
-        if ($value['status'])
+        $all_ids = $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
+        $stats_data = array();
+        $consultant_skip_id = array(389, 315, 354, 186);
+        $researcher_skip_id = array(301, 423, 475, 315, 474, 487, 486, 259);
+
+        // generate consultant data
+        foreach ($this->casUserByGroup[108] as $key => $value)
         {
-          //echo "<br><br>";
-          //var_dump($value);
-          $consultant_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
-          if($value['r_to_c_date'] == "0000-00-00 00:00:00")
+          if ($value['status'])
           {
-            $consultant_ids[] = $key;
-          }
-          else
-          {
-            //echo "<br><br>".$start_date." - ".$value['r_to_c_date'];
-            if($start_date < $value['r_to_c_date'] && $end_date > $value['r_to_c_date'])
+            //echo "<br><br>";
+            //var_dump($value);
+            $consultant_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
+            if($value['r_to_c_date'] == "0000-00-00 00:00:00")
             {
-              //echo "<br><br>INSIDE";
-              $promoted_ids[] = $key;
               $consultant_ids[] = $key;
-
-              $start_date_researcher = $start_date;
-              $end_date_researcher = $value['r_to_c_date'];
-
-              $start_date_consultant = $value['r_to_c_date'];
-              $end_date_consultant = $end_date;
             }
             else
             {
-              $consultant_ids[] = $key;
+              //echo "<br><br>".$start_date." - ".$value['r_to_c_date'];
+              if($start_date < $value['r_to_c_date'] && $end_date > $value['r_to_c_date'])
+              {
+                //echo "<br><br>INSIDE";
+                $promoted_ids[] = $key;
+                $consultant_ids[] = $key;
+
+                $start_date_researcher = $start_date;
+                $end_date_researcher = $value['r_to_c_date'];
+
+                $start_date_consultant = $value['r_to_c_date'];
+                $end_date_consultant = $end_date;
+              }
+              else
+              {
+                $consultant_ids[] = $key;
+              }
+
             }
-
+            $promote_dates[$key] = $value['r_to_c_date'];
+            $all_ids[] = $key;
           }
-          $promote_dates[$key] = $value['r_to_c_date'];
-          $all_ids[] = $key;
         }
-      }
 
-      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_resume_sent = $this->_getModel()->get_resume_sent($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_ccm = $this->_getModel()->get_ccm_data($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_in_play = $this->_getModel()->get_new_in_play($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_placement = $this->_getModel()->get_placement_number($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
-      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
-
-      //echo "<br><br>";
-      //var_dump($temp_new_candidate_met);
-      if(isset($promoted_ids[0]))
-      {
-        //echo "<br><br>ICEDER consultant";
-        //var_dump($promoted_ids);
-        $temp_set_vs_met_promote = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_resume_sent_promote = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_ccm_promote = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_in_play_promote = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_placement_promote = $this->_getModel()->get_placement_number($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_offer_promote = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
-        $temp_new_candidate_met_promote = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
+        $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_resume_sent = $this->_getModel()->get_resume_sent($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_ccm = $this->_getModel()->get_ccm_data($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_in_play = $this->_getModel()->get_new_in_play($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_placement = $this->_getModel()->get_placement_number($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_offer = $this->_getModel()->get_offer_sent($consultant_ids, $start_date, $end_date, 'consultant');
+        $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($consultant_ids, $start_date , $end_date, 'consultant');
 
         //echo "<br><br>";
-        //var_dump($promoted_ids);
+        //var_dump($temp_new_candidate_met);
+        if(isset($promoted_ids[0]))
+        {
+          //echo "<br><br>ICEDER consultant";
+          //var_dump($promoted_ids);
+          $temp_set_vs_met_promote = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_resume_sent_promote = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_ccm_promote = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_in_play_promote = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_placement_promote = $this->_getModel()->get_placement_number($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_offer_promote = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_consultant, $end_date_consultant, 'consultant');
+          $temp_new_candidate_met_promote = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_consultant , $end_date_consultant, 'consultant');
 
+          //echo "<br><br>";
+          //var_dump($promoted_ids);
+
+          //-------------promoted-------------
+          //-------------promoted-------------
+          foreach ($promoted_ids as $id)
+          {
+            if (in_array($id, $consultant_skip_id))
+              continue;
+
+            $user_info = getUserInformaiton($id);
+
+            $stats_data['consultant'][$id]['promoteFlag'] = "true";
+
+            if (!empty($temp_resume_sent_promote[$id]['resumes_sent']))
+            {
+              $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent_promote[$id]['resumes_sent'];
+              $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent_promote[$id]['resumes_sent_info'];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['resumes_sent'] = 0;
+              $stats_data['consultant'][$id]['resumes_sent_info'] = array();
+            }
+
+            if (!empty($temp_set_vs_met_promote[$id]['set']))
+            {
+              $stats_data['consultant'][$id]['set'] = $temp_set_vs_met_promote[$id]['set'];
+              $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met_promote[$id]['set_meeting_info'];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['set'] = 0;
+              $stats_data['consultant'][$id]['set_meeting_info'] = array();
+            }
+
+            if (!empty($temp_set_vs_met_promote[$id]['met']))
+            {
+              $stats_data['consultant'][$id]['met'] = $temp_set_vs_met_promote[$id]['met'];
+              $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met_promote[$id]['met_meeting_info'];
+
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['met'] = 0;
+              $stats_data['consultant'][$id]['met_meeting_info'] = array();
+            }
+
+              $stats_data['consultant'][$id]['ccm1'] = $temp_ccm_promote[$id]['ccm1'];
+              $stats_data['consultant'][$id]['ccm1_done'] = $temp_ccm_promote[$id]['ccm1_done'];
+              $stats_data['consultant'][$id]['ccm1_info'] = $temp_ccm_promote[$id]['ccm_info']['ccm1'];
+
+              $stats_data['consultant'][$id]['ccm2'] = $temp_ccm_promote[$id]['ccm2'];
+              $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm_promote[$id]['ccm2_done'];
+              $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm_promote[$id]['ccm_info']['ccm2'];
+
+              $stats_data['consultant'][$id]['mccm'] = $temp_ccm_promote[$id]['mccm'];
+              $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm_promote[$id]['mccm_done'];
+              $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm_promote[$id]['ccm_info']['mccm'];
+
+
+            if (!empty($temp_in_play_promote[$id]['new_candidates']))
+            {
+              $count = count($temp_in_play_promote[$id]['new_candidates']);
+              $stats_data['consultant'][$id]['new_candidates'] = $count;
+              $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play_promote[$id]['new_candidates'];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['new_candidates'] = 0;
+              $stats_data['consultant'][$id]['new_candidate_info'] = array();
+            }
+
+            if (!empty($temp_in_play_promote[$id]['new_positions']))
+            {
+              $count = count($temp_in_play_promote[$id]['new_positions']);
+              $stats_data['consultant'][$id]['new_positions'] = $count;
+              $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play_promote[$id]['new_positions'];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['new_positions'] = 0;
+              $stats_data['consultant'][$id]['new_position_info'] = array();
+            }
+
+            if (!empty($temp_placement_promote[$id]['placed']))
+            {
+              $stats_data['consultant'][$id]['placed'] = $temp_placement_promote[$id]['placed'];
+              $stats_data['consultant'][$id]['placed_info'] = $temp_placement_promote[$id]['placed_info'];
+
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['placed'] = 0;
+              $stats_data['consultant'][$id]['placed_info'] = array();
+            }
+
+            if (!empty($temp_offer_promote[$id]['offers_sent']))
+            {
+              $stats_data['consultant'][$id]['offers_sent'] = $temp_offer_promote[$id]['offers_sent'];
+              $stats_data['consultant'][$id]['offer_info'] = $temp_offer_promote[$id]['offer_info'];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['offers_sent'] = 0;
+              $stats_data['consultant'][$id]['offer_info'] = array();
+            }
+
+            if (!empty($temp_new_candidate_met_promote[$id]))
+            {
+              $count = count($temp_new_candidate_met_promote[$id]);
+
+              $stats_data['consultant'][$id]['new_candidate_met_count'] = $count;
+              $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met_promote[$id];
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['new_candidate_met_count'] = 0;
+              $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
+            }
+            $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
+            if($promote_dates[$id] == "0000-00-00 00:00:00")
+            {
+              $stats_data['consultant'][$id]['promote_date'] = "0";
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['promote_date'] = $promote_dates[$id];
+            }
+            $stats_data['consultant'][$id]['user_id'] = $id;
+
+          }
+        }
         //-------------promoted-------------
         //-------------promoted-------------
-        foreach ($promoted_ids as $id)
+
+        foreach ($consultant_ids as $id)
         {
           if (in_array($id, $consultant_skip_id))
             continue;
 
           $user_info = getUserInformaiton($id);
+          $stats_data['consultant'][$id]['kpi_flag'] = $user_info['kpi_flag'];
 
-          $stats_data['consultant'][$id]['promoteFlag'] = "true";
-
-          if (!empty($temp_resume_sent_promote[$id]['resumes_sent']))
+          if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
           {
-            $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent_promote[$id]['resumes_sent'];
-            $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent_promote[$id]['resumes_sent_info'];
+            if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
+            {
+              $stats_data['consultant'][$id]['position'] = "Researcher";
+            }
+            else
+            {
+              $stats_data['consultant'][$id]['position'] = $user_info['position'];
+            }
+          }
+          else
+          {
+            $stats_data['consultant'][$id]['position'] = $user_info['position'];
+          }
+
+          if (!empty($temp_resume_sent[$id]['resumes_sent']))
+          {
+            $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
+            $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
           }
           else
           {
@@ -4312,10 +4462,10 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['resumes_sent_info'] = array();
           }
 
-          if (!empty($temp_set_vs_met_promote[$id]['set']))
+          if (!empty($temp_set_vs_met[$id]['set']))
           {
-            $stats_data['consultant'][$id]['set'] = $temp_set_vs_met_promote[$id]['set'];
-            $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met_promote[$id]['set_meeting_info'];
+            $stats_data['consultant'][$id]['set'] = $temp_set_vs_met[$id]['set'];
+            $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
           }
           else
           {
@@ -4323,11 +4473,13 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['set_meeting_info'] = array();
           }
 
-          if (!empty($temp_set_vs_met_promote[$id]['met']))
+          if (!empty($temp_set_vs_met[$id]['met']))
           {
-            $stats_data['consultant'][$id]['met'] = $temp_set_vs_met_promote[$id]['met'];
-            $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met_promote[$id]['met_meeting_info'];
-
+            $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
+            $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
+            //echo '<br><br><br>';
+            //var_dump($stats_data['consultant'][$id]['met_meeting_info']);
+            //echo '<br><br><br>';
           }
           else
           {
@@ -4335,24 +4487,51 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['met_meeting_info'] = array();
           }
 
-            $stats_data['consultant'][$id]['ccm1'] = $temp_ccm_promote[$id]['ccm1'];
-            $stats_data['consultant'][$id]['ccm1_done'] = $temp_ccm_promote[$id]['ccm1_done'];
-            $stats_data['consultant'][$id]['ccm1_info'] = $temp_ccm_promote[$id]['ccm_info']['ccm1'];
-
-            $stats_data['consultant'][$id]['ccm2'] = $temp_ccm_promote[$id]['ccm2'];
-            $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm_promote[$id]['ccm2_done'];
-            $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm_promote[$id]['ccm_info']['ccm2'];
-
-            $stats_data['consultant'][$id]['mccm'] = $temp_ccm_promote[$id]['mccm'];
-            $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm_promote[$id]['mccm_done'];
-            $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm_promote[$id]['ccm_info']['mccm'];
-
-
-          if (!empty($temp_in_play_promote[$id]['new_candidates']))
+          //if (!empty($temp_ccm[$id]['ccm1']) || !empty($temp_ccm[$id]['ccm1_done']))
+          //{
+            $stats_data['consultant'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
+            $stats_data['consultant'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
+            $stats_data['consultant'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
+          //}
+          /*else
           {
-            $count = count($temp_in_play_promote[$id]['new_candidates']);
+            $stats_data['consultant'][$id]['ccm1'] = 0;
+            $stats_data['consultant'][$id]['ccm1_done'] = 0;
+            $stats_data['consultant'][$id]['ccm1_info'] = array();
+          }*/
+
+          //if (!empty($temp_ccm[$id]['ccm2']))
+          //{
+            $stats_data['consultant'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
+            $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
+            $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
+          //}
+          /*else
+          {
+            $stats_data['consultant'][$id]['ccm2'] = 0;
+            $stats_data['consultant'][$id]['ccm2_done'] = 0;
+            $stats_data['consultant'][$id]['ccm2_info'] = array();
+          }*/
+
+          //if (!empty($temp_ccm[$id]['mccm']))
+          //{
+            $stats_data['consultant'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
+            $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
+            $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
+          //}
+          /*else
+          {
+            $stats_data['consultant'][$id]['mccm'] = 0;
+            $stats_data['consultant'][$id]['mccm_done'] = 0;
+            $stats_data['consultant'][$id]['mccm_info'] = array();
+          }*/
+
+  //----------------------------------------------------------------------------------
+          if (!empty($temp_in_play[$id]['new_candidates']))
+          {
+            $count = count($temp_in_play[$id]['new_candidates']);
             $stats_data['consultant'][$id]['new_candidates'] = $count;
-            $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play_promote[$id]['new_candidates'];
+            $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
           }
           else
           {
@@ -4360,22 +4539,23 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['new_candidate_info'] = array();
           }
 
-          if (!empty($temp_in_play_promote[$id]['new_positions']))
+          if (!empty($temp_in_play[$id]['new_positions']))
           {
-            $count = count($temp_in_play_promote[$id]['new_positions']);
+            $count = count($temp_in_play[$id]['new_positions']);
             $stats_data['consultant'][$id]['new_positions'] = $count;
-            $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play_promote[$id]['new_positions'];
+            $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
           }
           else
           {
             $stats_data['consultant'][$id]['new_positions'] = 0;
             $stats_data['consultant'][$id]['new_position_info'] = array();
           }
+  //----------------------------------------------------------------------------------
 
-          if (!empty($temp_placement_promote[$id]['placed']))
+          if (!empty($temp_placement[$id]['placed']))
           {
-            $stats_data['consultant'][$id]['placed'] = $temp_placement_promote[$id]['placed'];
-            $stats_data['consultant'][$id]['placed_info'] = $temp_placement_promote[$id]['placed_info'];
+            $stats_data['consultant'][$id]['placed'] = $temp_placement[$id]['placed'];
+            $stats_data['consultant'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
 
           }
           else
@@ -4384,10 +4564,10 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['placed_info'] = array();
           }
 
-          if (!empty($temp_offer_promote[$id]['offers_sent']))
+          if (!empty($temp_offer[$id]['offers_sent']))
           {
-            $stats_data['consultant'][$id]['offers_sent'] = $temp_offer_promote[$id]['offers_sent'];
-            $stats_data['consultant'][$id]['offer_info'] = $temp_offer_promote[$id]['offer_info'];
+            $stats_data['consultant'][$id]['offers_sent'] = $temp_offer[$id]['offers_sent'];
+            $stats_data['consultant'][$id]['offer_info'] = $temp_offer[$id]['offer_info'];
           }
           else
           {
@@ -4395,12 +4575,12 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['offer_info'] = array();
           }
 
-          if (!empty($temp_new_candidate_met_promote[$id]))
+          if (!empty($temp_new_candidate_met[$id]))
           {
-            $count = count($temp_new_candidate_met_promote[$id]);
+            $count = count($temp_new_candidate_met[$id]);
 
             $stats_data['consultant'][$id]['new_candidate_met_count'] = $count;
-            $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met_promote[$id];
+            $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
           }
           else
           {
@@ -4419,231 +4599,215 @@ class CSl_statEx extends CSl_stat
           $stats_data['consultant'][$id]['user_id'] = $id;
 
         }
-      }
-      //-------------promoted-------------
-      //-------------promoted-------------
 
-      foreach ($consultant_ids as $id)
-      {
-        if (in_array($id, $consultant_skip_id))
-          continue;
+        $temp_set_vs_met = $temp_resume_sent = $temp_ccm = array();
 
-        $user_info = getUserInformaiton($id);
-        $stats_data['consultant'][$id]['kpi_flag'] = $user_info['kpi_flag'];
-
-        if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
+        // generate researcher data
+        foreach ($this->casUserByGroup[109] as $key => $value)
         {
-          if($start_date < $user_info['r_to_c_date'] && $end_date < $user_info['r_to_c_date'])
+          if ($value['status'])
           {
-            $stats_data['consultant'][$id]['position'] = "Researcher";
-          }
-          else
-          {
-            $stats_data['consultant'][$id]['position'] = $user_info['position'];
+            $researcher_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
+            $researcher_ids[] = $key;
           }
         }
-        else
-        {
-          $stats_data['consultant'][$id]['position'] = $user_info['position'];
-        }
+  //echo "<br><br>";
+  //var_dump($stats_data['consultant']['457']);
+        $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($researcher_ids, $start_date, $end_date);
+        $temp_resume_sent = $this->_getModel()->get_resume_sent($researcher_ids, $start_date, $end_date);
+        $temp_ccm = $this->_getModel()->get_ccm_data($researcher_ids, $start_date, $end_date);
+        $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
+        $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
+        $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
+        $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
 
-        if (!empty($temp_resume_sent[$id]['resumes_sent']))
+        //---------------promoted
+        //---------------promoted
+        if(isset($promoted_ids[0]))
         {
-          $stats_data['consultant'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
-          $stats_data['consultant'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['resumes_sent'] = 0;
-          $stats_data['consultant'][$id]['resumes_sent_info'] = array();
-        }
+          //echo "<br><br>iceride researcher";
+          $temp_set_vs_met_promoted = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_resume_sent_promoted = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_ccm_promoted = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_in_play_promoted = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_placement_promoted = $this->_getModel()->get_placement_number($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_offer_promoted = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
+          $temp_new_candidate_met_promoted = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_researcher , $end_date_researcher);
 
-        if (!empty($temp_set_vs_met[$id]['set']))
-        {
-          $stats_data['consultant'][$id]['set'] = $temp_set_vs_met[$id]['set'];
-          $stats_data['consultant'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['set'] = 0;
-          $stats_data['consultant'][$id]['set_meeting_info'] = array();
-        }
+          foreach ($promoted_ids as $id)
+          {
+            if (in_array($id, $researcher_skip_id))
+              continue;
 
-        if (!empty($temp_set_vs_met[$id]['met']))
-        {
-          $stats_data['consultant'][$id]['met'] = $temp_set_vs_met[$id]['met'];
-          $stats_data['consultant'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-          //echo '<br><br><br>';
-          //var_dump($stats_data['consultant'][$id]['met_meeting_info']);
-          //echo '<br><br><br>';
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['met'] = 0;
-          $stats_data['consultant'][$id]['met_meeting_info'] = array();
-        }
+            $user_info = getUserInformaiton($id);
 
-        //if (!empty($temp_ccm[$id]['ccm1']) || !empty($temp_ccm[$id]['ccm1_done']))
-        //{
-          $stats_data['consultant'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
-          $stats_data['consultant'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
-          $stats_data['consultant'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        //}
-        /*else
-        {
-          $stats_data['consultant'][$id]['ccm1'] = 0;
-          $stats_data['consultant'][$id]['ccm1_done'] = 0;
-          $stats_data['consultant'][$id]['ccm1_info'] = array();
-        }*/
+            $stats_data['researcher'][$id]['promoteFlag'] = "true";
 
-        //if (!empty($temp_ccm[$id]['ccm2']))
-        //{
-          $stats_data['consultant'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
-          $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
-          $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        //}
-        /*else
-        {
-          $stats_data['consultant'][$id]['ccm2'] = 0;
-          $stats_data['consultant'][$id]['ccm2_done'] = 0;
-          $stats_data['consultant'][$id]['ccm2_info'] = array();
-        }*/
 
-        //if (!empty($temp_ccm[$id]['mccm']))
-        //{
-          $stats_data['consultant'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
-          $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
-          $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        //}
-        /*else
-        {
-          $stats_data['consultant'][$id]['mccm'] = 0;
-          $stats_data['consultant'][$id]['mccm_done'] = 0;
-          $stats_data['consultant'][$id]['mccm_info'] = array();
-        }*/
+            if (!empty($temp_resume_sent_promoted[$id]['resumes_sent']))
+            {
+              $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent_promoted[$id]['resumes_sent'];
+              $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent_promoted[$id]['resumes_sent_info'];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['resumes_sent'] = 0;
+              $stats_data['researcher'][$id]['resumes_sent_info'] = array();
+            }
 
-//----------------------------------------------------------------------------------
-        if (!empty($temp_in_play[$id]['new_candidates']))
-        {
-          $count = count($temp_in_play[$id]['new_candidates']);
-          $stats_data['consultant'][$id]['new_candidates'] = $count;
-          $stats_data['consultant'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
+            if (!empty($temp_set_vs_met_promoted[$id]['set']))
+            {
+              $stats_data['researcher'][$id]['set'] = $temp_set_vs_met_promoted[$id]['set'];
+              $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met_promoted[$id]['set_meeting_info'];
+
+
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['set'] = 0;
+              $stats_data['researcher'][$id]['set_meeting_info'] = array();
+            }
+
+              $count = count($temp_new_candidate_met_promoted[$id]);
+
+              $stats_data['researcher'][$id]['met'] = $count;
+              $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met_promoted[$id];
+
+              $stats_data['researcher'][$id]['ccm1'] = $temp_ccm_promoted[$id]['ccm1'];
+              $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm_promoted[$id]['ccm1_done'];
+              $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm_promoted[$id]['ccm_info']['ccm1'];
+
+              $stats_data['researcher'][$id]['ccm2'] = $temp_ccm_promoted[$id]['ccm2'];
+              $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm_promoted[$id]['ccm2_done'];
+              $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm_promoted[$id]['ccm_info']['ccm2'];
+
+              $stats_data['researcher'][$id]['mccm'] = $temp_ccm_promoted[$id]['mccm'];
+              $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm_promoted[$id]['mccm_done'];
+              $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm_promoted[$id]['ccm_info']['mccm'];
+
+
+            if (!empty($temp_ccm_promoted[$id]['placedRevenue']))
+            {
+              $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm_promoted[$id]['placedRevenue']; $id."_".$temp_ccm_promoted[$id]['placedRevenue'];
+              $array = $temp_ccm_promoted[$id]['placedRevenue_info'];
+
+              $finalArray = array();
+              foreach ($array['placedRevenue'] as $key => $first) {
+                $addArray['candidate'] = $first['candidate'];
+                array_push($finalArray,$addArray);
+              }
+
+              $stats_data['researcher'][$id]['placedRevenue_info'] = $finalArray;
+
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['placedRevenue'] = 0;
+              $stats_data['researcher'][$id]['placedRevenue_info'] = array();
+            }
+            //------------------------------------------------------------
+            if (!empty($temp_in_play_promoted[$id]['new_candidates']))
+            {
+              $count = count($temp_in_play_promoted[$id]['new_candidates']);
+              $stats_data['researcher'][$id]['new_candidates'] = $count;
+              $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play_promoted[$id]['new_candidates'];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['new_candidates'] = 0;
+              $stats_data['researcher'][$id]['new_candidate_info'] = array();
+            }
+
+            if (!empty($temp_in_play_promoted[$id]['new_positions']))
+            {
+              $count = count($temp_in_play_promoted[$id]['new_positions']);
+              $stats_data['researcher'][$id]['new_positions'] = $count;
+              $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play_promoted[$id]['new_positions'];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['new_positions'] = 0;
+              $stats_data['researcher'][$id]['new_position_info'] = array();
+            }
+            //----------------------------------------------------------
+
+            if (!empty($temp_placement_promoted[$id]['placed']))
+            {
+              $stats_data['researcher'][$id]['placed'] = $temp_placement_promoted[$id]['placed'];
+              $stats_data['researcher'][$id]['placed_info'] = $temp_placement_promoted[$id]['placed_info'];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['placed'] = 0;
+              $stats_data['researcher'][$id]['placed_info'] = array();
+            }
+
+            if (!empty($temp_offer_promoted[$id]['offers_sent']))
+            {
+              $stats_data['researcher'][$id]['offers_sent'] = $temp_offer_promoted[$id]['offers_sent'];
+              $stats_data['researcher'][$id]['offer_info'] = $temp_offer_promoted[$id]['offer_info'];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['offers_sent'] = 0;
+              $stats_data['researcher'][$id]['offer_info'] = array();
+            }
+
+            if (!empty($temp_new_candidate_met_promoted[$id]))
+            {
+              $count = count($temp_new_candidate_met_promoted[$id]);
+
+              $stats_data['researcher'][$id]['new_candidate_met_count'] = $count;
+              $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met_promoted[$id];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['new_candidate_met_count'] = 0;
+              $stats_data['researcher'][$id]['new_candidate_met_info'] = array();
+            }
+
+            $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
+            $stats_data['researcher'][$id]['promote_date'] = "0";
+            $stats_data['researcher'][$id]['user_id'] = $id;
+          }
+
         }
-        else
-        {
-          $stats_data['consultant'][$id]['new_candidates'] = 0;
-          $stats_data['consultant'][$id]['new_candidate_info'] = array();
-        }
+        //---------------promoted
+        //---------------promoted
 
-        if (!empty($temp_in_play[$id]['new_positions']))
-        {
-          $count = count($temp_in_play[$id]['new_positions']);
-          $stats_data['consultant'][$id]['new_positions'] = $count;
-          $stats_data['consultant'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['new_positions'] = 0;
-          $stats_data['consultant'][$id]['new_position_info'] = array();
-        }
-//----------------------------------------------------------------------------------
-
-        if (!empty($temp_placement[$id]['placed']))
-        {
-          $stats_data['consultant'][$id]['placed'] = $temp_placement[$id]['placed'];
-          $stats_data['consultant'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
-
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['placed'] = 0;
-          $stats_data['consultant'][$id]['placed_info'] = array();
-        }
-
-        if (!empty($temp_offer[$id]['offers_sent']))
-        {
-          $stats_data['consultant'][$id]['offers_sent'] = $temp_offer[$id]['offers_sent'];
-          $stats_data['consultant'][$id]['offer_info'] = $temp_offer[$id]['offer_info'];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['offers_sent'] = 0;
-          $stats_data['consultant'][$id]['offer_info'] = array();
-        }
-
-        if (!empty($temp_new_candidate_met[$id]))
-        {
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['consultant'][$id]['new_candidate_met_count'] = $count;
-          $stats_data['consultant'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['new_candidate_met_count'] = 0;
-          $stats_data['consultant'][$id]['new_candidate_met_info'] = array();
-        }
-        $stats_data['consultant'][$id]['name'] = $consultant_names[$id];
-        if($promote_dates[$id] == "0000-00-00 00:00:00")
-        {
-          $stats_data['consultant'][$id]['promote_date'] = "0";
-        }
-        else
-        {
-          $stats_data['consultant'][$id]['promote_date'] = $promote_dates[$id];
-        }
-        $stats_data['consultant'][$id]['user_id'] = $id;
-
-      }
-
-      $temp_set_vs_met = $temp_resume_sent = $temp_ccm = array();
-
-      // generate researcher data
-      foreach ($this->casUserByGroup[109] as $key => $value)
-      {
-        if ($value['status'])
-        {
-          $researcher_names[$key] = substr($value['firstname'], 0, 1).'. '.$value['lastname'];
-          $researcher_ids[] = $key;
-        }
-      }
-//echo "<br><br>";
-//var_dump($stats_data['consultant']['457']);
-      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($researcher_ids, $start_date, $end_date);
-      $temp_resume_sent = $this->_getModel()->get_resume_sent($researcher_ids, $start_date, $end_date);
-      $temp_ccm = $this->_getModel()->get_ccm_data($researcher_ids, $start_date, $end_date);
-      $temp_in_play = $this->_getModel()->get_new_in_play($researcher_ids, $start_date, $end_date);
-      $temp_placement = $this->_getModel()->get_placement_number($researcher_ids, $start_date, $end_date);
-      $temp_offer = $this->_getModel()->get_offer_sent($researcher_ids, $start_date, $end_date);
-      $temp_new_candidate_met = $this->_getModel()->get_new_candidate_met($researcher_ids, $start_date , $end_date);
-
-      //---------------promoted
-      //---------------promoted
-      if(isset($promoted_ids[0]))
-      {
-        //echo "<br><br>iceride researcher";
-        $temp_set_vs_met_promoted = $this->_getModel()->getKpiSetVsMet($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_resume_sent_promoted = $this->_getModel()->get_resume_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_ccm_promoted = $this->_getModel()->get_ccm_data($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_in_play_promoted = $this->_getModel()->get_new_in_play($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_placement_promoted = $this->_getModel()->get_placement_number($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_offer_promoted = $this->_getModel()->get_offer_sent($promoted_ids, $start_date_researcher, $end_date_researcher);
-        $temp_new_candidate_met_promoted = $this->_getModel()->get_new_candidate_met($promoted_ids, $start_date_researcher , $end_date_researcher);
-
-        foreach ($promoted_ids as $id)
+  //echo '<br><br><br>';
+  //var_dump($temp_set_vs_met);
+  //echo '<br><br><br>';
+        foreach ($researcher_ids as $id)
         {
           if (in_array($id, $researcher_skip_id))
             continue;
 
           $user_info = getUserInformaiton($id);
+          $stats_data['researcher'][$id]['kpi_flag'] = $user_info['kpi_flag'];
 
-          $stats_data['researcher'][$id]['promoteFlag'] = "true";
-
-
-          if (!empty($temp_resume_sent_promoted[$id]['resumes_sent']))
+          if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
           {
-            $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent_promoted[$id]['resumes_sent'];
-            $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent_promoted[$id]['resumes_sent_info'];
+            if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+            {
+              $stats_data['researcher'][$id]['position'] = "Researcher";
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['position'] = $user_info['position'];
+            }
+          }
+          else
+          {
+            $stats_data['researcher'][$id]['position'] = $user_info['position'];
+          }
+
+          //$stats_data['researcher'][$id]['position'] = $user_info['position'];
+
+          if (!empty($temp_resume_sent[$id]['resumes_sent']))
+          {
+            $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
+            $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
           }
           else
           {
@@ -4651,11 +4815,10 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['resumes_sent_info'] = array();
           }
 
-          if (!empty($temp_set_vs_met_promoted[$id]['set']))
+          if (!empty($temp_set_vs_met[$id]['set']))
           {
-            $stats_data['researcher'][$id]['set'] = $temp_set_vs_met_promoted[$id]['set'];
-            $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met_promoted[$id]['set_meeting_info'];
-
+            $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
+            $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
 
           }
           else
@@ -4664,28 +4827,68 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['set_meeting_info'] = array();
           }
 
-            $count = count($temp_new_candidate_met_promoted[$id]);
+          //if (!empty($temp_set_vs_met[$id]['met']))
+          //{
+            //$stats_data['researcher'][$id]['met'] = $temp_set_vs_met[$id]['met'];
+            //$stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
+
+  // NOTE: researcher larda met ile new candidate met ayni olsun istendi !!!!!!
+            $count = count($temp_new_candidate_met[$id]);
 
             $stats_data['researcher'][$id]['met'] = $count;
-            $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met_promoted[$id];
+            $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
 
-            $stats_data['researcher'][$id]['ccm1'] = $temp_ccm_promoted[$id]['ccm1'];
-            $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm_promoted[$id]['ccm1_done'];
-            $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm_promoted[$id]['ccm_info']['ccm1'];
-
-            $stats_data['researcher'][$id]['ccm2'] = $temp_ccm_promoted[$id]['ccm2'];
-            $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm_promoted[$id]['ccm2_done'];
-            $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm_promoted[$id]['ccm_info']['ccm2'];
-
-            $stats_data['researcher'][$id]['mccm'] = $temp_ccm_promoted[$id]['mccm'];
-            $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm_promoted[$id]['mccm_done'];
-            $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm_promoted[$id]['ccm_info']['mccm'];
-
-
-          if (!empty($temp_ccm_promoted[$id]['placedRevenue']))
+            //var_dump($stats_data['researcher'][$id]['met_meeting_info']);
+          //}
+          /*else
           {
-            $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm_promoted[$id]['placedRevenue']; $id."_".$temp_ccm_promoted[$id]['placedRevenue'];
-            $array = $temp_ccm_promoted[$id]['placedRevenue_info'];
+            $stats_data['researcher'][$id]['met'] = 0;
+             $stats_data['researcher'][$id]['met_meeting_info'] = array();
+          }*/
+
+          if (!empty($temp_ccm[$id]['ccm1']))
+          {
+            $stats_data['researcher'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
+            $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
+            $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
+          }
+          else
+          {
+            $stats_data['researcher'][$id]['ccm1'] = 0;
+            $stats_data['researcher'][$id]['ccm1_done'] = 0;
+            $stats_data['researcher'][$id]['ccm1_info'] = array();
+          }
+
+          if (!empty($temp_ccm[$id]['ccm2']))
+          {
+            $stats_data['researcher'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
+            $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
+            $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
+          }
+          else
+          {
+            $stats_data['researcher'][$id]['ccm2'] = 0;
+            $stats_data['researcher'][$id]['ccm2_done'] = 0;
+            $stats_data['researcher'][$id]['ccm2_info'] = array();
+          }
+
+          if (!empty($temp_ccm[$id]['mccm']))
+          {
+            $stats_data['researcher'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
+            $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
+            $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
+          }
+          else
+          {
+            $stats_data['researcher'][$id]['mccm'] = 0;
+            $stats_data['researcher'][$id]['mccm_done'] = 0;
+            $stats_data['researcher'][$id]['mccm_info'] = array();
+          }
+
+          if (!empty($temp_ccm[$id]['placedRevenue']))
+          {
+            $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm[$id]['placedRevenue']; $id."_".$temp_ccm[$id]['placedRevenue'];
+            $array = $temp_ccm[$id]['placedRevenue_info'];
 
             $finalArray = array();
             foreach ($array['placedRevenue'] as $key => $first) {
@@ -4694,7 +4897,24 @@ class CSl_statEx extends CSl_stat
             }
 
             $stats_data['researcher'][$id]['placedRevenue_info'] = $finalArray;
+            //var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
+            //exit;
 
+  /*echo $id.'<br><br><br>';
+            foreach ($temp_ccm[$id]['placedRevenue_info'] as $key1 => $first) {
+              foreach ($first as $key => $second) {
+                //var_dump($second);echo'<br>';
+                $ekle['candidate'] = $second['candidate'];
+                array_push($array,$ekle);
+                echo'<ekle - >';var_dump($ekle);echo'<br>';
+                //array_push($stats_data['researcher'][$id]['placedRevenue_info'],$ekle);
+              }
+            }
+            $stats_data['researcher'][$id]['placedRevenue_info'] = $array;
+            var_dump($stats_data['researcher'][$id]['placedRevenue']);
+            echo "<br><br>";
+            var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
+            exit;*/
           }
           else
           {
@@ -4702,11 +4922,11 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['placedRevenue_info'] = array();
           }
           //------------------------------------------------------------
-          if (!empty($temp_in_play_promoted[$id]['new_candidates']))
+          if (!empty($temp_in_play[$id]['new_candidates']))
           {
-            $count = count($temp_in_play_promoted[$id]['new_candidates']);
+            $count = count($temp_in_play[$id]['new_candidates']);
             $stats_data['researcher'][$id]['new_candidates'] = $count;
-            $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play_promoted[$id]['new_candidates'];
+            $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
           }
           else
           {
@@ -4714,11 +4934,11 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['new_candidate_info'] = array();
           }
 
-          if (!empty($temp_in_play_promoted[$id]['new_positions']))
+          if (!empty($temp_in_play[$id]['new_positions']))
           {
-            $count = count($temp_in_play_promoted[$id]['new_positions']);
+            $count = count($temp_in_play[$id]['new_positions']);
             $stats_data['researcher'][$id]['new_positions'] = $count;
-            $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play_promoted[$id]['new_positions'];
+            $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
           }
           else
           {
@@ -4727,10 +4947,10 @@ class CSl_statEx extends CSl_stat
           }
           //----------------------------------------------------------
 
-          if (!empty($temp_placement_promoted[$id]['placed']))
+          if (!empty($temp_placement[$id]['placed']))
           {
-            $stats_data['researcher'][$id]['placed'] = $temp_placement_promoted[$id]['placed'];
-            $stats_data['researcher'][$id]['placed_info'] = $temp_placement_promoted[$id]['placed_info'];
+            $stats_data['researcher'][$id]['placed'] = $temp_placement[$id]['placed'];
+            $stats_data['researcher'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
           }
           else
           {
@@ -4738,10 +4958,10 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['placed_info'] = array();
           }
 
-          if (!empty($temp_offer_promoted[$id]['offers_sent']))
+          if (!empty($temp_offer[$id]['offers_sent']))
           {
-            $stats_data['researcher'][$id]['offers_sent'] = $temp_offer_promoted[$id]['offers_sent'];
-            $stats_data['researcher'][$id]['offer_info'] = $temp_offer_promoted[$id]['offer_info'];
+            $stats_data['researcher'][$id]['offers_sent'] = $temp_offer[$id]['offers_sent'];
+            $stats_data['researcher'][$id]['offer_info'] = $temp_offer[$id]['offer_info'];
           }
           else
           {
@@ -4749,12 +4969,12 @@ class CSl_statEx extends CSl_stat
             $stats_data['researcher'][$id]['offer_info'] = array();
           }
 
-          if (!empty($temp_new_candidate_met_promoted[$id]))
+          if (!empty($temp_new_candidate_met[$id]))
           {
-            $count = count($temp_new_candidate_met_promoted[$id]);
+            $count = count($temp_new_candidate_met[$id]);
 
             $stats_data['researcher'][$id]['new_candidate_met_count'] = $count;
-            $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met_promoted[$id];
+            $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
           }
           else
           {
@@ -4767,647 +4987,437 @@ class CSl_statEx extends CSl_stat
           $stats_data['researcher'][$id]['user_id'] = $id;
         }
 
-      }
-      //---------------promoted
-      //---------------promoted
+        uasort($stats_data['researcher'], sort_multi_array_by_value('name'));
+        uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
 
-//echo '<br><br><br>';
-//var_dump($temp_set_vs_met);
-//echo '<br><br><br>';
-      foreach ($researcher_ids as $id)
-      {
-        if (in_array($id, $researcher_skip_id))
-          continue;
-
-        $user_info = getUserInformaiton($id);
-        $stats_data['researcher'][$id]['kpi_flag'] = $user_info['kpi_flag'];
-
-        if($user_info['r_to_c_date'] != "0000-00-00 00:00:00")
+        $allCanidatesArray = array();
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+        foreach ($consultant_ids as $key => $id)
         {
-          if($start_date <= $user_info['r_to_c_date'] && $end_date <= $user_info['r_to_c_date'])
+          foreach ($stats_data['consultant'][$id]['set_meeting_info'] as $key => $candidate)
           {
-            $stats_data['researcher'][$id]['position'] = "Researcher";
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['setFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
           }
-          else
+
+          foreach ($stats_data['consultant'][$id]['met_meeting_info'] as $key => $candidate)
           {
-            $stats_data['researcher'][$id]['position'] = $user_info['position'];
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+            }
+            else if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+            }
+            if(isset($candidate_id))
+            {
+              $allCanidatesArray['consultant'][$id][$candidate_id]['metFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
           }
+
+          foreach ($stats_data['consultant'][$id]['resumes_sent_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['resumeSentFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // CCM1 SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['ccm1SetFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
+          {
+            if(isset($candidate['ccm_done_candidate']))
+            {
+              $candidate_id = $candidate['ccm_done_candidate']; // CCM1 DONE
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['ccm1DoneFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['ccm2_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // CCM2 SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['ccm2SetFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['consultant'][$id]['ccm2_info'] as $key => $candidate)
+          {
+            if(isset($candidate['ccm_done_candidate']))
+            {
+              $candidate_id = $candidate['ccm_done_candidate']; // CCM2 DONE
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['ccm2DoneFlag'] = '1';
+            }
+
+          }
+
+          foreach ($stats_data['consultant'][$id]['mccm_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // MCCM SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['mccmSetFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['consultant'][$id]['mccm_info'] as $key => $candidate)
+          {
+
+            if(isset($candidate['ccm_done_candidate']))
+            {
+
+              $candidate_ids = $candidate['ccm_done_candidate']; // MCCM done
+
+              foreach ($candidate_ids as $key => $candidate_id)
+              {
+                $allCanidatesArray['consultant'][$id][$candidate_id]['mccmDoneFlag'] = '1';
+              }
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['new_candidate_met_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // new candi met
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['new_candidate_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // new candidate in play
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiPlayFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['new_position_info'] as $key => $candidate)
+          {
+            //var_dump($candidate);
+            //echo "<br><br>";
+            if(isset($candidate['positionfk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // New position
+
+              $allCanidatesArray['consultant'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['offer_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // Offer
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['offerFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
+          foreach ($stats_data['consultant'][$id]['placed_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // Placed
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['consultant'][$id][$candidate_id]['placedFlag'] = '1';
+              $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
         }
-        else
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+        // -- CONSULTANT CANDIDATE LINKS IN ORDER--
+
+
+
+
+
+
+
+
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
+        foreach ($researcher_ids as $key => $id)
         {
-          $stats_data['researcher'][$id]['position'] = $user_info['position'];
+          foreach ($stats_data['researcher'][$id]['set_meeting_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['setFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['met_meeting_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+            }
+            else if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+            }
+            if(isset($candidate_id))
+            {
+              $allCanidatesArray['researcher'][$id][$candidate_id]['metFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['resumes_sent_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate'];
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['resumeSentFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['ccm1_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // CCM1 SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['ccm1SetFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['researcher'][$id]['ccm1_info'] as $key => $candidate)
+          {
+            if(isset($candidate['ccm_done_candidate']))
+            {
+              $candidate_id = $candidate['ccm_done_candidate']; // CCM1 DONE
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['ccm1DoneFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['ccm2_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // CCM2 SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['ccm2SetFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['researcher'][$id]['ccm2_info'] as $key => $candidate)
+          {
+            if(isset($candidate['ccm_done_candidate']))
+            {
+              $candidate_id = $candidate['ccm_done_candidate']; // CCM2 DONE
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['ccm2DoneFlag'] = '1';
+            }
+
+          }
+
+          foreach ($stats_data['researcher'][$id]['mccm_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // MCCM SET
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['mccmSetFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+
+          }
+
+          foreach ($stats_data['researcher'][$id]['mccm_info'] as $key => $candidate)
+          {
+            if(isset($candidate['ccm_done_candidate']))
+            {
+              $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['mccmDoneFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['new_candidate_met_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // new candi met
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['newCandiMetFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['new_candidate_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidatefk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // new candidate in play
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['newCandiPlayFlag'] = '1';
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['new_position_info'] as $key => $candidate)
+          {
+            //var_dump($candidate);
+            //echo "<br><br>";
+            if(isset($candidate['positionfk']))
+            {
+              $candidate_id = $candidate['candidatefk']; // New position
+
+              $allCanidatesArray['researcher'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['offer_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // Offer
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['offerFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
+          foreach ($stats_data['researcher'][$id]['placed_info'] as $key => $candidate)
+          {
+            if(isset($candidate['candidate']))
+            {
+              $candidate_id = $candidate['candidate']; // Placed
+              $candidateInfo = getCandidateInformation($candidate_id);
+              $candidateNotes = getCandidateNotes($candidate_id);
+              $allCanidatesArray['researcher'][$id][$candidate_id]['placedFlag'] = '1';
+              $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
+            }
+          }
+
         }
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
+        // -- RESEARCHER CANDIDATE LINKS IN ORDER--
 
-        //$stats_data['researcher'][$id]['position'] = $user_info['position'];
 
-        if (!empty($temp_resume_sent[$id]['resumes_sent']))
+  /*echo "<br><br>";
+  //var_dump($allCanidatesArray);
+
+
+        foreach ($allCanidatesArray['researcher']['457'] as $key => $value)
         {
-          $stats_data['researcher'][$id]['resumes_sent'] = $temp_resume_sent[$id]['resumes_sent'];
-          $stats_data['researcher'][$id]['resumes_sent_info'] = $temp_resume_sent[$id]['resumes_sent_info'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['resumes_sent'] = 0;
-          $stats_data['researcher'][$id]['resumes_sent_info'] = array();
-        }
-
-        if (!empty($temp_set_vs_met[$id]['set']))
-        {
-          $stats_data['researcher'][$id]['set'] = $temp_set_vs_met[$id]['set'];
-          $stats_data['researcher'][$id]['set_meeting_info'] = $temp_set_vs_met[$id]['set_meeting_info'];
-
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['set'] = 0;
-          $stats_data['researcher'][$id]['set_meeting_info'] = array();
-        }
-
-        //if (!empty($temp_set_vs_met[$id]['met']))
-        //{
-          //$stats_data['researcher'][$id]['met'] = $temp_set_vs_met[$id]['met'];
-          //$stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
-
-// NOTE: researcher larda met ile new candidate met ayni olsun istendi !!!!!!
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['researcher'][$id]['met'] = $count;
-          $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
-
-          //var_dump($stats_data['researcher'][$id]['met_meeting_info']);
-        //}
-        /*else
-        {
-          $stats_data['researcher'][$id]['met'] = 0;
-           $stats_data['researcher'][$id]['met_meeting_info'] = array();
+          var_dump($key);
+          var_dump($value);
+          echo '<br><br>';
         }*/
 
-        if (!empty($temp_ccm[$id]['ccm1']))
-        {
-          $stats_data['researcher'][$id]['ccm1'] = $temp_ccm[$id]['ccm1'];
-          $stats_data['researcher'][$id]['ccm1_done'] = $temp_ccm[$id]['ccm1_done'];
-          $stats_data['researcher'][$id]['ccm1_info'] = $temp_ccm[$id]['ccm_info']['ccm1'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['ccm1'] = 0;
-          $stats_data['researcher'][$id]['ccm1_done'] = 0;
-          $stats_data['researcher'][$id]['ccm1_info'] = array();
-        }
 
-        if (!empty($temp_ccm[$id]['ccm2']))
-        {
-          $stats_data['researcher'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
-          $stats_data['researcher'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
-          $stats_data['researcher'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['ccm2'] = 0;
-          $stats_data['researcher'][$id]['ccm2_done'] = 0;
-          $stats_data['researcher'][$id]['ccm2_info'] = array();
-        }
 
-        if (!empty($temp_ccm[$id]['mccm']))
-        {
-          $stats_data['researcher'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
-          $stats_data['researcher'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
-          $stats_data['researcher'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['mccm'] = 0;
-          $stats_data['researcher'][$id]['mccm_done'] = 0;
-          $stats_data['researcher'][$id]['mccm_info'] = array();
-        }
 
-        if (!empty($temp_ccm[$id]['placedRevenue']))
-        {
-          $stats_data['researcher'][$id]['placedRevenue'] = $temp_ccm[$id]['placedRevenue']; $id."_".$temp_ccm[$id]['placedRevenue'];
-          $array = $temp_ccm[$id]['placedRevenue_info'];
+        $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
+        $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
 
-          $finalArray = array();
-          foreach ($array['placedRevenue'] as $key => $first) {
-            $addArray['candidate'] = $first['candidate'];
-            array_push($finalArray,$addArray);
-          }
+        $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
 
-          $stats_data['researcher'][$id]['placedRevenue_info'] = $finalArray;
-          //var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
-          //exit;
+        $submit_totals = getValue('submit_totals');
+        if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
+        {//BURADA VIEW OLUSTURMAYACAGIZ
+          // do nthng
+        }
+        else//GET REPORT FIRST TIME
+        {
+          $viewStart = $start_date;
+          $viewEnd = $end_date;
+          $dateNow = date('Y_m_d');
 
-/*echo $id.'<br><br><br>';
-          foreach ($temp_ccm[$id]['placedRevenue_info'] as $key1 => $first) {
-            foreach ($first as $key => $second) {
-              //var_dump($second);echo'<br>';
-              $ekle['candidate'] = $second['candidate'];
-              array_push($array,$ekle);
-              echo'<ekle - >';var_dump($ekle);echo'<br>';
-              //array_push($stats_data['researcher'][$id]['placedRevenue_info'],$ekle);
-            }
-          }
-          $stats_data['researcher'][$id]['placedRevenue_info'] = $array;
-          var_dump($stats_data['researcher'][$id]['placedRevenue']);
-          echo "<br><br>";
-          var_dump($stats_data['researcher'][$id]['placedRevenue_info']);
-          exit;*/
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['placedRevenue'] = 0;
-          $stats_data['researcher'][$id]['placedRevenue_info'] = array();
-        }
-        //------------------------------------------------------------
-        if (!empty($temp_in_play[$id]['new_candidates']))
-        {
-          $count = count($temp_in_play[$id]['new_candidates']);
-          $stats_data['researcher'][$id]['new_candidates'] = $count;
-          $stats_data['researcher'][$id]['new_candidate_info'] = $temp_in_play[$id]['new_candidates'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['new_candidates'] = 0;
-          $stats_data['researcher'][$id]['new_candidate_info'] = array();
-        }
+          $viewStart = substr($viewStart, 0, -9);
+          $viewEnd = substr($viewEnd, 0, -9);
 
-        if (!empty($temp_in_play[$id]['new_positions']))
-        {
-          $count = count($temp_in_play[$id]['new_positions']);
-          $stats_data['researcher'][$id]['new_positions'] = $count;
-          $stats_data['researcher'][$id]['new_position_info'] = $temp_in_play[$id]['new_positions'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['new_positions'] = 0;
-          $stats_data['researcher'][$id]['new_position_info'] = array();
-        }
-        //----------------------------------------------------------
+          $viewStart = str_replace('-','_',$viewStart);
+          $viewEnd = str_replace('-','_',$viewEnd);
 
-        if (!empty($temp_placement[$id]['placed']))
-        {
-          $stats_data['researcher'][$id]['placed'] = $temp_placement[$id]['placed'];
-          $stats_data['researcher'][$id]['placed_info'] = $temp_placement[$id]['placed_info'];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['placed'] = 0;
-          $stats_data['researcher'][$id]['placed_info'] = array();
-        }
+          $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
 
-        if (!empty($temp_offer[$id]['offers_sent']))
-        {
-          $stats_data['researcher'][$id]['offers_sent'] = $temp_offer[$id]['offers_sent'];
-          $stats_data['researcher'][$id]['offer_info'] = $temp_offer[$id]['offer_info'];
+          $jsonData = json_encode($stats_data);
+          ChromePhp::log($jsonData);
+          $oLogin = CDependency::getCpLogin();
+          $created_by_id = $oLogin->getUserPk();
+          insertGeneratedKpi($jsonData,$created_by_id);
         }
-        else
-        {
-          $stats_data['researcher'][$id]['offers_sent'] = 0;
-          $stats_data['researcher'][$id]['offer_info'] = array();
-        }
-
-        if (!empty($temp_new_candidate_met[$id]))
-        {
-          $count = count($temp_new_candidate_met[$id]);
-
-          $stats_data['researcher'][$id]['new_candidate_met_count'] = $count;
-          $stats_data['researcher'][$id]['new_candidate_met_info'] = $temp_new_candidate_met[$id];
-        }
-        else
-        {
-          $stats_data['researcher'][$id]['new_candidate_met_count'] = 0;
-          $stats_data['researcher'][$id]['new_candidate_met_info'] = array();
-        }
-
-        $stats_data['researcher'][$id]['name'] = $researcher_names[$id];
-        $stats_data['researcher'][$id]['promote_date'] = "0";
-        $stats_data['researcher'][$id]['user_id'] = $id;
       }
-
-      uasort($stats_data['researcher'], sort_multi_array_by_value('name'));
-      uasort($stats_data['consultant'], sort_multi_array_by_value('name'));
-
-      $allCanidatesArray = array();
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-      foreach ($consultant_ids as $key => $id)
+      else
       {
-        foreach ($stats_data['consultant'][$id]['set_meeting_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['setFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['met_meeting_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-          }
-          else if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-          }
-          if(isset($candidate_id))
-          {
-            $allCanidatesArray['consultant'][$id][$candidate_id]['metFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['resumes_sent_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['resumeSentFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // CCM1 SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['ccm1SetFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['consultant'][$id]['ccm1_info'] as $key => $candidate)
-        {
-          if(isset($candidate['ccm_done_candidate']))
-          {
-            $candidate_id = $candidate['ccm_done_candidate']; // CCM1 DONE
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['ccm1DoneFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['ccm2_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // CCM2 SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['ccm2SetFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['consultant'][$id]['ccm2_info'] as $key => $candidate)
-        {
-          if(isset($candidate['ccm_done_candidate']))
-          {
-            $candidate_id = $candidate['ccm_done_candidate']; // CCM2 DONE
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['ccm2DoneFlag'] = '1';
-          }
-
-        }
-
-        foreach ($stats_data['consultant'][$id]['mccm_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // MCCM SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['mccmSetFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['consultant'][$id]['mccm_info'] as $key => $candidate)
-        {
-
-          if(isset($candidate['ccm_done_candidate']))
-          {
-
-            $candidate_ids = $candidate['ccm_done_candidate']; // MCCM done
-
-            foreach ($candidate_ids as $key => $candidate_id)
-            {
-              $allCanidatesArray['consultant'][$id][$candidate_id]['mccmDoneFlag'] = '1';
-            }
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['new_candidate_met_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // new candi met
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiMetFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['new_candidate_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // new candidate in play
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['newCandiPlayFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['new_position_info'] as $key => $candidate)
-        {
-          //var_dump($candidate);
-          //echo "<br><br>";
-          if(isset($candidate['positionfk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // New position
-
-            $allCanidatesArray['consultant'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['offer_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // Offer
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['offerFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['consultant'][$id]['placed_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // Placed
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['consultant'][$id][$candidate_id]['placedFlag'] = '1';
-            $allCanidatesArray['consultant'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-      }
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-      // -- CONSULTANT CANDIDATE LINKS IN ORDER--
-
-
-
-
-
-
-
-
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-      foreach ($researcher_ids as $key => $id)
-      {
-        foreach ($stats_data['researcher'][$id]['set_meeting_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['setFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['met_meeting_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-          }
-          else if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-          }
-          if(isset($candidate_id))
-          {
-            $allCanidatesArray['researcher'][$id][$candidate_id]['metFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['resumes_sent_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate'];
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['resumeSentFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['ccm1_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // CCM1 SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['ccm1SetFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['researcher'][$id]['ccm1_info'] as $key => $candidate)
-        {
-          if(isset($candidate['ccm_done_candidate']))
-          {
-            $candidate_id = $candidate['ccm_done_candidate']; // CCM1 DONE
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['ccm1DoneFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['ccm2_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // CCM2 SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['ccm2SetFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['researcher'][$id]['ccm2_info'] as $key => $candidate)
-        {
-          if(isset($candidate['ccm_done_candidate']))
-          {
-            $candidate_id = $candidate['ccm_done_candidate']; // CCM2 DONE
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['ccm2DoneFlag'] = '1';
-          }
-
-        }
-
-        foreach ($stats_data['researcher'][$id]['mccm_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // MCCM SET
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['mccmSetFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-
-        }
-
-        foreach ($stats_data['researcher'][$id]['mccm_info'] as $key => $candidate)
-        {
-          if(isset($candidate['ccm_done_candidate']))
-          {
-            $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['mccmDoneFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['new_candidate_met_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // new candi met
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['newCandiMetFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['new_candidate_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidatefk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // new candidate in play
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['newCandiPlayFlag'] = '1';
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['new_position_info'] as $key => $candidate)
-        {
-          //var_dump($candidate);
-          //echo "<br><br>";
-          if(isset($candidate['positionfk']))
-          {
-            $candidate_id = $candidate['candidatefk']; // New position
-
-            $allCanidatesArray['researcher'][$id][$candidate_id]['newPositionPlayFlag'] = $candidate['positionfk'];
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['offer_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // Offer
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['offerFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-        foreach ($stats_data['researcher'][$id]['placed_info'] as $key => $candidate)
-        {
-          if(isset($candidate['candidate']))
-          {
-            $candidate_id = $candidate['candidate']; // Placed
-            $candidateInfo = getCandidateInformation($candidate_id);
-            $candidateNotes = getCandidateNotes($candidate_id);
-            $allCanidatesArray['researcher'][$id][$candidate_id]['placedFlag'] = '1';
-            $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candidateNotes['content']."</i>";
-          }
-        }
-
-      }
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-      // -- RESEARCHER CANDIDATE LINKS IN ORDER--
-
-
-/*echo "<br><br>";
-//var_dump($allCanidatesArray);
-
-
-      foreach ($allCanidatesArray['researcher']['457'] as $key => $value)
-      {
-        var_dump($key);
-        var_dump($value);
-        echo '<br><br>';
-      }*/
-
-
-
-
-      $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
-      $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
-
-      $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
-
-      $submit_totals = getValue('submit_totals');
-      if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
-      {//BURADA VIEW OLUSTURMAYACAGIZ
-        $view_name = 'false';
-      }
-      else//GET REPORT FIRST TIME
-      {
-        $viewStart = $start_date;
-        $viewEnd = $end_date;
-        $dateNow = date('Y_m_d');
-
-        $viewStart = substr($viewStart, 0, -9);
-        $viewEnd = substr($viewEnd, 0, -9);
-
-        $viewStart = str_replace('-','_',$viewStart);
-        $viewEnd = str_replace('-','_',$viewEnd);
-
-        $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
-
-        $jsonData = json_encode($stats_data);
-        ChromePhp::log($jsonData);
-        $oLogin = CDependency::getCpLogin();
-        $created_by_id = $oLogin->getUserPk();
-        insertGeneratedKpi($jsonData,$created_by_id);
+        $json_from_db = $generatedKPIs[0]['json_data'];
+        $stats_data = json_decode($json_from_db, true);
       }
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,

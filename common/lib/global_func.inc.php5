@@ -3263,6 +3263,16 @@ var_dump($query);*/
     }
   }
 
+  function getGeneratedKpi($date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sQuery = "SELECT * FROM sl_generated_kpi gk WHERE gk.created_date = '".$date."' ";
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function insertGeneratedKpi($json_data,$user_id)
   {
     $oDB = CDependency::getComponentByName('database');
