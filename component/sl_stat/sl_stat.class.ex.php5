@@ -4205,6 +4205,7 @@ class CSl_statEx extends CSl_stat
       {
         $start_date = date('Y-m').'-01 00:00:00';
         $start_date_original = date('Y-m').'-01';
+        $viewStart = $start_date;
       }
       else
         $start_date .= ' 00:00:00';
@@ -4213,31 +4214,11 @@ class CSl_statEx extends CSl_stat
       {
         $end_date = date('Y-m-t').' 23:59:59';
         $end_date_original = date('Y-m-t');
+        $viewEnd = $end_date;
       }
       else
         $end_date .= ' 23:59:59';
 
-      $submit_totals = getValue('submit_totals');
-      if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
-      {//BURADA VIEW OLUSTURMAYACAGIZ
-        $view_name = 'false';
-      }
-      else//GET REPORT FIRST TIME
-      {
-        $viewStart = $start_date;
-        $viewEnd = $end_date;
-        $dateNow = date('Y-m-d_H-i-s');
-
-        $viewStart = substr($viewStart, 0, -9);
-        $viewEnd = substr($viewEnd, 0, -9);
-
-        $viewStart = str_replace('-','_',$viewStart);
-        $viewEnd = str_replace('-','_',$viewEnd);
-
-        $view_name = 'KPI_'.$viewStart."_".$viewEnd;
-
-        //ChromePhp::log($view_name);
-      }
 
       $data = array();
 
@@ -4284,7 +4265,7 @@ class CSl_statEx extends CSl_stat
         }
       }
 
-      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant',$view_name);
+      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_resume_sent = $this->_getModel()->get_resume_sent($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_ccm = $this->_getModel()->get_ccm_data($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_in_play = $this->_getModel()->get_new_in_play($consultant_ids, $start_date, $end_date, 'consultant');
@@ -5402,6 +5383,29 @@ class CSl_statEx extends CSl_stat
       $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
 
       $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
+
+      $submit_totals = getValue('submit_totals');
+      if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
+      {//BURADA VIEW OLUSTURMAYACAGIZ
+        $view_name = 'false';
+      }
+      else//GET REPORT FIRST TIME
+      {
+        $viewStart = $start_date;
+        $viewEnd = $end_date;
+        $dateNow = date('Y_m_d');
+
+        $viewStart = substr($viewStart, 0, -9);
+        $viewEnd = substr($viewEnd, 0, -9);
+
+        $viewStart = str_replace('-','_',$viewStart);
+        $viewEnd = str_replace('-','_',$viewEnd);
+
+        $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
+
+        $jsonData = json_encode($stats_data);
+        ChromePhp::log($jsonData);
+      }
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,
         'end_date_original' => $end_date_original, 'start_date' => $start_date,

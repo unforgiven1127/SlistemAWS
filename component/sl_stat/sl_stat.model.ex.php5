@@ -393,7 +393,7 @@ class CSl_statModelEx extends CSl_statModel
     return $asData;
   }
 
-  public function get_new_candidate_met($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_new_candidate_met($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     $asData = array();
 
@@ -467,12 +467,12 @@ order by m.candidatefk
     $flip_user_ids = array_flip($user_ids);
     $meeting_array = $met_candidates_array = array();
 
-    if($view_name != 'false')
+    /*if($view_name != 'false')
     {
       $queryView = "CREATE VIEW ".$view_name." AS ".$query;
       ChromePhp::log($queryView);
       $view_result = $this->oDB->executeQuery($queryView);
-    }
+    }*/
 
     $db_result = $this->oDB->executeQuery($query);
     $read = $db_result->readFirst();
@@ -1288,7 +1288,7 @@ order by m.candidatefk
     return $group;
   }
 
-  public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_ccm_data($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     //var_dump($user_ids);
     $ccm_data = $repeating_info = $ccm_keys = array();
@@ -1676,7 +1676,7 @@ order by m.candidatefk
     return $ccm_data;
   }
 
-  public function get_resume_sent($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_resume_sent($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     $resume_sent_info = array();
 
@@ -1755,7 +1755,7 @@ order by m.candidatefk
     return $resume_sent_info;
   }
 
-  public function get_new_in_play($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_new_in_play($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     $new_in_play_info = array();
 
@@ -1977,7 +1977,7 @@ exit;
     return $new_in_play_info;
   }
 
-  public function get_offer_sent($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_offer_sent($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     $offers_info = array();
 
@@ -2023,7 +2023,7 @@ exit;
     return $offers_info;
   }
 
-  public function get_placement_number($user_ids, $start_date, $end_date, $group = 'researcher')
+  public function get_placement_number($user_ids, $start_date, $end_date, $group = 'researcher', $view_name='false')
   {
     $placed_info = array();
 
