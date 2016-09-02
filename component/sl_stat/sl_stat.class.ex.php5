@@ -5436,7 +5436,7 @@ ChromePhp::log($allCanidatesArray);
         'page_obj' => $this->_oPage
         );
 
-      //$data['allCanidatesArray'] = $allCanidatesArray;
+      $data['allCanidatesArray'] = $allCanidatesArray;
       header_remove('Set-Cookie');
 
       $html = $this->_oDisplay->render('totals_chart_ordered', $data);

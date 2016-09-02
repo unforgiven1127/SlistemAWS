@@ -3272,6 +3272,8 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
+    $result = str_replace('|','\'',$result);
+
     return $result;
   }
 
@@ -3281,7 +3283,7 @@ var_dump($query);*/
     $dateTimeNow = date('Y-m-d H:i:s');
     $dateNow = date('Y-m-d');
 
-    $json_data = str_replace('\'','"',$json_data);
+    $json_data = str_replace('\'','|',$json_data);
 
     $sQuery = "INSERT INTO sl_generated_kpi (type, json_data, created_date, first_activity, last_activity,user_id)
                VALUES ('".$type."','".$json_data."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
