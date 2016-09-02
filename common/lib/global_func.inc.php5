@@ -3268,6 +3268,8 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
     $sQuery = "SELECT * FROM sl_generated_kpi gk WHERE gk.created_date = '".$date."' ";
 
+    $db_result = $oDB->executeQuery($sQuery);
+
     $result = $db_result->getAll();
 
     return $result;
