@@ -4226,7 +4226,7 @@ class CSl_statEx extends CSl_stat
       {
         $viewStart = $start_date;
         $viewEnd = $end_date;
-        $dateNow = date('Y-m-d,H:i:s');
+        $dateNow = date('Y-m-d_H-i-s');
 
         $viewStart = substr($viewStart, 0, -9);
         $viewEnd = substr($viewEnd, 0, -9);
