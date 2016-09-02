@@ -5406,12 +5406,14 @@ class CSl_statEx extends CSl_stat
           $viewEnd = str_replace('-','_',$viewEnd);
 
           $jsonData = json_encode($stats_data);
-          ChromePhp::log($jsonData);
+          //ChromePhp::log($jsonData);
           $oLogin = CDependency::getCpLogin();
           $created_by_id = $oLogin->getUserPk();
           insertGeneratedKpi($jsonData,$created_by_id,'kpi');
 
-          $jsonDataCandi = json_encode($$allCanidatesArray);
+ChromePhp::log($allCanidatesArray);
+
+          $jsonDataCandi = json_encode($allCanidatesArray);
           insertGeneratedKpi($jsonDataCandi,$created_by_id,'candi');
         }
       }
