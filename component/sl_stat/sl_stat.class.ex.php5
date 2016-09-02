@@ -4201,7 +4201,15 @@ class CSl_statEx extends CSl_stat
       $end_date = $end_date_original = getValue('end_date', '');
 
       $submit_totals = getValue('submit_totals');
-      ChromePhp::log($submit_totals);
+      if($submit_totals == 'Get totals')
+      {
+        ChromePhp::log('ILK ACILIS');
+      }
+      else
+      {
+        ChromePhp::log('CLICK ILE ACILMA');
+      }
+
 
       if(empty($start_date))
       {
