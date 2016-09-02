@@ -3579,6 +3579,7 @@ var_dump($query);*/
     $candidate_id = $array['candidate_id'];
     $type = $array['type'];
     $content = $array['content'];
+    $content = str_replace('\'','`',$content);
     $user_id = $array['user_id'];
 
     $sQuery = "INSERT INTO `sl_notes` (`candidate_id`,`type`,`content`,`user_id`, `first_activity`, `last_activity`)
@@ -3598,6 +3599,7 @@ var_dump($query);*/
     $candidate_id = $array['candidate_id'];
     $type = $array['type'];
     $content = $array['content'];
+    $content = str_replace('\'','`',$content);
     $user_id = $array['user_id'];
 
     $sQuery="UPDATE `sl_notes` SET `content` = '".$content."',`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
