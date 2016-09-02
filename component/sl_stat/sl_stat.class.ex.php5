@@ -4200,7 +4200,10 @@ class CSl_statEx extends CSl_stat
       $start_date = $start_date_original = getValue('start_date', '');
       $end_date = $end_date_original = getValue('end_date', '');
 
-      if (empty($start_date))
+      $submit_totals = getValue('submit_totals');
+      ChromePhp::log($submit_totals);
+
+      if(empty($start_date))
       {
         $start_date = date('Y-m').'-01 00:00:00';
         $start_date_original = date('Y-m').'-01';
@@ -4208,7 +4211,7 @@ class CSl_statEx extends CSl_stat
       else
         $start_date .= ' 00:00:00';
 
-      if (empty($end_date))
+      if(empty($end_date))
       {
         $end_date = date('Y-m-t').' 23:59:59';
         $end_date_original = date('Y-m-t');
