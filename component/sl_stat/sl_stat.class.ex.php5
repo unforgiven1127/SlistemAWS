@@ -4203,11 +4203,11 @@ class CSl_statEx extends CSl_stat
       $submit_totals = getValue('submit_totals');
       if($submit_totals == 'Get totals')
       {
-        ChromePhp::log('ILK ACILIS');
+        ChromePhp::log('CLICK ILE ACILMA');
       }
       else
       {
-        ChromePhp::log('CLICK ILE ACILMA');
+        ChromePhp::log('ILK ACILIS');
       }
 
 
