@@ -5405,13 +5405,14 @@ class CSl_statEx extends CSl_stat
           $viewStart = str_replace('-','_',$viewStart);
           $viewEnd = str_replace('-','_',$viewEnd);
 
-          $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
-
           $jsonData = json_encode($stats_data);
           ChromePhp::log($jsonData);
           $oLogin = CDependency::getCpLogin();
           $created_by_id = $oLogin->getUserPk();
-          insertGeneratedKpi($jsonData,$created_by_id);
+          insertGeneratedKpi($jsonData,$created_by_id,'kpi');
+
+          $jsonDataCandi = json_encode($$allCanidatesArray);
+          insertGeneratedKpi($jsonDataCandi,$created_by_id,'candi');
         }
       }
       else
