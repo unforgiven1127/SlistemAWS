@@ -5407,7 +5407,7 @@ class CSl_statEx extends CSl_stat
         ChromePhp::log($jsonData);
         $oLogin = CDependency::getCpLogin();
         $created_by_id = $oLogin->getUserPk();
-        insertGeneratedKpi($json_date,$created_by_id);
+        insertGeneratedKpi($jsonData,$created_by_id);
       }
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,

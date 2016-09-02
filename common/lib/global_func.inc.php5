@@ -3263,14 +3263,14 @@ var_dump($query);*/
     }
   }
 
-  function insertGeneratedKpi($json_date,$user_id)
+  function insertGeneratedKpi($json_data,$user_id)
   {
     $oDB = CDependency::getComponentByName('database');
     $dateTimeNow = date('Y-m-d H:i:s');
     $dateNow = date('Y-m-d');
 
     $sQuery = "INSERT INTO sl_generated_kpi (json_data, created_date, first_activity, last_activity,user_id)
-               VALUES ('".$json_date."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
+               VALUES ('".$json_data."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
 
     $oDB->executeQuery($sQuery);
   }
