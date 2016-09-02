@@ -4228,16 +4228,12 @@ class CSl_statEx extends CSl_stat
         $viewEnd = $end_date;
         $dateNow = date('Y-m-d H:i:s');
 
-        ChromePhp::log($viewStart);
-        ChromePhp::log($viewEnd);
-
         $viewStart = substr($viewStart, 0, -9);
         $viewEnd = substr($viewEnd, 0, -9);
 
-        ChromePhp::log($viewStart);
-        ChromePhp::log($viewEnd);
-
         $view_name = 'KPI_'.$viewStart."_".$end_date."_".$dateNow;
+
+        ChromePhp::log($view_name);
       }
 
       $data = array();
