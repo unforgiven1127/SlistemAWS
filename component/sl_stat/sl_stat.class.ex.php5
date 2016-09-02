@@ -4223,6 +4223,7 @@ class CSl_statEx extends CSl_stat
       $generatedKPIs = getGeneratedKpi($dateNow);
       $generatedKPIsCount = count($generatedKPIs);
       $data = array();
+      $submit_totals = getValue('submit_totals');
 
       if($submit_totals != 'Get totals' && $generatedKPIsCount == 0)
       {
@@ -5388,7 +5389,6 @@ class CSl_statEx extends CSl_stat
 
         $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
 
-        $submit_totals = getValue('submit_totals');
         if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
         {//BURADA VIEW OLUSTURMAYACAGIZ
           // do nthng
