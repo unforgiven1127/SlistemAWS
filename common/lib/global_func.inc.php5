@@ -3602,7 +3602,7 @@ var_dump($query);*/
     $content = str_replace('\'','`',$content);
     $user_id = $array['user_id'];
 
-    $sQuery="UPDATE `sl_notes` SET `content` = '".$content."',`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
+    $sQuery="UPDATE `sl_notes` SET `content` = ".$content.",`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
 
     $db_result = $oDB->executeQuery($sQuery);
   }
