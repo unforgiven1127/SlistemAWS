@@ -4225,6 +4225,9 @@ class CSl_statEx extends CSl_stat
       $data = array();
       $submit_totals = getValue('submit_totals');
 
+      ChromePhp::log($submit_totals);
+      ChromePhp::log($generatedKPIsCount);
+
       if($submit_totals != 'Get totals' && $generatedKPIsCount == 0)
       {
         $all_ids = $promoted_ids = $promote_dates = $consultant_names = $consultant_ids = $researcher_names = $researcher_ids = array();
@@ -5406,12 +5409,10 @@ class CSl_statEx extends CSl_stat
           $viewEnd = str_replace('-','_',$viewEnd);
 
           $jsonData = json_encode($stats_data);
-ChromePhp::log($stats_data);
+
           $oLogin = CDependency::getCpLogin();
           $created_by_id = $oLogin->getUserPk();
           $added = insertGeneratedKpi($jsonData,$created_by_id,'kpi');
-
-ChromePhp::log($allCanidatesArray);
 
           $jsonDataCandi = json_encode($allCanidatesArray);
           $added = insertGeneratedKpi($jsonDataCandi,$created_by_id,'candi');
