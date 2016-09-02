@@ -4231,7 +4231,10 @@ class CSl_statEx extends CSl_stat
         $viewStart = substr($viewStart, 0, -9);
         $viewEnd = substr($viewEnd, 0, -9);
 
-        $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
+        $viewStart = str_replace('-','_',$viewStart);
+        $viewEnd = str_replace('-','_',$viewEnd);
+
+        $view_name = 'KPI_'.$viewStart."_".$viewEnd;
 
         //ChromePhp::log($view_name);
       }
