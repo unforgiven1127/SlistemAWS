@@ -4200,16 +4200,6 @@ class CSl_statEx extends CSl_stat
       $start_date = $start_date_original = getValue('start_date', '');
       $end_date = $end_date_original = getValue('end_date', '');
 
-      $submit_totals = getValue('submit_totals');
-      if($submit_totals == 'Get totals')
-      {
-        ChromePhp::log('CLICK ILE ACILMA');
-      }
-      else
-      {
-        ChromePhp::log('ILK ACILIS');
-      }
-
 
       if(empty($start_date))
       {
@@ -4226,6 +4216,29 @@ class CSl_statEx extends CSl_stat
       }
       else
         $end_date .= ' 23:59:59';
+
+      $submit_totals = getValue('submit_totals');
+      if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
+      {//BURADA VIEW OLUSTURMAYACAGIZ
+        $view_name = 'false';
+      }
+      else//GET REPORT FIRST TIME
+      {
+        $viewStart = $start_date;
+        $viewEnd = $end_date;
+        $dateNow = date('Y-m-d H:i:s');
+
+        ChromePhp::log($viewStart);
+        ChromePhp::log($viewEnd);
+
+        $viewStart = substr($viewStart, 0, -9);
+        $viewEnd = substr($viewEnd, 0, -9);
+
+        ChromePhp::log($viewStart);
+        ChromePhp::log($viewEnd);
+
+        $view_name = 'KPI_'.$viewStart."_".$end_date."_".$dateNow;
+      }
 
       $data = array();
 
