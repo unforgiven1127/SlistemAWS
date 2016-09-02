@@ -3285,6 +3285,8 @@ var_dump($query);*/
                VALUES ('".$type."','".$json_data."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
 ChromePhp::log($sQuery);
     $oDB->executeQuery($sQuery);
+
+    return true;
   }
 
   function updateOldCompany($candidate_id,$company_id)

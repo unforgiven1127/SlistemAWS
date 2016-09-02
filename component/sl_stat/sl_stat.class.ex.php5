@@ -5409,12 +5409,12 @@ class CSl_statEx extends CSl_stat
           //ChromePhp::log($jsonData);
           $oLogin = CDependency::getCpLogin();
           $created_by_id = $oLogin->getUserPk();
-          insertGeneratedKpi($jsonData,$created_by_id,'kpi');
+          $added = insertGeneratedKpi($jsonData,$created_by_id,'kpi');
 
 ChromePhp::log($allCanidatesArray);
 
           $jsonDataCandi = json_encode($allCanidatesArray);
-          insertGeneratedKpi($jsonDataCandi,$created_by_id,'candi');
+          $added = insertGeneratedKpi($jsonDataCandi,$created_by_id,'candi');
         }
       }
       else
