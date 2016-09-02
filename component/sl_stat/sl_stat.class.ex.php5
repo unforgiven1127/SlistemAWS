@@ -4233,7 +4233,7 @@ class CSl_statEx extends CSl_stat
 
         $view_name = 'KPI_'.$viewStart."_".$viewEnd."_".$dateNow;
 
-        ChromePhp::log($view_name);
+        //ChromePhp::log($view_name);
       }
 
       $data = array();
@@ -4281,7 +4281,7 @@ class CSl_statEx extends CSl_stat
         }
       }
 
-      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant');
+      $temp_set_vs_met = $this->_getModel()->getKpiSetVsMet($consultant_ids, $start_date, $end_date, 'consultant',$view_name);
       $temp_resume_sent = $this->_getModel()->get_resume_sent($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_ccm = $this->_getModel()->get_ccm_data($consultant_ids, $start_date, $end_date, 'consultant');
       $temp_in_play = $this->_getModel()->get_new_in_play($consultant_ids, $start_date, $end_date, 'consultant');
