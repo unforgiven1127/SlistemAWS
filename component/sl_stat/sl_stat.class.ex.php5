@@ -5420,6 +5420,9 @@ class CSl_statEx extends CSl_stat
         $json_from_db = $generatedKPIs[0]['json_data'];
         $stats_data = json_decode($json_from_db, true);
 
+        $candidate_from_db = $generatedKPIs[1]['json_data'];
+        $allCanidatesArray = json_decode($candidate_from_db, true);
+
         $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
         $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
 

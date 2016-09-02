@@ -3266,7 +3266,7 @@ var_dump($query);*/
   function getGeneratedKpi($date)
   {
     $oDB = CDependency::getComponentByName('database');
-    $sQuery = "SELECT * FROM sl_generated_kpi gk WHERE gk.created_date = '".$date."' ";
+    $sQuery = "SELECT * FROM sl_generated_kpi gk WHERE gk.created_date = '".$date."' ORDER BY gk.id ASC";
 
     $db_result = $oDB->executeQuery($sQuery);
 
