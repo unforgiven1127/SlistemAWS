@@ -5392,11 +5392,7 @@ class CSl_statEx extends CSl_stat
 
         $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
 
-        if($submit_totals == 'Get totals')//GET REPORT WITH CLICK
-        {//BURADA VIEW OLUSTURMAYACAGIZ
-          // do nthng
-        }
-        else//GET REPORT FIRST TIME
+        if($generatedKPIsCount == 0)//GET REPORT WITH CLICK
         {
           $viewStart = $start_date;
           $viewEnd = $end_date;
