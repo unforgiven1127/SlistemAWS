@@ -3269,8 +3269,8 @@ var_dump($query);*/
     $dateTimeNow = date('Y-m-d H:i:s');
     $dateNow = date('Y-m-d');
 
-    $sQuery = "INSERT INTO sl_candidate_old_companies (candidate_id, company_id, first_activity, last_activity)
-               VALUES ('".$candidate_id."','".$company_id."','".$dateNow."','".$dateNow."')";
+    $sQuery = "INSERT INTO sl_generated_kpi (json_data, created_date, first_activity, last_activity,user_id)
+               VALUES ('".$json_date."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
 
     $oDB->executeQuery($sQuery);
   }
@@ -3592,7 +3592,6 @@ var_dump($query);*/
 
   function editNote($editCandidate,$array)
   {
-
     $sDate = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
