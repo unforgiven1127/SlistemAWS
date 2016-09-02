@@ -470,6 +470,7 @@ order by m.candidatefk
     if($view_name != 'false')
     {
       $queryView = "CREATE VIEW ".$view_name." AS ".$query;
+      ChromePhp::log($queryView);
       $view_result = $this->oDB->executeQuery($queryView);
     }
 
