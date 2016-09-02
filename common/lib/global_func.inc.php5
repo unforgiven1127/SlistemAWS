@@ -3582,7 +3582,7 @@ var_dump($query);*/
     $user_id = $array['user_id'];
 
     $sQuery = "INSERT INTO `sl_notes` (`candidate_id`,`type`,`content`,`user_id`, `first_activity`, `last_activity`)
-               VALUES('".$candidate_id."','".$type."','".$content."','".$user_id."','".$sDate."','".$sDate."')";
+               VALUES(`".$candidate_id."`,`".$type."`,`".$content."`,`".$user_id."`,`".$sDate."`,`".$sDate."`)";
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3600,7 +3600,7 @@ var_dump($query);*/
     $content = $array['content'];
     $user_id = $array['user_id'];
 
-    $sQuery="UPDATE `sl_notes` SET `content` = '".$content."',`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
+    $sQuery="UPDATE `sl_notes` SET `content` = `".$content."`,`updated_by` = `".$user_id."`,`last_activity` = `".$sDate."` WHERE `candidate_id` = `".$editCandidate."` AND `type` = `".$type."`";
 
     $db_result = $oDB->executeQuery($sQuery);
   }
