@@ -3283,7 +3283,7 @@ var_dump($query);*/
 
     $sQuery = "INSERT INTO sl_generated_kpi (type, json_data, created_date, first_activity, last_activity,user_id)
                VALUES ('".$type."','".$json_data."','".$dateNow."','".$dateTimeNow."','".$dateTimeNow."','".$user_id."')";
-
+ChromePhp::log($sQuery);
     $oDB->executeQuery($sQuery);
   }
 
