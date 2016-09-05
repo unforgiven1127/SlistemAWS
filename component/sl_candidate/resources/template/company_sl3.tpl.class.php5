@@ -72,7 +72,7 @@ class CCompany_sl3 extends CTemplate
       $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
       if($bAdmin)
       {
-        $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI, $pasCandidateData['sl_candidatepk']);
+        $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
         $sHTML.=  '&nbsp;
           <a href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
