@@ -69,7 +69,7 @@ class CCompany_sl3 extends CTemplate
           var oConf = goPopup.getConfig();
           oConf.width = 1080;
           oConf.height = 725;
-          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Merge & delete companies" ><img src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
+          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Merge & delete companies" ><img style="height:18px;" src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
        }
        $sHTML.= "</div>";
        if($pasData['is_client'])
