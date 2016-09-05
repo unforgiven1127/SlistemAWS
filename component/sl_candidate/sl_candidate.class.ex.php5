@@ -508,7 +508,8 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case MERGE_COMPANY:
-            return $this->_deleteCompany();
+            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->_deleteCompany(), 'UTF-8')));
+            //return $this->_deleteCompany();
             break;
 
 
