@@ -44,11 +44,13 @@
   <table>
     <tr>
       <td style='margin-top: 10px;' colspan="2" valign="top">
-        <div style=" font-size:15px; width: 400px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
+        <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
                 &nbsp;&nbsp;Warning you are about to delete company #123456!
         </div>
       </td>
     </tr>
+  </table>
+  <table>
     <tr>
       <td style='font-weight: bold; margin-top: 5px;' colspan="2">
         Confirm deleting company #123456
