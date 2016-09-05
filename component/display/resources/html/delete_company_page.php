@@ -65,7 +65,7 @@
       <td style='margin-top: 10px; ' valign="top">
         <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
           <p style='margin-left: 20px; padding-top: 10px; padding-bottom: 10px;'>
-            Warning you are about to delete company #123456!
+            Warning you are about to delete company #123456 !
           </p>
         </div>
       </td>
@@ -73,22 +73,22 @@
   </table>
   <table>
     <tr>
-      <td style='font-weight: bold; padding-top: 10px;' >
-        Confirm deleting company #123456
+      <td colspan="2" style='font-weight: bold; padding-top: 10px;' >
+        Confirm deleting company test (#123456)
       </td>
     </tr>
     <tr>
       <td style='font-weight: bold; padding-top: 10px;'>
         Move employees to:[company id]
       </td>
-      <td style='padding-top: 10px;'>
+      <td style='padding-top: 10px; padding-left: 20px;'>
         <input type="text" name="company_id"  id="company_id">
       </td>
     </tr>
   </table>
   <table style='width:100%;'>
     <tr>
-      <td align="right" style='padding-top: 20px; padding-right: 55px;'>
+      <td align="right" style='padding-top: 30px; padding-right: 55px;'>
         <button type="button" class="log-btn_" >No</button>
         <button style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
       </td>
