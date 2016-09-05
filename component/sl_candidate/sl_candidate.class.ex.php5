@@ -468,6 +468,13 @@ class CSl_candidateEx extends CSl_candidate
     }
   }
 
+  private function _deleteCompany()
+  {
+    $html = 'test';
+
+    return $html;
+  }
+
   //remove if the interface is not used
   public function getHtml()
   {
@@ -498,6 +505,10 @@ class CSl_candidateEx extends CSl_candidate
           case CONST_ACTION_ADD:
           case CONST_ACTION_EDIT:
             return $this->_getCandidateAddForm($this->cnPk);
+            break;
+
+          case MERGE_COMPANY:
+            return $this->_deleteCompany($this->cnPk);
             break;
 
 
