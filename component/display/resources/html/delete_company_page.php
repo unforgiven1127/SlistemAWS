@@ -44,18 +44,18 @@
   <table>
     <tr>
       <td  colspan="2" valign="top">
-        <div style=" font-size:15px; width: 300px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
-                Warning you are deleting company #123456!
+        <div style=" margin-left:5px; font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
+                Warning you are about to delete company #123456!
         </div>
       </td>
     </tr>
     <tr>
-      <td colspan="2">
+      <td style='font-weight: bold;' colspan="2">
         Confirm deleting company #123456
       </td>
     </tr>
     <tr>
-      <td>
+      <td style='font-weight: bold;'>
         Move employees to:[company id]
       </td>
       <td>
