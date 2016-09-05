@@ -56,7 +56,7 @@ class CCompany_sl3 extends CTemplate
     //start first section
     $sHTML = $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection'));
 
-      $sHTML.= $this->coDisplay->getBloc('', 'Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #<span >'.$pasData['sl_companypk'].'</span> ]', array('class' => 'candi_detail_title'));
+      //$sHTML.= $this->coDisplay->getBloc('', 'Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #<span >'.$pasData['sl_companypk'].'</span> ]', array('class' => 'candi_detail_title'));
 $sHTML.=  '  <span class="action">';
        if($pasData['is_client'])
        {
