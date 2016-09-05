@@ -45,7 +45,7 @@
     <tr>
       <td style='margin-top: 10px; ' valign="top">
         <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
-          <p style='margin-left: 20px; margin-top: 5px; margin-bottom: 5px;'>
+          <p style='margin-left: 20px; padding-top: 15px; padding-bottom: 15px;'>
             Warning you are about to delete company #123456!
           </p>
         </div>
