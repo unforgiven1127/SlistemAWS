@@ -65,7 +65,7 @@
       <td style='margin-top: 10px; ' valign="top">
         <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
           <p style='margin-left: 20px; padding-top: 10px; padding-bottom: 10px;'>
-            Warning you are about to delete company #123456 !
+            Warning you are about to delete company #<?php if(isset($company_id)){echo $company_id;} ?> !
           </p>
         </div>
       </td>
@@ -74,7 +74,7 @@
   <table>
     <tr>
       <td colspan="2" style='font-weight: bold; padding-top: 10px;' >
-        Confirm deleting company test (#123456)
+        Confirm deleting company <?php if(isset($company_name)){echo $company_name;} ?> (#<?php if(isset($company_id)){echo $company_id;} ?>)
       </td>
     </tr>
     <tr>

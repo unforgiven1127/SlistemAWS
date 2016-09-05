@@ -477,7 +477,8 @@ class CSl_candidateEx extends CSl_candidate
   {
     $data = array();
     $company_id = $_GET['cid'];
-    ChromePhp::log($company_id);
+    $company_information = getCompanyInformation($company_id);
+    $data['company_name'] = $company_information['name'];
     $data['company_id'] = $company_id;
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
