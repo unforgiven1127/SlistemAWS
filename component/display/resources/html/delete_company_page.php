@@ -94,7 +94,7 @@
         var oConf = goPopup.getConfig();
         oConf.width = 400;
         oConf.height = 200;
-        goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>); "  style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
+        goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>); window.open('', '_self', ''); window.close(); "  style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
       </td>
     </tr>
   </table>
