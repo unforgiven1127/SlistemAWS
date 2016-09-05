@@ -65,7 +65,7 @@ class CCompany_sl3 extends CTemplate
        {
          $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
          $sHTML.=  '&nbsp;
-          <div style="float:right;" align="right"><a  href="javascript:;" onclick="
+          <div style="float:right; margin-right:10px;" align="right"><a  href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
           oConf.width = 1080;
           oConf.height = 725;
