@@ -23,6 +23,24 @@
     border-color: #dca7a7;
   }
 
+  .log-btn_ {
+    /*background: #892828;*/
+    background: #c5c5c5;
+    color:black;
+    display: block;
+    margin: auto;
+    width: 150px;
+    font-size: 14px;
+    height: 20px;
+    /*color: #fff;*/
+    text-decoration: none;
+    border: none;
+    /*-moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;*/
+  }
+
+
 
 </style>
 
@@ -62,8 +80,18 @@
       <td style='font-weight: bold; padding-top: 10px;'>
         Move employees to:[company id]
       </td>
-      <td>
+      <td style='padding-top: 10px;'>
         <input type="text" name="company_id"  id="company_id">
+      </td>
+    </tr>
+  </table>
+  <table>
+    <tr>
+      <td>
+        <button type="button" class="log-btn_" >Yes</button>
+      </td>
+      <td>
+        <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
   </table>
