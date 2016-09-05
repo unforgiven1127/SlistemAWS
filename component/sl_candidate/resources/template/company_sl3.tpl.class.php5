@@ -57,7 +57,7 @@ class CCompany_sl3 extends CTemplate
     $sHTML = $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection'));
 
       $sHTML.= $this->coDisplay->getBloc('', 'Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #<span >'.$pasData['sl_companypk'].'</span> ]', array('class' => 'candi_detail_title'));
-
+$sHTML.=  '  <span class="action">';
        if($pasData['is_client'])
        {
          $sClass = ' candi_client ';
@@ -68,6 +68,7 @@ class CCompany_sl3 extends CTemplate
        {
          $sClass = $sTag = $sTitle = '';
        }
+
        $oRight = CDependency::getComponentByName('right');
        $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
        if($bAdmin)
@@ -80,7 +81,7 @@ class CCompany_sl3 extends CTemplate
           oConf.height = 725;
           goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Search & merge duplicates" ><img src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
        }
-
+$sHTML.=  '  </span>';
        if(!$pasData['is_nc_ok'])
        {
          $sTag = '<div class="candi_status_icon important" style="position: absolute; top: 2px; right: 0; margin: 0;">no Name Collect</div> ';
