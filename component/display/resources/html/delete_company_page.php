@@ -25,7 +25,7 @@
 
   .log-btn_ {
     /*background: #892828;*/
-    background: #c5c5c5;
+    background: #dcdcdc;
     color:black;
     display: block;
     margin: auto;
@@ -38,6 +38,7 @@
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;
+    float:right;
   }
 
 
@@ -87,10 +88,10 @@
   </table>
   <table>
     <tr>
-      <td style='padding-top: 10px;float:right;'>
+      <td style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >Yes</button>
       </td>
-      <td style='padding-top: 10px;float:right;'>
+      <td style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
