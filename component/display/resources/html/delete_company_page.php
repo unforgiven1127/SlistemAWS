@@ -29,15 +29,15 @@
     color:black;
     display: block;
     margin: auto;
-    width: 050px;
+    width: 100px;
     font-size: 14px;
     height: 20px;
     /*color: #fff;*/
     text-decoration: none;
     border: 1px grey solid;
-    /*-moz-border-radius: 4px;
+    -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    border-radius: 4px;*/
+    border-radius: 4px;
   }
 
 
@@ -87,10 +87,10 @@
   </table>
   <table>
     <tr>
-      <td>
+      <td style='padding-top: 10px;float:right;'>
         <button type="button" class="log-btn_" >Yes</button>
       </td>
-      <td>
+      <td style='padding-top: 10px;float:right;'>
         <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
