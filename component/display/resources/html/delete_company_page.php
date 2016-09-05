@@ -43,7 +43,7 @@
   <?php if(isset($header)){ echo $header; } ?>
   <table>
     <tr>
-      <td style='margin-top: 10px; margin-left: -10px;' valign="top">
+      <td style='margin-top: 10px; padding-left: -10px;' valign="top">
         <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
                 &nbsp;&nbsp;Warning you are about to delete company #123456!
         </div>
