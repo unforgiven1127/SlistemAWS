@@ -63,7 +63,7 @@ class CCompany_sl3 extends CTemplate
 
        if($bAdmin)
        {
-         $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
+         $sURL = $oPage->getAjaxUrl('555-001', MERGE_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
          $sHTML.=  '&nbsp;
           <a style="float:right; margin-right:10px;" align="right"  href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
