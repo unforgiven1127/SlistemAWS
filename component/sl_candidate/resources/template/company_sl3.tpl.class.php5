@@ -56,8 +56,20 @@ class CCompany_sl3 extends CTemplate
     //start first section
     $sHTML = $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection'));
 
-      $sHTML.= $this->coDisplay->getBloc('', 'Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #<span >'.$pasData['sl_companypk'].' ]', array('class' => 'candi_detail_title'));
+      //$sHTML.= $this->coDisplay->getBloc('', 'Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #<span >'.$pasData['sl_companypk'].' ]', array('class' => 'candi_detail_title'));
+       $sHTML.= "<div class = 'candi_detail_title'> Company data &nbsp;&nbsp;&nbsp;&nbsp;[ #".$pasData['sl_companypk']." ]";
 
+       if($bAdmin)
+       {
+         $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
+         $sHTML.=  '&nbsp;
+          <a href="javascript:;" onclick="
+          var oConf = goPopup.getConfig();
+          oConf.width = 1080;
+          oConf.height = 725;
+          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Search & merge duplicates" ><img src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
+       }
+       $sHTML.= "</div>";
        if($pasData['is_client'])
        {
          $sClass = ' candi_client ';
@@ -71,17 +83,8 @@ class CCompany_sl3 extends CTemplate
 
        $oRight = CDependency::getComponentByName('right');
        $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
-       if($bAdmin)
-       {
-         $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
-         $sHTML.=  '&nbsp;
-          <a href="javascript:;" onclick="
-          var oConf = goPopup.getConfig();
-          oConf.width = 1080;
-          oConf.height = 725;
-          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Search & merge duplicates" ><img src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
-       }
-$sHTML.=  '  </span>';
+
+
        if(!$pasData['is_nc_ok'])
        {
          $sTag = '<div class="candi_status_icon important" style="position: absolute; top: 2px; right: 0; margin: 0;">no Name Collect</div> ';
