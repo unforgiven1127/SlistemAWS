@@ -41,7 +41,7 @@
   </script>
 
   <?php if(isset($header)){ echo $header; } ?>
-  <table>
+  <table style='width:100%;' >
     <tr>
       <td style='margin-top: 10px; padding-left: -10px;' valign="top">
         <div style="padding-left: -10px; font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
