@@ -29,12 +29,12 @@
     color:black;
     display: block;
     margin: auto;
-    width: 150px;
+    width: 050px;
     font-size: 14px;
     height: 20px;
     /*color: #fff;*/
     text-decoration: none;
-    border: none;
+    border: 1px grey solid;
     /*-moz-border-radius: 4px;
     -webkit-border-radius: 4px;
     border-radius: 4px;*/
