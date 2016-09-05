@@ -68,18 +68,18 @@ class CCompany_sl3 extends CTemplate
        {
          $sClass = $sTag = $sTitle = '';
        }
-
-      $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
-      if($bAdmin)
-      {
-        $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
-        $sHTML.=  '&nbsp;
+       $oRight = CDependency::getComponentByName('right');
+       $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
+       if($bAdmin)
+       {
+         $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
+         $sHTML.=  '&nbsp;
           <a href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
           oConf.width = 1080;
           oConf.height = 725;
           goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Search & merge duplicates" ><img src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
-      }
+       }
 
        if(!$pasData['is_nc_ok'])
        {
