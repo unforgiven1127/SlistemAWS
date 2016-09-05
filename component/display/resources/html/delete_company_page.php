@@ -54,12 +54,12 @@
   </table>
   <table>
     <tr>
-      <td style='font-weight: bold; margin-top: 100px;' >
+      <td style='font-weight: bold; padding-top: 10px;' >
         Confirm deleting company #123456
       </td>
     </tr>
     <tr>
-      <td style='font-weight: bold; margin-top: 10px;'>
+      <td style='font-weight: bold; padding-top: 10px;'>
         Move employees to:[company id]
       </td>
       <td>
