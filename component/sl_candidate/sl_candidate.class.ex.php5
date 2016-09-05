@@ -208,6 +208,11 @@ class CSl_candidateEx extends CSl_candidate
             //return $this->_deleteCompany();
             break;
 
+          case DELETE_SELECTED_COMPANY:
+            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->deleteSelectedCompany(), 'UTF-8')));
+            //return $this->_deleteCompany();
+            break;
+
           case CONST_ACTION_SAVEADD:
             return json_encode($oPage->getAjaxExtraContent($this->_saveCandidate($this->cnPk)));
             break;
@@ -473,13 +478,27 @@ class CSl_candidateEx extends CSl_candidate
     }
   }
 
+  public function deleteSelectedCompany()
+  {
+    $company_id = $_GET['cidS'];
+    ChromePhp::log($company_id);
+
+    $html = "Company deleted succesfully...";
+
+    return $html;
+  }
+
   private function _deleteCompany()
   {
     $data = array();
     $company_id = $_GET['cid'];
+    //DELETE_SELECTED_COMPANY
+    $sURL = $oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
+    $sURL.= "&cidS=".$company_id;
     $company_information = getCompanyInformation($company_id);
     $data['company_name'] = $company_information['name'];
     $data['company_id'] = $company_id;
+    $data['delete_url'] = $sURL;
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
     return $html;

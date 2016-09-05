@@ -335,6 +335,7 @@ define('CONST_URL_PK', 'ppk');
 define('CONST_URL_MODE', 'pg');
 define('CONST_URL_EMBED', 'embed');
 define('MERGE_COMPANY', 'meco');
+define('DELETE_SELECTED_COMPANY', 'dsco');
 
 define('CONST_URL_PARAM_PAGE_AJAX', 'ajx');
 define('CONST_URL_PARAM_PAGE_NORMAL', 'pn');
