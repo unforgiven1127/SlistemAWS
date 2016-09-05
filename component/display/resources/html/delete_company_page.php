@@ -44,8 +44,8 @@
   <table style='width:100%; margin-left: -20px;' >
     <tr>
       <td style='margin-top: 10px; ' valign="top">
-        <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
-                &nbsp;&nbsp;Warning you are about to delete company #123456!
+        <div style=" margin-left: 20px; font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
+                Warning you are about to delete company #123456!
         </div>
       </td>
     </tr>
