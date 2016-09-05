@@ -476,6 +476,9 @@ class CSl_candidateEx extends CSl_candidate
   private function _deleteCompany()
   {
     $data = array();
+    $company_id = $_GET['cid'];
+    ChromePhp::log($company_id);
+    $data['company_id'] = $company_id;
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
     return $html;
