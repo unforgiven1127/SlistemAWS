@@ -54,7 +54,7 @@
   </table>
   <table>
     <tr>
-      <td style='font-weight: bold; margin-top: 10px;' >
+      <td style='font-weight: bold; margin-top: 100px;' >
         Confirm deleting company #123456
       </td>
     </tr>
