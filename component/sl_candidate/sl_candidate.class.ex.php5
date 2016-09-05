@@ -203,6 +203,11 @@ class CSl_candidateEx extends CSl_candidate
             return json_encode($oPage->getAjaxExtraContent(array('data' => $this->_getCandidateAddForm($this->cnPk))));
             break;
 
+          case MERGE_COMPANY:
+            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->_deleteCompany(), 'UTF-8')));
+            //return $this->_deleteCompany();
+            break;
+
           case CONST_ACTION_SAVEADD:
             return json_encode($oPage->getAjaxExtraContent($this->_saveCandidate($this->cnPk)));
             break;
@@ -505,11 +510,6 @@ class CSl_candidateEx extends CSl_candidate
           case CONST_ACTION_ADD:
           case CONST_ACTION_EDIT:
             return $this->_getCandidateAddForm($this->cnPk);
-            break;
-
-          case MERGE_COMPANY:
-            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->_deleteCompany(), 'UTF-8')));
-            //return $this->_deleteCompany();
             break;
 
 
