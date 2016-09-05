@@ -53,6 +53,8 @@ class CCompany_sl3 extends CTemplate
     //$asItem = array('cp_uid' => '555-001', 'cp_action' => CONST_ACTION_VIEW, 'cp_type' => CONST_CANDIDATE_TYPE_COMP, 'cp_pk' => $pasData['sl_companypk']);
 
 
+    $oRight = CDependency::getComponentByName('right');
+    $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
     //start first section
     $sHTML = $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection'));
 
@@ -80,9 +82,6 @@ class CCompany_sl3 extends CTemplate
        {
          $sClass = $sTag = $sTitle = '';
        }
-
-       $oRight = CDependency::getComponentByName('right');
-       $bAdmin = $oRight->canAccess('555-001', 'adm_dba', CONST_CANDIDATE_TYPE_CANDI);
 
 
        if(!$pasData['is_nc_ok'])
