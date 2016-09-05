@@ -25,7 +25,7 @@
 
   .log-btn_ {
     /*background: #892828;*/
-    background: #dcdcdc;
+    background: #e6e6e6;
     color:black;
     display: block;
     margin: auto;
@@ -86,7 +86,7 @@
       </td>
     </tr>
   </table>
-  <table>
+  <table style='width:100%;'>
     <tr>
       <td align="right" style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >Yes</button>
