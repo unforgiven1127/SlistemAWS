@@ -508,7 +508,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case MERGE_COMPANY:
-            return $this->_deleteCompany($this->cnPk);
+            return $this->_deleteCompany();
             break;
 
 
