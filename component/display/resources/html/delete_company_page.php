@@ -91,7 +91,7 @@
       <td align="right" style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >Yes</button>
       </td>
-      <td align="right" style='padding-top: 10px;'>
+      <td align="right" style='padding-top: 10px; margin-right: 40px;'>
         <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
