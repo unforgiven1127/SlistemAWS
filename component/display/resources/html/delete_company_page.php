@@ -79,7 +79,7 @@
     </tr>
     <tr>
       <td style='font-weight: bold; padding-top: 10px;'>
-        Move employees to:[company id]
+        Move employees to: [company id]
       </td>
       <td style='padding-top: 10px; padding-left: 15px;'>
         <input type="text" name="company_id"  id="company_id">
