@@ -88,10 +88,10 @@
   </table>
   <table>
     <tr>
-      <td style='padding-top: 10px;'>
+      <td align="right" style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >Yes</button>
       </td>
-      <td style='padding-top: 10px;'>
+      <td align="right" style='padding-top: 10px;'>
         <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
