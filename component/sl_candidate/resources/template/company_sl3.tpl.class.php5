@@ -65,11 +65,11 @@ class CCompany_sl3 extends CTemplate
        {
          $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_CANDI);
          $sHTML.=  '&nbsp;
-          <div style="float:right; margin-right:10px;" align="right"><a  href="javascript:;" onclick="
+          <a style="float:right; margin-right:10px;" align="right"  href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
-          oConf.width = 1080;
-          oConf.height = 725;
-          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Merge & delete company" ><img style="height:18px; margin-top:5px;" src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a></div>';
+          oConf.width = 800;
+          oConf.height = 600;
+          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Merge & delete company" ><img style="height:18px; margin-top:5px;" src="/component/sl_candidate/resources/pictures/delete_nobg_24.png" /></a>';
        }
        $sHTML.= "</div>";
        if($pasData['is_client'])
