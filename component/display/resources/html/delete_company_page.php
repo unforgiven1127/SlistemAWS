@@ -88,8 +88,8 @@
   </table>
   <table style='width:100%;'>
     <tr>
-      <td align="right" style='padding-top: 10px; padding-right: 60px;'>
-        <button style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
+      <td align="right" style='padding-top: 10px; padding-right: 50px;'>
+        <button style='padding-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
         <button type="button" class="log-btn_" >No</button>
       </td>
     </tr>
