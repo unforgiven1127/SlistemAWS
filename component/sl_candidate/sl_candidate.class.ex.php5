@@ -490,6 +490,7 @@ class CSl_candidateEx extends CSl_candidate
 
   private function _deleteCompany()
   {
+    $oPage = CDependency::getCpPage();
     $data = array();
     $company_id = $_GET['cid'];
     //DELETE_SELECTED_COMPANY
