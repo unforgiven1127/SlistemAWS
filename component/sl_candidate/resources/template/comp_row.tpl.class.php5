@@ -29,6 +29,7 @@ class CComp_row extends CTemplate
     $oPage = CDependency::getCpPage();
     $oDisplay = CDependency::getCpHtml();
     //$oLogin = CDependency::getCpLogin();
+    ChromePhp::log($pasData);
 
     $sHTML = '';
     $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow tplCompRow'));
