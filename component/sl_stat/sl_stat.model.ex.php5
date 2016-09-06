@@ -529,7 +529,7 @@ order by m.candidatefk
 
       }
 
-      if($meeting['candidatefk'] == '457' && $meeting['candidatefk'] == '319306')
+      if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
       {
         ChromePhp::log($met_candidates_array[$meeting['candidatefk']]['times_met']);
         ChromePhp::log($temp_validation_date);
