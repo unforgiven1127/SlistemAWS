@@ -8915,10 +8915,16 @@ die();*/
         foreach($asWords as $nKey => $sWord)
           $asWords[$nKey] = '(scom.name LIKE '.$this->_getModel()->dbEscapeString($sWord.'%').' )';
 
-        $poQB->addWhere(implode(' OR ',$asWords));
+        $implode =implode(' OR ',$asWords);
+        $implode = " ( ".$implode." ) ";
+        $poQB->addWhere($implode);
+        $poQB->addWhere(" AND merged_company_id = '0' ");
 
         $poQB->addOrder('exact_name DESC, scom.name ASC');
       }
+
+      $createdSql = $poQB->getSql();
+      ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
