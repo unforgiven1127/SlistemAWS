@@ -2962,19 +2962,19 @@ var_dump($query);*/
     //$db_result = $oDB->executeQuery($sQuery);
   }
 
-  function findRelatedCompanies($company_id)
+  function findRelatedCompanies($old_company_id,$new_company_id)
   {
-    $relatedEvents = getEventByCompany($company_id); // company_id = cp_pk
-    $relatedDocuments = getDocumentLinkByCompany($company_id); // company_id = cp_pk
-    $relatedOldCompanies = getOldCompanyByCompanyId($company_id); // company_id = company_id
-    $relatedCandidates = getCandidateByCompany($company_id); // company_id = companyfk
-    $relatedPositions = getPositionByCompany($company_id); // company_id = companyfk
+    $relatedEvents = getEventByCompany($old_company_id); // company_id = cp_pk
+    $relatedDocuments = getDocumentLinkByCompany($old_company_id); // company_id = cp_pk
+    $relatedOldCompanies = getOldCompanyByCompanyId($old_company_id); // company_id = company_id
+    $relatedCandidates = getCandidateByCompany($old_company_id); // company_id = companyfk
+    $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
     foreach ($relatedEvents as $key => $value)
     {
       $id = $value['event_linkpk'];
       $id_name = 'event_linkpk';
-      $company_id = $company_id;
+      $company_id = $new_company_id;// sent new company id to change
       $company_id_name = 'cp_pk';
       $table_name = 'event_link';
 
@@ -2984,7 +2984,7 @@ var_dump($query);*/
 
   function makeCompanyPassive($company_id)
   {
-    
+
   }
 
   function getCompanyInformation($company_id)

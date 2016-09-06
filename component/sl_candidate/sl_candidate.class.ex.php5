@@ -480,11 +480,10 @@ class CSl_candidateEx extends CSl_candidate
 
   public function deleteSelectedCompany()
   {
-    $company_id = $_GET['cidS'];
-    ChromePhp::log($company_id);
+    $old_company_id = $_GET['cidS'];
+    $new_company_id = $_GET['newId'];
 
-    $company_id = $_GET['newId'];
-    ChromePhp::log($company_id);
+    findRelatedCompanies($old_company_id,$new_company_id);
 
     $html = "Company deleted / merged succesfully...";
 
