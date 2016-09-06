@@ -784,6 +784,7 @@ $.TokenList = function (input, url_or_data, settings) {
     function run_search(query) {
         var cache_key = query + computeURL();
         var cached_results = cache.get(cache_key);
+        alert(query);
         if(cached_results) {
             //alert('cache');
             populate_dropdown(query, cached_results);
