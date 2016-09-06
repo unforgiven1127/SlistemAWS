@@ -555,7 +555,10 @@ order by m.candidatefk
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
-          ChromePhp::log('INSIDE...');
+          if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
+          {
+            ChromePhp::log('INSIDE...');
+          }
           $data[$meeting[$group_switch]]['met'] += 1;
           $data[$meeting[$group_switch]]['met_meeting_info'][] = array('candidate' => $meeting['candidatefk'],
             'date' => $meeting['date_met']);
