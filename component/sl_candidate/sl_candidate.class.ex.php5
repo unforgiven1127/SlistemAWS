@@ -8918,7 +8918,7 @@ die();*/
         $implode =implode(' OR ',$asWords);
         $implode = " ( ".$implode." ) ";
         $poQB->addWhere($implode);
-        $poQB->addWhere(" AND merged_company_id = '0' ");
+        $poQB->addWhere(" merged_company_id = '0' ");
 
         $poQB->addOrder('exact_name DESC, scom.name ASC');
       }
