@@ -2066,7 +2066,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             $sRow.= '<div class="note_content">[<b>-'.$asPositionData['status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asPositionData['companyfk']);
-          $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
+          $sRow.= ' from <a class="companyLink" href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
 
         $sRow.= $this->_oDisplay->getBlocEnd();
         $asPosition[] = $sRow;
