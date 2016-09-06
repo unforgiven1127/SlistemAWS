@@ -539,7 +539,7 @@ order by m.candidatefk
 
       if (strtotime($meeting['date_met']) >= strtotime($start_date)
         && strtotime($meeting['date_met']) <= strtotime($end_date)
-        && isset($flip_user_ids[$meeting[$group_switch]]))
+        )//&& isset($flip_user_ids[$meeting[$group_switch]])
       {
         if (!isset($data[$meeting[$group_switch]]))
         {
