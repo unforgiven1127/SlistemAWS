@@ -540,7 +540,9 @@ order by m.candidatefk
         }
 
         $temp_validation_date = date('Y-m', strtotime($met_candidates_array[$meeting['candidatefk']]['oldest_meeting']));
-
+        echo '<br><br>';
+        echo '<br><br>';
+        echo '<br><br>';
         if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
         {
           //ChromePhp::log($met_candidates_array[$meeting['candidatefk']]['times_met']);
