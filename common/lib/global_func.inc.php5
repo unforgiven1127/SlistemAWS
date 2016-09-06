@@ -2975,7 +2975,7 @@ var_dump($query);*/
     $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
     ChromePhp::log($relatedEvents);
-    if(count($relatedEvents > 0))
+    if(count($relatedEvents) > 0)
     {
       ChromePhp::log('HERE');
       foreach ($relatedEvents as $key => $value)
