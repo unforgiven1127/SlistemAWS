@@ -458,7 +458,7 @@ order by m.candidatefk
     $query = 'SELECT sl_meetingpk, candidatefk , created_by, date_created, date_met, attendeefk, meeting_done';
     $query .= ' FROM sl_meeting';
     $query .= ' WHERE meeting_done != -1';
-    $query .= ' ORDER BY sl_meetingpk ASC';
+    $query .= ' ORDER BY '.$group_switch.', date_met ASC';
     //$query .= ' ORDER BY '.$group_switch;
 
 //echo '<br><br>';
