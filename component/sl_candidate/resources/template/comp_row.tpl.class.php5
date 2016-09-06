@@ -80,7 +80,7 @@ class CComp_row extends CTemplate
 
 
     $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$pasData['sl_companypk']);
-    $sLink = $oDisplay->getLink($pasData['name'], 'javascript:;', array('class','companyLink','onclick' => 'view_comp(\''.$sURL.'\');'));
+    $sLink = $oDisplay->getLink($pasData['name'], 'javascript:;', array('class'=>'companyLink','onclick' => 'view_comp(\''.$sURL.'\');'));
     set_array($pasColumnParam[5]['tag'], '');
     $asOption = array('class' => $pasColumnParam[5]['tag']);
     $sHTML.= $oDisplay->getBloc('', $sLink, $asOption);
