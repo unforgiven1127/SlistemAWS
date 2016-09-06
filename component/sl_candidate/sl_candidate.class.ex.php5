@@ -103,6 +103,7 @@ class CSl_candidateEx extends CSl_candidate
    */
   public function getComponentPublicItems($psInterface = '')
   {
+    ChromePhp::log('getComponentPublicItems');
     $asItem = array();
     switch($psInterface)
     {
@@ -8875,6 +8876,7 @@ die();*/
 
     function _autocompleteCompany()
     {
+      ChromePhp::log('_autocompleteCompany');
       $sSearchString = getValue('q');
       if(empty($sSearchString))
       {

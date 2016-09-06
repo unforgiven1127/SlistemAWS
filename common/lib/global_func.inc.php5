@@ -1025,6 +1025,7 @@ function _live_dump($pvTrace, $psTitle = null)
   //SearchHistory functions
   function manageSearchHistory($psGuid='', $psType='', $pbForceNew = false)
   {
+    ChromePhp::log('manageSearchHistory');
     //starts with maintenance: keep session array size under 50 for every component/type
     if(isset($_SESSION['searchHistory'][$psGuid][$psType]) && count($_SESSION['searchHistory'][$psGuid][$psType]) > 50)
     {

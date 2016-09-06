@@ -135,8 +135,7 @@ class CSearchEx extends CSearch
     $oPage = CDependency::getCpPage();
 
     $sUrl = $oPage->getUrl('search', CONST_ACTION_SEARCH, '', 0, array('formType'=>'global'));
-    ChromePhp::log($sUrl);
-    ChromePhp::log('HERE1');
+
     $sPic = $oHTML->getPicture(CONST_PICTURE_MENU_SEARCH, 'Search');
 
     $sHTML = $oHTML->getListItemStart('folderslink');
@@ -239,7 +238,6 @@ class CSearchEx extends CSearch
   // Displays the global search form, or a specific search form if a component is specified
   private function _displaySearchForm($psType = 'global', $psComponentUid = '', $psComponentType = '', $pbInAjax = false)
   {
-    ChromePhp::log('HERE2 _displaySearchForm');
     $oHTML = CDependency::getCpHtml();
 
     if(!$this->cnSearchableComponent)
