@@ -2964,8 +2964,6 @@ var_dump($query);*/
 
   function findRelatedCompanies($old_company_id,$new_company_id)
   {
-    ChromePhp::log($old_company_id);
-    ChromePhp::log($new_company_id);
     $relatedEvents = getEventByCompany($old_company_id); // company_id = cp_pk
     $relatedDocuments = getDocumentLinkByCompany($old_company_id); // company_id = cp_pk
     $relatedOldCompanies = getOldCompanyByCompanyId($old_company_id); // company_id = company_id
