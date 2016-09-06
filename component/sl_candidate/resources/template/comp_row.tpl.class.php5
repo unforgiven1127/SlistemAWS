@@ -30,14 +30,17 @@ class CComp_row extends CTemplate
     $oDisplay = CDependency::getCpHtml();
     //$oLogin = CDependency::getCpLogin();
     //ChromePhp::log($pasData);
-    $merged_company_id = $pasData['merged_company_id'];
+    if(isset($pasData['merged_company_id']))
+    {
+      $merged_company_id = $pasData['merged_company_id'];
+    }
 
     $oLogin = CDependency::getCpLogin();
     $user_id = $oLogin->getUserPk();
 
     $deletedClass = '';
     $showFlag = true;
-    if($merged_company_id > 0)
+    if(isset($pasData['merged_company_id']) && $merged_company_id > 0)
     {
       $deletedClass = 'deletedClass';
       if($user_id != '101')
