@@ -2707,7 +2707,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
         $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asData['companyfk']);
-        $asData['company_name'] = $oHTML->getLink($asData['name'], 'javascript:;', array('class','companyLink','onclick' => 'view_comp(\''.$sURL.'\');'));
+        $asData['company_name'] = $oHTML->getLink($asData['name'], 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\');'));
         $asData['language'] = 'E:'.$asData['lvl_english'].'&nbsp;&nbsp; J:'.$asData['lvl_japanese'];
 
         if(empty($asData['salary_from']))
