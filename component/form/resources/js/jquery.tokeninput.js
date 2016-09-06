@@ -792,7 +792,7 @@ $.TokenList = function (input, url_or_data, settings) {
             // Are we doing an ajax search or local data search?
             if(settings.url) {
                 var url = computeURL();
-                alert(url);
+                //alert(url);
                 // Extract exisiting get params
                 var ajax_params = {};
                 ajax_params.data = {};
