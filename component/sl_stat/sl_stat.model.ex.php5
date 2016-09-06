@@ -547,11 +547,12 @@ order by m.candidatefk
           //ChromePhp::log($temp_validation_date);
           //ChromePhp::log($temp_validation_date);
           //ChromePhp::log($flip_user_ids[$meeting[$group_switch]]);
-          //ChromePhp::log($meeting);
-          ChromePhp::log($met_candidates_array[$meeting['candidatefk']]['times_met']);
-          ChromePhp::log($temp_validation_date);
-          ChromePhp::log(date('Y-m', strtotime($start_date)));
-          ChromePhp::log(date('Y-m', strtotime($end_date)));
+          var_dump($meeting);
+          var_dump($met_candidates_array[$meeting['candidatefk']]['times_met']);
+          var_dump($temp_validation_date);
+          var_dump(date('Y-m', strtotime($start_date)));
+          var_dump(date('Y-m', strtotime($end_date)));
+          echo '<br><br>';
         }
 
         if ((int)$meeting['meeting_done'] > 0
