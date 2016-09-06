@@ -781,10 +781,9 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     // Do the actual search
-    function run_search(query) {
+    function run_search(query) {// query degil sadece aranan value geliyor
         var cache_key = query + computeURL();
         var cached_results = cache.get(cache_key);
-        alert(query);
         if(cached_results) {
             //alert('cache');
             populate_dropdown(query, cached_results);
@@ -793,6 +792,7 @@ $.TokenList = function (input, url_or_data, settings) {
             // Are we doing an ajax search or local data search?
             if(settings.url) {
                 var url = computeURL();
+                alert(url);
                 // Extract exisiting get params
                 var ajax_params = {};
                 ajax_params.data = {};
