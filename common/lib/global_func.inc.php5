@@ -2972,8 +2972,10 @@ var_dump($query);*/
     $relatedCandidates = getCandidateByCompany($old_company_id); // company_id = companyfk
     $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
+    ChromePhp::log($relatedEvents);
     if(count($relatedEvents > 0))
     {
+      ChromePhp::log('HERE');
       foreach ($relatedEvents as $key => $value)
       {
         $id = $value['event_linkpk'];
