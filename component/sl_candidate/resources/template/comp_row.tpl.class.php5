@@ -83,7 +83,7 @@ class CComp_row extends CTemplate
     $deletedClass = '';
     if($merged_company_id > 0)
     {
-      $deletedClass = 'deleted';
+      $deletedClass = 'deletedClass';
     }
 
 
