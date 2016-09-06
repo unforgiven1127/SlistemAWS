@@ -8923,8 +8923,8 @@ die();*/
         $poQB->addOrder('exact_name DESC, scom.name ASC');
       }
 
-      $createdSql = $poQB->getSql();
-      ChromePhp::log($createdSql);
+      //$createdSql = $poQB->getSql();
+      //ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
