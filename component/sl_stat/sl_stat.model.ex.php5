@@ -483,25 +483,18 @@ order by m.candidatefk
         $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
       }
 
-      /*if ((int)$temp['meeting_done'] > 0) ASAGIYA TASIDIK
-      {
-        $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
-        if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
-          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
-      }*/
-
-      $read = $db_result->readNext();
-    }
-
-    foreach ($meeting_array as $meeting)
-    {
-
       if ((int)$temp['meeting_done'] > 0)
       {
         $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
         if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
           $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
       }
+
+      $read = $db_result->readNext();
+    }
+
+    foreach ($meeting_array as $meeting)
+    {
 
       $create_date = $meeting['date_created'];
       $month = date("m",strtotime($create_date));
@@ -567,10 +560,10 @@ order by m.candidatefk
 
 /*||
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
-            $temp_validation_date <= date('Y-m', strtotime($end_date))) */
+            $temp_validation_date <= date('Y-m', strtotime($end_date)))
+          && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ) */
 
-        if ((int)$meeting['meeting_done'] > 0
-          && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ))
+        if ((int)$meeting['meeting_done'] > 0)
         {
           if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
           {
