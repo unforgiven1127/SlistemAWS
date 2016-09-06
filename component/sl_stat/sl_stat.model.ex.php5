@@ -459,7 +459,7 @@ order by m.candidatefk
     $query .= ' FROM sl_meeting';
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch.', date_met ASC';
-    //$query .= ' ORDER BY '.$group_switch;
+    //$query .= ' ORDER BY '.$group_switch; // BURASI DEGISTI
 
 //echo '<br><br>';
 //var_dump($query);
@@ -483,18 +483,25 @@ order by m.candidatefk
         $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = date('Y-m-d');
       }
 
-      if ((int)$temp['meeting_done'] > 0)
+      /*if ((int)$temp['meeting_done'] > 0) ASAGIYA TASIDIK
       {
         $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
         if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
           $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
-      }
+      }*/
 
       $read = $db_result->readNext();
     }
 
     foreach ($meeting_array as $meeting)
     {
+
+      if ((int)$temp['meeting_done'] > 0)
+      {
+        $met_candidates_array[$temp['candidatefk']]['times_met'] += 1;
+        if (strtotime($met_candidates_array[$temp['candidatefk']]['oldest_meeting']) > strtotime($temp['date_created']))
+          $met_candidates_array[$temp['candidatefk']]['oldest_meeting'] = $temp['date_created'];
+      }
 
       $create_date = $meeting['date_created'];
       $month = date("m",strtotime($create_date));
