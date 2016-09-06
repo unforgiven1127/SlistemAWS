@@ -2882,6 +2882,111 @@ var_dump($query);*/
     return $contact_info;
   }
 
+  function getPositionByCompany($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_position slp
+    WHERE slp.companyfk = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getCandidateByCompany($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_candidate_profile slp
+    WHERE slp.companyfk = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getOldCompanyByCompanyId($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM sl_candidate_old_companies slp
+    WHERE slp.company_id = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getDocumentLinkByCompany($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM document_link slp
+    WHERE slp.cp_type = 'comp' AND slp.cp_pk = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function getEventByCompany($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT slc.* FROM event_link slp
+    WHERE slp.cp_type = 'comp' AND slp.cp_pk = ".$company_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE ".$table_name." SET ".$company_id_name." = '".$company_id."' WHERE ".$id_name." = '".$id."' ";
+    ChromePhp::log($sQuery);
+    //$db_result = $oDB->executeQuery($sQuery);
+  }
+
+  function findRelatedCompanies($company_id)
+  {
+    $relatedEvents = getEventByCompany($company_id); // company_id = cp_pk
+    $relatedDocuments = getDocumentLinkByCompany($company_id); // company_id = cp_pk
+    $relatedOldCompanies = getOldCompanyByCompanyId($company_id); // company_id = company_id
+    $relatedCandidates = getCandidateByCompany($company_id); // company_id = companyfk
+    $relatedPositions = getPositionByCompany($company_id); // company_id = companyfk
+
+    foreach ($relatedEvents as $key => $value)
+    {
+      $id = $value['event_linkpk'];
+      $id_name = 'event_linkpk';
+      $company_id = $company_id;
+      $company_id_name = 'cp_pk';
+      $table_name = 'event_link';
+
+      updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+    }
+  }
+
+  function makeCompanyPassive($company_id)
+  {
+    
+  }
+
   function getCompanyInformation($company_id)
   {
     $oDB = CDependency::getComponentByName('database');
