@@ -557,10 +557,12 @@ order by m.candidatefk
           echo '<br><br>';
         }*/
 
-        if ((int)$meeting['meeting_done'] > 0
-          && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ||
+/*||
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
-            $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
+            $temp_validation_date <= date('Y-m', strtotime($end_date))) */
+
+        if ((int)$meeting['meeting_done'] > 0
+          && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ))
         {
           if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
           {
