@@ -2965,19 +2965,13 @@ var_dump($query);*/
   function findRelatedCompanies($old_company_id,$new_company_id)
   {
     $relatedEvents = getEventByCompany($old_company_id); // company_id = cp_pk
-//ChromePhp::log('HERE1');
     $relatedDocuments = getDocumentLinkByCompany($old_company_id); // company_id = cp_pk
-//ChromePhp::log('HERE2');
     $relatedOldCompanies = getOldCompanyByCompanyId($old_company_id); // company_id = company_id
-//ChromePhp::log('HERE3');
     $relatedCandidates = getCandidateByCompany($old_company_id); // company_id = companyfk
-//ChromePhp::log('HERE4');
     $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
-    ChromePhp::log($relatedEvents);
     if(count($relatedEvents) > 0)
     {
-      ChromePhp::log('HERE');
       foreach ($relatedEvents as $key => $value)
       {
         $id = $value['event_linkpk'];
@@ -2985,6 +2979,62 @@ var_dump($query);*/
         $company_id = $new_company_id;// sent new company id to change
         $company_id_name = 'cp_pk';
         $table_name = 'event_link';
+
+        updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+      }
+    }
+
+    if(count($relatedDocuments) > 0)
+    {
+      foreach ($relatedDocuments as $key => $value)
+      {
+        $id = $value['document_linkpk'];
+        $id_name = 'document_linkpk';
+        $company_id = $new_company_id;// sent new company id to change
+        $company_id_name = 'cp_pk';
+        $table_name = 'document_link';
+
+        updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+      }
+    }
+
+    if(count($relatedOldCompanies) > 0)
+    {
+      foreach ($relatedOldCompanies as $key => $value)
+      {
+        $id = $value['id'];
+        $id_name = 'id';
+        $company_id = $new_company_id;// sent new company id to change
+        $company_id_name = 'company_id';
+        $table_name = 'sl_candidate_old_companies';
+
+        updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+      }
+    }
+
+    if(count($relatedCandidates) > 0)
+    {
+      foreach ($relatedCandidates as $key => $value)
+      {
+        $id = $value['sl_candidate_profilepk'];
+        $id_name = 'sl_candidate_profilepk';
+        $company_id = $new_company_id;// sent new company id to change
+        $company_id_name = 'companyfk';
+        $table_name = 'sl_candidate_profile';
+
+        updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+      }
+    }
+
+    if(count($relatedPositions) > 0)
+    {
+      foreach ($relatedPositions as $key => $value)
+      {
+        $id = $value['sl_positionpk'];
+        $id_name = 'sl_positionpk';
+        $company_id = $new_company_id;// sent new company id to change
+        $company_id_name = 'companyfk';
+        $table_name = 'sl_position';
 
         updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
       }
