@@ -529,6 +529,14 @@ order by m.candidatefk
 
       }
 
+      if($meeting['candidatefk'] == '457' && $meeting['candidatefk'] == '319306')
+      {
+        ChromePhp::log($met_candidates_array[$meeting['candidatefk']]['times_met']);
+        ChromePhp::log($temp_validation_date);
+        ChromePhp::log($temp_validation_date);
+        ChromePhp::log($flip_user_ids[$meeting[$group_switch]]);
+      }
+
       if (strtotime($meeting['date_met']) >= strtotime($start_date)
         && strtotime($meeting['date_met']) <= strtotime($end_date)
         && isset($flip_user_ids[$meeting[$group_switch]]))
@@ -541,12 +549,6 @@ order by m.candidatefk
 
         $temp_validation_date = date('Y-m', strtotime($met_candidates_array[$meeting['candidatefk']]['oldest_meeting']));
 
-        if($meeting['candidatefk'] == '457' && $meeting['candidatefk'] == '319306')
-        {
-          ChromePhp::log($met_candidates_array[$meeting['candidatefk']]['times_met']);
-          ChromePhp::log($temp_validation_date);
-          ChromePhp::log($temp_validation_date);
-        }
 
         if ((int)$meeting['meeting_done'] > 0
           && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ||
