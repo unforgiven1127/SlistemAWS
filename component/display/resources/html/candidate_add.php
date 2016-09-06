@@ -496,6 +496,7 @@
 
 		$('#company').tokenInput('<?php echo $company_token_url; ?>',
 		{
+			alert('ASD');
 			noResultsText: "no results found",
 			tokenLimit: 1,
 			prePopulate: company_token
