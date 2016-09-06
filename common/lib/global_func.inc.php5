@@ -2886,7 +2886,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.* FROM sl_position slp
+    $sQuery = "SELECT slp.* FROM sl_position slp
     WHERE slp.companyfk = ".$company_id;
 
     $db_result = $oDB->executeQuery($sQuery);
@@ -2900,7 +2900,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.* FROM sl_candidate_profile slp
+    $sQuery = "SELECT slp.* FROM sl_candidate_profile slp
     WHERE slp.companyfk = ".$company_id;
 
     $db_result = $oDB->executeQuery($sQuery);
@@ -2914,7 +2914,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.* FROM sl_candidate_old_companies slp
+    $sQuery = "SELECT slp.* FROM sl_candidate_old_companies slp
     WHERE slp.company_id = ".$company_id;
 
     $db_result = $oDB->executeQuery($sQuery);
@@ -2928,7 +2928,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.* FROM document_link slp
+    $sQuery = "SELECT slp.* FROM document_link slp
     WHERE slp.cp_type = 'comp' AND slp.cp_pk = ".$company_id;
 
     $db_result = $oDB->executeQuery($sQuery);
@@ -2942,7 +2942,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT slc.* FROM event_link slp
+    $sQuery = "SELECT slp.* FROM event_link slp
     WHERE slp.cp_type = 'comp' AND slp.cp_pk = ".$company_id;
 
     $db_result = $oDB->executeQuery($sQuery);
@@ -2965,9 +2965,13 @@ var_dump($query);*/
   function findRelatedCompanies($old_company_id,$new_company_id)
   {
     $relatedEvents = getEventByCompany($old_company_id); // company_id = cp_pk
+//ChromePhp::log('HERE1');
     $relatedDocuments = getDocumentLinkByCompany($old_company_id); // company_id = cp_pk
+//ChromePhp::log('HERE2');
     $relatedOldCompanies = getOldCompanyByCompanyId($old_company_id); // company_id = company_id
+//ChromePhp::log('HERE3');
     $relatedCandidates = getCandidateByCompany($old_company_id); // company_id = companyfk
+//ChromePhp::log('HERE4');
     $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
     ChromePhp::log($relatedEvents);
