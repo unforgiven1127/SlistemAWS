@@ -29,7 +29,8 @@ class CComp_row extends CTemplate
     $oPage = CDependency::getCpPage();
     $oDisplay = CDependency::getCpHtml();
     //$oLogin = CDependency::getCpLogin();
-    ChromePhp::log($pasData);
+    //ChromePhp::log($pasData);
+    $merged_company_id = $pasData['merged_company_id'];
 
     $sHTML = '';
     $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow tplCompRow'));
@@ -79,9 +80,15 @@ class CComp_row extends CTemplate
 
     $sHTML.= $oDisplay->getBloc('', $pasData['level'], $asOption);
 
+    $deletedClass = '';
+    if($merged_company_id > 0)
+    {
+      $deletedClass = 'deleted';
+    }
+
 
     $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$pasData['sl_companypk']);
-    $sLink = $oDisplay->getLink($pasData['name'], 'javascript:;', array('class'=>'companyLink','onclick' => 'view_comp(\''.$sURL.'\');'));
+    $sLink = $oDisplay->getLink($pasData['name'], 'javascript:;', array('class'=>'companyLink '.$deletedClass,'onclick' => 'view_comp(\''.$sURL.'\');'));
     set_array($pasColumnParam[5]['tag'], '');
     $asOption = array('class' => $pasColumnParam[5]['tag']);
     $sHTML.= $oDisplay->getBloc('', $sLink, $asOption);
