@@ -483,6 +483,9 @@ class CSl_candidateEx extends CSl_candidate
     $company_id = $_GET['cidS'];
     ChromePhp::log($company_id);
 
+    $company_id = $_GET['newId'];
+    ChromePhp::log($company_id);
+
     $html = "Company deleted / merged succesfully...";
 
     return $html;

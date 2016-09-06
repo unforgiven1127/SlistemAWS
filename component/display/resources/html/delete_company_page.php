@@ -92,12 +92,11 @@
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
         <button onclick="
           var selctedCompany = document.getElementById('company_id');
-          alert(selctedCompany.value);
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
           oConf.width = 400;
           oConf.height = 200;
-          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>);"
+          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany.value);"
         style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
       </td>
     </tr>
