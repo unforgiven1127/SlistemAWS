@@ -540,9 +540,9 @@ order by m.candidatefk
         }
 
         $temp_validation_date = date('Y-m', strtotime($met_candidates_array[$meeting['candidatefk']]['oldest_meeting']));
-
+//$met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ||
         if ((int)$meeting['meeting_done'] > 0
-          && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ||
+          && (
           ($temp_validation_date >= date('Y-m', strtotime($start_date)) &&
             $temp_validation_date <= date('Y-m', strtotime($end_date))) ))
         {
