@@ -2964,22 +2964,28 @@ var_dump($query);*/
 
   function findRelatedCompanies($old_company_id,$new_company_id)
   {
+    ChromePhp::log($old_company_id);
+    ChromePhp::log($new_company_id);
     $relatedEvents = getEventByCompany($old_company_id); // company_id = cp_pk
     $relatedDocuments = getDocumentLinkByCompany($old_company_id); // company_id = cp_pk
     $relatedOldCompanies = getOldCompanyByCompanyId($old_company_id); // company_id = company_id
     $relatedCandidates = getCandidateByCompany($old_company_id); // company_id = companyfk
     $relatedPositions = getPositionByCompany($old_company_id); // company_id = companyfk
 
-    foreach ($relatedEvents as $key => $value)
+    if(count($relatedEvents > 0))
     {
-      $id = $value['event_linkpk'];
-      $id_name = 'event_linkpk';
-      $company_id = $new_company_id;// sent new company id to change
-      $company_id_name = 'cp_pk';
-      $table_name = 'event_link';
+      foreach ($relatedEvents as $key => $value)
+      {
+        $id = $value['event_linkpk'];
+        $id_name = 'event_linkpk';
+        $company_id = $new_company_id;// sent new company id to change
+        $company_id_name = 'cp_pk';
+        $table_name = 'event_link';
 
-      updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+        updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name);
+      }
     }
+
   }
 
   function makeCompanyPassive($company_id)
