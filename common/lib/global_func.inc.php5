@@ -2958,6 +2958,16 @@ var_dump($query);*/
     $sDate = date('Y-m-d H:i:s');
 
     $sQuery = "UPDATE ".$table_name." SET ".$company_id_name." = '".$company_id."' WHERE ".$id_name." = '".$id."' ";
+    //ChromePhp::log($sQuery);
+    //$db_result = $oDB->executeQuery($sQuery);
+  }
+
+  function updateMergedCompany($old_company_id,$new_company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE sl_company SET merged_company_id = '".$new_company_id."' WHERE sl_companypk = '".$old_company_id."' ";
     ChromePhp::log($sQuery);
     //$db_result = $oDB->executeQuery($sQuery);
   }
