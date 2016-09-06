@@ -103,7 +103,6 @@ class CSl_candidateEx extends CSl_candidate
    */
   public function getComponentPublicItems($psInterface = '')
   {
-    ChromePhp::log('getComponentPublicItems');
     $asItem = array();
     switch($psInterface)
     {
@@ -483,9 +482,6 @@ class CSl_candidateEx extends CSl_candidate
   {
     $old_company_id = $_GET['cidS'];
     $new_company_id = $_GET['newId'];
-
-    ChromePhp::log($old_company_id);
-    ChromePhp::log($new_company_id);
 
     findRelatedCompanies($old_company_id,$new_company_id);
 
@@ -1926,7 +1922,6 @@ class CSl_candidateEx extends CSl_candidate
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
 
-          //ChromePhp::log($asHistoryData['userfk']);
           if(isset($asHistoryData['userfk']) && $asHistoryData['userfk'] > 0)
           {
             $user_info = getUserInformaiton($asHistoryData['userfk']);
@@ -2686,9 +2681,9 @@ class CSl_candidateEx extends CSl_candidate
       //-----------------------------------------------------------------------------
       //-----------------------------------------------------------------------------
       //add to the queryBuilder specific conditions for pipe or other custom filters
-      //ChromePhp::log('HERE');
+
       $nFolderPk = getValue('folderpk');
-      //ChromePhp::log($nFolderPk);
+
       if(!empty($nFolderPk))
       {
         //$bLogged = $this->_addFolderFilter($asListMsg, $poQB);
@@ -3370,10 +3365,8 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _addFolderFilter(&$asListMsg, &$poQB)
     {
-      //ChromePhp::log('_addFolderFilter');
-      $nFolderPk = (int)getValue('folderpk');
 
-      //ChromePhp::log($nFolderPk);
+      $nFolderPk = (int)getValue('folderpk');
 
       if(!isset($nFolderPk) || $nFolderPk == '' || $nFolderPk == 0)
       {
@@ -5068,9 +5061,6 @@ class CSl_candidateEx extends CSl_candidate
       $candidateActiveMeetings = getCandidateActiveMeetings($candidate_id);
       $candidateActiveMeetingsLength = count($candidateActiveMeetings);
 
-      //ChromePhp::log($candidateActiveMeetings);
-      //ChromePhp::log($candidateActiveMeetingsLength);
-
       $characterNoteControlFlag = false;
       if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
@@ -6327,7 +6317,6 @@ class CSl_candidateEx extends CSl_candidate
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
 
-//ChromePhp::log($oDbResult->getFieldValue('currency'));
 
       if (!empty($oDbResult->getFieldValue('currency')))
       {
