@@ -541,7 +541,7 @@ order by m.candidatefk
 
         $temp_validation_date = date('Y-m', strtotime($met_candidates_array[$meeting['candidatefk']]['oldest_meeting']));
 
-        if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
+        /*if($meeting['created_by'] == '457' && $meeting['candidatefk'] == '319306')
         {echo '<br><br>';
         echo '<br><br>';
         echo '<br><br>';
@@ -555,7 +555,7 @@ order by m.candidatefk
           var_dump(date('Y-m', strtotime($start_date)));echo '<br>';
           var_dump(date('Y-m', strtotime($end_date)));echo '<br>';
           echo '<br><br>';
-        }
+        }*/
 
         if ((int)$meeting['meeting_done'] > 0
           && ($met_candidates_array[$meeting['candidatefk']]['times_met'] <= 1 ||
