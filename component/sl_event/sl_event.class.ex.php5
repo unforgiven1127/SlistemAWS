@@ -923,6 +923,9 @@ class CSl_eventEx extends CSl_event
     $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
     $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
 
+    ChromePhp::log($characterNoteArray);
+    ChromePhp::log($simpleCharacterNote);
+
     $skillValues = array();
     $skillValues['skill_ag'] = getValue('skill_ag');
     $skillValues['skill_ap'] = getValue('skill_ap');
@@ -951,7 +954,6 @@ class CSl_eventEx extends CSl_event
 
       if(empty($simpleCharacterNote))
       {
-
         foreach ($characterNoteArray as $key => $value)
         {
           if($key == 'past_note' || (isset($value) && !empty($value)))
