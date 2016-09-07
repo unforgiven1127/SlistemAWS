@@ -277,7 +277,7 @@
 
 		onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""
 
-		style='padding-top: 0px !important;' class='tdTitle'><div style='margin-bottom: 20px;' class='titles'>Personality & Communication <img style="height: 18px;" src="/common/pictures/slistem/info.png"></div></td>
+		style='padding-top: 0px !important;' class='tdTitle'><div style='padding-bottom: 20px;' class='titles'>Personality & Communication <img style="height: 18px;" src="/common/pictures/slistem/info.png"></div></td>
 		<td  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
 		<td id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
