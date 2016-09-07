@@ -1025,6 +1025,11 @@ class CSl_eventEx extends CSl_event
               $errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
+            if($key == 'past_note')
+            { //<p></p> icinde geldigi icin +7 ekledik
+              //$errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
+            }
             else
             {
               return array('error' => __LINE__.' - Please fill all required areas.');
