@@ -5103,6 +5103,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $characterNoteFlag = false;
       $characterNote = "";
+      $errorArray = '';
 
       if(!$characterNoteControlFlag)
       {
