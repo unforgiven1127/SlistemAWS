@@ -219,12 +219,30 @@
 		padding-top: 5px !important;
 	}
 
+	::-webkit-input-placeholder
+      {
+       padding-left:3px;
+       font-size: 11pt;
+      }
+      :-moz-placeholder { /* older Firefox*/
+       padding-left:3px;
+       font-size: 11pt;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+       padding-left:3px;
+       font-size: 11pt;
+      }
+      :-ms-input-placeholder {
+       padding-left:3px;
+       font-size: 11pt;
+      }
+
 
 </style>
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='text-align: center; width: 950px; height:24px; padding-top:3px !important; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='text-align: center; width: 950px; height:24px; padding-top:5px !important; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
