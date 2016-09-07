@@ -173,16 +173,35 @@
 <table class="box" align="center">
 	<tr>
 		<td>What does the candidate do -what is his profession?</td>
+	</tr>
+	<tr>
 		<td>What is his scope of experience in this profession? Is he specific or broad?</td>
+	</tr>
+	<tr>
 		<td>Is the candidate intelligent and able to solve problems or not?</td>
+	</tr>
+	<tr>
 		<td>Can the candidate manage problems or not?</td>
+	</tr>
+	<tr>
 		<td>What does the candidate hope to accomplish before he moves to the next position?</td>
+	</tr>
+	<tr>
 		<td>What is his vision for his future? What is the next step for him if and when he moves?</td>
+	</tr>
+	<tr>
 		<td>How does he look? Is he confident and articulate? Does he have a powerful presence?</td>
+	</tr>
+	<tr>
 		<td>Can he manage a team and is he ambitious?</td>
+	</tr>
+	<tr>
 		<td>Is he met (not placeable), notable (placeable) or top shelf (Absolutely placeable)?</td>
+	</tr>
+	<tr>
 		<td>Focus on your candidate\'s career process and placability when you are writing comments. </td>
 	</tr>
+
 </table>
 
 <table class="box" align="center">
