@@ -567,10 +567,10 @@ class CNotificationEx extends CNotification
 
       $sendCC = $ccArray;
       $sendCCString = '';
-      if(($key = array_search($sEmail, $sendCC)) !== false)
+      /*if(($key = array_search($sEmail, $sendCC)) !== false)
       {
           unset($sendCC[$key]);
-      }
+      }*/
       if(!empty($sendCC))
       {
         foreach ($sendCC as $key => $value)
