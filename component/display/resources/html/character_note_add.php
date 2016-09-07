@@ -299,7 +299,7 @@
 	</tr>
 
 </table>
-
+<input type="hidden" name="hiddenCharacter" value="newForm">
 <table class="box" align="center">
 	<tr>
 		<td
