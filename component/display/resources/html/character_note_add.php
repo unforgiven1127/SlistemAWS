@@ -17,6 +17,8 @@
 	    $('#move_note').attr('placeholder', "\u2022What does the candidate hope to accomplish before he moves to the next position? \n\u2022What is his motivation for moving \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
 	    $('#move_noteTD').attr('title', "\u2022What does the candidate hope to accomplish before he moves to the next position? <br><br>\u2022What is his motivation for moving <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
+
+	    $('#compensation_noteTD').attr('title', "\u2022Sections must be filled.  Minimum of 15 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -288,8 +290,8 @@
 
 <table class="box" align="center">
 	<tr>
-		<td class='tdTitle'><p class='titles'>Move – Reason & Timing</p></td>
-		<td class='tdTitle'><p class='titles'>Compensation Breakdown & Desire</p></td>
+		<td id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='tdTitle'><p class='titles'>Move – Reason & Timing</p></td>
+		<td id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='tdTitle'><p class='titles'>Compensation Breakdown & Desire</p></td>
 		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
 	<tr>
 	<tr>
