@@ -4,11 +4,11 @@
 	$(function(){
 	    $('#personality_note').attr('placeholder', "What does the candidate do -what is his profession? \nWhat is his scope of experience in this profession? Is he specific or broad? \nIs the candidate intelligent and able to solve problems or not? \nCan the candidate manage problems or not? \nSections must be filled.  Minimum of 25 characters.");
 
-	    $('#career_note').attr('placeholder', "Can he manage a team and is he ambitious? \nSections must be filled.  Minimum of 25 characters.");
+	    $('#career_note').attr('placeholder', "Can he manage a team and is he ambitious? \nWhat is his vision for his future? What is the next step for him if and when he moves? \nWhat does he want from his next position \nSections must be filled.  Minimum of 25 characters.");
 
 	    $('#education_note').attr('placeholder', "How does he look? Is he confident and articulate? Does he have a powerful presence? \nSections must be filled.  Minimum of 15 characters.");
 
-	    $('#move_note').attr('placeholder', "What does the candidate hope to accomplish before he moves to the next position? \nSections must be filled.  Minimum of 25 characters.");
+	    $('#move_note').attr('placeholder', "What does the candidate hope to accomplish before he moves to the next position? \nWhat is his motivation for moving \nSections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -224,7 +224,7 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='width: 950px; height:22px; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='text-align: center; width: 950px; height:24px; margin-top:3px; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
