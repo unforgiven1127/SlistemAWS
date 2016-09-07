@@ -957,6 +957,7 @@ class CSl_eventEx extends CSl_event
         {
           if($key == 'past_note' || (isset($value) && !empty($value)))
           {
+            ChromePhp::log('HERE');
             /*if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
               return array('error' => __LINE__.' - Please fill all required areas at least 25 characters');
