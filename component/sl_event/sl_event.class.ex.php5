@@ -874,6 +874,15 @@ class CSl_eventEx extends CSl_event
       $content = purify_html(getValue('character'));
     }
 
+    if(isset(getValue('character')))
+    {
+      ChromePhp::log('single note');
+    }
+    if(isset(getValue('personality_note')))
+    {
+      ChromePhp::log('multi note');
+    }
+
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
     $candidate_id = (int)getValue(CONST_CP_PK);
