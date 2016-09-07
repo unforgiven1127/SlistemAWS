@@ -58,7 +58,7 @@
 	$('.formLabel').hide();
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
-	$('.fieldNameevent_type').remove();
+	$('.fieldNameevent_type').hide();
 
 	$('#formSubmitButton').click(function(){
 		var personality = $('#personality_note').val();
@@ -283,7 +283,6 @@
 <table class="box" align="center">
 	<tr>
 		<td
-
 		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>What Does he do/Skills?</p>
 		</td>
 
