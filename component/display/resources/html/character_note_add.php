@@ -204,7 +204,7 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='width: 1000px;' class="alert alert-danger">What does the candidate do -what is his profession?</div></td>
+		<td class="info"><div style='width: 900px;' class="alert alert-danger">What does the candidate do -what is his profession?</div></td>
 	</tr>
 	<tr>
 		<td class="info"><div class="alert alert-danger">What is his scope of experience in this profession? Is he specific or broad?</div></td>
