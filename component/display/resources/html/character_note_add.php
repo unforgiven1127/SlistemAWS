@@ -248,16 +248,26 @@
 
 </style>
 
+<script>
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='text-align: center; width: 950px; height:24px; padding-top:5px !important; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='text-align: center; width: 950px; height:24px; padding-top:7px !important; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
 
 <table class="box" align="center">
 	<tr>
-		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
+		<td 
+
+		onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="TEST"
+
+		style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
 		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
 		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
