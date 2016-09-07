@@ -2,9 +2,9 @@
 <script type="text/javascript">
 
 	$(function(){
-	    $('#personality_note').attr('placeholder', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_note').attr('placeholder', "\u2022What is the candidate's Profession \n\u2022What is the Scope of his Experience -specific or broad \n\u2022list any key words for skills \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#personality_noteTD').attr('title', "\u2022What does the candidate do -what is his profession? <br><br>\u2022What is his scope of experience in this profession? Is he specific or broad? <br><br>\u2022Is the candidate intelligent and able to solve problems or not? <br><br>\u2022Can the candidate manage problems or not? <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_noteTD').attr('title', "What is the candidate's Profession <br><br>\u2022What is the Scope of his Experience -specific or broad <br><br>\u2022list any key words for skills <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 
 	    $('#career_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022What is his vision for his future? What is the next step for him if and when he moves? \n\u2022What does he want from his next position \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
@@ -276,11 +276,11 @@
 	<tr>
 		<td
 
-		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Personality & Communication</p>
+		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>What Does he do/Skills?</p>
 		</td>
 
-		<td style='padding-top: 0px !important;' class='tdTitle'><p  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Career Expertise – Present, Past & Future</p></td>
-		<td style='padding-top: 0px !important;' class='tdTitle'><p id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Education & Training</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Management and Leadership</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Skills/Education/Compensation</p></td>
 	<tr>
 	<tr>
 		<td><textarea  id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
@@ -291,9 +291,9 @@
 
 <table class="box" align="center">
 	<tr>
-		<td class='tdTitle'><p id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Move – Reason & Timing</p></td>
-		<td class='tdTitle'><p id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='titles'>Compensation Breakdown & Desire</p></td>
-		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
+		<td class='tdTitle'><p id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Presence and Communication</p></td>
+		<td class='tdTitle'><p id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='titles'>Career Plan and Compensation</p></td>
+		<td class='tdTitle'><p class='titles'>Current Company Description/Recent Intros</p></td>
 	<tr>
 	<tr>
 		<td><textarea id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
