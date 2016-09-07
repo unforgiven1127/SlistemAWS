@@ -76,9 +76,11 @@
 		if(personality_length < 25)
 		{
 			$('#personality_note').css({'border-color':'red'});
-			$('#personality_note').css({'border-top-width':'3px'});
-			$('#personality_note').css({'border-bottom-width':'3px'});
-			$('#personality_note').css({'background-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'color':'red'});
+			$('#personality_note').css({'display':'inline-block'});
+			$('#personality_note').css({'line-height':'116px'});
+			$('#personality_note').css({'width':'100%'});
 		}
 		else
 		{
