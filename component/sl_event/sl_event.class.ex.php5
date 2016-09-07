@@ -874,8 +874,8 @@ class CSl_eventEx extends CSl_event
       $content = purify_html(getValue('character'));
     }
 
-    $a = getValue('content');
-    $b =getValue('character');
+    $a = getValue('character');
+    $b = getValue('personality_note');
 
     if(isset($a))
     {
