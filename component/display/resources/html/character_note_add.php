@@ -8,7 +8,7 @@
 
 	    $('#education_note').attr('placeholder', "\u2022How does he look? Is he confident and articulate? Does he have a powerful presence? \n\u2022Sections must be filled.  Minimum of 15 characters.");
 
-	    $('#move_note').attr('placeholder', "&#149;What does the candidate hope to accomplish before he moves to the next position? \n\u2022What is his motivation for moving \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#move_note').attr('placeholder', "\u2022What does the candidate hope to accomplish before he moves to the next position? \n\u2022What is his motivation for moving \n\u2022Sections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
