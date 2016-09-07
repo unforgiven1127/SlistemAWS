@@ -5054,6 +5054,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       $candidate_id = $nCandidatefk;
+      $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
 
       $validCharacterNotes = getSlNotes($candidate_id);
       $validCharacterNotesLength = count($validCharacterNotes);
@@ -5109,30 +5110,36 @@ class CSl_candidateEx extends CSl_candidate
         {
           if($key == 'past_note' || (isset($value) && !empty($value)))
           {
+
             /*if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
             {//<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - All areas should have at least 25 caracters');
+              return array('error' => __LINE__.' - Please fill all required areas at least 25 characters');
             }*/
-            if($key == 'personality_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'personality_note' && strlen($value) < 25)
             {
-              return array('error' => __LINE__.' - Personality & Communication should have 25 characters');
+              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
-            if($key == 'career_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'career_note' && strlen($value) < 25)
             {
-              return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 characters');
+              $errorArray .= 'Management and Leadership should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
             }
-            if($key == 'move_note' && strlen($value) < 25)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'move_note' && strlen($value) < 25)
             {
-              return array('error' => __LINE__.' - Move – Reason & Timing should have 25 characters');
+              $errorArray .= 'Skills/Education/Compensation should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
-            if($key == 'education_note' && strlen($value) < 15)//<p></p> icinde geldigi icin +7 ekledik
+            if($key == 'education_note' && strlen($value) < 15)
             {
-              return array('error' => __LINE__.' - Education & Training should have 15 characters');
+              $errorArray .= 'Presence and Communication should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 15)
             { //<p></p> icinde geldigi icin +7 ekledik
-              return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 characters');
+              $errorArray .= 'Career Plan and Compensation should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
             $characterNoteFlag  = true;
             if((isset($value) && !empty($value)))
@@ -5141,6 +5148,45 @@ class CSl_candidateEx extends CSl_candidate
               $title .= ": ";
               $value = str_replace('<p>','',$value);
               $characterNote .= $title.$value;
+            }
+
+          }
+          elseif($hiddenCharacter == 'newForm')
+          {
+            if($key == 'personality_note')
+            {
+              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
+            }
+            elseif($key == 'career_note')
+            {
+              $errorArray .= 'Management and Leadership should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
+            }
+            elseif($key == 'move_note')
+            {
+              $errorArray .= 'Skills/Education/Compensation should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
+            }
+
+            elseif($key == 'education_note')
+            {
+              $errorArray .= 'Presence and Communication should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
+            }
+            elseif($key == 'compensation_note')
+            { //<p></p> icinde geldigi icin +7 ekledik
+              $errorArray .= 'Career Plan and Compensation should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
+            }
+            elseif($key == 'past_note')
+            { //<p></p> icinde geldigi icin +7 ekledik
+              //$errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
+            }
+            else
+            {
+              return array('error' => __LINE__.' - Please fill all required areas.');
             }
           }
           else
