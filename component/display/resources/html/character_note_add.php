@@ -77,53 +77,65 @@
 		{
 			$('#personality_note').css({'border-color':'red'});
 			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			//$('#personality_note').css({'color':'red'});
 			$('#personality_note').css({'display':'inline-block'});
-			//$('#personality_note').css({'line-height':'116px'});
-			//$('#personality_note').css({'width':'100%'});
 		}
 		else
 		{
 			$('#personality_note').css({'border-color':'grey'});
 			$('#personality_note').css({'background':''});
-			//$('#personality_note').css({'color':''});
 			$('#personality_note').css({'background-color':''});
 		}
 
 		if(career_length < 25)
 		{
 			$('#career_note').css({'border-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'display':'inline-block'});
 		}
 		else
 		{
 			$('#career_note').css({'border-color':'grey'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'background-color':''});
 		}
 
 		if(education_length < 15)
 		{
 			$('#education_note').css({'border-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'display':'inline-block'});
 		}
 		else
 		{
 			$('#education_note').css({'border-color':'grey'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'background-color':''});
 		}
 
 		if(move_length < 25)
 		{
 			$('#move_note').css({'border-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'display':'inline-block'});
 		}
 		else
 		{
 			$('#move_note').css({'border-color':'grey'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'background-color':''});
 		}
 
 		if(compensation_length < 15)
 		{
 			$('#compensation_note').css({'border-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'display':'inline-block'});
 		}
 		else
 		{
 			$('#compensation_note').css({'border-color':'grey'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'background-color':''});
 		}
 	});
 
