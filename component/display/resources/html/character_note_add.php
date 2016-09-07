@@ -2,25 +2,25 @@
 <script type="text/javascript">
 
 	$(function(){
-	    $('#personality_note').attr('placeholder', "\u2022What is the candidate's Profession \n\u2022What is the Scope of his Experience -specific or broad \n\u2022list any key words for skills \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_note').attr('placeholder', "\u2022What is the candidate's Profession \n\u2022What is the Scope of his Experience -specific or broad \n\u2022list any key words for skills");//  \n\u2022Sections must be filled.  Minimum of 25 characters.
 
 	    $('#personality_noteTD').attr('title', "What is the candidate's Profession <br><br>\u2022What is the Scope of his Experience -specific or broad <br><br>\u2022List any key words for skills <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#career_note').attr('placeholder', "\u2022Is the candidate intelligent and able to solve problems, manage processes? \n\u2022Is the Candidate well presented and professional? \n\u2022Describe specific projects he has successfully overseen \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#career_note').attr('placeholder', "\u2022Is the candidate intelligent and able to solve problems, manage processes? \n\u2022Is the Candidate well presented and professional? \n\u2022Describe specific projects he has successfully overseen");// \n\u2022Sections must be filled.  Minimum of 25 characters.
 
 	    $('#career_noteTD').attr('title', "\u2022Is the candidate intelligent and able to solve problems, manage processes? <br><br>\u2022Is the Candidate well presented and professional? <br><br>\u2022Describe specific projects he has successfully overseen <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 
 
-	    $('#education_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022List any specific companies or industries he has professional relationships with \n\u2022How does his compensation break down, how much does he want to make if he changes \n\u2022What is his educational background \n\u2022Sections must be filled.  Minimum of 15 characters.");
+	    $('#education_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022List any specific companies or industries he has professional relationships with \n\u2022How does his compensation break down, how much does he want to make if he changes");//\n\u2022What is his educational background \n\u2022Sections must be filled.  Minimum of 15 characters.
 
 	    $('#education_noteTD').attr('title', "\u2022Can he manage a team and is he ambitious? <br><br>\u2022List any specific companies or industries he has professional relationships with <br><br>\u2022How does his compensation break down, how much does he want to make if he changes <br><br>\u2022What is his educational background <br><br>\u2022Sections must be filled.  Minimum of 15 characters.");
 
-	    $('#move_note').attr('placeholder', "\u2022How does he present? \n\u2022Is he confident, articulate, etc? \n\u2022Does the candidate have a powerful presence? \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#move_note').attr('placeholder', "\u2022How does he present? \n\u2022Is he confident, articulate, etc? \n\u2022Does the candidate have a powerful presence?");// \n\u2022Sections must be filled.  Minimum of 25 characters.
 
 	    $('#move_noteTD').attr('title', "\u2022How does he present? <br><br>\u2022Is he confident, articulate, etc? <br><br>\u2022What is his motivation for moving <br><br>\u2022Does the candidate have a powerful presence? <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 
 
-	    $('#compensation_note').attr('placeholder', "\u2022What is his vision for his Future?/What is the logical next step in his career evolution? \n\u2022Why does he want to change his job? \n\u2022What is his job change timing/what does he need to accomplish before he moves \n\u2022Sections must be filled.  Minimum of 15 characters.");
+	    $('#compensation_note').attr('placeholder', "\u2022What is his vision for his Future?/What is the logical next step in his career evolution? \n\u2022Why does he want to change his job? \n\u2022What is his job change timing/what does he need to accomplish before he moves");// \n\u2022Sections must be filled.  Minimum of 15 characters.
 
 	    $('#compensation_noteTD').attr('title', "\u2022What is his vision for his Future?/What is the logical next step in his career evolution? <br><br>\u2022Why does he want to change his job? <br><br>\u2022What is his job change timing/what does he need to accomplish before he moves <br><br>\u2022Sections must be filled.  Minimum of 15 characters.");
 
