@@ -865,7 +865,6 @@ class CSl_eventEx extends CSl_event
 
   private function _saveNote($psAction = '')
   {
-    ChromePhp::log('_saveNote');
     $oLogin = CDependency::getCpLogin();
     $event_type = filter_var(getValue('event_type'), FILTER_SANITIZE_STRING);
     $content = purify_html(getValue('content'));
@@ -923,8 +922,6 @@ class CSl_eventEx extends CSl_event
     $characterNoteArray['move_note'] = purify_html(getValue('move_note'));
     $characterNoteArray['compensation_note'] = purify_html(getValue('compensation_note'));
     $characterNoteArray['past_note'] = purify_html(getValue('past_note'));
-
-    ChromePhp::log($simpleCharacterNote);
 
     $skillValues = array();
     $skillValues['skill_ag'] = getValue('skill_ag');
