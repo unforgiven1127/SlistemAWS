@@ -874,11 +874,14 @@ class CSl_eventEx extends CSl_event
       $content = purify_html(getValue('character'));
     }
 
-    if(isset(getValue('character')))
+    $a = getValue('content');
+    $b =getValue('character');
+
+    if(isset($a))
     {
       ChromePhp::log('single note');
     }
-    if(isset(getValue('personality_note')))
+    if(isset($b))
     {
       ChromePhp::log('multi note');
     }
