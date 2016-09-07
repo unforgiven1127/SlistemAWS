@@ -28,7 +28,7 @@
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character assessment');
 	$('.formLabel').hide();
-	$('.formFieldRequired').hide();
+	//$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
 	$('.formFieldContainer').remove();
 
