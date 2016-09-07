@@ -6544,6 +6544,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _saveCompany($pnPk)
     {
+      ChromePhp::log($pnPk);
       if(!assert('is_integer($pnPk)'))
         return array('error' => 'bad parameters.');
 

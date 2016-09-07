@@ -63,6 +63,16 @@ class CCompany_sl3 extends CTemplate
 
        if($bAdmin)
        {
+         $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_COMP);
+         $sURL.= "&pnPk=".$pasData['pnPk'];
+         $sHTML.=  '&nbsp;
+          <a style="float:right; margin-right:20px;" align="right"  href="javascript:;" onclick="
+          var oConf = goPopup.getConfig();
+          oConf.width = 500;
+          oConf.height = 300;
+          goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); " title="Edit company" ><img style="height:18px; margin-top:5px;" src="/component/sl_candidate/resources/pictures/edit_nobg_24.png" /></a>';
+
+
          $sURL = $oPage->getAjaxUrl('555-001', MERGE_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
          $sURL.= "&cid=".$pasData['sl_companypk'];
          $sHTML.=  '&nbsp;
