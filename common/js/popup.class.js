@@ -315,6 +315,9 @@ var CPopup = function()
     var oPopup = this.getConfig('', 'msg');
     var prevent_multi_error = false;
 
+    var defaultW = '425';
+    var defaultH = '170;'
+
     if(pbModal)
       oPopup.modal = true;
 
@@ -339,9 +342,13 @@ var CPopup = function()
 
     if(pnWidth)
       oPopup.width = pnWidth;
+    else
+      oPopup.width = defaultW;
 
     if(pnHeight)
       oPopup.height = pnHeight;
+    else
+      oPopup.height = defaultH;
 
     oPopup.dialogClass+= ' popup_message';
     if (prevent_multi_error)
