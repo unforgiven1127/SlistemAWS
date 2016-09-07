@@ -4,13 +4,19 @@
 	$(function(){
 	    $('#personality_note').attr('placeholder', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#personality_noteTD').attr('title', "\u2022What does the candidate do -what is his profession? <br>\u2022What is his scope of experience in this profession? Is he specific or broad? <br>\u2022Is the candidate intelligent and able to solve problems or not? <br>\u2022Can the candidate manage problems or not? <br>\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_noteTD').attr('title', "\u2022What does the candidate do -what is his profession? <br><br>\u2022What is his scope of experience in this profession? Is he specific or broad? <br><br>\u2022Is the candidate intelligent and able to solve problems or not? <br><br>\u2022Can the candidate manage problems or not? <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 
 	    $('#career_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022What is his vision for his future? What is the next step for him if and when he moves? \n\u2022What does he want from his next position \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
+	    $('#career_noteTD').attr('title', "\u2022Can he manage a team and is he ambitious? <br><br>\u2022What is his vision for his future? What is the next step for him if and when he moves? <br><br>\u2022What does he want from his next position <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
+
 	    $('#education_note').attr('placeholder', "\u2022How does he look? Is he confident and articulate? Does he have a powerful presence? \n\u2022Sections must be filled.  Minimum of 15 characters.");
 
+	    $('#education_noteTD').attr('title', "\u2022How does he look? Is he confident and articulate? Does he have a powerful presence? <br><br>\u2022Sections must be filled.  Minimum of 15 characters.");
+
 	    $('#move_note').attr('placeholder', "\u2022What does the candidate hope to accomplish before he moves to the next position? \n\u2022What is his motivation for moving \n\u2022Sections must be filled.  Minimum of 25 characters.");
+
+	    $('#move_noteTD').attr('title', "\u2022What does the candidate hope to accomplish before he moves to the next position? <br><br>\u2022What is his motivation for moving <br><br>\u2022Sections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -270,8 +276,8 @@
 		onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""
 
 		style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Personality & Communication</p></td>
-		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
-		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
+		<td  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
+		<td id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
 		<td><textarea  id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
