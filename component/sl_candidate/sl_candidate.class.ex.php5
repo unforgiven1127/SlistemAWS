@@ -8911,8 +8911,9 @@ die();*/
 
         $escapedString = $this->_getModel()->dbEscapeString($sSearchString);
         $stringCount = strlen($escapedString);
-        ChromePhp::log($escapedString);
-        ChromePhp::log($stringCount);
+        $stringCount = $stringCount-2; // iki adet " geliyor o nedenle -2
+        //ChromePhp::log($escapedString);
+        //ChromePhp::log($stringCount);
 
         $poQB->addSelect('scom.*, IF(scom.name LIKE '.$this->_getModel()->dbEscapeString($sSearchString).', 1, 0) as exact_name ');
 
