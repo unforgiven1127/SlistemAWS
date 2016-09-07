@@ -12,7 +12,7 @@
 	}
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
-	$('.formFieldTitle').css({'padding-top':'100px'});
+	//$('.formFieldTitle').css({'padding-top':'100px'});
 	$('#topTextP').css({'margin-left':'-90px'});
 	$('#topTextP').css({'margin-bottom':'-10px'});
 	$('#topTextP2').css({'margin-left':'-90px'});
@@ -30,7 +30,7 @@
 	$('.formLabel').hide();
 	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
-	//$('.formFieldContainer').remove();
+	$('.fieldNameevent_type').remove();
 
 	$('#formSubmitButton').click(function(){
 		var personality = $('#personality_note').val();
