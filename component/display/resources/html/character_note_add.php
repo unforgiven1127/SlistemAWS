@@ -3,6 +3,12 @@
 
 	$(function(){
 	    $('#personality_note').attr('placeholder', "What does the candidate do -what is his profession? \nWhat is his scope of experience in this profession? Is he specific or broad? \nIs the candidate intelligent and able to solve problems or not? \nCan the candidate manage problems or not? \nSections must be filled.  Minimum of 25 characters.");
+
+	    $('#career_note').attr('placeholder', "Can he manage a team and is he ambitious? \nSections must be filled.  Minimum of 25 characters.");
+
+	    $('#education_note').attr('placeholder', "How does he look? Is he confident and articulate? Does he have a powerful presence? \nSections must be filled.  Minimum of 15 characters.");
+
+	    $('#move_note').attr('placeholder', "What does the candidate hope to accomplish before he moves to the next position? \nSections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -218,7 +224,7 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='width: 950px; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate\'s career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='width: 950px; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
@@ -230,9 +236,9 @@
 		<td style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
-		<td><textarea placeholder="What does the candidate do -what is his profession? <br> Sections must be filled.  Minimum of 25 characters." id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='career_note' name='career_note' class='inputs'><?php if(isset($career_note)){echo $career_note;} ?></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='education_note' name='education_note' class='inputs'><?php if(isset($education_note)){echo $education_note;} ?></textarea></td>
+		<td><textarea  id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
+		<td><textarea id='career_note' name='career_note' class='inputs'><?php if(isset($career_note)){echo $career_note;} ?></textarea></td>
+		<td><textarea id='education_note' name='education_note' class='inputs'><?php if(isset($education_note)){echo $education_note;} ?></textarea></td>
 	</tr>
 </table>
 
@@ -243,7 +249,7 @@
 		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
 	<tr>
 	<tr>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 25 characters." id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
+		<td><textarea id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
 		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'><?php if(isset($compensation_note)){echo $compensation_note;} ?></textarea></td>
 		<td><textarea placeholder="" id='past_note' name='past_note' class='inputs'><?php if(isset($past_note)){echo $past_note;} ?></textarea></td>
 	</tr>
