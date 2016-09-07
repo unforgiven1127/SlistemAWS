@@ -1,6 +1,10 @@
 
 <script type="text/javascript">
 
+	$(function(){
+	    $('textarea').attr('placeholder', "multiple \nline");
+	});
+
 	if($.browser.chrome) {
 	   $('.inputs').css({'width':'300px'});
 	   $('.inputsSkill').css({'width':'50px'});
@@ -214,7 +218,7 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='width: 950px; font-size:10pt;' class="alert alert-danger">Focus on your candidate\'s career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='width: 950px; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate\'s career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
