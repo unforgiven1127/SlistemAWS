@@ -279,8 +279,8 @@
 		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Personality & Communication</p>
 		</td>
 
-		<td  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Career Expertise – Present, Past & Future</p></td>
-		<td id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" style='padding-top: 0px !important;' class='tdTitle'><p class='titles'>Education & Training</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Career Expertise – Present, Past & Future</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Education & Training</p></td>
 	<tr>
 	<tr>
 		<td><textarea  id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>
@@ -291,8 +291,8 @@
 
 <table class="box" align="center">
 	<tr>
-		<td id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='tdTitle'><p class='titles'>Move – Reason & Timing</p></td>
-		<td id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='tdTitle'><p class='titles'>Compensation Breakdown & Desire</p></td>
+		<td class='tdTitle'><p id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Move – Reason & Timing</p></td>
+		<td class='tdTitle'><p id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='titles'>Compensation Breakdown & Desire</p></td>
 		<td class='tdTitle'><p class='titles'>Companies – Recently Met & Introduced</p></td>
 	<tr>
 	<tr>
