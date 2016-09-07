@@ -316,7 +316,7 @@ var CPopup = function()
     var prevent_multi_error = false;
 
     var defaultW = '425';
-    var defaultH = '170';
+    var defaultH = '250';
 
     if(pbModal)
       oPopup.modal = true;
