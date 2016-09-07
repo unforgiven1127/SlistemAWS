@@ -6427,6 +6427,9 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_integer($pnPk)'))
         return '';
 
+      $send_company_id = $_GET['pnPk'];
+      ChromePhp::log($send_company_id);
+
       $asCompanyData = array();
 
       if(empty($pnPk))
