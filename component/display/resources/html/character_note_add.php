@@ -2,13 +2,13 @@
 <script type="text/javascript">
 
 	$(function(){
-	    $('#personality_note').attr('placeholder', "What does the candidate do -what is his profession? \nWhat is his scope of experience in this profession? Is he specific or broad? \nIs the candidate intelligent and able to solve problems or not? \nCan the candidate manage problems or not? \nSections must be filled.  Minimum of 25 characters.");
+	    $('#personality_note').attr('placeholder', "&#149;What does the candidate do -what is his profession? \n&#149;What is his scope of experience in this profession? Is he specific or broad? \n&#149;Is the candidate intelligent and able to solve problems or not? \n&#149;Can the candidate manage problems or not? \n&#149;Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#career_note').attr('placeholder', "Can he manage a team and is he ambitious? \nWhat is his vision for his future? What is the next step for him if and when he moves? \nWhat does he want from his next position \nSections must be filled.  Minimum of 25 characters.");
+	    $('#career_note').attr('placeholder', "&#149;Can he manage a team and is he ambitious? \n&#149;What is his vision for his future? What is the next step for him if and when he moves? \n&#149;What does he want from his next position \n&#149;Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#education_note').attr('placeholder', "How does he look? Is he confident and articulate? Does he have a powerful presence? \nSections must be filled.  Minimum of 15 characters.");
+	    $('#education_note').attr('placeholder', "&#149;How does he look? Is he confident and articulate? Does he have a powerful presence? \n&#149;Sections must be filled.  Minimum of 15 characters.");
 
-	    $('#move_note').attr('placeholder', "What does the candidate hope to accomplish before he moves to the next position? \nWhat is his motivation for moving \nSections must be filled.  Minimum of 25 characters.");
+	    $('#move_note').attr('placeholder', "&#149;What does the candidate hope to accomplish before he moves to the next position? \n&#149;What is his motivation for moving \n&#149;Sections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -220,22 +220,30 @@
 	}
 
 	::-webkit-input-placeholder
-      {
-       padding-left:3px;
-       font-size: 11pt;
-      }
-      :-moz-placeholder { /* older Firefox*/
-       padding-left:3px;
-       font-size: 11pt;
-      }
-      ::-moz-placeholder { /* Firefox 19+ */
-       padding-left:3px;
-       font-size: 11pt;
-      }
-      :-ms-input-placeholder {
-       padding-left:3px;
-       font-size: 11pt;
-      }
+	{
+		padding-left:3px;
+		font-size: 7pt;
+		color :black;
+		font-style: italic;
+	}
+	:-moz-placeholder { /* older Firefox*/
+		padding-left:3px;
+		font-size: 7pt;
+		color :black;
+		font-style: italic;
+	}
+	::-moz-placeholder { /* Firefox 19+ */
+		padding-left:3px;
+		font-size: 7pt;
+		color :black;
+		font-style: italic;
+	}
+	:-ms-input-placeholder {
+		padding-left:3px;
+		font-size: 7pt;
+		color :black;
+		font-style: italic;
+	}
 
 
 </style>
@@ -268,7 +276,7 @@
 	<tr>
 	<tr>
 		<td><textarea id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
-		<td><textarea placeholder="Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'><?php if(isset($compensation_note)){echo $compensation_note;} ?></textarea></td>
+		<td><textarea placeholder="&#149;Sections must be filled.  Minimum of 15 characters." id='compensation_note' name='compensation_note' class='inputs'><?php if(isset($compensation_note)){echo $compensation_note;} ?></textarea></td>
 		<td><textarea placeholder="" id='past_note' name='past_note' class='inputs'><?php if(isset($past_note)){echo $past_note;} ?></textarea></td>
 	</tr>
 </table>
