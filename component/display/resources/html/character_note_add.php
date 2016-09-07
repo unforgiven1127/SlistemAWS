@@ -78,12 +78,14 @@
 			$('#personality_note').css({'border-color':'red'});
 			$('#personality_note').css({'border-top-width':'3px'});
 			$('#personality_note').css({'border-bottom-width':'3px'});
+			$('#personality_note').css({'background-color':'red'});
 		}
 		else
 		{
 			$('#personality_note').css({'border-color':'grey'});
 			$('#personality_note').css({'border-top-width':'1px'});
 			$('#personality_note').css({'border-bottom-width':'2px'});
+			$('#personality_note').css({'background-color':''});
 		}
 
 		if(career_length < 25)
