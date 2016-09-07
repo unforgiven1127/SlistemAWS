@@ -874,10 +874,7 @@ class CSl_eventEx extends CSl_event
       $content = purify_html(getValue('character'));
     }
 
-    $hiddenCharacter = getValue('hiddenCharacter');
-
-    ChromePhp::log($hiddenCharacter);
-
+    $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
 
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
@@ -1002,8 +999,41 @@ class CSl_eventEx extends CSl_event
           }
           else
           {
-            return array('error' => __LINE__.' - Please fill all required areas.');
+            if($key == 'personality_note')
+            {
+              $errorArray .= 'Personality & Communication should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
+            }
+            if($key == 'career_note')
+            {
+              $errorArray .= 'Career Expertise – Present, Past & Future should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
+            }
+            if($key == 'move_note')
+            {
+              $errorArray .= 'Move – Reason & Timing should have 25 characters<br>';
+              //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
+            }
+
+            if($key == 'education_note')
+            {
+              $errorArray .= 'Education & Training should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
+            }
+            if($key == 'compensation_note')
+            { //<p></p> icinde geldigi icin +7 ekledik
+              $errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
+              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
+            }
+            else
+            {
+              return array('error' => __LINE__.' - Please fill all required areas.');
+            }
           }
+          /*else
+          {
+            return array('error' => __LINE__.' - Please fill all required areas.');
+          }*/
         }
         if(!empty($errorArray))
         {
