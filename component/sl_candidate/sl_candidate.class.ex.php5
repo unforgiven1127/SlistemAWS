@@ -5151,44 +5151,6 @@ class CSl_candidateEx extends CSl_candidate
             }
 
           }
-          elseif($hiddenCharacter == 'newForm')
-          {
-            if($key == 'personality_note')
-            {
-              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
-              //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
-            }
-            elseif($key == 'career_note')
-            {
-              $errorArray .= 'Management and Leadership should have 25 characters<br>';
-              //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
-            }
-            elseif($key == 'move_note')
-            {
-              $errorArray .= 'Skills/Education/Compensation should have 25 characters<br>';
-              //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
-            }
-
-            elseif($key == 'education_note')
-            {
-              $errorArray .= 'Presence and Communication should have 15 characters<br>';
-              //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
-            }
-            elseif($key == 'compensation_note')
-            { //<p></p> icinde geldigi icin +7 ekledik
-              $errorArray .= 'Career Plan and Compensation should have 15 characters<br>';
-              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
-            }
-            elseif($key == 'past_note')
-            { //<p></p> icinde geldigi icin +7 ekledik
-              //$errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
-              //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
-            }
-            else
-            {
-              return array('error' => __LINE__.' - Please fill all required areas.');
-            }
-          }
           else
           {
             return array('error' => __LINE__.' - The candidate must have 5 character notes. Please fill all required areas.');
