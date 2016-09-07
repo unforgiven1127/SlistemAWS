@@ -195,8 +195,8 @@
 	}
 
 	.info{
-		margin-left: 20px;
-		margin-top: 5px;
+		padding-left: 20px;
+		padding-top: 5px;
 	}
 
 
