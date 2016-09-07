@@ -224,7 +224,7 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='text-align: center; width: 950px; height:24px; margin-top:3px; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
+		<td class="info"><div style='text-align: center; width: 950px; height:24px; padding-top:3px !important; font-weight: bold; font-size:12pt !important;' class="alert alert-danger">Focus on your candidate's career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
