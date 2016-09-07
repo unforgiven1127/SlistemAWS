@@ -315,8 +315,8 @@ var CPopup = function()
     var oPopup = this.getConfig('', 'msg');
     var prevent_multi_error = false;
 
-    var defaultW = '425px';
-    var defaultH = '170px';
+    var defaultW = '425';
+    var defaultH = '170';
 
     if(pbModal)
       oPopup.modal = true;
