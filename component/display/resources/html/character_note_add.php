@@ -23,6 +23,10 @@
 	    $('#compensation_note').attr('placeholder', "\u2022What is his vision for his Future?/What is the logical next step in his career evolution? \n\u2022Why does he want to change his job? \n\u2022What is his job change timing/what does he need to accomplish before he moves \n\u2022Sections must be filled.  Minimum of 15 characters.");
 
 	    $('#compensation_noteTD').attr('title', "\u2022What is his vision for his Future?/What is the logical next step in his career evolution? <br><br>\u2022Why does he want to change his job? <br><br>\u2022What is his job change timing/what does he need to accomplish before he moves <br><br>\u2022Sections must be filled.  Minimum of 15 characters.");
+
+	    $('#past_note').attr('placeholder', "\u2022How many people work in his company \n\u2022How many branches of divisions \n\u2022What's the situation at his company, good, bad, hiring, firing, etc.");
+
+	    $('#past_noteTD').attr('title', "\u2022How many people work in his company <br><br>\u2022How many branches of divisions <br><br>\u2022What's the situation at his company, good, bad, hiring, firing, etc.");
 	});
 
 	if($.browser.chrome) {
@@ -297,7 +301,7 @@
 	<tr>
 		<td class='tdTitle'><p id='move_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Presence and Communication</p></td>
 		<td class='tdTitle'><p id='compensation_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='titles'>Career Plan and Compensation</p></td>
-		<td class='tdTitle'><p class='titles'>Current Company Description/Recent Intros</p></td>
+		<td class='tdTitle'><p id='past_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""  class='titles'>Current Company Description/Recent Intros</p></td>
 	<tr>
 	<tr>
 		<td><textarea id='move_note' name='move_note' class='inputs'><?php if(isset($move_note)){echo $move_note;} ?></textarea></td>
