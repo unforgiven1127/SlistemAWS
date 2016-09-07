@@ -115,6 +115,15 @@
 	    border-collapse: collapse;
 	}
 
+	.box3 {
+	    /*margin: 0 auto !important;*/
+	    /*margin-top:15px !important;*/
+	    margin-left: -100px !important;
+	    border-collapse: collapse;
+	    margin-top: -50px;
+	    margin-bottom: 10px;
+	}
+
 	.titles{
 		font-size: 9pt;
 		text-align: center !important;
@@ -170,7 +179,7 @@
 
 </style>
 
-<table class="box" align="center">
+<table class="box3" align="center">
 	<tr>
 		<td>What does the candidate do -what is his profession?</td>
 	</tr>
