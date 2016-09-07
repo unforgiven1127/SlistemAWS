@@ -4,7 +4,7 @@
 	$(function(){
 	    $('#personality_note').attr('placeholder', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#personality_note').attr('title', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_noteTD').attr('title', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
 	    $('#career_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022What is his vision for his future? What is the next step for him if and when he moves? \n\u2022What does he want from his next position \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
@@ -265,7 +265,7 @@
 
 <table class="box" align="center">
 	<tr>
-		<td 
+		<td id='personality_noteTD'
 
 		onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title=""
 
