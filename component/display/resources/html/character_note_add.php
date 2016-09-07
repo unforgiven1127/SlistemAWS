@@ -2,7 +2,7 @@
 <script type="text/javascript">
 
 	$(function(){
-	    $('textarea').attr('placeholder', "multiple \nline");
+	    $('#personality_note').attr('placeholder', "What does the candidate do -what is his profession? \nWhat is his scope of experience in this profession? Is he specific or broad? \nIs the candidate intelligent and able to solve problems or not? \nCan the candidate manage problems or not? \nSections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
