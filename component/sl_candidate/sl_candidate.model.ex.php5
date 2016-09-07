@@ -273,6 +273,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
       $sQuery.= ' WHERE scom.sl_companypk IN ('.implode(',', $pvPk).') ';
 
     //echo $sQuery;
+    ChromePhp::log($sQuery);
     $oDbResult = $this->oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
     if(!$bRead)
