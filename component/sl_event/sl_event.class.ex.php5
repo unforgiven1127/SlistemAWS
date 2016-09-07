@@ -1006,28 +1006,28 @@ class CSl_eventEx extends CSl_event
               $errorArray .= 'Personality & Communication should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
-            if($key == 'career_note')
+            elseif($key == 'career_note')
             {
               $errorArray .= 'Career Expertise – Present, Past & Future should have 25 characters<br>';
               //return array('error' => __LINE__.' - Career Expertise – Present, Past & Future should have 25 caracters');
             }
-            if($key == 'move_note')
+            elseif($key == 'move_note')
             {
               $errorArray .= 'Move – Reason & Timing should have 25 characters<br>';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
-            if($key == 'education_note')
+            elseif($key == 'education_note')
             {
               $errorArray .= 'Education & Training should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
-            if($key == 'compensation_note')
+            elseif($key == 'compensation_note')
             { //<p></p> icinde geldigi icin +7 ekledik
               $errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
             }
-            if($key == 'past_note')
+            elseif($key == 'past_note')
             { //<p></p> icinde geldigi icin +7 ekledik
               //$errorArray .= 'Compensation Breakdown & Desire should have 15 characters<br>';
               //return array('error' => __LINE__.' - Compensation Breakdown & Desire should have 15 caracters');
