@@ -76,10 +76,12 @@
 		if(personality_length < 25)
 		{
 			$('#personality_note').css({'border-color':'red'});
+			$('#personality_note').css({'border-width':'3px'});
 		}
 		else
 		{
 			$('#personality_note').css({'border-color':'grey'});
+			$('#personality_note').css({'border-width':'1px'});
 		}
 
 		if(career_length < 25)
