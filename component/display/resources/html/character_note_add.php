@@ -194,39 +194,44 @@
 	          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
 	}
 
+	.info{
+		margin-left: 20px;
+		margin-top: 5px;
+	}
+
 
 </style>
 
 <table class="box3" align="center">
 	<tr>
-		<td class="alert alert-danger">What does the candidate do -what is his profession?</td>
+		<td class="alert alert-danger info">What does the candidate do -what is his profession?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">What is his scope of experience in this profession? Is he specific or broad?</td>
+		<td class="alert alert-danger info">What is his scope of experience in this profession? Is he specific or broad?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">Is the candidate intelligent and able to solve problems or not?</td>
+		<td class="alert alert-danger info">Is the candidate intelligent and able to solve problems or not?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">Can the candidate manage problems or not?</td>
+		<td class="alert alert-danger info">Can the candidate manage problems or not?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">What does the candidate hope to accomplish before he moves to the next position?</td>
+		<td class="alert alert-danger info">What does the candidate hope to accomplish before he moves to the next position?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">What is his vision for his future? What is the next step for him if and when he moves?</td>
+		<td class="alert alert-danger info">What is his vision for his future? What is the next step for him if and when he moves?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">How does he look? Is he confident and articulate? Does he have a powerful presence?</td>
+		<td class="alert alert-danger info">How does he look? Is he confident and articulate? Does he have a powerful presence?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">Can he manage a team and is he ambitious?</td>
+		<td class="alert alert-danger info">Can he manage a team and is he ambitious?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">Is he met (not placeable), notable (placeable) or top shelf (Absolutely placeable)?</td>
+		<td class="alert alert-danger info">Is he met (not placeable), notable (placeable) or top shelf (Absolutely placeable)?</td>
 	</tr>
 	<tr>
-		<td class="alert alert-danger">Focus on your candidate\'s career process and placability when you are writing comments. </td>
+		<td class="alert alert-danger info">Focus on your candidate\'s career process and placability when you are writing comments. </td>
 	</tr>
 
 </table>
