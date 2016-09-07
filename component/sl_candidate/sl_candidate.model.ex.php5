@@ -278,7 +278,7 @@ class CSl_candidateModelEx extends CSl_candidateModel
     $bRead = $oDbResult->readFirst();
     if(!$bRead)
       return array();
-
+    ChromePhp::log($oDbResult);
 
 
     $asCompany = array();

@@ -6430,13 +6430,14 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($_GET['cid']) && !empty($_GET['cid']))
       {
         $pnPk = $_GET['cid'];
-        //ChromePhp::log($pnPk);
       }
 
+      ChromePhp::log($pnPk);
       $asCompanyData = array();
 
       if(empty($pnPk))
       {
+        ChromePhp::log('HERE');
         $asCompanyData['level'] = 1;
         $asCompanyData['is_client'] = 0;
         $asCompanyData['name'] = '';
@@ -6459,6 +6460,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+        ChromePhp::log('HERE 2 else');
         $asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         ChromePhp::log($asCompanyData);
         if(empty($asCompanyData))
