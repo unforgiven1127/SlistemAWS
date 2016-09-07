@@ -85,8 +85,8 @@
 		else
 		{
 			$('#personality_note').css({'border-color':'grey'});
-			$('#personality_note').css({'border-top-width':'1px'});
-			$('#personality_note').css({'border-bottom-width':'2px'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'color':''});
 			$('#personality_note').css({'background-color':''});
 		}
 
