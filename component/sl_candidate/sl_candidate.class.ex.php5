@@ -6428,7 +6428,10 @@ class CSl_candidateEx extends CSl_candidate
         return '';
 
       $send_company_id = $_GET['pnPk'];
-      ChromePhp::log($send_company_id);
+      if(isset($send_company_id) && !empty($send_company_id))
+      {
+        $pnPk = $send_company_id;
+      }
 
       $asCompanyData = array();
 
