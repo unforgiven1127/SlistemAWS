@@ -998,9 +998,8 @@ class CSl_eventEx extends CSl_event
             }
 
           }
-          else
+          elseif($hiddenCharacter == 'newForm')
           {
-            ChromePhp::log($key);
             if($key == 'personality_note')
             {
               $errorArray .= 'Personality & Communication should have 25 characters<br>';
@@ -1037,10 +1036,10 @@ class CSl_eventEx extends CSl_event
               return array('error' => __LINE__.' - Please fill all required areas.');
             }
           }
-          /*else
+          else
           {
             return array('error' => __LINE__.' - Please fill all required areas.');
-          }*/
+          }
         }
         if(!empty($errorArray))
         {
