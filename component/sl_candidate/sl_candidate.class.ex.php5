@@ -5156,6 +5156,10 @@ class CSl_candidateEx extends CSl_candidate
             return array('error' => __LINE__.' - The candidate must have 5 character notes. Please fill all required areas.');
           }
         }
+        if(!empty($errorArray))
+        {
+          return array('error' => $errorArray);
+        }
         if($characterNoteFlag)
         {
           foreach ($skillValues as $key => $skill)
