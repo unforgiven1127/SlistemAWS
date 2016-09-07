@@ -12,7 +12,7 @@
 	}
 
 	$('.formFieldTitle').css({'margin-left':'-90px'});
-	$('.formFieldTitle').css({'margin-top':'100px'});
+	$('.formFieldTitle').css({'padding-top':'100px'});
 	$('#topTextP').css({'margin-left':'-90px'});
 	$('#topTextP').css({'margin-bottom':'-10px'});
 	$('#topTextP2').css({'margin-left':'-90px'});
