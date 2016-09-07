@@ -121,7 +121,7 @@
 	    /*margin-top:15px !important;*/
 	    margin-left: -100px !important;
 	    border-collapse: collapse;
-	    margin-top: -50px;
+	    /*margin-top: -50px;*/
 	    margin-bottom: 10px;
 	}
 
