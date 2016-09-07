@@ -6430,6 +6430,7 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($_GET['cid']) && !empty($_GET['cid']))
       {
         $pnPk = $_GET['cid'];
+        ChromePhp::log($pnPk);
       }
 
       $asCompanyData = array();
