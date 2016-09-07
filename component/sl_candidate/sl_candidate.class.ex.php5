@@ -8911,6 +8911,8 @@ die();*/
 
         $escapedString = $this->_getModel()->dbEscapeString($sSearchString);
         $stringCount = strlen($escapedString);
+        ChromePhp::log($escapedString);
+        ChromePhp::log($stringCount);
 
         $poQB->addSelect('scom.*, IF(scom.name LIKE '.$this->_getModel()->dbEscapeString($sSearchString).', 1, 0) as exact_name ');
 
@@ -8924,11 +8926,11 @@ die();*/
         $poQB->addWhere($implode);
         $poQB->addWhere(" scom.merged_company_id = '0' ");
 
-        $poQB->addOrder('exact_name,exact_name2 DESC, scom.name ASC');
+        $poQB->addOrder('exact_name, exact_name2 DESC, scom.name ASC');
       }
 
       $createdSql = $poQB->getSql();
-      ChromePhp::log($createdSql);
+      //ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
