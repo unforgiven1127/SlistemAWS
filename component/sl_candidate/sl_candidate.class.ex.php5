@@ -8909,8 +8909,12 @@ die();*/
           exit('['.implode(',', $asJson).']');
         }
 
+        $escapedString = $this->_getModel()->dbEscapeString($sSearchString);
+        $stringCount = strlen($escapedString);
 
         $poQB->addSelect('scom.*, IF(scom.name LIKE '.$this->_getModel()->dbEscapeString($sSearchString).', 1, 0) as exact_name ');
+
+        $poQB->addSelect('scom.*, IF(LEFT(scom.name , '.$stringCount.') LIKE '.$this->_getModel()->dbEscapeString($sSearchString).', 1, 0) as exact_name2 ');
 
         foreach($asWords as $nKey => $sWord)
           $asWords[$nKey] = '(scom.name LIKE '.$this->_getModel()->dbEscapeString($sWord.'%').' )';
@@ -8920,7 +8924,7 @@ die();*/
         $poQB->addWhere($implode);
         $poQB->addWhere(" scom.merged_company_id = '0' ");
 
-        $poQB->addOrder('exact_name DESC, scom.name ASC');
+        $poQB->addOrder('exact_name,exact_name2 DESC, scom.name ASC');
       }
 
       $createdSql = $poQB->getSql();
