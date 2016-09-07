@@ -6427,10 +6427,9 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_integer($pnPk)'))
         return '';
 
-      $send_company_id = $_GET['pnPk'];
-      if(isset($send_company_id) && !empty($send_company_id))
+      if(isset($_GET['cid']) && !empty($_GET['cid']))
       {
-        $pnPk = $send_company_id;
+        $pnPk = $_GET['cid'];
       }
 
       $asCompanyData = array();

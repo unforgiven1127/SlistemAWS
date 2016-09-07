@@ -64,7 +64,7 @@ class CCompany_sl3 extends CTemplate
        if($bAdmin)
        {
          $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_COMP);
-         $sURL.= "&pnPk=".$pasData['sl_companypk'];
+         $sURL.= "&cid=".$pasData['sl_companypk'];
          $sHTML.=  '&nbsp;
           <a style="float:right; margin-right:20px;" align="right"  href="javascript:;" onclick="
           var oConf = goPopup.getConfig();
