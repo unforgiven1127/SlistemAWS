@@ -2,13 +2,13 @@
 <script type="text/javascript">
 
 	$(function(){
-	    $('#personality_note').attr('placeholder', "&#149;What does the candidate do -what is his profession? \n&#149;What is his scope of experience in this profession? Is he specific or broad? \n&#149;Is the candidate intelligent and able to solve problems or not? \n&#149;Can the candidate manage problems or not? \n&#149;Sections must be filled.  Minimum of 25 characters.");
+	    $('#personality_note').attr('placeholder', "\u2022What does the candidate do -what is his profession? \n\u2022What is his scope of experience in this profession? Is he specific or broad? \n\u2022Is the candidate intelligent and able to solve problems or not? \n\u2022Can the candidate manage problems or not? \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#career_note').attr('placeholder', "&#149;Can he manage a team and is he ambitious? \n&#149;What is his vision for his future? What is the next step for him if and when he moves? \n&#149;What does he want from his next position \n&#149;Sections must be filled.  Minimum of 25 characters.");
+	    $('#career_note').attr('placeholder', "\u2022Can he manage a team and is he ambitious? \n\u2022What is his vision for his future? What is the next step for him if and when he moves? \n\u2022What does he want from his next position \n\u2022Sections must be filled.  Minimum of 25 characters.");
 
-	    $('#education_note').attr('placeholder', "&#149;How does he look? Is he confident and articulate? Does he have a powerful presence? \n&#149;Sections must be filled.  Minimum of 15 characters.");
+	    $('#education_note').attr('placeholder', "\u2022How does he look? Is he confident and articulate? Does he have a powerful presence? \n\u2022Sections must be filled.  Minimum of 15 characters.");
 
-	    $('#move_note').attr('placeholder', "&#149;What does the candidate hope to accomplish before he moves to the next position? \n&#149;What is his motivation for moving \n&#149;Sections must be filled.  Minimum of 25 characters.");
+	    $('#move_note').attr('placeholder', "&#149;What does the candidate hope to accomplish before he moves to the next position? \n\u2022What is his motivation for moving \n\u2022Sections must be filled.  Minimum of 25 characters.");
 	});
 
 	if($.browser.chrome) {
@@ -222,25 +222,25 @@
 	::-webkit-input-placeholder
 	{
 		padding-left:3px;
-		font-size: 7pt;
+		font-size: 9pt;
 		color :black;
 		font-style: italic;
 	}
 	:-moz-placeholder { /* older Firefox*/
 		padding-left:3px;
-		font-size: 7pt;
+		font-size: 9pt;
 		color :black;
 		font-style: italic;
 	}
 	::-moz-placeholder { /* Firefox 19+ */
 		padding-left:3px;
-		font-size: 7pt;
+		font-size: 9pt;
 		color :black;
 		font-style: italic;
 	}
 	:-ms-input-placeholder {
 		padding-left:3px;
-		font-size: 7pt;
+		font-size: 9pt;
 		color :black;
 		font-style: italic;
 	}
