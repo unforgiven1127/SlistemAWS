@@ -28,9 +28,9 @@
 	$('.formFieldTitle').css({'width':'935px'});
 	$('.formFieldTitle').html('Add character assessment');
 	$('.formLabel').hide();
-	//$('.formFieldRequired').hide();
+	$('.formFieldRequired').hide();
 	//$('.formLabel').css({'margin-left':'-156px'});
-	$('.formFieldContainer').remove();
+	//$('.formFieldContainer').remove();
 
 	$('#formSubmitButton').click(function(){
 		var personality = $('#personality_note').val();
