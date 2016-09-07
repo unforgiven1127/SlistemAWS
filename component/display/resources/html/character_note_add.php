@@ -214,34 +214,34 @@
 
 <table class="box3" align="center">
 	<tr>
-		<td class="info"><div style='width: 970px;' class="alert alert-danger">What does the candidate do -what is his profession?</div></td>
+		<td class="info"><div style='width: 950px;' class="alert alert-danger">What does the candidate do -what is his profession?</div></td>
 	</tr>
 	<tr>
-		<td class="info"><div class="alert alert-warning">What is his scope of experience in this profession? Is he specific or broad?</div></td>
+		<td class="info"><div class="alert alert-success">What is his scope of experience in this profession? Is he specific or broad?</div></td>
 	</tr>
 	<tr>
 		<td class="info"><div class="alert alert-danger">Is the candidate intelligent and able to solve problems or not?</div></td>
 	</tr>
 	<tr>
-		<td class="info"><div class="alert alert-warning">Can the candidate manage problems or not?</div></td>
+		<td class="info"><div class="alert alert-success">Can the candidate manage problems or not?</div></td>
 	</tr>
 	<tr>
 		<td class="info"><div class="alert alert-danger">What does the candidate hope to accomplish before he moves to the next position?</div></td>
 	</tr>
 	<tr>
-		<td class="info"><div class="alert alert-warning">What is his vision for his future? What is the next step for him if and when he moves?</div></td>
+		<td class="info"><div class="alert alert-success">What is his vision for his future? What is the next step for him if and when he moves?</div></td>
 	</tr>
 	<tr>
 		<td class="info"><div class="alert alert-danger">How does he look? Is he confident and articulate? Does he have a powerful presence?</div></td>
 	</tr>
 	<tr>
-		<td class="info"><div class="alert alert-warning">Can he manage a team and is he ambitious?</div></td>
+		<td class="info"><div class="alert alert-success">Can he manage a team and is he ambitious?</div></td>
 	</tr>
 	<tr>
 		<td class="info"><div class="alert alert-danger">Is he met (not placeable), notable (placeable) or top shelf (Absolutely placeable)?</div></td>
 	</tr>
 	<tr>
-		<td class="info"><div class="alert alert-warning">Focus on your candidate\'s career process and placability when you are writing comments.</div></td>
+		<td class="info"><div class="alert alert-success">Focus on your candidate\'s career process and placability when you are writing comments.</div></td>
 	</tr>
 
 </table>
