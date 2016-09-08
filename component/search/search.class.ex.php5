@@ -1255,6 +1255,9 @@ class CSearchEx extends CSearch
         insertAILog("complex_search",$sFieldName,$user_id);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
 
+        ChromePhp::log($sFieldName);
+        ChromePhp::log($vFieldValue);
+
         if(in_array($vFieldValue,$asStatusFlag))
         {
           $pipelineFlag = true;
@@ -1612,9 +1615,6 @@ class CSearchEx extends CSearch
       $oQB->setTitle('CpxSearch: '.implode(' , ', $asMessage['long']));
     else
       $oQB->setTitle('CpxSearch: Some data is missing');
-
-    //$ourSql = $oQB->getSql();
-    //ChromePhp::log($ourSql);
 
     return $oQB;
   }
