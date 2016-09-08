@@ -6488,25 +6488,32 @@ class CSl_candidateEx extends CSl_candidate
       $selectB = '';
       $selectC = '';
 
+      $selectA1 = "";
+      $selectB1 = "";
+      $selectC1 = "";
+
       ChromePhp::log($asCompanyData['level']);
 
       if($asCompanyData['level'] == 1)
       {
+        $selectA1 = "selected";
         $selectA = "selected";
       }
       if($asCompanyData['level'] == 2)
       {
+        $selectB1 = "selected";
         $selectB = "selected";
       }
       if($asCompanyData['level'] == 3)
       {
+        $selectC1 = "selected";
         $selectC = "selected";
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
-       $oForm->addoption('level', array('label' => 'A', 'value' => '1', 'selected' => $selectA));
-       $oForm->addoption('level', array('label' => 'B', 'value' => '2', 'selected' => $selectB));
-       $oForm->addoption('level', array('label' => 'C', 'value' => '3', 'selected' => $selectC));
+       $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
+       $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
+       $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', 'selected' => ''));
