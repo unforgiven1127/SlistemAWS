@@ -6504,9 +6504,9 @@ class CSl_candidateEx extends CSl_candidate
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
-       $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA));
-       $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB));
-       $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC));
+       $oForm->addoption('level', array('label' => 'A', 'value' => '1', 'selected' => $selectA));
+       $oForm->addoption('level', array('label' => 'B', 'value' => '2', 'selected' => $selectB));
+       $oForm->addoption('level', array('label' => 'C', 'value' => '3', 'selected' => $selectC));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', 'selected' => ''));
