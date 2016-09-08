@@ -855,7 +855,7 @@ div.list_action_container > div > div:first-child
 .businnessClass2
 {
   z-index: -100 !important;
-  position: relative;
+  position: fixed;
 }
 
 .tplCandi_status_play
