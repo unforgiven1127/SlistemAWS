@@ -6492,15 +6492,15 @@ class CSl_candidateEx extends CSl_candidate
 
       if($asCompanyData['level'] == 1)
       {
-        $selectA = " selected ";
+        $selectA = "selected";
       }
       if($asCompanyData['level'] == 2)
       {
-        $selectB = "  selected ";
+        $selectB = "selected";
       }
       if($asCompanyData['level'] == 3)
       {
-        $selectC = " selected ";
+        $selectC = "selected";
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
