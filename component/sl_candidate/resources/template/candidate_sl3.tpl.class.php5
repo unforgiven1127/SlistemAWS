@@ -208,7 +208,6 @@ class CCandidate_sl3 extends CTemplate
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start second data section
     $sHTML.= $this->coDisplay->getBlocStart('', array('style' => 'z-index: 6666 !important;','class' => 'candiTopSection businnessClass'.$sAdminClass));
-      $sHTML.= '<img src="http://www.placehold.it/200x200">';
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass2'.$sAdminClass));
 
         $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));

@@ -849,8 +849,8 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/levelAclient.png') no-repeat center 5px;
   background-size: 520px;
-  z-index: 6666 !important;
-  position: relative;
+  z-index: 100 !important;
+  position: fixed;
 }
 
 .tplCandi_status_play
