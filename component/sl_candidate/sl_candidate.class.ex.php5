@@ -6463,6 +6463,7 @@ class CSl_candidateEx extends CSl_candidate
 
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
+        $asCompanyData = $asCompanyData[0];
         ChromePhp::log($asCompanyData);
         if(empty($asCompanyData))
           return 'Could not find the company.';
