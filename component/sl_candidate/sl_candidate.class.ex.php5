@@ -8987,11 +8987,11 @@ die();*/
         $poQB->addWhere($implode);
         $poQB->addWhere(" scom.merged_company_id = '0' ");
 
-        $poQB->addOrder('exact_name, exact_name2 DESC, scom.name ASC');
+        $poQB->addOrder('exact_name DESC, exact_name2 DESC, scom.name ASC');
       }
 
       $createdSql = $poQB->getSql();
-      ChromePhp::log($createdSql);
+      //ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
