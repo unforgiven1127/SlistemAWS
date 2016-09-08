@@ -221,21 +221,21 @@ class CCandidate_sl3 extends CTemplate
         }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
-          $sHTML.= $this->coDisplay->getBloc('', 'company', array('style' => 'background: transparent !important;','class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'company', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
         $sValue = $this->_getShortenText($pasCandidateData['department'], 24);//26, 25
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
-          $sHTML.= $this->coDisplay->getBloc('', 'department', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'department', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
         $sValue = $this->_getShortenText($pasCandidateData['title'], 35);
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
-          $sHTML.= $this->coDisplay->getBloc('', 'title', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'title', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
@@ -275,7 +275,7 @@ class CCandidate_sl3 extends CTemplate
         }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
-          $sHTML.= $this->coDisplay->getBloc('', 'salary', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'salary', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sSalary, $asOption);
         $sHTML.= $this->coDisplay->getBlocEnd();
 
@@ -286,7 +286,7 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['industry'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['industry']).'" onmouseover="tp(this);">'.$pasCandidateData['industry'].'</div>';
         }
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last'));
-          $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['industry'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
@@ -296,7 +296,7 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['occupation'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
         }
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
-          $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label'));
+          $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['occupation'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
