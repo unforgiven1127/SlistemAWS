@@ -848,6 +848,7 @@ div.list_action_container > div > div:first-child
 .businnessClass
 {
   background: transparent url('/common/pictures/slistem/levelAclient.png') no-repeat center 5px;
+  background-size: 520px;
 }
 
 .tplCandi_status_play
