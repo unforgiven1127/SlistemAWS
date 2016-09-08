@@ -831,23 +831,19 @@ div.list_action_container > div > div:first-child
 
 .clientLevelA
 {
-  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
-  height: 20px;
+  background: transparent url('/common/pictures/slistem/levelA_18.png') no-repeat center 5px;
 }
 .clientLevelB
 {
-  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
-  height: 20px;
+  background: transparent url('/common/pictures/slistem/levelB_18.png') no-repeat center 5px;
 }
 .clientLevelC
 {
-  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
-  height: 20px;
+  background: transparent url('/common/pictures/slistem/levelC_18.png') no-repeat center 5px;
 }
 .clientLevelH
 {
-  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
-  height: 20px;
+  background: transparent url('/common/pictures/slistem/levelH_18.png') no-repeat center 5px;
 }
 
 .tplCandi_status_play
