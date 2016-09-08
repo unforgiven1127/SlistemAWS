@@ -6492,8 +6492,6 @@ class CSl_candidateEx extends CSl_candidate
       $selectB1 = "";
       $selectC1 = "";
 
-      ChromePhp::log($asCompanyData['level']);
-
       if($asCompanyData['level'] == 1)
       {
         $selectA1 = "selected";
