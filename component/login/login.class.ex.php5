@@ -2260,7 +2260,7 @@ class CLoginEx extends CLogin
    */
   public function _getLogout($pbIsAjax = false, $pbRedirect = true)
   {
-
+    ChromePhp::log('_getLogout');
     $oDb = CDependency::getComponentByName('database');
     $sQuery = 'UPDATE login SET log_hash = \'\' WHERE loginpk = '.$this->casUserData['pk'];
     $oDb->executeQuery($sQuery);

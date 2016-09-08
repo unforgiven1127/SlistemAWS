@@ -4385,6 +4385,9 @@ function check_session_expiry()
   if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $expiry_time))
   {
     $logout = true;
+    //$url = 'https://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+    //header($url);
+    //exit();
   }
   $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
