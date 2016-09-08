@@ -579,7 +579,7 @@ class CNotificationEx extends CNotification
         }
       }
       $sendCCString = rtrim($sendCCString, ";");
-
+ChromePhp::log($sendCCString);
       if(empty($sRecipient) || empty($sEmail))
       {
         assert('false; //no correct recipient found. ['.$id.' / '.$sRecipient.' / '.$sEmail.']');
