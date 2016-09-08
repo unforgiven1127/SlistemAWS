@@ -974,13 +974,13 @@ class CSl_eventEx extends CSl_event
             }
             if($key == 'move_note' && strlen($value) < 25)
             {
-              $errorArray .= 'Skills/Education/Compensation should have 25 characters<br>';
+              $errorArray .= 'Presence and Communication should have 25 characters<br>';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
             if($key == 'education_note' && strlen($value) < 15)
             {
-              $errorArray .= 'Presence and Communication should have 15 characters<br>';
+              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 15)
@@ -1012,13 +1012,13 @@ class CSl_eventEx extends CSl_event
             }
             elseif($key == 'move_note')
             {
-              $errorArray .= 'Skills/Education/Compensation should have 25 characters<br>';
+              $errorArray .= 'Presence and Communication should have 25 characters<br>';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
             elseif($key == 'education_note')
             {
-              $errorArray .= 'Presence and Communication should have 15 characters<br>';
+              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             elseif($key == 'compensation_note')
