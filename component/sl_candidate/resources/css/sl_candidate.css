@@ -852,6 +852,11 @@ div.list_action_container > div > div:first-child
   z-index: 100 !important;
   position: relative;
 }
+.businnessClass2
+{
+  z-index: -100 !important;
+  position: relative;
+}
 
 .tplCandi_status_play
 {
