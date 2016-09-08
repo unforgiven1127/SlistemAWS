@@ -207,7 +207,8 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start second data section
-      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass'.$sAdminClass));
+    $sHTML.= $this->coDisplay->getBlocStart('', array('style' => 'z-index: 6666 !important;','class' => 'candiTopSection businnessClass'.$sAdminClass));
+      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass2'.$sAdminClass));
 
         $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));
         $sHTML.= $this->coDisplay->getFloatHack();
@@ -301,6 +302,7 @@ class CCandidate_sl3 extends CTemplate
 
 
       $sHTML.= $this->coDisplay->getBlocEnd();
+    $sHTML.= $this->coDisplay->getBlocEnd();
       //start third data section
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$sAdminClass));
 
