@@ -831,22 +831,22 @@ div.list_action_container > div > div:first-child
 
 .clientLevelA
 {
-  background: transparent url('/common/pictures/slistem/levelA.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
   height: 20px;
 }
 .clientLevelB
 {
-  background: transparent url('/common/pictures/slistem/levelB.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
   height: 20px;
 }
 .clientLevelC
 {
-  background: transparent url('/common/pictures/slistem/levelC.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
   height: 20px;
 }
 .clientLevelH
 {
-  background: transparent url('/common/pictures/slistem/levelH.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/levelA_20.png') no-repeat center 5px;
   height: 20px;
 }
 
