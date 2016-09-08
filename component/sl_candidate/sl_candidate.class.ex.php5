@@ -6459,7 +6459,6 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
         $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor neden anlamadim
@@ -8992,7 +8991,7 @@ die();*/
       }
 
       $createdSql = $poQB->getSql();
-      //ChromePhp::log($createdSql);
+      ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
