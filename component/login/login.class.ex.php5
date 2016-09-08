@@ -2281,7 +2281,10 @@ class CLoginEx extends CLogin
       return array('url' => $sUrl); //'message' => 'login ok',
 
     if($pbRedirect)
-      return $this->_redirectUser($sUrl);
+    {
+      return array('url' => $sUrl); //'message' => 'login ok',
+      //return $this->_redirectUser($sUrl); // deneme amacli kaldirdik
+    }
     else
       return true;
   }
