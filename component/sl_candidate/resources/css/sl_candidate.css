@@ -829,6 +829,23 @@ div.list_action_container > div > div:first-child
   background: transparent url('/common/pictures/slistem/candi_client_16.png') no-repeat center 5px;
 }
 
+.clientLevelA
+{
+  background: transparent url('/common/pictures/slistem/levelA.png') no-repeat center 5px;
+}
+.clientLevelB
+{
+  background: transparent url('/common/pictures/slistem/levelB.png') no-repeat center 5px;
+}
+.clientLevelC
+{
+  background: transparent url('/common/pictures/slistem/levelC.png') no-repeat center 5px;
+}
+.clientLevelH
+{
+  background: transparent url('/common/pictures/slistem/levelH.png') no-repeat center 5px;
+}
+
 .tplCandi_status_play
 {
   background: transparent url('/component/sl_candidate/resources/pictures/status/status_play.png') no-repeat center 0;

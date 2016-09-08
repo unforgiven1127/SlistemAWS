@@ -3079,6 +3079,30 @@ var_dump($query);*/
     return $row;
   }
 
+  function getLevelIcon($level)
+  {
+    if($level == 1)
+    {
+      return 'clientLevelA';
+    }
+    else if($level == 2)
+    {
+      return 'clientLevelB';
+    }
+    else if($level == 3)
+    {
+      return 'clientLevelC';
+    }
+    else if($level == 4)
+    {
+      return 'clientLevelH';
+    }
+    else
+    {
+      return '';
+    }
+  }
+
   function getPositionInformation($position_id)
   {
     $oDB = CDependency::getComponentByName('database');
