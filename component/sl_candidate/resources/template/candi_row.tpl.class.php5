@@ -57,6 +57,7 @@ class CCandi_row extends CTemplate
     $asOption = array('class' => $pasColumnParam[2]['tag'].' tplCandiRow_continuous clickable', 'onclick' => $sViewJS);
     if($pasData['cp_client'] || $pasData['is_client'])
     {
+      ChromePhp::log($pasData);
       $asOption['class'].= ' tplCandi_client';
       $asOption['title'] = 'Work for a client company';
       $asOption['sort_value'] = '1';
