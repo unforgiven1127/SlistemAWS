@@ -6437,7 +6437,6 @@ class CSl_candidateEx extends CSl_candidate
 
       if(empty($pnPk))
       {
-        ChromePhp::log('HERE');
         $asCompanyData['level'] = 1;
         $asCompanyData['is_client'] = 0;
         $asCompanyData['name'] = '';
@@ -6463,8 +6462,7 @@ class CSl_candidateEx extends CSl_candidate
 
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
-        $asCompanyData = $asCompanyData[0];
-        ChromePhp::log($asCompanyData);
+        $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor neden anlamadim
         if(empty($asCompanyData))
           return 'Could not find the company.';
       }
