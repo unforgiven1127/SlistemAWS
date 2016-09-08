@@ -78,6 +78,7 @@
   padding: 0 0 0 4px;
   line-height: 20px;
   height: 20px;
+  z-index: -1 !important;
 }
 .candi_detail_row div.candi_detail_label
 {
