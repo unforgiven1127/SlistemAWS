@@ -5128,7 +5128,7 @@ class CSl_candidateEx extends CSl_candidate
             }
             if($key == 'move_note' && strlen($value) < 25)
             {
-              $errorArray .= 'Presence and Communication should have 15 characters<br>';
+              $errorArray .= 'Presence and Communication should have 25 characters<br>';
               //return array('error' => __LINE__.' - Move – Reason & Timing should have 25 caracters');
             }
 
