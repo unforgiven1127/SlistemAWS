@@ -1244,7 +1244,7 @@ class CSearchEx extends CSearch
     $oLogin = CDependency::getCpLogin();
     $user_id = $oLogin->getUserPk();
 
-    $allSalesArray = array(198,197,196,152,144,143,77,76,66);// sales iceren tum occupationlar.
+    $allSalesArray = '(198,197,196,152,144,143,77,76,66)';// sales iceren tum occupationlar.
 
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
     {
@@ -1286,10 +1286,12 @@ class CSearchEx extends CSearch
         {
           //dump('debug: field ['.$sFieldName.'['.$nRowNumber.']'.'] empty');
         }
-        /*else if($allSalesFlag)
+        else if($allSalesFlag)
         {
-
-        }*/
+          $oQB->addJoin('inner', 'sl_occupation', 'socc', 'socc.sl_occupationpk = scpr.occupationfk');
+          //"INNER JOIN sl_occupation as socc ON (socc.sl_occupationpk = scpr.occupationfk) "
+          $oQB->addWhere("socc.sl_occupationpk in".$allSalesArray);
+        }
         else if($pipelineFlag)
         {
           $oLogin = CDependency::getCpLogin();
