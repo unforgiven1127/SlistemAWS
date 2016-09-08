@@ -845,6 +845,10 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/levelH_18.png') no-repeat center 5px;
 }
+.businnessClass
+{
+  background: transparent url('/common/pictures/slistem/levelAclient.png') no-repeat center 5px;
+}
 
 .tplCandi_status_play
 {
