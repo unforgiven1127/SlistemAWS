@@ -206,11 +206,12 @@
 	.inputsSkill{
 		/*width:50px !important;*/
 		margin-top: -50px;
+		text-align: center !important;
 
 	}
 	input[type='number']::-webkit-inner-spin-button,
 	input[type='number']::-webkit-outer-spin-button {
-		text-align: center;
+		text-align: center!important;
     	opacity: 1;
 	}
 
