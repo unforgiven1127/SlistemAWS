@@ -3658,6 +3658,22 @@ var_dump($query);*/
 
   }
 
+  function getCompanyInfo($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT scom.*, sind.label as indus_name, sind.sl_industrypk FROM sl_company as scom
+        LEFT JOIN sl_attribute as satt ON (satt.`type` = 'cp_indus' AND satt.itemfk = scom.sl_companypk)
+        LEFT JOIN sl_industry as sind ON (sind.sl_industrypk = satt.attributefk)
+        WHERE scom.sl_companypk = '".$company_id."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function securityMailControl($user_id,$type)
   {
     $oDB = CDependency::getComponentByName('database');

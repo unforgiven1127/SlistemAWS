@@ -6460,10 +6460,9 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        ChromePhp::log('HERE 2 else');
-        $test = $this->_getModel()->getCompanyData($pnPk, true);
-        ChromePhp::log($test);
-        $asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
+
+        //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
+        $asCompanyData = getCompanyInfo($pnPk);
         ChromePhp::log($asCompanyData);
         if(empty($asCompanyData))
           return 'Could not find the company.';
