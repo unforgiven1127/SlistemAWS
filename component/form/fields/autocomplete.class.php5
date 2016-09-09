@@ -29,6 +29,7 @@ class CAutocomplete extends CField
 
   public function getDisplay()
   {
+    ChromePhp::log('auto complete class');
     //------------------------------------
     //Form component manages country and city selectors, for any other element, components have to provide custom url.
     if(!isset($this->casFieldParams['url']) || empty($this->casFieldParams['url']))

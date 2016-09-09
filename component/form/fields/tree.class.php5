@@ -234,7 +234,7 @@ class CTree extends CField
 
   private function _insertChildInTree(&$paasTree, $pasOption)
   {
-    ChromePhp::log('_insertChildInTree');
+
     $vParent = $pasOption['parent'];
     $vCurrentId = $pasOption['id'];
 
