@@ -44,9 +44,11 @@
 
 .candiTopSectLeft .candi_detail_row
 {
-  /*border-bottom: 1px solid #DEDEDE;*/
+  border-bottom: 1px solid #DEDEDE;
   float: left;
   margin: 0 0 0 15px;
+  position: relative;
+  z-index: -1;
 }
 .candiTopSectLeft .candi_detail_row.right
 {
