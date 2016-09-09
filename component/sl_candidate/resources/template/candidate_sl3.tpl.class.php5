@@ -207,10 +207,36 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start second data section
-      ChromePhp::log($pasCandidateData);
 
-    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection deletedClass'.$sAdminClass));
-      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass'.$sAdminClass));
+    $company_id = $pasCandidateData['sl_companypk'];
+    $company_info = getCompanyInformation($company_id);
+    $level = $company_info['level'];
+
+    $addClass = '';
+    $deletedClass = '';
+    if($level == 1)
+    {
+      $addClass = ' businnessClassA ';
+      $deletedClass = ' deletedClass ';
+    }
+    if($level == 2)
+    {
+      $addClass = ' businnessClassB ';
+      $deletedClass = ' deletedClass ';
+    }
+    if($level == 3)
+    {
+      $addClass = ' businnessClassC ';
+      $deletedClass = ' deletedClass ';
+    }
+    if($level == 4)
+    {
+      $addClass = ' businnessClassH ';
+      $deletedClass = ' deletedClass ';
+    }
+
+    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$deletedClass.$sAdminClass));
+      $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$addClass.$sAdminClass));
 
         $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));
         $sHTML.= $this->coDisplay->getFloatHack();
