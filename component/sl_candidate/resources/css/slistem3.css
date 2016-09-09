@@ -44,10 +44,9 @@
 
 .candiTopSectLeft .candi_detail_row
 {
-  border-bottom: 1px solid #DEDEDE;
+  /*border-bottom: 1px solid #DEDEDE;*/
   float: left;
   margin: 0 0 0 15px;
-  z-index: -100;
 }
 .candiTopSectLeft .candi_detail_row.right
 {
