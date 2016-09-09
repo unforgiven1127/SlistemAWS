@@ -207,7 +207,7 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start second data section
-    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass deleted'.$sAdminClass));
+    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection deletedClass'.$sAdminClass));
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass2'.$sAdminClass));
 
         $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));
