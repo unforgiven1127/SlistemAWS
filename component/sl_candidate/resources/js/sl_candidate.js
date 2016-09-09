@@ -3,47 +3,58 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
 {
   //alert(serverName);
   //psIdToShow acilacak olan tab
-  if(poElement)
+
+  if (confirm('Are you sure you want to save this thing into the database?'))
   {
-    //remove selected links adn select current clicked one
-    $(poElement).siblings('.selected').removeClass('selected');
-    $(poElement).addClass('selected');
-
-    var oContainer =  $(poElement).closest('.candiTabContainer');
-    if(typeof candidate_id != 'undefined' && candidate_id != null)
+    if(poElement)
     {
-      //alert(candidate_id);
-      //alert(psIdToShow);
-      var serverName = window.location.host;
-      var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
-      //alert(url);
-      //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
-      AjaxRequest(url, '', '', '', '', '', "");
+      //remove selected links adn select current clicked one
 
-      //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
-      //$get(url);
-      //test = refresh_candi(candidate_id,'','contactDetails');
-      //alert(test);
+      $(poElement).siblings('.selected').removeClass('selected');
+      $(poElement).addClass('selected');
 
-    }
-
-    //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
-    if(!psContainer)
-      psContainer = '';
-
-    var oElement = $(psContainer+' .aTabContent:visible', oContainer);
-
-    $(oElement).fadeOut(0, function()
-    {
-      $('#'+psIdToShow, oContainer).fadeIn(325, function()
+      var oContainer =  $(poElement).closest('.candiTabContainer');
+      if(typeof candidate_id != 'undefined' && candidate_id != null)
       {
-        $(this).mCustomScrollbar('update');
-        //$(this).css('border', '1px solid red');
+        //alert(candidate_id);
+        //alert(psIdToShow);
+        var serverName = window.location.host;
+        var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
+        //alert(url);
+        //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
+        AjaxRequest(url, '', '', '', '', '', "");
+
+        //AjaxRequest(url, 'transparent light_animation', '', 'topCandidateSection', '', '', "initTopPageSection();");
+        //$get(url);
+        //test = refresh_candi(candidate_id,'','contactDetails');
+        //alert(test);
+
+      }
+
+      //fetch the tabContent elements. all if no psContainer is specified, or the ones from a specific container
+      if(!psContainer)
+        psContainer = '';
+
+      var oElement = $(psContainer+' .aTabContent:visible', oContainer);
+
+      $(oElement).fadeOut(0, function()
+      {
+        $('#'+psIdToShow, oContainer).fadeIn(325, function()
+        {
+          $(this).mCustomScrollbar('update');
+          //$(this).css('border', '1px solid red');
+        });
       });
-    });
+    }
+    else
+      $('#'+psIdToShow).fadeIn(325);
   }
   else
-    $('#'+psIdToShow).fadeIn(325);
+  {
+  // Do nothing!
+  }
+
+  
 
   return true;
 }
