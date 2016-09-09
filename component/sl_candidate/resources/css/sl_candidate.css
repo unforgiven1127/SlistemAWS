@@ -850,7 +850,7 @@ div.list_action_container > div > div:first-child
   background: transparent url('/common/pictures/slistem/levelAclient.png') no-repeat center 5px;
   background-size: 350px;
   z-index: 100 !important;
-  padding-top: 20px;
+  margin-top: 20px;
 }
 .businnessClass2
 {
