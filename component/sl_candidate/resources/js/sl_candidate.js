@@ -4,7 +4,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
   //alert(serverName);
   //psIdToShow acilacak olan tab
 
-  if (confirm('Are you sure you want to save this thing into the database?'))
+  if (confirm('This candidate works for a client are you sure you want to see the contact information?'))
   {
     if(poElement)
     {
