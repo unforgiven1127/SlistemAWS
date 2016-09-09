@@ -234,6 +234,7 @@ class CTree extends CField
 
   private function _insertChildInTree(&$paasTree, $pasOption)
   {
+    ChromePhp::log('_insertChildInTree');
     $vParent = $pasOption['parent'];
     $vCurrentId = $pasOption['id'];
 
@@ -270,7 +271,6 @@ class CTree extends CField
 
   private function _insertNewNode(&$paasTree, $pasOption)
   {
-    ChromePhp::log('_insertNewNode');
     $vCurrentId = $pasOption['id'];
 
     $paasTree[$vCurrentId]['def'] = $pasOption;
