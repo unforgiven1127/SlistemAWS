@@ -47,7 +47,7 @@
   border-bottom: 1px solid #DEDEDE;
   float: left;
   margin: 0 0 0 15px;
-  position:sticky;
+  position:static;
   z-index: -1;
 }
 .candiTopSectLeft .candi_detail_row.right
