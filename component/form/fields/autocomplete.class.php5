@@ -94,7 +94,7 @@ class CAutocomplete extends CField
      else
        $sJavascript = '$(document).ready(function(){
          $("#'.$this->casFieldParams['id'].'").tokenInput("'.$this->casFieldParams['url'].'" ';
-
+ChromePhp::log('TEST');
      $sJavascript.= '
        ,{
        noResultsText: "no results found",
