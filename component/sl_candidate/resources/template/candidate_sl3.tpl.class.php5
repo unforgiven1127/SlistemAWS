@@ -234,7 +234,7 @@ class CCandidate_sl3 extends CTemplate
 
         $sValue = $this->_getShortenText($pasCandidateData['title'], 35);
 
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row2'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
           $sHTML.= $this->coDisplay->getBloc('', 'title', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
