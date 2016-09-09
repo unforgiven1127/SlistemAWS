@@ -216,26 +216,30 @@ class CCandidate_sl3 extends CTemplate
 
     $addClass = '';
     $deletedClass = '';
-    if($level == 1)
+    if($pasCandidateData['cp_client'] || $pasCandidateData['is_client'])
     {
-      $addClass = ' businnessClassA ';
-      $deletedClass = ' deletedClass ';
+      if($level == 1)
+      {
+        $addClass = ' businnessClassA ';
+        $deletedClass = ' deletedClass ';
+      }
+      if($level == 2)
+      {
+        $addClass = ' businnessClassB ';
+        $deletedClass = ' deletedClass ';
+      }
+      if($level == 3)
+      {
+        $addClass = ' businnessClassC ';
+        $deletedClass = ' deletedClass ';
+      }
+      if($level == 4)
+      {
+        $addClass = ' businnessClassH ';
+        $deletedClass = ' deletedClass ';
+      }
     }
-    if($level == 2)
-    {
-      $addClass = ' businnessClassB ';
-      $deletedClass = ' deletedClass ';
-    }
-    if($level == 3)
-    {
-      $addClass = ' businnessClassC ';
-      $deletedClass = ' deletedClass ';
-    }
-    if($level == 4)
-    {
-      $addClass = ' businnessClassH ';
-      $deletedClass = ' deletedClass ';
-    }
+
 
     $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$deletedClass.$sAdminClass));
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$addClass.$sAdminClass));
