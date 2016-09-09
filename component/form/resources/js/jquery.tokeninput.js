@@ -319,7 +319,6 @@ $.TokenList = function (input, url_or_data, settings) {
         .addClass(settings.classes.tokenList)
         .click(function (event) {
             var li = $(event.target).closest("li");
-            alert(li);
             if(li && li.get(0) && $.data(li.get(0), "tokeninput")) {
                 toggle_select_token(li);
             } else {
@@ -404,6 +403,7 @@ $.TokenList = function (input, url_or_data, settings) {
     }
 
     this.add = function(item) {
+        alert(item);
         add_token(item);
     }
 
