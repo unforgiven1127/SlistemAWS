@@ -5118,7 +5118,7 @@ class CSl_candidateEx extends CSl_candidate
             }*/
             if($key == 'personality_note' && strlen($value) < 25)
             {
-              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              $errorArray .= 'What Does he/she do/Skills? should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             if($key == 'career_note' && strlen($value) < 25)
@@ -5156,7 +5156,7 @@ class CSl_candidateEx extends CSl_candidate
           {
             if($key == 'personality_note')
             {
-              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              $errorArray .= 'What Does he/she do/Skills? should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             elseif($key == 'career_note')

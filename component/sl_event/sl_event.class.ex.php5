@@ -254,7 +254,7 @@ class CSl_eventEx extends CSl_event
         foreach($characterNotes as $key => $value)
         {
           $title = getNoteTitle($value['type']);
-          $allCharacterNotes .= "<b><u>".$title.":</b></u> ".$value['content']."<br>";
+          $allCharacterNotes .= "<b><u>".$title."</b></u>: ".$value['content']."<br>";
           $allIDs .= $value['id']."_";
           $createdBy = $value['user_id'];
           $first_activity = $value['first_activity'];
@@ -964,7 +964,7 @@ class CSl_eventEx extends CSl_event
             }*/
             if($key == 'personality_note' && strlen($value) < 25)
             {
-              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              $errorArray .= 'What Does he/she do/Skills? should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             if($key == 'career_note' && strlen($value) < 25)
@@ -1002,7 +1002,7 @@ class CSl_eventEx extends CSl_event
           {
             if($key == 'personality_note')
             {
-              $errorArray .= 'What Does he do/Skills? should have 25 characters<br>';
+              $errorArray .= 'What Does he/she do/Skills? should have 25 characters<br>';
               //return array('error' => __LINE__.' - Personality & Communication should have 25 caracters');
             }
             elseif($key == 'career_note')

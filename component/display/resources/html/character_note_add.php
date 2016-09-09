@@ -310,7 +310,7 @@
 <table class="box" align="center">
 	<tr>
 		<td
-		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>What Does he do/Skills?</p>
+		style='padding-top: 0px !important;' class='tdTitle'><p id='personality_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>What Does he/she do/Skills?</p>
 		</td>
 
 		<td style='padding-top: 0px !important;' class='tdTitle'><p  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Management and Leadership</p></td>

@@ -3887,7 +3887,7 @@ var_dump($query);*/
   {
     if($type == 'personality_note')
     {
-      return "What Does he do/Skills?";
+      return "What Does he/she do/Skills?";
     }
     else if($type == 'career_note')
     {
