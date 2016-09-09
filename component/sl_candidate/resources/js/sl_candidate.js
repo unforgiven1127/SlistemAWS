@@ -6,7 +6,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id)
 
   if(psIdToShow == 'candiTab2')
   {
-    if(confirm('This candidate works for a client are you sure you want to see the contact information?'))
+    if(confirm("This candidate works at a Slate client, if you access his contact information, a notification will be sent to the client\'s owner."))
     {
       if(poElement)
       {
