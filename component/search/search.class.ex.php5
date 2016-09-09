@@ -1257,9 +1257,6 @@ class CSearchEx extends CSearch
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
         $allSalesFlag = false;
 
-        ChromePhp::log($sFieldName);
-        ChromePhp::log($vFieldValue);
-
         if($sFieldName == 'occupation' && $vFieldValue == '196')// occupation en ustteki Sales secilirse...
         {
           $allSalesFlag = true;
@@ -1288,7 +1285,6 @@ class CSearchEx extends CSearch
         }
         else if($allSalesFlag)
         {
-          ChromePhp::log('allSalesFlag');
           $oQB->addJoin('inner', 'sl_occupation', 'socc', 'socc.sl_occupationpk = scpr.occupationfk');
           //"INNER JOIN sl_occupation as socc ON (socc.sl_occupationpk = scpr.occupationfk) "
           $oQB->addWhere("socc.sl_occupationpk in".$allSalesArray);
@@ -1396,7 +1392,6 @@ class CSearchEx extends CSearch
         }
         else
         {
-          ChromePhp::log('ELSE');
           //fetch row data
           $sFieldOperator = @$_POST['field_operator'][$nGroup][$nRowNumber];
 
