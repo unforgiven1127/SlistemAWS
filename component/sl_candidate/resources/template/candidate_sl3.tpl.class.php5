@@ -211,6 +211,7 @@ class CCandidate_sl3 extends CTemplate
     $company_id = $pasCandidateData['sl_companypk'];
     $company_info = getCompanyInformation($company_id);
     $level = $company_info['level'];
+    ChromePhp::log($company_info);
 
     $addClass = '';
     $deletedClass = '';
