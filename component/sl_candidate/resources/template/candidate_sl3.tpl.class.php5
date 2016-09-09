@@ -274,7 +274,7 @@ class CCandidate_sl3 extends CTemplate
           $asOption['onmouseover'] = 'tp(this);';
         }
 
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row2 right'));
           $sHTML.= $this->coDisplay->getBloc('', 'salary', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sSalary, $asOption);
         $sHTML.= $this->coDisplay->getBlocEnd();
@@ -285,7 +285,7 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['industry'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_indus']).'</span>';
           $pasCandidateData['industry'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['industry']).'" onmouseover="tp(this);">'.$pasCandidateData['industry'].'</div>';
         }
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row2 last'));
           $sHTML.= $this->coDisplay->getBloc('', 'industry', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['industry'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
@@ -295,7 +295,7 @@ class CCandidate_sl3 extends CTemplate
           $pasCandidateData['occupation'].= '<span class="light italic"> | '.implode(', ', $pasCandidateData['attribute']['candi_occu']).'</span>';
           $pasCandidateData['occupation'] = '<div class="clickable"  title="'.strip_tags($pasCandidateData['occupation']).'" onmouseover="tp(this);">'.$pasCandidateData['occupation'].'</div>';
         }
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right last'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row2 right last'));
           $sHTML.= $this->coDisplay->getBloc('', 'occupation', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $pasCandidateData['occupation'], array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
