@@ -254,7 +254,7 @@ class CSl_eventEx extends CSl_event
         foreach($characterNotes as $key => $value)
         {
           $title = getNoteTitle($value['type']);
-          $allCharacterNotes .= $title.": ".$value['content']."<br>";
+          $allCharacterNotes .= "<b><u>".$title.":</b></u> ".$value['content']."<br>";
           $allIDs .= $value['id']."_";
           $createdBy = $value['user_id'];
           $first_activity = $value['first_activity'];

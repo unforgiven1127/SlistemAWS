@@ -3887,27 +3887,27 @@ var_dump($query);*/
   {
     if($type == 'personality_note')
     {
-      return "PERSONALITY";
+      return "What Does he do/Skills?";
     }
     else if($type == 'career_note')
     {
-      return "CAREER";
+      return "Management and Leadership";
     }
     else if($type == 'education_note')
     {
-      return "EDUCATION";
+      return "Skills/Education/Compensation";
     }
     else if($type == 'move_note')
     {
-      return "MOVE";
+      return "Presence and Communication";
     }
     else if($type == 'compensation_note')
     {
-      return "COMPENSATIONS";
+      return "Career Plan and Compensation";
     }
     else if($type == 'past_note')
     {
-      return "COMPANIES";
+      return "Current Company Description/Recent Intros";
     }
     else
     {
