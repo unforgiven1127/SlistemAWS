@@ -220,7 +220,7 @@ class CCandidate_sl3 extends CTemplate
           $sValue = $this->coDisplay->getlink($sValue, 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\')'));
         }
 
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row2'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
           $sHTML.= $this->coDisplay->getBloc('', 'company', array('class' => 'candi_detail_label2'));
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
