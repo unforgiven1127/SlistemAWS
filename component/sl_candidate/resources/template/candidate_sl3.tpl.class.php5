@@ -209,10 +209,8 @@ class CCandidate_sl3 extends CTemplate
       //start second data section
 
     $company_id = $pasCandidateData['sl_companypk'];
-    ChromePhp::log($company_id);
     $company_info = getCompanyInformation($company_id);
     $level = $company_info['level'];
-    ChromePhp::log($company_info);
 
     $addClass = '';
     $deletedClass = '';
@@ -220,30 +218,27 @@ class CCandidate_sl3 extends CTemplate
     if($pasCandidateData['cp_client'] || $pasCandidateData['is_client'])
     {
       $labelClass = 'candi_detail_label2';
+      $deletedClass = ' deletedClass ';
       if($level == 1)
       {
         $addClass = ' businnessClassA ';
-        $deletedClass = ' deletedClass ';
       }
-      if($level == 2)
+      else if($level == 2)
       {
         $addClass = ' businnessClassB ';
-        $deletedClass = ' deletedClass ';
       }
-      if($level == 3)
+      else if($level == 3)
       {
         $addClass = ' businnessClassC ';
-        $deletedClass = ' deletedClass ';
       }
-      if($level == 4)
+      else if($level == 4)
       {
         $addClass = ' businnessClassH ';
-        $deletedClass = ' deletedClass ';
       }
     }
 
 
-    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$deletedClass.$sAdminClass));
+    $sHTML.= $this->coDisplay->getBlocStart('', array('class' => ' '.$deletedClass.$sAdminClass));
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection '.$addClass.$sAdminClass));
 
         $sHTML.= $this->coDisplay->getBloc('', 'Business profile', array('class' => 'candi_detail_title'));
