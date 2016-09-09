@@ -847,28 +847,28 @@ div.list_action_container > div > div:first-child
 }
 .businnessClassA
 {
-  background: transparent url('/common/pictures/slistem/levelA.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/stopA.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
 }
 .businnessClassB
 {
-  background: transparent url('/common/pictures/slistem/levelB.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/stopB.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
 }
 .businnessClassC
 {
-  background: transparent url('/common/pictures/slistem/levelC.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/stopC.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
 }
 .businnessClassH
 {
-  background: transparent url('/common/pictures/slistem/levelH.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/stopH.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
