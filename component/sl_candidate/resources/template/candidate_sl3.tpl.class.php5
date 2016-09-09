@@ -207,6 +207,8 @@ class CCandidate_sl3 extends CTemplate
 
       $sHTML.= $this->coDisplay->getBlocEnd();
       //start second data section
+      ChromePhp::log($pasCandidateData);
+
     $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection deletedClass'.$sAdminClass));
       $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candiTopSection businnessClass'.$sAdminClass));
 

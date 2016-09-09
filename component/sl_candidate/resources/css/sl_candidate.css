@@ -845,10 +845,31 @@ div.list_action_container > div > div:first-child
 {
   background: transparent url('/common/pictures/slistem/levelH_18.png') no-repeat center 5px;
 }
-.businnessClass
+.businnessClassA
 {
   background: transparent url('/common/pictures/slistem/levelA.png') no-repeat center 5px;
-  background-size: 45px;
+  background-size: 46px;
+  z-index: 100 !important;
+  background-position: right 20px;
+}
+.businnessClassB
+{
+  background: transparent url('/common/pictures/slistem/levelB.png') no-repeat center 5px;
+  background-size: 46px;
+  z-index: 100 !important;
+  background-position: right 20px;
+}
+.businnessClassC
+{
+  background: transparent url('/common/pictures/slistem/levelC.png') no-repeat center 5px;
+  background-size: 46px;
+  z-index: 100 !important;
+  background-position: right 20px;
+}
+.businnessClassH
+{
+  background: transparent url('/common/pictures/slistem/levelH.png') no-repeat center 5px;
+  background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
 }
