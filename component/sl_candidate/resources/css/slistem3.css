@@ -98,8 +98,8 @@
 
 }
 
-.deletedClass div.candi_detail_label,
-.deletedClass div.candi_detail_value
+.deletedClass .candi_detail_label,
+.deletedClass .candi_detail_value
 {
   float: left;
   /*font-size: 11px;*/
@@ -150,7 +150,7 @@ div.candi_detail_row .candi_detail_label
   padding: 0 5px 0 0;
 }
 
-div.deletedClass .candi_detail_label
+.deletedClass .candi_detail_label
 {
   /*background-color: #f2f2f2;*/
   /*border-right: 1px solid #CFCFCF;*/
@@ -185,7 +185,7 @@ div.candi_client div.candi_detail_label
 {
   cursor: help;
 }
-div.deletedClass div.candi_detail_label
+.deletedClass .candi_detail_label
 {
   cursor: help;
 }
