@@ -848,8 +848,8 @@ div.list_action_container > div > div:first-child
 .businnessClass
 {
   background: transparent url('/common/pictures/slistem/levelA.png') no-repeat center 5px;
-  /*background-size: 350px;
-  z-index: 100 !important;*/
+  background-size: 50px;
+  z-index: 100 !important;
   background-position: right 20px;
 }
 .businnessClass2
