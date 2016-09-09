@@ -1248,7 +1248,6 @@ class CSearchEx extends CSearch
 
     foreach($_POST['group_operator'] as $nGroup => $sGroupOperator)
     {
-      $allSalesFlag = false;
       //$nRow = count($_POST['field_selector']);
       $bFirstRow = true;
       $asCondition = array();
@@ -1256,6 +1255,7 @@ class CSearchEx extends CSearch
       {
         insertAILog("complex_search",$sFieldName,$user_id);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
+        $allSalesFlag = false;
 
         ChromePhp::log($sFieldName);
         ChromePhp::log($vFieldValue);
