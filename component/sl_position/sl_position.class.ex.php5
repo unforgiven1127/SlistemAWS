@@ -1618,6 +1618,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       {
         $oLogin = CDependency::getCpLogin();
         $user_id = $oLogin->getuserPk();
+        $position_id = $asData['positionfk'];
+        $company_info = getPositionInformation($position_id);
         $company_id = $company_info['sl_companypk'];
         $level = 1;
         updateCompanyLevel($company_id, $level,$user_id);
