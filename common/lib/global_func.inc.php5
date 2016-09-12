@@ -3063,8 +3063,8 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
 
-    $sQuery = "UPDATE  sl_company SET level = '".$level."', date_updated = '".$sDate."', updated_by = '".$user_id."'
-    WHERE sl_candidatepk = '".$company_id."' ";
+    $sQuery = "UPDATE  sl_company SET is_client = '1', level = '".$level."', date_updated = '".$sDate."',
+    updated_by = '".$user_id."' WHERE sl_candidatepk = '".$company_id."' ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
