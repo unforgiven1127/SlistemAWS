@@ -1216,7 +1216,18 @@ class CSl_candidateEx extends CSl_candidate
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
-      ChromePhp::log($pasCandidateData);
+
+      $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
+      $company_information = getCompanyInformation($company_id);
+
+      if($company_information['is_client'] == 1)
+      {
+        $company_id_flag = $pasCandidateData['companyfk'];
+      }
+      else
+      {
+        $company_id_flag = false;
+      }
 
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
@@ -1289,7 +1300,7 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
           $sHTML.= '<li id="tabLink0" onclick="toggleCandiTab(this, \'candiTab0\', \'#ctc_1\');" class="tabActionLink tab_action" title="All the actions to be done on a candidate"></li>';
           $sHTML.= '<li id="tabLink1" onclick="toggleCandiTab(this, \'candiTab1\', \'#ctc_1\');" class="tab_character '.$sCharSelected.'" title="Displays the character notes" >'.$asCharNotes['nb_result'].'</li>';
-          $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\', \'#ctc_1\','.$company_id.' );" class="tab_contact '.$sContactSelected.' title="Displays the contact details">'.$asContact['nb_result'].'</li>';
+          $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\', \'#ctc_1\','.$company_id_flag.' );" class="tab_contact '.$sContactSelected.' title="Displays the contact details">'.$asContact['nb_result'].'</li>';
           $sHTML.= '<li id="tabLink3" onclick="toggleCandiTab(this, \'candiTab3\', \'#ctc_1\');" class="tab_document '.$sDocSelected.'" title="Displays the uploaded documents">'.$asDocument['nb_result'].'</li>';
           $sHTML.= '<li id="tabLink4" onclick="toggleCandiTab(this, \'candiTab4\', \'#ctc_1\');" class="tab_company" title="Displays the company news feed"></li>';
         $sHTML.= $this->_oDisplay->getListEnd();
@@ -1349,7 +1360,17 @@ class CSl_candidateEx extends CSl_candidate
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
-      $company_id = $pasCandidateData['companyfk'];
+      $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
+      $company_information = getCompanyInformation($company_id);
+
+      if($company_information['is_client'] == 1)
+      {
+        $company_id_flag = $pasCandidateData['companyfk'];
+      }
+      else
+      {
+        $company_id_flag = false;
+      }
 
       $sHTML = "";
 
@@ -1429,9 +1450,9 @@ class CSl_candidateEx extends CSl_candidate
             $sHTML.= '<li id="tabLink11" onclick="toggleCandiTab(this, \'candiTab5\');" class="tab_empty '.$sNoteSelected.' tab_note" title="Displays the candidate notes" ></li>';
 
           if($asContact['nb_result'] > 0)
-            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id.' );" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
+            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.' );" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
           else
-            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id.' );" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
+            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.' );" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
 
           if($asDocument['nb_result'] > 0)
             $sHTML.= '<li id="tabLink3" onclick="toggleCandiTab(this, \'candiTab3\',\'\','.$pasCandidateData['sl_candidatepk'].');" class="'.$sDocSelected.' tab_document" title="Displays the uploaded documents"><span class="tab_number tab_level_'.$asDocument['priority'].'">'.$asDocument['nb_result'].'</span></li>';
