@@ -1748,9 +1748,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
     private function _updatePlacedposition($pasPosition, $pnCandidatePk, $pnUserPk)
     {
-      ChromePhp::log($pasPosition);
-      ChromePhp::log($pnCandidatePk);
-      ChromePhp::log($pnUserPk);
+
       if(!assert('is_array($pasPosition) && is_key($pnUserPk)'))
         return false;
 
@@ -1761,7 +1759,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $nPositionPk = (int)$pasPosition['sl_positionpk'];
       $nCandidatePk = (int)$pnCandidatePk;
 
-      ChromePhp::log($nPositionPk);
 
       //1. get all pso_link/candidates still active on this position (except currenlty placed one).
       $sQuery = 'SELECT DISTINCT(spli.positionfk || spli.candidatefk) as link_key, spli.*, slog.email,
@@ -1772,7 +1769,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         LEFT JOIN sl_candidate as scan ON (scan.sl_candidatepk = spli.candidatefk)
         WHERE spli.active = 1 AND spli.candidatefk != '.$nCandidatePk.' AND spli.positionfk = '.$nPositionPk;
 
-      ChromePhp::log($sQuery);
 
       $oDbResult =  $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();

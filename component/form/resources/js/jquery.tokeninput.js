@@ -51,6 +51,7 @@ var DEFAULT_SETTINGS = {
     {
       if(item.level == '1')
       {
+        console.log('item: ');
         console.log(item);
         return "<li disabled=true class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
       }

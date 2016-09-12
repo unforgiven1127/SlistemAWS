@@ -6499,7 +6499,6 @@ class CSl_candidateEx extends CSl_candidate
         $pnPk = $_GET['cid'];
       }
 
-      ChromePhp::log($pnPk);
       $asCompanyData = array();
 
       if(empty($pnPk))
@@ -6672,7 +6671,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _saveCompany($pnPk)
     {
-      ChromePhp::log($pnPk);
+
       if(!assert('is_integer($pnPk)'))
         return array('error' => 'bad parameters.');
 
@@ -6778,7 +6777,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyList($poQB = null)
     {
-      ChromePhp::log('_getCompanyList');
+
       global $gbNewSearch;
 
       $oLogin = CDependency::getCpLogin();
@@ -7351,8 +7350,6 @@ die();*/
           $asError[] = 'Company is empty.';
         if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
-
-        ChromePhp::log($asData['companyfk']);
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
@@ -9045,7 +9042,7 @@ die();*/
 
     function _autocompleteCompany()
     {
-      ChromePhp::log('_autocompleteCompany');
+
       $sSearchString = getValue('q');
       if(empty($sSearchString))
       {

@@ -1625,8 +1625,6 @@ class CSearchEx extends CSearch
     else
       $oQB->setTitle('CpxSearch: Some data is missing');
 
-    ChromePhp::log($oQB);
-
     return $oQB;
   }
 
