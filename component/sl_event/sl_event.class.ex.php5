@@ -406,7 +406,9 @@ class CSl_eventEx extends CSl_event
             $sHTML.= $oHTML->getBloc('', $asNote['title'].$asNote['content'], array('class' => 'note_content'));
 
           $user_id = $oLogin->getuserPk();
-          if($user_id == '101') // $psNoteType != 'cp_history' || bunu cikarttik
+          $oRight = CDependency::getComponentByName('right');
+          $bManager = $oRight->canAccess($this->csUid, CONST_ACTION_MANAGE, CONST_CANDIDATE_TYPE_MEETING);
+          if($user_id == '101' || $bManager) // $psNoteType != 'cp_history' || bunu cikarttik
           {
             //Should we Display the link to edit notes
             //Right to do so or creator and note has been created a bit (allow fix typos)
