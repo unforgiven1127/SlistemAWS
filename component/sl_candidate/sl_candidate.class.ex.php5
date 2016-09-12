@@ -1031,12 +1031,14 @@ class CSl_candidateEx extends CSl_candidate
         $toEmail = 'rkiyamu@slate.co.jp';
       }
 
+      $sDate = date('Y-m-d H:i:s');
+
       $user_name = $user_information['firstname']." ".$user_information['lastname'];
       $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
       $company_name = $company_information['name'];
 
       $subject = "Contact Information Access";
-      $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.")";
+      $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
 
 
       sendHtmlMail($toEmail,$subject, $message);
