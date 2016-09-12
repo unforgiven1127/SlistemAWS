@@ -49,9 +49,10 @@ var DEFAULT_SETTINGS = {
 
     resultsFormatter: function(item)
     {
-      console.log(item);
+      
       if(item.level == '0')
       {
+        console.log(item.name);
         return "<li disabled=true class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
       }
       else
