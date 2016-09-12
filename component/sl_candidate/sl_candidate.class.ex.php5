@@ -6532,14 +6532,30 @@ class CSl_candidateEx extends CSl_candidate
         $selectC = "selected";
       }
 
+      $is_client1Y = '';
+      $is_client2Y = '';
+      $is_client1N = '';
+      $is_client2N = '';
+
+      if($asCompanyData['is_client'] == 1)
+      {
+        $is_client1Y = 'selected';
+        $is_client2Y = 'selected';
+      }
+      else
+      {
+        $is_client1N = 'selected';
+        $is_client2N = 'selected';
+      }
+
        $oForm->addField('select', 'level', array('label'=> 'Level'));
        $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
        $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
-       $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', 'selected' => ''));
-       $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1'));
+       $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
+       $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
        $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
