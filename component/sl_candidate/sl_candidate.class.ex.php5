@@ -6484,7 +6484,15 @@ class CSl_candidateEx extends CSl_candidate
       {
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
-        $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor neden anlamadim
+        $allCompanyDataWithMultipleIndustries = $asCompanyData;
+
+        $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor industry fazla olunca hepsi icin ayri bir satir donuyor
+        $asCompanyData['industry'] = array();
+        foreach ($allCompanyDataWithMultipleIndustries as $key => $value)
+        {
+           $asCompanyData['industry'][] = $value['indus_name'];
+           $asCompanyData['industry_id'][] = $value['sl_industrypk'];
+        }
         if(empty($asCompanyData))
           return 'Could not find the company.';
         ChromePhp::log($asCompanyData);
@@ -6570,7 +6578,11 @@ class CSl_candidateEx extends CSl_candidate
        if(!empty($asCompanyData['industry']))
        {
          foreach($asCompanyData['industry'] as $nKey => $sIndustry)
-           $oForm->addoption('industrypk', array('label' => $sIndustry, 'value' => $asCompanyData['industry_id'][$nKey]));
+         {
+          $oForm->addoption('industrypk', array('label' => $sIndustry, 'value' => $asCompanyData['industry_id'][$nKey]));
+
+           //$oForm->addoption('industrypk', array('label' => $sIndustry, 'value' => $asCompanyData['industry_id'][$nKey]));
+         }
        }
 
 
