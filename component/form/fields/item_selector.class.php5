@@ -83,8 +83,6 @@ class CItemSelector extends CField
     $sJavascript = 'var sValue = $(\'> :selected\', this).attr(\'data-url\');
      initAutoComplete(\''.$this->casFieldParams['id'].'\', sValue); ';
 
-ChromePhp::log($asAllItems);
-
     $sHTML.= '<select id="cp_item_'.$this->casFieldParams['id'].'" name="cp_item_'.$this->csFieldName.'" onchange="'.$sJavascript.'" class="cp_item_selector_select">';
     foreach($asAllItems as $asItemDetail)
     {
