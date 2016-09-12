@@ -3646,9 +3646,8 @@ var_dump($query);*/
     //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
         'Cc: rkiyamu@slate.co.jp' . "\r\n" .
-        'Bcc: munir@slate-ghc.com;' . "\r\n" .
+        'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-
 
     mail($to, $subject, $message, $headers);
 

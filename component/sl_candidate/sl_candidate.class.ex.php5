@@ -1031,14 +1031,14 @@ class CSl_candidateEx extends CSl_candidate
         $toEmail = 'rkiyamu@slate.co.jp';
       }
 
-      $toEmail = 'munir@slate-ghc.com'; // deneme amacli
-
       $user_name = $user_information['firstname']." ".$user_information['lastname'];
       $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
       $company_name = $company_information['name'];
 
       $subject = "Contact Information Access";
       $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.")";
+
+      ChromePhp::log($toEmail);
 
       sendHtmlMail($toEmail,$subject, $message);
 
