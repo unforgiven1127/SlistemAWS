@@ -758,6 +758,8 @@ class CSl_candidateEx extends CSl_candidate
           );
     }
 
+    ChromePhp::log($asFields);
+
     return $asFields;
   }
 
