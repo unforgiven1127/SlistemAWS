@@ -3066,6 +3066,8 @@ var_dump($query);*/
     $sQuery = "UPDATE  sl_company SET is_client = '1', level = '".$level."', date_updated = '".$sDate."',
     updated_by = '".$user_id."' WHERE sl_candidatepk = '".$company_id."' ";
 
+    ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
 
   }

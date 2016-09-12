@@ -1613,7 +1613,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $asData['candidatefk'], array('check_profile' => 1));
       $asReturn = array();
 
-
+      ChromePhp::log($asData['status']);
       if($asData['status'] > 2 && $asData['status'] < 102 ) //company i level A(1) yapacagiz
       {
         $oLogin = CDependency::getCpLogin();
