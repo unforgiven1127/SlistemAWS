@@ -3638,6 +3638,22 @@ var_dump($query);*/
 
   }
 
+  function sendHtmlMail($to,$subject, $message)
+  {
+    //$to      = 'ray@slate-ghc.com;mmoir@slate.co.jp;munir@slate-ghc.com;rkiyamu@slate.co.jp';
+    //$subject = 'Slistem Activity Flag';
+    //$message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
+    //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
+    $headers = 'From: slistem@slate.co.jp' . "\r\n" .
+        'Cc: rkiyamu@slate.co.jp' . "\r\n" .
+        'Bcc: munir@slate-ghc.com;' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+
+    mail($to, $subject, $message, $headers);
+
+  }
+
   function securityCheckView($user_id)
   {
     // if saturday and holiday than look for that days count > 50?

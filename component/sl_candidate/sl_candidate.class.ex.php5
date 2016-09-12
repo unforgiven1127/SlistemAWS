@@ -1014,9 +1014,35 @@ class CSl_candidateEx extends CSl_candidate
       $company_id = $_GET['cid'];
       $user_id = $oLogin->getUserPk();
 
-      ChromePhp::log($candidate_id);
-      ChromePhp::log($company_id);
-      ChromePhp::log($user_id);
+      $company_information = getCompanyInformation($company_id);
+      $creator_id = $company_information['created_by'];
+
+      $candidate_information = getCandidateInformation($candidate_id);
+      $company_information = getCompanyInformation($company_id);
+      $user_information = getUserInformaiton($user_id);
+
+      $creator_information = getUserInformaiton($creator_id);
+      if($creator_information['status'] == 1)
+      {
+        $toEmail = $creator_information['email'];
+      }
+      else
+      {// eleman aktif degilse Rosasna ya gonderiyoruz...
+        $toEmail = 'rkiyamu@slate.co.jp';
+      }
+
+      $toEmail = 'munir@slate-ghc.com'; // deneme amacli
+
+      $user_name = $user_information['firstname']." ".$user_information['lastname'];
+      $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
+      $company_name = $company_information['name'];
+
+      $subject = "Contact Information Access";
+      $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.")";
+
+      sendHtmlMail($toEmail,$subject, $message);
+
+
     }
 
     public function logAjax()
