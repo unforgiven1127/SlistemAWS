@@ -49,8 +49,15 @@ var DEFAULT_SETTINGS = {
 
     resultsFormatter: function(item)
     {
-      alert("<li class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>");
-      return "<li class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
+      if(item.level == '1')
+      {
+        return "<li disabled class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
+      }
+      else
+      {
+        return "<li class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
+      }
+      
     },
     tokenFormatter: function(item) { return "<li class='"+item['class_selected']+" autocomp_lvl_"+item.level+"'><p>" + item[this.propertyToSearch] + "</p></li>"; },
 
