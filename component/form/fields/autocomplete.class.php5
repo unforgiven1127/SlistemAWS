@@ -99,7 +99,6 @@ class CAutocomplete extends CField
        noResultsText: "no results found",
        onResult: function(oResult)
        {
-         alert(oResult);
          if(oResult.length == 0)
            return [{id: "token_clear", name: "no result found"}]
 
