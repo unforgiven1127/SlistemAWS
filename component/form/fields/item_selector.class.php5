@@ -83,7 +83,7 @@ class CItemSelector extends CField
     $sJavascript = 'var sValue = $(\'> :selected\', this).attr(\'data-url\');
      initAutoComplete(\''.$this->casFieldParams['id'].'\', sValue); ';
 
-
+ChromePhp::log($asAllItems);
 
     $sHTML.= '<select id="cp_item_'.$this->casFieldParams['id'].'" name="cp_item_'.$this->csFieldName.'" onchange="'.$sJavascript.'" class="cp_item_selector_select">';
     foreach($asAllItems as $asItemDetail)
@@ -92,7 +92,7 @@ class CItemSelector extends CField
       if($sItemValue == $sValue)
         $sHTML.= '<option data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'" selected="selected">'.$asItemDetail['label'].'</option>';
       else
-        $sHTML.= '<option disabled data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'">'.$asItemDetail['label'].'</option>';
+        $sHTML.= '<option data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'">'.$asItemDetail['label'].'</option>';
     }
     $sHTML.= '</select>';
 
