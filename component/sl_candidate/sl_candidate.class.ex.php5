@@ -1038,7 +1038,6 @@ class CSl_candidateEx extends CSl_candidate
       $subject = "Contact Information Access";
       $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.")";
 
-      ChromePhp::log($toEmail);
 
       sendHtmlMail($toEmail,$subject, $message);
 
