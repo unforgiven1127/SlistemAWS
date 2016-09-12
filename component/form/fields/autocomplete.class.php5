@@ -168,8 +168,6 @@ class CAutocomplete extends CField
 
     $sHTML.= '<div class="formField formAutocompleteContainer '.$sAddExtraClass.'"><input type="text" name="'.$this->csFieldName.'" ';
 
-    ChromePhp::log($this->casFieldParams);
-
     foreach($this->casFieldParams as $sKey => $vValue)
       $sHTML.= ' '.$sKey.'="'.$vValue.'" ';
 
