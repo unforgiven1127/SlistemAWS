@@ -8906,10 +8906,10 @@ die();*/
           if(empty($asData['parentParent']))
             $asEntry['level']++;
 
-          ChromePhp::log($asEntry);
-
           $asJsonData[$asEntry['id']] = json_encode($asEntry);
         }
+
+        ChromePhp::log($asEntry);
 
         $bRead = $oDbResult->readNext();
       }
