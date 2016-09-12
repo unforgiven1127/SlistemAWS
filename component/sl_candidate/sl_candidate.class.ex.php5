@@ -1226,7 +1226,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $company_id_flag = false;
+        $company_id_flag = 'false';
       }
 
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
@@ -1369,7 +1369,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $company_id_flag = false;
+        $company_id_flag = 'false';
       }
 
       $sHTML = "";
