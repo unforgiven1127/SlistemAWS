@@ -8909,8 +8909,6 @@ die();*/
           $asJsonData[$asEntry['id']] = json_encode($asEntry);
         }
 
-        ChromePhp::log($asEntry);
-
         $bRead = $oDbResult->readNext();
       }
 
