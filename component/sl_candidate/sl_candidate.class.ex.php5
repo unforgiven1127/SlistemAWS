@@ -6487,6 +6487,7 @@ class CSl_candidateEx extends CSl_candidate
         $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor neden anlamadim
         if(empty($asCompanyData))
           return 'Could not find the company.';
+        ChromePhp::log($asCompanyData);
       }
 
       $sUpdateField = getValue('update_field', '');
