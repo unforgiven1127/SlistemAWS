@@ -92,7 +92,7 @@ class CItemSelector extends CField
       if($sItemValue == $sValue)
         $sHTML.= '<option data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'" selected="selected">'.$asItemDetail['label'].'</option>';
       else
-        $sHTML.= '<option data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'">'.$asItemDetail['label'].'</option>';
+        $sHTML.= '<option disabled data-url="'.$asItemDetail['search_url'].'" value="'.$sValue.'">'.$asItemDetail['label'].'</option>';
     }
     $sHTML.= '</select>';
 
