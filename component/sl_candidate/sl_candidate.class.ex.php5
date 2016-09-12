@@ -1348,6 +1348,7 @@ class CSl_candidateEx extends CSl_candidate
     private function _getRightTabsFull($pasCandidateData, $psClass = '')
     {
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
+      ChromePhp::log($pasCandidateData);
 
       $sHTML = "";
 
