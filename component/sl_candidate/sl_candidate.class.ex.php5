@@ -6495,7 +6495,7 @@ class CSl_candidateEx extends CSl_candidate
         }
         if(empty($asCompanyData))
           return 'Could not find the company.';
-        ChromePhp::log($asCompanyData);
+
       }
 
       $sUpdateField = getValue('update_field', '');
@@ -7290,7 +7290,7 @@ die();*/
 
         foreach ($skillValues as $key => $skill)
         {
-          if($skill != '-' && (!is_numeric($skill) || $skill < 1 || $skill > 9))
+          if( !empty($skill) && $skill != '' && $skill != '-' && (!is_numeric($skill) || $skill < 1 || $skill > 9))
           {
             $asError[] = 'All skill areas should have a value between 1 - 9.';
           }
