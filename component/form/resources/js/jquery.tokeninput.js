@@ -49,11 +49,10 @@ var DEFAULT_SETTINGS = {
 
     resultsFormatter: function(item)
     {
-      
       if(item.level == '0')
       {
-        console.log(item.name);
-        return "<li disabled style='pointer-events: none;' class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
+        //console.log(item.name);
+        return "<li disabled style='pointer-events: none; color:grey;' class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
       }
       else
       {
