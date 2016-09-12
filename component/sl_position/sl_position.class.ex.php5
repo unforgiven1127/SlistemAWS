@@ -1614,7 +1614,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $asReturn = array();
 
       ChromePhp::log($asData['status']);
-      if($asData['status'] > 2 && $asData['status'] < 102 ) //company i level A(1) yapacagiz
+      if($asData['status'] > 1 && $asData['status'] < 102 ) //company i level A(1) yapacagiz
       {
         $oLogin = CDependency::getCpLogin();
         $user_id = $oLogin->getuserPk();

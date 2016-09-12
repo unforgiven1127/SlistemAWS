@@ -3064,7 +3064,7 @@ var_dump($query);*/
     $sDate = date('Y-m-d H:i:s');
 
     $sQuery = "UPDATE  sl_company SET is_client = '1', level = '".$level."', date_updated = '".$sDate."',
-    updated_by = '".$user_id."' WHERE sl_candidatepk = '".$company_id."' ";
+    updated_by = '".$user_id."' WHERE sl_companypk = '".$company_id."' ";
 
     ChromePhp::log($sQuery);
 
