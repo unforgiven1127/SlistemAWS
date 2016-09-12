@@ -3058,6 +3058,18 @@ var_dump($query);*/
 
   }
 
+  function updateCompanyLevel($company_id, $level,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE  sl_company SET level = '".$level."', date_updated = '".$sDate."', updated_by = '".$user_id."'
+    WHERE sl_candidatepk = '".$company_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+  }
+
   function getCompanyInformation($company_id)
   {
     $oDB = CDependency::getComponentByName('database');
