@@ -51,6 +51,7 @@ var DEFAULT_SETTINGS = {
     {
       if(item.level == '1')
       {
+        alert("<li disabled=true class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>");
         return "<li disabled=true class='"+item['class_result']+" autocomp_lvl_"+item.level+"'>"+item[this.propertyToSearch]+ "</li>";
       }
       else
