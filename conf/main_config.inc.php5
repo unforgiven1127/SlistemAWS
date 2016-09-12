@@ -345,6 +345,7 @@ define('CONST_ACTION_FULL_LIST', 'ppafl');
 define('CONST_ACTION_LIST', 'ppal');
 define('CONST_ACTION_VIEW', 'ppav');
 define('CANDI_LOG', 'ppcl');
+define('CONTACT_SEEN_MAIL', 'csam');
 define('CONST_ACTION_EMAIL','ppaem');
 define('CONST_ACTION_VIEW_DETAILED', 'ppavd');
 define('CONST_ACTION_FASTEDIT', 'ppafe');

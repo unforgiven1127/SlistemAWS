@@ -195,6 +195,10 @@ class CSl_candidateEx extends CSl_candidate
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->logAjax($this->cnPk)))));
             break;
 
+          case CONTACT_SEEN_MAIL:
+            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->mailAjax($this->cnPk)))));
+            break;
+
           case CONST_ACTION_LIST:
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
@@ -1000,6 +1004,19 @@ class CSl_candidateEx extends CSl_candidate
       }
 
       return __LINE__.' - Nothing to display.';
+    }
+
+    public function mailAjax()
+    {
+      $oLogin = CDependency::getCpLogin();
+
+      $candidate_id = $_GET['ppk'];
+      $company_id = $_GET['cid'];
+      $user_id = $oLogin->getUserPk();
+
+      ChromePhp::log($candidate_id);
+      ChromePhp::log($company_id);
+      ChromePhp::log($user_id);
     }
 
     public function logAjax()
