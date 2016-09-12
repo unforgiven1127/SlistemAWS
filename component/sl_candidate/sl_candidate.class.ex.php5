@@ -1216,7 +1216,7 @@ class CSl_candidateEx extends CSl_candidate
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
-
+      ChromePhp::log($pasCandidateData);
 
       // fetch the content of each tab first. Tab selection, or specific actions may come from that
       $oNotes = CDependency::getComponentByName('sl_event');
