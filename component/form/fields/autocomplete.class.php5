@@ -53,8 +53,6 @@ class CAutocomplete extends CField
 
     //------------------------------------
 
-    ChromePhp::log($this->casFieldParams);
-
     if(!isset($this->casFieldParams['id']))
       $this->casFieldParams['id'] = $this->csFieldName.'Id';
 
