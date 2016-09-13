@@ -496,18 +496,20 @@ class CSl_candidateEx extends CSl_candidate
 
   private function _deleteCompany()
   {
-    $oPage = CDependency::getCpPage();
+    //$oPage = CDependency::getCpPage();
     $data = array();
     $company_id = $_GET['cid'];
     //DELETE_SELECTED_COMPANY
-    $sURL = $oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
+    $sURL = $this->_oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
     $sURL.= "&cidS=".$company_id;
     $company_information = getCompanyInformation($company_id);
     $data['company_name'] = $company_information['name'];
     $data['company_id'] = $company_id;
     $data['delete_url'] = $sURL;
-    $data['company_token_url'] = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH,CONST_CANDIDATE_TYPE_COMP, 0);
+    //$data['company_token_url'] = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH,CONST_CANDIDATE_TYPE_COMP, 0);
 
+    $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
+    $data['company_token_url'] = $company_token_url;
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
     return $html;

@@ -4,13 +4,7 @@
 
   <div id="candi_container">
     <div id="candi_data" class="add_margin_top_10">
-      <div class="general_form_row">
-        Candidate details
-      </div>
-      <div class="gray_section extended_select extended_input">
 
-
-      </div>
       <div class="general_form_row">
         Occupation
       </div>
