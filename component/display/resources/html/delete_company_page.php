@@ -18,19 +18,9 @@
         <div class="general_form_row extended_input">
           <div class="general_form_label">Company</div>
           <div class="general_form_column" style="width: 183px;">
-            <input id="company" type="text" name="companypk" value="<?php echo $company; ?>" />
+            <input id="company" type="text" name="companypk"  />
           </div>
-          <div class="general_form_column add_margin_left_30" style="width: 278px;">
-            <a href="javascript:;"
-            onclick="var oConf = goPopup.getConfig(); oConf.height = 600;
-            oConf.width = 900;goPopup.setLayerFromAjax(oConf, '<?php echo $add_company_url ?>');">
-              + add a new company
-            </a>
-          </div>
-          <div class="general_form_label add_margin_left_30">Title</div>
-          <div class="general_form_column">
-            <input type="text" name="title" value="<?php echo $title; ?>" />
-          </div>
+
         </div>
 
         <div class="general_form_row">
