@@ -95,7 +95,7 @@
       <td align="right" style='padding-top: 30px; padding-right: 55px;'>
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
         <button onclick="
-          var selctedCompany = document.getElementsByClassName('autocomp_lvl_undefined');
+          var selctedCompany = document.getElementsById('company_id');
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
           oConf.width = 400;
