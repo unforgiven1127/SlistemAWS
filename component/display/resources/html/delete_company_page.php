@@ -1,127 +1,498 @@
-<!DOCTYPE html>
-<html >
-  <head>
-    <meta charset="UTF-8">
+<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
+  action="<?php echo $form_url; ?>" class="candiAddForm" ajaxTarget="candi_duplicate"
+  method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
+  <input type="hidden" name="userfk" value="<?php echo $user_id; ?>" />
+  <input id="dup_checked" type="hidden" name="check_duplicate" value="0" />
 
-    <title>Sl[i]stem by Slate</title>
-
-
-<style>
-
-  .alert {
-    text-shadow: 0 1px 0 rgba(255, 255, 255, .2);
-    -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 1px 2px rgba(0, 0, 0, .05);
-  }
-
-  .alert-danger {
-    background-image: -webkit-linear-gradient(top, #f2dede 0%, #e7c3c3 100%);
-    background-image:      -o-linear-gradient(top, #f2dede 0%, #e7c3c3 100%);
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#f2dede), to(#e7c3c3));
-    background-image:         linear-gradient(to bottom, #f2dede 0%, #e7c3c3 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff2dede', endColorstr='#ffe7c3c3', GradientType=0);
-    background-repeat: repeat-x;
-    border-color: #dca7a7;
-  }
-
-  .log-btn_ {
-    /*background: #892828;*/
-    background: #e6e6e6;
-    color:black;
-    display: block;
-    margin: auto;
-    width: 100px;
-    font-size: 14px;
-    height: 20px;
-    /*color: #fff;*/
-    text-decoration: none;
-    border: 1px grey solid;
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px;
-    float:right;
-  }
-
-
-
-</style>
-
-<script type="text/javascript">
-
-
-</script>
-
-  </head>
-
-
-  <body>
-
-  <script language="javascript">
-
-  </script>
-
-  <?php if(isset($header)){ echo $header; } ?>
-  <table style='width:100%; margin-left: -20px;' >
-    <tr>
-      <td style='margin-top: 10px; ' valign="top">
-        <div style=" font-size:15px; width: 500px; color:#585858; font-weight: bold; " class="alert alert-danger" role="alert">
-          <p style='margin-left: 20px; padding-top: 10px; padding-bottom: 10px;'>
-            Warning you are about to delete company #<?php if(isset($company_id)){echo $company_id;} ?> !
-          </p>
-        </div>
-      </td>
-    </tr>
-  </table>
-  <table>
-    <tr>
-      <td colspan="2" style='font-weight: bold; padding-top: 10px;' >
-        Confirm deleting company <?php if(isset($company_name)){echo $company_name;} ?> (#<?php if(isset($company_id)){echo $company_id;} ?>)
-      </td>
-    </tr>
-    <tr>
-      <td style='font-weight: bold; padding-top: 10px;'>
-        Move employees to: [company id]
-      </td>
-      <td style='padding-top: 11px; padding-left: 13px;'>
-        <!-- <input type="text" name="company_id"  id="company_id"> -->
-        
-      </td>
-    </tr>
-  </table>
-  <table style='width:100%;'>
-    <tr>
-      <td align="right" style='padding-top: 30px; padding-right: 55px;'>
-        <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
-        <button onclick="
-          var selctedCompany = document.getElementById('company_id');
-          $('.ui-dialog').remove();
-          var oConf = goPopup.getConfig();
-          oConf.width = 400;
-          oConf.height = 200;
-          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany.value);"
-        style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
-      </td>
-    </tr>
-  </table>
-
-  </body>
-
-</html>
-
-<div class="general_form_row extended_input">
-          <div class="general_form_column" style="width: 183px;">
-            <input id="company" type="text" name="companypk"  />
+  <div class="formFieldTitle">
+    Add/edit contact details
+  </div>
+  <?php if ($display_all_tabs) { ?>
+  <div class="general_form_row add_margin_top_10">
+    <ul class="candidate_form_tabs">
+      <li onclick="toggle_tabs(this, 'candi_data');" class="selected">
+        <div>Candidate data</div>
+      </li>
+      <li onclick="toggle_tabs(this, 'candi_contact');">
+        <div>Contact details</div>
+      </li>
+      <li onclick="toggle_tabs(this, 'candi_note');">
+        <div>Notes</div>
+      </li>
+      <li onclick="toggle_tabs(this, 'candi_resume');">
+        <div>Resume</div>
+      </li>
+      <li onclick="toggle_tabs(this, 'candi_duplicate');" class="hidden tab_duplicate">
+        <div>Duplicates</div>
+      </li>
+    </ul>
+  </div>
+  <?php } ?>
+  <div id="candi_container">
+    <div id="candi_data" class="add_margin_top_10">
+      <div class="general_form_row">
+        Candidate details
+      </div>
+      <div class="gray_section extended_select extended_input">
+        <div class="general_form_row">
+          <div class="general_form_label">Gender</div>
+          <div class="general_form_column">
+            <select id="sex_id" name="sex" onchange="toggleGenderPic(this);">
+              <option value="2">female</option>
+              <option value="1" <?php echo (($user_sex == 1)? 'selected':''); ?>>male</option>
+            </select>
+          </div>
+          <div class="general_form_column">
+            <span class="woman" href="javascript:;" onclick="toggleGenderPic(false, 1);"
+              style="<?php echo (($user_sex != 1)? '':'display: none'); ?>">
+              <img src="/common/pictures/slistem/woman_16.png"/>
+            </span>
+            <span class="man" href="javascript:;" onclick="toggleGenderPic(false, 2);"
+              style="<?php echo (($user_sex == 1)? '':'display: none'); ?>">
+              <img src="/common/pictures/slistem/man_16.png"/>
+            </span>
           </div>
         </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Lastname</div>
+          <div class="general_form_column">
+            <input <?php echo $readonly_name; ?> type="text" name="lastname" value="<?php echo $lastname; ?>" />
+          </div>
+          <div class="general_form_label add_margin_left_30">Firstname</div>
+          <div class="general_form_column">
+            <input <?php echo $readonly_name; ?> type="text" name="firstname" value="<?php echo $firstname; ?>" />
+          </div>
+          <div class="general_form_label add_margin_left_30">
+            <a href="javascript:;" onclick="change_date_field('birth_date');">Birth</a> /
+            <a href="javascript:;" onclick="change_date_field('estimated_age');">age</a>
+          </div>
+          <div class="general_form_column">
+            <input id="birth_date" type="text" name="birth_date" value="<?php echo $birth_date; ?>" />
+            <input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Language</div>
+          <div class="general_form_column">
+            <select name="language">
+            <?php echo $language; ?>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">Nationality</div>
+          <div class="general_form_column">
+            <select name="nationality">
+            <?php echo $nationality; ?>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">Location</div>
+          <div class="general_form_column">
+            <select name="location" >
+            <?php echo $location; ?>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="general_form_row">
+        Occupation
+      </div>
+      <div class="gray_section">
+        <div class="general_form_row extended_input">
+          <div class="general_form_label">Company</div>
+          <div class="general_form_column" style="width: 183px;">
+            <input id="company" type="text" name="companypk" value="<?php echo $company; ?>" />
+          </div>
+          <div class="general_form_column add_margin_left_30" style="width: 278px;">
+            <a href="javascript:;"
+            onclick="var oConf = goPopup.getConfig(); oConf.height = 600;
+            oConf.width = 900;goPopup.setLayerFromAjax(oConf, '<?php echo $add_company_url ?>');">
+              + add a new company
+            </a>
+          </div>
+          <div class="general_form_label add_margin_left_30">Title</div>
+          <div class="general_form_column">
+            <input type="text" name="title" value="<?php echo $title; ?>" />
+          </div>
+        </div>
+        <div class="general_form_row extended_input">
+          <div class="general_form_label">Occupation</div>
+          <div class="general_form_column" style="width: 183px;">
+          <?php echo $occupation_tree; ?>
+          </div>
+          <div class="general_form_label add_margin_left_30">Industry</div>
+          <div class="general_form_column" style="width: 184px;">
+          <?php echo $industry_tree; ?>
+          </div>
+          <div class="general_form_label add_margin_left_30">Department</div>
+          <div class="general_form_column">
+            <input type="text" name="department" value="<?php echo $department; ?>" />
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Salary</div>
+          <div class="general_form_column">
+            <input class="salary_field" type="text" name="salary" value="<?php echo $candidate_salary; ?>" />
+            <select id="salary_unit" class="salary_manipulation" name="salary_unit">
+              <option value=""></option>
+              <option value="K" <?php if ($money_unit == 'K') echo 'selected'; ?>>K</option>
+              <option value="M" <?php if ($money_unit == 'M') echo 'selected'; ?>>M</option>
+            </select>
+            <select id="salary_currency" class="salary_manipulation" name="salary_currency">
+            <?php
+            $list = array('aud','cad','eur','hkd','jpy','php','usd');
+
+            //foreach ($currency_list as $currency => $rate)
+            foreach ($list as $key => $value)
+            {
+              $currency = $value;
+              $rate = $currency_list[$value];
+
+              if ($currency == $currencyCode)
+              {
+                $selected = ' selected ';
+              }
+              else
+              {
+                $selected = '';
+              }
+
+              $rateNew = 1/$rate;
+              echo "<option value='".$currency."' ";
+              echo $selected;
+              echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'>";
+              echo $currency;
+              echo "</option>";
+            } ?>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">Bonus</div>
+          <div class="general_form_column">
+            <input class="salary_field" type="text" name="bonus" value="<?php echo $candidate_salary_bonus; ?>" />
+            <input id="bonus_unit" class="salary_manipulation_small read_only_field" type="text" name="bonus_unit"
+            value="" readonly />
+            <input id="bonus_currency" class="salary_manipulation_small read_only_field" type="text" name="bonus_currency"
+            value="" readonly />
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Target sal. from</div>
+          <div class="general_form_column">
+            <input class="salary_field" type="text" name="target_low" value="<?php echo $target_low; ?>" />
+            <input id="target_low_unit" class="salary_manipulation_small read_only_field" type="text" name="target_low_unit"
+              value="" readonly />
+            <input id="target_low_currency" class="salary_manipulation_small read_only_field" type="text" name="target_low_currency"
+              value="" readonly />
+          </div>
+          <div class="general_form_label add_margin_left_30">To</div>
+          <div class="general_form_column">
+            <input class="salary_field" type="text" name="target_high" value="<?php echo $target_high; ?>" />
+            <input id="target_high_unit" class="salary_manipulation_small read_only_field" type="text" name="target_high_unit"
+              value="" readonly />
+            <input id="target_high_currency" class="salary_manipulation_small read_only_field" type="text" name="target_high_currency"
+              value="" readonly />
+          </div>
+        </div>
+      </div>
+      <div class="general_form_row">
+        Profile
+      </div>
+      <div class="gray_section">
+        <div class="general_form_row  extended_select">
+          <div class="general_form_label">Grade</div>
+          <div class="general_form_column">
+            <select name="grade" >
+            <?php echo $grade; ?>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">Status</div>
+          <div class="general_form_column">
+            <select name="status" onchange="manageFormStatus(this, <?php echo $candidate_id; ?>);">
+            <?php echo $status_options; ?>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">MBA/CPA</div>
+          <div class="general_form_column">
+            <select name="diploma">
+              <option value="">none</option>
+              <?php echo $diploma_options; ?>
+            </select>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Keyword</div>
+          <div class="general_form_column extended_input">
+            <input type="text" name="keyword" value="<?php echo $keyword; ?>" />
+          </div>
+          <div class="general_form_label add_margin_left_30">Is client</div>
+          <div class="general_form_column">
+            <input id="is_client" class="css-checkbox" type="checkbox" name="client"
+              <?php if (!empty($is_client)) echo 'checked'; ?> />
+            <label for="is_client" class="css-label">&nbsp;</label>
+          </div>
+        </div>
+        <div class="general_form_row add_margin_top_10">
+          <div class="spinner_holder skill_field">
+            <div class="spinner_label">
+              AG
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_ag" value="<?php echo $skill_ag; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              AP
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_ap" value="<?php echo $skill_ap; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              AM
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_am" value="<?php echo $skill_am; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              MP
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_mp" value="<?php echo $skill_mp; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              IN
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_in" value="<?php echo $skill_in; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              EX
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_ex" value="<?php echo $skill_ex; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              FX
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_fx" value="<?php echo $skill_fx; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              CH
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_ch" value="<?php echo $skill_ch; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              ED
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_ed" value="<?php echo $skill_ed; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              PL
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_pl" value="<?php echo $skill_pl; ?>" />
+          </div>
+          <div class="spinner_holder skill_field add_margin_left_20">
+            <div class="spinner_label">
+              E
+            </div>
+            <input class="<?php echo $spinner_class; ?>" type="text" name="skill_e" value="<?php echo $skill_e; ?>" />
+          </div>
+        </div>
+      </div>
+      <div class="general_form_row">
+        <div style="margin-top: 5px; cursor: pointer;" class="bold italic"
+        onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
+          Additional data ?
+        </div>
+      </div>
+      <div id="additional_candidate_info" class="gray_section hidden">
+        <div class="general_form_row">
+          Multiple industries ? Speak different languages? Fully and accuratly describing the candidates is a key for Sl[i]stem.
+          <br>
+          It will improve the search functions and increase the candidate profile quality. Use this section to add alternative /
+          secondary information about the candidate.
+        </div>
+        <div class="general_form_row extended_select extended_input">
+          <div class="general_form_label">alt. occupation</div>
+          <div class="general_form_column">
+            <input id="alt_occupation" type="text" name="alt_occupationpk" value="<?php echo $alt_occupationpk; ?>" />
+          </div>
+          <div class="general_form_label add_margin_left_30">alt. industry</div>
+          <div class="general_form_column">
+            <input id="alt_industry" type="text" name="alt_industrypk" value="<?php echo $alt_industrypk; ?>" />
+          </div>
+          <div class="general_form_label add_margin_left_30">language</div>
+          <div class="general_form_column">
+            <select id="alt_language" name="alt_language[]" multiple>
+            <?php echo $alt_language; ?>
+            </select>
+          </div>
+        </div>
+        <?php if ($candidate_sys_status > 0 && $is_admin) { ?>
+        <div class="general_form_row" style="color: #077AC1; font-weight: bold;">
+          DBA
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">Deleted ?</div>
+          <div class="general_form_column extended_select">
+            <select name="_sys_status">
+              <option value="<?php echo $candidate_sys_status; ?>">Keep deleted</option>
+              <option value="0">Restore candidate</option>
+            </select>
+          </div>
+          <div class="general_form_label add_margin_left_30">Merged with</div>
+          <div class="general_form_column extended_input">
+            <input type="text" name="_sys_redirect" value="<?php echo $candidate_sys_redirect; ?>" />
+          </div>
+        </div>
+        <?php } ?>
+      </div>
+    </div>
+
+    <?php if ($display_all_tabs) { ?>
+    <div id="candi_contact" class="add_margin_top_10 hidden">
+    <?php echo $contact_details_form; ?>
+    </div>
+
+    <div id="candi_note" class="add_margin_top_10 hidden">
+      <div class="gray_section">
+        <div class="general_form_row">
+          <span style="font-size: 10px; color: blue;">
+            * If the candidate has been "assessed", the character note is required.<br/>
+            * In the other case, one of those fields is required.<br/>
+          </span>
+        </div>
+        <div class="general_form_row add_margin_top_10">
+          <div class="general_form_label">Character Note</div>
+          <div class="general_form_column">
+            <textarea id="character_note" name="character_note" ></textarea>
+          </div>
+        </div>
+        <!--<div class="general_form_row">
+          <div class="general_form_label">** Current Position & Responsibilities</div>
+          <div class="general_form_column">
+            <textarea id="current_podition_note" name="current_podition_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Product or Technical Expertise</div>
+          <div class="general_form_column">
+            <textarea id="product_exp_note" name="product_exp_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Compensation Breakdown</div>
+          <div class="general_form_column">
+            <textarea id="compensation_note" name="compensation_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Reason for moving</div>
+          <div class="general_form_column">
+            <textarea id="move_note" name="move_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Information on earlier career</div>
+          <div class="general_form_column">
+            <textarea id="career_note" name="career_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Move timeline</div>
+          <div class="general_form_column">
+            <textarea id="timeline_note" name="timeline_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Key Wants</div>
+          <div class="general_form_column">
+            <textarea id="keywants_note" name="keywants_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Companies introduced within past 6 – 12 months</div>
+          <div class="general_form_column">
+            <textarea id="past_note" name="past_note"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row">
+          <div class="general_form_label">** Education – Higher Educations</div>
+          <div class="general_form_column">
+            <textarea id="education_note" name="education_note"></textarea>
+          </div>
+        </div>-->
+        <div class="general_form_row">
+          <div class="general_form_label">Note</div>
+          <div class="general_form_column">
+            <textarea id="note" name="note"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="candi_resume" class="add_margin_top_10 hidden">
+      <div class="gray_section">
+        <div class="general_form_row">
+          <div class="general_form_label">Document title</div>
+          <div class="general_form_column">
+            <input type="text" name="doc_title" value="" />
+          </div>
+        </div>
+        <div class="general_form_row add_margin_top_10">
+          <div class="general_form_label">HTML resume</div>
+          <div class="general_form_column">
+            <textarea id="doc_description" name="doc_description"></textarea>
+          </div>
+        </div>
+        <div class="general_form_row add_margin_top_10">
+          <div class="general_form_label">Upload document</div>
+          <div class="general_form_column">
+            <input type="file" maxfilesize="<?php echo CONST_SS_MAX_DOCUMENT_SIZE; ?>" name="document" />
+            <input type="hidden" name="MAX_FILE_SIZE" value="<?php echo CONST_SS_MAX_DOCUMENT_SIZE; ?>" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <?php } ?>
+    <div id="candi_duplicate" class="add_margin_top_10 hidden">
+    </div>
+  </div>
+
+  <div class="general_form_row add_margin_top_10" style="text-align: center;">
+    <input type="submit" value="Save candidate" />
+  </div>
+</form>
+
 <script>
   var company_token = '';
+  var alt_occupation_token = '';
+  var alt_industry_token = '';
 
   <?php if (!empty($company_token)) { ?>
   company_token = <?php echo $company_token; ?>
   <?php } ?>
 
+  <?php if (!empty($alt_occupation_token)) { ?>
+  alt_occupation_token = <?php echo $alt_occupation_token; ?>
+  <?php } ?>
+
+  <?php if (!empty($alt_industry_token)) { ?>
+  alt_industry_token = <?php echo $alt_industry_token; ?>
+  <?php } ?>
+
   $(function()
   {
+    $('#birth_date').datepicker({
+      defaultDate: '<?php echo $default_date; ?>',
+      yearRange: '<?php echo $year_range; ?>',
+      showButtonPanel: true,
+      changeYear: true,
+      numberOfMonths: 2,
+      showOn: 'both',
+      buttonImage: '<?php echo $calendar_icon; ?>',
+      buttonImageOnly: true,
+      dateFormat: 'yy-mm-dd'
+    });
 
     $('#company').tokenInput('<?php echo $company_token_url; ?>',
     {
@@ -130,10 +501,117 @@
       prePopulate: company_token
     });
 
+    $('#alt_occupation').tokenInput('<?php echo $alt_occupation_token_url; ?>',
+    {
+      noResultsText: "no results found",
+      tokenLimit: 5,
+      prePopulate: alt_occupation_token
+    });
+
+    $('#alt_industry').tokenInput('<?php echo $alt_industry_token_url; ?>',
+    {
+      noResultsText: "no results found",
+      tokenLimit: 5,
+      prePopulate: alt_industry_token
+    });
+
+    $('.gray_section .skill_field input').spinner(
+    {
+      min:-1, max: 10,
+      spin: function(event, ui)
+      {
+        if(ui.value > 9)
+        {
+          $(this).spinner("value", 0); return false;
+        }
+        else if (ui.value < 0)
+        {
+          $(this).spinner("value", 9); return false;
+        }
+      }
+    });
+
+    $('.gray_section .skill_field input').focus(function()
+    {
+      if($(this).hasClass('empty_spinner'))
+      {
+        $(this).val(5).removeClass('empty_spinner').unbind('focus');
+      }
+    });
+
+    $('#alt_language').bsmSelect(
+    {
+      animate: true,
+      highlight: true,
+      showEffect: function(jQueryel)
+      {
+        var sText = jQueryel.text();
+        sText = sText.substr(0, sText.length-1).trim();
+
+        var oOriginal = $('#alt_language option:contains('+sText+')');
+        if(oOriginal)
+          jQueryel.addClass(oOriginal.attr('class'));
+
+        jQueryel.fadeIn();
+      },
+      hideEffect: function(jQueryel){ jQueryel.fadeOut(function(){ $(this).remove(); }); },
+      removeLabel: '<strong>X</strong>'
+    }).change();
+
+    $('.gray_section').find('textarea').each(function()
+    {
+      initMce($(this).attr('name'), '', 700);
+    });
+
+    linkCurrencyFields('salary_unit', 'bonus', 'salary');
+    linkCurrencyFields('salary_unit', 'target_low', 'salary');
+    linkCurrencyFields('salary_unit', 'target_high', 'salary');
+
+    $('.salary_field').focusout(function() {
+      var formated_value = format_currency($(this).val());
+
+      $(this).val(formated_value);
+    });
 
     check_dom_change();
   });
 
+  function toggle_tabs(menu_dom, tab_id)
+  {
+    var menu_obj = $(menu_dom);
+    var menu_siblings = menu_obj.siblings();
+
+    var tab_obj = $('#candi_container #'+tab_id);
+    var tab_siblings = tab_obj.siblings();
+
+    menu_siblings.removeClass('selected');
+    menu_obj.addClass('selected');
+
+    tab_siblings.hide();
+    tab_obj.show();
+  }
+
+  function change_date_field(date_field_id)
+  {
+    var date_field_obj = $('.general_form_column #'+date_field_id);
+    var date_field_siblings = date_field_obj.siblings();
+
+    date_field_siblings.hide();
+    if (date_field_id == 'birth_date')
+      $('.general_form_column .ui-datepicker-trigger').show();
+    date_field_obj.show();
+  }
+
+  $('form[name=addcandidate]').submit(function(event){
+    event.preventDefault();
+
+    var sURL = $('form[name=addcandidate]').attr('action');
+    var sFormId = $('form[name=addcandidate]').attr('id');
+    var sAjaxTarget = 'candi_duplicate';
+    setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+
+    return false;
+  });
 
   function check_dom_change()
   {
