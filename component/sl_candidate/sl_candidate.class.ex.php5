@@ -500,16 +500,16 @@ class CSl_candidateEx extends CSl_candidate
     $data = array();
     $company_id = $_GET['cid'];
 
-          $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
-      $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
-      $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
-        '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
+    $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
+    $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
+    $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
+      '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
 
-      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/form.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
-      
+    $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
+    $this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
+    $this->_oPage->addCssFile('/component/form/resources/css/form.css');
+    $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
+
     //DELETE_SELECTED_COMPANY
     $sURL = $this->_oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
     $sURL.= "&cidS=".$company_id;
