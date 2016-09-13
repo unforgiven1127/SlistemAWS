@@ -81,18 +81,17 @@
       <td style='font-weight: bold; padding-top: 10px;'>
         Move employees to: [company id]
       </td>
-      <td style='padding-top: 11px; padding-left: 13px;'>
+      
         <!-- <input type="text" name="company_id"  id="company_id"> -->
-        <div class="general_form_column" style="width: 183px;">
-           <ul class="token-input-list-mac">
-              <li class="token-input-input-token-mac">
-                 <input type="text" autocomplete="off" id="token-input-company" style="outline: none; width: 30px;">
-                 <tester style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 14px; font-family: Verdana, Arial, sans-serif; font-weight: 400; letter-spacing: 0px; white-space: nowrap;"></tester>
-              </li>
-           </ul>
-           <input id="company" type="text" name="companypk" value="" style="display: none;">
+        <div class="gray_section">
+        <div class="general_form_row extended_input">
+          <div class="general_form_label">Company</div>
+          <div class="general_form_column" style="width: 183px;">
+            <input id="company" type="text" name="companypk" value="<?php echo $company; ?>" />
+          </div>
         </div>
-      </td>
+      </div>
+      
     </tr>
   </table>
   <table style='width:100%;'>
