@@ -96,6 +96,7 @@
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
         <button onclick="
           var selctedCompany = document.getElementsByName('company_id');
+          console.log(selctedCompany);
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
           oConf.width = 400;

@@ -484,14 +484,11 @@ class CSl_candidateEx extends CSl_candidate
 
   public function deleteSelectedCompany()
   {
-    //$old_company_id = $_GET['cidS'];
-    //$new_company_id = $_GET['newId'];
+    $old_company_id = $_GET['cidS'];
+    $new_company_id = $_GET['newId'];
 
-    //ChromePhp::log($old_company_id);
-    //ChromePhp::log($new_company_id);
-
-    $test = getValue('company_id');
-    ChromePhp::log($test);
+    ChromePhp::log($old_company_id);
+    ChromePhp::log($new_company_id);
 
     //findRelatedCompanies($old_company_id,$new_company_id);
 
