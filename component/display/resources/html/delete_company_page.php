@@ -97,7 +97,8 @@
         <button onclick="
           var selctedCompany = document.getElementsByClassName('autocomp_lvl_undefined');
           var test = selctedCompany[0];
-          console.log(test);
+          var arrFromList = Array.prototype.slice.call(test);
+          console.log(arrFromList);
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
           oConf.width = 400;
