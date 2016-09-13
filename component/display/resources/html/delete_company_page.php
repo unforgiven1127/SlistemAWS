@@ -2,6 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="/component/form/resources/js/jquery.tokeninput.js"></script>
     <title>Sl[i]stem by Slate</title>
 
 
@@ -56,50 +57,6 @@
       prePopulate: company_token
     });
 
-</script>
-
-<script>
-
-
-  function toggle_tabs(menu_dom, tab_id)
-  {
-    var menu_obj = $(menu_dom);
-    var menu_siblings = menu_obj.siblings();
-
-    var tab_obj = $('#candi_container #'+tab_id);
-    var tab_siblings = tab_obj.siblings();
-
-    menu_siblings.removeClass('selected');
-    menu_obj.addClass('selected');
-
-    tab_siblings.hide();
-    tab_obj.show();
-  }
-
-  function change_date_field(date_field_id)
-  {
-    var date_field_obj = $('.general_form_column #'+date_field_id);
-    var date_field_siblings = date_field_obj.siblings();
-
-    date_field_siblings.hide();
-    if (date_field_id == 'birth_date')
-      $('.general_form_column .ui-datepicker-trigger').show();
-    date_field_obj.show();
-  }
-
-  function check_dom_change()
-  {
-    if ($('.token-input-list-mac .token-input-token-mac p').is(":visible"))
-    {
-      var element_height = $('.token-input-list-mac .token-input-token-mac').height();
-      var element_text_length = $('.token-input-list-mac .token-input-token-mac p').text().length;
-
-      if (element_text_length > 29 && element_height < 33)
-        $('.token-input-list-mac .token-input-token-mac').css('height', '33');
-    }
-
-    setTimeout(check_dom_change, 1000);
-  }
 </script>
 
 <script type="text/javascript">
