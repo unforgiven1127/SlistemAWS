@@ -91,7 +91,12 @@
         Move employees to: [company id]
       </td>
       <td style='padding-top: 11px; padding-left: 13px;'>
-        <input type="text" name="company_id"  id="company_id">
+        <!-- <input type="text" name="company_id"  id="company_id"> -->
+        <div class="general_form_row extended_input">
+          <div class="general_form_column" style="width: 183px;">
+            <input id="company" type="text" name="companypk"  />
+          </div>
+        </div>
       </td>
     </tr>
   </table>
@@ -115,3 +120,41 @@
   </body>
 
 </html>
+
+
+<script>
+  var company_token = '';
+
+  <?php if (!empty($company_token)) { ?>
+  company_token = <?php echo $company_token; ?>
+  <?php } ?>
+
+  $(function()
+  {
+
+    $('#company').tokenInput('<?php echo $company_token_url; ?>',
+    {
+      noResultsText: "no results found",
+      tokenLimit: 1,
+      prePopulate: company_token
+    });
+
+
+    check_dom_change();
+  });
+
+
+  function check_dom_change()
+  {
+    if ($('.token-input-list-mac .token-input-token-mac p').is(":visible"))
+    {
+      var element_height = $('.token-input-list-mac .token-input-token-mac').height();
+      var element_text_length = $('.token-input-list-mac .token-input-token-mac p').text().length;
+
+      if (element_text_length > 29 && element_height < 33)
+        $('.token-input-list-mac .token-input-token-mac').css('height', '33');
+    }
+
+    setTimeout(check_dom_change, 1000);
+  }
+</script>

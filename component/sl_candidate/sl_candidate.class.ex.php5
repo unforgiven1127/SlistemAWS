@@ -6184,15 +6184,15 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      //$this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
-      //$this->_oPage->addJsFile('/component/form/resources/js/currency.js');
-     // $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
-     //   '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
+      $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
+      $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
+      $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
+        '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
 
-      //$this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
-      //$this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
-      //$this->_oPage->addCssFile('/component/form/resources/css/form.css');
-      //$this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
+      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/form.css');
+      $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
 
 
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
@@ -6484,7 +6484,7 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
       );
 
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       return $sHTML;
     }
