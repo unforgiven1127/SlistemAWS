@@ -59,9 +59,7 @@
   <script language="javascript">
 
   </script>
-<form name="mergeCompany" enctype="multipart/form-data" submitAjax="1"
-  action="<?php echo $delete_url; ?>" class="candiAddForm" ajaxTarget="merge_company"
-  method="POST" id="mergeCompanyId" onBeforeSubmit="" onsubmit="">
+
   <?php if(isset($header)){ echo $header; } ?>
   <table style='width:100%; margin-left: -20px;' >
     <tr>
@@ -96,12 +94,18 @@
     <tr>
       <td align="right" style='padding-top: 30px; padding-right: 55px;'>
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
-        <button 
-        style='margin-right: 10px !important;' type="submit" class="log-btn_" >Yes</button>
+        <button onclick="
+          var selctedCompany = document.getElementsByClassName('autocomp_lvl_undefined');
+          $('.ui-dialog').remove();
+          var oConf = goPopup.getConfig();
+          oConf.width = 400;
+          oConf.height = 200;
+          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany.value);"
+        style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
       </td>
     </tr>
   </table>
-</form>
+
   </body>
 
 </html>

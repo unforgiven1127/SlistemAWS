@@ -496,8 +496,8 @@ class CSl_candidateEx extends CSl_candidate
     //findRelatedCompanies($old_company_id,$new_company_id);
 
     $html = "Company deleted / merged succesfully...";
-    return array('error' => __LINE__.' - An error occurred. Could not save the candidate data.');
-    //return $html;
+    //return array('error' => __LINE__.' - An error occurred. Could not save the candidate data.');
+    return $html;
   }
 
   private function _deleteCompany()
