@@ -58,14 +58,6 @@
 
   <script language="javascript">
 
-  $('#company_id').change(function()
-  {
-    var val = $(this).val();
-
-    do_search();
-  });
-
-
   </script>
 
   <?php if(isset($header)){ echo $header; } ?>
@@ -115,7 +107,7 @@
       </td>
     </tr>
   </table>
-
+<div class="token-input-dropdown-mac" style="display: none;"></div>
 
   </body>
 
