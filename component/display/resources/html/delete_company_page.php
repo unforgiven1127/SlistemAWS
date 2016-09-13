@@ -58,9 +58,13 @@
 
   <script language="javascript">
 
-  $('#company_id').keyup(function() {
-        $(this).val() // get the current value of the input field.
-    });
+  $('#company_id').change(function()
+  {
+    var val = $(this).val();
+
+    alert(val);
+  });
+
 
   </script>
 
