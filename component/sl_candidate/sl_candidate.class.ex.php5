@@ -213,7 +213,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case DELETE_SELECTED_COMPANY:
-            return json_encode($oPage->getAjaxExtraContent($this->deleteSelectedCompany()));
+            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->deleteSelectedCompany(), 'UTF-8')));
             //return $this->_deleteCompany();
             break;
 
@@ -490,10 +490,11 @@ class CSl_candidateEx extends CSl_candidate
     ChromePhp::log($old_company_id);
     ChromePhp::log($new_company_id);
 
+
     //findRelatedCompanies($old_company_id,$new_company_id);
 
     $html = "Company deleted / merged succesfully...";
-    //return array('error' => __LINE__.' - An error occurred. Could not save the candidate data.');
+
     return $html;
   }
 
@@ -519,7 +520,7 @@ class CSl_candidateEx extends CSl_candidate
     $sURL = $this->_oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
     $sURL.= "&cidS=".$company_id;
 
-    //$sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
+    $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
     $company_information = getCompanyInformation($company_id);
     $data['company_name'] = $company_information['name'];
