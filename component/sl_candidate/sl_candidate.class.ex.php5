@@ -508,6 +508,7 @@ class CSl_candidateEx extends CSl_candidate
     $data['delete_url'] = $sURL;
     //$data['company_token_url'] = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH,CONST_CANDIDATE_TYPE_COMP, 0);
 
+    $data['company'] = 0;
     $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
     $data['company_token_url'] = $company_token_url;
     $html = $this->_oDisplay->render('candidate_add', $data);
