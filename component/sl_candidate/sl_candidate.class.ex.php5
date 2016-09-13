@@ -508,16 +508,6 @@ class CSl_candidateEx extends CSl_candidate
     $data['delete_url'] = $sURL;
     $data['company_token_url'] = $oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH,CONST_CANDIDATE_TYPE_COMP, 0);
 
-    $oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
-    $oPage->addJsFile('/component/form/resources/js/currency.js');
-    $oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
-        '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
-
-    $oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
-    $oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
-    $oPage->addCssFile('/component/form/resources/css/form.css');
-    $oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
-
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
     return $html;
