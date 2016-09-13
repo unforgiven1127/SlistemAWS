@@ -5,7 +5,11 @@
     <link rel="stylesheet" href="/component/form/resources/css/token-input-mac.css" type="text/css">
     <link rel="stylesheet" href="/component/form/resources/css/form.css" type="text/css">
     <link rel="stylesheet" href="/component/form/resources/css/jquery.bsmselect.css" type="text/css">
+    <script src="/component/sl_candidate/resources/js/candidate_form.js"></script>
+    <script src="/component/form/resources/js/jquery.bsmselect.js"></script>
+    <script src="/component/form/resources/js/jquery.bsmselect.compatibility.js"></script>
     <title>Sl[i]stem by Slate</title>
+
 
 
 <style>
