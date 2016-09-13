@@ -140,6 +140,7 @@
 
     $('#company_id').tokenInput('<?php echo $company_token_url; ?>',
     {
+      alert('tokenInput');
       noResultsText: "no results found",
       tokenLimit: 1,
       prePopulate: company_token
