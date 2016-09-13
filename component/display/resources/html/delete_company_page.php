@@ -96,12 +96,12 @@
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
         <button onclick="
           var selctedCompany = document.getElementsByClassName('autocomp_lvl_undefined');
-          alert(selctedCompany.text);
+          alert(selctedCompany.html);
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
           oConf.width = 400;
           oConf.height = 200;
-          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany.value);"
+          goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany.html);"
         style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
       </td>
     </tr>
