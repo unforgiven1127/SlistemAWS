@@ -506,6 +506,8 @@ class CSl_candidateEx extends CSl_candidate
     $data = array();
     $company_id = $_GET['cid'];
 
+    $oForm = $this->_oDisplay->initForm('companyMergeForm');
+
     $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
     $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
     $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',

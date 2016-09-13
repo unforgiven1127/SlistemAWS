@@ -59,9 +59,9 @@
   <script language="javascript">
 
   </script>
-<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
-  action="<?php echo $delete_url; ?>" class="candiAddForm" ajaxTarget="candi_duplicate"
-  method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
+<form name="mergeCompany" enctype="multipart/form-data" submitAjax="1"
+  action="<?php echo $delete_url; ?>" class="candiAddForm" ajaxTarget="merge_company"
+  method="POST" id="mergeCompanyId" onBeforeSubmit="" onsubmit="">
   <?php if(isset($header)){ echo $header; } ?>
   <table style='width:100%; margin-left: -20px;' >
     <tr>
