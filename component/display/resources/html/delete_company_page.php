@@ -84,11 +84,7 @@
       </td>
       <td style='padding-top: 11px; padding-left: 13px;'>
         <!-- <input type="text" name="company_id"  id="company_id"> -->
-        <div class="general_form_row extended_input">
-          <div class="general_form_column" style="width: 183px;">
-            <input id="company" type="text" name="companypk"  />
-          </div>
-        </div>
+        
       </td>
     </tr>
   </table>
@@ -107,7 +103,11 @@
       </td>
     </tr>
   </table>
-
+<div class="general_form_row extended_input">
+          <div class="general_form_column" style="width: 183px;">
+            <input id="company" type="text" name="companypk"  />
+          </div>
+        </div>
   </body>
 
 </html>
