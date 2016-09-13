@@ -502,6 +502,7 @@ class CSl_candidateEx extends CSl_candidate
     //$oPage = CDependency::getCpPage();
     $data = array();
     $company_id = $_GET['cid'];
+    ChromePhp::log('_deleteCompany');
 
     $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
     $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
