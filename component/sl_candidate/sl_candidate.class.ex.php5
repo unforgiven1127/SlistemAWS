@@ -490,6 +490,9 @@ class CSl_candidateEx extends CSl_candidate
     ChromePhp::log($old_company_id);
     ChromePhp::log($new_company_id);
 
+    $test = getValue('company_id');
+    ChromePhp::log($test);
+
     //findRelatedCompanies($old_company_id,$new_company_id);
 
     $html = "Company deleted / merged succesfully...";
@@ -502,8 +505,6 @@ class CSl_candidateEx extends CSl_candidate
     //$oPage = CDependency::getCpPage();
     $data = array();
     $company_id = $_GET['cid'];
-    $test = getValue('company_id');
-    ChromePhp::log($test);
 
     $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
     $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
