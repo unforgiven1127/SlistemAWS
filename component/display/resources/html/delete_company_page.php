@@ -45,14 +45,10 @@
 
 </style>
 
+<script type="text/javascript">
 
-<script>
   var company_token = '';
-
-  $(function()
-  {
-
-    $('#company_id').tokenInput('<?php echo $company_token_url; ?>',
+  $('#company_id').tokenInput('<?php echo $company_token_url; ?>',
     {
       alert('tokenInput');
       noResultsText: "no results found",
@@ -60,8 +56,10 @@
       prePopulate: company_token
     });
 
-    check_dom_change();
-  });
+</script>
+
+<script>
+
 
   function toggle_tabs(menu_dom, tab_id)
   {
