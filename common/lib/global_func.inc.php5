@@ -3063,7 +3063,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
 
-    $sQuery = "UPDATE  sl_company SET is_client = '1', level = '".$level."', date_updated = '".$sDate."',
+    $sQuery = "UPDATE  sl_company SET is_client = '1', level = '".$level."', level_update_day = '".$sDate."',
     updated_by = '".$user_id."' WHERE sl_companypk = '".$company_id."' ";
 
 

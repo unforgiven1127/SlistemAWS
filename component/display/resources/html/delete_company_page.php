@@ -82,7 +82,10 @@
         Move employees to: [company id]
       </td>
       <td style='padding-top: 11px; padding-left: 13px;'>
-        <input type="text" name="company_id"  id="company_id">
+        <!-- <input type="text" name="company_id"  id="company_id"> -->
+        <div class="general_form_column" style="width: 183px;">
+            <input id="company_id" type="text" name="company_id" />
+        </div>
       </td>
     </tr>
   </table>
