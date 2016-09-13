@@ -85,7 +85,7 @@
       <td style='padding-top: 11px; padding-left: 13px;'>
         <!-- <input type="text" name="company_id"  id="company_id"> -->
 
-        <input id="company" type="text" name="companypk"  />
+        <input id="company" type="text" name="company_id"  />
 
       </td>
     </tr>
