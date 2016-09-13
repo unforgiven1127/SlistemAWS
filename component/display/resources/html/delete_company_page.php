@@ -62,7 +62,7 @@
   {
     var val = $(this).val();
 
-    alert(val);
+    do_search();
   });
 
 
