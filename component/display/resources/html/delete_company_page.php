@@ -103,16 +103,16 @@
       </td>
     </tr>
   </table>
+
+  </body>
+
+</html>
+
 <div class="general_form_row extended_input">
           <div class="general_form_column" style="width: 183px;">
             <input id="company" type="text" name="companypk"  />
           </div>
         </div>
-  </body>
-
-</html>
-
-
 <script>
   var company_token = '';
 
