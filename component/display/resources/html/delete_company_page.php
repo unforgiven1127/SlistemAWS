@@ -96,7 +96,7 @@
         <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_" >No</button>
         <button onclick="
           var selctedCompany = document.getElementsByClassName('autocomp_lvl_undefined');
-          var test = getElementsByTagName('p')[0].innerHTML;
+          var test = selctedCompany[0];
           console.log(test);
           $('.ui-dialog').remove();
           var oConf = goPopup.getConfig();
