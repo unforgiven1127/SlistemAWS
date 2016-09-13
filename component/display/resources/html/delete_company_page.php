@@ -2,6 +2,9 @@
 <html >
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/component/form/resources/css/token-input-mac.css" type="text/css">
+    <link rel="stylesheet" href="/component/form/resources/css/form.css" type="text/css">
+    <link rel="stylesheet" href="/component/form/resources/css/jquery.bsmselect.css" type="text/css">
     <title>Sl[i]stem by Slate</title>
 
 
