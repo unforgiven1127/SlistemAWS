@@ -107,7 +107,6 @@
       </td>
     </tr>
   </table>
-<div class="token-input-dropdown-mac" style="display: none;"></div>
 
   </body>
 
