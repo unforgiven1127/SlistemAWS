@@ -213,7 +213,7 @@ class CSl_candidateEx extends CSl_candidate
             break;
 
           case DELETE_SELECTED_COMPANY:
-            return json_encode($oPage->getAjaxExtraContent(array('data' => $this->deleteSelectedCompany(), 'UTF-8')));
+            return json_encode($oPage->getAjaxExtraContent($this->deleteSelectedCompany()));
             //return $this->_deleteCompany();
             break;
 
@@ -521,6 +521,9 @@ class CSl_candidateEx extends CSl_candidate
     //DELETE_SELECTED_COMPANY
     $sURL = $this->_oPage->getAjaxUrl('555-001', DELETE_SELECTED_COMPANY, CONST_CANDIDATE_TYPE_CANDI);
     $sURL.= "&cidS=".$company_id;
+
+    $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
+
     $company_information = getCompanyInformation($company_id);
     $data['company_name'] = $company_information['name'];
     $data['company_id'] = $company_id;
