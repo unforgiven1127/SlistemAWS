@@ -6584,10 +6584,12 @@ class CSl_candidateEx extends CSl_candidate
       $selectA = '';
       $selectB = '';
       $selectC = '';
+      $selectH = '';
 
       $selectA1 = "";
       $selectB1 = "";
       $selectC1 = "";
+      $selectH1 = "";
 
       if($asCompanyData['level'] == 1)
       {
@@ -6603,6 +6605,11 @@ class CSl_candidateEx extends CSl_candidate
       {
         $selectC1 = "selected";
         $selectC = "selected";
+      }
+      else
+      {
+        $selectH1 = "selected";
+        $selectH = "selected";
       }
 
       $is_client1Y = '';
@@ -6625,6 +6632,7 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
        $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
+       $oForm->addoption('level', array('label' => 'H', 'value' => '4', $selectH1 => $selectH));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
