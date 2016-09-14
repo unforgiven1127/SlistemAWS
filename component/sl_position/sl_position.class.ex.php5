@@ -2087,7 +2087,11 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asPositionData['companyfk']);
-          if($asPositionData['status'] != 0)
+          if($asPositionData['status'] == 0)
+          {
+            $sRow.= ' </div>';
+          }
+          else
           {
             $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
           }
