@@ -1913,6 +1913,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $asStatus = array();
       $asStatus[1] = 'pitched';
       $asStatus[2] = 'resume sent';
+      $asStatus[0] = 'employee';
 
       if($pbAll || ($pnCurrentStatus > 50 && $pnCurrentStatus <= 76))
       {
