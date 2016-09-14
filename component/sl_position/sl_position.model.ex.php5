@@ -83,9 +83,9 @@ class CSl_positionModelEx extends CSl_positionModel
     $sWhere = $sJoin = $sSelect = '';
 
     if($pbActiveOnly)
-      $sWhere = ' AND spli.active = 1 AND spli.status <= 100 ';
+      $sWhere = ' AND spli.active = 1 AND spli.status <= 101 '; //100 idi 101 yaptik
     elseif($pbActiveAndFinal)
-      $sWhere = ' AND (spli.active = 1 AND (spli.status <= 100 OR spli.status >= 200))';
+      $sWhere = ' AND (spli.active = 1 AND (spli.status <= 101 OR spli.status >= 200))'; //100 idi 101 yaptik
 
 
     $sQuery = 'SELECT spli.*, spos.*, scom.name as company_name, scom.sl_companypk, spli.status as current_status, applicant.firstname, applicant.lastname
