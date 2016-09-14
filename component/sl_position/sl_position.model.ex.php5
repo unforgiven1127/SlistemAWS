@@ -92,8 +92,6 @@ class CSl_positionModelEx extends CSl_positionModel
       FROM sl_position_link as spli
       INNER JOIN sl_position as spos ON (spos.sl_positionpk = spli.positionfk)
       INNER JOIN sl_company as scom ON (scom.sl_companypk = spos.companyfk)
-
-
       INNER JOIN sl_candidate as applicant ON (applicant.sl_candidatepk = spli.candidatefk)
       INNER JOIN sl_candidate_profile as app_pro ON (app_pro.candidatefk = applicant.sl_candidatepk)
       INNER JOIN sl_company as app_comp ON (app_comp.sl_companypk = app_pro.companyfk) ';
@@ -101,9 +99,9 @@ class CSl_positionModelEx extends CSl_positionModel
     $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.')  ';
 
     if($pbActiveOnly)
-      $sQuery.= 'GROUP BY spli.candidatefk ORDER BY spli.sl_position_linkpk DESC ';
+      $sQuery.= ' ORDER BY spli.sl_position_linkpk DESC ';
     else
-      $sQuery.= 'GROUP BY spli.candidatefk ORDER BY spli.positionfk DESC, spli.date_expire DESC ';
+      $sQuery.= ' ORDER BY spli.positionfk DESC, spli.date_expire DESC ';
 
     ChromePhp::log($sQuery);
     //echo $sQuery;
