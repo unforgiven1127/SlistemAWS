@@ -2072,10 +2072,19 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sRow.= '<div class="note_header">Employee #<a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
             - <a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['lastname'].' '.$asPositionData['firstname'].'</a></div>';
 
-          if(isset($asStatus[$asPositionData['status']]))
-            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
+          if($asPositionData['status'] == 0)
+          {
+            if(isset($asStatus[$asPositionData['status']]))
+            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['status']];
+          }
           else
-            $sRow.= '<div class="note_content">[<b>-'.$asPositionData['status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
+          {
+            if(isset($asStatus[$asPositionData['status']]))
+              $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
+            else
+              $sRow.= '<div class="note_content">[<b>-'.$asPositionData['status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
+          }
+
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asPositionData['companyfk']);
           $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
