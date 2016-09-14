@@ -639,8 +639,14 @@ class CSl_candidateEx extends CSl_candidate
     }
 
     //$this->_updateRm();
-    if(getValue('update_currency'))
+    if(getValue('update_currency')) // Calisirsa gunluk cron joblari buraya yazabiliriz...
     {
+      //cronjob test mail
+      $to = 'munir@slate-ghc.com';
+      $subject = 'Cronjob test';
+      $message = 'Cronjob test';
+      sendHtmlMail($to,$subject, $message);
+      //cronjob test mail
       require_once('component/sl_candidate/resources/currency/update_currency.php5');
     }
 
