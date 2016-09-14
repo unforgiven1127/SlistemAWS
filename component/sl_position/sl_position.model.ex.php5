@@ -101,9 +101,9 @@ class CSl_positionModelEx extends CSl_positionModel
     $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.') OR (app_pro.companyfk = '.$pnCompanyPk.' ) ';
 
     if($pbActiveOnly)
-      $sQuery.= 'ORDER BY spli.sl_position_linkpk DESC';
+      $sQuery.= 'ORDER BY spli.sl_position_linkpk DESC GROUP BY spli.candidatefk';
     else
-      $sQuery.= 'ORDER BY spli.positionfk DESC, spli.date_expire DESC';
+      $sQuery.= 'ORDER BY spli.positionfk DESC, spli.date_expire DESC GROUP BY spli.candidatefk';
 
     ChromePhp::log($sQuery);
     //echo $sQuery;
