@@ -215,7 +215,7 @@ class CCandidate_sl3 extends CTemplate
     $addClass = '';
     $deletedClass = '';
     $labelClass = 'candi_detail_label';
-    if($pasCandidateData['cp_client'] || $pasCandidateData['is_client'])
+    if($pasCandidateData['is_client'])//$pasCandidateData['cp_client'] || vardi kaldirdik
     {
       $labelClass = 'candi_detail_label2';
       $deletedClass = ' deletedClass ';
