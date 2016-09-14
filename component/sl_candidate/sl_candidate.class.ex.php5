@@ -6641,7 +6641,7 @@ class CSl_candidateEx extends CSl_candidate
 
        if($changeOwnerFlag)
        {
-          $oForm->addField('select', 'is_client', array('label'=> 'Owner '));
+          $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
           $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
           $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
        }
