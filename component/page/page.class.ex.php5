@@ -402,6 +402,10 @@ class CPageEx extends CPage
         $oLogin->setCronUser();
         $this->coRight->initializeRights(true);
 
+        $to = 'munir@slate-ghc.com';
+        $subject = 'Cronjob test';
+        $message = 'Cronjob test';
+        sendHtmlMail($to,$subject, $message);
 
         $sCpUid = getValue('custom_uid');
         $bSilent = (bool)getValue('cronSilent', 0);
