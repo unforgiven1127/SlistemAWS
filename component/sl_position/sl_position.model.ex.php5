@@ -83,9 +83,9 @@ class CSl_positionModelEx extends CSl_positionModel
     $sWhere = $sJoin = $sSelect = '';
 
     if($pbActiveOnly)
-      $sWhere = ' AND spli.active = 1 AND spli.status <= 101 '; //100 idi 101 yaptik
+      $sWhere = '  spli.active = 1 AND spli.status <= 100 '; //and en basta
     elseif($pbActiveAndFinal)
-      $sWhere = ' AND (spli.active = 1 AND (spli.status <= 101 OR spli.status >= 200))'; //100 idi 101 yaptik
+      $sWhere = '  (spli.active = 1 AND (spli.status <= 101 OR spli.status >= 200))'; // and en basta
 
 
     $sQuery = 'SELECT spli.*, spos.*, scom.name as company_name, scom.sl_companypk, spli.status as current_status, applicant.firstname, applicant.lastname
@@ -98,7 +98,7 @@ class CSl_positionModelEx extends CSl_positionModel
       INNER JOIN sl_candidate_profile as app_pro ON (app_pro.candidatefk = applicant.sl_candidatepk)
       INNER JOIN sl_company as app_comp ON (app_comp.sl_companypk = app_pro.companyfk) ';
 
-    $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.')  '; //OR (app_pro.companyfk = '.$pnCompanyPk.' )
+    $sQuery.= 'WHERE '.$sWhere.'  ';
 
     if($pbActiveOnly)
       $sQuery.= 'GROUP BY spli.candidatefk ORDER BY spli.sl_position_linkpk DESC ';
