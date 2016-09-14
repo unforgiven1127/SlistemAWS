@@ -8877,6 +8877,7 @@ die();*/
       {
         $asData = $oDbResult->getData();
         $asEntry = array();
+        $asEntry['type'] = $sTable;
 
         if(!empty($asData['parentId']))
         {
@@ -8896,7 +8897,6 @@ die();*/
         $asEntry['name'] = $asData['label'];
         $asEntry['parent'] = (int)empty($asData['childId']);
         $asEntry['level'] = 0;
-        $asEntry['type'] = $sTable;
 
         if(!empty($asData['parentfk']))
           $asEntry['level']++;
