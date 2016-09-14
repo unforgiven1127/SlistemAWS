@@ -648,7 +648,7 @@ class CSl_candidateEx extends CSl_candidate
       $message = 'Cronjob test '.$sDate;
       sendHtmlMail($to,$subject, $message);
       //cronjob test mail
-      require_once('component/sl_candidate/resources/currency/update_currency.php5');
+      //require_once('component/sl_candidate/resources/currency/update_currency.php5');
     }
 
     $nHour = (int)date('H');
