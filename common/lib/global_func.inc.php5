@@ -3091,6 +3091,26 @@ var_dump($query);*/
     return $row;
   }
 
+  function getLevels($level)
+  {
+    if($level == 1)
+    {
+      return 'A';
+    }
+    else if($level == 2)
+    {
+      return 'B';
+    }
+    else if($level == 3)
+    {
+      return 'C';
+    }
+    else
+    {
+      return 'H';
+    }
+  }
+
   function getLevelIcon($level)
   {
     if($level == 1)
