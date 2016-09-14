@@ -2071,16 +2071,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
 
-          ChromePhp::log($asPositionData['first_flag']);
-          ChromePhp::log($asPositionData['second_flag']);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
-            $sRow.= "<div>TITLE 1</div>";
+            $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
             $firstTitleFlag = false;
           }
           if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
           {
-            $sRow.= "<div>TITLE 2</div>";
+            $sRow.= "<div class='deletedClass'>POSITION DRIVEN</div>";
             $secondTitleFlag = false;
           }
 
