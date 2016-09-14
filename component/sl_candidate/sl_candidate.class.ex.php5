@@ -8896,6 +8896,7 @@ die();*/
         $asEntry['name'] = $asData['label'];
         $asEntry['parent'] = (int)empty($asData['childId']);
         $asEntry['level'] = 0;
+        $asEntry['type'] = $sTable;
 
         if(!empty($asData['parentfk']))
           $asEntry['level']++;
