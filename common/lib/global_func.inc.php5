@@ -3076,6 +3076,21 @@ var_dump($query);*/
     
   }
 
+  function getActiveUsers()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT l.* FROM login l
+    WHERE l.status = 1 and l.kpi_flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+
+  }
+
   function getCompanyInformation($company_id)
   {
     $oDB = CDependency::getComponentByName('database');

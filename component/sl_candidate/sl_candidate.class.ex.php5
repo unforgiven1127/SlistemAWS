@@ -6641,7 +6641,21 @@ class CSl_candidateEx extends CSl_candidate
 
        if($changeOwnerFlag)
        {
+          $activeUserList = getActiveUsers();
           $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
+          foreach ($activeUserList as $key => $user)
+          {
+            $userFullName = $user['firstname'].' '.$user['lastname'];
+            if($user['loginpk'] == $asCompanyData['company_owner'])
+            {
+              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
+            }
+            else
+            {
+              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk']));
+            }
+          }
+
           $oForm->addoption('company_owner', array('label' => 'Munir', 'value' => '0', $is_client1N => $is_client2N));
           $oForm->addoption('company_owner', array('label' => 'Ray', 'value' => '1', $is_client1Y => $is_client2Y));
        }
