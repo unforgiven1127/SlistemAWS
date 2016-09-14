@@ -98,7 +98,7 @@ class CSl_positionModelEx extends CSl_positionModel
       INNER JOIN sl_candidate_profile as app_pro ON (app_pro.candidatefk = applicant.sl_candidatepk)
       INNER JOIN sl_company as app_comp ON (app_comp.sl_companypk = app_pro.companyfk) ';
 
-    $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.') OR (app_pro.companyfk = '.$pnCompanyPk.' ) ';
+    $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.')  '; //OR (app_pro.companyfk = '.$pnCompanyPk.' )
 
     if($pbActiveOnly)
       $sQuery.= 'GROUP BY spli.candidatefk ORDER BY spli.sl_position_linkpk DESC ';
