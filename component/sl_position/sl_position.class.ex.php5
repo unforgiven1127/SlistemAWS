@@ -2062,11 +2062,25 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       $asStatus = $this->_getStatusList(0, false, true);
       $asPosition = array();
 
+      $firstTitleFlag = true;
+      $secondTitleFlag = true;
+
       while($bRead)
       {
         $asPositionData = $oDbResult->getData();
 
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
+
+          if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
+          {
+            $sRow.= "<div>TITLE 1</div>";
+            $firstTitleFlag = false;
+          }
+          if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
+          {
+            $sRow.= "<div>TITLE 1</div>";
+            $secondTitleFlag = false;
+          }
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
           $sRow.= '<div class="note_header">Employee #<a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>

@@ -88,7 +88,11 @@ class CSl_positionModelEx extends CSl_positionModel
       $sWhere = ' AND (spli.active = 1 AND (spli.status <= 100 OR spli.status >= 200))'; //100 idi 101 yaptik
 
 
-    $sQuery = 'SELECT spli.*, spos.*, scom.name as company_name, scom.sl_companypk, spli.status as current_status, applicant.firstname, applicant.lastname
+    $sQuery = 'SELECT (case when app_comp.sl_companypk = 37246 then 1 ELSE 0 END) as first_flag,
+      (case when spos.companyfk = 37246 then 1 ELSE 0 END) as second_flag,
+      app_comp.sl_companypk as first_check, spos.companyfk as second_check, spli.*, spos.*,
+      scom.name as company_name, scom.sl_companypk, spli.status as current_status,
+      applicant.firstname, applicant.lastname
       FROM sl_position_link as spli
       INNER JOIN sl_position as spos ON (spos.sl_positionpk = spli.positionfk)
       INNER JOIN sl_company as scom ON (scom.sl_companypk = spos.companyfk)
@@ -99,11 +103,11 @@ class CSl_positionModelEx extends CSl_positionModel
     $sQuery.= 'WHERE (app_comp.sl_companypk = '.$pnCompanyPk.' '.$sWhere.') OR (spos.companyfk = '.$pnCompanyPk.' AND spli.status <= 100 AND spli.active = 1 ) ';
 
     if($pbActiveOnly)
-      $sQuery.= ' ORDER BY spli.sl_position_linkpk DESC ';
+      $sQuery.= ' ORDER BY first_flag DESC,spli.sl_position_linkpk DESC ';
     else
-      $sQuery.= ' ORDER BY spli.positionfk DESC, spli.date_expire DESC ';
+      $sQuery.= ' ORDER BY first_flag DESC,spli.positionfk DESC, spli.date_expire DESC ';
 
-    ChromePhp::log($sQuery);
+    //ChromePhp::log($sQuery);
     //echo $sQuery;
     return $this->oDB->executeQuery($sQuery);
   }
