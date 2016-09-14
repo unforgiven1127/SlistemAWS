@@ -88,8 +88,8 @@ class CSl_positionModelEx extends CSl_positionModel
       $sWhere = ' AND (spli.active = 1 AND (spli.status <= 100 OR spli.status >= 200))'; //100 idi 101 yaptik
 
 
-    $sQuery = 'SELECT (case when app_comp.sl_companypk = 37246 then 1 ELSE 0 END) as first_flag,
-      (case when spos.companyfk = 37246 then 1 ELSE 0 END) as second_flag,
+    $sQuery = 'SELECT (case when app_comp.sl_companypk = '.$pnCompanyPk.' then 1 ELSE 0 END) as first_flag,
+      (case when spos.companyfk = '.$pnCompanyPk.' then 1 ELSE 0 END) as second_flag,
       app_comp.sl_companypk as first_check, spos.companyfk as second_check, spli.*, spos.*,
       scom.name as company_name, scom.sl_companypk, spli.status as current_status,
       applicant.firstname, applicant.lastname
