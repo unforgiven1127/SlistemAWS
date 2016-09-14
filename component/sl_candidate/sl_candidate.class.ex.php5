@@ -6632,7 +6632,7 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
        $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
-       $oForm->addoption('level', array('label' => 'H', 'value' => '7', $selectH1 => $selectH));
+       $oForm->addoption('level', array('label' => 'H', 'value' => '8', $selectH1 => $selectH));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
