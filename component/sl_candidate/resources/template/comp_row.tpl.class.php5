@@ -40,12 +40,17 @@ class CComp_row extends CTemplate
 
     $deletedClass = '';
     $showFlag = true;
+    $changeOwnerFlag = false;
     if(isset($pasData['merged_company_id']) && $merged_company_id > 0)
     {
       $deletedClass = 'deletedClass';
       if($user_id != '101')
       {
         $showFlag = false;
+      }
+      else
+      {
+        $changeOwnerFlag = true;
       }
     }
     $sHTML = '';

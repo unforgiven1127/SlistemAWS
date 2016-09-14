@@ -6520,7 +6520,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $pnPk = $_GET['cid'];
       }
-
+      $changeOwnerFlag = false;
       $asCompanyData = array();
 
       if(empty($pnPk))
@@ -6547,6 +6547,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+        $changeOwnerFlag = true;
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
         $allCompanyDataWithMultipleIndustries = $asCompanyData;
@@ -6637,6 +6638,13 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+
+       if($changeOwnerFlag)
+       {
+          $oForm->addField('select', 'is_client', array('label'=> 'Owner '));
+          $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
+          $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+       }
 
        $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
