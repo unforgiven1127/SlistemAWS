@@ -2071,6 +2071,8 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
 
+          ChromePhp::log($asPositionData['first_flag']);
+          ChromePhp::log($asPositionData['first_flag']);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
             $sRow.= "<div>TITLE 1</div>";
@@ -2078,7 +2080,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           }
           if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
           {
-            $sRow.= "<div>TITLE 1</div>";
+            $sRow.= "<div>TITLE 2</div>";
             $secondTitleFlag = false;
           }
 
