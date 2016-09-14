@@ -3071,6 +3071,11 @@ var_dump($query);*/
 
   }
 
+  function dailyLevelUpdate()
+  {
+    
+  }
+
   function getCompanyInformation($company_id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3134,6 +3139,7 @@ var_dump($query);*/
       return '';
     }
   }
+
 
   function getPositionInformation($position_id)
   {
