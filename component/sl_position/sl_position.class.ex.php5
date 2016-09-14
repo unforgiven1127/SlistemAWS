@@ -2075,7 +2075,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           if($asPositionData['status'] == 0)
           {
             if(isset($asStatus[$asPositionData['status']]))
-            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['status']];
+            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['status']].'</b>]';
           }
           else
           {
@@ -2087,8 +2087,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asPositionData['companyfk']);
-          $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
-
+          if($asPositionData['status'] != 0)
+          {
+            $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
+          }
         $sRow.= $this->_oDisplay->getBlocEnd();
         $asPosition[] = $sRow;
 
