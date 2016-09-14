@@ -2051,12 +2051,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
     public function getEmployeeApplicantTabContent($pnCompanyPk, $pbActiveOnly = true, $pbActiveAndFinal = false)
     {
       if(!assert('is_key($pnCompanyPk) && is_bool($pbActiveOnly) && is_bool($pbActiveAndFinal)'))
-        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.1</div></div>');
+        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.</div></div>');
 
       $oDbResult = $this->_getModel()->getCompanyApplication($pnCompanyPk, $pbActiveOnly, $pbActiveAndFinal);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
-        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.2</div></div>');
+        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.</div></div>');
 
       $asStatus = $this->_getStatusList(0, false, true);
       $asPosition = array();
@@ -2086,7 +2086,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       }
 
       if(empty($asPosition))
-        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.3</div></div>');
+        return array('nb_result' => 0, 'content' => '<div class="entry"><div class="note_content">No employee in play.</div></div>');
 
       return array('nb_result' => count($asPosition), 'content' => implode('', $asPosition));
     }
