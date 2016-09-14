@@ -137,6 +137,7 @@ class CSl_candidateModel extends CModel
     $this->_tableMap['sl_company']['sl_companypk'] = array('controls' => array());
     $this->_tableMap['sl_company']['date_created'] = array('controls' => array());
     $this->_tableMap['sl_company']['created_by'] = array('controls' => array());
+    $this->_tableMap['sl_company']['company_owner'] = array('controls' => array());
     $this->_tableMap['sl_company']['date_updated'] = array('controls' => array());
     $this->_tableMap['sl_company']['updated_by'] = array('controls' => array());
 

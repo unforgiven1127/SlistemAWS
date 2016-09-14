@@ -6735,6 +6735,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $asData['date_created'] = date('Y-m-d H:i:s');
         $asData['created_by'] = $nLoginFk;
+        $asData['company_owner'] = $nLoginFk;
         $pnPk = $this->_getModel()->add($asData, 'sl_company');
         if(empty($pnPk))
           return array('error' => 'Could not save the company.');
