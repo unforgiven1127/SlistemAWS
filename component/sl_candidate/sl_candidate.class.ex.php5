@@ -621,6 +621,7 @@ class CSl_candidateEx extends CSl_candidate
   //remove if the interface is not used
   public function getCronJob()
   {
+    ChromePhp::log('getCronJob');
     $nHour = (int)date('H');
     echo 'SL_Candidate cron job | Hr: '.$nHour.'<br />
       &update_rss_feed=1 for Company rss feed<br />
@@ -641,6 +642,7 @@ class CSl_candidateEx extends CSl_candidate
     //$this->_updateRm();
     if(getValue('update_currency')) // Calisirsa gunluk cron joblari buraya yazabiliriz...
     {
+      ChromePhp::log('update_currency');
       //cronjob test mail
       $sDate = date('Y-m-d H:i:s');
       $to = 'munir@slate-ghc.com';
