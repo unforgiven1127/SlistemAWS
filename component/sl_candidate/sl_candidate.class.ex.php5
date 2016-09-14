@@ -6655,9 +6655,6 @@ class CSl_candidateEx extends CSl_candidate
               $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk']));
             }
           }
-
-          $oForm->addoption('company_owner', array('label' => 'Munir', 'value' => '0', $is_client1N => $is_client2N));
-          $oForm->addoption('company_owner', array('label' => 'Ray', 'value' => '1', $is_client1Y => $is_client2Y));
        }
 
        $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
