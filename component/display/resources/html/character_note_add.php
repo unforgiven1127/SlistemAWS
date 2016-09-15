@@ -156,7 +156,7 @@
 	$('.inputsSkill').change(function(e){
 		var val = $(this).val();
 		var id = e.target.id;
-
+alert(e.keyCode);
 		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '0')
 		{
 			first_click[id] = id;
