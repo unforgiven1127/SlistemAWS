@@ -152,8 +152,9 @@
 	initialSkills['skill_e']  = $('#skill_e').val();
 	initialSkills['skill_ex'] = $('#skill_ex').val();
 
+	$pressedKey = '';
 	$(".inputsSkill").keypress(function(e){
-	    alert(e.keyCode);
+	    $pressedKey = e.keyCode;
 	});
 
 	var first_click = new Array();
@@ -161,11 +162,12 @@
 		var val = $(this).val();
 		var id = e.target.id;
 
-		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '0')
+		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '0' && $pressedKey == '')
 		{
 			first_click[id] = id;
 			$('#'+id).val(5);
 		}
+		$pressedKey = '';
 
 		if(val < 1 || val > 9)
 		{
