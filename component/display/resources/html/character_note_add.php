@@ -153,7 +153,7 @@
 	initialSkills['skill_ex'] = $('#skill_ex').val();
 
 	var first_click = new Array();
-	$('.inputsSkill').val();.change(function(e){
+	$('.inputsSkill').val().change(function(e){
 		var val = $(this).val();
 		var id = e.target.id;
 
