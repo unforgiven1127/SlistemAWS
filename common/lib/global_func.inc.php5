@@ -3605,11 +3605,11 @@ var_dump($query);*/
         $sQuery = "UPDATE sl_company SET is_client = 1, level = '".$level."', level_update_day = '".$dateNow."'
         WHERE sl_companypk = '".$company_id."'";
 
-        //$oDB->executeQuery($sQuery);
+        $oDB->executeQuery($sQuery);
       }
     }
 
-    //ChromePhp::log($in);
+    ChromePhp::log($in);
 
   }
 
