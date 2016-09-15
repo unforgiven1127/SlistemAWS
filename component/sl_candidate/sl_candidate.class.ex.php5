@@ -9219,6 +9219,8 @@ die();*/
       else
         $sQuery = 'SELECT * FROM sl_company WHERE is_client = 1 OR is_nc_ok = 0 ORDER BY name ASC';
 
+      ChromePhp::log($sQuery);
+
       $oDbResult = $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
