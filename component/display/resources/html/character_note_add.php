@@ -139,11 +139,17 @@
 		}
 	});
 
-	var first_click = '';
+	var first_click = new Array();
 	$('.inputsSkill').change(function(e){
 		var val = $(this).val();
 		var id = e.target.id;
-		alert(id);
+
+		if(typeof first_click[id] == 'undefined')
+		{
+			first_click[id] = id;
+			$('#'+id).val(5);
+		}
+
 		if(val < 1 || val > 9)
 		{
 			alert("All skill areas should have a value between 1 - 9.");
