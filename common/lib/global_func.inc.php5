@@ -3567,6 +3567,8 @@ var_dump($query);*/
 
     $allPositionLinks = $db_result->getAll();
 
+    $in = '';
+
     foreach ($allPositionLinks as $key => $value)
     {
       $pl_date = $value['pl_date'];
@@ -3597,6 +3599,7 @@ var_dump($query);*/
 
       if($selectedCompany['level'] > $level && $level < 8)
       {
+        $in .= $company_id.",";
         $sQuery = "UPDATE sl_company SET is_client = 1, level = '".$level."', level_update_day = '".$dateNow."'
         WHERE sl_companypk = '".$company_id."'";
 
@@ -3604,6 +3607,7 @@ var_dump($query);*/
       }
     }
 
+    ChromePhp::log($in);
 
   }
 
