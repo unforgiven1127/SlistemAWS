@@ -2073,12 +2073,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
 
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'> CANDIDATE DRIVEN</div>";
+            $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
             $firstTitleFlag = false;
           }
           if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'> POSITION DRIVEN</div>";
+            $sRow.= "<div class='deletedClass'>POSITION DRIVEN</div>";
             $secondTitleFlag = false;
           }
 

@@ -139,9 +139,11 @@
 		}
 	});
 
+	var first_click = '';
 	$('.inputsSkill').change(function(){
 		var val = $(this).val();
-
+		var id = $(this).id;
+		alert(id);
 		if(val < 1 || val > 9)
 		{
 			alert("All skill areas should have a value between 1 - 9.");
