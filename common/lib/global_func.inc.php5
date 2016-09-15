@@ -3574,6 +3574,8 @@ var_dump($query);*/
     {
       $pl_date = $value['pl_date'];
       $company_id = $value['company_id'];
+      ChromePhp::log($pl_date);
+
       if($pl_date < $m6)
       {
         $level = 1;
@@ -3591,6 +3593,11 @@ var_dump($query);*/
         $level = 8;
       }
 
+      ChromePhp::log($m6);
+      ChromePhp::log($m12);
+      ChromePhp::log($m18);
+      ChromePhp::log($level);
+
       $sQuery = "SELECT * FROM sl_company slc WHERE slc.sl_companypk = '".$company_id."'";
 
       $db_result = $oDB->executeQuery($sQuery);
@@ -3604,11 +3611,11 @@ var_dump($query);*/
         $sQuery = "UPDATE sl_company SET is_client = 1, level = '".$level."', level_update_day = '".$dateNow."'
         WHERE sl_companypk = '".$company_id."'";
 
-        $oDB->executeQuery($sQuery);
+        //$oDB->executeQuery($sQuery);
       }
     }
 
-    ChromePhp::log($in);
+    //ChromePhp::log($in);
 
   }
 
