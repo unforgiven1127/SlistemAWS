@@ -3574,17 +3574,16 @@ var_dump($query);*/
     {
       $pl_date = $value['pl_date'];
       $company_id = $value['company_id'];
-      ChromePhp::log($pl_date);
 
-      if($pl_date < $m6)
+      if($pl_date > $m6)
       {
         $level = 1;
       }
-      elseif($pl_date >= $m6 && $pl_date < $m12)
+      elseif($pl_date <= $m6 && $pl_date > $m12)
       {
         $level = 2;
       }
-      elseif($pl_date >= $m12 && $pl_date < $m18)
+      elseif($pl_date <= $m12 && $pl_date > $m18)
       {
         $level = 3;
       }
@@ -3592,11 +3591,6 @@ var_dump($query);*/
       {
         $level = 8;
       }
-
-      ChromePhp::log($m6);
-      ChromePhp::log($m12);
-      ChromePhp::log($m18);
-      ChromePhp::log($level);
 
       $sQuery = "SELECT * FROM sl_company slc WHERE slc.sl_companypk = '".$company_id."'";
 
