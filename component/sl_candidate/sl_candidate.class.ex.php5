@@ -495,7 +495,7 @@ class CSl_candidateEx extends CSl_candidate
     $loginfk = $user_id;
     $cp_pk = $old_company_id;
     $text = "Company #".$old_company_id." merged with company #".$new_company_id;
-    $table = "user_history_all_view";
+    $table = "user_history";
     $desctiption = '';
     $cp_type = "comp";
 

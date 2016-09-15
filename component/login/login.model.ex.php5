@@ -411,7 +411,6 @@ class CLoginModelEx extends CLoginModel
     if(!empty($psLimit))
       $sQuery.= ' LIMIT '.$psLimit;
 
-    ChromePhp::log($sQuery);
 
     return $this->oDB->ExecuteQuery($sQuery);
   }
