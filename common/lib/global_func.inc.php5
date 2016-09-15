@@ -3053,10 +3053,6 @@ var_dump($query);*/
 
   }
 
-  function makeCompanyPassive($company_id)
-  {
-
-  }
 
   function updateCompanyLevel($company_id, $level,$user_id)
   {
@@ -3071,10 +3067,6 @@ var_dump($query);*/
 
   }
 
-  function dailyLevelUpdate()
-  {
-    
-  }
 
   function getActiveUsers()
   {
