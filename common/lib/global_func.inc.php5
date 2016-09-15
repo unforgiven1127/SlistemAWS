@@ -3413,13 +3413,12 @@ var_dump($query);*/
 
   }
 
-  function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '')
+  function insertLog($loginfk, $cp_pk, $text,$table = "user_history",$desctiption = '',$cp_type = "candi")
   {
     if($loginfk > 0)
     {
       $cp_uid = "555-001";
       $cp_action = "ppasa";
-      $cp_type = "candi";
       $sDate = date('Y-m-d H:i:s');
       $component = "555-001_ppav_candi_".$cp_pk;
       $uri = "https://slistem.slate.co.jp/index.php5?uid=555-001&ppa=ppav&ppt=candi&ppk=".$cp_pk."&pg=ajx";
