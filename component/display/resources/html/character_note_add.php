@@ -139,12 +139,25 @@
 		}
 	});
 
+	var initialSkills = new Array();
+	initialSkills['skill_ag'] = $('#skill_ag').val();
+	initialSkills['skill_fx'] = $('#skill_fx').val();
+	initialSkills['skill_ap'] = $('#skill_ap').val();
+	initialSkills['skill_ch'] = $('#skill_ch').val();
+	initialSkills['skill_am'] = $('#skill_am').val();
+	initialSkills['skill_ed'] = $('#skill_ed').val();
+	initialSkills['skill_mp'] = $('#skill_mp').val();
+	initialSkills['skill_pl'] = $('#skill_pl').val();
+	initialSkills['skill_in'] = $('#skill_in').val();
+	initialSkills['skill_e']  = $('#skill_e').val();
+	initialSkills['skill_ex'] = $('#skill_ex').val();
+
 	var first_click = new Array();
-	$('.inputsSkill').change(function(e){
+	$('.inputsSkill').val();.change(function(e){
 		var val = $(this).val();
 		var id = e.target.id;
 
-		if(typeof first_click[id] == 'undefined')
+		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '-')
 		{
 			first_click[id] = id;
 			$('#'+id).val(5);
