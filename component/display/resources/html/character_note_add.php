@@ -157,7 +157,7 @@
 		var val = $(this).val();
 		var id = e.target.id;
 
-		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '-')
+		if(typeof first_click[id] == 'undefined' && initialSkills[id] == 0)
 		{
 			first_click[id] = id;
 			$('#'+id).val(5);
