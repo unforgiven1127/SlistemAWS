@@ -9215,11 +9215,13 @@ die();*/
       $nLevel = (int)getValue('filter_level', 0);
 
       if(!empty($nLevel))
-        $sQuery = 'SELECT * FROM sl_company WHERE level = '.$nLevel.' AND (is_client = 1 OR is_nc_ok = 0) ORDER BY name ASC';
-      else
-        $sQuery = 'SELECT * FROM sl_company WHERE is_client = 1 OR is_nc_ok = 0 ORDER BY name ASC';
+        {// parantez icinde OR is_nc_ok = 0 vardi kaldirdik
+        $sQuery = 'SELECT * FROM sl_company WHERE level = '.$nLevel.' AND (is_client = 1) ORDER BY name ASC';
+      }
+      else // OR is_nc_ok = 0 vardi kaldirdik
+        $sQuery = 'SELECT * FROM sl_company WHERE is_client = 1  ORDER BY name ASC';
 
-      ChromePhp::log($sQuery);
+      //ChromePhp::log($sQuery);
 
       $oDbResult = $this->_getModel()->executeQuery($sQuery);
       $bRead = $oDbResult->readFirst();
