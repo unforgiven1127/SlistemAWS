@@ -3595,9 +3595,10 @@ var_dump($query);*/
       $selectedCompany = $db_result->getAll();
       $selectedCompany = $selectedCompany[0];
 
-      if($selectedCompany['level'] > $level)
+      if($selectedCompany['level'] > $level && $level < 8)
       {
-        $sQuery = "UPDATE sl_company SET level = '".$level."' WHERE sl_companypk = '".$company_id."'";
+        $sQuery = "UPDATE sl_company SET is_client = 1, level = '".$level."', level_update_day = '".$dateNow."'
+        WHERE sl_companypk = '".$company_id."'";
 
         $oDB->executeQuery($sQuery);
       }
