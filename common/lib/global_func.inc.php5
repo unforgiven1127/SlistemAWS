@@ -3555,11 +3555,13 @@ var_dump($query);*/
     $m12 = date('Y-m-d H:i:s', strtotime('-12 months'));;
     $m18 = date('Y-m-d H:i:s', strtotime('-18 months'));
 
-    ChromePhp::log($m6);
-    ChromePhp::log($m12);
-    ChromePhp::log($m18);
+    //ChromePhp::log($m6);
+    //ChromePhp::log($m12);
+    //ChromePhp::log($m18);
 
-    $sQuery = "SELECT * FROM sl_position_link slpl ";
+    $sQuery = "SELECT slpl.date_created as pl_date, slp.companyfk as company_id
+               FROM sl_position_link slpl
+               INNER JOIN sl_position slp on slp.sl_positionpk = slpl.positionfk";
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3567,7 +3569,38 @@ var_dump($query);*/
 
     foreach ($allPositionLinks as $key => $value)
     {
-      $date = $value['date_created'];
+      $pl_date = $value['pl_date'];
+      $company_id = $value['company_id'];
+      if($pl_date < $m6)
+      {
+        $level = 1;
+      }
+      elseif($pl_date >= $m6 && $pl_date < $m12)
+      {
+        $level = 2;
+      }
+      elseif($pl_date >= $m12 && $pl_date < $m18)
+      {
+        $level = 3;
+      }
+      else
+      {
+        $level = 8;
+      }
+
+      $sQuery = "SELECT * FROM sl_company slc WHERE slc.sl_companypk = '".$company_id."'";
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $selectedCompany = $db_result->getAll();
+      $selectedCompany = $selectedCompany[0];
+
+      if($selectedCompany['level'] > $level)
+      {
+        $sQuery = "UPDATE sl_company SET level = '".$level."' WHERE sl_companypk = '".$company_id."'";
+
+        $oDB->executeQuery($sQuery);
+      }
     }
 
 
