@@ -349,7 +349,7 @@ class CRightEx extends CRight
   public function canAccess($psUid, $psAction = '', $psType = '', $pnPk = 0, $pasCallback = array())
   {
 
-    if($psAction == 'ppcl') // db den cekip olmadi asagida bulunan $pasCallback controlu bozuyor...
+    if($psAction == 'ppcl' || $psAction == 'ppadd') // db den cekip olmadi asagida bulunan $pasCallback controlu bozuyor...
       return true;
 
     if($this->cbIsAdmin)
