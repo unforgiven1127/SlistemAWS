@@ -515,8 +515,9 @@ class CSl_candidateEx extends CSl_candidate
 
   private function _deleteCompany()
   {
+    autoUpdateCompanyLevels();
     //$oPage = CDependency::getCpPage();
-    $data = array();
+    /*$data = array();
     $company_id = $_GET['cid'];
 
     $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
@@ -542,7 +543,7 @@ class CSl_candidateEx extends CSl_candidate
     $data['company_token_url'] = $company_token_url;
     $html = $this->_oDisplay->render('delete_company_page', $data);
 
-    return $html;
+    return $html;*/
   }
 
   //remove if the interface is not used
