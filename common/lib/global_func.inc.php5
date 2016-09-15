@@ -3546,6 +3546,33 @@ var_dump($query);*/
     return true;
   }
 
+
+  function autoUpdateCompanyLevels()
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $dateNow = date('Y-m-d H:i:s');
+    $m6 = date('Y-m-d H:i:s', strtotime('-6 months'));
+    $m12 = date('Y-m-d H:i:s', strtotime('-12 months'));;
+    $m18 = date('Y-m-d H:i:s', strtotime('-18 months'));
+
+    ChromePhp::log($m6);
+    ChromePhp::log($m12);
+    ChromePhp::log($m18);
+
+    $sQuery = "SELECT * FROM sl_position_link slpl ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $allPositionLinks = $db_result->getAll();
+
+    foreach ($allPositionLinks as $key => $value)
+    {
+      $date = $value['date_created'];
+    }
+
+
+  }
+
   function updateOldCompany($candidate_id,$company_id)
   {
 
