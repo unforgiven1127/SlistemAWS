@@ -981,7 +981,7 @@ class CSl_eventEx extends CSl_event
 
             if($key == 'education_note' && strlen($value) < 15)
             {
-              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
+              $errorArray .= 'Major career accomplishments/Education should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 15)
@@ -1019,7 +1019,7 @@ class CSl_eventEx extends CSl_event
 
             elseif($key == 'education_note')
             {
-              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
+              $errorArray .= 'Major career accomplishments/Education should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             elseif($key == 'compensation_note')

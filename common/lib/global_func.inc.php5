@@ -3962,7 +3962,7 @@ var_dump($query);*/
     }
     else if($type == 'education_note')
     {
-      return "Skills/Education/Compensation";
+      return "Major career accomplishments/Education";
     }
     else if($type == 'move_note')
     {

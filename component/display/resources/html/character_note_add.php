@@ -341,7 +341,7 @@
 		</td>
 
 		<td style='padding-top: 0px !important;' class='tdTitle'><p  id='career_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Management and Leadership</p></td>
-		<td style='padding-top: 0px !important;' class='tdTitle'><p id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Skills/Education/Compensation</p></td>
+		<td style='padding-top: 0px !important;' class='tdTitle'><p id='education_noteTD' onmouseover=" $(this).tooltip({content: function(){ return $(this).attr('title'); }}).mouseenter();" onmouseout="$('.ui-tooltip-content').parents('div').remove();" data-toggle="tooltip" title="" class='titles'>Major career accomplishments/Education</p></td>
 	<tr>
 	<tr>
 		<td><textarea  id='personality_note' name='personality_note' class='inputs'><?php if(isset($personality_note)){echo $personality_note;} ?></textarea></td>

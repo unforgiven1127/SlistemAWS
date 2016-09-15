@@ -5235,7 +5235,7 @@ class CSl_candidateEx extends CSl_candidate
 
             if($key == 'education_note' && strlen($value) < 15)
             {
-              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
+              $errorArray .= 'Major career accomplishments/Education should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             if($key == 'compensation_note' && strlen($value) < 15)
@@ -5273,7 +5273,7 @@ class CSl_candidateEx extends CSl_candidate
 
             elseif($key == 'education_note')
             {
-              $errorArray .= 'Skills/Education/Compensation should have 15 characters<br>';
+              $errorArray .= 'Major career accomplishments/Education should have 15 characters<br>';
               //return array('error' => __LINE__.' - Education & Training should have 15 caracters');
             }
             elseif($key == 'compensation_note')
@@ -9215,7 +9215,7 @@ die();*/
       $nLevel = (int)getValue('filter_level', 0);
 
       if(!empty($nLevel))
-        {// parantez icinde OR is_nc_ok = 0 vardi kaldirdik
+      {// parantez icinde OR is_nc_ok = 0 vardi kaldirdik
         $sQuery = 'SELECT * FROM sl_company WHERE level = '.$nLevel.' AND (is_client = 1) ORDER BY name ASC';
       }
       else // OR is_nc_ok = 0 vardi kaldirdik
