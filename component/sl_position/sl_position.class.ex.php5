@@ -1626,7 +1626,10 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $company_info = getPositionInformation($position_id);
         $company_id = $company_info['sl_companypk'];
 
-        updateCompanyLevel($company_id, $level,$user_id);
+        if($company_info['level'] >= $level)
+        {
+          updateCompanyLevel($company_id, $level,$user_id);
+        }
       }
       //====================================================================================
       //====================================================================================
