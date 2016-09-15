@@ -1821,7 +1821,7 @@ class CNotificationEx extends CNotification
 
       case '1d':
         $nTime = strtotime('-1 day', strtotime($asReminder['date_notification']));
-        $asReminder['date_notification'] = date('Y-m-d ', $nTime).' 06:00:00';
+        $asReminder['date_notification'] = date('Y-m-d', $nTime).' 06:00:00';
         $sErrorLabel = '1 day before';
         break;
 
