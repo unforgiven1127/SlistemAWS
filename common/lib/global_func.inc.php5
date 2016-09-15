@@ -3561,7 +3561,8 @@ var_dump($query);*/
 
     $sQuery = "SELECT slpl.date_created as pl_date, slp.companyfk as company_id
                FROM sl_position_link slpl
-               INNER JOIN sl_position slp on slp.sl_positionpk = slpl.positionfk";
+               INNER JOIN sl_position slp on slp.sl_positionpk = slpl.positionfk
+               WHERE slpl.status < 102";
 
     $db_result = $oDB->executeQuery($sQuery);
 
