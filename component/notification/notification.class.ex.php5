@@ -1787,7 +1787,7 @@ class CNotificationEx extends CNotification
     //timepicker rounded at 15 mins, we add the seconds for proper date format
     if(strlen($asReminder['date_notification']) == 16)
       $asReminder['date_notification'].= ':00';
-
+ChromePhp::log($sTrigger);
     switch($sTrigger)
     {
       case 'morning':
@@ -1821,7 +1821,9 @@ class CNotificationEx extends CNotification
 
       case '1d':
         $nTime = strtotime('-1 day', strtotime($asReminder['date_notification']));
+        ChromePhp::log($nTime);
         $asReminder['date_notification'] = date('Y-m-d ', $nTime).' 06:00:00';
+        ChromePhp::log($asReminder['date_notification']);
         $sErrorLabel = '1 day before';
         break;
 
