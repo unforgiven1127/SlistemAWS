@@ -142,7 +142,7 @@
 	var first_click = '';
 	$('.inputsSkill').change(function(){
 		var val = $(this).val();
-		var id = $(this).id;
+		var id = $(this).id();
 		alert(id);
 		if(val < 1 || val > 9)
 		{
