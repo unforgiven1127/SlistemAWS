@@ -487,21 +487,28 @@ class CSl_candidateEx extends CSl_candidate
     $old_company_id = $_GET['cidS'];
     $new_company_id = $_GET['newId'];
 
-    findRelatedCompanies($old_company_id,$new_company_id);
+    if($old_company_id > 0 && $new_company_id > 0)
+    {
+      findRelatedCompanies($old_company_id,$new_company_id);
 
-    $oLogin = CDependency::getCpLogin();
-    $user_id = $oLogin->getUserPk();
+      $oLogin = CDependency::getCpLogin();
+      $user_id = $oLogin->getUserPk();
 
-    $loginfk = $user_id;
-    $cp_pk = $old_company_id;
-    $text = "Company #".$old_company_id." merged with company #".$new_company_id;
-    $table = "user_history";
-    $desctiption = '';
-    $cp_type = "comp";
+      $loginfk = $user_id;
+      $cp_pk = $old_company_id;
+      $text = "Company #".$old_company_id." merged with company #".$new_company_id;
+      $table = "user_history";
+      $desctiption = '';
+      $cp_type = "comp";
 
-    insertLog($loginfk, $cp_pk, $text,$table,$desctiption,$cp_type);
+      insertLog($loginfk, $cp_pk, $text,$table,$desctiption,$cp_type);
 
-    $html = "Company deleted / merged succesfully...";
+      $html = "Company deleted / merged succesfully...";
+    }
+    else
+    {
+      $html = "Please select a company";
+    }
 
     return $html;
   }
