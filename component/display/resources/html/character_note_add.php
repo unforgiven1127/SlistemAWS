@@ -140,9 +140,9 @@
 	});
 
 	var first_click = '';
-	$('.inputsSkill').change(function(){
+	$('.inputsSkill').change(function(e){
 		var val = $(this).val();
-		var id = $(this).id();
+		var id = e.target.id;
 		alert(id);
 		if(val < 1 || val > 9)
 		{
