@@ -152,11 +152,15 @@
 	initialSkills['skill_e']  = $('#skill_e').val();
 	initialSkills['skill_ex'] = $('#skill_ex').val();
 
+	$(".inputsSkill").keypress(function(e){
+	    alert(e.keyCode);
+	});
+
 	var first_click = new Array();
 	$('.inputsSkill').change(function(e){
 		var val = $(this).val();
 		var id = e.target.id;
-alert(e.keyCode);
+
 		if(typeof first_click[id] == 'undefined' && initialSkills[id] == '0')
 		{
 			first_click[id] = id;
