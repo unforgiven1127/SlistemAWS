@@ -3091,6 +3091,8 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
+
+    return $result;
   }
 
   function fillCompanyOwnerTable()
