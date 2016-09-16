@@ -1086,16 +1086,8 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = '';
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']))
-                {
-                  $editCandidate = $_GET['editCharacterNote'];
+                insertNote($array);
 
-                  editNote($editCandidate,$array);
-                }
-                else
-                {
-                  insertNote($array);
-                }
               }
             }
             updateCandidateSkills($candidate_id,$skillValues);
