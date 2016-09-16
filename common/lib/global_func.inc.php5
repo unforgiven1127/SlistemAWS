@@ -3080,6 +3080,17 @@ var_dump($query);*/
 
   }
 
+  function getCompanyOwner($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owners co WHERE company_id = '".$company_id."' co.flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+  }
+
   function fillCompanyOwnerTable()
   {
     $oDB = CDependency::getComponentByName('database');

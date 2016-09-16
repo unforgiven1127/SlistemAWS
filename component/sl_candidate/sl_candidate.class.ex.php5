@@ -661,11 +661,11 @@ class CSl_candidateEx extends CSl_candidate
     if(getValue('update_currency')) // Calisirsa gunluk cron joblari buraya yazabiliriz...
     {
       //cronjob test mail
-      $sDate = date('Y-m-d H:i:s');
-      $to = 'munir@slate-ghc.com';
-      $subject = 'Cronjob test';
-      $message = 'Cronjob test '.$sDate;
-      sendHtmlMail($to,$subject, $message);
+      //$sDate = date('Y-m-d H:i:s');
+      //$to = 'munir@slate-ghc.com';
+      //$subject = 'Cronjob test';
+      //$message = 'Cronjob test '.$sDate;
+      //sendHtmlMail($to,$subject, $message);
       //cronjob test mail
       require_once('component/sl_candidate/resources/currency/update_currency.php5');
     }
