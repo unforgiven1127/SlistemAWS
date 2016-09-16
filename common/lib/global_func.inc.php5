@@ -3084,7 +3084,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT co.* FROM client_owners co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
+    $sQuery = "SELECT DISTINCT(co.user_id) as owner FROM client_owners co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
 
     ChromePhp::log($sQuery);
 

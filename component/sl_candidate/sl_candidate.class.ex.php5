@@ -6661,7 +6661,6 @@ class CSl_candidateEx extends CSl_candidate
        if($changeOwnerFlag)
        {
           $owners = getCompanyOwner($pnPk);
-          ChromePhp::log($owners);
           if(!empty($owners))
           {
             foreach ($owners as $key => $value)
