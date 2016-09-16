@@ -1071,11 +1071,14 @@ class CSl_eventEx extends CSl_event
                 {
                   $editCandidate = $_GET['editCharacterNote'];
 
-                  $test = editNote($editCandidate,$array);
+                  $result = editNote($editCandidate,$array);
 
-                  $a = $test->getFieldValue('_affected_rows');
+                  $affected_rows = $result->getFieldValue('_affected_rows');
 
-                  ChromePhp::log($a);
+                  if($affected_rows == 0)
+                  {
+                    insertNote($array);
+                  }
 
                 }
                 else
