@@ -1072,6 +1072,7 @@ class CSl_eventEx extends CSl_event
                   $editCandidate = $_GET['editCharacterNote'];
 
                   $test = editNote($editCandidate,$array);
+                  ChromePhp::log($test);
                 }
                 else
                 {
