@@ -3981,7 +3981,9 @@ var_dump($query);*/
 
     $db_result = $oDB->executeQuery($sQuery);
 
-    return $db_result;
+    $result = $db_result->getAll();
+
+    return $result;
   }
 
   function insertAILog($type,$data,$user_id)
