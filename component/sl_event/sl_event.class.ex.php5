@@ -1071,7 +1071,7 @@ class CSl_eventEx extends CSl_event
                 {
                   $editCandidate = $_GET['editCharacterNote'];
 
-                  editNote($editCandidate,$array);
+                  $test = editNote($editCandidate,$array);
                 }
                 else
                 {
@@ -1086,8 +1086,16 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = '';
                 $array['user_id'] = $user_id;
 
-                insertNote($array);
+                if(isset($_GET['editCharacterNote']))
+                {
+                  $editCandidate = $_GET['editCharacterNote'];
 
+                  editNote($editCandidate,$array);
+                }
+                else
+                {
+                  insertNote($array);
+                }
               }
             }
             updateCandidateSkills($candidate_id,$skillValues);

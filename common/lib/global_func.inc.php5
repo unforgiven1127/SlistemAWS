@@ -3980,6 +3980,8 @@ var_dump($query);*/
     $sQuery="UPDATE `sl_notes` SET `content` = '".$content."',`updated_by` = '".$user_id."',`last_activity` = '".$sDate."' WHERE `candidate_id` = '".$editCandidate."' AND `type` = '".$type."'";
 
     $db_result = $oDB->executeQuery($sQuery);
+
+    return $db_result;
   }
 
   function insertAILog($type,$data,$user_id)
