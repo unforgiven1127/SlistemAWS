@@ -1072,10 +1072,11 @@ class CSl_eventEx extends CSl_event
                   $editCandidate = $_GET['editCharacterNote'];
 
                   $test = editNote($editCandidate,$array);
-                  $affectedRows =  (array) $test;
-                  $a = getFieldValue('coSQLCurrentResult');
+
+                  $a = $test->getData();
+                  $b = $test->getRawData();
                   ChromePhp::log($a);
-                  ChromePhp::log($test);
+                  ChromePhp::log($b);
                 }
                 else
                 {
