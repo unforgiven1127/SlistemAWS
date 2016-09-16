@@ -248,7 +248,7 @@ class CCandidate_sl3 extends CTemplate
         if(!empty($sValue))
         {
           $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$pasCandidateData['companyfk']);
-          $sValue = $this->coDisplay->getlink($sValue, 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\')'));
+          $sValue = $this->coDisplay->getlink($sValue, 'javascript:;',array('onclick' => 'view_comp(\''.$sURL.'\')'));
         }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
@@ -488,12 +488,12 @@ class CCandidate_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getBloc('', 'keyword', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', $keyword, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
+        /*$sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();
+        $sHTML.= $this->coDisplay->getBlocEnd();*/
 
-        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last candi_detail_row_status'));
+        $sHTML.= $this->coDisplay->getBlocStart('',array('class' => 'candi_detail_row last candi_detail_row_status'));
           $sHTML.= $this->coDisplay->getBloc('', 'Activity', array('class' => 'candi_detail_label', 'style' => 'height: 30px;'));
           $sHTML.= $this->coDisplay->getBloc('', $this->_getStatusBar($pasCandidateData), array('class' => 'candi_detail_value', 'style' => 'height: 30px;'));
         $sHTML.= $this->coDisplay->getBlocEnd();
