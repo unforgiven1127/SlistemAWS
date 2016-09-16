@@ -1073,7 +1073,7 @@ class CSl_eventEx extends CSl_event
 
                   $test = editNote($editCandidate,$array);
 
-                  $a = $test->returnSQLResult();
+                  $a = $test->getFieldValue('_affected_rows');
 
                   ChromePhp::log($a);
 
