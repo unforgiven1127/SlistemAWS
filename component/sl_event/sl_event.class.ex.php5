@@ -1073,10 +1073,10 @@ class CSl_eventEx extends CSl_event
 
                   $test = editNote($editCandidate,$array);
 
-                  $a = $test->getData();
-                  $b = $test->getRawData();
+                  $a = $test->returnSQLResult();
+
                   ChromePhp::log($a);
-                  ChromePhp::log($b);
+
                 }
                 else
                 {

@@ -57,6 +57,11 @@ class CDbResult
     return true;
   }
 
+  public function returnSQLResult()
+  {
+    return $this->coSQLCurrentResult;
+  }
+
 
   public function readFirst()
   {
