@@ -554,7 +554,7 @@ class CCandidate_sl3 extends CTemplate
 
     $sLink = substr($psString, 0, ($pnLength-3)).' ';
     $sLink.= '<a href="javascript:;" onclick="$(\'#myTooltip\').tooltip(\'open\');" title="'.str_replace('"', '\'', $psString).'" class="openTooltip">
-      <span class="candi_text_shorten">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>';
+      <span class="candi_text_shorten">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>';
 
     return $sLink;
   }
