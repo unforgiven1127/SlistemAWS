@@ -3937,8 +3937,6 @@ var_dump($query);*/
 
     $sQuery = "SELECT * FROM sl_notes n WHERE n.candidate_id = '".$candidate_id."' ORDER BY n.id ASC";
 
-    ChromePhp::log($sQuery);
-
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
