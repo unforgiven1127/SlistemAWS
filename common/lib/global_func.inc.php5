@@ -3080,6 +3080,29 @@ var_dump($query);*/
 
   }
 
+  function fillCompanyOwnerTable()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT l.* FROM sl_position l";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    foreach ($result as $key => $value)
+    {
+      $company_id = $value['companyfk'];
+      $first_activity = $value['date_created'];
+      $last_activity = $value['date_created'];
+      $user_id = $value['created_by'];
+
+      $sQueryInsert = "INSERT INTO `client_owners` (`user_id`,`company_id`, `first_activity`, `last_activity`)
+               VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
+
+      $db_result = $oDB->executeQuery($sQueryInsert);
+    }
+  }
 
   function getActiveUsers()
   {
