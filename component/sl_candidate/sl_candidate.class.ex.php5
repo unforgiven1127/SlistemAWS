@@ -510,8 +510,6 @@ class CSl_candidateEx extends CSl_candidate
       $html = "Please select a company";
     }
 
-    
-
     return $html;
   }
 

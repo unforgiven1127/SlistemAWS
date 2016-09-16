@@ -3053,9 +3053,18 @@ var_dump($query);*/
 
   }
 
-  function makeCompanyPassive($company_id)
+  function checkCompanyLevels()
   {
+    $oDB = CDependency::getComponentByName('database');
 
+    $dateNow = date('Y-m-d H:i:s');
+    $m6 = date('Y-m-d H:i:s', strtotime('-6 months'));
+
+    $sQuery = "SELECT * FROM sl_company slc WHERE slc.";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
   }
 
   function updateCompanyLevel($company_id, $level,$user_id)
@@ -3071,10 +3080,6 @@ var_dump($query);*/
 
   }
 
-  function dailyLevelUpdate()
-  {
-    
-  }
 
   function getActiveUsers()
   {
@@ -3931,6 +3936,8 @@ var_dump($query);*/
     //$sDate .= " 00:00:00";
 
     $sQuery = "SELECT * FROM sl_notes n WHERE n.candidate_id = '".$candidate_id."' ORDER BY n.id ASC";
+
+    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 
