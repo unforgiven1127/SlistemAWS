@@ -59,7 +59,7 @@ class CDbResult
 
   public function returnSQLResult()
   {
-    return $this->coSQLCurrentResult;
+    return (array)$this->coSQLCurrentResult;
   }
 
 
