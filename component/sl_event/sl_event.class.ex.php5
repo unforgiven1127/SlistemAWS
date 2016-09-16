@@ -1078,6 +1078,25 @@ class CSl_eventEx extends CSl_event
                   insertNote($array);
                 }
               }
+              else
+              {
+                $array = array();
+                $array['candidate_id'] = $candidate_id;
+                $array['type'] = $key;
+                $array['content'] = '';
+                $array['user_id'] = $user_id;
+
+                if(isset($_GET['editCharacterNote']))
+                {
+                  $editCandidate = $_GET['editCharacterNote'];
+
+                  editNote($editCandidate,$array);
+                }
+                else
+                {
+                  insertNote($array);
+                }
+              }
             }
             updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
