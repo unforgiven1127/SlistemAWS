@@ -6674,7 +6674,7 @@ class CSl_candidateEx extends CSl_candidate
           foreach ($owners as $key => $value)
           {
             $i++;
-            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '));
+            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '.$i));
             foreach ($activeUserList as $key => $user)
             {
               $userFullName = $user['firstname'].' '.$user['lastname'];
