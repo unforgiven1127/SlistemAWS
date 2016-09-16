@@ -6661,26 +6661,31 @@ class CSl_candidateEx extends CSl_candidate
        if($changeOwnerFlag)
        {
           $owners = getCompanyOwner($pnPk);
-          if(!empty($owners))
+          /*if(!empty($owners))
           {
             foreach ($owners as $key => $value)
             {
               ChromePhp::log($value);
             }
-          }
+          }*/
 
           $activeUserList = getActiveUsers();
-          $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
-          foreach ($activeUserList as $key => $user)
+          $i=0;
+          foreach ($owners as $key => $value)
           {
-            $userFullName = $user['firstname'].' '.$user['lastname'];
-            if($user['loginpk'] == $asCompanyData['company_owner'])
+            $i++;
+            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '));
+            foreach ($activeUserList as $key => $user)
             {
-              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
-            }
-            else
-            {
-              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk']));
+              $userFullName = $user['firstname'].' '.$user['lastname'];
+              if($user['loginpk'] == $value)//$asCompanyData['company_owner'] idi multi yapinca degistirdk
+              {
+                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
+              }
+              else
+              {
+                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $user['loginpk']));
+              }
             }
           }
        }
