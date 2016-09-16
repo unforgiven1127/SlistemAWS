@@ -6661,10 +6661,14 @@ class CSl_candidateEx extends CSl_candidate
        if($changeOwnerFlag)
        {
           $owners = getCompanyOwner($pnPk);
-          foreach ($owners as $key => $value)
+          if(!empty($owners))
           {
-            ChromePhp::log($value);
+            foreach ($owners as $key => $value)
+            {
+              ChromePhp::log($value);
+            }
           }
+
           $activeUserList = getActiveUsers();
           $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
           foreach ($activeUserList as $key => $user)
