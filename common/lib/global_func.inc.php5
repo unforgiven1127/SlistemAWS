@@ -3086,6 +3086,8 @@ var_dump($query);*/
 
     $sQuery = "SELECT co.* FROM client_owners co WHERE company_id = '".$company_id."' co.flag = 'a'";
 
+    ChromePhp::log($sQuery);
+
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
