@@ -3136,7 +3136,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT l.* FROM client_owners l where l.user_id = '7' ";
+    $sQuery = "SELECT l.* FROM client_owners l where l.user_id != '0' ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
