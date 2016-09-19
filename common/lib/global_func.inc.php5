@@ -3084,7 +3084,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT DISTINCT(co.user_id) as owner FROM client_owners co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
+    $sQuery = "SELECT DISTINCT(co.user_id) as owner FROM client_owner_list co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3110,7 +3110,7 @@ var_dump($query);*/
       $last_activity = $value['date_created'];
       $user_id = $value['created_by'];
 
-      $sQueryInsert = "INSERT INTO `client_owners` (`user_id`,`company_id`, `first_activity`, `last_activity`)
+      $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
                VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
 
       $db_result = $oDB->executeQuery($sQueryInsert);
@@ -3136,7 +3136,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT l.* FROM client_owners l where l.user_id != '0' ";
+    $sQuery = "SELECT l.* FROM client_owner_list l ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
