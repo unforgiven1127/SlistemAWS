@@ -6532,7 +6532,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyForm($pnPk = 0)
     {
-      companyOwnerReduce();
       if(!assert('is_integer($pnPk)'))
         return '';
 
@@ -6660,6 +6659,8 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
        $activeUserList = getActiveUsers();
+
+       $testcompanyOwnerReduce = companyOwnerReduce();
 
        $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
        $oForm->addoption('company_owner_new',array( 'value' => '0'));
