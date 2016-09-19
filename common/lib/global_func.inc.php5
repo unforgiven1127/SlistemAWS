@@ -3136,7 +3136,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT l.* FROM login l where l.status = '1' ";
+    $sQuery = "SELECT l.* FROM client_owners l where l.user_id = '7' ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
