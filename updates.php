@@ -37,8 +37,12 @@
 
           $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
                    VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
+
+          var_dump($sQueryInsert);
+          echo "<br><br>";
+
           $sQueryInsert = mysql_query($sQueryInsert);
-          mysql_fetch_assoc($sQueryInsert);
+          $data =mysql_fetch_assoc($sQueryInsert);
         }
     }
 
