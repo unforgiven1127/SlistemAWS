@@ -3136,7 +3136,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT l.* FROM login l ";
+    $sQuery = "SELECT l.* FROM login l where l.flag = 'a' ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
