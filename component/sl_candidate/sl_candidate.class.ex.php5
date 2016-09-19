@@ -6661,6 +6661,7 @@ class CSl_candidateEx extends CSl_candidate
        $activeUserList = getActiveUsers();
 
        $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
+       $oForm->addoption('company_owner_new',array( 'value' => '0'));
        foreach ($activeUserList as $key => $user)
        {
          $userFullName = $user['firstname'].' '.$user['lastname'];
