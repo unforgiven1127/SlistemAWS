@@ -25,7 +25,7 @@
             $owners[$company_id][$owner] = 1;
         }
     }
-    ChromePhp::log($owners);
+    var_dump($owners);
 
 /*
 echo "<br><br>";
