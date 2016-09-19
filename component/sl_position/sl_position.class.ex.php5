@@ -1638,7 +1638,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       //Lot of things to do when placing a candidate... big update coming next
       if($asData['status'] == 101)
       {
-
         $candidate_id = $asData['candidatefk'];
         $position_id = $asData['positionfk'];
         $company_info = getPositionInformation($position_id);

@@ -6658,6 +6658,15 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
+       $activeUserList = getActiveUsers();
+
+       $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
+       foreach ($activeUserList as $key => $user)
+       {
+         $userFullName = $user['firstname'].' '.$user['lastname'];
+         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $user['loginpk']));
+       }
+
        if($changeOwnerFlag)
        {
           $owners = getCompanyOwner($pnPk);
@@ -6669,7 +6678,6 @@ class CSl_candidateEx extends CSl_candidate
             }
           }*/
 
-          $activeUserList = getActiveUsers();
           $i=0;
           foreach ($owners as $key => $value)
           {

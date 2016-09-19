@@ -3086,8 +3086,6 @@ var_dump($query);*/
 
     $sQuery = "SELECT DISTINCT(co.user_id) as owner FROM client_owners co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
 
-    ChromePhp::log($sQuery);
-
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
