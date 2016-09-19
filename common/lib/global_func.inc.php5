@@ -3095,6 +3095,7 @@ var_dump($query);*/
 
   function companyOwnerReduce()
   {
+ChromePhp::log('TEST');
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT co.* FROM client_owners co ";
