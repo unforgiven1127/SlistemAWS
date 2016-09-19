@@ -3093,6 +3093,29 @@ var_dump($query);*/
     return $result;
   }
 
+  function companyOwnerReduce()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owners co ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+ChromePhp::log($result);
+    $owners = array();
+    foreach ($result as $key => $value)
+    {
+      $company_id = $value['company_id'];
+      $owner = $value['user_id'];
+      if(!isset($owners[$company_id][$owner]))
+      {
+        $owners[$company_id][$owner] = 1;
+      }
+    }
+ChromePhp::log($owners);
+  }
+
   function fillCompanyOwnerTable()
   {
     $oDB = CDependency::getComponentByName('database');

@@ -6683,20 +6683,20 @@ class CSl_candidateEx extends CSl_candidate
           foreach ($owners as $key => $value)
           {
             $i++;
-            $oForm->addField('select', 'company_owner_'.$key, array('label'=> 'Owner '.$i));
+            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '.$i));
             foreach ($activeUserList as $key => $user)
             {
               $userFullName = $user['firstname'].' '.$user['lastname'];
               if($user['loginpk'] == $value)//$asCompanyData['company_owner'] idi multi yapinca degistirdk
               {
-                $oForm->addoption('company_owner_'.$key, array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
+                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
               }
               else
               {
-                $oForm->addoption('company_owner_'.$key,array('label' => $userFullName, 'value' => $user['loginpk']));
+                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $user['loginpk']));
               }
             }
-            $oForm->addoption('company_owner_'.$key,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => '000'));
+            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => '000'));
           }
        }
 
