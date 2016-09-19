@@ -3080,6 +3080,19 @@ var_dump($query);*/
 
   }
 
+  function reduceOwners()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM client_owners";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getCompanyOwner($company_id)
   {
     $oDB = CDependency::getComponentByName('database');

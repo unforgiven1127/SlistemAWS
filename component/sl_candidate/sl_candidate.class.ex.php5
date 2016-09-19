@@ -6542,6 +6542,9 @@ class CSl_candidateEx extends CSl_candidate
       $changeOwnerFlag = false;
       $asCompanyData = array();
 
+      $testReduce = reduceOwners();
+      ChromePhp::log($testReduce);
+
       if(empty($pnPk))
       {
         $asCompanyData['level'] = 1;
