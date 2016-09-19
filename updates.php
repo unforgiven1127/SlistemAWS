@@ -11,15 +11,21 @@
 	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
 
-    $slistemQuery = "SELECT h.* FROM holidays h where h.flag = 'a' ORDER BY h.holiday_date ASC";
+    $slistemQuery = "SELECT l.* FROM client_owners l";
 
     $slistemQuery = mysql_query($slistemQuery);
+    $owners = array();
 
     while($data = mysql_fetch_assoc($slistemQuery))
     {
-    	echo $data['holiday_date']." ".$data['holiday_day']." ".$data['holiday_name']." ".$data['holiday_type'];
-		echo "<br><br>";
+        $company_id = $data['company_id'];
+        $owner = $data['user_id'];
+        if(!isset($owners[$company_id][$owner]))
+        {
+            $owners[$company_id][$owner] = 1;
+        }
     }
+    ChromePhp::log($owners);
 
 /*
 echo "<br><br>";
