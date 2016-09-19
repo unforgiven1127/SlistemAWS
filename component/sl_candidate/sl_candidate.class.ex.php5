@@ -6696,7 +6696,7 @@ class CSl_candidateEx extends CSl_candidate
                 $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $user['loginpk']));
               }
             }
-            $oForm->addoption('company_owner_new',array('label' => 'Delete', 'value' => '00'));
+            $oForm->addoption('company_owner_'.$i,array('label' => 'Delete', 'value' => '00'));
           }
        }
 
