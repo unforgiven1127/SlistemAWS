@@ -3080,20 +3080,6 @@ var_dump($query);*/
 
   }
 
-  function reduceOwners()
-  {
-    ChromePhp::log('reduceOwners');
-    $oDB = CDependency::getComponentByName('database');
-
-    $sQuery = "SELECT * FROM client_owners";
-
-    $db_result = $oDB->executeQuery($sQuery);
-
-    $result = $db_result->getAll();
-
-    return $result;
-  }
-
   function getCompanyOwner($company_id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3132,6 +3118,21 @@ var_dump($query);*/
   }
 
   function getActiveUsers()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT l.* FROM login l
+    WHERE l.status = 1 and l.kpi_flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+
+  }
+
+  function reduceOwners()
   {
     $oDB = CDependency::getComponentByName('database');
 

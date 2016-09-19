@@ -6543,7 +6543,7 @@ class CSl_candidateEx extends CSl_candidate
       $asCompanyData = array();
 
       ChromePhp::log('TEST');
-      $testReduce = getActiveUsers();
+      $testReduce = reduceOwners();
       ChromePhp::log($testReduce);
 
       if(empty($pnPk))
