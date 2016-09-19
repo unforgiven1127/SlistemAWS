@@ -3082,6 +3082,7 @@ var_dump($query);*/
 
   function reduceOwners()
   {
+    ChromePhp::log('reduceOwners');
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT * FROM client_owners";
