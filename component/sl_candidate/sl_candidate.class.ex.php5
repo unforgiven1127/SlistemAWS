@@ -6687,16 +6687,18 @@ class CSl_candidateEx extends CSl_candidate
             foreach ($activeUserList as $key => $user)
             {
               $userFullName = $user['firstname'].' '.$user['lastname'];
+              $optionValue = $user['loginpk'].'_'.$user['id'];
               if($user['loginpk'] == $value)//$asCompanyData['company_owner'] idi multi yapinca degistirdk
               {
-                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
+                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $optionValue, 'selected' => 'selected'));
               }
               else
               {
-                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $user['loginpk']));
+                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $optionValue));
               }
             }
-            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => '000'));
+            $deleteOptionValue = '000_'.$user['id'];
+            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => $deleteOptionValue));
           }
        }
 
