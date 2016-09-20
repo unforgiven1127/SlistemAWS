@@ -255,7 +255,7 @@ class CCompany_sl3 extends CTemplate
 
         ChromePhp::log($pasData['sl_companypk']);
         $companyOwners = getCompanyOwner($pasData['sl_companypk']);
-        ChromePhp::log($candidate_info);
+        ChromePhp::log($companyOwners);
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', 'owner', array('class' => 'candi_detail_label'));
