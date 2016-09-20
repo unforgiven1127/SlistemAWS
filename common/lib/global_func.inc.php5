@@ -3197,6 +3197,19 @@ var_dump($query);*/
     }
   }
 
+  function getLastStatus($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_position_link WHERE candidatefk = '".$candidate_id."' ORDER BY sl_position_linkpk DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function getActiveUsers()
   {
     $oDB = CDependency::getComponentByName('database');
