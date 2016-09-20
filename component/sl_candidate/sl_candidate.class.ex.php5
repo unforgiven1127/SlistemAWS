@@ -6823,6 +6823,7 @@ class CSl_candidateEx extends CSl_candidate
           $i++;
           $field_name = "company_owner_".$i;
           $company_owner = getValue($field_name);
+          ChromePhp::log($owners);
         }
       }
 
