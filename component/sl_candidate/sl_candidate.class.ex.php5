@@ -9349,7 +9349,7 @@ die();*/
         $sURL = $oPage->getUrl($this->csUid, CONST_ACTION_LIST, CONST_CANDIDATE_TYPE_COMP);
         $sHTML.= $oHTML->getBlocStart('',  array('style' => 'line-height: 20px; font-style: italic; color: #777;'));
         $sHTML.= 'Filter by company level&nbsp;&nbsp;<select onchange="document.location.href = $(this).val();" >';
-        $sHTML.= '<option value="'.$sURL.'" > - </option>';
+        $sHTML.= '<option value="'.$sURL.'" > All </option>';
         $sHTML.= '<option value="'.$sURL.'&filter_level=1" '.(($nLevel == 1)? 'selected="selected"' : '').'> A </option>';
         $sHTML.= '<option value="'.$sURL.'&filter_level=2" '.(($nLevel == 2)? 'selected="selected"' : '').'> B </option>';
         $sHTML.= '<option value="'.$sURL.'&filter_level=3" '.(($nLevel == 3)? 'selected="selected"' : '').'> C </option>';
