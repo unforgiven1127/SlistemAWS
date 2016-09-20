@@ -3128,6 +3128,18 @@ var_dump($query);*/
     return $result;
   }
 
+  function deleteClientOwner($id, $user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE  client_owner_list SET flag = 'p', last_activity = '".$sDate."', updated_by = '".$user_id."' WHERE id = '".$id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+  }
+
   function insertNewOwner($newOwner,$added_by,$company_id)
   {
     $controlFlag = controlOwner($newOwner,$company_id);
@@ -3137,7 +3149,7 @@ var_dump($query);*/
       $oDB = CDependency::getComponentByName('database');
 
       $sQuery = "INSERT INTO `client_owner_list` (`user_id`,`company_id`,`first_activity`,`last_activity`, `added_by`) VALUES('".$newOwner."','".$company_id."','".$sDate."','".$sDate."','".$added_by."')";
-ChromePhp::log($sQuery);
+
       $db_result = $oDB->executeQuery($sQuery);
     }
   }

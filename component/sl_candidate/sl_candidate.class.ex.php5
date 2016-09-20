@@ -6830,8 +6830,15 @@ class CSl_candidateEx extends CSl_candidate
           $newOwner = $company_owner[0];
           $changeID = $company_owner[1];
 
-          updateCompanyOwner($newOwner,$user_id,$changeID);
-          //$company_owners[$field_name] = getValue($field_name);
+          if($newOwner == '000')//DELETE
+          {
+            deleteClientOwner($changeID, $user_id);
+          }
+          else
+          {
+            updateCompanyOwner($newOwner,$user_id,$changeID);
+          }
+
           $i++;
           $field_name = "company_owner_".$i;
           $company_owner = getValue($field_name);
