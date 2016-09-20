@@ -3138,7 +3138,7 @@ var_dump($query);*/
 
       $sQuery = "INSERT INTO `client_owner_list` (`user_id`,`company_id`,`first_activity`,`last_activity, `added_by`)
                    VALUES('".$newOwner."','".$company_id."','".$sDate."','".$sDate."','".$added_by."')";
-
+ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
     }
   }
