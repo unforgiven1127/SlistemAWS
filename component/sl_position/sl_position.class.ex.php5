@@ -2106,13 +2106,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$asPositionData['companyfk']);
           if($asPositionData['current_status'] == 0)
           {
-            $sRow.= ' </div>';
+            $sRow.= ' - '.$asPositionData['date_created'].' </div>';
           }
           else
           {
-            $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
+            $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a> - '.$asPositionData['date_created'].'</div>';
           }
-          $sRow.= ' - '.$asPositionData['date_created'];
         $sRow.= $this->_oDisplay->getBlocEnd();
         $asPosition[] = $sRow;
 
