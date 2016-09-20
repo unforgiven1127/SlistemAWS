@@ -3093,6 +3093,60 @@ var_dump($query);*/
     return $result;
   }
 
+  function controlOwner($newOwner,$company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owner_list co
+               WHERE co.company_id = '".$company_id."' AND co.user_id = '".$newOwner."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    if(isset($result[0]))
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  function getOwnerRow($id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owner_list co
+               WHERE co.id = '".$id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function updateCompanyOwner($newOwner,$user_id,$changeID)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $ownerRow = getOwnerRow($changeID);
+ChromePhp::log($ownerRow);
+    $controlFlag = controlOwner($newOwner,$ownerRow[0]['company_id']);
+ChromePhp::log($controlFlag);
+    if($controlFlag)
+    {
+      $sDate = date('Y-m-d H:i:s');
+
+      $sQuery = "UPDATE  client_owner_list SET user_id = '".$newOwner."', last_activity = '".$sDate."', updated_by = '".$user_id."', WHERE id = '".$changeID."' ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
+
+  }
+
   function fillCompanyOwnerTable()
   {
     $oDB = CDependency::getComponentByName('database');

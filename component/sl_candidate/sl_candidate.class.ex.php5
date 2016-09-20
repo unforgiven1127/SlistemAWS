@@ -6769,6 +6769,9 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_integer($pnPk)'))
         return array('error' => 'bad parameters.');
 
+      $oLogin = CDependency::getCpLogin();
+      $user_id = $oLogin->getUserPk();
+
       $asData = array();
       $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
       $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
@@ -6815,19 +6818,24 @@ class CSl_candidateEx extends CSl_candidate
         if(!$bUpdated)
           return array('error' => 'Could not update the company.');
 
-        $company_owners = array();
+        //$company_owners = array();
         $i=1;
         $field_name = "company_owner_".$i;
         $company_owner = getValue($field_name);
 
         while(isset($company_owner) && !empty($company_owner))
         {
-          $company_owners[$field_name] = getValue($field_name);
+          $company_owner = explode('_',$company_owner);
+          $newOwner = $company_owner[0];
+          $changeID = $company_owner[1];
+
+          updateCompanyOwner($newOwner,$user_id,$changeID);
+          //$company_owners[$field_name] = getValue($field_name);
           $i++;
           $field_name = "company_owner_".$i;
           $company_owner = getValue($field_name);
         }
-        ChromePhp::log($company_owners);
+        //ChromePhp::log($company_owners);
       }
 
 
