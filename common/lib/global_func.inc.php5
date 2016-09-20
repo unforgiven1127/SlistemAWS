@@ -3389,10 +3389,11 @@ var_dump($query);*/
 
       $sQuery = "INSERT INTO  `sl_position_link` (`positionfk`,`candidatefk`, `date_created`, `created_by`, `status`, `in_play`, `comment`, `date_expire`, `active`)
                  VALUES ('".$position_id."','".$candidate_id."', '".$sDate."', '101', '200','0', 'Auto fallen off', '".$date_expire."','1','".$sDate."') ";
-
+ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
 
       $sQuery = "UPDATE sl_position_link SET flag = 'p' WHERE sl_position_linkpk = '".$position_link_id."' ";
+ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
     }
   }
