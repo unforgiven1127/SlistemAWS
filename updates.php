@@ -42,8 +42,8 @@
           //var_dump($sQueryInsert);
           echo "<br><br>";
 
-          $sQueryInsert = mysql_query($sQueryInsert);
-          $data =mysql_fetch_assoc($sQueryInsert);
+          //$sQueryInsert = mysql_query($sQueryInsert);
+          //$data =mysql_fetch_assoc($sQueryInsert);
         }
     }
 
