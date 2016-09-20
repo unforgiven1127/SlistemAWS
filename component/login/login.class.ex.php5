@@ -286,7 +286,7 @@ class CLoginEx extends CLogin
 
     if($firstName)
     {
-      $sDescName = $asUserData['firstname'];
+      $sName = $asUserData['firstname'];
     }
 
     if(!$asUserData['status'])
