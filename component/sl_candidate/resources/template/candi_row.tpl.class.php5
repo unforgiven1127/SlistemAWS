@@ -80,7 +80,7 @@ class CCandi_row extends CTemplate
 
     //priority to in_ply: dynamic status, he's in play now !!
     $sValue = '';
-
+ChromePhp::log($pasData);
     if(!empty($pasData['_pos_status']))
     {
       if($pasData['_pos_status'] < 101)
