@@ -97,7 +97,7 @@ class CCandi_row extends CTemplate
 
           case ($pasData['_pos_status'] >= 50 && $pasData['_pos_status'] < 100):
             $nWeighted = ((int)$pasData['_pos_status']-50);
-            $asOption['class'].= ' tplCandi_status_50';
+            $asOption['class'].= ' tplCandi_status_50 hereTest';
             $sValue = ' CCM '.$nWeighted; $asOption['title'] = $sValue; $nValue = $nWeighted+5; break;
 
         case 100:
