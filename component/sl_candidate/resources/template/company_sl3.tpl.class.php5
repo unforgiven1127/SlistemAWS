@@ -262,7 +262,7 @@ class CCompany_sl3 extends CTemplate
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', 'owner', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $oLogin->getUserLink((int)$pasData['company_owner']), array('class' => 'candi_detail_value'));
+          $sHTML.= $this->coDisplay->getBloc('', $ownerString, array('class' => 'candi_detail_value'));
           $sHTML.= $this->coDisplay->getFloatHack();
         $sHTML.= $this->coDisplay->getBlocEnd();
 
