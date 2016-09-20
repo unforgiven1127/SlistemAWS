@@ -6665,7 +6665,8 @@ class CSl_candidateEx extends CSl_candidate
        foreach ($activeUserList as $key => $user)
        {
          $userFullName = $user['firstname'].' '.$user['lastname'];
-         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $user['loginpk']));
+         $newOwnerValue = $user['loginpk'].'_'.$pnPk;
+         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $newOwnerValue));
        }
 
        if($changeOwnerFlag)
@@ -6834,6 +6835,12 @@ class CSl_candidateEx extends CSl_candidate
           $i++;
           $field_name = "company_owner_".$i;
           $company_owner = getValue($field_name);
+        }
+
+        $newCompanyOwner = getValue('company_owner_new');
+        if(isset($newCompanyOwner) && !empty($newCompanyOwner))
+        {
+          insertNewOwner($newOwner,$user_id,$company_id);
         }
         //ChromePhp::log($company_owners);
       }

@@ -3128,20 +3128,25 @@ var_dump($query);*/
     return $result;
   }
 
+  function insertNewOwner($newOwner,$user_id,$company_id)
+  {
+
+  }
+
   function updateCompanyOwner($newOwner,$user_id,$changeID)
   {
     $oDB = CDependency::getComponentByName('database');
 
     $ownerRow = getOwnerRow($changeID);
-ChromePhp::log($ownerRow);
+
     $controlFlag = controlOwner($newOwner,$ownerRow[0]['company_id']);
-ChromePhp::log($controlFlag);
+
     if($controlFlag)
     {
       $sDate = date('Y-m-d H:i:s');
 
       $sQuery = "UPDATE  client_owner_list SET user_id = '".$newOwner."', last_activity = '".$sDate."', updated_by = '".$user_id."' WHERE id = '".$changeID."' ";
-ChromePhp::log($sQuery);
+
       $db_result = $oDB->executeQuery($sQuery);
     }
 
