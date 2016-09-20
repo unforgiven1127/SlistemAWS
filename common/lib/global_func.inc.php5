@@ -3084,7 +3084,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT DISTINCT(co.user_id) as owner FROM client_owner_list co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
+    $sQuery = "SELECT co.user_id as owner, co.id as id FROM client_owner_list co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
