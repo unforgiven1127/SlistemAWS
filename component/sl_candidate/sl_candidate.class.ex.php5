@@ -6817,10 +6817,10 @@ class CSl_candidateEx extends CSl_candidate
         $i=1;
         $field_name = "company_owner_".$i;
         $test = "company_owner_11";
-        ChromePhp::log($field_name);
-        $company_owner = getValue($field_name);
+        //ChromePhp::log($field_name);
+        //$company_owner = getValue($field_name);
         $test2 = getValue($test);
-        ChromePhp::log($company_owner);
+        //ChromePhp::log($company_owner);
         ChromePhp::log($test2);
         /*while(isset($company_owner))
         {
