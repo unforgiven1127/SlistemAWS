@@ -6688,7 +6688,7 @@ class CSl_candidateEx extends CSl_candidate
             {
               $userFullName = $user['firstname'].' '.$user['lastname'];
               $optionValue = $user['loginpk'].'_'.$value['id']; //kullanicicnin id si _ owner tablosundaki id
-              if($user['loginpk'] == $value['user_id'])//$asCompanyData['company_owner'] idi multi yapinca degistirdk
+              if($user['loginpk'] == $value['owner'])//$asCompanyData['company_owner'] idi multi yapinca degistirdk
               {
                 $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $optionValue, 'selected' => 'selected'));
               }
