@@ -3098,7 +3098,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT co.* FROM client_owner_list co
-               WHERE co.company_id = '".$company_id."' AND co.user_id = '".$newOwner."' ";
+               WHERE co.company_id = '".$company_id."' AND co.user_id = '".$newOwner."' AND co.flag = 'a'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
