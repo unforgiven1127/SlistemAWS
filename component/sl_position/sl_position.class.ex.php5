@@ -2112,6 +2112,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           {
             $sRow.= ' from <a href="javascript:;" onclick="view_comp(\''.$sURL.'\');">'.$asPositionData['company_name'].'</a></div>';
           }
+          $sRow.= ' - '.$asPositionData['date_created'];
         $sRow.= $this->_oDisplay->getBlocEnd();
         $asPosition[] = $sRow;
 
