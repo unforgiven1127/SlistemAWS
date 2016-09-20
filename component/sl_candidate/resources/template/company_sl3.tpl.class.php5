@@ -253,9 +253,12 @@ class CCompany_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getFloatHack();
         $sHTML.= $this->coDisplay->getBlocEnd();
 
-        ChromePhp::log($pasData['sl_companypk']);
+        $ownerString = '';
         $companyOwners = getCompanyOwner($pasData['sl_companypk']);
-        ChromePhp::log($companyOwners);
+        foreach ($companyOwners as $key => $value)
+        {
+          $ownerString.= $oLogin->getUserLink((int)$value['owner']).' ';
+        }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', 'owner', array('class' => 'candi_detail_label'));
