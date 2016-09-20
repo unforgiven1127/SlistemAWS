@@ -3365,6 +3365,18 @@ var_dump($query);*/
     return $return;
   }
 
+  function closeCandidateOtherPositions($candidate_id,$position_id,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    //burada aktif olan ve placed olan pozisyon disindaki pozisyonlari aldik
+    $sQuery = "SELECT slpl.* FROM sl_position_link slpl
+               WHERE slpl.candidatefk = '".$candidate_id."' AND slpl.active = '1'
+               AND slpl.positionfk <> '".$position_id."'";
+
+    ChromePhp::log($sQuery);
+  }
+
   function updateCandidateSkills($candidate_id, $skillArray)
   {
     $oDB = CDependency::getComponentByName('database');
