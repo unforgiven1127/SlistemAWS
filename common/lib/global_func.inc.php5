@@ -3128,9 +3128,19 @@ var_dump($query);*/
     return $result;
   }
 
-  function insertNewOwner($newOwner,$user_id,$company_id)
+  function insertNewOwner($newOwner,$added_by,$company_id)
   {
+    $controlFlag = controlOwner($newOwner,$company_id);
+    if($controlFlag)
+    {
+      $sDate = date('Y-m-d H:i:s');
+      $oDB = CDependency::getComponentByName('database');
 
+      $sQuery = "INSERT INTO `client_owner_list` (`user_id`,`company_id`,`first_activity`,`last_activity, `added_by`)
+                   VALUES('".$newOwner."','".$company_id."','".$sDate."','".$sDate."','".$added_by."')";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
   }
 
   function updateCompanyOwner($newOwner,$user_id,$changeID)

@@ -6838,8 +6838,11 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $newCompanyOwner = getValue('company_owner_new');
-        if(isset($newCompanyOwner) && !empty($newCompanyOwner))
+        if(isset($newCompanyOwner) && !empty($newCompanyOwner) && $newCompanyOwner != '0')
         {
+          $newCompanyOwner = explode('_',$newCompanyOwner);
+          $newOwner = $newCompanyOwner[0];
+          $company_id = $newCompanyOwner[1];
           insertNewOwner($newOwner,$user_id,$company_id);
         }
         //ChromePhp::log($company_owners);
