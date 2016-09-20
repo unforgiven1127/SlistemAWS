@@ -313,6 +313,7 @@ ChromePhp::log($sName);
     else
       $asOption['onclick'] = 'tp(this);';
 
+ChromePhp::log($sName);
       $sLink = $oDisplay->getLink($sName, 'javascript:;', $asOption);
 
     $_SESSION['login_ULCache'][$asUserData['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName] = $sLink;
