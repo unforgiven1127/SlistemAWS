@@ -80,7 +80,7 @@ class CCandi_row extends CTemplate
 
     //priority to in_ply: dynamic status, he's in play now !!
     $sValue = '';
-ChromePhp::log($pasData);
+
     $candidate_id = $pasData['sl_candidatepk'];
     $candidateLastStatus = getLastStatus($candidate_id);
     if(isset($candidateLastStatus[0]))

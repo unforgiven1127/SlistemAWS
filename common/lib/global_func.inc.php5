@@ -3372,9 +3372,18 @@ var_dump($query);*/
     //burada aktif olan ve placed olan pozisyon disindaki pozisyonlari aldik
     $sQuery = "SELECT slpl.* FROM sl_position_link slpl
                WHERE slpl.candidatefk = '".$candidate_id."' AND slpl.active = '1'
-               AND slpl.positionfk <> '".$position_id."'";
+               AND slpl.positionfk <> '".$position_id."' AND slpl.status < '101'";
 
-    ChromePhp::log($sQuery);
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $addFallenOffArray = array();
+
+    foreach ($result as $key => $value)
+    {
+      # code...
+    }
   }
 
   function updateCandidateSkills($candidate_id, $skillArray)
