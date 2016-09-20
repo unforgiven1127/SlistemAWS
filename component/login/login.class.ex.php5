@@ -258,8 +258,8 @@ ChromePhp::log($firstName);
         return 'unknow';
 
       //cache: if link already generated, re-use right away
-      if(isset($_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName]))
-        return $_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName];
+      //if(isset($_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName]))
+        //return $_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName];
 
       $asUserData = $pvUser;
     }
