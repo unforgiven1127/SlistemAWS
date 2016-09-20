@@ -94,14 +94,14 @@ ChromePhp::log($pasData);
     //if(!empty($pasData['_pos_status']))
     if($lastStatus > 0)
     {
-      if($pasData['_pos_status'] < 101)
+      if($lastStatus < 101)//$pasData['_pos_status']
       {
         //$asOption['class'].= ' tplCandi_status_active tplCandi_status';
         $asOption['class'].= ' tplCandi_status';
         $asOption['title'] = 'Candidate active: pitched, CCM, offer ';
         $nValue = 4;
 
-        switch($pasData['_pos_status'])
+        switch($lastStatus)//$pasData['_pos_status']
         {
           case 1: $sValue = ' ptchd'; $asOption['title'] = 'Pitched'; break;
           case 2: $sValue = ' ressnt'; $asOption['title'] = 'Resume sent'; $nValue = 5; break;
@@ -119,14 +119,14 @@ ChromePhp::log($pasData);
             break;
         }
       }
-      elseif($pasData['_pos_status'] == 101)
+      elseif($lastStatus == 101)//$pasData['_pos_status']
       {
         $asOption['class'].= ' tplCandi_status_placed';
         //$sValue = ' placed';
         $asOption['title'] = 'Candidate has been placed';
         $nValue = 1;
       }
-      elseif($pasData['_pos_status'] == 151)
+      elseif($lastStatus == 151)//$pasData['_pos_status']
       {
         $asOption['class'].= ' tplCandi_status tplCandi_status_151';
         $asOption['title'] = 'Last action has expired';
