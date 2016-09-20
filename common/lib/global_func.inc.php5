@@ -3392,7 +3392,7 @@ var_dump($query);*/
 ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
 
-      $sQuery = "UPDATE sl_position_link SET flag = 'p' WHERE sl_position_linkpk = '".$position_link_id."' ";
+      $sQuery = "UPDATE sl_position_link SET active = '0' WHERE sl_position_linkpk = '".$position_link_id."' ";
 ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
     }
