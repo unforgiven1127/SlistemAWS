@@ -3140,7 +3140,7 @@ ChromePhp::log($controlFlag);
     {
       $sDate = date('Y-m-d H:i:s');
 
-      $sQuery = "UPDATE  client_owner_list SET user_id = '".$newOwner."', last_activity = '".$sDate."', updated_by = '".$user_id."', WHERE id = '".$changeID."' ";
+      $sQuery = "UPDATE  client_owner_list SET user_id = '".$newOwner."', last_activity = '".$sDate."', updated_by = '".$user_id."' WHERE id = '".$changeID."' ";
 ChromePhp::log($sQuery);
       $db_result = $oDB->executeQuery($sQuery);
     }
