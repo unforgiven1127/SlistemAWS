@@ -3368,6 +3368,7 @@ var_dump($query);*/
   function closeCandidateOtherPositions($candidate_id,$position_id,$user_id)
   {
     $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
 
     //burada aktif olan ve placed olan pozisyon disindaki pozisyonlari aldik
     $sQuery = "SELECT slpl.* FROM sl_position_link slpl
@@ -3379,10 +3380,20 @@ var_dump($query);*/
     $result = $db_result->getAll();
 
     $addFallenOffArray = array();
+    $date_expire = '2020-01-01 00:00:00';
 
     foreach ($result as $key => $value)
     {
-      # code...
+      $position_link_id = $value['sl_position_linkpk'];
+      $position_id = $value['positionfk'];
+
+      $sQuery = "INSERT INTO  `sl_position_link` (`positionfk`,`candidatefk`, `date_created`, `created_by`, `status`, `in_play`, `comment`, `date_expire`, `active`)
+                 VALUES ('".$position_id."','".$candidate_id."', '".$sDate."', '101', '200','0', 'Auto fallen off', '".$date_expire."','1','".$sDate."') ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $sQuery = "UPDATE sl_position_link SET flag = 'p' WHERE sl_position_linkpk = '".$position_link_id."' ";
+      $db_result = $oDB->executeQuery($sQuery);
     }
   }
 
