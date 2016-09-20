@@ -223,7 +223,7 @@ class CLoginEx extends CLogin
     }
 
 
-  public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false)
+  public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false, $firstName = false)
   {
 
     if(!assert('(is_array($pvUser) || is_integer($pvUser))'))
@@ -283,6 +283,11 @@ class CLoginEx extends CLogin
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
     else
       $sDescName = 'consultant id: '.$asUserData['pseudo'].' ';
+
+    if($firstName)
+    {
+      $sDescName = $asUserData['firstname'];
+    }
 
     if(!$asUserData['status'])
     {

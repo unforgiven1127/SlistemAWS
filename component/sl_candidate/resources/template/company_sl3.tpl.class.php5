@@ -257,7 +257,7 @@ class CCompany_sl3 extends CTemplate
         $companyOwners = getCompanyOwner($pasData['sl_companypk']);
         foreach ($companyOwners as $key => $value)
         {
-          $ownerString.= $oLogin->getUserLink((int)$value['owner']).' ';
+          $ownerString.= $oLogin->getUserLink((int)$value['owner'],false,false,true).' ';
         }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
