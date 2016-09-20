@@ -225,7 +225,7 @@ class CLoginEx extends CLogin
 
   public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false, $firstName = false)
   {
-ChromePhp::log($firstName);
+
     if(!assert('(is_array($pvUser) || is_integer($pvUser))'))
     {
       assert('false; /* getUserLink with wrong pvUser '.  var_export($pvUser, true).' */');
@@ -288,7 +288,7 @@ ChromePhp::log($firstName);
     {
       $sName = $asUserData['firstname'];
     }
-ChromePhp::log($sName);
+
     if(!$asUserData['status'])
     {
       $sClass = 'una';
@@ -313,7 +313,6 @@ ChromePhp::log($sName);
     else
       $asOption['onclick'] = 'tp(this);';
 
-ChromePhp::log($sName);
       $sLink = $oDisplay->getLink($sName, 'javascript:;', $asOption);
 
     $_SESSION['login_ULCache'][$asUserData['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName] = $sLink;
