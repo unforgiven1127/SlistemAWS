@@ -86,6 +86,10 @@ class CCandi_row extends CTemplate
     if(isset($candidateLastStatus[0]))
     {
       $lastStatus = $candidateLastStatus[0]['status'];
+      if($lastStatus == 200 && isset($candidateLastStatus[1]['status']) && $candidateLastStatus[1]['status'] == 101)
+      {
+        $lastStatus =$candidateLastStatus[1]['status'];
+      }
     }
     else
     {

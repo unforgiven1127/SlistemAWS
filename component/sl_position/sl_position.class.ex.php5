@@ -1641,8 +1641,6 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $candidate_id = $asData['candidatefk'];
         $position_id = $asData['positionfk'];
 
-        closeCandidateOtherPositions($candidate_id,$position_id,$user_id);
-
         $company_info = getPositionInformation($position_id);
         $company_id = $company_info['sl_companypk'];
         $oDB = CDependency::getComponentByName('database');
@@ -1671,6 +1669,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $oNote->addNote($asData['candidatefk'], 'cp_history', $sNote, $nUser);
         $oNote->addNote($asData['candidatefk'], 'cp_hidden', $asCandidate['company_name'], $nUser);
 
+        closeCandidateOtherPositions($candidate_id,$position_id,$user_id);
 
         //Update candidate company... least we can do to make sure data is correct, we'll open the form after
         //update industry with position industry too ?
