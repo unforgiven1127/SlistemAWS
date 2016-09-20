@@ -11,7 +11,7 @@
 	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
     $sDate = date('Y-m-d H:i:s');
-    $slistemQuery = "SELECT l.* FROM client_owners l";
+    $slistemQuery = "SELECT l.* FROM client_owner_list l";
 
     $slistemQuery = mysql_query($slistemQuery);
     $owners = array();
@@ -35,10 +35,11 @@
           $last_activity = $sDate ;
           $user_id = $value;
 
-          $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
+          $sQueryInsert = "INSERT INTO `client_owner_list_2` (`user_id`,`company_id`, `first_activity`, `last_activity`)
                    VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
 
-          var_dump($sQueryInsert);
+          echo 'company: '.$company_id.' user id: '.$user_id;
+          //var_dump($sQueryInsert);
           echo "<br><br>";
 
           //$sQueryInsert = mysql_query($sQueryInsert);
