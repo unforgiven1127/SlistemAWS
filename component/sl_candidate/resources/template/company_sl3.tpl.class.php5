@@ -253,6 +253,7 @@ class CCompany_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getFloatHack();
         $sHTML.= $this->coDisplay->getBlocEnd();
 
+        ChromePhp::log($pasData['sl_companypk']);
         $companyOwners = getCompanyOwner($pasData['sl_companypk']);
         ChromePhp::log($candidate_info);
 
