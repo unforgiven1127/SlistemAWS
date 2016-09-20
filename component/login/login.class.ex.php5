@@ -225,7 +225,7 @@ class CLoginEx extends CLogin
 
   public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false, $firstName = false)
   {
-
+ChromePhp::log($firstName);
     if(!assert('(is_array($pvUser) || is_integer($pvUser))'))
     {
       assert('false; /* getUserLink with wrong pvUser '.  var_export($pvUser, true).' */');
@@ -288,7 +288,7 @@ class CLoginEx extends CLogin
     {
       $sName = $asUserData['firstname'];
     }
-
+ChromePhp::log($sName);
     if(!$asUserData['status'])
     {
       $sClass = 'una';
