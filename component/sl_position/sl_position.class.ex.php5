@@ -2078,12 +2078,12 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         ChromePhp::log($asPositionData);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
+            $sRow.= "<div class='deletedClass'>IN PLAY FOR</div>";
             $firstTitleFlag = false;
           }
           if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'>POSITION DRIVEN</div>";
+            $sRow.= "<div class='deletedClass'>IN PLAY AT</div>";
             $secondTitleFlag = false;
           }
 
