@@ -638,11 +638,11 @@ class CSl_eventEx extends CSl_event
 
         if($characterNoteControlFlag)
         {
-          $data['ControlAllAreas'] = 'false';
+          $data['ControlAllAreas'] = 'true';
         }
         else
         {
-          $data['ControlAllAreas'] = 'true';
+          $data['ControlAllAreas'] = 'false';
         }
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
