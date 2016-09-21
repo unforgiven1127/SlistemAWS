@@ -1116,7 +1116,7 @@ ChromePhp::log($array);
                   $result = editNote($editCandidate,$array);
 
                   $affected_rows = $result->getFieldValue('_affected_rows');
-
+ChromePhp::log($affected_rows);
                   if($affected_rows == 0)
                   {
                     insertNote($array);
