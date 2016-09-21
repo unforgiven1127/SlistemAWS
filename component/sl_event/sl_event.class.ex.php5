@@ -651,6 +651,10 @@ class CSl_eventEx extends CSl_event
         }
         else
         {
+          foreach ($validCharacterNotes as $key => $value)
+          {
+            $data[$value['type']] = $value['content'];
+          }
           $data['ControlAllAreas'] = 'false';
           ChromePhp::log('else');
         }
