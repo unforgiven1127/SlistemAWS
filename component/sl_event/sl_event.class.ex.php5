@@ -972,7 +972,7 @@ class CSl_eventEx extends CSl_event
       {
         foreach ($characterNoteArray as $key => $value)
         {
-          if($key == 'past_note' || (isset($value) && !empty($value)))
+          if($ControlAllAreas == 'true' && ($key == 'past_note' || (isset($value) && !empty($value))))
           {
 
             /*if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
