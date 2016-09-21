@@ -61,82 +61,87 @@
 	$('.fieldNameevent_type').hide();
 
 	$('#formSubmitButton').click(function(){
-		var personality = $('#personality_note').val();
-		var career = $('#career_note').val();
-		var education = $('#education_note').val();
-		var move = $('#move_note').val();
-		var compensation = $('#compensation_note').val();
+		var controlFlag = $('#ControlAllAreas').val();
+		if(controlFlag == 'true')
+		{
+			var personality = $('#personality_note').val();
+			var career = $('#career_note').val();
+			var education = $('#education_note').val();
+			var move = $('#move_note').val();
+			var compensation = $('#compensation_note').val();
 
-		var personality_length = personality.length;
-		var career_length = career.length;
-		var education_length = education.length;
-		var move_length = move.length;
-		var compensation_length = compensation.length;
+			var personality_length = personality.length;
+			var career_length = career.length;
+			var education_length = education.length;
+			var move_length = move.length;
+			var compensation_length = compensation.length;
 
-		if(personality_length < 25)
-		{
-			$('#personality_note').css({'border-color':'red'});
-			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			$('#personality_note').css({'display':'inline-block'});
-		}
-		else
-		{
-			$('#personality_note').css({'border-color':'grey'});
-			$('#personality_note').css({'background':''});
-			$('#personality_note').css({'background-color':''});
-		}
+			if(personality_length < 25)
+			{
+				$('#personality_note').css({'border-color':'red'});
+				$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+				$('#personality_note').css({'display':'inline-block'});
+			}
+			else
+			{
+				$('#personality_note').css({'border-color':'grey'});
+				$('#personality_note').css({'background':''});
+				$('#personality_note').css({'background-color':''});
+			}
 
-		if(career_length < 25)
-		{
-			$('#career_note').css({'border-color':'red'});
-			$('#career_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			$('#career_note').css({'display':'inline-block'});
-		}
-		else
-		{
-			$('#career_note').css({'border-color':'grey'});
-			$('#career_note').css({'background':''});
-			$('#career_note').css({'background-color':''});
-		}
+			if(career_length < 25)
+			{
+				$('#career_note').css({'border-color':'red'});
+				$('#career_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+				$('#career_note').css({'display':'inline-block'});
+			}
+			else
+			{
+				$('#career_note').css({'border-color':'grey'});
+				$('#career_note').css({'background':''});
+				$('#career_note').css({'background-color':''});
+			}
 
-		if(education_length < 15)
-		{
-			$('#education_note').css({'border-color':'red'});
-			$('#education_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			$('#education_note').css({'display':'inline-block'});
-		}
-		else
-		{
-			$('#education_note').css({'border-color':'grey'});
-			$('#education_note').css({'background':''});
-			$('#education_note').css({'background-color':''});
-		}
+			if(education_length < 15)
+			{
+				$('#education_note').css({'border-color':'red'});
+				$('#education_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+				$('#education_note').css({'display':'inline-block'});
+			}
+			else
+			{
+				$('#education_note').css({'border-color':'grey'});
+				$('#education_note').css({'background':''});
+				$('#education_note').css({'background-color':''});
+			}
 
-		if(move_length < 25)
-		{
-			$('#move_note').css({'border-color':'red'});
-			$('#move_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			$('#move_note').css({'display':'inline-block'});
-		}
-		else
-		{
-			$('#move_note').css({'border-color':'grey'});
-			$('#move_note').css({'background':''});
-			$('#move_note').css({'background-color':''});
-		}
+			if(move_length < 25)
+			{
+				$('#move_note').css({'border-color':'red'});
+				$('#move_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+				$('#move_note').css({'display':'inline-block'});
+			}
+			else
+			{
+				$('#move_note').css({'border-color':'grey'});
+				$('#move_note').css({'background':''});
+				$('#move_note').css({'background-color':''});
+			}
 
-		if(compensation_length < 15)
-		{
-			$('#compensation_note').css({'border-color':'red'});
-			$('#compensation_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-			$('#compensation_note').css({'display':'inline-block'});
+			if(compensation_length < 15)
+			{
+				$('#compensation_note').css({'border-color':'red'});
+				$('#compensation_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+				$('#compensation_note').css({'display':'inline-block'});
+			}
+			else
+			{
+				$('#compensation_note').css({'border-color':'grey'});
+				$('#compensation_note').css({'background':''});
+				$('#compensation_note').css({'background-color':''});
+			}
 		}
-		else
-		{
-			$('#compensation_note').css({'border-color':'grey'});
-			$('#compensation_note').css({'background':''});
-			$('#compensation_note').css({'background-color':''});
-		}
+		
 	});
 
 	var initialSkills = new Array();

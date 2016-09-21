@@ -1082,10 +1082,8 @@ class CSl_eventEx extends CSl_event
         {
           return array('error' => $errorArray);
         }
-        ChromePhp::log($ControlAllAreas);
         if($ControlAllAreas == 'true')
         {
-          ChromePhp::log('INSIDE');
           foreach ($skillValues as $key => $skill)
           {
             if($skill == null || $skill < 1 || $skill > 9)
