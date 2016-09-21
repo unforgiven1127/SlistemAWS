@@ -1112,7 +1112,7 @@ class CSl_eventEx extends CSl_event
                   {
                     $editCandidate = $EditTheNotes;
                   }
-
+ChromePhp::log($array);
                   $result = editNote($editCandidate,$array);
 
                   $affected_rows = $result->getFieldValue('_affected_rows');
