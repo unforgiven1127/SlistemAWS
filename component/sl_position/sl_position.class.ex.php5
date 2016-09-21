@@ -2084,7 +2084,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           }
           if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'> IN PLAY AT</div>";
+            $sRow.= '<div onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
             $secondTitleFlag = false;
             $hideClass = ' inPlayAt ';
           }
