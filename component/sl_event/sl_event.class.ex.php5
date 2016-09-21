@@ -1136,9 +1136,16 @@ ChromePhp::log($affected_rows);
                 $array['content'] = '';
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']))
+                if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
                 {
-                  $editCandidate = $_GET['editCharacterNote'];
+                  if(isset($_GET['editCharacterNote']))
+                  {
+                    $editCandidate = $_GET['editCharacterNote'];
+                  }
+                  else
+                  {
+                    $editCandidate = $EditTheNotes;
+                  }
 
                   editNote($editCandidate,$array);
                 }
