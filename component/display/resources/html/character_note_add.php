@@ -170,7 +170,7 @@
 		$pressedKey = '';
 
 		var controlFlag = $('#ControlAllAreas').val();
-		if(controlFlag != true)
+		if(controlFlag != 'true')
 		{
 			if(val < 1 || val > 9)
 			{
