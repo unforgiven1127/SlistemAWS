@@ -334,6 +334,7 @@
 
 </table>
 <input type="hidden" id='hiddenCharacter' name="hiddenCharacter" value="newForm">
+<input type="hidden" id='ControlAllAreas' name="ControlAllAreas" value="<?php if(isset($ControlAllAreas)){echo $ControlAllAreas;} ?>">
 <table class="box" align="center">
 	<tr>
 		<td

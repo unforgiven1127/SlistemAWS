@@ -628,13 +628,22 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-      if($characterNoteControlFlag)
+      /*if($characterNoteControlFlag)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-      }
-      else
-      {
+      }*/
+      //else
+      //{
+
+        if($characterNoteControlFlag)
+        {
+          $data['ControlAllAreas'] = 'false';
+        }
+        else
+        {
+          $data['ControlAllAreas'] = 'true';
+        }
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
         $skillArray['skill_ap'] = '0';
@@ -714,7 +723,7 @@ class CSl_eventEx extends CSl_event
         //$oForm->addCustomHtml($addHtml);
         $oForm->addCustomHtml($add_note_html);
 
-      }
+      //}
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
