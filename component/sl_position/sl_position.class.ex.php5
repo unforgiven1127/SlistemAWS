@@ -2078,13 +2078,13 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         ChromePhp::log($asPositionData);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'>IN PLAY FOR</div>";
+            $sRow.= "<div class='deletedClass'> IN PLAY FOR</div>";
             $firstTitleFlag = false;
             $hideClass = ' inPlayFor ';
           }
           if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
           {
-            $sRow.= "<div class='deletedClass'>IN PLAY AT</div>";
+            $sRow.= "<div class='deletedClass'> IN PLAY AT</div>";
             $secondTitleFlag = false;
             $hideClass = ' inPlayAt ';
           }
