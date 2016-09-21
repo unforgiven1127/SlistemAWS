@@ -229,8 +229,8 @@ class CSl_eventEx extends CSl_event
         'cp_type' => $psItemType, 'cp_pk' => $pnItemPk, 'default_type' => $psLinkDefaultType);
 
       if($psLinkDefaultType == 'character')
-        $sLabel = 'Add a character note';
-      //$sLabel = 'Add character assessment';
+        $sLabel = 'Add character assessmentAdd a character note';
+      //$sLabel = 'Add a character note';
       else
         $sLabel = 'Add a note';
 
@@ -1112,11 +1112,11 @@ class CSl_eventEx extends CSl_event
                   {
                     $editCandidate = $EditTheNotes;
                   }
-ChromePhp::log($array);
+
                   $result = editNote($editCandidate,$array);
 
                   $affected_rows = $result->getFieldValue('_affected_rows');
-ChromePhp::log($affected_rows);
+
                   if($affected_rows == 0)
                   {
                     insertNote($array);
