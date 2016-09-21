@@ -2,9 +2,11 @@
 
 gbHasAjaxScreen = false; //can be overwritten
 
-$('.inPlayFor').click(function(){
+
+function openClose()
+{
   alert('test');
-});
+}
 
 function in_array(pasArray, p_val, pbContain)
 {

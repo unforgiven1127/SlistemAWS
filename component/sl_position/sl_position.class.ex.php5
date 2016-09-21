@@ -2078,7 +2078,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         ChromePhp::log($asPositionData);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
-            $sRow.= "<div onclick='openClose('inPlayFor');' class='deletedClass'> IN PLAY FOR</div>";
+            $sRow.= '<div onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
             $firstTitleFlag = false;
             $hideClass = ' inPlayFor ';
           }
