@@ -1082,11 +1082,14 @@ class CSl_eventEx extends CSl_event
         {
           return array('error' => $errorArray);
         }
-        foreach ($skillValues as $key => $skill)
+        if($ControlAllAreas)
         {
-          if($skill == null || $skill < 1 || $skill > 9)
+          foreach ($skillValues as $key => $skill)
           {
-            return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
+            if($skill == null || $skill < 1 || $skill > 9)
+            {
+              return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
+            }
           }
         }
 
