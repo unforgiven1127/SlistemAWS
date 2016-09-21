@@ -3261,7 +3261,11 @@ var_dump($query);*/
 
   function getLevels($level)
   {
-    if($level == 1)
+    if($level == 0)
+    {
+      return '-';
+    }
+    else if($level == 1)
     {
       return 'A';
     }
