@@ -1017,7 +1017,7 @@ class CSl_eventEx extends CSl_event
           }
           elseif($ControlAllAreas == 'false' || $ControlAllAreas == false)
           {
-            ChromePhp::log('INSIDE');
+            ChromePhp::log('INSIDE ControlAllAreas');
             $characterNoteFlag == true;
             $addedFlag = false;
           }
@@ -1079,8 +1079,10 @@ class CSl_eventEx extends CSl_event
         if($characterNoteFlag)
         {
             //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
+            ChromePhp::log('INSIDE characterNoteFlag');
             foreach ($characterNoteArray as $key => $value)
             {
+              ChromePhp::log($value);
               if((isset($value) && !empty($value)))
               {
                 $array = array();
