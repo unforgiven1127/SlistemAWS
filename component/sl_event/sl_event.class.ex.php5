@@ -1015,8 +1015,9 @@ class CSl_eventEx extends CSl_event
             }
 
           }
-          elseif($ControlAllAreas == 'false')
+          elseif($ControlAllAreas == 'false' || $ControlAllAreas == false)
           {
+            ChromePhp::log('INSIDE');
             $characterNoteFlag == true;
             $addedFlag = true;
           }
