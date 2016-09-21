@@ -169,6 +169,8 @@
 		}
 		$pressedKey = '';
 
+		var controlFlag = $('#ControlAllAreas').val();
+		alert(controlFlag);
 		if(val < 1 || val > 9)
 		{
 			alert("All skill areas should have a value between 1 - 9.");
