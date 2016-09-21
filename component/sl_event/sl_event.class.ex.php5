@@ -635,6 +635,14 @@ class CSl_eventEx extends CSl_event
       }*/
       //else
       //{
+        if($validCharacterNotesLength > 0)
+        {
+          $characterNoteControlFlag = true;
+        }
+        else
+        {
+          $characterNoteControlFlag = false;
+        }
         ChromePhp::log($validCharacterNotes);
         if($characterNoteControlFlag)
         {
