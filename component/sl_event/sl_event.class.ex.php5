@@ -643,6 +643,7 @@ class CSl_eventEx extends CSl_event
         else
         {
           $data['ControlAllAreas'] = 'false';
+          ChromePhp::log($validCharacterNotes);
         }
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
@@ -887,8 +888,6 @@ class CSl_eventEx extends CSl_event
     $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
     $ControlAllAreas = getValue('ControlAllAreas');
 
-    ChromePhp::log($ControlAllAreas);
-
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
     $candidate_id = (int)getValue(CONST_CP_PK);
@@ -1017,7 +1016,6 @@ class CSl_eventEx extends CSl_event
           }
           elseif($ControlAllAreas == 'false' || $ControlAllAreas == false)
           {
-            ChromePhp::log('INSIDE ControlAllAreas');
             $characterNoteFlag = true;
             $addedFlag = false;
           }
@@ -1079,10 +1077,8 @@ class CSl_eventEx extends CSl_event
         if($characterNoteFlag)
         {
             //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
-            ChromePhp::log('INSIDE characterNoteFlag');
             foreach ($characterNoteArray as $key => $value)
             {
-              ChromePhp::log($value);
               if((isset($value) && !empty($value)))
               {
                 $array = array();
