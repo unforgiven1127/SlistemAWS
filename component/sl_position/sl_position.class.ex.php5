@@ -2080,28 +2080,30 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           {
             $sRow.= "<div class='deletedClass'>IN PLAY FOR</div>";
             $firstTitleFlag = false;
+            $hideClass = ' inPlayFor ';
           }
           if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
           {
             $sRow.= "<div class='deletedClass'>IN PLAY AT</div>";
             $secondTitleFlag = false;
+            $hideClass = ' inPlayAt ';
           }
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
-          $sRow.= '<div class="note_header">Employee #<a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
+          $sRow.= '<div class="note_header '.$hideClass.'">Employee #<a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
             - <a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['lastname'].' '.$asPositionData['firstname'].'</a></div>';
 
           if($asPositionData['current_status'] == 0)
           {
             if(isset($asStatus[$asPositionData['current_status']]))
-            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['current_status']].'</b>]';
+            $sRow.= '<div class="note_content '.$hideClass.'">[<b>'.$asStatus[$asPositionData['current_status']].'</b>]';
           }
           else
           {
             if(isset($asStatus[$asPositionData['current_status']]))
               $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['current_status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
             else
-              $sRow.= '<div class="note_content">[<b>-'.$asPositionData['current_status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
+              $sRow.= '<div class="note_content '.$hideClass.'">[<b>-'.$asPositionData['current_status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
           }
 
 
