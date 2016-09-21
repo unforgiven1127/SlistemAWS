@@ -945,6 +945,10 @@ class CSl_eventEx extends CSl_event
       $addedFlag = true;
 
       $simpleCharacterNote = purify_html(getValue('character'));
+      if(empty($simpleCharacterNote))
+      {
+        $simpleCharacterNote = purify_html(getValue('content'));
+      }
 
       $oEvent = CDependency::getComponentByName('sl_event');
 
