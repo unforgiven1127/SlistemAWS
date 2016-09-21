@@ -2089,7 +2089,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         }
         $sRow.= $this->_oDisplay->getBlocEnd();
 
-        $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
+        $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'entry '.$hideClass));
 
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
