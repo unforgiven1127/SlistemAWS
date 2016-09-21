@@ -2074,6 +2074,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       {
         $asPositionData = $oDbResult->getData();
 
+        $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'testInPlay'));
         if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
         {
           $sRow.= '<div onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
@@ -2086,8 +2087,9 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $secondTitleFlag = false;
           $hideClass = ' inPlayAt ';
         }
+        $sRow.= $this->_oDisplay->getBlocEnd();
 
-        $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
+        $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
 
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
