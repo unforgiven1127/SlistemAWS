@@ -885,6 +885,7 @@ class CSl_eventEx extends CSl_event
     }
 
     $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
+    $ControlAllAreas = getValue('ControlAllAreas');
 
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
@@ -1011,6 +1012,10 @@ class CSl_eventEx extends CSl_event
               $characterNote .= $title.$value;
             }
 
+          }
+          elseif($ControlAllAreas == 'false')
+          {
+            $characterNoteFlag == true;
           }
           elseif($hiddenCharacter == 'newForm')
           {
