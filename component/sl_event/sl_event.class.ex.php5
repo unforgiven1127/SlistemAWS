@@ -1018,7 +1018,7 @@ class CSl_eventEx extends CSl_event
           elseif($ControlAllAreas == 'false' || $ControlAllAreas == false)
           {
             ChromePhp::log('INSIDE ControlAllAreas');
-            $characterNoteFlag == true;
+            $characterNoteFlag = true;
             $addedFlag = false;
           }
           elseif($hiddenCharacter == 'newForm')
