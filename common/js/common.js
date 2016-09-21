@@ -5,7 +5,7 @@ gbHasAjaxScreen = false; //can be overwritten
 
 function openClose(send_val)
 {
-  alert(send_val);
+  $('.'+send_val).toggle();
 }
 
 function in_array(pasArray, p_val, pbContain)
