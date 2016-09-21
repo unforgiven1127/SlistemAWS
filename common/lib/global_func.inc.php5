@@ -3277,9 +3277,13 @@ var_dump($query);*/
     {
       return 'C';
     }
-    else
+    else if($level == 8)
     {
       return 'H';
+    }
+    else
+    {
+      return '-';
     }
   }
 
