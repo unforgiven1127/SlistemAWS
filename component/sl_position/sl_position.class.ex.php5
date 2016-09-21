@@ -1627,7 +1627,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $company_id = $company_info['sl_companypk'];
 ChromePhp::log($company_info['level']);
 ChromePhp::log($level);
-        if($company_info['level'] >= $level)
+        if($company_info['level'] >= $level || $company_info['level'] == 0)
         {
           ChromePhp::log('INSIDE');
           updateCompanyLevel($company_id, $level,$user_id);
