@@ -854,7 +854,7 @@ div.list_action_container > div > div:first-child
 }
 .businnessClassB
 {
-  background: transparent url('/common/pictures/slistem/stopB.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/stopB.png') no-repeat center 50px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
