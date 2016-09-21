@@ -2074,20 +2074,21 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       {
         $asPositionData = $oDbResult->getData();
 
+        if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
+        {
+          $sRow.= '<div onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
+          $firstTitleFlag = false;
+          $hideClass = ' inPlayFor ';
+        }
+        if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
+        {
+          $sRow.= '<div onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
+          $secondTitleFlag = false;
+          $hideClass = ' inPlayAt ';
+        }
+
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
-        ChromePhp::log($asPositionData);
-          if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
-          {
-            $sRow.= '<div onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
-            $firstTitleFlag = false;
-            $hideClass = ' inPlayFor ';
-          }
-          if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
-          {
-            $sRow.= '<div onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
-            $secondTitleFlag = false;
-            $hideClass = ' inPlayAt ';
-          }
+
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
           $sRow.= '<div class="note_header '.$hideClass.'">Employee #<a href="javascript:;" onclick="view_candi('.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
