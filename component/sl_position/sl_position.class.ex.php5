@@ -2075,7 +2075,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $asPositionData = $oDbResult->getData();
 
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
-
+        ChromePhp::log($asPositionData);
           if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
           {
             $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
