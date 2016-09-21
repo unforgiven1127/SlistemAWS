@@ -1082,7 +1082,7 @@ class CSl_eventEx extends CSl_event
         {
           return array('error' => $errorArray);
         }
-        if($ControlAllAreas)
+        if($ControlAllAreas == 'true' || $ControlAllAreas == true)
         {
           foreach ($skillValues as $key => $skill)
           {
