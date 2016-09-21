@@ -599,18 +599,18 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
-      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
+      /*if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
         $characterNoteControlFlag = true;
-      }
-      if(isset($pnPk) && $pnPk > 0)
+      }*/
+      /*if(isset($pnPk) && $pnPk > 0)
       {
         $characterNoteControlFlag = true;
-      }
-      if($validCharacterNotesLength > 0)
+      }*/
+      /*if($validCharacterNotesLength > 0)
       {
         $characterNoteControlFlag = true;
-      }
+      }*/
 
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
@@ -640,13 +640,13 @@ class CSl_eventEx extends CSl_event
         {
           $characterNoteControlFlag = true;
         }
-
+        $data['EditTheNotes'] = 'false';
         if($characterNoteControlFlag)
         {
           $data['ControlAllAreas'] = 'false';
-          $data['EditTheNotes'] = $nCp_Pk;
           if($validCharacterNotesLength > 0)
           {
+            $data['EditTheNotes'] = $nCp_Pk;
             foreach ($validCharacterNotes as $key => $value)
             {
               $data[$value['type']] = $value['content'];
@@ -655,8 +655,15 @@ class CSl_eventEx extends CSl_event
         }
         else
         {
+          if($validCharacterNotesLength > 0)
+          {
+            $data['EditTheNotes'] = $nCp_Pk;
+            foreach ($validCharacterNotes as $key => $value)
+            {
+              $data[$value['type']] = $value['content'];
+            }
+          }
           $data['ControlAllAreas'] = 'true';
-          $data['EditTheNotes'] = 'false';
         }
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
