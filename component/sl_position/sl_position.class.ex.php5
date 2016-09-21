@@ -2081,7 +2081,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
             $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
             $firstTitleFlag = false;
           }
-          if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
+          if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
           {
             $sRow.= "<div class='deletedClass'>POSITION DRIVEN</div>";
             $secondTitleFlag = false;
