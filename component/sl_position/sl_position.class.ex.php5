@@ -2077,13 +2077,13 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'testInPlay'));
         if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
         {
-          $sRow.= '<div style="padding-left:10px;" onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
+          $sRow.= '<div style="padding-left:10px; cursor:pointer" onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
           $firstTitleFlag = false;
           $hideClass = ' inPlayFor ';
         }
         if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
         {
-          $sRow.= '<div style="padding-left:10px;" onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
+          $sRow.= '<div style="padding-left:10px; cursor:pointer" onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
           $secondTitleFlag = false;
           $hideClass = ' inPlayAt ';
         }
