@@ -2101,7 +2101,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           else
           {
             if(isset($asStatus[$asPositionData['current_status']]))
-              $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['current_status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
+              $sRow.= '<div class="note_content '.$hideClass.'">[<b>'.$asStatus[$asPositionData['current_status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
             else
               $sRow.= '<div class="note_content '.$hideClass.'">[<b>-'.$asPositionData['current_status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
           }
