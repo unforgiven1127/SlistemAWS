@@ -847,14 +847,14 @@ div.list_action_container > div > div:first-child
 }
 .businnessClassA
 {
-  background: transparent url('/common/pictures/slistem/stopA.png') no-repeat center 5px;
+  background: transparent url('/common/pictures/slistem/_stopA.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
 }
 .businnessClassB
 {
-  background: transparent url('/common/pictures/slistem/stopB.png') no-repeat top 50px;
+  background: transparent url('/common/pictures/slistem/stopB.png') no-repeat center 5px;
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
