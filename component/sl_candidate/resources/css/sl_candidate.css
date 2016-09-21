@@ -858,6 +858,7 @@ div.list_action_container > div > div:first-child
   background-size: 46px;
   z-index: 100 !important;
   background-position: right 20px;
+  margin-top: 10px;
 }
 .businnessClassC
 {
