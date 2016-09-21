@@ -1018,6 +1018,7 @@ class CSl_eventEx extends CSl_event
           elseif($ControlAllAreas == 'false')
           {
             $characterNoteFlag == true;
+            $addedFlag = true;
           }
           elseif($hiddenCharacter == 'newForm')
           {
