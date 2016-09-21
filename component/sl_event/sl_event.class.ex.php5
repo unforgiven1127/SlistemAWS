@@ -635,10 +635,7 @@ class CSl_eventEx extends CSl_event
       }*/
       //else
       //{
-        if($validCharacterNotesLength > 0)
-        {
-          $characterNoteControlFlag = true;
-        }
+
         if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
         {
           $characterNoteControlFlag = true;
@@ -648,9 +645,12 @@ class CSl_eventEx extends CSl_event
         {
           $data['ControlAllAreas'] = 'false';
           $data['EditTheNotes'] = $nCp_Pk;
-          foreach ($validCharacterNotes as $key => $value)
+          if($validCharacterNotesLength > 0)
           {
-            $data[$value['type']] = $value['content'];
+            foreach ($validCharacterNotes as $key => $value)
+            {
+              $data[$value['type']] = $value['content'];
+            }
           }
         }
         else
