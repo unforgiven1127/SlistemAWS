@@ -1019,7 +1019,7 @@ class CSl_eventEx extends CSl_event
           {
             ChromePhp::log('INSIDE');
             $characterNoteFlag == true;
-            $addedFlag = true;
+            $addedFlag = false;
           }
           elseif($hiddenCharacter == 'newForm')
           {
