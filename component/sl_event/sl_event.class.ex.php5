@@ -639,10 +639,11 @@ class CSl_eventEx extends CSl_event
         {
           $characterNoteControlFlag = true;
         }
-        else
+        if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
         {
-          $characterNoteControlFlag = false;
+          $characterNoteControlFlag = true;
         }
+
         if($characterNoteControlFlag)
         {
           $data['ControlAllAreas'] = 'false';
