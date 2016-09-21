@@ -635,15 +635,16 @@ class CSl_eventEx extends CSl_event
       }*/
       //else
       //{
-
+        ChromePhp::log($validCharacterNotes);
         if($characterNoteControlFlag)
         {
+          ChromePhp::log('if');
           $data['ControlAllAreas'] = 'true';
         }
         else
         {
           $data['ControlAllAreas'] = 'false';
-          ChromePhp::log($validCharacterNotes);
+          ChromePhp::log('else');
         }
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
