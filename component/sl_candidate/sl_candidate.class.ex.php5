@@ -6618,17 +6618,17 @@ class CSl_candidateEx extends CSl_candidate
         $selectA1 = "selected";
         $selectA = "selected";
       }
-      if($asCompanyData['level'] == 2)
+      else if($asCompanyData['level'] == 2)
       {
         $selectB1 = "selected";
         $selectB = "selected";
       }
-      if($asCompanyData['level'] == 3)
+      else if($asCompanyData['level'] == 3)
       {
         $selectC1 = "selected";
         $selectC = "selected";
       }
-      if($asCompanyData['level'] == 8)
+      else if($asCompanyData['level'] == 8)
       {
         $selectH1 = "selected";
         $selectH = "selected";
