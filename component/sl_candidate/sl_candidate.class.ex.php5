@@ -6283,6 +6283,8 @@ class CSl_candidateEx extends CSl_candidate
       $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
       $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
 
+      $todaysDate = date('Y-m-d');
+
       $calendar_icon = '//'.CONST_CRM_HOST.'/component/form/resources/pictures/date-icon.png';
 
       $bEstimated = (bool)$oDbResult->getFieldValue('is_birth_estimation');
@@ -6520,7 +6522,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
-        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,
+        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,'todaysDate' => $todaysDate,
         'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
         'nationality' => $this->getVars()->getNationalityOption($oDbResult->getFieldValue('nationalityfk')),
         'location' => $this->getVars()->getLocationOption($oDbResult->getFieldValue('locationfk')),
