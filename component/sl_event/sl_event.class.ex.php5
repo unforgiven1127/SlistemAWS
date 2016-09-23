@@ -676,7 +676,7 @@ class CSl_eventEx extends CSl_event
         $skillArray['skill_ch'] = '0';
         $skillArray['skill_ed'] = '0';
         $skillArray['skill_pl'] = '0';
-        $skillArray['skill_e'] = '0';
+        $skillArray['skill_e']  = '0';
 
         $candidate_info = getCandidateInformation($nCp_Pk);
 
