@@ -1059,6 +1059,7 @@ class CSl_candidateEx extends CSl_candidate
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
 
+      $owners[]['owner'] = $creator_id;
       $ownerFlag = false;
       foreach ($owners as $key => $owner)
       {
@@ -1075,31 +1076,37 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        $candidate_information = getCandidateInformation($candidate_id);
-        $company_information = getCompanyInformation($company_id);
-        $user_information = getUserInformaiton($user_id);
-
-        $creator_information = getUserInformaiton($creator_id);
-        if($creator_information['status'] == 1)
+        foreach ($owners as $key => $value)
         {
-          $toEmail = $creator_information['email'];
+          $owner_id =  $value['owner'];
+          ChromePhp::log($owner_id);
+          $candidate_information = getCandidateInformation($owner_id);
+          $company_information = getCompanyInformation($company_id);
+          $user_information = getUserInformaiton($user_id);
+
+          $creator_information = getUserInformaiton($creator_id);
+          if($creator_information['status'] == 1)
+          {
+            $toEmail = $creator_information['email'];
+          }
+          else
+          {// eleman aktif degilse Rosasna ya gonderiyoruz...
+            $toEmail = 'rkiyamu@slate.co.jp';
+          }
+
+          $sDate = date('Y-m-d H:i:s');
+
+          $user_name = $user_information['firstname']." ".$user_information['lastname'];
+          $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
+          $company_name = $company_information['name'];
+
+          $subject = "Contact Information Access";
+          $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
+
+
+          //sendHtmlMail($toEmail,$subject, $message);
         }
-        else
-        {// eleman aktif degilse Rosasna ya gonderiyoruz...
-          $toEmail = 'rkiyamu@slate.co.jp';
-        }
 
-        $sDate = date('Y-m-d H:i:s');
-
-        $user_name = $user_information['firstname']." ".$user_information['lastname'];
-        $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
-        $company_name = $company_information['name'];
-
-        $subject = "Contact Information Access";
-        $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
-
-
-        sendHtmlMail($toEmail,$subject, $message);
       }
 
 
