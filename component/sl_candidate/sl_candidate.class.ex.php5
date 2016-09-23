@@ -9363,6 +9363,9 @@ die();*/
           continue;
         }
 
+        $company_id = $asCpData['sl_companypk'];
+        $employeeCount = getCompanyEmployeeCount($company_id);
+
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
         $sFirstLetter = strtoupper(substr($asCpData['name'], 0, 1));
         if(is_numeric($sFirstLetter))
@@ -9376,9 +9379,9 @@ die();*/
             <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'('.$asCpData['level'].')</div>
             <div class="cp_consultant">'.$oLogin->getUserLink((int)$asCpData['company_owner']).'</div>
             <div class="cp_update">'.substr($asCpData['date_updated'], 0, 10).'&nbsp;</div>
-            <div class="cp_employee">'.$asCpData['num_employee'].'&nbsp;</div>
+            <div class="cp_employee">'.$employeeCount.'&nbsp;</div>
           </div>';
-
+// employeeCount yerine $asCpData['num_employee'] vardi
 
         $asCompany[$sFirstLetter][] = $sCompany;
         $asLetters[$sFirstLetter] = $oHTML->getLink($sFirstLetter, '#'.$sFirstLetter);

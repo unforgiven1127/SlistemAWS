@@ -4013,6 +4013,21 @@ var_dump($query);*/
 
   }
 
+  function getCompanyEmployeeCount($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT COUNT(*) as count FROM sl_candidate_profile slcp WHERE slcp.companyfk = '".$company_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $result = $result[0]['count'];
+
+    return $result;
+  }
+
   function getCompanyInfo($company_id)
   {
     $oDB = CDependency::getComponentByName('database');
