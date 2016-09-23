@@ -6886,6 +6886,7 @@ class CSl_candidateEx extends CSl_candidate
         $asData['date_updated'] = date('Y-m-d H:i:s');
         $asData['updated_by'] = $nLoginFk;
         $asData['company_owner'] = (int)getValue('company_owner');
+        $asData['is_nc_ok'] = (int)getValue('is_nc_ok');
         $bUpdated = $this->_getModel()->update($asData, 'sl_company', 'sl_companypk = '.$pnPk);
         if(!$bUpdated)
           return array('error' => 'Could not update the company.');
