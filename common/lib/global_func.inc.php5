@@ -3903,7 +3903,7 @@ var_dump($query);*/
       $count = $result[0]['count'];
 
       if($count == 0) // 0 ise herhangi bir not girmemis demek oluyor.
-      {ChromePhp::log('icerde');
+      {
         //ChromePhp::log('Action: View 5 contact details but not any note entry.');
         $dNow = date('Y-m-d H:i:s'); // Japan time
         $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
