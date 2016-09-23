@@ -527,7 +527,7 @@
 
 		$('#meeting_date').datepicker({
 			defaultDate: '<?php echo $todaysDate; ?>',
-			yearRange: '<?php echo $year_range; ?>',
+			yearRange: '<?php echo $sYearRangeToday; ?>',
 			showButtonPanel: true,
 			changeYear: true,
 			numberOfMonths: 2,

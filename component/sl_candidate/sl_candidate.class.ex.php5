@@ -6283,6 +6283,8 @@ class CSl_candidateEx extends CSl_candidate
       $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
       $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
 
+      $sYearRangeToday = (date('Y') - 0).':'.(date('Y') - 0);
+
       $todaysDate = date('Y-m-d');
 
       $calendar_icon = '//'.CONST_CRM_HOST.'/component/form/resources/pictures/date-icon.png';
@@ -6546,7 +6548,7 @@ class CSl_candidateEx extends CSl_candidate
         'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
         'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
         'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
-        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
+        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
