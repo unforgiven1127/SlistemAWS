@@ -298,6 +298,33 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<div class="general_form_row">
+				Quick meeting add
+			</div>
+			<div class="gray_section">
+				<div class="general_form_row  extended_select">
+					<div class="general_form_label">Meering set for</div>
+					<div class="general_form_column">
+						<select name="grade" >
+						<?php echo $grade; ?>
+						</select>
+					</div>
+					<div class="general_form_label add_margin_left_30">by</div>
+					<div class="general_form_column">
+						<select name="status" onchange="manageFormStatus(this, <?php echo $candidate_id; ?>);">
+						<?php echo $status_options; ?>
+						</select>
+					</div>
+				</div>
+
+			</div>
+
+
+
+
 			<div class="general_form_row">
 				<div style="margin-top: 5px; cursor: pointer;" class="bold italic"
 				onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
