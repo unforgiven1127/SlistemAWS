@@ -1079,7 +1079,6 @@ class CSl_candidateEx extends CSl_candidate
         foreach ($owners as $key => $value)
         {
           $owner_id =  $value['owner'];
-          ChromePhp::log($owner_id);
           $candidate_information = getCandidateInformation($owner_id);
           $company_information = getCompanyInformation($company_id);
           $user_information = getUserInformaiton($user_id);
@@ -1104,7 +1103,7 @@ class CSl_candidateEx extends CSl_candidate
           $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
 
 
-          //sendHtmlMail($toEmail,$subject, $message);
+          sendHtmlMail($toEmail,$subject, $message);
         }
 
       }
