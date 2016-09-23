@@ -526,6 +526,7 @@
 		});
 
 		var today = new Date();
+		today = "'"+today+"'";
 		$('#meeting_date').datepicker({
 			defaultDate: today,
 			yearRange: '<?php echo $year_range; ?>',
