@@ -3951,6 +3951,7 @@ var_dump($query);*/
         'Cc: '.$cc . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
+ChromePhp::log($to);
 ChromePhp::log($cc);
     //mail($to, $subject, $message, $headers);
 
