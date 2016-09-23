@@ -1059,8 +1059,13 @@ class CSl_candidateEx extends CSl_candidate
       $company_information = getCompanyInformation($company_id);
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
+      $toEmail = '';
 
-      $owners[]['owner'] = $creator_id;
+      //$owners[]['owner'] = $creator_id;
+      if(!isset($owners[0]['owner']))
+      {
+        $owners[0]['owner'] = '343';// kimse yoksa rossana
+      }
       $ownerFlag = false;
       foreach ($owners as $key => $owner)
       {
@@ -1070,7 +1075,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if($user_id == $creator_id || $ownerFlag)
+      if($ownerFlag)
       {
         #ChromePhp::log('NO MAIL!!');
         #do nothing
@@ -1084,28 +1089,38 @@ class CSl_candidateEx extends CSl_candidate
           $company_information = getCompanyInformation($company_id);
           $user_information = getUserInformaiton($user_id);
 
-          $creator_information = getUserInformaiton($creator_id);
+          $creator_information = getUserInformaiton($owner_id);// owner a aticaz
           if($creator_information['status'] == 1)
           {
-            $toEmail = $creator_information['email'];
+            $toEmail .= $creator_information['email']."; ";
           }
           else
           {// eleman aktif degilse Rosasna ya gonderiyoruz...
-            $toEmail = 'rkiyamu@slate.co.jp';
+            if (strpos($a, 'are') !== false)
+            {
+                #rossana varsa birdaha ekleme
+            }
+            else
+            {
+              $toEmail .= 'rkiyamu@slate.co.jp; ';
+            }
+
           }
 
-          $sDate = date('Y-m-d H:i:s');
-
-          $user_name = $user_information['firstname']." ".$user_information['lastname'];
-          $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
-          $company_name = $company_information['name'];
-
-          $subject = "Contact Information Access";
-          $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
-
-
-          sendHtmlMail($toEmail,$subject, $message);
         }
+        $toEmail = rtrim($toEmail, ";");
+
+        $sDate = date('Y-m-d H:i:s');
+
+        $user_name = $user_information['firstname']." ".$user_information['lastname'];
+        $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
+        $company_name = $company_information['name'];
+
+        $subject = "Contact Information Access";
+        $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
+
+ChromePhp::log($toEmail);
+        //sendHtmlMail($toEmail,$subject, $message);
 
       }
 

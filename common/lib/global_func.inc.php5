@@ -3939,8 +3939,16 @@ var_dump($query);*/
     //$subject = 'Slistem Activity Flag';
     //$message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
     //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
+    if($to == ' rkiyamu@slate.co.jp ')
+    {
+      $cc = ' ';
+    }
+    else
+    {
+      $cc = ' rkiyamu@slate.co.jp ';
+    }
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
-        'Cc: rkiyamu@slate.co.jp' . "\r\n" .
+        'Cc: '.$cc . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
