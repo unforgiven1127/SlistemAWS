@@ -3945,15 +3945,14 @@ var_dump($query);*/
     }
     else
     {
-      $cc = 'rkiyamu@slate.co.jp;';
+      $cc = 'rkiyamu@slate.co.jp';
     }
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
         'Cc: '.$cc . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
-ChromePhp::log($to);
-ChromePhp::log($cc);
-    //mail($to, $subject, $message, $headers);
+
+    mail($to, $subject, $message, $headers);
 
   }
 
