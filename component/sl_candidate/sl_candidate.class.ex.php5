@@ -1336,9 +1336,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
-      ChromePhp::log($pasCandidateData);
-      ChromePhp::log($psClass);
-      ChromePhp::log($pbLinkTabs);
+
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -1484,6 +1482,9 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsFull($pasCandidateData, $psClass = '')
     {
+      ChromePhp::log($pasCandidateData);
+      ChromePhp::log($psClass);
+      ChromePhp::log($pbLinkTabs);
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
