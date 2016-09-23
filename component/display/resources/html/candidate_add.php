@@ -318,6 +318,10 @@
 						<?php echo $status_options; ?>
 						</select>
 					</div>
+					<div class="general_form_column">
+						<input id="birth_date" type="text" name="birth_date" value="<?php echo $birth_date; ?>" />
+						<input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
+					</div>
 				</div>
 
 			</div>
