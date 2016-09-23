@@ -1092,7 +1092,7 @@ class CSl_candidateEx extends CSl_candidate
           $creator_information = getUserInformaiton($owner_id);// owner a aticaz
           if($creator_information['status'] == 1)
           {
-            $toEmail .= $creator_information['email']."; ";
+            $toEmail .= $creator_information['email'].";";
           }
           else
           {// eleman aktif degilse Rosasna ya gonderiyoruz...
@@ -1102,7 +1102,7 @@ class CSl_candidateEx extends CSl_candidate
             }
             else
             {
-              $toEmail .= 'rkiyamu@slate.co.jp; ';
+              $toEmail .= 'rkiyamu@slate.co.jp;';
             }
 
           }
