@@ -1059,10 +1059,18 @@ class CSl_candidateEx extends CSl_candidate
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
 
-      ChromePhp::log($owners);
-
-      if($user_id == $creator_id)
+      $ownerFlag = false;
+      foreach ($owners as $key => $owner)
       {
+        if($user_id == $owner['owner'])
+        {
+          $ownerFlag = true;
+        }
+      }
+
+      if($user_id == $creator_id || $ownerFlag)
+      {
+        ChromePhp::log('NO MAIL!!');
         #do nothing
       }
       else
@@ -1091,7 +1099,7 @@ class CSl_candidateEx extends CSl_candidate
         $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
 
 
-        //sendHtmlMail($toEmail,$subject, $message);
+        sendHtmlMail($toEmail,$subject, $message);
       }
 
 
