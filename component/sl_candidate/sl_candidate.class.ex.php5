@@ -501,7 +501,8 @@ class CSl_candidateEx extends CSl_candidate
       $desctiption = '';
       $cp_type = "comp";
 
-      insertLog($loginfk, $cp_pk, $text,$table,$desctiption,$cp_type);
+      insertLog($loginfk, $old_company_id, $text,$table,$desctiption,$cp_type);// ikisinede yazmamiz istendi
+      insertLog($loginfk, $new_company_id, $text,$table,$desctiption,$cp_type);
 
       $html = "Company deleted / merged succesfully...";
     }
@@ -1107,7 +1108,6 @@ class CSl_candidateEx extends CSl_candidate
         }
 
       }
-
 
     }
 
