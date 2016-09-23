@@ -6687,6 +6687,11 @@ class CSl_candidateEx extends CSl_candidate
       $is_client1N = '';
       $is_client2N = '';
 
+      $is_ns1Y = '';
+      $is_ns2Y = '';
+      $is_ns1N = '';
+      $is_ns2N = '';
+
       if($asCompanyData['is_client'] == 1)
       {
         $is_client1Y = 'selected';
@@ -6696,6 +6701,17 @@ class CSl_candidateEx extends CSl_candidate
       {
         $is_client1N = 'selected';
         $is_client2N = 'selected';
+      }
+
+      if($asCompanyData['is_nc_ok'] == 1)
+      {
+        $is_ns1Y = 'selected';
+        $is_ns2Y = 'selected';
+      }
+      else
+      {
+        $is_ns1N = 'selected';
+        $is_ns2N = 'selected';
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
@@ -6710,8 +6726,8 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
        $oForm->addField('select', 'is_nc_ok', array('label'=> 'Name collect '));
-       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
-       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_ns1N => $is_ns2N));
+       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_ns1Y => $is_ns2Y));
 
        $activeUserList = getActiveUsers();
 
