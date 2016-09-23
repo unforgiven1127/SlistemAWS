@@ -1336,6 +1336,9 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
+      ChromePhp::log($pasCandidateData);
+      ChromePhp::log($psClass);
+      ChromePhp::log($pbLinkTabs);
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
