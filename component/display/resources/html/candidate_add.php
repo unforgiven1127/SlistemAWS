@@ -319,7 +319,7 @@
 						</select>
 					</div>
 					<div class="general_form_column">
-						<input id="birth_date" type="text" name="birth_date" value="<?php echo $birth_date; ?>" />
+						<input id="meeting_date" type="text" name="meeting_date" value="<?php echo $birth_date; ?>" />
 						<input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
 					</div>
 				</div>
@@ -514,6 +514,18 @@
 	$(function()
 	{
 		$('#birth_date').datepicker({
+			defaultDate: '<?php echo $default_date; ?>',
+			yearRange: '<?php echo $year_range; ?>',
+			showButtonPanel: true,
+			changeYear: true,
+			numberOfMonths: 2,
+			showOn: 'both',
+			buttonImage: '<?php echo $calendar_icon; ?>',
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
+		});
+
+		$('#meeting_date').datepicker({
 			defaultDate: '<?php echo $default_date; ?>',
 			yearRange: '<?php echo $year_range; ?>',
 			showButtonPanel: true,
