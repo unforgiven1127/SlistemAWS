@@ -1482,8 +1482,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsFull($pasCandidateData, $psClass = '')
     {
-      ChromePhp::log($pasCandidateData);
-      ChromePhp::log($psClass);
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
@@ -1576,7 +1574,7 @@ class CSl_candidateEx extends CSl_candidate
             $sHTML.= '<li id="tabLink11" onclick="toggleCandiTab(this, \'candiTab5\');" class="tab_empty '.$sNoteSelected.' tab_note" title="Displays the candidate notes" ></li>';
 
           if($asContact['nb_result'] > 0)
-            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.' );" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';
+            $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].' );" class="'.$sContactSelected.' tab_contact" title="Displays the contact details"><span class="tab_number tab_level_'.$asContact['priority'].'">'.$asContact['nb_result'].'</span></li>';//,'.$company_id_flag.'
           else
             $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\',\'\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.' );" class="tab_empty '.$sContactSelected.' tab_contact" title="Displays the contact details"></li>';
 
