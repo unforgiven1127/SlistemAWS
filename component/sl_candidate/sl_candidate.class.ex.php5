@@ -1070,7 +1070,7 @@ class CSl_candidateEx extends CSl_candidate
 
       if($user_id == $creator_id || $ownerFlag)
       {
-        ChromePhp::log('NO MAIL!!');
+        #ChromePhp::log('NO MAIL!!');
         #do nothing
       }
       else
