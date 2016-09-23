@@ -6709,6 +6709,10 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
+       $oForm->addField('select', 'is_nc_ok', array('label'=> 'Name collect '));
+       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
+       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+
        $activeUserList = getActiveUsers();
 
        $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
