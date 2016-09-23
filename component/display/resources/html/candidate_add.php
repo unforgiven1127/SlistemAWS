@@ -525,8 +525,9 @@
 			dateFormat: 'yy-mm-dd'
 		});
 
+		var today = var d = new Date();
 		$('#meeting_date').datepicker({
-			defaultDate: '<?php echo $default_date; ?>',
+			defaultDate: today,
 			yearRange: '<?php echo $year_range; ?>',
 			showButtonPanel: true,
 			changeYear: true,
