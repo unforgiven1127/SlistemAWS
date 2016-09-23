@@ -318,6 +318,7 @@
 						<?php echo $status_options; ?>
 						</select>
 					</div>
+					<div class="general_form_label">Meering date</div>
 					<div class="general_form_column">
 						<input id="meeting_date" type="text" name="meeting_date" value="<?php echo $birth_date; ?>" />
 						<input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
