@@ -463,10 +463,6 @@
 		</div>
 	</div>
 
-	<div class="general_form_row add_margin_top_10" style="text-align: center;">
-		<input type="submit" value="Save candidate" />
-	</div>
-
 
 <script>
 	var company_token = '';
