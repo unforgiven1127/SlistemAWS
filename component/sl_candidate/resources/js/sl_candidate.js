@@ -1,5 +1,5 @@
 
-function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_client = false)
+function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_client = false,doubleWin = false)
 {
   //psIdToShow acilacak olan tab
 
@@ -12,19 +12,28 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_clie
         //remove selected links adn select current clicked one
 
         // company i olusturan kisiye mail atacagiz
-        var urlMail = "/index.php5?uid=555-001&ppa=csam&ppt=candi&ppk="+candidate_id+"&pg=ajx&cid="+is_client;
+        if(candidate_id == '#ctc_1')
+        {
+          var candidate = doubleWin;
+        }
+        else
+        {
+          var candidate = candidate_id;
+        }
+
+        var urlMail = "/index.php5?uid=555-001&ppa=csam&ppt=candi&ppk="+candidate+"&pg=ajx&cid="+is_client;
         AjaxRequest(urlMail, '', '', '', '', '', "");
 
         $(poElement).siblings('.selected').removeClass('selected');
         $(poElement).addClass('selected');
 
         var oContainer =  $(poElement).closest('.candiTabContainer');
-        if(typeof candidate_id != 'undefined' && candidate_id != null)
+        if(typeof candidate != 'undefined' && candidate != null)
         {
           //alert(candidate_id);
           //alert(psIdToShow);
           var serverName = window.location.host;
-          var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate_id+"&pg=ajx&logType="+psIdToShow;
+          var url = "/index.php5?uid=555-001&ppa=ppcl&ppt=candi&ppk="+candidate+"&pg=ajx&logType="+psIdToShow;
           //alert(url);
           //var url = "/index.php5?uid=555-001&ppa=ppav&ppt=candi&pg=ajx&insertNewLog=contactDetail&ppk="+candidate_id;
           AjaxRequest(url, '', '', '', '', '', "");
