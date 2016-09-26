@@ -3948,7 +3948,7 @@ var_dump($query);*/
       $cc = 'rkiyamu@slate.co.jp';
     }
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
-        'Cc: '.$cc . "\r\n" .
+        'Cc: rkiyamu@slate.co.jp'. "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
