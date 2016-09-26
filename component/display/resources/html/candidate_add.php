@@ -458,7 +458,7 @@
 		</div>
 	</div>
 
-	<div class="" style="text-align: center;">
+	<div class="general_form_row add_margin_top_10" style="text-align: center;">
 		<input type="submit" value="Save Candidate" />
 	</div>
 </form>
@@ -608,8 +608,7 @@
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
-		AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  ');
-		//setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 550);
 
 		return false;
 	});
