@@ -6573,7 +6573,10 @@ class CSl_candidateEx extends CSl_candidate
       $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
       $sHTML = $oForm2->getDisplay();
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+
+      $addHtml = $this->_oDisplay->render('candidate_add', $data);
+      $sHTML.=addCustomHtml($addHtml);
+
 
       return $sHTML;
     }
