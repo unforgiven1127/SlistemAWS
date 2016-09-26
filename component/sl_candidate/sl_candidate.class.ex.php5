@@ -1050,6 +1050,7 @@ class CSl_candidateEx extends CSl_candidate
 
     public function mailAjax()
     {
+ChromePhp::log('mailAjax');
       $oLogin = CDependency::getCpLogin();
 
       $candidate_id = $_GET['ppk'];
