@@ -12,6 +12,8 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_clie
         //remove selected links adn select current clicked one
 
         // company i olusturan kisiye mail atacagiz
+        alert(candidate_id);
+        alert(doubleWin);
         var candidate = candidate_id;
         if(candidate_id == '#ctc_1')
         {
