@@ -1108,6 +1108,14 @@ class CSl_candidateEx extends CSl_candidate
           }
 
         }
+        if (strpos($toEmail, 'rkiyamu@slate.co.jp') !== false)
+        {
+            #rossana varsa birdaha ekleme
+        }
+        else
+        {
+          $toEmail .= 'rkiyamu@slate.co.jp;';
+        }
         $toEmail = rtrim($toEmail, ";");
 
         $sDate = date('Y-m-d H:i:s');
