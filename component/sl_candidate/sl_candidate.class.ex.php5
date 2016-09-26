@@ -1050,7 +1050,6 @@ class CSl_candidateEx extends CSl_candidate
 
     public function mailAjax()
     {
-ChromePhp::log('mailAjax');
       $oLogin = CDependency::getCpLogin();
 
       $candidate_id = $_GET['ppk'];
@@ -1109,7 +1108,6 @@ ChromePhp::log('mailAjax');
           }
 
         }
-
         $toEmail = rtrim($toEmail, ";");
 
         $sDate = date('Y-m-d H:i:s');
@@ -1120,7 +1118,7 @@ ChromePhp::log('mailAjax');
 
         $subject = "Contact Information Access";
         $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
-ChromePhp::log('sendHtmlMail');
+
         sendHtmlMail($toEmail,$subject, $message);
 
       }
