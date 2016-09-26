@@ -7331,6 +7331,7 @@ die();*/
     private function _saveCandidate($pnCandidatePk = 0)
     {
 ChromePhp::log('_saveCandidate');
+return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
 
