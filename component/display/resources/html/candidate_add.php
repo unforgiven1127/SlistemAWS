@@ -1,6 +1,6 @@
-<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
+<!--<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
 	action="https://beta1.slate.co.jp/index.php5?uid=555-001&ppa=ppasa&ppt=candi&ppk=0&pg=ajx" class="candiAddForm" ajaxTarget="candi_duplicate"
-	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
+	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">-->
 	<input type="hidden" name="userfk" value="<?php echo $user_id; ?>" />
 	<input id="dup_checked" type="hidden" name="check_duplicate" value="0" />
 
