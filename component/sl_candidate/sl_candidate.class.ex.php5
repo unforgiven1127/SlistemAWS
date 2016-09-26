@@ -7260,7 +7260,7 @@ die();*/
     {
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
-
+return array('error' => 'TEST.');
       if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
