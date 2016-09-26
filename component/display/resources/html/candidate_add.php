@@ -602,7 +602,7 @@
 		date_field_obj.show();
 	}
 
-	$('form[name=addcandidate]').submit(function(event){
+	/*$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
 alert('test');
 		var sURL = $('form[name=addcandidate]').attr('action');
@@ -611,7 +611,7 @@ alert('test');
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 
 		return false;
-	});
+	});*/
 
 	function check_dom_change()
 	{
