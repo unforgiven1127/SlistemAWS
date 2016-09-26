@@ -458,9 +458,9 @@
 		</div>
 	</div>
 
-	<div class="general_form_row add_margin_top_10" style="text-align: center;">
+	<!--<div class="general_form_row add_margin_top_10" style="text-align: center;">
 		<input type="submit" value="Save Candidate" />
-	</div>
+	</div>-->
 </form>
 
 <script>
@@ -602,7 +602,7 @@
 		date_field_obj.show();
 	}
 
-	$('form[name=addcandidate]').submit(function(event){
+	/*$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
 
 		var sURL = $('form[name=addcandidate]').attr('action');
@@ -611,7 +611,7 @@
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 550);
 
 		return false;
-	});
+	});*/
 
 	function check_dom_change()
 	{
