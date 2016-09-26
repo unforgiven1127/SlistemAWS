@@ -2273,6 +2273,10 @@ class CLoginEx extends CLogin
     session_unset();     // unset $_SESSION variable for the run-time
     session_destroy();   // destroy session data in storage
 
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+    header("Content-Type: application/xml; charset=utf-8");
+
     //unset cookie
     setcookie('login_userdata', '', time()-360000, '/');
 
