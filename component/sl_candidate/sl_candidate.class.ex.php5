@@ -6525,6 +6525,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
+      $test = $oForm->getDisplay();
+
       return $sHTML;
     }
 
