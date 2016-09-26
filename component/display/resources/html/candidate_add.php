@@ -604,13 +604,14 @@
 
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
-alert('test');
-		var sURL = $('form[name=addcandidate]').attr('action');
-		/*var sFormId = $('form[name=addcandidate]').attr('id');
-		var sAjaxTarget = 'candi_duplicate';
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 
-		return false;*/
+		var sURL = $('form[name=addcandidate]').attr('action');
+		var sFormId = $('form[name=addcandidate]').attr('id');
+		var sAjaxTarget = 'candi_duplicate';
+		AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  ');
+		//setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+
+		return false;
 	});
 
 	function check_dom_change()
