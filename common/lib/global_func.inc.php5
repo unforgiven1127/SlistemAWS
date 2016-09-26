@@ -3261,7 +3261,11 @@ var_dump($query);*/
 
   function getLevels($level)
   {
-    if($level == 1)
+    if($level == 0)
+    {
+      return '-';
+    }
+    else if($level == 1)
     {
       return 'A';
     }
@@ -3273,9 +3277,13 @@ var_dump($query);*/
     {
       return 'C';
     }
-    else
+    else if($level == 8)
     {
       return 'H';
+    }
+    else
+    {
+      return '-';
     }
   }
 
@@ -3931,8 +3939,16 @@ var_dump($query);*/
     //$subject = 'Slistem Activity Flag';
     //$message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
     //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
+    if (strpos($to, 'rkiyamu@slate.co.jp') !== false)
+    {
+        $cc = ' ';
+    }
+    else
+    {
+      $cc = 'rkiyamu@slate.co.jp';
+    }
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
-        'Cc: rkiyamu@slate.co.jp' . "\r\n" .
+        'Cc: '.$cc . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
@@ -3995,6 +4011,21 @@ var_dump($query);*/
       }
     }
 
+  }
+
+  function getCompanyEmployeeCount($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT COUNT(*) as count FROM sl_candidate_profile slcp WHERE slcp.companyfk = '".$company_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $result = $result[0]['count'];
+
+    return $result;
   }
 
   function getCompanyInfo($company_id)
