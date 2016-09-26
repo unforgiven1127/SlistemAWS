@@ -458,7 +458,7 @@
 		</div>
 	</div>
 
-	<div class="general_form_row add_margin_top_10" style="text-align: center;">
+	<div class="" style="text-align: center;">
 		<input type="submit" value="Save Candidate" />
 	</div>
 </form>
@@ -604,7 +604,7 @@
 
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
-
+alert('test');
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
