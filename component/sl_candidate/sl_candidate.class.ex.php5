@@ -6234,6 +6234,7 @@ class CSl_candidateEx extends CSl_candidate
       $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
 
 
+      //$oForm = $this->_oDisplay->initForm('candidateAddForm');
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
@@ -6523,9 +6524,9 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
       );
 
-      $sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $sHTML = $contact_details_form;
+      $sHTML .= $this->_oDisplay->render('candidate_add', $data);
 
-      $test = $oForm->getDisplay();
 
       return $sHTML;
     }
