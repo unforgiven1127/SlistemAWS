@@ -625,11 +625,11 @@
 		event.preventDefault();
 
 		var sURL = $('form[name=addcandidate]').attr('action');
-		alert(sURL);
+		//alert(sURL);
 		var sFormId = $('form[name=addcandidate]').attr('id');
-		alert(sFormId);
+		//alert(sFormId);
 		var sAjaxTarget = 'candi_duplicate';
-		alert(sAjaxTarget);
+		//alert(sAjaxTarget);
 		//setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 		AjaxRequest(sURL, '', '', '', '', '', "");
 		return false;
