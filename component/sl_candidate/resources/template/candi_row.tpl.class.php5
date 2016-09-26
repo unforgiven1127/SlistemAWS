@@ -54,8 +54,8 @@ class CCandi_row extends CTemplate
 
 
     set_array($pasColumnParam[2]['tag'], '');
-    $asOption = array('class' => $pasColumnParam[2]['tag'].' tplCandiRow_continuous clickable','onclick' => $sViewJS);
-    if($pasData['cp_client'] == 1)// || $pasData['is_client'] kaldirdik
+    $asOption = array('class' => $pasColumnParam[2]['tag'].' tplCandiRow_continuous clickable', 'onclick' => $sViewJS);
+    if($pasData['cp_client'])// || $pasData['is_client'] kaldirdik
     {
       $company_id = $pasData['sl_companypk'];
       $company_information = getCompanyInformation($company_id);
@@ -81,38 +81,23 @@ class CCandi_row extends CTemplate
     //priority to in_ply: dynamic status, he's in play now !!
     $sValue = '';
 
-    $candidate_id = $pasData['sl_candidatepk'];
-    $candidateLastStatus = getLastStatus($candidate_id);
-    if(isset($candidateLastStatus[0]))
+    if(!empty($pasData['_pos_status']))
     {
-      $lastStatus = $candidateLastStatus[0]['status'];
-      if($lastStatus == 200 && isset($candidateLastStatus[1]['status']) && $candidateLastStatus[1]['status'] == 101)
-      {
-        $lastStatus =$candidateLastStatus[1]['status'];
-      }
-    }
-    else
-    {
-      $lastStatus = 0;
-    }
-    //if(!empty($pasData['_pos_status']))
-    if($lastStatus > 0)
-    {
-      if($lastStatus < 101)//$pasData['_pos_status']
+      if($pasData['_pos_status'] < 101)
       {
         //$asOption['class'].= ' tplCandi_status_active tplCandi_status';
         $asOption['class'].= ' tplCandi_status';
         $asOption['title'] = 'Candidate active: pitched, CCM, offer ';
         $nValue = 4;
 
-        switch($lastStatus)//$pasData['_pos_status']
+        switch($pasData['_pos_status'])
         {
           case 1: $sValue = ' ptchd'; $asOption['title'] = 'Pitched'; break;
           case 2: $sValue = ' ressnt'; $asOption['title'] = 'Resume sent'; $nValue = 5; break;
 
           case ($pasData['_pos_status'] >= 50 && $pasData['_pos_status'] < 100):
             $nWeighted = ((int)$pasData['_pos_status']-50);
-            $asOption['class'].= ' tplCandi_status_50 hereTest';
+            $asOption['class'].= ' tplCandi_status_50';
             $sValue = ' CCM '.$nWeighted; $asOption['title'] = $sValue; $nValue = $nWeighted+5; break;
 
         case 100:
@@ -123,14 +108,14 @@ class CCandi_row extends CTemplate
             break;
         }
       }
-      elseif($lastStatus == 101)//$pasData['_pos_status']
+      elseif($pasData['_pos_status'] == 101)
       {
         $asOption['class'].= ' tplCandi_status_placed';
         //$sValue = ' placed';
         $asOption['title'] = 'Candidate has been placed';
         $nValue = 1;
       }
-      elseif($lastStatus == 151)//$pasData['_pos_status']
+      elseif($pasData['_pos_status'] == 151)
       {
         $asOption['class'].= ' tplCandi_status tplCandi_status_151';
         $asOption['title'] = 'Last action has expired';

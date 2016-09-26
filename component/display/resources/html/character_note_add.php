@@ -61,87 +61,82 @@
 	$('.fieldNameevent_type').hide();
 
 	$('#formSubmitButton').click(function(){
-		var controlFlag = $('#ControlAllAreas').val();
-		if(controlFlag == 'true')
+		var personality = $('#personality_note').val();
+		var career = $('#career_note').val();
+		var education = $('#education_note').val();
+		var move = $('#move_note').val();
+		var compensation = $('#compensation_note').val();
+
+		var personality_length = personality.length;
+		var career_length = career.length;
+		var education_length = education.length;
+		var move_length = move.length;
+		var compensation_length = compensation.length;
+
+		if(personality_length < 25)
 		{
-			var personality = $('#personality_note').val();
-			var career = $('#career_note').val();
-			var education = $('#education_note').val();
-			var move = $('#move_note').val();
-			var compensation = $('#compensation_note').val();
-
-			var personality_length = personality.length;
-			var career_length = career.length;
-			var education_length = education.length;
-			var move_length = move.length;
-			var compensation_length = compensation.length;
-
-			if(personality_length < 25)
-			{
-				$('#personality_note').css({'border-color':'red'});
-				$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-				$('#personality_note').css({'display':'inline-block'});
-			}
-			else
-			{
-				$('#personality_note').css({'border-color':'grey'});
-				$('#personality_note').css({'background':''});
-				$('#personality_note').css({'background-color':''});
-			}
-
-			if(career_length < 25)
-			{
-				$('#career_note').css({'border-color':'red'});
-				$('#career_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-				$('#career_note').css({'display':'inline-block'});
-			}
-			else
-			{
-				$('#career_note').css({'border-color':'grey'});
-				$('#career_note').css({'background':''});
-				$('#career_note').css({'background-color':''});
-			}
-
-			if(education_length < 15)
-			{
-				$('#education_note').css({'border-color':'red'});
-				$('#education_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-				$('#education_note').css({'display':'inline-block'});
-			}
-			else
-			{
-				$('#education_note').css({'border-color':'grey'});
-				$('#education_note').css({'background':''});
-				$('#education_note').css({'background-color':''});
-			}
-
-			if(move_length < 25)
-			{
-				$('#move_note').css({'border-color':'red'});
-				$('#move_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-				$('#move_note').css({'display':'inline-block'});
-			}
-			else
-			{
-				$('#move_note').css({'border-color':'grey'});
-				$('#move_note').css({'background':''});
-				$('#move_note').css({'background-color':''});
-			}
-
-			if(compensation_length < 15)
-			{
-				$('#compensation_note').css({'border-color':'red'});
-				$('#compensation_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
-				$('#compensation_note').css({'display':'inline-block'});
-			}
-			else
-			{
-				$('#compensation_note').css({'border-color':'grey'});
-				$('#compensation_note').css({'background':''});
-				$('#compensation_note').css({'background-color':''});
-			}
+			$('#personality_note').css({'border-color':'red'});
+			$('#personality_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#personality_note').css({'display':'inline-block'});
 		}
-		
+		else
+		{
+			$('#personality_note').css({'border-color':'grey'});
+			$('#personality_note').css({'background':''});
+			$('#personality_note').css({'background-color':''});
+		}
+
+		if(career_length < 25)
+		{
+			$('#career_note').css({'border-color':'red'});
+			$('#career_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#career_note').css({'display':'inline-block'});
+		}
+		else
+		{
+			$('#career_note').css({'border-color':'grey'});
+			$('#career_note').css({'background':''});
+			$('#career_note').css({'background-color':''});
+		}
+
+		if(education_length < 15)
+		{
+			$('#education_note').css({'border-color':'red'});
+			$('#education_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#education_note').css({'display':'inline-block'});
+		}
+		else
+		{
+			$('#education_note').css({'border-color':'grey'});
+			$('#education_note').css({'background':''});
+			$('#education_note').css({'background-color':''});
+		}
+
+		if(move_length < 25)
+		{
+			$('#move_note').css({'border-color':'red'});
+			$('#move_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#move_note').css({'display':'inline-block'});
+		}
+		else
+		{
+			$('#move_note').css({'border-color':'grey'});
+			$('#move_note').css({'background':''});
+			$('#move_note').css({'background-color':''});
+		}
+
+		if(compensation_length < 15)
+		{
+			$('#compensation_note').css({'border-color':'red'});
+			$('#compensation_note').css({'background':'linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #f7dede'});
+			$('#compensation_note').css({'display':'inline-block'});
+		}
+		else
+		{
+			$('#compensation_note').css({'border-color':'grey'});
+			$('#compensation_note').css({'background':''});
+			$('#compensation_note').css({'background-color':''});
+		}
 	});
 
 	var initialSkills = new Array();
@@ -174,15 +169,10 @@
 		}
 		$pressedKey = '';
 
-		var controlFlag = $('#ControlAllAreas').val();
-		if(controlFlag == 'true')
+		if(val < 1 || val > 9)
 		{
-			if(val < 1 || val > 9)
-			{
-				alert("All skill areas should have a value between 1 - 9.");
-			}
+			alert("All skill areas should have a value between 1 - 9.");
 		}
-
 	});
 
 </script>
@@ -344,8 +334,6 @@
 
 </table>
 <input type="hidden" id='hiddenCharacter' name="hiddenCharacter" value="newForm">
-<input type="hidden" id='ControlAllAreas' name="ControlAllAreas" value="<?php if(isset($ControlAllAreas)){echo $ControlAllAreas;} ?>">
-<input type="hidden" id='EditTheNotes' name="EditTheNotes" value="<?php if(isset($EditTheNotes)){echo $EditTheNotes;} ?>">
 <table class="box" align="center">
 	<tr>
 		<td
@@ -390,16 +378,16 @@
 		<td class='tdTitleSkill'><p class='titlesSkill'>EX</p></td>
 	<tr>
 	<tr>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_ag' name='skill_ag' value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_fx' name='skill_fx' value='<?php echo $skillArray['skill_fx']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_ap' name='skill_ap' value='<?php echo $skillArray['skill_ap']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_ch' name='skill_ch' value='<?php echo $skillArray['skill_ch']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_am' name='skill_am' value='<?php echo $skillArray['skill_am']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_ed' name='skill_ed' value='<?php echo $skillArray['skill_ed']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_mp' name='skill_mp' value='<?php echo $skillArray['skill_mp']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_pl' name='skill_pl' value='<?php echo $skillArray['skill_pl']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_in' name='skill_in' value='<?php echo $skillArray['skill_in']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_e' name='skill_e' value='<?php echo $skillArray['skill_e']; ?>' type='number' class='inputsSkill'></input></td>
-		<td class='inputsSkillTd'><input min="0" max="9" id='skill_ex' name='skill_ex' value='<?php echo $skillArray['skill_ex']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ag' name='skill_ag' value='<?php echo $skillArray['skill_ag']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_fx' name='skill_fx' value='<?php echo $skillArray['skill_fx']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ap' name='skill_ap' value='<?php echo $skillArray['skill_ap']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ch' name='skill_ch' value='<?php echo $skillArray['skill_ch']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_am' name='skill_am' value='<?php echo $skillArray['skill_am']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ed' name='skill_ed' value='<?php echo $skillArray['skill_ed']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_mp' name='skill_mp' value='<?php echo $skillArray['skill_mp']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_pl' name='skill_pl' value='<?php echo $skillArray['skill_pl']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_in' name='skill_in' value='<?php echo $skillArray['skill_in']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_e' name='skill_e' value='<?php echo $skillArray['skill_e']; ?>' type='number' class='inputsSkill'></input></td>
+		<td class='inputsSkillTd'><input min="1" max="9" id='skill_ex' name='skill_ex' value='<?php echo $skillArray['skill_ex']; ?>' type='number' class='inputsSkill'></input></td>
 	</tr>
 </table>

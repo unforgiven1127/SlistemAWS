@@ -248,7 +248,7 @@ class CCandidate_sl3 extends CTemplate
         if(!empty($sValue))
         {
           $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, (int)$pasCandidateData['companyfk']);
-          $sValue = $this->coDisplay->getlink($sValue, 'javascript:;',array('onclick' => 'view_comp(\''.$sURL.'\')'));
+          $sValue = $this->coDisplay->getlink($sValue, 'javascript:;', array('onclick' => 'view_comp(\''.$sURL.'\')'));
         }
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
@@ -256,7 +256,7 @@ class CCandidate_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getBloc('', $sValue, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
 
-        $sValue = $this->_getShortenText($pasCandidateData['department'], 19);//26, 25
+        $sValue = $this->_getShortenText($pasCandidateData['department'], 24);//26, 25
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('style'=>'border-bottom:0px !important;','class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', 'department', array('style'=>'border-bottom: 1px solid #DEDEDE !important;','class' => ' '.$labelClass));
@@ -486,14 +486,14 @@ class CCandidate_sl3 extends CTemplate
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
           $sHTML.= $this->coDisplay->getBloc('', 'keyword', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', $keyword, array('style' => 'width:410px !important;','class' => 'candi_detail_value'));
+          $sHTML.= $this->coDisplay->getBloc('', $keyword, array('class' => 'candi_detail_value'));
         $sHTML.= $this->coDisplay->getBlocEnd();
-        /*$sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row right'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_label'));
           $sHTML.= $this->coDisplay->getBloc('', '', array('class' => 'candi_detail_value'));
-        $sHTML.= $this->coDisplay->getBlocEnd();*/
+        $sHTML.= $this->coDisplay->getBlocEnd();
 
-        $sHTML.= $this->coDisplay->getBlocStart('',array('class' => 'candi_detail_row last candi_detail_row_status'));
+        $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row last candi_detail_row_status'));
           $sHTML.= $this->coDisplay->getBloc('', 'Activity', array('class' => 'candi_detail_label', 'style' => 'height: 30px;'));
           $sHTML.= $this->coDisplay->getBloc('', $this->_getStatusBar($pasCandidateData), array('class' => 'candi_detail_value', 'style' => 'height: 30px;'));
         $sHTML.= $this->coDisplay->getBlocEnd();
@@ -554,7 +554,7 @@ class CCandidate_sl3 extends CTemplate
 
     $sLink = substr($psString, 0, ($pnLength-3)).' ';
     $sLink.= '<a href="javascript:;" onclick="$(\'#myTooltip\').tooltip(\'open\');" title="'.str_replace('"', '\'', $psString).'" class="openTooltip">
-      <span class="candi_text_shorten">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>';
+      <span class="candi_text_shorten">&nbsp;&nbsp;&nbsp;&nbsp;</span></a>';
 
     return $sLink;
   }
