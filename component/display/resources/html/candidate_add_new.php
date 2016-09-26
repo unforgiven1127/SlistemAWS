@@ -1,4 +1,6 @@
-
+<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
+	action="<?php echo $form_url; ?>" class="candiAddForm" ajaxTarget="candi_duplicate"
+	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
 	<input type="hidden" name="userfk" value="<?php echo $user_id; ?>" />
 	<input id="dup_checked" type="hidden" name="check_duplicate" value="0" />
 
@@ -463,6 +465,10 @@
 		</div>
 	</div>
 
+	<div class="general_form_row add_margin_top_10" style="text-align: center;">
+		<input type="submit" value="Save candidate" />
+	</div>
+</form>
 
 <script>
 	var company_token = '';
@@ -625,7 +631,7 @@
 		var sAjaxTarget = 'candi_duplicate';
 		//alert(sAjaxTarget);
 		//setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-		AjaxRequest(sURL, '', '', '', '', '', "");
+		AjaxRequest('"+sURL+"', '', '', '', '', '', "");
 		return false;
 	});
 
