@@ -3939,7 +3939,7 @@ var_dump($query);*/
     //$subject = 'Slistem Activity Flag';
     //$message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
     //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
-
+ChromePhp::log('mail atmaya geldik');
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
