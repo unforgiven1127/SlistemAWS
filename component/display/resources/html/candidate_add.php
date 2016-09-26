@@ -630,8 +630,8 @@
 		alert(sFormId);
 		var sAjaxTarget = 'candi_duplicate';
 		alert(sAjaxTarget);
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-
+		//setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+		AjaxRequest(sURL, '', '', '', '', '', "");
 		return false;
 	});
 
