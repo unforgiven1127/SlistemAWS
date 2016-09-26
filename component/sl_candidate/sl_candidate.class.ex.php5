@@ -501,7 +501,8 @@ class CSl_candidateEx extends CSl_candidate
       $desctiption = '';
       $cp_type = "comp";
 
-      insertLog($loginfk, $cp_pk, $text,$table,$desctiption,$cp_type);
+      insertLog($loginfk, $old_company_id, $text,$table,$desctiption,$cp_type);// ikisinede yazmamiz istendi
+      insertLog($loginfk, $new_company_id, $text,$table,$desctiption,$cp_type);// ikisinede yazmamiz istendi
 
       $html = "Company deleted / merged succesfully...";
     }
@@ -1057,33 +1058,70 @@ class CSl_candidateEx extends CSl_candidate
 
       $company_information = getCompanyInformation($company_id);
       $creator_id = $company_information['created_by'];
+      $owners = getCompanyOwner($company_id);
+      $toEmail = '';
 
-      $candidate_information = getCandidateInformation($candidate_id);
-      $company_information = getCompanyInformation($company_id);
-      $user_information = getUserInformaiton($user_id);
-
-      $creator_information = getUserInformaiton($creator_id);
-      if($creator_information['status'] == 1)
+      //$owners[]['owner'] = $creator_id;
+      if(!isset($owners[0]['owner']))
       {
-        $toEmail = $creator_information['email'];
+        $owners[0]['owner'] = '343';// kimse yoksa rossana
+      }
+      $ownerFlag = false;
+      foreach ($owners as $key => $owner)
+      {
+        if($user_id == $owner['owner'])
+        {
+          $ownerFlag = true;
+        }
+      }
+
+      if($ownerFlag)
+      {
+        #ChromePhp::log('NO MAIL!!');
+        #do nothing
       }
       else
-      {// eleman aktif degilse Rosasna ya gonderiyoruz...
-        $toEmail = 'rkiyamu@slate.co.jp';
+      {
+        foreach ($owners as $key => $value)
+        {
+          $owner_id =  $value['owner'];
+          $candidate_information = getCandidateInformation($owner_id);
+          $company_information = getCompanyInformation($company_id);
+          $user_information = getUserInformaiton($user_id);
+
+          $creator_information = getUserInformaiton($owner_id);// owner a aticaz
+          if($creator_information['status'] == 1)
+          {
+            $toEmail .= $creator_information['email'].";";
+          }
+          else
+          {// eleman aktif degilse Rosasna ya gonderiyoruz...
+            if (strpos($toEmail, 'rkiyamu@slate.co.jp') !== false)
+            {
+                #rossana varsa birdaha ekleme
+            }
+            else
+            {
+              $toEmail .= 'rkiyamu@slate.co.jp;';
+            }
+
+          }
+
+        }
+        $toEmail = rtrim($toEmail, ";");
+
+        $sDate = date('Y-m-d H:i:s');
+
+        $user_name = $user_information['firstname']." ".$user_information['lastname'];
+        $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
+        $company_name = $company_information['name'];
+
+        $subject = "Contact Information Access";
+        $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$owner_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
+
+        sendHtmlMail($toEmail,$subject, $message);
+
       }
-
-      $sDate = date('Y-m-d H:i:s');
-
-      $user_name = $user_information['firstname']." ".$user_information['lastname'];
-      $candidate_name = $candidate_information['firstname']." ".$candidate_information['lastname'];
-      $company_name = $company_information['name'];
-
-      $subject = "Contact Information Access";
-      $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
-
-
-      sendHtmlMail($toEmail,$subject, $message);
-
 
     }
 
@@ -1298,6 +1336,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getRightTabsHalfed($pasCandidateData, $psClass = '', $pbLinkTabs = false)
     {
+
       $sCharSelected = $sNoteSelected = 'selected';
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
@@ -1607,7 +1646,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_CONTACT, $pasCandidateData['sl_candidatepk'], $asItem);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-        $sHTML.= '<li><a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/tabs/contact_24.png" title="Add/edit contact details"/> Add contact details</a></li>';
+        $sHTML.= '<li><a href="javascript:;" onclick=" '.$sJavascript.'"><img src="/component/sl_candidate/resources/pictures/tabs/contact_24.png" title="Add/edit contact details"/> Add contact details</a></li>';
 
         $sURL = $oPage->getAjaxUrl('sharedspace', CONST_ACTION_ADD, CONST_SS_TYPE_DOCUMENT, 0, $asItem);
         $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
@@ -1706,14 +1745,14 @@ class CSl_candidateEx extends CSl_candidate
                       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
                       $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_ADD, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
                       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-                      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Add new contact</a>';
+                      $sHTML.= '<a href="javascript:;" onclick=" '.$sJavascript.'">Add new contact</a>';
                       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= "    </td>
                     <td style='width:300px; padding-right:100px;'>";
                       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'tab_bottom_link'));
                       $sURL = $oPage->getAjaxUrl('sl_candidate', CONTACT_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$pasCandidateData['sl_candidatepk']);
                       $sJavascript = 'var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 750;  goPopup.setLayerFromAjax(oConf, \''.$sURL.'\'); ';
-                      $sHTML.= '<a href="javascript:;" onclick="$(\'#tabLink2\').click(); '.$sJavascript.'">Edit contacts</a>';
+                      $sHTML.= '<a href="javascript:;" onclick=" '.$sJavascript.'">Edit contacts</a>';
                       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       $sHTML.= "    </td>
@@ -6234,7 +6273,6 @@ class CSl_candidateEx extends CSl_candidate
       $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
 
 
-      //$oForm = $this->_oDisplay->initForm('candidateAddForm');
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
@@ -6259,6 +6297,10 @@ class CSl_candidateEx extends CSl_candidate
       $sDate = $oDbResult->getFieldValue('date_birth');
       $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
       $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
+
+      $sYearRangeToday = (date('Y') - 0).':'.(date('Y') - 0);
+
+      $todaysDate = date('Y-m-d');
 
       $calendar_icon = '//'.CONST_CRM_HOST.'/component/form/resources/pictures/date-icon.png';
 
@@ -6497,7 +6539,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
-        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,
+        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,'todaysDate' => $todaysDate,
         'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
         'nationality' => $this->getVars()->getNationalityOption($oDbResult->getFieldValue('nationalityfk')),
         'location' => $this->getVars()->getLocationOption($oDbResult->getFieldValue('locationfk')),
@@ -6521,17 +6563,12 @@ class CSl_candidateEx extends CSl_candidate
         'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
         'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
         'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
-        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange
+        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      $oForm2 = $this->_oDisplay->initForm('companyAddForm');
-      $oForm2->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candidateAddForm', 'submitLabel'=>'Save candidate'));
-      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
-      $oForm2->addCustomHtml($sHTML);
 
-      return $oForm2->getDisplay();
-      //return $sHTML;
+      return $sHTML;
     }
 
 
@@ -6624,17 +6661,17 @@ class CSl_candidateEx extends CSl_candidate
         $selectA1 = "selected";
         $selectA = "selected";
       }
-      if($asCompanyData['level'] == 2)
+      else if($asCompanyData['level'] == 2)
       {
         $selectB1 = "selected";
         $selectB = "selected";
       }
-      if($asCompanyData['level'] == 3)
+      else if($asCompanyData['level'] == 3)
       {
         $selectC1 = "selected";
         $selectC = "selected";
       }
-      if($asCompanyData['level'] == 8)
+      else if($asCompanyData['level'] == 8)
       {
         $selectH1 = "selected";
         $selectH = "selected";
@@ -6650,6 +6687,11 @@ class CSl_candidateEx extends CSl_candidate
       $is_client1N = '';
       $is_client2N = '';
 
+      $is_ns1Y = '';
+      $is_ns2Y = '';
+      $is_ns1N = '';
+      $is_ns2N = '';
+
       if($asCompanyData['is_client'] == 1)
       {
         $is_client1Y = 'selected';
@@ -6659,6 +6701,17 @@ class CSl_candidateEx extends CSl_candidate
       {
         $is_client1N = 'selected';
         $is_client2N = 'selected';
+      }
+
+      if($asCompanyData['is_nc_ok'] == 1)
+      {
+        $is_ns1Y = 'selected';
+        $is_ns2Y = 'selected';
+      }
+      else
+      {
+        $is_ns1N = 'selected';
+        $is_ns2N = 'selected';
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
@@ -6671,6 +6724,10 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+
+       $oForm->addField('select', 'is_nc_ok', array('label'=> 'Name collect OK? '));
+       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_ns1N => $is_ns2N));
+       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_ns1Y => $is_ns2Y));
 
        $activeUserList = getActiveUsers();
 
@@ -6829,6 +6886,7 @@ class CSl_candidateEx extends CSl_candidate
         $asData['date_updated'] = date('Y-m-d H:i:s');
         $asData['updated_by'] = $nLoginFk;
         $asData['company_owner'] = (int)getValue('company_owner');
+        $asData['is_nc_ok'] = (int)getValue('is_nc_ok');
         $bUpdated = $this->_getModel()->update($asData, 'sl_company', 'sl_companypk = '.$pnPk);
         if(!$bUpdated)
           return array('error' => 'Could not update the company.');
@@ -9326,6 +9384,9 @@ die();*/
           continue;
         }
 
+        $company_id = $asCpData['sl_companypk'];
+        $employeeCount = getCompanyEmployeeCount($company_id);
+
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
         $sFirstLetter = strtoupper(substr($asCpData['name'], 0, 1));
         if(is_numeric($sFirstLetter))
@@ -9336,12 +9397,12 @@ die();*/
         $sCompany = '<div class="cp_ns_row">
             <div class="cp_quality qlt_'.$asCpData['level_letter'].'">'.$asCpData['level_letter'].'</div>
             <div class="cp_id">#'.$asCpData['sl_companypk'].'</div>
-            <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'('.$asCpData['level'].')</div>
+            <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'</div>
             <div class="cp_consultant">'.$oLogin->getUserLink((int)$asCpData['company_owner']).'</div>
             <div class="cp_update">'.substr($asCpData['date_updated'], 0, 10).'&nbsp;</div>
-            <div class="cp_employee">'.$asCpData['num_employee'].'&nbsp;</div>
+            <div class="cp_employee">'.$employeeCount.'&nbsp;</div>
           </div>';
-
+// employeeCount yerine $asCpData['num_employee'] vardi
 
         $asCompany[$sFirstLetter][] = $sCompany;
         $asLetters[$sFirstLetter] = $oHTML->getLink($sFirstLetter, '#'.$sFirstLetter);

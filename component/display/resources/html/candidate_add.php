@@ -1,6 +1,6 @@
-<!--<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
-	action="https://beta1.slate.co.jp/index.php5?uid=555-001&ppa=ppasa&ppt=candi&ppk=0&pg=ajx" class="candiAddForm" ajaxTarget="candi_duplicate"
-	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">-->
+<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
+	action="<?php echo $form_url; ?>" class="candiAddForm" ajaxTarget="candi_duplicate"
+	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
 	<input type="hidden" name="userfk" value="<?php echo $user_id; ?>" />
 	<input id="dup_checked" type="hidden" name="check_duplicate" value="0" />
 
@@ -298,6 +298,38 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<div class="general_form_row">
+				Quick meeting add
+			</div>
+			<div class="gray_section">
+				<div class="general_form_row  extended_select">
+					<div class="general_form_label">Meering set for</div>
+					<div class="general_form_column">
+						<select name="grade" >
+						<?php echo $grade; ?>
+						</select>
+					</div>
+					<div class="general_form_label add_margin_left_30">by</div>
+					<div class="general_form_column">
+						<select name="status" onchange="manageFormStatus(this, <?php echo $candidate_id; ?>);">
+						<?php echo $status_options; ?>
+						</select>
+					</div>
+					<div class="general_form_label">Meering date</div>
+					<div class="general_form_column">
+						<input id="meeting_date" type="text" name="meeting_date" value="<?php echo $birth_date; ?>" />
+						<input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
+					</div>
+				</div>
+
+			</div>
+
+
+
+
 			<div class="general_form_row">
 				<div style="margin-top: 5px; cursor: pointer;" class="bold italic"
 				onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
@@ -458,10 +490,10 @@
 		</div>
 	</div>
 
-	<!--<div class="general_form_row add_margin_top_10" style="text-align: center;">
-		<input type="submit" value="Save Candidate" />
+	<div class="general_form_row add_margin_top_10" style="text-align: center;">
+		<input type="submit" value="Save candidate" />
 	</div>
-</form>-->
+</form>
 
 <script>
 	var company_token = '';
@@ -485,6 +517,18 @@
 		$('#birth_date').datepicker({
 			defaultDate: '<?php echo $default_date; ?>',
 			yearRange: '<?php echo $year_range; ?>',
+			showButtonPanel: true,
+			changeYear: true,
+			numberOfMonths: 2,
+			showOn: 'both',
+			buttonImage: '<?php echo $calendar_icon; ?>',
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
+		});
+
+		$('#meeting_date').datepicker({
+			defaultDate: '<?php echo $todaysDate; ?>',
+			yearRange: '<?php echo $sYearRangeToday; ?>',
 			showButtonPanel: true,
 			changeYear: true,
 			numberOfMonths: 2,
@@ -602,16 +646,16 @@
 		date_field_obj.show();
 	}
 
-	/*$('form[name=addcandidate]').submit(function(event){
+	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
 
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 550);
+		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 
 		return false;
-	});*/
+	});
 
 	function check_dom_change()
 	{
