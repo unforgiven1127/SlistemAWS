@@ -7325,7 +7325,7 @@ die();*/
       ChromePhp::log('_saveCandidate');
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
-
+ChromePhp::log($pnCandidatePk);
       if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
