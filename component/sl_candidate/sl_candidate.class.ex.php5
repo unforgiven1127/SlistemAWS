@@ -1085,7 +1085,7 @@ class CSl_candidateEx extends CSl_candidate
         foreach ($owners as $key => $value)
         {
           $owner_id =  $value['owner'];
-          $candidate_information = getCandidateInformation($owner_id);
+          $candidate_information = getCandidateInformation($candidate_id);
           $company_information = getCompanyInformation($company_id);
           $user_information = getUserInformaiton($user_id);
 
@@ -1424,7 +1424,7 @@ class CSl_candidateEx extends CSl_candidate
         $sHTML.= $this->_oDisplay->getListStart('', array('class' => 'candiTabsVertical'));
           $sHTML.= '<li id="tabLink0" onclick="toggleCandiTab(this, \'candiTab0\', \'#ctc_1\');" class="tabActionLink tab_action" title="All the actions to be done on a candidate"></li>';
           $sHTML.= '<li id="tabLink1" onclick="toggleCandiTab(this, \'candiTab1\', \'#ctc_1\');" class="tab_character '.$sCharSelected.'" title="Displays the character notes" >'.$asCharNotes['nb_result'].'</li>';
-          $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\', \'#ctc_1\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.' );" class="tab_contact '.$sContactSelected.' title="Displays the contact details">'.$asContact['nb_result'].'</li>';
+          $sHTML.= '<li id="tabLink2" onclick="toggleCandiTab(this, \'candiTab2\', \'#ctc_1\','.$pasCandidateData['sl_candidatepk'].','.$company_id_flag.');" class="tab_contact '.$sContactSelected.' title="Displays the contact details">'.$asContact['nb_result'].'</li>';
           $sHTML.= '<li id="tabLink3" onclick="toggleCandiTab(this, \'candiTab3\', \'#ctc_1\');" class="tab_document '.$sDocSelected.'" title="Displays the uploaded documents">'.$asDocument['nb_result'].'</li>';
           $sHTML.= '<li id="tabLink4" onclick="toggleCandiTab(this, \'candiTab4\', \'#ctc_1\');" class="tab_company" title="Displays the company news feed"></li>';
         $sHTML.= $this->_oDisplay->getListEnd();
