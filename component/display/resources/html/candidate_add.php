@@ -298,6 +298,38 @@
 					</div>
 				</div>
 			</div>
+
+
+
+			<div class="general_form_row">
+				Quick meeting add
+			</div>
+			<div class="gray_section">
+				<div class="general_form_row  extended_select">
+					<div class="general_form_label">Meering set for</div>
+					<div class="general_form_column">
+						<select name="grade" >
+						<?php echo $grade; ?>
+						</select>
+					</div>
+					<div class="general_form_label add_margin_left_30">by</div>
+					<div class="general_form_column">
+						<select name="status" onchange="manageFormStatus(this, <?php echo $candidate_id; ?>);">
+						<?php echo $status_options; ?>
+						</select>
+					</div>
+					<div class="general_form_label">Meering date</div>
+					<div class="general_form_column">
+						<input id="meeting_date" type="text" name="meeting_date" value="<?php echo $birth_date; ?>" />
+						<input id="estimated_age" style="display: none;" type="text" name="age" value="<?php echo $estimated_age; ?>" />
+					</div>
+				</div>
+
+			</div>
+
+
+
+
 			<div class="general_form_row">
 				<div style="margin-top: 5px; cursor: pointer;" class="bold italic"
 				onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
@@ -485,6 +517,18 @@
 		$('#birth_date').datepicker({
 			defaultDate: '<?php echo $default_date; ?>',
 			yearRange: '<?php echo $year_range; ?>',
+			showButtonPanel: true,
+			changeYear: true,
+			numberOfMonths: 2,
+			showOn: 'both',
+			buttonImage: '<?php echo $calendar_icon; ?>',
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
+		});
+
+		$('#meeting_date').datepicker({
+			defaultDate: '<?php echo $todaysDate; ?>',
+			yearRange: '<?php echo $sYearRangeToday; ?>',
 			showButtonPanel: true,
 			changeYear: true,
 			numberOfMonths: 2,

@@ -3080,6 +3080,99 @@ var_dump($query);*/
 
   }
 
+  function getCompanyOwner($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.user_id as owner, co.id as id FROM client_owner_list co WHERE co.company_id = '".$company_id."' AND co.flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function controlOwner($newOwner,$company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owner_list co
+               WHERE co.company_id = '".$company_id."' AND co.user_id = '".$newOwner."' AND co.flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    if(isset($result[0]))
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  function getOwnerRow($id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT co.* FROM client_owner_list co
+               WHERE co.id = '".$id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function deleteClientOwner($id, $user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE  client_owner_list SET flag = 'p', last_activity = '".$sDate."', updated_by = '".$user_id."' WHERE id = '".$id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+  }
+
+  function insertNewOwner($newOwner,$added_by,$company_id)
+  {
+    $controlFlag = controlOwner($newOwner,$company_id);
+    if($controlFlag)
+    {
+      $sDate = date('Y-m-d H:i:s');
+      $oDB = CDependency::getComponentByName('database');
+
+      $sQuery = "INSERT INTO `client_owner_list` (`user_id`,`company_id`,`first_activity`,`last_activity`, `added_by`) VALUES('".$newOwner."','".$company_id."','".$sDate."','".$sDate."','".$added_by."')";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
+  }
+
+  function updateCompanyOwner($newOwner,$user_id,$changeID)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $ownerRow = getOwnerRow($changeID);
+
+    $controlFlag = controlOwner($newOwner,$ownerRow[0]['company_id']);
+
+    if($controlFlag)
+    {
+      $sDate = date('Y-m-d H:i:s');
+
+      $sQuery = "UPDATE  client_owner_list SET user_id = '".$newOwner."', last_activity = '".$sDate."', updated_by = '".$user_id."' WHERE id = '".$changeID."' ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
+
+  }
+
   function fillCompanyOwnerTable()
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3097,11 +3190,24 @@ var_dump($query);*/
       $last_activity = $value['date_created'];
       $user_id = $value['created_by'];
 
-      $sQueryInsert = "INSERT INTO `client_owners` (`user_id`,`company_id`, `first_activity`, `last_activity`)
+      $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
                VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
 
       $db_result = $oDB->executeQuery($sQueryInsert);
     }
+  }
+
+  function getLastStatus($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_position_link WHERE candidatefk = '".$candidate_id."' ORDER BY sl_position_linkpk DESC";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
   }
 
   function getActiveUsers()
@@ -3110,6 +3216,20 @@ var_dump($query);*/
 
     $sQuery = "SELECT l.* FROM login l
     WHERE l.status = 1 and l.kpi_flag = 'a'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+
+  }
+
+  function reduceOwners()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT l.* FROM client_owner_list l ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -3141,7 +3261,11 @@ var_dump($query);*/
 
   function getLevels($level)
   {
-    if($level == 1)
+    if($level == 0)
+    {
+      return '-';
+    }
+    else if($level == 1)
     {
       return 'A';
     }
@@ -3153,9 +3277,13 @@ var_dump($query);*/
     {
       return 'C';
     }
-    else
+    else if($level == 8)
     {
       return 'H';
+    }
+    else
+    {
+      return '-';
     }
   }
 
@@ -3243,6 +3371,39 @@ var_dump($query);*/
     $return = multiCandidateFallenOff($result,$position_id.$user_id);
 
     return $return;
+  }
+
+  function closeCandidateOtherPositions($candidate_id,$position_id,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    //burada aktif olan ve placed olan pozisyon disindaki pozisyonlari aldik
+    $sQuery = "SELECT slpl.* FROM sl_position_link slpl
+               WHERE slpl.candidatefk = '".$candidate_id."' AND slpl.active = '1'
+               AND slpl.positionfk <> '".$position_id."' AND slpl.status < '101'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $addFallenOffArray = array();
+    $date_expire = '2020-01-01 00:00:00';
+
+    foreach ($result as $key => $value)
+    {
+      $position_link_id = $value['sl_position_linkpk'];
+      $position_id = $value['positionfk'];
+
+      $sQuery = "INSERT INTO  `sl_position_link` (`positionfk`,`candidatefk`, `date_created`, `created_by`, `status`, `in_play`, `comment`, `date_expire`, `active`,`date_completed`)
+                 VALUES ('".$position_id."','".$candidate_id."', '".$sDate."', '101', '200','0', 'Auto fallen off', '".$date_expire."','1','".$sDate."') ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $sQuery = "UPDATE sl_position_link SET active = '0' WHERE sl_position_linkpk = '".$position_link_id."' ";
+
+      $db_result = $oDB->executeQuery($sQuery);
+    }
   }
 
   function updateCandidateSkills($candidate_id, $skillArray)
@@ -3778,8 +3939,16 @@ var_dump($query);*/
     //$subject = 'Slistem Activity Flag';
     //$message = "Slistem activity flag, user: ".$username." (#".$user_id.") date: ".$dNow." (Japan time)";
     //$message .= "\r\n"."Action: View more than 50 candidates on holiday.";
+    if (strpos($to, 'rkiyamu@slate.co.jp') !== false)
+    {
+        $cc = ' ';
+    }
+    else
+    {
+      $cc = 'rkiyamu@slate.co.jp';
+    }
     $headers = 'From: slistem@slate.co.jp' . "\r\n" .
-        'Cc: rkiyamu@slate.co.jp' . "\r\n" .
+        'Cc: '.$cc . "\r\n" .
         'Bcc: munir@slate-ghc.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
@@ -3842,6 +4011,21 @@ var_dump($query);*/
       }
     }
 
+  }
+
+  function getCompanyEmployeeCount($company_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT COUNT(*) as count FROM sl_candidate_profile slcp WHERE slcp.companyfk = '".$company_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $result = $result[0]['count'];
+
+    return $result;
   }
 
   function getCompanyInfo($company_id)

@@ -223,7 +223,7 @@ class CLoginEx extends CLogin
     }
 
 
-  public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false)
+  public function getUserLink($pvUser = 0, $pbFriendly = false, $pbFullName = false, $firstName = false)
   {
 
     if(!assert('(is_array($pvUser) || is_integer($pvUser))'))
@@ -258,16 +258,16 @@ class CLoginEx extends CLogin
         return 'unknow';
 
       //cache: if link already generated, re-use right away
-      if(isset($_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName]))
-        return $_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName];
+      //if(isset($_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName]))
+        //return $_SESSION['login_ULCache'][$pvUser['loginpk'].'_'.(int)$pbFriendly.(int)$pbFullName];
 
       $asUserData = $pvUser;
     }
     else
     {
       //cache: if link already generated, re-use right away
-      if(isset($_SESSION['login_ULCache'][$pvUser.'_'.(int)$pbFriendly.(int)$pbFullName]))
-        return $_SESSION['login_ULCache'][$pvUser.'_'.(int)$pbFriendly.(int)$pbFullName];
+      //if(isset($_SESSION['login_ULCache'][$pvUser.'_'.(int)$pbFriendly.(int)$pbFullName]))
+        //return $_SESSION['login_ULCache'][$pvUser.'_'.(int)$pbFriendly.(int)$pbFullName];
 
       $asUserData = $this->getUserDataByPk($pvUser);
     }
@@ -283,6 +283,11 @@ class CLoginEx extends CLogin
       $sDescName = $asUserData['firstname'].' '.$asUserData['lastname'].' ';
     else
       $sDescName = 'consultant id: '.$asUserData['pseudo'].' ';
+
+    if($firstName)
+    {
+      $sName = $asUserData['firstname'];
+    }
 
     if(!$asUserData['status'])
     {
@@ -2267,6 +2272,10 @@ class CLoginEx extends CLogin
 
     session_unset();     // unset $_SESSION variable for the run-time
     session_destroy();   // destroy session data in storage
+
+    header("Cache-Control: no-cache, must-revalidate");
+    header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+    header("Content-Type: application/xml; charset=utf-8");
 
     //unset cookie
     setcookie('login_userdata', '', time()-360000, '/');
