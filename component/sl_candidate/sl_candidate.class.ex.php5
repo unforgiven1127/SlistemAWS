@@ -7267,8 +7267,6 @@ die();*/
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
 
-      return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
-
       if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
