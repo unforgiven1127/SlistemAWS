@@ -1626,7 +1626,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $company_info = getPositionInformation($position_id);
         $company_id = $company_info['sl_companypk'];
 
-        if($company_info['level'] >= $level || $company_info['level'] == 0)
+        if($company_info >= $level)
         {
           updateCompanyLevel($company_id, $level,$user_id);
         }
@@ -2074,39 +2074,34 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       {
         $asPositionData = $oDbResult->getData();
 
-        $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'testInPlay'));
-        if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
-        {
-          $sRow.= '<div style="padding-left:10px; cursor:pointer" onclick="openClose(\'inPlayFor\');" class="deletedClass"> IN PLAY FOR</div>';
-          $firstTitleFlag = false;
-          $hideClass = ' inPlayFor ';
-        }
-        if($asPositionData['first_flag'] == 0 && $secondTitleFlag == true)
-        {
-          $sRow.= '<div style="padding-left:10px; cursor:pointer" onclick="openClose(\'inPlayAt\');" class="deletedClass"> IN PLAY AT</div>';
-          $secondTitleFlag = false;
-          $hideClass = ' inPlayAt ';
-        }
-        $sRow.= $this->_oDisplay->getBlocEnd();
+        $sRow = $this->_oDisplay->getBlocStart('', array('class' => 'entry'));
 
-        $sRow.= $this->_oDisplay->getBlocStart('', array('class' => 'entry '.$hideClass));
-
+          if($asPositionData['first_flag'] == 1 && $firstTitleFlag == true)
+          {
+            $sRow.= "<div class='deletedClass'>CANDIDATE DRIVEN</div>";
+            $firstTitleFlag = false;
+          }
+          if($asPositionData['second_flag'] == 1 && $secondTitleFlag == true)
+          {
+            $sRow.= "<div class='deletedClass'>POSITION DRIVEN</div>";
+            $secondTitleFlag = false;
+          }
 
           $sURL = $this->_oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asPositionData['candidatefk']);
-          $sRow.= '<div class="note_header '.$hideClass.'">Employee #<a href="javascript:;" onclick="view_candi('.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
+          $sRow.= '<div class="note_header">Employee #<a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['candidatefk'].'</a>
             - <a href="javascript:;" onclick="view_candi(\''.$sURL.'\');">'.$asPositionData['lastname'].' '.$asPositionData['firstname'].'</a></div>';
 
           if($asPositionData['current_status'] == 0)
           {
             if(isset($asStatus[$asPositionData['current_status']]))
-            $sRow.= '<div class="note_content '.$hideClass.'">[<b>'.$asStatus[$asPositionData['current_status']].'</b>]';
+            $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['current_status']].'</b>]';
           }
           else
           {
             if(isset($asStatus[$asPositionData['current_status']]))
-              $sRow.= '<div class="note_content '.$hideClass.'">[<b>'.$asStatus[$asPositionData['current_status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
+              $sRow.= '<div class="note_content">[<b>'.$asStatus[$asPositionData['current_status']].'</b>] to position #'.$asPositionData['sl_positionpk'];
             else
-              $sRow.= '<div class="note_content '.$hideClass.'">[<b>-'.$asPositionData['current_status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
+              $sRow.= '<div class="note_content">[<b>-'.$asPositionData['current_status'].'-</b>] to position #'.$asPositionData['sl_positionpk'];
           }
 
 
