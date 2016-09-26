@@ -6566,7 +6566,14 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      $sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $oForm2 = $this->_oDisplay->initForm('addcandidateForm');
+      $addUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
+
+      $oForm2->setFormParams('addcandidate', true, array('action' => $addUrl, 'class' => 'addcandidateForm', 'submitLabel'=>'Save candidate'));
+      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+
+      $sHTML = $oForm2->getDisplay();
+      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       return $sHTML;
     }
@@ -7322,7 +7329,7 @@ die();*/
 
     private function _saveCandidate($pnCandidatePk = 0)
     {
-
+ChromePhp::log('_saveCandidate');
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
 
