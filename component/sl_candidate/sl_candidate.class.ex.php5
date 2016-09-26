@@ -6526,7 +6526,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oForm2 = $this->_oDisplay->initForm('companyAddForm');
       $oForm2->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candidateAddForm', 'submitLabel'=>'Save candidate'));
-      $oForm2->setFormDisplayParams(array('noCancelButton' => true, 'noSubmitButton' => 1, 'columns' => 1));
+      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
       $oForm2->addCustomHtml($sHTML);
 
