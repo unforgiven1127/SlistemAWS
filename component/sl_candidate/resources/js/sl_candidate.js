@@ -17,13 +17,13 @@ alert(is_client);
 
         // company i olusturan kisiye mail atacagiz
         var urlMail = "/index.php5?uid=555-001&ppa=csam&ppt=candi&ppk="+candidate_id+"&pg=ajx&cid="+is_client;
-        AjaxRequest(urlMail, '', '', '', '', '', "");
+        //AjaxRequest(urlMail, '', '', '', '', '', "");
 
         $(poElement).siblings('.selected').removeClass('selected');
         $(poElement).addClass('selected');
 
         var oContainer =  $(poElement).closest('.candiTabContainer');
-        if(typeof candidate_id != 'undefined' && candidate_id != null && candidate_id == 666)
+        if(typeof candidate_id != 'undefined' && candidate_id != null)
         {
           //alert(candidate_id);
           //alert(psIdToShow);
