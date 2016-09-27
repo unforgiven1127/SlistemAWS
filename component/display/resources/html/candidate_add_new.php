@@ -353,10 +353,7 @@
 			</div>
 		</div>
 
-		<?php if ($display_all_tabs) { ?>
-		<div id="candi_contact" class="add_margin_top_10 hidden">
-		<?php echo $contact_details_form; ?>
-		</div>
+
 
 		<div id="candi_note" class="add_margin_top_10 hidden">
 			<div class="gray_section">
