@@ -1065,7 +1065,7 @@ class CSl_candidateEx extends CSl_candidate
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
       $toEmail = '';
-
+ChromePhp::log($owners);
       //$owners[]['owner'] = $creator_id;
       if(!isset($owners[0]['owner']))
       {
