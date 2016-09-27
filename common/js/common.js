@@ -259,7 +259,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
   else
   {
     //Refresh a part of the page + callback or action from json
-    $.ajax({
+    jQuery.ajax({
       type: 'POST',
       data: sExtraParams,
       cache: false,
@@ -268,7 +268,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       processData: bProcessData,
       url: psUrl,
       scriptCharset: "utf-8" ,
-      contentType: "application/json; charset=utf-8",
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       context: document.body,
       async: pbSynch,
       dataType: "JSON",
