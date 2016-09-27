@@ -3,6 +3,7 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_clie
 {
   //psIdToShow acilacak olan tab
 
+alert(psIdToShow);
 alert(psContainer);
 alert(candidate_id);
 alert(is_client);
