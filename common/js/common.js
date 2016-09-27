@@ -259,6 +259,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
   else
   {
     //Refresh a part of the page + callback or action from json
+    alert(psUrl);
     $.ajax({
       type: 'POST',
       data: sExtraParams,
