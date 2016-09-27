@@ -1346,10 +1346,24 @@ class CSl_candidateEx extends CSl_candidate
       $sDocSelected = $sContactSelected = $sPositionSelected = $sJdSelected = '';
       $pasCandidateData['sl_candidatepk'] = (int)$pasCandidateData['sl_candidatepk'];
 
+      $oLogin = CDependency::getCpLogin();
+      $user_id = $oLogin->getUserPk();
+
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
       $company_information = getCompanyInformation($company_id);
+      $is_owner = true;
 
-      if($company_information['is_client'] == 1)
+      $owners = getCompanyOwner($company_id);
+
+      foreach ($owners as $key => $value)
+      {
+        if(isset($value['owner']) && $value['owner'] == $user_id)
+        {
+          $is_owner = false;
+        }
+      }
+
+      if($company_information['is_client'] == 1 && $is_owner)
       {
         $company_id_flag = $pasCandidateData['companyfk'];
       }
