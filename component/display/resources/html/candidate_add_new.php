@@ -355,7 +355,7 @@
 
 		<?php if ($display_all_tabs) { ?>
 		<div id="candi_contact" class="add_margin_top_10 hidden">
-
+		<?php echo $contact_details_form; ?>
 		</div>
 
 		<div id="candi_note" class="add_margin_top_10 hidden">
@@ -615,16 +615,6 @@
 		date_field_obj.show();
 	}
 
-	/*$('form[name=addcandidate]').submit(function(event){
-		event.preventDefault();
-
-		var sURL = $('form[name=addcandidate]').attr('action');
-		var sFormId = $('form[name=addcandidate]').attr('id');
-		var sAjaxTarget = 'candi_duplicate';
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-
-		return false;
-	});*/
 
 	function check_dom_change()
 	{
