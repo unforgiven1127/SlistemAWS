@@ -789,6 +789,13 @@ class CSl_positionEx extends CSl_position
         if(empty($nPositionPk))
           return array('error' => __LINE__.' - Error while saving the position.');
 
+        $oLogin = CDependency::getCpLogin();
+        $user_id = $oLogin->getuserPk();
+
+        $newOwner = $user_id;
+        $company_id = $asPosition['companyfk'];
+        insertNewOwner($newOwner,$user_id,$company_id);
+
       }
       else
       {
