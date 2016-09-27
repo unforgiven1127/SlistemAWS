@@ -127,7 +127,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       sExtraParams = $('#'+psFormToSerialize).serialize();
     //alert('serialize form: '+sExtraParams);
   }
-alert(psZoneToRefresh);
+
   if(psZoneToRefresh == '')
   {
     if(pbReloadPage)
@@ -274,6 +274,7 @@ alert(psZoneToRefresh);
       dataType: "JSON",
       success: function(oJsonData)
       {
+        alert('TEST');
         mngAjaxScreen(psLoadingScreen);
 
         // pager Issue here
