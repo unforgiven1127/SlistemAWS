@@ -6703,7 +6703,7 @@ class CSl_candidateEx extends CSl_candidate
         $is_client2N = 'selected';
       }
 
-      if($asCompanyData['is_nc_ok'] == 1)
+      if(isset($asCompanyData['is_nc_ok']) && $asCompanyData['is_nc_ok'] == 1)
       {
         $is_ns1Y = 'selected';
         $is_ns2Y = 'selected';
