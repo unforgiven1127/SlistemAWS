@@ -271,7 +271,8 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       scriptCharset: "utf-8" ,
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       context: document.body,
-      async: false,
+      timeout: 60000,
+      async: pbSynch,
       dataType: "JSON",
       success: function(oJsonData)
       {
