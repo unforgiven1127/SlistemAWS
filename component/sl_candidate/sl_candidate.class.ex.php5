@@ -7407,7 +7407,7 @@ die();*/
 
           //return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
         }
-return array('error'=>'empty pnCandidatePk');
+return array('error'=>'TEST');
         return array('error' => implode("\n", $asError));
         //return array('popupError' => implode("\n", $asError));
       }
