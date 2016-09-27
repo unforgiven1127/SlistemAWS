@@ -6538,7 +6538,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      $contact_details_form = $this->_oDisplay->render('contact_details');
+      //$contact_details_form = $this->_oDisplay->render('contact_details');
 
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
@@ -6567,7 +6567,7 @@ class CSl_candidateEx extends CSl_candidate
         'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
         'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
         'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
-        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
+         'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
       $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
