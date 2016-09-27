@@ -4,8 +4,10 @@
 //echo $sDate;
 
 
-$browser = get_browser();
-echo $browser;
+echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
+
+$browser = get_browser(null, true);
+print_r($browser);
 
 	/*define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
