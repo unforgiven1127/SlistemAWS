@@ -6586,7 +6586,7 @@ class CSl_candidateEx extends CSl_candidate
       $changeOwnerFlag = false;
       $asCompanyData = array();
       ChromePhp::log($pnPk);
-      if(empty($pnPk))
+      if(empty($pnPk) || $pnPk == 0)
       {
         $asCompanyData['level'] = 1;
         $asCompanyData['is_client'] = 0;
