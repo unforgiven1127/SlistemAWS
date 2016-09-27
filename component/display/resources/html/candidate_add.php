@@ -471,6 +471,9 @@
 </form>
 
 <script>
+
+	AjaxRequest();
+
 	var company_token = '';
 	var alt_occupation_token = '';
 	var alt_industry_token = '';
