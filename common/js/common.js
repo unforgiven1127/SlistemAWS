@@ -272,7 +272,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       context: document.body,
       timeout: 60000,
-      async: pbSynch,
+      async: true,
       dataType: "JSON",
       success: function(oJsonData)
       {
