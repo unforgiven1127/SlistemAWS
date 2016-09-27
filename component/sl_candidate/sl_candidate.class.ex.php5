@@ -6500,24 +6500,6 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if($bDisplayAllTabs)
-      {
-          $oForm->addSection('', array('class' => 'candidate_inner_section'));
-
-          //reuse what ha sbeen done for the standalone form
-          $asTypes = getContactTypes();
-          for($nCount = 0; $nCount < 4; $nCount++)
-          {
-            $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
-          }
-
-          $oForm->closeSection();
-
-          //$contact_details_form = $oForm->getDisplay(true);
-      }
-
-
-
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
 
@@ -6537,9 +6519,6 @@ class CSl_candidateEx extends CSl_candidate
           $currencyCode = $allData[0]['currency'];
         }
       }
-
-      //$contact_details_form = $this->_oDisplay->render('contact_details');
-
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
@@ -6571,6 +6550,28 @@ class CSl_candidateEx extends CSl_candidate
       );
 
       $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
+
+      $oForm->addCustomHtml($addHtml);
+
+      if($bDisplayAllTabs)
+      {
+          $oForm->addSection('', array('class' => 'candidate_inner_section'));
+
+          //reuse what ha sbeen done for the standalone form
+          $asTypes = getContactTypes();
+          for($nCount = 0; $nCount < 4; $nCount++)
+          {
+            $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
+          }
+
+          $oForm->closeSection();
+
+          //$contact_details_form = $oForm->getDisplay(true);
+      }
+
+      //$contact_details_form = $this->_oDisplay->render('contact_details');
+
+
       //$oForm->addCustomHtml($addHtml);
 
       $sHTML = $oForm->getDisplay();
