@@ -11,41 +11,83 @@
 	mysql_connect( DB_SERVER_SLISTEM, DB_USER_SLISTEM, DB_PASSWORD_SLISTEM) or die(mysql_error());
     mysql_select_db(DB_NAME_SLISTEM) or die(mysql_error());
     $sDate = date('Y-m-d H:i:s');
-    $slistemQuery = "SELECT l.* FROM client_owner_list l";
+    $slistemQuery = "SELECT slc.sl_companypk as companyID, slc.name as companyName,slpl.positionfk, slpd.title as positionTitle, slpl.status, count(slpl.status) as actionCount
+      FROM sl_position_link slpl
+      INNER JOIN sl_position_detail slpd on slpd.positionfk = slpl.positionfk
+      INNER JOIN sl_position slp on slp.sl_positionpk = slpd.positionfk
+      INNER JOIN sl_company slc on slc.sl_companypk = slp.companyfk
+
+      WHERE slpl.date_created >= '2015-03-27 00:00:00'
+      GROUP BY slpl.positionfk, slpl.status
+      ORDER BY slc.name ASC";
 
     $slistemQuery = mysql_query($slistemQuery);
-    $owners = array();
+    $activities = Array();
 
     while($data = mysql_fetch_assoc($slistemQuery))
     {
-        $company_id = $data['company_id'];
-        $owner = $data['user_id'];
-        if(!isset($owners[$company_id][$owner]))
-        {
-            $owners[$company_id][$owner] = 1;
-        }
+        $statID = $data['status'];
+        $statTitle = getStatusTitle($statID);
+        echo $data['companyID'].';'.$data['companyName'].';'.$data['positionfk'].';'.$data['positionTitle'].';'.$statTitle.';'.$data['actionCount'].'<br>';
     }
-    //var_dump($owners);
-    foreach ($owners as $companyKey => $userArray)
+
+
+  function getStatusTitle($status_id)
+  {
+    if($status_id == '1')
     {
-        foreach ($userArray as $key => $value)
-        {
-          $company_id = $companyKey;
-          $first_activity = $sDate;
-          $last_activity = $sDate ;
-          $user_id = $value;
-
-          $sQueryInsert = "INSERT INTO `client_owner_list_2` (`user_id`,`company_id`, `first_activity`, `last_activity`)
-                   VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
-
-          echo 'company: '.$company_id.' user id: '.$user_id;
-          //var_dump($sQueryInsert);
-          echo "<br><br>";
-
-          //$sQueryInsert = mysql_query($sQueryInsert);
-          //$data =mysql_fetch_assoc($sQueryInsert);
-        }
+      return "Pitch";
     }
+    else if($status_id == '2')
+    {
+      return "Resume sent";
+    }
+    else if($status_id == '51')
+    {
+      return "CCM1";
+    }
+    else if($status_id == '52')
+    {
+      return "CCM2";
+    }
+    /*else if($status_id == '53')
+    {
+      return "CCM3";
+    }
+    else if($status_id == '54')
+    {
+      return "CCM4";
+    }*/
+    else if($status_id > '52' && $status_id <= '70')
+    {
+      return "MCCM";
+    }
+    else if($status_id == '100')
+    {
+      return "Offer";
+    }
+    else if($status_id == '101')
+    {
+      return "Placed";
+    }
+    else if($status_id == '150' || $status_id == '151')
+    {
+      return "Expired";
+    }
+    else if($status_id == '200')
+    {
+      return "Fallen off";
+    }
+    else if($status_id == '201')
+    {
+      return "Not Interested";
+    }
+    else
+    {
+      return "-";
+    }
+
+  }
 
 /*
 echo "<br><br>";
