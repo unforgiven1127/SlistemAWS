@@ -1,6 +1,7 @@
 
 function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_client = false)
 {
+  //alert(serverName);
   //psIdToShow acilacak olan tab
 
   if(psIdToShow == 'candiTab2' &&  is_client != false &&  is_client != 'false')

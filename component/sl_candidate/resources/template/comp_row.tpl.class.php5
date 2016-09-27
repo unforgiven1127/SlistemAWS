@@ -101,10 +101,8 @@ class CComp_row extends CTemplate
         $pasData['level'] = 'B';
       elseif($pasData['level'] == 3)
         $pasData['level'] = 'C';
-      elseif($pasData['level'] == 8)
-        $pasData['level'] = 'H';
       else
-        $pasData['level'] = '-';
+        $pasData['level'] = 'H';
 
       $sHTML.= $oDisplay->getBloc('', $pasData['level'], $asOption);
 

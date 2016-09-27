@@ -229,8 +229,8 @@ class CSl_eventEx extends CSl_event
         'cp_type' => $psItemType, 'cp_pk' => $pnItemPk, 'default_type' => $psLinkDefaultType);
 
       if($psLinkDefaultType == 'character')
-        $sLabel = 'Add character assessment';
-      //$sLabel = 'Add a character note';
+        $sLabel = 'Add a character note';
+      //$sLabel = 'Add character assessment';
       else
         $sLabel = 'Add a note';
 
@@ -544,7 +544,7 @@ class CSl_eventEx extends CSl_event
 
       foreach($asEvent as $asEvents)
       {
-        if($sEventType == 'note')// && $asEvents['value'] != 'character'
+        if($sEventType == 'note' && $asEvents['value'] != 'character')
         {
           if($asEvents['value'] == $sEventType)
           $oForm->addOption('event_type', array('value'=>$asEvents['value'], 'label' => $asEvents['label'], 'group' => $asEvents['group'], 'selected'=>'selected'));
@@ -599,18 +599,18 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
-      /*if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
+      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
         $characterNoteControlFlag = true;
-      }*/
-      /*if(isset($pnPk) && $pnPk > 0)
+      }
+      if(isset($pnPk) && $pnPk > 0)
       {
         $characterNoteControlFlag = true;
-      }*/
-      /*if($validCharacterNotesLength > 0)
+      }
+      if($validCharacterNotesLength > 0)
       {
         $characterNoteControlFlag = true;
-      }*/
+      }
 
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
@@ -628,43 +628,13 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-      /*if($characterNoteControlFlag)
+      if($characterNoteControlFlag)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-      }*/
-      //else
-      //{
-
-        if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
-        {
-          $characterNoteControlFlag = true;
-        }
-        $data['EditTheNotes'] = 'false';
-        if($characterNoteControlFlag)
-        {
-          $data['ControlAllAreas'] = 'false';
-          if($validCharacterNotesLength > 0)
-          {
-            $data['EditTheNotes'] = $nCp_Pk;
-            foreach ($validCharacterNotes as $key => $value)
-            {
-              $data[$value['type']] = $value['content'];
-            }
-          }
-        }
-        else
-        {
-          if($validCharacterNotesLength > 0)
-          {
-            $data['EditTheNotes'] = $nCp_Pk;
-            foreach ($validCharacterNotes as $key => $value)
-            {
-              $data[$value['type']] = $value['content'];
-            }
-          }
-          $data['ControlAllAreas'] = 'true';
-        }
+      }
+      else
+      {
         $skillArray = array();
         $skillArray['skill_ag'] = '0';
         $skillArray['skill_ap'] = '0';
@@ -676,7 +646,7 @@ class CSl_eventEx extends CSl_event
         $skillArray['skill_ch'] = '0';
         $skillArray['skill_ed'] = '0';
         $skillArray['skill_pl'] = '0';
-        $skillArray['skill_e']  = '0';
+        $skillArray['skill_e'] = '0';
 
         $candidate_info = getCandidateInformation($nCp_Pk);
 
@@ -744,7 +714,7 @@ class CSl_eventEx extends CSl_event
         //$oForm->addCustomHtml($addHtml);
         $oForm->addCustomHtml($add_note_html);
 
-      //}
+      }
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
@@ -906,10 +876,6 @@ class CSl_eventEx extends CSl_event
     }
 
     $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
-    $ControlAllAreas = getValue('ControlAllAreas');
-    $EditTheNotes = getValue('EditTheNotes');
-
-    ChromePhp::log($EditTheNotes);
 
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
@@ -979,10 +945,6 @@ class CSl_eventEx extends CSl_event
       $addedFlag = true;
 
       $simpleCharacterNote = purify_html(getValue('character'));
-      if(empty($simpleCharacterNote))
-      {
-        $simpleCharacterNote = purify_html(getValue('content'));
-      }
 
       $oEvent = CDependency::getComponentByName('sl_event');
 
@@ -994,7 +956,7 @@ class CSl_eventEx extends CSl_event
       {
         foreach ($characterNoteArray as $key => $value)
         {
-          if($ControlAllAreas == 'true' && ($key == 'past_note' || (isset($value) && !empty($value))))
+          if($key == 'past_note' || (isset($value) && !empty($value)))
           {
 
             /*if($key != 'past_note' && $key != 'education_note' && $key != 'compensation_note' && strlen($value) < 32)
@@ -1036,11 +998,6 @@ class CSl_eventEx extends CSl_event
               $characterNote .= $title.$value;
             }
 
-          }
-          elseif($ControlAllAreas == 'false' || $ControlAllAreas == false)
-          {
-            $characterNoteFlag = true;
-            $addedFlag = false;
           }
           elseif($hiddenCharacter == 'newForm')
           {
@@ -1089,14 +1046,11 @@ class CSl_eventEx extends CSl_event
         {
           return array('error' => $errorArray);
         }
-        if($ControlAllAreas == 'true')
+        foreach ($skillValues as $key => $skill)
         {
-          foreach ($skillValues as $key => $skill)
+          if($skill == null || $skill < 1 || $skill > 9)
           {
-            if($skill == null || $skill < 1 || $skill > 9)
-            {
-              return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
-            }
+            return array('error' => __LINE__.' - All skill areas should have a value between 1 - 9');
           }
         }
 
@@ -1113,16 +1067,9 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = $value;
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
+                if(isset($_GET['editCharacterNote']))
                 {
-                  if(isset($_GET['editCharacterNote']))
-                  {
-                    $editCandidate = $_GET['editCharacterNote'];
-                  }
-                  else
-                  {
-                    $editCandidate = $EditTheNotes;
-                  }
+                  $editCandidate = $_GET['editCharacterNote'];
 
                   $result = editNote($editCandidate,$array);
 
@@ -1147,16 +1094,9 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = '';
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
+                if(isset($_GET['editCharacterNote']))
                 {
-                  if(isset($_GET['editCharacterNote']))
-                  {
-                    $editCandidate = $_GET['editCharacterNote'];
-                  }
-                  else
-                  {
-                    $editCandidate = $EditTheNotes;
-                  }
+                  $editCandidate = $_GET['editCharacterNote'];
 
                   editNote($editCandidate,$array);
                 }
