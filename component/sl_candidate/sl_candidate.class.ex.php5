@@ -6570,6 +6570,8 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
+      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
+      $oForm->addCustomHtml($addHtml);
 
       return $oForm->getDisplay();
 
