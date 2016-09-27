@@ -6273,11 +6273,11 @@ class CSl_candidateEx extends CSl_candidate
       $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
 
 
-      /*$oForm = $this->_oDisplay->initForm('candidateAddForm');
+      $oForm = $this->_oDisplay->initForm('candidateAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
-      $oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));*/
-      //$oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+      $oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
+      $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
       if($bDisplayAllTabs)
@@ -6322,12 +6322,12 @@ class CSl_candidateEx extends CSl_candidate
       else
         $company_token = array();
 
-      /*$occupation_tree = $oForm->getField('paged_tree', 'occupationpk', array('text' => '-- Occupation --',
+      $occupation_tree = $oForm->getField('paged_tree', 'occupationpk', array('text' => '-- Occupation --',
         'label' => '', 'value' => $oDbResult->getFieldValue('occupationfk'), 'style' => 'width: 165px; min-width: 145px;'));
       $occupation_tree->addOption($this->_getTreeData('occupation'));
 
       $industry_tree = $oForm->getField('paged_tree', 'industrypk', array('text' => '-- Industry --',
-        'label' => '', 'value' => $oDbResult->getFieldValue('industryfk'), 'style' => 'width: 165px; min-width: 145px;'));*/
+        'label' => '', 'value' => $oDbResult->getFieldValue('industryfk'), 'style' => 'width: 165px; min-width: 145px;'));
       $industry_tree->addOption($this->_getTreeData('industry'));
 
       $candidate_salary = formatNumber(round($oDbResult->getFieldValue('salary')), $this->casSettings['candi_salary_format']);
@@ -6500,7 +6500,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      /*if($bDisplayAllTabs)
+      if($bDisplayAllTabs)
       {
           $oForm->addSection('', array('class' => 'candidate_inner_section'));
 
@@ -6514,9 +6514,9 @@ class CSl_candidateEx extends CSl_candidate
           $oForm->closeSection();
 
           //$contact_details_form = $oForm->getDisplay(true);
-      }*/
+      }
 
-//return $oForm->getDisplay();
+
 
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
@@ -6570,15 +6570,10 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
+      return $oForm->getDisplay();
 
-      $oForm = $this->_oDisplay->initForm('candidateAddForm');
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
-
-      $oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
-      $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
-
+      //$addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
       //$oForm2 = $this->_oDisplay->initForm('candiAddForm');
       //$candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
@@ -6586,14 +6581,14 @@ class CSl_candidateEx extends CSl_candidate
       //$oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
       //$oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
-      $oForm->addCustomHtml($addHtml);
+      //$oForm2->addCustomHtml($addHtml);
 
-      $sHTML = $oForm->getDisplay();
+      //$sHTML = $oForm2->getDisplay();
 
       //$sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       //return $oForm->getDisplay();
-      return $sHTML;
+      //return $sHTML;
     }
 
 
