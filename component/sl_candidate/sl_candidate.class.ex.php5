@@ -6513,8 +6513,10 @@ class CSl_candidateEx extends CSl_candidate
 
           $oForm->closeSection();
 
-          $contact_details_form = $oForm->getDisplay(true);
+          //$contact_details_form = $oForm->getDisplay(true);
       }
+
+return $oForm->getDisplay();
 
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
@@ -6580,7 +6582,7 @@ class CSl_candidateEx extends CSl_candidate
 
       //$sHTML = $this->_oDisplay->render('candidate_add', $data);
 
-      return $oForm->getDisplay();
+      //return $oForm->getDisplay();
       //return $sHTML;
     }
 
