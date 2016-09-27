@@ -5865,7 +5865,6 @@ class CSl_candidateEx extends CSl_candidate
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-ChromePhp::log($nCandidatePk);
 
       $edit_flag = true;
       foreach ($_POST['sl_contactpk'] as $key => $value) {
@@ -6567,24 +6566,11 @@ ChromePhp::log($nCandidatePk);
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
-
-      $oForm2 = $this->_oDisplay->initForm('candiAddForm');
-      $candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
-
-      $oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
-      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
-
-      $oForm2->addCustomHtml($addHtml);
-
-      $oForm2->addField('input', 'btn', array('style'=> 'visibility: hidden; height:1px !important;','id'=> 'clickThis','type'=> 'button', 'value'=>'', 'onclick' => "setLoadingScreen('body', true); setTimeout('setLoadingScreen(\\'body\\', false);', 5000); AjaxRequest('".$sURL."', '', 'addcandidateId', 'candi_duplicate');"));
-
-      $sHTML = $oForm2->getDisplay();
-
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       return $sHTML;
     }
+
 
 
     private function _getCompanyForm($pnPk = 0)
@@ -6675,17 +6661,17 @@ ChromePhp::log($nCandidatePk);
         $selectA1 = "selected";
         $selectA = "selected";
       }
-      if($asCompanyData['level'] == 2)
+      else if($asCompanyData['level'] == 2)
       {
         $selectB1 = "selected";
         $selectB = "selected";
       }
-      if($asCompanyData['level'] == 3)
+      else if($asCompanyData['level'] == 3)
       {
         $selectC1 = "selected";
         $selectC = "selected";
       }
-      if($asCompanyData['level'] == 8)
+      else if($asCompanyData['level'] == 8)
       {
         $selectH1 = "selected";
         $selectH = "selected";
@@ -6701,6 +6687,11 @@ ChromePhp::log($nCandidatePk);
       $is_client1N = '';
       $is_client2N = '';
 
+      $is_ns1Y = '';
+      $is_ns2Y = '';
+      $is_ns1N = '';
+      $is_ns2N = '';
+
       if($asCompanyData['is_client'] == 1)
       {
         $is_client1Y = 'selected';
@@ -6710,6 +6701,17 @@ ChromePhp::log($nCandidatePk);
       {
         $is_client1N = 'selected';
         $is_client2N = 'selected';
+      }
+
+      if($asCompanyData['is_nc_ok'] == 1)
+      {
+        $is_ns1Y = 'selected';
+        $is_ns2Y = 'selected';
+      }
+      else
+      {
+        $is_ns1N = 'selected';
+        $is_ns2N = 'selected';
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
@@ -6722,6 +6724,10 @@ ChromePhp::log($nCandidatePk);
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+
+       $oForm->addField('select', 'is_nc_ok', array('label'=> 'Name collect OK? '));
+       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_ns1N => $is_ns2N));
+       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_ns1Y => $is_ns2Y));
 
        $activeUserList = getActiveUsers();
 
@@ -7319,18 +7325,15 @@ die();*/
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
 
-      if(!empty($pnCandidatePk) && $pnCandidatePk!=0)
+      if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
         if(empty($asData))
-          return array('error' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
+          return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
 
 
         if(!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
-        {
-          return array('error' => 'Normal user cannot change candidate name');
-          //return array('popupError' => 'Normal user cannot change candidate name');
-        }
+          return array('popupError' => 'Normal user cannot change candidate name');
 
         if(!$this->_oLogin->isAdmin() && $asData['keyword'] != '')
         {
@@ -7342,16 +7345,12 @@ die();*/
           }
           else
           {
-            return array('error' => 'Normal user cannot delete keyword');
-            //return array('popupError' => 'Normal user cannot delete keyword');
+            return array('popupError' => 'Normal user cannot delete keyword');
           }
         }
 
         if(!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
-        {
-          return array('error' => 'Normal user cannot change candidate name');
-          //return array('popupError' => 'Normal user cannot change candidate name');
-        }
+          return array('popupError' => 'Normal user cannot change candidate name');
 
         //Date created is use and overwritten everywhere... so we're using an alias
         $asData['date_created'] = $asData['date_added'];
@@ -7367,10 +7366,7 @@ die();*/
           assert('false; // we\'ve got a candidate without profile here ['.$pnCandidatePk.'].');
 
         if(empty($pnCandidatePk) || empty($nProfilePk))
-        {
-          return array('error'=>'Could not find the candidate you\'re trying to update. It may have been deleted.');
-          //return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
-        }
+          return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
 
         //for candi_profile table update
         $asData['candidatefk'] = $pnCandidatePk;
@@ -7387,11 +7383,9 @@ die();*/
 
       if(empty($pnCandidatePk))
       {
-
         //we re-use a function here, so the way it works and the returned value are a bit different
         //pass a dummy candipk here, will pass the real one when called to save
         $asResult = $this->_getCandidateContactSave(false, 999);
-                return array('error'=>$asResult);
         if(isset($asResult['error']))
           $asError = array_merge($asError, (array)$asResult['error']);
 
@@ -7404,54 +7398,38 @@ die();*/
       if(!empty($asError))
       {
         if(isset($this->casCandidateData['dup_tab']))
-        {
-          return array('error' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
+          return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
 
-          //return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
-        }
-return array('error'=>'TEST');
-        return array('error' => implode("\n", $asError));
-        //return array('popupError' => implode("\n", $asError));
+        return array('popupError' => implode("\n", $asError));
       }
+
+
+
+
 
       //Now the form has been checked, we save... step by step again
       //dump('2nd - saveCandiData ');
       $asError = $this->_saveCandidateData($pnCandidatePk, false, true, $asData);
       if(!empty($asError))
-      {
-        return array('error' => implode("    \n <br/>", $asError));
-        //return array('popupError' => implode("    \n <br/>", $asError));
-      }
+        return array('popupError' => implode("    \n <br/>", $asError));
 
       if(!is_key($this->casCandidateData['profile']['candidatefk']))
-      {
-        return array('error'=>'An error occured. Data may not have been saved.');
-        //return array('popupError' => 'An error occured. Data may not have been saved.');
-      }
+        return array('popupError' => 'An error occured. Data may not have been saved.');
 
 
       if(empty($pnCandidatePk))
       {
         $asResult = $this->_getCandidateContactSave(true, $this->casCandidateData['profile']['candidatefk']);
         if(isset($asResult['error']))
-        {
-          return array('error'=>$asResult['error']);
-          //return array('popupError' => $asResult['error']);
-        }
+          return array('popupError' => $asResult['error']);
 
         $asError = $this->_saveNotes(false, true, $this->casCandidateData['profile']);
         if(!empty($asError))
-        {
-          return array('error' => implode("\n", $asError));
-          //return array('popupError' => implode("\n", $asError));
-        }
+          return array('popupError' => implode("\n", $asError));
 
         $asError =  $this->_saveResume(false, true, $this->casCandidateData['profile']);
         if(!empty($asError))
-        {
-          return array('error' => implode("\n", $asError));
-          //return array('popupError' => implode("\n", $asError));
-        }
+          return array('popupError' => implode("\n", $asError));
       }
 
 
