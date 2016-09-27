@@ -7383,9 +7383,10 @@ die();*/
       //check ll the form fields (test mode only
       //dump('1st - saveCandiData ');
       $asError = $this->_saveCandidateData($pnCandidatePk, true, false, $asData);
-return array('error'=>'TEST');
+
       if(empty($pnCandidatePk))
       {
+        return array('error'=>'empty pnCandidatePk');
         //we re-use a function here, so the way it works and the returned value are a bit different
         //pass a dummy candipk here, will pass the real one when called to save
         $asResult = $this->_getCandidateContactSave(false, 999);
@@ -7406,14 +7407,10 @@ return array('error'=>'TEST');
 
           //return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
         }
-
+return array('error'=>'empty pnCandidatePk');
         return array('error' => implode("\n", $asError));
         //return array('popupError' => implode("\n", $asError));
       }
-
-
-
-
 
       //Now the form has been checked, we save... step by step again
       //dump('2nd - saveCandiData ');
