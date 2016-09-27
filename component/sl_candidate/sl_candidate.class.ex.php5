@@ -7399,9 +7399,14 @@ die();*/
       if(!empty($asError))
       {
         if(isset($this->casCandidateData['dup_tab']))
-          return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
+        {
+          return array('error' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
 
-        return array('popupError' => implode("\n", $asError));
+          //return array('popupError' => implode("\n", $asError),  'data' =>  utf8_encode($this->casCandidateData['dup_tab']), 'action' => ' $(\'li.tab_duplicate\').show(0).click(); ');
+        }
+
+        return array('error' => implode("\n", $asError));
+        //return array('popupError' => implode("\n", $asError));
       }
 
 
@@ -7412,25 +7417,40 @@ die();*/
       //dump('2nd - saveCandiData ');
       $asError = $this->_saveCandidateData($pnCandidatePk, false, true, $asData);
       if(!empty($asError))
-        return array('popupError' => implode("    \n <br/>", $asError));
+      {
+        return array('error' => implode("    \n <br/>", $asError));
+        //return array('popupError' => implode("    \n <br/>", $asError));
+      }
 
       if(!is_key($this->casCandidateData['profile']['candidatefk']))
-        return array('popupError' => 'An error occured. Data may not have been saved.');
+      {
+        return array('error'=>'An error occured. Data may not have been saved.');
+        //return array('popupError' => 'An error occured. Data may not have been saved.');
+      }
 
 
       if(empty($pnCandidatePk))
       {
         $asResult = $this->_getCandidateContactSave(true, $this->casCandidateData['profile']['candidatefk']);
         if(isset($asResult['error']))
-          return array('popupError' => $asResult['error']);
+        {
+          return array('error'=>$asResult['error']);
+          //return array('popupError' => $asResult['error']);
+        }
 
         $asError = $this->_saveNotes(false, true, $this->casCandidateData['profile']);
         if(!empty($asError))
-          return array('popupError' => implode("\n", $asError));
+        {
+          return array('error' => implode("\n", $asError));
+          //return array('popupError' => implode("\n", $asError));
+        }
 
         $asError =  $this->_saveResume(false, true, $this->casCandidateData['profile']);
         if(!empty($asError))
-          return array('popupError' => implode("\n", $asError));
+        {
+          return array('error' => implode("\n", $asError));
+          //return array('popupError' => implode("\n", $asError));
+        }
       }
 
 
