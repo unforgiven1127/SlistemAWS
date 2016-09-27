@@ -472,11 +472,6 @@
 
 <script>
 
-	var sURL = $('form[name=addcandidate]').attr('action');
-	var sFormId = $('form[name=addcandidate]').attr('id');
-	var sAjaxTarget = 'candi_duplicate';
-	AjaxRequest(sURL,'',sFormId,sAjaxTarget);
-
 	var company_token = '';
 	var alt_occupation_token = '';
 	var alt_industry_token = '';
