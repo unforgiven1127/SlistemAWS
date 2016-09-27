@@ -6274,10 +6274,10 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
+      //$sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
-      $oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
-      $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+      //$oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
+      //$oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
       if($bDisplayAllTabs)
@@ -6500,6 +6500,22 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+      if($bDisplayAllTabs)
+      {
+          $oForm->addSection('', array('class' => 'candidate_inner_section'));
+
+          //reuse what ha sbeen done for the standalone form
+          $asTypes = getContactTypes();
+          for($nCount = 0; $nCount < 4; $nCount++)
+          {
+            $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
+          }
+
+          $oForm->closeSection();
+
+          $contact_details_form = $oForm->getDisplay(true);
+      }
+
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
 
@@ -6519,6 +6535,7 @@ class CSl_candidateEx extends CSl_candidate
           $currencyCode = $allData[0]['currency'];
         }
       }
+
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
         'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
@@ -6546,55 +6563,24 @@ class CSl_candidateEx extends CSl_candidate
         'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
         'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
         'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
-         'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
+        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
       $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
-      $oForm->addCustomHtml($addHtml);
+      $oForm2 = $this->_oDisplay->initForm('candiAddForm');
+      $candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
 
-      if($bDisplayAllTabs)
-      {
-          $oForm->addSection('', array('class' => 'candidate_inner_section'));
+      $oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
+      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
-          //reuse what ha sbeen done for the standalone form
-          $asTypes = getContactTypes();
-          for($nCount = 0; $nCount < 4; $nCount++)
-          {
-            $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
-          }
+      $oForm2->addCustomHtml($addHtml);
 
-          $oForm->closeSection();
-
-          //$contact_details_form = $oForm->getDisplay(true);
-      }
-
-      //$contact_details_form = $this->_oDisplay->render('contact_details');
-
-
-      //$oForm->addCustomHtml($addHtml);
-
-      $sHTML = $oForm->getDisplay();
-      //$sHTML.= $addHtml;
-      return $sHTML;
-      //return $oForm->getDisplay();
-
-      //$addHtml = $this->_oDisplay->render('candidate_add_new', $data);
-
-      //$oForm2 = $this->_oDisplay->initForm('candiAddForm');
-      //$candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
-
-      //$oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
-      //$oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
-
-      //$oForm2->addCustomHtml($addHtml);
-
-      //$sHTML = $oForm2->getDisplay();
+      $sHTML = $oForm2->getDisplay();
 
       //$sHTML = $this->_oDisplay->render('candidate_add', $data);
 
-      //return $oForm->getDisplay();
-      //return $sHTML;
+      return $sHTML;
     }
 
 
