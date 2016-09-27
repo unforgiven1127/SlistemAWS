@@ -319,11 +319,11 @@
 				<div class="general_form_row extended_select extended_input">
 					<div class="general_form_label">alt. occupation</div>
 					<div class="general_form_column">
-						<input id="alt_occupation" type="text" name="alt_occupationpk" value="<?php echo $alt_occupationpk; ?>" />
+						<input id="alt_occupation" type="text" name="alt_occupationpk" value="<?php if(isset($alt_occupationpk)){echo $alt_occupationpk;}  ?>" />
 					</div>
 					<div class="general_form_label add_margin_left_30">alt. industry</div>
 					<div class="general_form_column">
-						<input id="alt_industry" type="text" name="alt_industrypk" value="<?php echo $alt_industrypk; ?>" />
+						<input id="alt_industry" type="text" name="alt_industrypk" value="<?php if(isset($alt_industrypk)){echo $alt_industrypk;} ?>" />
 					</div>
 					<div class="general_form_label add_margin_left_30">language</div>
 					<div class="general_form_column">
