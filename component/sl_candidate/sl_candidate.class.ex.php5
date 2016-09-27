@@ -6588,6 +6588,7 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($pnPk);
       if(empty($pnPk) || $pnPk == 0)
       {
+        ChromePhp::log('if');
         $asCompanyData['level'] = 1;
         $asCompanyData['is_client'] = 0;
         $asCompanyData['name'] = '';
@@ -6610,6 +6611,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
+        ChromePhp::log('else');
         $changeOwnerFlag = true;
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
