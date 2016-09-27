@@ -405,8 +405,14 @@ Reminder linked to item', '2013-10-05 08:00:00');
       if($asActivity['text'] = strip_tags($asActivity['text']))
         $asActivity['text'] = mb_strimwidth($asActivity['text'], 0, 60, '...');
 
-      $candidate_id = $asActivity['cp_pk'];
-      $candidate_text = $asActivity['text'];
+      if(isset($asActivity['cp_pk']))
+      {
+        $candidate_id = $asActivity['cp_pk'];
+      }
+      if(isset($asActivity['text']))
+      {
+        $candidate_text = $asActivity['text'];
+      }
 
       if($psTitle == "Searches")
       {
