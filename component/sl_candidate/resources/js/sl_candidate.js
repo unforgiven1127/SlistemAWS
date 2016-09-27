@@ -3,10 +3,6 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_clie
 {
   //psIdToShow acilacak olan tab
 
-alert(psIdToShow);
-alert(psContainer);
-alert(candidate_id);
-alert(is_client);
   if(psIdToShow == 'candiTab2' &&  is_client != false &&  is_client != 'false')
   {
     if(confirm("This candidate works at a Slate client, if you access his contact information, a notification will be sent to the client\'s owner."))
@@ -17,7 +13,7 @@ alert(is_client);
 
         // company i olusturan kisiye mail atacagiz
         var urlMail = "/index.php5?uid=555-001&ppa=csam&ppt=candi&ppk="+candidate_id+"&pg=ajx&cid="+is_client;
-        //AjaxRequest(urlMail, '', '', '', '', '', "");
+        AjaxRequest(urlMail, '', '', '', '', '', "");
 
         $(poElement).siblings('.selected').removeClass('selected');
         $(poElement).addClass('selected');

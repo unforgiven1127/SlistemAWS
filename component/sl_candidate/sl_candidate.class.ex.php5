@@ -1056,6 +1056,11 @@ class CSl_candidateEx extends CSl_candidate
       $company_id = $_GET['cid'];
       $user_id = $oLogin->getUserPk();
 
+
+      ChromePhp::log($candidate_id);
+      ChromePhp::log($company_id);
+      ChromePhp::log($user_id);
+
       $company_information = getCompanyInformation($company_id);
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
