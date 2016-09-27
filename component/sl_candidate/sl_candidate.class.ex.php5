@@ -6575,7 +6575,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyForm($pnPk = 0)
     {
-      ChromePhp::log('_getCompanyForm');
+
       if(!assert('is_integer($pnPk)'))
         return '';
 
@@ -6585,7 +6585,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       $changeOwnerFlag = false;
       $asCompanyData = array();
-
+      ChromePhp::log($pnPk);
       if(empty($pnPk))
       {
         $asCompanyData['level'] = 1;
