@@ -1057,15 +1057,15 @@ class CSl_candidateEx extends CSl_candidate
       $user_id = $oLogin->getUserPk();
 
 
-      ChromePhp::log($candidate_id);
-      ChromePhp::log($company_id);
-      ChromePhp::log($user_id);
+      //ChromePhp::log($candidate_id);
+      //ChromePhp::log($company_id);
+      //ChromePhp::log($user_id);
 
       $company_information = getCompanyInformation($company_id);
       $creator_id = $company_information['created_by'];
       $owners = getCompanyOwner($company_id);
       $toEmail = '';
-ChromePhp::log($owners);
+
       //$owners[]['owner'] = $creator_id;
       if(!isset($owners[0]['owner']))
       {
@@ -1090,7 +1090,7 @@ ChromePhp::log($owners);
         foreach ($owners as $key => $value)
         {
           $owner_id =  $value['owner'];
-          $candidate_information = getCandidateInformation($owner_id);
+          $candidate_information = getCandidateInformation($candidate_id);
           $company_information = getCompanyInformation($company_id);
           $user_information = getUserInformaiton($user_id);
 
