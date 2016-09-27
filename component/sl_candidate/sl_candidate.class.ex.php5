@@ -6611,7 +6611,6 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        ChromePhp::log('else');
         $changeOwnerFlag = true;
         //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
         $asCompanyData = getCompanyInfo($pnPk);
@@ -6626,7 +6625,6 @@ class CSl_candidateEx extends CSl_candidate
         }
         if(empty($asCompanyData))
           return 'Could not find the company.';
-
       }
 
       $sUpdateField = getValue('update_field', '');
@@ -6777,7 +6775,7 @@ class CSl_candidateEx extends CSl_candidate
           }
        }
 
-       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
+       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' =>$asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
 
        $oForm->addField('input', 'corporate_name', array('label'=> 'Brand / public name', 'value' => $asCompanyData['corporate_name']));
@@ -6833,7 +6831,7 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('input', 'website', array('label'=> 'website', 'value' => $asCompanyData['website']));
        $oForm->closeSection();
 
-
+        ChromePhp::log('HERE LAST');
 
       return $oForm->getDisplay();
     }
