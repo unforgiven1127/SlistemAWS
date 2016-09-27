@@ -77,6 +77,7 @@ $(window).bind('beforeunload', function(){ bUnloading = true; });
 function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh, pbReloadPage,  pbSynch, psCallback, pbWithAnimation)
 {
 
+alert(psUrl);
   if(!psZoneToRefresh)
     psZoneToRefresh = '';
 
