@@ -6516,7 +6516,7 @@ class CSl_candidateEx extends CSl_candidate
           //$contact_details_form = $oForm->getDisplay(true);
       }
 
-return $oForm->getDisplay();
+//return $oForm->getDisplay();
 
       $currency_code = 'jpy';
       $currencyCode = 'jpy';
@@ -6537,6 +6537,8 @@ return $oForm->getDisplay();
           $currencyCode = $allData[0]['currency'];
         }
       }
+
+      $contact_details_form = $this->_oDisplay->render('contact_details');
 
 
       $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
@@ -6568,22 +6570,22 @@ return $oForm->getDisplay();
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      //$addHtml = $this->_oDisplay->render('candidate_add_new', $data);
+      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
-      //$oForm2 = $this->_oDisplay->initForm('candiAddForm');
-      //$candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
+      $oForm2 = $this->_oDisplay->initForm('candiAddForm');
+      $candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
 
-      //$oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
-      //$oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+      $oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
+      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
-      //$oForm2->addCustomHtml($addHtml);
+      $oForm2->addCustomHtml($addHtml);
 
-      //$sHTML = $oForm2->getDisplay();
+      $sHTML = $oForm2->getDisplay();
 
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       //return $oForm->getDisplay();
-      //return $sHTML;
+      return $sHTML;
     }
 
 
