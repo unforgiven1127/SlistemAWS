@@ -6565,7 +6565,8 @@ class CSl_candidateEx extends CSl_candidate
         'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
-
+$browser = get_browser(null, true);
+print_r($browser);
 
       $sHTML = $this->_oDisplay->render('candidate_add', $data);
 
