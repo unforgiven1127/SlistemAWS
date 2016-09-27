@@ -6574,7 +6574,7 @@ class CSl_candidateEx extends CSl_candidate
       //$oForm->addCustomHtml($addHtml);
 
       $sHTML = $oForm->getDisplay();
-      $sHTML.= $addHtml;
+      //$sHTML.= $addHtml;
       return $sHTML;
       //return $oForm->getDisplay();
 
