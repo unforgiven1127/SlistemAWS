@@ -3,6 +3,9 @@ function toggleCandiTab(poElement, psIdToShow, psContainer, candidate_id,is_clie
 {
   //psIdToShow acilacak olan tab
 
+alert(psContainer);
+alert(candidate_id);
+alert(is_client);
   if(psIdToShow == 'candiTab2' &&  is_client != false &&  is_client != 'false')
   {
     if(confirm("This candidate works at a Slate client, if you access his contact information, a notification will be sent to the client\'s owner."))
