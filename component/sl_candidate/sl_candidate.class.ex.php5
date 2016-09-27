@@ -6576,7 +6576,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oForm2->addCustomHtml($addHtml);
 
-      $oForm2->addField('input', 'btn', array('style'=> 'visibility: hidden; height:1px;','id'=> 'clickThis','type'=> 'button', 'value'=>'', 'onclick' => "setLoadingScreen('body', true); setTimeout('setLoadingScreen(\\'body\\', false);', 5000); AjaxRequest('".$sURL."', '', 'addcandidateId', 'candi_duplicate');"));
+      $oForm2->addField('input', 'btn', array('style'=> 'visibility: hidden; height:1px !important;','id'=> 'clickThis','type'=> 'button', 'value'=>'', 'onclick' => "setLoadingScreen('body', true); setTimeout('setLoadingScreen(\\'body\\', false);', 5000); AjaxRequest('".$sURL."', '', 'addcandidateId', 'candi_duplicate');"));
 
       $sHTML = $oForm2->getDisplay();
 
