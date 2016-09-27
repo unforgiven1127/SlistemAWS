@@ -6566,7 +6566,17 @@ class CSl_candidateEx extends CSl_candidate
         'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
       );
 
-      $sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
+
+      $oForm2 = $this->_oDisplay->initForm('candiAddForm');
+      $candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
+
+      $oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
+      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+
+      $sHTML = $oForm2->getDisplay();
+
+      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
 
       return $sHTML;
     }
