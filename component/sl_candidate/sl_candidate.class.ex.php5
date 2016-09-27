@@ -6576,11 +6576,11 @@ class CSl_candidateEx extends CSl_candidate
 
       $oForm2->addCustomHtml($addHtml);
 
-      $oForm2->addField('input', 'btn', array('type'=> 'button', 'value'=>'TEST', 'onclick' => "setLoadingScreen('body', true); setTimeout('setLoadingScreen(\\'body\\', false);', 5000); AjaxRequest('".$sURL."', '', 'addcandidateId', 'candi_duplicate');"));
+      $oForm2->addField('input', 'btn', array('id'=> 'clickThis','type'=> 'button', 'value'=>'TEST', 'onclick' => "setLoadingScreen('body', true); setTimeout('setLoadingScreen(\\'body\\', false);', 5000); AjaxRequest('".$sURL."', '', 'addcandidateId', 'candi_duplicate');"));
 
       $sHTML = $oForm2->getDisplay();
 
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+      //$sHTML = $this->_oDisplay->render('candidate_add', $data);'style'=> 'hidden',
 
       return $sHTML;
     }
