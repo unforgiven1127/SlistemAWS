@@ -6575,7 +6575,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyForm($pnPk = 0)
     {
-
       if(!assert('is_integer($pnPk)'))
         return '';
 
@@ -6585,10 +6584,9 @@ class CSl_candidateEx extends CSl_candidate
       }
       $changeOwnerFlag = false;
       $asCompanyData = array();
-      ChromePhp::log($pnPk);
-      if(empty($pnPk) || $pnPk == 0)
+
+      if(empty($pnPk))
       {
-        ChromePhp::log('if');
         $asCompanyData['level'] = 1;
         $asCompanyData['is_client'] = 0;
         $asCompanyData['name'] = '';
@@ -6625,6 +6623,7 @@ class CSl_candidateEx extends CSl_candidate
         }
         if(empty($asCompanyData))
           return 'Could not find the company.';
+
       }
 
       $sUpdateField = getValue('update_field', '');
@@ -6649,8 +6648,6 @@ class CSl_candidateEx extends CSl_candidate
       $selectB = '';
       $selectC = '';
       $selectH = '';
-      $select01 = "";
-      $select0 = "";
 
       $selectA1 = "";
       $selectB1 = "";
@@ -6662,36 +6659,26 @@ class CSl_candidateEx extends CSl_candidate
         $selectA1 = "selected";
         $selectA = "selected";
       }
-      else if($asCompanyData['level'] == 2)
+      if($asCompanyData['level'] == 2)
       {
         $selectB1 = "selected";
         $selectB = "selected";
       }
-      else if($asCompanyData['level'] == 3)
+      if($asCompanyData['level'] == 3)
       {
         $selectC1 = "selected";
         $selectC = "selected";
       }
-      else if($asCompanyData['level'] == 8)
+      else
       {
         $selectH1 = "selected";
         $selectH = "selected";
-      }
-      else
-      {
-        $select01 = "selected";
-        $select0 = "selected";
       }
 
       $is_client1Y = '';
       $is_client2Y = '';
       $is_client1N = '';
       $is_client2N = '';
-
-      $is_ns1Y = '';
-      $is_ns2Y = '';
-      $is_ns1N = '';
-      $is_ns2N = '';
 
       if($asCompanyData['is_client'] == 1)
       {
@@ -6704,78 +6691,35 @@ class CSl_candidateEx extends CSl_candidate
         $is_client2N = 'selected';
       }
 
-      if($asCompanyData['is_nc_ok'] == 1)
-      {
-        $is_ns1Y = 'selected';
-        $is_ns2Y = 'selected';
-      }
-      else
-      {
-        $is_ns1N = 'selected';
-        $is_ns2N = 'selected';
-      }
-
        $oForm->addField('select', 'level', array('label'=> 'Level'));
        $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
        $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
        $oForm->addoption('level', array('label' => 'H', 'value' => '8', $selectH1 => $selectH));
-       $oForm->addoption('level', array('label' => '-', 'value' => '0', $select01 => $select0));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
-       $oForm->addField('select', 'is_nc_ok', array('label'=> 'Name collect OK? '));
-       $oForm->addoption('is_nc_ok', array('label' => 'No', 'value' => '0', $is_ns1N => $is_ns2N));
-       $oForm->addoption('is_nc_ok', array('label' => 'Yes', 'value' => '1', $is_ns1Y => $is_ns2Y));
-
-       $activeUserList = getActiveUsers();
-
-       $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
-       $oForm->addoption('company_owner_new',array( 'value' => '0'));
-       foreach ($activeUserList as $key => $user)
-       {
-         $userFullName = $user['firstname'].' '.$user['lastname'];
-         $newOwnerValue = $user['loginpk'].'_'.$pnPk;
-         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $newOwnerValue));
-       }
-
        if($changeOwnerFlag)
        {
-          $owners = getCompanyOwner($pnPk);
-          /*if(!empty($owners))
+          $activeUserList = getActiveUsers();
+          $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
+          foreach ($activeUserList as $key => $user)
           {
-            foreach ($owners as $key => $value)
+            $userFullName = $user['firstname'].' '.$user['lastname'];
+            if($user['loginpk'] == $asCompanyData['company_owner'])
             {
-              ChromePhp::log($value);
+              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
             }
-          }*/
-
-          $i=0;
-          foreach ($owners as $key => $value)
-          {
-            $i++;
-            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '.$i));
-            foreach ($activeUserList as $key => $user)
+            else
             {
-              $userFullName = $user['firstname'].' '.$user['lastname'];
-              $optionValue = $user['loginpk'].'_'.$value['id']; //kullanicicnin id si _ owner tablosundaki id
-              if($user['loginpk'] == $value['owner'])//$asCompanyData['company_owner'] idi multi yapinca degistirdk
-              {
-                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $optionValue, 'selected' => 'selected'));
-              }
-              else
-              {
-                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $optionValue));
-              }
+              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk']));
             }
-            $deleteOptionValue = '000_'.$value['id'];
-            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => $deleteOptionValue));
           }
        }
 
-       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' =>$asCompanyData['name']));
+       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
 
        $oForm->addField('input', 'corporate_name', array('label'=> 'Brand / public name', 'value' => $asCompanyData['corporate_name']));
@@ -6831,11 +6775,10 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('input', 'website', array('label'=> 'website', 'value' => $asCompanyData['website']));
        $oForm->closeSection();
 
-        ChromePhp::log('HERE LAST');
+
 
       return $oForm->getDisplay();
     }
-
     private function _saveCompany($pnPk)
     {
 
