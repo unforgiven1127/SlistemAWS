@@ -472,7 +472,7 @@
 
 <script>
 
-$('#clickThis').click();
+	$('#clickThis').click();
 
 	var company_token = '';
 	var alt_occupation_token = '';
