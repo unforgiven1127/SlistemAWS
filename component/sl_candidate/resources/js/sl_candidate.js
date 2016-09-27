@@ -7,7 +7,7 @@ alert(psIdToShow);
 alert(psContainer);
 alert(candidate_id);
 alert(is_client);
-  if(psIdToShow == 'candiTab23' &&  is_client != false &&  is_client != 'false')
+  if(psIdToShow == 'candiTab2' &&  is_client != false &&  is_client != 'false')
   {
     if(confirm("This candidate works at a Slate client, if you access his contact information, a notification will be sent to the client\'s owner."))
     {
@@ -23,7 +23,7 @@ alert(is_client);
         $(poElement).addClass('selected');
 
         var oContainer =  $(poElement).closest('.candiTabContainer');
-        if(typeof candidate_id != 'undefined' && candidate_id != null)
+        if(typeof candidate_id != 'undefined' && candidate_id != null && candidate_id == 666)
         {
           //alert(candidate_id);
           //alert(psIdToShow);
