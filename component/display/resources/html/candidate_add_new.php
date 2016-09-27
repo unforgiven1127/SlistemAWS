@@ -1,4 +1,6 @@
-
+<form name="addcandidate" enctype="multipart/form-data" submitAjax="1"
+	action="<?php echo $form_url; ?>" class="candiAddForm" ajaxTarget="candi_duplicate"
+	method="POST" id="addcandidateId" onBeforeSubmit="" onsubmit="">
 	<input type="hidden" name="userfk" value="<?php echo $user_id; ?>" />
 	<input id="dup_checked" type="hidden" name="check_duplicate" value="0" />
 
@@ -298,6 +300,11 @@
 			</div>
 
 
+
+
+
+
+
 			<div class="general_form_row">
 				<div style="margin-top: 5px; cursor: pointer;" class="bold italic"
 				onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
@@ -314,11 +321,11 @@
 				<div class="general_form_row extended_select extended_input">
 					<div class="general_form_label">alt. occupation</div>
 					<div class="general_form_column">
-						<input id="alt_occupation" type="text" name="alt_occupationpk" value="<?php if(isset($alt_occupationpk)){echo $alt_occupationpk;}  ?>" />
+						<input id="alt_occupation" type="text" name="alt_occupationpk" value="<?php echo $alt_occupationpk; ?>" />
 					</div>
 					<div class="general_form_label add_margin_left_30">alt. industry</div>
 					<div class="general_form_column">
-						<input id="alt_industry" type="text" name="alt_industrypk" value="<?php if(isset($alt_industrypk)){echo $alt_industrypk;} ?>" />
+						<input id="alt_industry" type="text" name="alt_industrypk" value="<?php echo $alt_industrypk; ?>" />
 					</div>
 					<div class="general_form_label add_margin_left_30">language</div>
 					<div class="general_form_column">
@@ -458,6 +465,10 @@
 		</div>
 	</div>
 
+	<div class="general_form_row add_margin_top_10" style="text-align: center;">
+		<input type="submit" value="Save candidate" />
+	</div>
+</form>
 
 <script>
 	var company_token = '';
@@ -610,6 +621,16 @@
 		date_field_obj.show();
 	}
 
+	/*$('form[name=addcandidate]').submit(function(event){
+		event.preventDefault();
+
+		var sURL = $('form[name=addcandidate]').attr('action');
+		var sFormId = $('form[name=addcandidate]').attr('id');
+		var sAjaxTarget = 'candi_duplicate';
+		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+
+		return false;
+	});*/
 
 	function check_dom_change()
 	{
