@@ -3,7 +3,11 @@
 //$sDate = date('Y-m-d H:i:s');
 //echo $sDate;
 
-	define('DB_NAME_SLISTEM','slistem');
+
+$browser = get_browser(null, true);
+echo $browser;
+
+	/*define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
     define('DB_USER_SLISTEM', 'slistem');
     define('DB_PASSWORD_SLISTEM', 'smwXN2RTDm6Zz3hR');
@@ -58,7 +62,7 @@
     {
       return "CCM4";
     }*/
-    else if($status_id > '52' && $status_id <= '70')
+    /*else if($status_id > '52' && $status_id <= '70')
     {
       return "MCCM";
     }
@@ -87,7 +91,7 @@
       return "-";
     }
 
-  }
+  }*/
 
 /*
 echo "<br><br>";
