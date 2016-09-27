@@ -259,7 +259,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
   else
   {
     //Refresh a part of the page + callback or action from json
-    
+
     $.ajax({
       type: 'POST',
       data: sExtraParams,
@@ -271,11 +271,10 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       scriptCharset: "utf-8" ,
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       context: document.body,
-      async: pbSynch,
-      dataType: "JSON",
+      async: false,
+      dataType: "text",
       success: function(oJsonData)
       {
-        alert('TEST');
         mngAjaxScreen(psLoadingScreen);
 
         // pager Issue here
