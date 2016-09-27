@@ -6274,7 +6274,7 @@ class CSl_candidateEx extends CSl_candidate
 
 
       $oForm = $this->_oDisplay->initForm('candidateAddForm');
-      //$sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
+      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
 
       //$oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
       //$oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
