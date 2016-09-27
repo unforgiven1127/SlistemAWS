@@ -7316,7 +7316,6 @@ die();*/
     private function _saveCandidate($pnCandidatePk = 0)
     {
       //buffer to store all the data once checked, to be re-used for saving
-      return array('error' => 'TEST');
       $this->casCandidateData = array();
 
       if(!empty($pnCandidatePk))
