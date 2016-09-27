@@ -418,6 +418,7 @@ if(CONST_DEV_SERVER)
   define('CONST_PATH_JS_JQUERYUI', '/common/js/jquery-ui.js');
   //define('CONST_PATH_JS_JQUERYUI', '/common/js/new-jquery-ui.js');
   define('CONST_PATH_JS_POPUP', '/common/js/popup.class.js');
+
   define('CONST_PATH_JS_COMMON', '/common/js/common.js');
 }
 else
