@@ -7316,8 +7316,6 @@ die();*/
       //buffer to store all the data once checked, to be re-used for saving
       $this->casCandidateData = array();
 
-      return array('error' => 'bad parameters.');
-
       if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
@@ -7326,7 +7324,10 @@ die();*/
 
 
         if(!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
-          return array('popupError' => 'Normal user cannot change candidate name');
+        {
+          return array('error' => 'Normal user cannot change candidate name');
+          //return array('popupError' => 'Normal user cannot change candidate name');
+        }
 
         if(!$this->_oLogin->isAdmin() && $asData['keyword'] != '')
         {
@@ -7338,12 +7339,16 @@ die();*/
           }
           else
           {
-            return array('popupError' => 'Normal user cannot delete keyword');
+            return array('error' => 'Normal user cannot delete keyword');
+            //return array('popupError' => 'Normal user cannot delete keyword');
           }
         }
 
         if(!$this->_oLogin->isAdmin() && $asData['lastname'] != getValue('lastname'))
-          return array('popupError' => 'Normal user cannot change candidate name');
+        {
+          return array('error' => 'Normal user cannot change candidate name');
+          //return array('popupError' => 'Normal user cannot change candidate name');
+        }
 
         //Date created is use and overwritten everywhere... so we're using an alias
         $asData['date_created'] = $asData['date_added'];
@@ -7359,7 +7364,10 @@ die();*/
           assert('false; // we\'ve got a candidate without profile here ['.$pnCandidatePk.'].');
 
         if(empty($pnCandidatePk) || empty($nProfilePk))
-          return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
+        {
+          return array('error'=>'Could not find the candidate you\'re trying to update. It may have been deleted.');
+          //return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
+        }
 
         //for candi_profile table update
         $asData['candidatefk'] = $pnCandidatePk;
