@@ -4,7 +4,7 @@
 //echo $sDate;
 
 
-$browser = get_browser(null, true);
+$browser = get_browser();
 echo $browser;
 
 	/*define('DB_NAME_SLISTEM','slistem');
