@@ -6573,7 +6573,10 @@ class CSl_candidateEx extends CSl_candidate
       $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
       //$oForm->addCustomHtml($addHtml);
 
-      return $oForm->getDisplay();
+      $sHTML = $oForm->getDisplay();
+      $sHTML.= $addHtml;
+      return $sHTML;
+      //return $oForm->getDisplay();
 
       //$addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
