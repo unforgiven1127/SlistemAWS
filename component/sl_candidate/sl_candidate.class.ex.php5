@@ -6198,390 +6198,246 @@ class CSl_candidateEx extends CSl_candidate
     // ====================================================================================
     // ====================================================================================
     // start CANDIDATE section
-    private function _getCandidateAddForm($pnCandidatePk = 0)
+    private function _getCandidateAddForm($pnPk = 0)
     {
-      if(!assert('is_integer($pnCandidatePk)'))
-        $pnCandidatePk = 0;
+      if(!assert('is_integer($pnPk)'))
+        return '';
 
-      $bDisplayAllTabs = true;
-      $asAttribute = array();
-      $parameters = array();
-
-      if(empty($pnCandidatePk))
+      if(isset($_GET['cid']) && !empty($_GET['cid']))
       {
+        $pnPk = $_GET['cid'];
+      }
+      $changeOwnerFlag = false;
+      $asCompanyData = array();
 
-        $nDuplicateId = (int)getValue('duplicate');
-        if(!empty($nDuplicateId))
-        {
-          $oDbResult = $this->_getModel()->getCandidateFormData($nDuplicateId);
-          $oDbResult->readFirst();
-          $asClone = $oDbResult->getData();
+      if(empty($pnPk))
+      {
+        $asCompanyData['level'] = 1;
+        $asCompanyData['is_client'] = 0;
+        $asCompanyData['name'] = '';
+        $asCompanyData['corporate_name'] = '';
+        $asCompanyData['industrypk'] = 0;
+        $asCompanyData['description'] = '';
 
-          $oDbResult = new CDbResult();
-          $oDbResult->setFieldValue('companyfk', $asClone['companyfk']);
-          $oDbResult->setFieldValue('company_name', $asClone['company_name']);
-          $oDbResult->setFieldValue('occupationfk', $asClone['occupationfk']);
-          $oDbResult->setFieldValue('industryfk', $asClone['industryfk']);
-          $oDbResult->setFieldValue('is_client', $asClone['is_client']);
-        }
-        else
-          $oDbResult = new CDbResult();
+        $asCompanyData['revenue'] = '';
+        $asCompanyData['hq'] = '';
+        $asCompanyData['hq_japan'] = '';
+        $asCompanyData['num_employee_world'] = '';
+        $asCompanyData['num_employee_japan'] = '';
+        $asCompanyData['num_branch_japan'] = '';
+        $asCompanyData['num_branch_world'] = '';
 
+        $asCompanyData['phone'] = '';
+        $asCompanyData['fax'] = '';
+        $asCompanyData['email'] = '';
+        $asCompanyData['website'] = '';
       }
       else
       {
-        $bDisplayAllTabs = false;
-        $oDbResult = $this->_getModel()->getCandidateFormData($pnCandidatePk);
-        $oDbResult->readFirst();
+        $changeOwnerFlag = true;
+        //$asCompanyData = $this->_getModel()->getCompanyData($pnPk, true);
+        $asCompanyData = getCompanyInfo($pnPk);
+        $allCompanyDataWithMultipleIndustries = $asCompanyData;
 
-        $sAttribute = $oDbResult->getFieldValue('attribute_type');
-        if(!empty($sAttribute))
+        $asCompanyData = $asCompanyData[0];// burada birden fazla obje geliyor industry fazla olunca hepsi icin ayri bir satir donuyor
+        $asCompanyData['industry'] = array();
+        foreach ($allCompanyDataWithMultipleIndustries as $key => $value)
         {
-          $asAttributeType = explode(',', $sAttribute);
-          $asAttributeValue = explode(',', $oDbResult->getFieldValue('attribute_value'));
-          $asAttributeLabel = explode(',', $oDbResult->getFieldValue('attribute_label'));
-          foreach($asAttributeType as $nKey => $sValue)
-            $asAttribute[$sValue][$asAttributeValue[$nKey]] = $asAttributeLabel[$nKey];
+           $asCompanyData['industry'][] = $value['indus_name'];
+           $asCompanyData['industry_id'][] = $value['sl_industrypk'];
         }
+        if(empty($asCompanyData))
+          return 'Could not find the company.';
 
-        //Adding a candidate with a $pnCandidatePk ==> duplicate the candidate
-        //need to remove all the
-        if($this->csAction == CONST_ACTION_ADD)
-        {
-          $bDisplayAllTabs = true;
-          $asToKeep = array('department' => $oDbResult->getFieldValue('department'),
-              'companyfk' => (int)$oDbResult->getFieldValue('companyfk'),
-              'company_name' => $oDbResult->getFieldValue('company_name'),
-              'industryfk' => (int)$oDbResult->getFieldValue('industryfk'));
-
-          $oDbResult = new CDbResult();
-          foreach($asToKeep as $sField => $vValue)
-            $oDbResult->setFieldValue($sField, $vValue);
-
-          $oDbResult->readFirst();
-        }
       }
 
-      $this->_oPage->addJsFile(self::getResourcePath().'js/candidate_form.js');
-      $this->_oPage->addJsFile('/component/form/resources/js/currency.js');
-      $this->_oPage->addJsFile(array('/component/form/resources/js/jquery.bsmselect.js',
-        '/component/form/resources/js/jquery.bsmselect.sortable.js','/component/form/resources/js/jquery.bsmselect.compatibility.js'));
+      $sUpdateField = getValue('update_field', '');
 
-      $this->_oPage->addCssFile(self::getResourcePath().'css/sl_candidate.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/jquery.bsmselect.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/form.css');
-      $this->_oPage->addCssFile('/component/form/resources/css/token-input-mac.css');
+      $oForm = $this->_oDisplay->initForm('companyAddForm');
+      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_COMP, $pnPk);
 
-
-      $oForm = $this->_oDisplay->initForm('candidateAddForm');
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI, $pnCandidatePk);
-
-      $oForm->setFormParams('addcandidate', true, array('action' => $sURL, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate', 'ajaxTarget' => 'candi_duplicate'));
+      $oForm->setFormParams('addcompany', true, array('action' => $sURL, 'class' => 'companyAddForm', 'submitLabel'=>'Save company'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
-      if($bDisplayAllTabs)
-      {
-        ini_set('upload_tmp_dir', CONST_PATH_UPLOAD_DIR);
-      }
+      $oForm->addField('input', 'loginfk', array('type' => 'hidden', 'value' => $this->casUserData['pk']));
+      $oForm->addField('input', 'update_field', array('type' => 'hidden', 'value' => $sUpdateField));
 
-      $contact_details_form = '';
-
-      if(empty($pnCandidatePk) || $this->_oLogin->isAdmin())
-        $readonly_name = '';
+      if(empty($sUpdateField))
+        $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add/edit company details'));
       else
-        $readonly_name = 'readonly';
+        $oForm->addField('misc', '', array('type' => 'title', 'title'=> 'Add a company - you will be back to the candidate form afterward.'));
 
-      $nSex = (int)$oDbResult->getFieldValue('sex');
 
-      $sDate = $oDbResult->getFieldValue('date_birth');
-      $sDefaultDate = date('Y', strtotime('-30 years')).'-02-02';
-      $sYearRange = (date('Y') - 70).':'.(date('Y') - 12);
+      $selectA = '';
+      $selectB = '';
+      $selectC = '';
+      $selectH = '';
+      $select01 = "";
+      $select0 = "";
 
-      $sYearRangeToday = (date('Y') - 0).':'.(date('Y') - 0);
+      $selectA1 = "";
+      $selectB1 = "";
+      $selectC1 = "";
+      $selectH1 = "";
 
-      $todaysDate = date('Y-m-d');
-
-      $calendar_icon = '//'.CONST_CRM_HOST.'/component/form/resources/pictures/date-icon.png';
-
-      $bEstimated = (bool)$oDbResult->getFieldValue('is_birth_estimation');
-      $nAge = date('Y') - date('Y', strtotime($sDate));
-
-      $asCurrency = $this->getVars()->getCurrencies();
-
-      $add_company_url = $this->_oPage->getAjaxUrl(
-        $this->csUid, CONST_ACTION_ADD, CONST_CANDIDATE_TYPE_COMP, 0, array('update_field' => '#company',));
-
-      $company_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP, 0);
-
-      if($oDbResult->getFieldValue('companyfk'))
+      if($asCompanyData['level'] == 1)
       {
-        $company_token = '[{id:"'.$oDbResult->getFieldValue('companyfk').'",
-          name:"#'.$oDbResult->getFieldValue('companyfk').' - '.$oDbResult->getFieldValue('company_name').'"}]';
+        $selectA1 = "selected";
+        $selectA = "selected";
       }
-      else
-        $company_token = array();
-
-      $occupation_tree = $oForm->getField('paged_tree', 'occupationpk', array('text' => '-- Occupation --',
-        'label' => '', 'value' => $oDbResult->getFieldValue('occupationfk'), 'style' => 'width: 165px; min-width: 145px;'));
-      $occupation_tree->addOption($this->_getTreeData('occupation'));
-
-      $industry_tree = $oForm->getField('paged_tree', 'industrypk', array('text' => '-- Industry --',
-        'label' => '', 'value' => $oDbResult->getFieldValue('industryfk'), 'style' => 'width: 165px; min-width: 145px;'));
-      $industry_tree->addOption($this->_getTreeData('industry'));
-
-      $candidate_salary = formatNumber(round($oDbResult->getFieldValue('salary')), $this->casSettings['candi_salary_format']);
-      $candidate_salary_bonus = formatNumber(round($oDbResult->getFieldValue('bonus')), $this->casSettings['candi_salary_format']);
-
-      $target_low = formatNumber(round($oDbResult->getFieldValue('target_low')), $this->casSettings['candi_salary_format']);
-      $target_high = formatNumber(round($oDbResult->getFieldValue('target_hig')), $this->casSettings['candi_salary_format']);
-
-      $nStatus = 0;
-      $bInPlay = false;
-      $sDatePlayed = '';
-      $asDateMeeting = array('meeting' => '', 'met' => '');
-
-      if(!empty($pnCandidatePk))
+      if($asCompanyData['level'] == 2)
       {
-        $nStatus = (int)$oDbResult->getFieldValue('statusfk');
-
-        $bInPlay = (bool)$oDbResult->getFieldValue('_in_play');
-
-        if(!$bInPlay)
-        {
-          $sDatePlayed = (bool)$this->_getModel()->getLastPositionPlayed($pnCandidatePk);
-
-          if(empty($sDatePlayed))
-            $asDateMeeting = $this->_getModel()->getLastInterview($pnCandidatePk);
-        }
+        $selectB1 = "selected";
+        $selectB = "selected";
       }
-
-      // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-      // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-      // manage status field
-
-      if(CDependency::getCpLogin()->isAdmin())
+      if($asCompanyData['level'] == 3)
       {
-        $asStatus = '<option value="0"> - </option>
-          <option value="1" '.(($nStatus === 1)? ' selected ':'').'> Name Collect </option>
-          <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
-          <option value="3" '.(($nStatus === 3)? ' selected ':'').' class="unavailable"> Interview set</option>
-          <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
-          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>
-          <option value="8" '.(($nStatus === 8)? ' selected ':'').'> Lost </option>';
+        $selectC1 = "selected";
+        $selectC = "selected";
       }
-      elseif($bInPlay)
+      if($asCompanyData['level'] == 8)
       {
-        $asStatus = '
-          <option value="2"> Contacted </option>
-          <option value="3" class="unavailable"> Interview set</option>
-          <option value="5"> Phone assessed </option>
-          <option value="6" selected="selected"> Assessed - [ in play ] </option>';
-      }
-      elseif(!empty($sDatePlayed) || !empty($asDateMeeting['met']))
-      {
-        if(!empty($sDatePlayed))
-          $sLegend = ' previously in play';
-        else
-          $sLegend = ' candidates met';
-
-        $asStatus = '
-          <option value="2"> Contacted </option>
-          <option value="3" class="unavailable"> Interview set</option>
-          <option value="5"> Phone assessed </option>
-          <option value="6" selected="selected"> Assessed - [ '.$sLegend.' ] </option>';
+        $selectH1 = "selected";
+        $selectH = "selected";
       }
       else
       {
-        if(!empty($asDateMeeting['meeting']) && $nStatus < 3)
-        {
-          $nStatus = 3;
-          $sLegend = ' [ for '.$asDateMeeting['meeting'].' ]';
-          $sClass = '';
-        }
-        else
-        {
-          $sLegend = '';
-          $sClass = ' class="unavailable" ';
-        }
+        $select01 = "selected";
+        $select0 = "selected";
+      }
 
-        $asStatus = '
-          <option value="1" '.(($nStatus === 1)? ' selected ':'').'> Name Collect </option>
-          <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
-          <option value="3" '.(($nStatus === 3)? ' selected ':'').' '.$sClass.'> Interview set '.$sLegend.'</option>
-          <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
-          <option value="6" '.(($nStatus === 6)? ' selected ':'').'> Assessed in person </option>';
-          if(CDependency::getCpLogin()->isAdmin())
+      $is_client1Y = '';
+      $is_client2Y = '';
+      $is_client1N = '';
+      $is_client2N = '';
+
+      if($asCompanyData['is_client'] == 1)
+      {
+        $is_client1Y = 'selected';
+        $is_client2Y = 'selected';
+      }
+      else
+      {
+        $is_client1N = 'selected';
+        $is_client2N = 'selected';
+      }
+
+       $oForm->addField('select', 'level', array('label'=> 'Level'));
+       $oForm->addoption('level', array('label' => 'A', 'value' => '1', $selectA1 => $selectA));
+       $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
+       $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
+       $oForm->addoption('level', array('label' => 'H', 'value' => '8', $selectH1 => $selectH));
+       $oForm->addoption('level', array('label' => '-', 'value' => '0', $select01 => $select0));
+
+       $oForm->addField('select', 'is_client', array('label'=> 'Client '));
+       $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
+       $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
+
+       $activeUserList = getActiveUsers();
+
+       $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
+       $oForm->addoption('company_owner_new',array( 'value' => '0'));
+       foreach ($activeUserList as $key => $user)
+       {
+         $userFullName = $user['firstname'].' '.$user['lastname'];
+         $newOwnerValue = $user['loginpk'].'_'.$pnPk;
+         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $newOwnerValue));
+       }
+
+       if($changeOwnerFlag)
+       {
+          $owners = getCompanyOwner($pnPk);
+          /*if(!empty($owners))
           {
-            $asStatus .= '<option value="8" '.(($nStatus === 8)? ' selected ':'').' '.$sClass.'> Lost </option>';
-          }
-      }
+            foreach ($owners as $key => $value)
+            {
+              ChromePhp::log($value);
+            }
+          }*/
 
-      $is_client = (int)$oDbResult->getFieldValue('client') + (int)$oDbResult->getFieldValue('is_client');
-
-      if((int)$oDbResult->getFieldValue('skill_ag') == 0)
-      {
-        $oDbResult->setFieldValue('skill_ag', '-');
-        $oDbResult->setFieldValue('skill_ap', '-');
-        $oDbResult->setFieldValue('skill_am', '-');
-        $oDbResult->setFieldValue('skill_mp', '-');
-        $oDbResult->setFieldValue('skill_in', '-');
-        $oDbResult->setFieldValue('skill_ex', '-');
-        $oDbResult->setFieldValue('skill_fx', '-');
-        $oDbResult->setFieldValue('skill_ch', '-');
-        $oDbResult->setFieldValue('skill_ed', '-');
-        $oDbResult->setFieldValue('skill_pl', '-');
-        $oDbResult->setFieldValue('skill_e', '-');
-        $spinner_class = ' empty_spinner';
-      }
-      else
-        $spinner_class = '';
-
-      if ($oDbResult->getFieldValue('cpa') && $oDbResult->getFieldValue('mba'))
-      {
-        $diploma_options = '
-          <option value="cpa">CPA</option>
-          <option value="mba">MBA</option>
-          <option value="both" selected>both</option>
-          ';
-      }
-      else if ($oDbResult->getFieldValue('cpa'))
-      {
-        $diploma_options = '
-          <option value="cpa" selected>CPA</option>
-          <option value="mba">MBA</option>
-          <option value="both">both</option>
-          ';
-      }
-      else if ($oDbResult->getFieldValue('mba'))
-      {
-        $diploma_options = '
-          <option value="cpa">CPA</option>
-          <option value="mba" selected>MBA</option>
-          <option value="both">both</option>
-          ';
-      }
-      else
-      {
-        $diploma_options = '
-          <option value="cpa">CPA</option>
-          <option value="mba">MBA</option>
-          <option value="both">both</option>
-          ';
-      }
-
-      if (isset($asAttribute['candi_lang']))
-        $alt_language = $this->getVars()->getLanguageOption($asAttribute['candi_lang']);
-      else
-        $alt_language = $this->getVars()->getLanguageOption();
-
-      $alt_occupation_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_OCCUPATION);
-      $alt_industry_token_url = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
-
-      $alt_occupation_token = $alt_industry_token = '';
-
-      if(isset($asAttribute['candi_occu']))
-      {
-        foreach($asAttribute['candi_occu'] as $sValue => $sLabel)
-        {
-          $alt_temp_array[] = '{id: "'.$sValue.'", name: "'.$sLabel.'"}';
-          $alt_occupation_token = '['.implode(',', $alt_occupation_array).']';
-
-          $alt_temp_array = '';
-        }
-      }
-
-      if(isset($asAttribute['candi_indus']))
-      {
-        foreach($asAttribute['candi_indus'] as $sValue => $sLabel)
-        {
-          $alt_temp_array[] = '{id: "'.$sValue.'", name: "'.$sLabel.'"}';
-          $alt_industry_token = '['.implode(',', $alt_occupation_array).']';
-        }
-      }
-
-      if($bDisplayAllTabs)
-      {
-          $oForm->addSection('', array('class' => 'candidate_inner_section'));
-
-          //reuse what ha sbeen done for the standalone form
-          $asTypes = getContactTypes();
-          for($nCount = 0; $nCount < 4; $nCount++)
+          $i=0;
+          foreach ($owners as $key => $value)
           {
-            $this->_getContactFormRow($oForm, $nCount, $asTypes, array());
+            $i++;
+            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '.$i));
+            foreach ($activeUserList as $key => $user)
+            {
+              $userFullName = $user['firstname'].' '.$user['lastname'];
+              $optionValue = $user['loginpk'].'_'.$value['id']; //kullanicicnin id si _ owner tablosundaki id
+              if($user['loginpk'] == $value['owner'])//$asCompanyData['company_owner'] idi multi yapinca degistirdk
+              {
+                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $optionValue, 'selected' => 'selected'));
+              }
+              else
+              {
+                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $optionValue));
+              }
+            }
+            $deleteOptionValue = '000_'.$value['id'];
+            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => $deleteOptionValue));
           }
+       }
 
-          $oForm->closeSection();
+       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
+       $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
 
-          $contact_details_form = $oForm->getDisplay(true);
-      }
+       $oForm->addField('input', 'corporate_name', array('label'=> 'Brand / public name', 'value' => $asCompanyData['corporate_name']));
 
-      $currency_code = 'jpy';
-      $currencyCode = 'jpy';
+       //$oForm->addField('paged_tree', 'industrypk', array('text' => ' -- Industry --', 'label' => 'industry', 'value' => $oDbResult->getFieldValue('industryfk')));
+       //$oForm->addoption('industrypk', $this->_getTreeData('industry'));
 
+       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_INDUSTRY);
+       $oForm->addField('selector', 'industrypk', array('label' => 'Industries', 'url' => $sURL, 'nbresult' => 10));
+       if(!empty($asCompanyData['industry']))
+       {
+         foreach($asCompanyData['industry'] as $nKey => $sIndustry)
+         {
+          $oForm->addoption('industrypk', array('label' => $sIndustry, 'value' => $asCompanyData['industry_id'][$nKey]));
 
-      if (!empty($oDbResult->getFieldValue('currency')))
-      {
-        $tmp_currency_code = $oDbResult->getFieldValue('currency');
-        if (isset($asCurrency[$tmp_currency_code]))
-          $currency_code = $tmp_currency_code;
-      }
-
-      if (!empty($oDbResult->getFieldValue('currency')))
-      {
-        $allData = $oDbResult->getAll();
-        if(isset($allData[0]['currency']))
-        {
-          $currencyCode = $allData[0]['currency'];
-        }
-      }
+           //$oForm->addoption('industrypk', array('label' => $sIndustry, 'value' => $asCompanyData['industry_id'][$nKey]));
+         }
+       }
 
 
-      $data = array('currencyCode' => $currencyCode,'form_url' => $sURL, 'user_id' => $this->casUserData['pk'], 'readonly_name' => $readonly_name, 'firstname' => $oDbResult->getFieldValue('firstname'), 'lastname' =>$oDbResult->getFieldValue('lastname'),
-        'display_all_tabs' => $bDisplayAllTabs, 'user_sex' => $nSex, 'age_estimate' => $bEstimated,
-        'birth_date' => $sDate, 'estimated_age' => '', 'default_date' => $sDefaultDate,'todaysDate' => $todaysDate,
-        'language' => $this->getVars()->getLanguageOption($oDbResult->getFieldValue('languagefk')),
-        'nationality' => $this->getVars()->getNationalityOption($oDbResult->getFieldValue('nationalityfk')),
-        'location' => $this->getVars()->getLocationOption($oDbResult->getFieldValue('locationfk')),
-        'add_company_url' => $add_company_url, 'company_token' => $company_token,
-        'calendar_icon' => $calendar_icon, 'title' => $oDbResult->getFieldValue('title'),
-        'department' => $oDbResult->getFieldValue('department'), 'company_token_url' => $company_token_url,
-        'company' => $oDbResult->getFieldValue('companyfk'), 'occupation_tree' => $occupation_tree->getDisplay(),
-        'industry_tree' => $industry_tree->getDisplay(), 'candidate_salary' => $candidate_salary,
-        'money_unit' => $this->casSettings['candi_salary_format'], 'currency_code' => $currency_code,
-        'currency_list' => $asCurrency, 'candidate_salary_bonus' => $candidate_salary_bonus, 'target_low' => $target_low,
-        'target_high' => $target_high, 'candidate_id' => $pnCandidatePk, 'status_options' => $asStatus,
-        'is_client' => $is_client, 'grade' => $this->getVars()->getCandidateGradeOption($oDbResult->getFieldValue('grade')),
-        'diploma_options' => $diploma_options, 'keyword' => $oDbResult->getFieldValue('keyword'), 'spinner_class' => $spinner_class,
-        'skill_ag' => $oDbResult->getFieldValue('skill_ag'), 'skill_ap' => $oDbResult->getFieldValue('skill_ap'),
-        'skill_am' => $oDbResult->getFieldValue('skill_am'), 'skill_mp' => $oDbResult->getFieldValue('skill_mp'),
-        'skill_in' => $oDbResult->getFieldValue('skill_in'), 'skill_ex' => $oDbResult->getFieldValue('skill_ex'),
-        'skill_fx' => $oDbResult->getFieldValue('skill_fx'), 'skill_ch' => $oDbResult->getFieldValue('skill_ch'),
-        'skill_ed' => $oDbResult->getFieldValue('skill_ed'), 'skill_pl' => $oDbResult->getFieldValue('skill_pl'),
-        'skill_e' => $oDbResult->getFieldValue('skill_e'), 'alt_language' => $alt_language,
-        'alt_occupation_token_url' => $alt_occupation_token_url, 'alt_industry_token_url' => $alt_industry_token_url,
-        'alt_occupation_token' => $alt_occupation_token, 'alt_industry_token' => $alt_industry_token,
-        'is_admin' => CDependency::getCpLogin()->isAdmin(), 'candidate_sys_status' => (int)$oDbResult->getFieldValue('_sys_status'),
-        'candidate_sys_redirect' => (int)$oDbResult->getFieldValue('_sys_redirect'),
-        'contact_details_form' => $contact_details_form, 'year_range' => $sYearRange, 'sYearRangeToday' => $sYearRangeToday
-      );
+      $oForm->addField('textarea', 'description', array('label'=> 'Description', 'value' => $asCompanyData['description']));
 
-      $addHtml = $this->_oDisplay->render('candidate_add_new', $data);
 
-      $oForm2 = $this->_oDisplay->initForm('candiAddForm');
-      //$candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_CANDI);
-      $candidateAddUrl = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_COMP);
+      $oForm->addSection('', array('folded' => 1), 'Structure & employees');
 
-      $oForm2->setFormParams('addcandidate', true, array('action' => $candidateAddUrl, 'class' => 'candiAddForm', 'submitLabel'=>'Save candidate'));
-      $oForm2->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
+      $oForm->addField('input', 'revenue', array('label'=> 'Annual revenue', 'value' => $asCompanyData['revenue']));
+      $oForm->setFieldControl('revenue', array('jsFieldMinSize' => '2'));
 
-      $oForm2->addCustomHtml($addHtml);
+      $oForm->addField('input', 'hq', array('label'=> 'HQ', 'value' => $asCompanyData['hq']));
+      $oForm->addField('input', 'hq_japan', array('label'=> 'HQ in japan', 'value' => $asCompanyData['hq_japan']));
 
-      $sHTML = $oForm2->getDisplay();
+      $oForm->addField('misc', '', array('type'=> 'br'));
 
-      //$sHTML = $this->_oDisplay->render('candidate_add', $data);
+      $oForm->addField('input', 'num_employee', array('label'=> '# employees ', 'value' => $asCompanyData['num_employee_world']));
+      $oForm->setFieldControl('num_employee', array('jsFieldTypeIntegerPositive' => '1'));
 
-      return $sHTML;
+      $oForm->addField('input', 'num_branch_world', array('label'=> '# branch(es)', 'value' => $asCompanyData['num_branch_world']));
+      $oForm->setFieldControl('num_branch_world', array('jsFieldTypeIntegerPositive' => '1'));
+
+      $oForm->addField('input', 'num_employee_japan', array('label'=> '# employees in japan', 'value' => $asCompanyData['num_employee_japan']));
+      $oForm->setFieldControl('num_employee_japan', array('jsFieldTypeIntegerPositive' => '1'));
+
+      $oForm->addField('input', 'num_branch_japan', array('label'=> '# branch(es) in japan', 'value' => $asCompanyData['num_branch_japan']));
+      $oForm->setFieldControl('num_branch_japan', array('jsFieldTypeIntegerPositive' => '1'));
+      $oForm->closeSection();
+
+
+       $oForm->addSection('', array('folded' => 1), 'Contact details');
+
+       $oForm->addField('input', 'phone', array('label'=> 'Phone', 'value' => $asCompanyData['phone']));
+       $oForm->addField('input', 'fax', array('label'=> 'Fax', 'value' => $asCompanyData['fax']));
+       $oForm->addField('input', 'email', array('label'=> 'Email', 'value' => $asCompanyData['email']));
+       $oForm->addField('input', 'website', array('label'=> 'website', 'value' => $asCompanyData['website']));
+       $oForm->closeSection();
+
+
+
+      return $oForm->getDisplay();
     }
 
 
