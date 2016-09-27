@@ -424,8 +424,8 @@ if(CONST_DEV_SERVER)
   if (strpos($gelen, 'Firefox') !== false)
   {
     //echo 'Firefox';
-    //define('CONST_PATH_JS_COMMON', '/common/js/common.js');
-    define('CONST_PATH_JS_COMMON', '/common/js/chrome-common.js');
+    define('CONST_PATH_JS_COMMON', '/common/js/common.js');
+    //define('CONST_PATH_JS_COMMON', '/common/js/chrome-common.js');
   }
   else
   {
