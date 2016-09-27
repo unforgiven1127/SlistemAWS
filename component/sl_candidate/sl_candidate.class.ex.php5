@@ -7379,11 +7379,11 @@ die();*/
         $asData = array();
       }
 
-return array('error'=>'TEST');
+
       //check ll the form fields (test mode only
       //dump('1st - saveCandiData ');
       $asError = $this->_saveCandidateData($pnCandidatePk, true, false, $asData);
-
+return array('error'=>'TEST');
       if(empty($pnCandidatePk))
       {
         //we re-use a function here, so the way it works and the returned value are a bit different
