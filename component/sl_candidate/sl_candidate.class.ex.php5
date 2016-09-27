@@ -7314,13 +7314,14 @@ die();*/
     private function _saveCandidate($pnCandidatePk = 0)
     {
       //buffer to store all the data once checked, to be re-used for saving
+      return array('error' => 'TEST');
       $this->casCandidateData = array();
 
       if(!empty($pnCandidatePk))
       {
         $asData = $this->_getModel()->getCandidateData($pnCandidatePk, true);
         if(empty($asData))
-          return array('popupError' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
+          return array('error' => 'Could not find the candidate you\'re trying to update. It may have been deleted.');
 
 
         if(!$this->_oLogin->isAdmin() && $asData['firstname'] != getValue('firstname'))
