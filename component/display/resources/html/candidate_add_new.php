@@ -463,7 +463,6 @@
 		</div>
 	</div>
 
-</form>
 
 <script>
 	var company_token = '';
