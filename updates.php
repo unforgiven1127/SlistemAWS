@@ -3,11 +3,16 @@
 //$sDate = date('Y-m-d H:i:s');
 //echo $sDate;
 
+$gelen = $_SERVER['HTTP_USER_AGENT'];
 
-echo $_SERVER['HTTP_USER_AGENT'] . "\n\n";
-
-$browser = get_browser(null, true);
-print_r($browser);
+if (strpos($gelen, 'Firefox') !== false)
+{
+    echo 'Firefox';
+}
+else
+{
+  echo 'Chrome vs';
+}
 
 	/*define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
