@@ -133,10 +133,11 @@ class CCompany_sl3 extends CTemplate
           $sHTML.= $this->coDisplay->getFloatHack();
         $sHTML.= $this->coDisplay->getBlocEnd();
 
+        $company_level = getLevels($pasData['level']);
 
         $sHTML.= $this->coDisplay->getBlocStart('', array('class' => 'candi_detail_row'));
           $sHTML.= $this->coDisplay->getBloc('', 'level', array('class' => 'candi_detail_label'));
-          $sHTML.= $this->coDisplay->getBloc('', chr(64+ (int)$pasData['level']), array('class' => 'candi_detail_value'));
+          $sHTML.= $this->coDisplay->getBloc('', $company_level, array('class' => 'candi_detail_value'));
           $sHTML.= $this->coDisplay->getFloatHack();
         $sHTML.= $this->coDisplay->getBlocEnd();
 

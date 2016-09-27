@@ -298,6 +298,13 @@
 					</div>
 				</div>
 			</div>
+
+
+
+
+
+
+
 			<div class="general_form_row">
 				<div style="margin-top: 5px; cursor: pointer;" class="bold italic"
 				onclick="$('#additional_candidate_info').fadeToggle(function(){ $(this).closest('.ui-dialog-content').scrollTop(5000); });">
@@ -485,6 +492,18 @@
 		$('#birth_date').datepicker({
 			defaultDate: '<?php echo $default_date; ?>',
 			yearRange: '<?php echo $year_range; ?>',
+			showButtonPanel: true,
+			changeYear: true,
+			numberOfMonths: 2,
+			showOn: 'both',
+			buttonImage: '<?php echo $calendar_icon; ?>',
+			buttonImageOnly: true,
+			dateFormat: 'yy-mm-dd'
+		});
+
+		$('#meeting_date').datepicker({
+			defaultDate: '<?php echo $todaysDate; ?>',
+			yearRange: '<?php echo $sYearRangeToday; ?>',
 			showButtonPanel: true,
 			changeYear: true,
 			numberOfMonths: 2,

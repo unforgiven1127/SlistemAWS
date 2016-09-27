@@ -54,8 +54,8 @@ class CCandi_row extends CTemplate
 
 
     set_array($pasColumnParam[2]['tag'], '');
-    $asOption = array('class' => $pasColumnParam[2]['tag'].' tplCandiRow_continuous clickable', 'onclick' => $sViewJS);
-    if($pasData['cp_client'])// || $pasData['is_client'] kaldirdik
+    $asOption = array('class' => $pasColumnParam[2]['tag'].' tplCandiRow_continuous clickable','onclick' => $sViewJS);
+    if($pasData['cp_client'] == 1)// || $pasData['is_client'] kaldirdik
     {
       $company_id = $pasData['sl_companypk'];
       $company_information = getCompanyInformation($company_id);
