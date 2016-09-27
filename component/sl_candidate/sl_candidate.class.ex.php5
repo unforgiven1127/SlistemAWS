@@ -5865,7 +5865,7 @@ class CSl_candidateEx extends CSl_candidate
       else
         $nCandidatePk = (int)getValue('candidatepk', 0);
 
-
+        return array('error'=>$nCandidatePk);
       $edit_flag = true;
       foreach ($_POST['sl_contactpk'] as $key => $value) {
         if($value == 0)
