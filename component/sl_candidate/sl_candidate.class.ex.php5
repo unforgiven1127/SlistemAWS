@@ -7386,10 +7386,11 @@ die();*/
 
       if(empty($pnCandidatePk))
       {
-        return array('error'=>'empty pnCandidatePk');
+
         //we re-use a function here, so the way it works and the returned value are a bit different
         //pass a dummy candipk here, will pass the real one when called to save
         $asResult = $this->_getCandidateContactSave(false, 999);
+                return array('error'=>'empty pnCandidatePk');
         if(isset($asResult['error']))
           $asError = array_merge($asError, (array)$asResult['error']);
 
