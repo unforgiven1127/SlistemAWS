@@ -6572,7 +6572,6 @@ class CSl_candidateEx extends CSl_candidate
     }
 
 
-
     private function _getCompanyForm($pnPk = 0)
     {
       if(!assert('is_integer($pnPk)'))
@@ -6648,6 +6647,8 @@ class CSl_candidateEx extends CSl_candidate
       $selectB = '';
       $selectC = '';
       $selectH = '';
+      $select01 = "";
+      $select0 = "";
 
       $selectA1 = "";
       $selectB1 = "";
@@ -6669,10 +6670,15 @@ class CSl_candidateEx extends CSl_candidate
         $selectC1 = "selected";
         $selectC = "selected";
       }
-      else
+      if($asCompanyData['level'] == 8)
       {
         $selectH1 = "selected";
         $selectH = "selected";
+      }
+      else
+      {
+        $select01 = "selected";
+        $select0 = "selected";
       }
 
       $is_client1Y = '';
@@ -6696,26 +6702,54 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addoption('level', array('label' => 'B', 'value' => '2', $selectB1 => $selectB));
        $oForm->addoption('level', array('label' => 'C', 'value' => '3', $selectC1 => $selectC));
        $oForm->addoption('level', array('label' => 'H', 'value' => '8', $selectH1 => $selectH));
+       $oForm->addoption('level', array('label' => '-', 'value' => '0', $select01 => $select0));
 
        $oForm->addField('select', 'is_client', array('label'=> 'Client '));
        $oForm->addoption('is_client', array('label' => 'No', 'value' => '0', $is_client1N => $is_client2N));
        $oForm->addoption('is_client', array('label' => 'Yes', 'value' => '1', $is_client1Y => $is_client2Y));
 
+       $activeUserList = getActiveUsers();
+
+       $oForm->addField('select', 'company_owner_new', array('label'=> 'New owner '));
+       $oForm->addoption('company_owner_new',array( 'value' => '0'));
+       foreach ($activeUserList as $key => $user)
+       {
+         $userFullName = $user['firstname'].' '.$user['lastname'];
+         $newOwnerValue = $user['loginpk'].'_'.$pnPk;
+         $oForm->addoption('company_owner_new',array('label' => $userFullName, 'value' => $newOwnerValue));
+       }
+
        if($changeOwnerFlag)
        {
-          $activeUserList = getActiveUsers();
-          $oForm->addField('select', 'company_owner', array('label'=> 'Owner '));
-          foreach ($activeUserList as $key => $user)
+          $owners = getCompanyOwner($pnPk);
+          /*if(!empty($owners))
           {
-            $userFullName = $user['firstname'].' '.$user['lastname'];
-            if($user['loginpk'] == $asCompanyData['company_owner'])
+            foreach ($owners as $key => $value)
             {
-              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk'], 'selected' => 'selected'));
+              ChromePhp::log($value);
             }
-            else
+          }*/
+
+          $i=0;
+          foreach ($owners as $key => $value)
+          {
+            $i++;
+            $oForm->addField('select', 'company_owner_'.$i, array('label'=> 'Owner '.$i));
+            foreach ($activeUserList as $key => $user)
             {
-              $oForm->addoption('company_owner', array('label' => $userFullName, 'value' => $user['loginpk']));
+              $userFullName = $user['firstname'].' '.$user['lastname'];
+              $optionValue = $user['loginpk'].'_'.$value['id']; //kullanicicnin id si _ owner tablosundaki id
+              if($user['loginpk'] == $value['owner'])//$asCompanyData['company_owner'] idi multi yapinca degistirdk
+              {
+                $oForm->addoption('company_owner_'.$i, array('label' => $userFullName, 'value' => $optionValue, 'selected' => 'selected'));
+              }
+              else
+              {
+                $oForm->addoption('company_owner_'.$i,array('label' => $userFullName, 'value' => $optionValue));
+              }
             }
+            $deleteOptionValue = '000_'.$value['id'];
+            $oForm->addoption('company_owner_'.$i,array('style' => 'color:red;font-weight: bold;','label' => 'DELETE', 'value' => $deleteOptionValue));
           }
        }
 
@@ -6779,6 +6813,7 @@ class CSl_candidateEx extends CSl_candidate
 
       return $oForm->getDisplay();
     }
+
     private function _saveCompany($pnPk)
     {
 
