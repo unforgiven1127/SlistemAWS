@@ -260,11 +260,14 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
   {
     //Refresh a part of the page + callback or action from json
     
+      
 
       $.ajax({
             url: psUrl, //formURL_form,
             type: "POST",
             data: sExtraParams,
+            async: pbSynch,
+            dataType: "JSON",
       success: function(oJsonData)
       {
         mngAjaxScreen(psLoadingScreen);
