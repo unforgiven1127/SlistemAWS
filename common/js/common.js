@@ -272,7 +272,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       context: document.body,
       async: false,
-      dataType: "text",
+      dataType: "JSON",
       success: function(oJsonData)
       {
         mngAjaxScreen(psLoadingScreen);
