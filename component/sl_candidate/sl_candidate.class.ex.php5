@@ -1520,7 +1520,7 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      if($company_information['is_client'] == 1)
+      if($company_information['is_client'] == 1 && $is_owner)
       {
         $company_id_flag = $pasCandidateData['companyfk'];
       }
