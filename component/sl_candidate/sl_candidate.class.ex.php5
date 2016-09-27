@@ -7379,7 +7379,7 @@ die();*/
         $asData = array();
       }
 
-
+return array('error'=>'TEST');
       //check ll the form fields (test mode only
       //dump('1st - saveCandiData ');
       $asError = $this->_saveCandidateData($pnCandidatePk, true, false, $asData);
