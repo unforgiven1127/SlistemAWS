@@ -9470,7 +9470,7 @@ die();*/
 
         if(empty($owner_names))
         {
-          $owner_names = $oLogin->getUserLink(101,false,false,true).', ';
+          $owner_names = $oLogin->getUserLink(101,false,false,true);
         }
         //ChromePhp::log($owner_names);
 
