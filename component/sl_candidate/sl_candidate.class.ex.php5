@@ -9462,8 +9462,9 @@ die();*/
         foreach ($companyOwners as $key => $companyOwner)
         {
           $owner_id = $companyOwner['owner'];
-          $user_information = getUserInformaiton($owner_id);
-          $owner_names.= $user_information['firstname'].',';
+          $owner_names.= $oLogin->getUserLink((int)$companyOwner['owner'],false,false,true).' ';
+          //$user_information = getUserInformaiton($owner_id);
+          //$owner_names.= $user_information['firstname'].',';
         }
         $owner_names = trim($owner_names, ",");
         ChromePhp::log($owner_names);
@@ -9480,7 +9481,7 @@ die();*/
             <div class="cp_id">#'.$asCpData['sl_companypk'].'</div>
             <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'</div>
             <div>TEST</div>
-            
+            <div class="cp_consultant">'.$owner_names.'</div>
             <div class="cp_update">'.substr($asCpData['date_updated'], 0, 10).'&nbsp;</div>
             <div class="cp_employee">'.$employeeCount.'&nbsp;</div>
           </div>';
@@ -9518,7 +9519,7 @@ die();*/
             <div class="cp_quality">Level</div>
             <div class="cp_id">refId</div>
             <div class="cp_name">Company name</div>
-            <div class="">Owner(s)</div>
+            <div class="cp_consultant">Owner(s)</div>
             <div class="cp_update">Last update</div>
             <div class="cp_employee">Nb employee</div>
           </div>';
