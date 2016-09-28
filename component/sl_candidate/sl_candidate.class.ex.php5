@@ -2806,7 +2806,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         //$asListMsg[] = ' just apply pager to reloaded search. ';
         $oPager = CDependency::getComponentByName('pager');
-        $oPager->initPager();
+        //$oPager->initPager();
         $nLimit = $oPager->getLimit();
         $nPagerOffset = $oPager->getOffset();
 
@@ -7061,7 +7061,6 @@ class CSl_candidateEx extends CSl_candidate
 
       if(empty($this->csSearchId) && empty($nHistoryPk))
       {
-        ChromePhp::log('if');
         //$asListMsg[] = ' new search id [empty sId or history]. ';
         $this->csSearchId = manageSearchHistory($this->csUid, CONST_CANDIDATE_TYPE_COMP);
         $oQb->addLimit('0, 50');
@@ -7069,7 +7068,6 @@ class CSl_candidateEx extends CSl_candidate
       }
       else
       {
-        ChromePhp::log('else');
         //$asListMsg[] = ' just apply pager to reloaded search. ';
         $oPager = CDependency::getComponentByName('pager');
         $oPager->initPager();
