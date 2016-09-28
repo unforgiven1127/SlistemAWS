@@ -7138,9 +7138,9 @@ class CSl_candidateEx extends CSl_candidate
         //return array('data' => $this->_oDisplay->getBlocMessage('no company found.'), 'sql' => $oQb->getSql(), 'action' => 'goPopup.removeLastByType(\'layer\');  ');
         return array('data' => $this->_oDisplay->getBlocMessage('no company found.'), 'sql' => $sql, 'action' => 'goPopup.removeLastByType(\'layer\');  ');
       }
-
+      $nResult = $limitlessCount;
       //$nResult = (int)$oDbResult->getFieldValue('nCount');
-      $nResult = $oDbResult->numRows();
+      //$nResult = $oDbResult->numRows();
       if(empty($nResult))
         return array('data' => $this->_oDisplay->getBlocMessage('no company found for '.$oQb->getTitle()), 'nb_result' => $nResult, 'action' => 'goPopup.removeLastByType(\'layer\'); ');
 
@@ -7239,8 +7239,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-      $oConf->setPagerTop(true, 'right', $limitlessCount, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
-      $oConf->setPagerBottom(true, 'right', $limitlessCount, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
+      $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
+      $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
       //===========================================
       //===========================================
