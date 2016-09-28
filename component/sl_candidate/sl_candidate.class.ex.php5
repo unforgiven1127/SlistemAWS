@@ -9467,6 +9467,11 @@ die();*/
           //$owner_names.= $user_information['firstname'].',';
         }
         $owner_names = trim($owner_names, ", ");
+
+        if(empty($owner_names))
+        {
+          $owner_names = $oLogin->getUserLink(101,false,false,true).', ';
+        }
         //ChromePhp::log($owner_names);
 
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
