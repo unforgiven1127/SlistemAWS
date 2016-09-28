@@ -3197,6 +3197,26 @@ var_dump($query);*/
     }
   }
 
+  function getLastContactSeen()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $dateNow = date('Y-m-d H:i:s');
+    $_2hoursBefore = date('Y-m-d H:i:s', strtotime('-2 hours'));
+
+ChromePhp::log($dateNow);
+ChromePhp::log($_2hoursBefore);
+
+
+    //$sQuery = "SELECT * FROM sl_position_link WHERE candidatefk = '".$candidate_id."' ORDER BY sl_position_linkpk DESC";
+
+    //$db_result = $oDB->executeQuery($sQuery);
+
+    //$result = $db_result->getAll();
+
+    //return $result;
+  }
+
   function getLastStatus($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');

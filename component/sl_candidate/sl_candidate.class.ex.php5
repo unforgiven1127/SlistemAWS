@@ -1505,6 +1505,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
+getLastContactSeen();
+      $candidate_id = $pasCandidateData['sl_candidatepk'];
 
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
       $company_information = getCompanyInformation($company_id);
@@ -6166,7 +6168,7 @@ class CSl_candidateEx extends CSl_candidate
             || $asOldData['type'] != $asData['type'])
             {
               logUserHistory($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$asData['sl_contactpk'], $asData, true);
-ChromePhp::log($asOldData);
+
               if($asOldData['value'] == $asData['value'] && $asOldData['type'] == $asData['type'] && $asOldData['description'] != $asData['description'])
               {
                 //$asData['date_update'] = $asOldData['date_update'];
