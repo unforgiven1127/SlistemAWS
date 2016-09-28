@@ -1505,8 +1505,9 @@ class CSl_candidateEx extends CSl_candidate
 
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
-getLastContactSeen();
+
       $candidate_id = $pasCandidateData['sl_candidatepk'];
+      getLastContactSeen($candidate_id,$user_id);
 
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
       $company_information = getCompanyInformation($company_id);

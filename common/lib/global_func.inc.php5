@@ -3216,7 +3216,7 @@ var_dump($query);*/
     ChromePhp::log($result);
     ChromePhp::log($count);
 
-    return $result;
+    //return $result;
   }
 
   function getLastStatus($candidate_id)
