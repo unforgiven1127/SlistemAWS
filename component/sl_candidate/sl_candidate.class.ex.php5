@@ -7018,7 +7018,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyList($poQB = null)
     {
-
       global $gbNewSearch;
 
       $oLogin = CDependency::getCpLogin();
