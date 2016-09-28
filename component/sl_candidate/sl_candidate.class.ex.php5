@@ -9466,6 +9466,7 @@ die();*/
           $owner_names.= $user_information['firstname'].',';
         }
         $owner_names = trim($owner_names, ",");
+        ChromePhp::log($owner_names);
 
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
         $sFirstLetter = strtoupper(substr($asCpData['name'], 0, 1));
@@ -9516,7 +9517,7 @@ die();*/
             <div class="cp_quality">Level</div>
             <div class="cp_id">refId</div>
             <div class="cp_name">Company name</div>
-            <div class="cp_consultant">Owner</div>
+            <div class="cp_consultant">Owner(s)</div>
             <div class="cp_update">Last update</div>
             <div class="cp_employee">Nb employee</div>
           </div>';
