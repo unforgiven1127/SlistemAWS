@@ -3185,15 +3185,23 @@ var_dump($query);*/
 
     foreach ($result as $key => $value)
     {
+
       $company_id = $value['companyfk'];
       $first_activity = $value['date_created'];
       $last_activity = $value['date_created'];
       $user_id = $value['created_by'];
 
-      $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
+
+      $flag = controlOwner($user_id,$company_id);
+
+      if($flag)
+      {
+        $sQueryInsert = "INSERT INTO `client_owner_list` (`user_id`,`company_id`, `first_activity`, `last_activity`)
                VALUES('".$user_id."','".$company_id."','".$first_activity."','".$last_activity."')";
 
-      $db_result = $oDB->executeQuery($sQueryInsert);
+        $db_result = $oDB->executeQuery($sQueryInsert);
+      }
+
     }
   }
 
