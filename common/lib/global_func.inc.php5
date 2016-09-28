@@ -3213,8 +3213,17 @@ var_dump($query);*/
     $result = $db_result->getAll();
     $count = count($result);
 
-    ChromePhp::log($result);
-    ChromePhp::log($count);
+    if($count > 0)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+
+    //ChromePhp::log($result);
+    //ChromePhp::log($count);
 
     //return $result;
   }
