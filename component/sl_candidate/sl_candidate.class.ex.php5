@@ -7018,7 +7018,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyList($poQB = null)
     {
-ChromePhp::log('_getCompanyList');
+
       global $gbNewSearch;
 
       $oLogin = CDependency::getCpLogin();
@@ -7061,6 +7061,7 @@ ChromePhp::log('_getCompanyList');
 
       if(empty($this->csSearchId) && empty($nHistoryPk))
       {
+        ChromePhp::log('if');
         //$asListMsg[] = ' new search id [empty sId or history]. ';
         $this->csSearchId = manageSearchHistory($this->csUid, CONST_CANDIDATE_TYPE_COMP);
         $oQb->addLimit('0, 50');
@@ -7068,6 +7069,7 @@ ChromePhp::log('_getCompanyList');
       }
       else
       {
+        ChromePhp::log('else');
         //$asListMsg[] = ' just apply pager to reloaded search. ';
         $oPager = CDependency::getComponentByName('pager');
         $oPager->initPager();
