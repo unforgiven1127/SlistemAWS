@@ -7127,7 +7127,8 @@ class CSl_candidateEx extends CSl_candidate
       $db_result = $oDB->executeQuery($noLimit);
 
       $allResult = $db_result->getAll();
-      ChromePhp::log($allResult);
+      $limitlessCount = count($allResult);
+      ChromePhp::log($limitlessCount);
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
       $oDbResult = $this->_getModel()->executeQuery($sql);
