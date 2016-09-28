@@ -6154,8 +6154,6 @@ class CSl_candidateEx extends CSl_candidate
             $bRead = $oDbResult->readNext();
           }
 
-ChromePhp::log($asPrevious);
-
           foreach($asContact['update'] as $asData)
           {
             if(!isset($asPrevious[$asData['sl_contactpk']]))
@@ -6168,7 +6166,7 @@ ChromePhp::log($asPrevious);
             || $asOldData['type'] != $asData['type'])
             {
               logUserHistory($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$asData['sl_contactpk'], $asData, true);
-
+ChromePhp::log($asOldData);
               if($asOldData['value'] == $asData['value'] && $asOldData['type'] == $asData['type'] && $asOldData['description'] != $asData['description'])
               {
                 $asData['date_update'] = $asOldData['date_update'];
