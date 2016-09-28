@@ -7121,14 +7121,14 @@ class CSl_candidateEx extends CSl_candidate
       $explodeLimit = explode('LIMIT',$sql);
       $noLimit = $explodeLimit[0];
 
-      ChromePhp::log($noLimit);
+      //ChromePhp::log($noLimit);
       $oDB = CDependency::getComponentByName('database');
 
       $db_result = $oDB->executeQuery($noLimit);
 
       $allResult = $db_result->getAll();
       $limitlessCount = count($allResult);
-      ChromePhp::log($limitlessCount);
+      ChromePhp::log($sql);
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
       $oDbResult = $this->_getModel()->executeQuery($sql);
