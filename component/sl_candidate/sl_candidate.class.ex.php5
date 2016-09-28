@@ -9479,7 +9479,7 @@ die();*/
             <div class="cp_quality qlt_'.$asCpData['level_letter'].'">'.$asCpData['level_letter'].'</div>
             <div class="cp_id">#'.$asCpData['sl_companypk'].'</div>
             <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'</div>
-            <div class="cp_consultant">'.$owner_names.'</div>
+            <div class="cp_consultant"><div>'.$owner_names.'</div></div>
             <div class="cp_update">'.substr($asCpData['date_updated'], 0, 10).'&nbsp;</div>
             <div class="cp_employee">'.$employeeCount.'&nbsp;</div>
           </div>';
