@@ -7116,7 +7116,11 @@ class CSl_candidateEx extends CSl_candidate
       $sql = $oQb->getSql();
       //ChromePhp::log($sql);
       $sql = str_replace('AND  sind.label LIKE "%Industry%"','',$sql);
-      ChromePhp::log($sql);
+
+      $explodeLimit = explode('LIMIT',$sql);
+      $noLimit = $explodeLimit[0];
+
+      ChromePhp::log($noLimit);
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
       $oDbResult = $this->_getModel()->executeQuery($sql);
