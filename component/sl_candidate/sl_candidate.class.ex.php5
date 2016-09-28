@@ -9518,7 +9518,7 @@ die();*/
             <div class="cp_quality">Level</div>
             <div class="cp_id">refId</div>
             <div class="cp_name">Company name</div>
-            <div class="cp_consultant">Owner(s)</div>
+            <div class="">Owner(s)</div>
             <div class="cp_update">Last update</div>
             <div class="cp_employee">Nb employee</div>
           </div>';
