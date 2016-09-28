@@ -3197,24 +3197,26 @@ var_dump($query);*/
     }
   }
 
-  function getLastContactSeen()
+  function getLastContactSeen($candidate_id,$user_id)
   {
+    //$action = 'Contacts viewed';
     $oDB = CDependency::getComponentByName('database');
 
     $dateNow = date('Y-m-d H:i:s');
     $_2hoursBefore = date('Y-m-d H:i:s', strtotime('-2 hours'));
 
-ChromePhp::log($dateNow);
-ChromePhp::log($_2hoursBefore);
 
+    $sQuery = "SELECT * FROM login_system_history lsh WHERE lsh.userfk = '".$user_id."' AND lsh.cp_pk = '".$candidate_id."' AND action = 'Contacts viewed' ";
 
-    //$sQuery = "SELECT * FROM sl_position_link WHERE candidatefk = '".$candidate_id."' ORDER BY sl_position_linkpk DESC";
+    $db_result = $oDB->executeQuery($sQuery);
 
-    //$db_result = $oDB->executeQuery($sQuery);
+    $result = $db_result->getAll();
+    $count = count($result);
 
-    //$result = $db_result->getAll();
+    ChromePhp::log($result);
+    ChromePhp::log($count);
 
-    //return $result;
+    return $result;
   }
 
   function getLastStatus($candidate_id)
