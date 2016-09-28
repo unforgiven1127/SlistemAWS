@@ -7239,8 +7239,8 @@ class CSl_candidateEx extends CSl_candidate
 
       $oConf->addBlocMessage('<span class="search_result_title_nb">'.$nResult.' result(s)</span> '.implode(', ', $asListMsg), array(), 'title');
 
-      $oConf->setPagerTop(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
-      $oConf->setPagerBottom(true, 'right', $nResult, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
+      $oConf->setPagerTop(true, 'right', $limitlessCount, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
+      $oConf->setPagerBottom(true, 'right', $limitlessCount, $sURL.'&list=1', array('ajaxTarget' => '#'.$this->csSearchId));
 
       //===========================================
       //===========================================
