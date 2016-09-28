@@ -434,10 +434,14 @@ if(CONST_DEV_SERVER)
 }
 else
 {
-  define('CONST_PATH_JS_JQUERY', '/common/js/jquery.min.js');
-  define('CONST_PATH_JS_JQUERYUI', '/common/js/jquery-ui.min.js');
-  define('CONST_PATH_JS_POPUP', '/common/js/popup.class.min.js');
+  //define('CONST_PATH_JS_JQUERY', '/common/js/jquery.min.js');
+  define('CONST_PATH_JS_JQUERY', '/common/js/jquery.js');
+  //define('CONST_PATH_JS_JQUERYUI', '/common/js/jquery-ui.min.js');
+  define('CONST_PATH_JS_JQUERYUI', '/common/js/jquery-ui.js');
+  //define('CONST_PATH_JS_POPUP', '/common/js/popup.class.min.js');
+  define('CONST_PATH_JS_POPUP', '/common/js/popup.class.js');
   //define('CONST_PATH_JS_COMMON', '/common/js/common.min.js');
+  $gelen = $_SERVER['HTTP_USER_AGENT'];
   if (strpos($gelen, 'Firefox') !== false)
   {
     //echo 'Firefox';
