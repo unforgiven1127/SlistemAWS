@@ -6169,8 +6169,8 @@ class CSl_candidateEx extends CSl_candidate
 ChromePhp::log($asOldData);
               if($asOldData['value'] == $asData['value'] && $asOldData['type'] == $asData['type'] && $asOldData['description'] != $asData['description'])
               {
-                $asData['date_update'] = $asOldData['date_update'];
-                $asData['updated_by'] = $asOldData['updated_by'];
+                //$asData['date_update'] = $asOldData['date_update'];
+                //$asData['updated_by'] = $asOldData['updated_by'];
               }
               else
               {
