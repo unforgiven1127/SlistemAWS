@@ -9457,6 +9457,16 @@ die();*/
         $company_id = $asCpData['sl_companypk'];
         $employeeCount = getCompanyEmployeeCount($company_id);
 
+        $companyOwners = getCompanyOwner($company_id);
+        $owner_names = '';
+        foreach ($companyOwners as $key => $companyOwner)
+        {
+          $owner_id = $companyOwner['owner'];
+          $user_information = getUserInformaiton($owner_id);
+          $owner_names.= $user_information['firstname'].',';
+        }
+        $owner_names = trim($owner_names, ",");
+
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
         $sFirstLetter = strtoupper(substr($asCpData['name'], 0, 1));
         if(is_numeric($sFirstLetter))
@@ -9468,7 +9478,7 @@ die();*/
             <div class="cp_quality qlt_'.$asCpData['level_letter'].'">'.$asCpData['level_letter'].'</div>
             <div class="cp_id">#'.$asCpData['sl_companypk'].'</div>
             <div class="cp_name"><a href="javascript:;" onclick="popup_candi(this, \''.$sURL.'\');">'.$asCpData['name'].'</div>
-            <div class="cp_consultant">'.$oLogin->getUserLink((int)$asCpData['company_owner']).'</div>
+            <div class="cp_consultant">'.$owner_names.'</div>
             <div class="cp_update">'.substr($asCpData['date_updated'], 0, 10).'&nbsp;</div>
             <div class="cp_employee">'.$employeeCount.'&nbsp;</div>
           </div>';
