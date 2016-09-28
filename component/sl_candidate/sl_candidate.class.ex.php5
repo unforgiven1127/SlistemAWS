@@ -2806,7 +2806,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         //$asListMsg[] = ' just apply pager to reloaded search. ';
         $oPager = CDependency::getComponentByName('pager');
-        //$oPager->initPager();
+        $oPager->initPager();
         $nLimit = $oPager->getLimit();
         $nPagerOffset = $oPager->getOffset();
 
@@ -2987,7 +2987,7 @@ class CSl_candidateEx extends CSl_candidate
         {
           $poQB->addLimit('0, '.$nLimit);
           $sQuery = $poQB->getSql();
-          $oPager->setOffset(1);
+          //$oPager->setOffset(1);
         }
       }
 
