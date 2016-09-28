@@ -7083,6 +7083,8 @@ class CSl_candidateEx extends CSl_candidate
       else
         $oQb->addSelect('*, GROUP_CONCAT(sind.label) as industry_list');
 
+      $oQb->addSelect(',count(*) as count');
+
       $oQb->addJoin('left', 'sl_attribute', 'satt', 'satt.type = \'cp_indus\' AND satt.itemfk = scom.sl_companypk');
       $oQb->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = satt.attributefk');
       $oQb->addGroup('scom.sl_companypk');
