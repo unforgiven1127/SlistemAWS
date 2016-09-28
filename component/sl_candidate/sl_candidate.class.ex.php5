@@ -9462,11 +9462,11 @@ die();*/
         foreach ($companyOwners as $key => $companyOwner)
         {
           $owner_id = $companyOwner['owner'];
-          $owner_names.= $oLogin->getUserLink((int)$companyOwner['owner'],false,false,true).' ';
+          $owner_names.= $oLogin->getUserLink((int)$companyOwner['owner'],false,false,true).', ';
           //$user_information = getUserInformaiton($owner_id);
           //$owner_names.= $user_information['firstname'].',';
         }
-        $owner_names = trim($owner_names, ",");
+        $owner_names = trim($owner_names, ", ");
         //ChromePhp::log($owner_names);
 
         $asCpData['level_letter'] = $asLetter[$asCpData['level']];
