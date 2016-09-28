@@ -6169,8 +6169,17 @@ ChromePhp::log($asPrevious);
             {
               logUserHistory($this->csUid, CONST_ACTION_EDIT, CONST_CANDIDATE_TYPE_CONTACT, (int)$asData['sl_contactpk'], $asData, true);
 
-              $asData['date_update'] = date('Y-m-d H:i:s');
-              $asData['updated_by'] = $this->casUserData['pk'];
+              if($asOldData['value'] == $asData['value'] && $asOldData['type'] == $asData['type'] && $asOldData['description'] != $asData['description'])
+              {
+                $asData['date_update'] = $asOldData['date_update'];
+                $asData['updated_by'] = $asOldData['updated_by'];
+              }
+              else
+              {
+                $asData['date_update'] = date('Y-m-d H:i:s');
+                $asData['updated_by'] = $this->casUserData['pk'];
+              }
+
               unset($asData['date_create']);
               unset($asData['loginfk']);
 
