@@ -1349,9 +1349,17 @@ class CSl_candidateEx extends CSl_candidate
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
+      $candidate_id = $pasCandidateData['sl_candidatepk'];
+      $latestFlag = getLastContactSeen($candidate_id,$user_id);
+
       $company_id = $pasCandidateData['companyfk']; // company client mi diye kontrol etmemiz gerekiyor.
       $company_information = getCompanyInformation($company_id);
       $is_owner = true;
+
+      if($latestFlag)
+      {
+        $is_owner = false;
+      }
 
       $owners = getCompanyOwner($company_id);
 
