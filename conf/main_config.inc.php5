@@ -441,7 +441,7 @@ else
   if (strpos($gelen, 'Firefox') !== false)
   {
     //echo 'Firefox';
-    define('CONST_PATH_JS_COMMON', '/common/js/common.min.js');
+    define('CONST_PATH_JS_COMMON', '/common/js/common.js');
   }
   else
   {
