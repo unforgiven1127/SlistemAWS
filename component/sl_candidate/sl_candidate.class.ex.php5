@@ -9421,7 +9421,6 @@ die();*/
 
     private function _getNoScoutList()
     {
-      fillCompanyOwnerTable();
       $oPage = CDependency::getCpPage();
       $oLogin = CDependency::getCpLogin();
       $oHTML = CDependency::getCpHtml();
