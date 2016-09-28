@@ -133,7 +133,9 @@ class CPagerEx extends CPager
     //===========================================================================================
     //Init
     //===========================================================================================
-
+ChromePhp::log($this->cbInitialized);
+ChromePhp::log($pnResult);
+ChromePhp::log($nPagerLimit);
     if(!$this->cbInitialized)
       $this->initPager();
 

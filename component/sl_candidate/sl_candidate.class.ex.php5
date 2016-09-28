@@ -2805,12 +2805,10 @@ class CSl_candidateEx extends CSl_candidate
       else
       {
         //$asListMsg[] = ' just apply pager to reloaded search. ';
-        //$oPager = CDependency::getComponentByName('pager');
-        //$oPager->initPager();
-        //$nLimit = $oPager->getLimit();
-        $nLimit = 25;
-        //$nPagerOffset = $oPager->getOffset();
-        $nPagerOffset = 1;
+        $oPager = CDependency::getComponentByName('pager');
+        $oPager->initPager();
+        $nLimit = $oPager->getLimit();
+        $nPagerOffset = $oPager->getOffset();
 
         $poQB->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
       }
@@ -2989,7 +2987,7 @@ class CSl_candidateEx extends CSl_candidate
         {
           $poQB->addLimit('0, '.$nLimit);
           $sQuery = $poQB->getSql();
-          //$oPager->setOffset(1);
+          $oPager->setOffset(1);
         }
       }
 
