@@ -6154,6 +6154,8 @@ class CSl_candidateEx extends CSl_candidate
             $bRead = $oDbResult->readNext();
           }
 
+ChromePhp::log($asPrevious);
+
           foreach($asContact['update'] as $asData)
           {
             if(!isset($asPrevious[$asData['sl_contactpk']]))
@@ -7128,7 +7130,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $allResult = $db_result->getAll();
       $limitlessCount = count($allResult);
-      ChromePhp::log($sql);
+
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
       $oDbResult = $this->_getModel()->executeQuery($sql);
