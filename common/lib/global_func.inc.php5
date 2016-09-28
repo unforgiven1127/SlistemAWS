@@ -3206,7 +3206,7 @@ var_dump($query);*/
     $_2hoursBefore = date('Y-m-d H:i:s', strtotime('-2 hours'));
 
 
-    $sQuery = "SELECT * FROM login_system_history lsh WHERE lsh.userfk = '".$user_id."' AND lsh.cp_pk = '".$candidate_id."' AND action = 'Contacts viewed' ";
+    $sQuery = "SELECT * FROM login_system_history lsh WHERE lsh.userfk = '".$user_id."' AND lsh.cp_pk = '".$candidate_id."' AND action = 'Contacts viewed' AND lsh.date >= '".$_2hoursBefore."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
