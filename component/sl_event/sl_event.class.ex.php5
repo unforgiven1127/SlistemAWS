@@ -608,7 +608,15 @@ class CSl_eventEx extends CSl_event
       }
       if($validCharacterNotesLength > 0)
       {
-        ChromePhp::log($validCharacterNotes);
+        foreach ($validCharacterNotes as $key => $value)
+        {
+          $noteDate = strtotime($key);
+          $todaysDate = strtotime(date('Y-m-d H:i:s'));
+
+          $sub = $todaysDate - $noteDate;
+
+          ChromePhp::log($sub);
+        }
 
       }
       /*if(isset($pnPk) && $pnPk > 0)
