@@ -7721,8 +7721,6 @@ die();*/
 
         $testTargetSalary = (int)getValue('target_low');
 
-        ChromePhp::log($asTargetLow);
-        ChromePhp::log($testTargetSalary);
         //ChromePhp::log($asTargetLow['yen']);
 
         $this->_getSalaryInYen($asTargetLow);

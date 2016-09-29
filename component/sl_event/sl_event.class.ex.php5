@@ -628,13 +628,13 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-      /*if($characterNoteControlFlag)
+      if($characterNoteControlFlag)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
-      }*/
-      //else
-      //{
+      }
+      else
+      {
 
         if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
         {
@@ -744,7 +744,7 @@ class CSl_eventEx extends CSl_event
         //$oForm->addCustomHtml($addHtml);
         $oForm->addCustomHtml($add_note_html);
 
-      //}
+      }
 
       $sURL = $oPage->getAjaxUrl('555-001', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_MEETING, $nCp_Pk);
       $sId = uniqid();
