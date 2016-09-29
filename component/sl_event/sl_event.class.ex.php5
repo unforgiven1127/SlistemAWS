@@ -243,47 +243,51 @@ class CSl_eventEx extends CSl_event
     if($psNoteType == 'character')
     {// girilen 6 not birlestiriliyor ve id lerini ; ile birlestiriyoruz
       $candidate_id = $pnItemPk;
-      $characterNotes = getSlNotes($candidate_id);
-      if(isset($characterNotes) && !empty($characterNotes))
+      $characterNotesArray = getSlNotes($candidate_id);
+      if(isset($characterNotesArray) && !empty($characterNotesArray))
       {
-        $allCharacterNotes = "";
-        $allIDs = "";
-        $createdBy = '';
-        $first_activity = '';
-        $last_activity = '';
-        foreach($characterNotes as $key => $value)
+        foreach ($characterNotesArray as $key1 => $characterNotes)
         {
-          $title = getNoteTitle($value['type']);
-          $allCharacterNotes .= "<b><u>".$title."</b></u>: ".$value['content']."<br>";
-          $allIDs .= $value['id']."_";
-          $createdBy = $value['user_id'];
-          $first_activity = $value['first_activity'];
-          $last_activity = $value['last_activity'];
+          $allCharacterNotes = "";
+          $allIDs = "";
+          $createdBy = '';
+          $first_activity = '';
+          $last_activity = '';
+          foreach($characterNotes as $key => $value)
+          {
+            $title = getNoteTitle($value['type']);
+            $allCharacterNotes .= "<b><u>".$title."</b></u>: ".$value['content']."<br>";
+            $allIDs .= $value['id']."_";
+            $createdBy = $value['user_id'];
+            $first_activity = $value['first_activity'];
+            $last_activity = $value['last_activity'];
+          }
+          $addNotes = array();
+
+          $addNotes['_fts'] = $allCharacterNotes;
+          $addNotes['companyName'] = "";
+          $addNotes['content'] = $allCharacterNotes;
+          $addNotes['cp_action'] = "ppav";
+          $addNotes['cp_params'] = "";
+          $addNotes['cp_pk'] = (string)$candidate_id;
+          $addNotes['cp_type'] = "candi";
+          $addNotes['cp_uid'] = "555-001";
+          $addNotes['created_by'] = $createdBy;
+          $addNotes['custom_type'] = "";
+          $addNotes['date_create'] = $first_activity;
+          $addNotes['date_display'] = $first_activity;
+          $addNotes['date_update'] = $last_activity;
+          $addNotes['event_linkpk'] = "";
+          $addNotes['eventfk'] = "";
+          $addNotes['eventpk'] = '';
+          $addNotes['title'] = "";
+          $addNotes['type'] = "character";
+          $addNotes['updated_by'] = '';
+          $addNotes['allIDs'] = $allIDs;
+
+          array_push($asNotes,$addNotes);
         }
-        $addNotes = array();
-
-        $addNotes['_fts'] = $allCharacterNotes;
-        $addNotes['companyName'] = "";
-        $addNotes['content'] = $allCharacterNotes;
-        $addNotes['cp_action'] = "ppav";
-        $addNotes['cp_params'] = "";
-        $addNotes['cp_pk'] = (string)$candidate_id;
-        $addNotes['cp_type'] = "candi";
-        $addNotes['cp_uid'] = "555-001";
-        $addNotes['created_by'] = $createdBy;
-        $addNotes['custom_type'] = "";
-        $addNotes['date_create'] = $first_activity;
-        $addNotes['date_display'] = $first_activity;
-        $addNotes['date_update'] = $last_activity;
-        $addNotes['event_linkpk'] = "";
-        $addNotes['eventfk'] = "";
-        $addNotes['eventpk'] = '';
-        $addNotes['title'] = "";
-        $addNotes['type'] = "character";
-        $addNotes['updated_by'] = '';
-        $addNotes['allIDs'] = $allIDs;
-
-        array_push($asNotes,$addNotes);
+        
       }
     }
 

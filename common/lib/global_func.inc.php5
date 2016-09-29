@@ -4187,7 +4187,13 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
-    return $result;
+    $eplodedList = Array();
+    foreach ($result as $key => $value)
+    {
+      $eplodedList[$value['first_activity']][] = $value;
+    }
+
+    return $eplodedList;
 
   }
 
