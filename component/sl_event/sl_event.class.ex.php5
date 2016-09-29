@@ -909,7 +909,7 @@ class CSl_eventEx extends CSl_event
     $ControlAllAreas = getValue('ControlAllAreas');
     $EditTheNotes = getValue('EditTheNotes');
 
-    ChromePhp::log($EditTheNotes);
+    //ChromePhp::log($EditTheNotes);
 
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
@@ -1113,7 +1113,7 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = $value;
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
+                /*if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
                 {
                   if(isset($_GET['editCharacterNote']))
                   {
@@ -1133,11 +1133,11 @@ class CSl_eventEx extends CSl_event
                     insertNote($array);
                   }
 
-                }
-                else
-                {
+                }*/
+                //else
+                //{
                   insertNote($array);
-                }
+                //}
               }
               else
               {
@@ -1147,7 +1147,7 @@ class CSl_eventEx extends CSl_event
                 $array['content'] = '';
                 $array['user_id'] = $user_id;
 
-                if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
+                /*if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
                 {
                   if(isset($_GET['editCharacterNote']))
                   {
@@ -1159,11 +1159,11 @@ class CSl_eventEx extends CSl_event
                   }
 
                   editNote($editCandidate,$array);
-                }
-                else
-                {
+                }*/
+                //else
+                //{
                   insertNote($array);
-                }
+                //}
               }
             }
             updateCandidateSkills($candidate_id,$skillValues);
