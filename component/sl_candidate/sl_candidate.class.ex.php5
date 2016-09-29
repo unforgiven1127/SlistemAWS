@@ -7718,6 +7718,12 @@ die();*/
         $asData['salary_search'] = (int)($asSalary['yen'] + $asBonus['yen']);
 
         $asTargetLow = $oCurrency->getCurrencyFromPost('target_low');
+
+        $testTargetSalary = (int)getValue('target_low');
+
+        ChromePhp::log($asTargetLow);
+        ChromePhp::log($testTargetSalary);
+
         $this->_getSalaryInYen($asTargetLow);
 
         $asTargetHigh = $oCurrency->getCurrencyFromPost('target_high');
