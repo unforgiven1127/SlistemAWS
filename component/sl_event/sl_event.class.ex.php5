@@ -614,7 +614,7 @@ class CSl_eventEx extends CSl_event
           $sDate = date('Y-m-d H:i:s');
 
           //$fark = $sDate - $noteDate;
-          ChromePhp::log($fark);
+          //ChromePhp::log($fark);
         }
       }
       /*if(isset($pnPk) && $pnPk > 0)
