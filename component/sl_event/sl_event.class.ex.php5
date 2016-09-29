@@ -599,10 +599,10 @@ class CSl_eventEx extends CSl_event
       //ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
-      /*if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
+      if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
         $characterNoteControlFlag = true;
-      }*/
+      }
       /*if(isset($pnPk) && $pnPk > 0)
       {
         $characterNoteControlFlag = true;
@@ -616,7 +616,7 @@ class CSl_eventEx extends CSl_event
       {
 
         $combinedIDs = explode('_',$combinedIDs);
-        $characterNoteControlFlag = false;
+        //$characterNoteControlFlag = false;
         foreach ($combinedIDs as $key => $value)
         {
           if(!empty($value))
