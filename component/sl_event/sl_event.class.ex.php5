@@ -655,10 +655,10 @@ class CSl_eventEx extends CSl_event
           if($validCharacterNotesLength > 0)
           {
             $data['EditTheNotes'] = $nCp_Pk;
-            foreach ($validCharacterNotes as $key => $value)
+            /*foreach ($validCharacterNotes as $key => $value)
             {
               $data[$value['type']] = $value['content'];
-            }
+            }*/
           }
         }
         else
@@ -666,10 +666,10 @@ class CSl_eventEx extends CSl_event
           if($validCharacterNotesLength > 0)
           {
             $data['EditTheNotes'] = $nCp_Pk;
-            foreach ($validCharacterNotes as $key => $value)
+            /*foreach ($validCharacterNotes as $key => $value)
             {
               $data[$value['type']] = $value['content'];
-            }
+            }*/
           }
           $data['ControlAllAreas'] = 'true';
         }
