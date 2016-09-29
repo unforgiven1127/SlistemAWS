@@ -606,25 +606,30 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }
+
+      $continueFlag = true;
       if($validCharacterNotesLength > 0)
       {
         foreach ($validCharacterNotes as $key => $value)
         {
-          $noteDate = strtotime($key);
-          $todaysDate = strtotime(date('Y-m-d H:i:s'));
-
-          $sub = $todaysDate - $noteDate;
-          $days = $sub / 86400;
-
-          if($days > 365)
+          if($continueFlag)
           {
-            $characterNoteControlFlag = true;
-          }
-          else
-          {
-            $characterNoteControlFlag = false;
-          }
+            $noteDate = strtotime($key);
+            $todaysDate = strtotime(date('Y-m-d H:i:s'));
 
+            $sub = $todaysDate - $noteDate;
+            $days = $sub / 86400;
+
+            if($days > 365)
+            {
+              $characterNoteControlFlag = false;
+            }
+            else
+            {
+              $characterNoteControlFlag = true;
+              $continueFlag = false;
+            }
+          }
         }
 
       }
