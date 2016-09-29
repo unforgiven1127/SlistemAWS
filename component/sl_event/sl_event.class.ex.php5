@@ -287,7 +287,6 @@ class CSl_eventEx extends CSl_event
 
           array_push($asNotes,$addNotes);
         }
-        
       }
     }
 
@@ -606,6 +605,17 @@ class CSl_eventEx extends CSl_event
       if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
         $characterNoteControlFlag = true;
+      }
+      if($validCharacterNotesLength > 0)
+      {
+        foreach ($validCharacterNotes as $key => $value)
+        {
+          $noteDate = $key;
+          $sDate = date('Y-m-d H:i:s');
+
+          $fark = $sDate - $noteDate;
+          ChromePhp::log($fark);
+        }
       }
       /*if(isset($pnPk) && $pnPk > 0)
       {
