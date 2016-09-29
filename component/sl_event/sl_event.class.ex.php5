@@ -616,7 +616,15 @@ class CSl_eventEx extends CSl_event
           $sub = $todaysDate - $noteDate;
           $days = $sub / 86400;
 
-          ChromePhp::log($days);
+          if($days > 365)
+          {
+            $characterNoteControlFlag = true;
+          }
+          else
+          {
+            $characterNoteControlFlag = false;
+          }
+
         }
 
       }
