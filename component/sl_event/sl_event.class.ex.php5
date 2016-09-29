@@ -614,7 +614,7 @@ class CSl_eventEx extends CSl_event
           $todaysDate = strtotime(date('Y-m-d H:i:s'));
 
           $sub = $todaysDate - $noteDate;
-          $days = $secs / 86400;
+          $days = $sub / 86400;
 
           ChromePhp::log($days);
         }
