@@ -641,10 +641,10 @@ class CSl_eventEx extends CSl_event
       {
         $characterNoteControlFlag = true;
       }*/
-
+      $adminEdit = false;
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
-
+        $adminEdit = true;
         $combinedIDs = explode('_',$combinedIDs);
         //$characterNoteControlFlag = false;
         foreach ($combinedIDs as $key => $value)
@@ -658,7 +658,7 @@ class CSl_eventEx extends CSl_event
         }
       }
 
-      if($characterNoteControlFlag)
+      if($characterNoteControlFlag && !$adminEdit)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
