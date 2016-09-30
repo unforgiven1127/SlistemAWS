@@ -215,8 +215,10 @@ class CCandidate_sl3 extends CTemplate
     $addClass = '';
     $deletedClass = '';
     $labelClass = 'candi_detail_label';
+    ChromePhp::log($company_info['is_client']);
     if($company_info['is_client'] == 1)//$pasCandidateData['cp_client'] || vardi kaldirdik
     {
+      ChromePhp::log('INSIDE');
       $labelClass = 'candi_detail_label2';
       $deletedClass = ' deletedClass ';
       if($level == 1)
