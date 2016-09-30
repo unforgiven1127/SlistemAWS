@@ -1166,6 +1166,7 @@ class CSl_eventEx extends CSl_event
                 if($editFlag)
                 {
                   $note_id = $editArray[$key];
+                  ChromePhp::log($note_id);
                   $result = editNote($note_id,$array);
                 }
                 else

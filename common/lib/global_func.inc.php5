@@ -4218,6 +4218,9 @@ var_dump($query);*/
 
   function editNote($note_id,$array)
   {
+    ChromePhp::log($note_id);
+    ChromePhp::log($array);
+
     $sDate = date('Y-m-d H:i:s');
     $oDB = CDependency::getComponentByName('database');
 
