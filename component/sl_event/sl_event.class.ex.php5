@@ -942,10 +942,16 @@ class CSl_eventEx extends CSl_event
     $editFlag = false;
 
     //ChromePhp::log($EditTheNotes);
+    $editArray = array();
     if(isset($EditTheNotes) && !empty($EditTheNotes) && $EditTheNotes != false)
     {
       $editFlag = true;
       $EditTheNotes = explode('-',$EditTheNotes);
+      foreach ($EditTheNotes as $key => $value)
+      {
+        $explodedNote = explode('-',$value);
+        $editArray[$explodedNote[0]] = $explodedNote[1];//type,id
+      }
       //ChromePhp::log($EditTheNotes);
     }
 
@@ -1143,14 +1149,29 @@ class CSl_eventEx extends CSl_event
             //$asResult = $oEvent->addNote((int)$candidate_id, 'character', $characterNote);
             foreach ($characterNoteArray as $key => $value)
             {
-              if((isset($value) && !empty($value)))
-              {
+
                 $array = array();
                 $array['candidate_id'] = $candidate_id;
                 $array['type'] = $key;
-                $array['content'] = $value;
-                $array['user_id'] = $user_id;
+                if((isset($value) && !empty($value)))
+                {
+                  $array['content'] = $value;
+                }
+                else
+                {
+                  $array['content'] = '';
+                }
 
+                $array['user_id'] = $user_id;
+                if($editFlag)
+                {
+                  $note_id = $editArray[$key];
+                  $result = editNote($note_id,$array);
+                }
+                else
+                {
+                  insertNote($array);
+                }
                 /*if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
                 {
                   if(isset($_GET['editCharacterNote']))
@@ -1174,35 +1195,9 @@ class CSl_eventEx extends CSl_event
                 }*/
                 //else
                 //{
-                  insertNote($array);
+                  //insertNote($array);
                 //}
-              }
-              else
-              {
-                $array = array();
-                $array['candidate_id'] = $candidate_id;
-                $array['type'] = $key;
-                $array['content'] = '';
-                $array['user_id'] = $user_id;
 
-                /*if(isset($_GET['editCharacterNote']) || $EditTheNotes != false || $EditTheNotes != 'false')
-                {
-                  if(isset($_GET['editCharacterNote']))
-                  {
-                    $editCandidate = $_GET['editCharacterNote'];
-                  }
-                  else
-                  {
-                    $editCandidate = $EditTheNotes;
-                  }
-
-                  editNote($editCandidate,$array);
-                }*/
-                //else
-                //{
-                  insertNote($array);
-                //}
-              }
             }
             updateCandidateSkills($candidate_id,$skillValues);
             $addedFlag = false;
