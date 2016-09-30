@@ -656,10 +656,10 @@ class CSl_eventEx extends CSl_event
             $selectedNote = getSelectedSlNote($value);
             $selectedNote = $selectedNote[0];
             $data[$selectedNote['type']] = $selectedNote['content'];
-            $data['EditTheNotes'].=$selectedNote['type'].';'.$value.'_';
+            $data['EditTheNotes'].=$selectedNote['type'].';'.$value.'-';
           }
         }
-        $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "_");
+        $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "-");
       }
 
       if($characterNoteControlFlag && !$adminEdit)
@@ -947,7 +947,7 @@ class CSl_eventEx extends CSl_event
     ChromePhp::log($EditTheNotes);
     if(isset($EditTheNotes) && !empty($EditTheNotes) && $EditTheNotes != false)
     {
-      $EditTheNotes = explode('_',$EditTheNotes);
+      $EditTheNotes = explode('-',$EditTheNotes);
       ChromePhp::log($EditTheNotes);
     }
 exit();
