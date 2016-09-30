@@ -1159,7 +1159,7 @@ class CSl_eventEx extends CSl_event
                 }
                 else
                 {
-                  $array['content'] = '';
+                  $array['content'] = ' ';
                 }
 
                 $array['user_id'] = $user_id;
