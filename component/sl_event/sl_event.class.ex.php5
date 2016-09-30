@@ -659,7 +659,6 @@ class CSl_eventEx extends CSl_event
             $data['EditTheNotes'].=$selectedNote['type'].';'.$value.'_';
           }
         }
-
         $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "_");
       }
 
@@ -943,9 +942,15 @@ class CSl_eventEx extends CSl_event
     $hiddenCharacter = getValue('hiddenCharacter'); //newForm olunca yeni form...
     $ControlAllAreas = getValue('ControlAllAreas');
     $EditTheNotes = getValue('EditTheNotes');
+    $editFlag = false;
 
-    //ChromePhp::log($EditTheNotes);
-
+    ChromePhp::log($EditTheNotes);
+    if(isset($EditTheNotes) && !empty($EditTheNotes) && $EditTheNotes != false)
+    {
+      $EditTheNotes = explode('_',$EditTheNotes);
+      ChromePhp::log($EditTheNotes);
+    }
+exit();
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
     $candidate_id = (int)getValue(CONST_CP_PK);
