@@ -642,9 +642,11 @@ class CSl_eventEx extends CSl_event
         $characterNoteControlFlag = true;
       }*/
       $adminEdit = false;
+      $data['ControlAllAreas'] = 'false';
       if(isset($combinedIDs) && !empty($combinedIDs))
       {
         $adminEdit = true;
+        $data['EditTheNotes'] = '';
         $combinedIDs = explode('_',$combinedIDs);
         //$characterNoteControlFlag = false;
         foreach ($combinedIDs as $key => $value)
@@ -654,8 +656,11 @@ class CSl_eventEx extends CSl_event
             $selectedNote = getSelectedSlNote($value);
             $selectedNote = $selectedNote[0];
             $data[$selectedNote['type']] = $selectedNote['content'];
+            $data['EditTheNotes'].=$selectedNote['type'].';'.$value.'_';
           }
         }
+
+        $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "_");
       }
 
       if($characterNoteControlFlag && !$adminEdit)
@@ -670,13 +675,13 @@ class CSl_eventEx extends CSl_event
         {
           $characterNoteControlFlag = true;
         }
-        $data['EditTheNotes'] = 'false';
+        //$data['EditTheNotes'] = 'false';
         if($characterNoteControlFlag)
         {
           $data['ControlAllAreas'] = 'false';
           if($validCharacterNotesLength > 0)
           {
-            $data['EditTheNotes'] = $nCp_Pk;
+            //$data['EditTheNotes'] = $nCp_Pk;
             /*foreach ($validCharacterNotes as $key => $value)
             {
               $data[$value['type']] = $value['content'];
@@ -687,7 +692,7 @@ class CSl_eventEx extends CSl_event
         {
           if($validCharacterNotesLength > 0)
           {
-            $data['EditTheNotes'] = $nCp_Pk;
+            //$data['EditTheNotes'] = $nCp_Pk;
             /*foreach ($validCharacterNotes as $key => $value)
             {
               $data[$value['type']] = $value['content'];
