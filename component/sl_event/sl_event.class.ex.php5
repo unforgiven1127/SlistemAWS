@@ -949,7 +949,7 @@ class CSl_eventEx extends CSl_event
       $EditTheNotes = explode('-',$EditTheNotes);
       foreach ($EditTheNotes as $key => $value)
       {
-        $explodedNote = explode('-',$value);
+        $explodedNote = explode(',',$value);
         $editArray[$explodedNote[0]] = $explodedNote[1];//type,id
       }
       //ChromePhp::log($EditTheNotes);
