@@ -929,7 +929,7 @@ function _live_dump($pvTrace, $psTitle = null)
       {
         if(empty($psType) || $psType == CONST_CANDIDATE_TYPE_CANDI)
         {
-          //$asEvent['character'] = array('label' => 'Character note', 'value' => 'character', 'group' => '');
+          $asEvent['character'] = array('label' => 'Character note', 'value' => 'character', 'group' => '');
           $asEvent['note'] = array('label' => 'Note', 'value' => 'note', 'group' => '');
           $asEvent['email'] = array('label' => 'Email', 'value' => 'email', 'group' => '');
           $asEvent['meeting'] = array('label' => 'Meeting', 'value' => 'meeting', 'group' => '');
