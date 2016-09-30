@@ -598,8 +598,8 @@ class CSl_eventEx extends CSl_event
       $candidateActiveMeetings = getCandidateActiveMeetings($nCp_Pk);
       $candidateActiveMeetingsLength = count($candidateActiveMeetings);
 
-      //ChromePhp::log($candidateActiveMeetings);
-      //ChromePhp::log($candidateActiveMeetingsLength);
+      ChromePhp::log($validCharacterNotesLength);
+      ChromePhp::log($candidateActiveMeetingsLength);
 
       $characterNoteControlFlag = false;
       if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
