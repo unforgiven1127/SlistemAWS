@@ -900,6 +900,7 @@ function _live_dump($pvTrace, $psTitle = null)
   function getEventTypeList($pbOnlyValues = false, $psType = '', $is_admin = false)
   {
 
+    ChromePhp::log($psType);
     if(CONST_WEBSITE == 'slistem')
     {
 
