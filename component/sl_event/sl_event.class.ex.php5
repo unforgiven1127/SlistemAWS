@@ -598,9 +598,6 @@ class CSl_eventEx extends CSl_event
       $candidateActiveMeetings = getCandidateActiveMeetings($nCp_Pk);
       $candidateActiveMeetingsLength = count($candidateActiveMeetings);
 
-      ChromePhp::log($validCharacterNotesLength);
-      ChromePhp::log($candidateActiveMeetingsLength);
-
       $characterNoteControlFlag = false;
       if($candidateActiveMeetingsLength == 0) // herhangi bir meeting ayarlanmamis ise tek character note
       {
@@ -661,8 +658,7 @@ class CSl_eventEx extends CSl_event
         }
         $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "-");
       }
-ChromePhp::log($characterNoteControlFlag);
-ChromePhp::log($adminEdit);
+
       if($characterNoteControlFlag && !$adminEdit)
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
@@ -945,14 +941,14 @@ ChromePhp::log($adminEdit);
     $EditTheNotes = getValue('EditTheNotes');
     $editFlag = false;
 
-    ChromePhp::log($EditTheNotes);
+    //ChromePhp::log($EditTheNotes);
     if(isset($EditTheNotes) && !empty($EditTheNotes) && $EditTheNotes != false)
     {
       $editFlag = true;
       $EditTheNotes = explode('-',$EditTheNotes);
-      ChromePhp::log($EditTheNotes);
+      //ChromePhp::log($EditTheNotes);
     }
-exit();
+
     $note_title = purify_html(getValue('title'));
     $delete_flag = getValue('delete_note'); // silinecek olan id yi getiriyor.
     $candidate_id = (int)getValue(CONST_CP_PK);
