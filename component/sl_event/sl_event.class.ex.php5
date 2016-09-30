@@ -255,8 +255,12 @@ class CSl_eventEx extends CSl_event
           $last_activity = '';
           foreach($characterNotes as $key => $value)
           {
-            $title = getNoteTitle($value['type']);
-            $allCharacterNotes .= "<b><u>".$title."</b></u>: ".$value['content']."<br>";
+            if(!empty($value['content']))
+            {
+              $title = getNoteTitle($value['type']);
+              $allCharacterNotes .= "<b><u>".$title."</b></u>: ".$value['content']."<br>";
+            }
+
             $allIDs .= $value['id']."_";
             $createdBy = $value['user_id'];
             $first_activity = $value['first_activity'];
@@ -1166,8 +1170,6 @@ class CSl_eventEx extends CSl_event
                 if($editFlag)
                 {
                   $note_id = $editArray[$key];
-                  ChromePhp::log($editArray);
-                  ChromePhp::log($note_id);
                   $result = editNote($note_id,$array);
                 }
                 else
