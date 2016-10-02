@@ -3211,11 +3211,13 @@ var_dump($query);*/
     //$action = 'Contacts viewed';
     $oDB = CDependency::getComponentByName('database');
 
-    $dateNow = date('Y-m-d H:i:s');
-    $_2hoursBefore = date('Y-m-d H:i:s', strtotime('-2 hours'));
+    $dateNow = date('Y-m-d');
+    //$_2hoursBefore = date('Y-m-d H:i:s', strtotime('-2 hours'));
+    $dateNow .= ' 00:00:00';
 
 
-    $sQuery = "SELECT * FROM login_system_history lsh WHERE lsh.userfk = '".$user_id."' AND lsh.cp_pk = '".$candidate_id."' AND action = 'Contacts viewed' AND lsh.date >= '".$_2hoursBefore."'";
+
+    $sQuery = "SELECT * FROM login_system_history lsh WHERE lsh.userfk = '".$user_id."' AND lsh.cp_pk = '".$candidate_id."' AND action = 'Contacts viewed' AND lsh.date >= '".$dateNow."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
