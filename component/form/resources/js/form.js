@@ -6,6 +6,7 @@ function beforeCompanyAdd()
 {
   alert('TEST');
   event.preventDefault();
+  return false;
 }
 
 function toggleSection(poTitle, psSectionId)
