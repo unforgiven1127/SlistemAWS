@@ -6651,7 +6651,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $oDB = CDependency::getComponentByName('database');
 
-      $escapeWords = _companyDuplicateEscapeWords();
+      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
 
       $explodedCompanyName = explode(' ',$company_name);
       $nameCount = count($explodedCompanyName);
@@ -6703,6 +6703,7 @@ class CSl_candidateEx extends CSl_candidate
       $db_result = $oDB->executeQuery($sQuery);
 
       $result = $db_result->getAll();
+      ChromePhp::log($result);
       return 'STRING RESULT';
 
       //$possibleDuplicates = getDuplicateCompanies($company_name);
