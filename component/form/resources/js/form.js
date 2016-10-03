@@ -4,7 +4,7 @@
 
 function beforeCompanyAdd(form)
 {
-
+  psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
   console.log(psUrl);
   $.ajax({
     type: 'POST',
@@ -13,8 +13,7 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
-      if(oJsonData.error)
-        console.log(oJsonData.error);
+        console.log(oJsonData);
 
       //$(psToPrepend).append(oJsonData.data);
     },
@@ -26,9 +25,9 @@ function beforeCompanyAdd(form)
 
 
   alert('TEST');
-  console.log(form);
-  var newUrl = form.action+'TEST';
-  $('#addcompanyId').attr('action',newUrl);// burada bakmamasi icin yeni bir alan ekleyecegiz...
+  //console.log(form);
+  //var newUrl = form.action+'TEST';
+  //$('#addcompanyId').attr('action',newUrl);// burada bakmamasi icin yeni bir alan ekleyecegiz...
   event.preventDefault();
   return false;
 }

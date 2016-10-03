@@ -6638,7 +6638,9 @@ class CSl_candidateEx extends CSl_candidate
 
     public function controlCompanyDuplicate()
     {
-
+      //url
+      //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
+      return 'test';
     }
 
     private function _getCompanyForm($pnPk = 0)
