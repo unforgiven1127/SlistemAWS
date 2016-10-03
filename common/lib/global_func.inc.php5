@@ -3174,7 +3174,7 @@ var_dump($query);*/
     }
     $sQuery = trim($sQuery, "OR");
     $sQuery .= " LIMIT 10";
-    ChromePhp::log($sQuery);
+    //ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 

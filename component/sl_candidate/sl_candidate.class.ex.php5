@@ -6928,8 +6928,17 @@ class CSl_candidateEx extends CSl_candidate
       $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
 
       $company_name = $asData['name'];
-      getDuplicateCompanies($company_name);
-      exit();
+      $possibleDuplicates = getDuplicateCompanies($company_name);
+
+      if(isset($possibleDuplicates) && !empty($possibleDuplicates))
+      {
+        $message = "There are possible duplicates;";
+        foreach ($variable as $key => $value)
+        {
+          $message .= '* '.$value['name']."<br>"
+        }
+        $message .= "If you still want to add this company please click Save company again.";
+      }
 
       $nLoginFk = (int)getValue('loginfk');
 
