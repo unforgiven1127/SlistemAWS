@@ -6641,9 +6641,66 @@ class CSl_candidateEx extends CSl_candidate
       //url
       //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
       $company_name = $_POST['cname'];
-      $possibleDuplicates = getDuplicateCompanies($company_name);
-      ChromePhp::log($possibleDuplicates);
-      echo 'asdasdasd';
+
+      $oDB = CDependency::getComponentByName('database');
+
+      $escapeWords = companyDuplicateEscapeWords();
+
+      $explodedCompanyName = explode(' ',$company_name);
+      $nameCount = count($explodedCompanyName);
+
+      if($nameCount == 1)
+      {
+        $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+                 FROM sl_company slc
+                 WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
+                 OR slc.name = '".$company_name."'";
+      }
+      else
+      {
+        foreach ($explodedCompanyName as $key => $value)
+        {
+          if (in_array($value, $escapeWords))
+          {
+            unset($explodedCompanyName[$key]);
+          }
+        }
+        $nameCount = count($explodedCompanyName);
+        if($nameCount == 1 && isset($explodedCompanyName[0]))
+        {
+          $sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+                 FROM sl_company slc
+                 WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
+                 OR slc.name = '".$explodedCompanyName[0]."' ";
+        }
+        else
+        {
+          $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+                 FROM sl_company slc
+                 WHERE ";
+          foreach ($explodedCompanyName as $key => $value)
+          {
+            $addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
+          }
+        }
+        $sQuery .= $addWhere;
+        $sQuery = trim($sQuery, "OR");
+
+        //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
+
+      }
+      $sQuery = trim($sQuery, "OR");
+      $sQuery .= " LIMIT 10";
+      //ChromePhp::log($sQuery);
+
+      $db_result = $oDB->executeQuery($sQuery);
+
+      $result = $db_result->getAll();
+      return 'STRING RESULT';
+
+      //$possibleDuplicates = getDuplicateCompanies($company_name);
+      //ChromePhp::log($possibleDuplicates);
+      //echo 'asdasdasd';
 
     }
 
