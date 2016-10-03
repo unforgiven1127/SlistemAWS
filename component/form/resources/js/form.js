@@ -16,10 +16,11 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
+        alert('Success');
         console.log(oJsonData);
-        var data = oJsonData.data;
-        alert(data);
-        console.log(data);
+        //var data = oJsonData.data;
+        //alert(data);
+        //console.log(data);
       //$(psToPrepend).append(oJsonData.data);
     },
     async: false,
@@ -28,7 +29,7 @@ function beforeCompanyAdd(form)
 
   //return false;
 
-  alert('TEST');
+  alert('END');
   //console.log(form);
   //var newUrl = form.action+'TEST';
   //$('#addcompanyId').attr('action',newUrl);// burada bakmamasi icin yeni bir alan ekleyecegiz...

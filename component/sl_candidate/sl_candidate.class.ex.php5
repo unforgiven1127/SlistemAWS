@@ -6649,13 +6649,13 @@ class CSl_candidateEx extends CSl_candidate
 //ChromePhp::log($possibleDuplicates);
         if(isset($possibleDuplicates) && !empty($possibleDuplicates))
         {
-          $message = "There are possible duplicates:";
+          $message = "";
           foreach ($possibleDuplicates as $key => $value)
           {
-            $message .= '* '.$value['name'];
+            $message .= $value['name'].'_';
           }
-          $message .= "If you still want to add this company please click Save company again.";
-          ChromePhp::log($message);
+          //$message .= "If you still want to add this company please click Save company again.";
+          //ChromePhp::log($message);
           return $message;
           //return array('error' => 'Could not save the company.');
           //return array('error' => $message);
