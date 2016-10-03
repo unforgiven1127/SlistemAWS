@@ -3117,7 +3117,7 @@ var_dump($query);*/
 
   function companyDuplicateEscapeWords()
   {
-    $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group');
+    $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
 
     return $escapeWords;
   }
@@ -3132,15 +3132,12 @@ var_dump($query);*/
     $explodedCompanyName = explode(' ',$company_name);
     $nameCount = count($explodedCompanyName);
 
-    ChromePhp::log($explodedCompanyName);
-    ChromePhp::log($nameCount);
-
     if($nameCount == 1)
     {
       $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
                WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name == '".$company_name."'";
+               OR slc.name = '".$company_name."' OR LIKE '%".$company_name."%'";
     }
     else
     {
@@ -3148,7 +3145,6 @@ var_dump($query);*/
       {
         if (in_array($value, $escapeWords))
         {
-          ChromePhp::log('SOULD BE IN');
           unset($explodedCompanyName[$key]);
         }
       }
@@ -3158,7 +3154,7 @@ var_dump($query);*/
         $sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
                WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name == '".$explodedCompanyName[0]."'";
+               OR slc.name = '".$explodedCompanyName[0]."'  OR LIKE '%".$explodedCompanyName[0]."%'";
       }
       else
       {
@@ -3167,14 +3163,22 @@ var_dump($query);*/
                WHERE ";
         foreach ($explodedCompanyName as $key => $value)
         {
-          $addWhere = "levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
+          $addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
         }
       }
+      $sQuery .= $addWhere;
+      $sQuery .= " OR LIKE '%".$company_name."%'";
 
     }
     $sQuery = trim($sQuery, "OR");
 
     ChromePhp::log($sQuery);
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
   }
 
   function getOwnerRow($id)
