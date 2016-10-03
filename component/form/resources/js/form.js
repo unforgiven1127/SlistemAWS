@@ -2,9 +2,10 @@
  * Comment
  */
 
-function beforeCompanyAdd()
+function beforeCompanyAdd(form)
 {
   alert('TEST');
+  console.log(form);
   event.preventDefault();
   return false;
 }
