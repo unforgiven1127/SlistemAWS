@@ -3134,7 +3134,7 @@ var_dump($query);*/
 
     ChromePhp::log($explodedCompanyName);
     ChromePhp::log($nameCount);
-    
+
     if($nameCount == 1)
     {
       $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
@@ -3153,12 +3153,12 @@ var_dump($query);*/
         }
       }
       $nameCount = count($explodedCompanyName);
-      if($nameCount == 1)
+      if($nameCount == 1 && isset($explodedCompanyName[0]))
       {
-        $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+        $sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
-               WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name == '".$company_name."'";
+               WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
+               OR slc.name == '".$explodedCompanyName[0]."'";
       }
       else
       {
