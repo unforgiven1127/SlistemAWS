@@ -2,13 +2,10 @@
  * Comment
  */
 
-
-
-function beforeCompanyAdd(form) {
-
-
-        return confirm('Do you really want to submit the form?');
-    
+function beforeCompanyAdd()
+{
+  alert('TEST');
+  event.preventDefault();
 }
 
 function toggleSection(poTitle, psSectionId)
