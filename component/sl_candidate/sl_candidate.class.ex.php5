@@ -6938,11 +6938,12 @@ ChromePhp::log($possibleDuplicates);
           $message = "There are possible duplicates:";
           foreach ($possibleDuplicates as $key => $value)
           {
-            $message .= '* '.$value['name']."<br>";
+            $message .= '* '.$value['name'];
           }
           $message .= "If you still want to add this company please click Save company again.";
           ChromePhp::log($message);
-          return array('error' => $message);
+          return array('error' => 'Could not save the company.');
+          //return array('error' => $message);
         }
       }
 
