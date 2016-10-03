@@ -3131,6 +3131,10 @@ var_dump($query);*/
 
     $explodedCompanyName = explode(' ',$company_name);
     $nameCount = count($explodedCompanyName);
+
+    ChromePhp::log($explodedCompanyName);
+    ChromePhp::log($nameCount);
+    
     if($nameCount == 1)
     {
       $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
@@ -3144,6 +3148,7 @@ var_dump($query);*/
       {
         if (in_array($value, $escapeWords))
         {
+          ChromePhp::log('SOULD BE IN');
           unset($explodedCompanyName[$key]);
         }
       }
