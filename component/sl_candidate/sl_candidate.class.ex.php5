@@ -6704,7 +6704,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $result = $db_result->getAll();
       $jsonData = json_encode($result);
-      return $jsonData
+      return $jsonData;
       //ChromePhp::log($result);
       //return 'RESULT';
 
