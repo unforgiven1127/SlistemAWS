@@ -7,7 +7,7 @@ function beforeCompanyAdd(form)
   var companyName = $('.companyNameClass').val();
   //alert(companyName);
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
-  mngAjaxScreen(psLoadingScreen, true);
+  mngAjaxScreen('', true);
   //console.log(psUrl);
   $.ajax({
     type: 'POST',
@@ -17,7 +17,7 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
-        mngAjaxScreen(psLoadingScreen, false);
+        mngAjaxScreen('', false);
         alert('Success');
         console.log(oJsonData);
         var data = oJsonData.data;
