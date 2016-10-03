@@ -18,15 +18,9 @@ function beforeCompanyAdd(form)
     {
         alert('Success');
         console.log(oJsonData);
-        //var data = oJsonData.data;
-        //alert(data);
-        //console.log(data);
-      //$(psToPrepend).append(oJsonData.data);
-    },
-    complete: function(oJsonData)
-    {
-        alert('COMPLETE');
-        console.log(oJsonData);
+        var data = oJsonData.data;
+        var parsedData = jQuery.parseJSON(data);
+        alert(parsedData);
         //var data = oJsonData.data;
         //alert(data);
         //console.log(data);
