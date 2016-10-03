@@ -3137,7 +3137,7 @@ var_dump($query);*/
       $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
                WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name = '".$company_name."' OR LIKE '%".$company_name."%'";
+               OR slc.name = '".$company_name."'";
     }
     else
     {
@@ -3154,7 +3154,7 @@ var_dump($query);*/
         $sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
                WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name = '".$explodedCompanyName[0]."'  OR slc.name LIKE '%".$explodedCompanyName[0]."%'";
+               OR slc.name = '".$explodedCompanyName[0]."' ";
       }
       else
       {
@@ -3163,17 +3163,17 @@ var_dump($query);*/
                WHERE ";
         foreach ($explodedCompanyName as $key => $value)
         {
-          //$addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
-          $addWhere = " slc.name = '".$value."' OR slc.name LIKE '%".$value."%' OR";
+          $addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
         }
-        $sQuery = trim($sQuery, "OR");
       }
       $sQuery .= $addWhere;
-      $sQuery .= " OR slc.name LIKE '%".$company_name."%'";
+      $sQuery = trim($sQuery, "OR");
+
+      //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
 
     }
     $sQuery = trim($sQuery, "OR");
-
+    $sQuery .= " LIMIT 10";
     ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
