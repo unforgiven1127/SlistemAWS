@@ -3180,7 +3180,7 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
     return 'STRING RESULT';
-    return $result;
+    //return $result;
   }
 
   function getOwnerRow($id)
