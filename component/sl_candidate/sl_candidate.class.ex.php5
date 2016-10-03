@@ -6642,7 +6642,34 @@ class CSl_candidateEx extends CSl_candidate
       //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
       $company_name = $_POST['cname'];
       ChromePhp::log($company_name);
-      return 'test';
+
+      if(isset($company_name) && !empty($company_name))
+      {
+        $possibleDuplicates = getDuplicateCompanies($company_name);
+//ChromePhp::log($possibleDuplicates);
+        if(isset($possibleDuplicates) && !empty($possibleDuplicates))
+        {
+          $message = "There are possible duplicates:";
+          foreach ($possibleDuplicates as $key => $value)
+          {
+            $message .= '* '.$value['name'];
+          }
+          $message .= "If you still want to add this company please click Save company again.";
+          ChromePhp::log($message);
+          return $message;
+          //return array('error' => 'Could not save the company.');
+          //return array('error' => $message);
+        }
+        else
+        {
+          return 'none';
+        }
+      }
+      else
+      {
+        return 'none';
+      }
+
     }
 
     private function _getCompanyForm($pnPk = 0)
@@ -6942,25 +6969,6 @@ class CSl_candidateEx extends CSl_candidate
       $asData['num_employee_japan'] = (int)getValue('num_employee_japan', 0);
       $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
 
-      if(isset($asData['name']))
-      {
-        $company_name = $asData['name'];
-
-        $possibleDuplicates = getDuplicateCompanies($company_name);
-ChromePhp::log($possibleDuplicates);
-        if(isset($possibleDuplicates) && !empty($possibleDuplicates))
-        {
-          $message = "There are possible duplicates:";
-          foreach ($possibleDuplicates as $key => $value)
-          {
-            $message .= '* '.$value['name'];
-          }
-          $message .= "If you still want to add this company please click Save company again.";
-          ChromePhp::log($message);
-          return array('error' => 'Could not save the company.');
-          //return array('error' => $message);
-        }
-      }
 
       $nLoginFk = (int)getValue('loginfk');
 

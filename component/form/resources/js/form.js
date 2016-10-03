@@ -18,6 +18,8 @@ function beforeCompanyAdd(form)
     {
         console.log(oJsonData);
         var data = oJsonData.data;
+        console.log(data);
+        alert(data);
       //$(psToPrepend).append(oJsonData.data);
     },
     async: false,
