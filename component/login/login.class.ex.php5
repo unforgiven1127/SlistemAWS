@@ -1132,7 +1132,7 @@ class CLoginEx extends CLogin
     $asUpdate['position'] = getValue('position');
 // eski value ile karsilastir researcher to consultant ise tarihi update et
 
-
+ChromePhp::log($clientFlag);
     if($clientFlag)
     {
       $oLogin = CDependency::getCpLogin();

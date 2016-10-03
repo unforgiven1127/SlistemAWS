@@ -6927,8 +6927,8 @@ class CSl_candidateEx extends CSl_candidate
       $asData['num_employee_japan'] = (int)getValue('num_employee_japan', 0);
       $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
 
-      //$company_name = $asData['name'];
-      //getDuplicateCompanies($company_name);
+      $company_name = $asData['name'];
+      getDuplicateCompanies($company_name);
 
       $nLoginFk = (int)getValue('loginfk');
 

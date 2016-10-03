@@ -3121,7 +3121,7 @@ var_dump($query);*/
     $company_name = strtolower($company_name);
 
     $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
-               FROM sl_company slc";
+               FROM sl_company slc WHERE name_lev < 5";
 
     ChromePhp::log($sQuery);
   }
