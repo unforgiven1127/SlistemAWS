@@ -6706,11 +6706,19 @@ class CSl_candidateEx extends CSl_candidate
       $result = $db_result->getAll();
 
       $company_list = "";
-      foreach ($result as $key => $value)
+      if(count($result > 0))
       {
-        $company_list.= $value['sl_companypk']."-".$value['name']."_";
+        foreach ($result as $key => $value)
+        {
+          $company_list.= $value['name']." (#".$value['sl_companypk'].")".""
+          //$company_list.= $value['sl_companypk']."-".$value['name']."_";
+        }
+        $company_list = trim($company_list, ", ");
       }
-      $company_list = trim($company_list, "_");
+      else
+      {
+        $company_list = "none";
+      }
       $jsonData = json_encode($company_list);
       return $jsonData;
       //ChromePhp::log($result);

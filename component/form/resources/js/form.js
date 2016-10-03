@@ -20,7 +20,23 @@ function beforeCompanyAdd(form)
         console.log(oJsonData);
         var data = oJsonData.data;
         var parsedData = jQuery.parseJSON(data);
-        alert(parsedData);
+        if(parsedData != "none")
+        {
+          var msg = "There are possible duplications: "+parsedData+" do you still want to add a new company?";
+          if (confirm(msg))
+          {
+              alert("add and send mail");
+          } else
+          {
+              alert("do nothing");
+          }
+        }
+        else
+        {
+
+        }
+
+        //alert(parsedData);
         //var data = oJsonData.data;
         //alert(data);
         //console.log(data);
