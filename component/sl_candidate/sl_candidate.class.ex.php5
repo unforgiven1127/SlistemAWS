@@ -6932,7 +6932,7 @@ class CSl_candidateEx extends CSl_candidate
         $company_name = $asData['name'];
 
         $possibleDuplicates = getDuplicateCompanies($company_name);
-
+ChromePhp::log($possibleDuplicates);
         if(isset($possibleDuplicates) && !empty($possibleDuplicates))
         {
           $message = "There are possible duplicates:";
