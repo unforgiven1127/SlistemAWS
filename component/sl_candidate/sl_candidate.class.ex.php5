@@ -6706,7 +6706,7 @@ class CSl_candidateEx extends CSl_candidate
       $result = $db_result->getAll();
 
       $company_list = "";
-      if(count($result > 0))
+      if(count($result) > 0)
       {
         foreach ($result as $key => $value)
         {
