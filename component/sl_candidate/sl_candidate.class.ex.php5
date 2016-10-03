@@ -6692,7 +6692,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm = $this->_oDisplay->initForm('companyAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_COMP, $pnPk);
 
-      $oForm->setFormParams('addcompany', true, array('action' => $sURL, 'class' => 'companyAddForm', 'submitLabel'=>'Save company'));
+      $oForm->setFormParams('addcompany', true, array('id' => '', 'saveCompanyBtn' => $sURL, 'class' => 'companyAddForm', 'submitLabel'=>'Save company'));
       $oForm->setFormDisplayParams(array('noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
@@ -6835,7 +6835,7 @@ class CSl_candidateEx extends CSl_candidate
           }
        }
 
-       $oForm->addField('input', 'company_name', array('label'=> 'Company name', 'value' => $asCompanyData['name']));
+       $oForm->addField('input', 'company_name', array('label'=> 'Company name','value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
 
        $oForm->addField('input', 'corporate_name', array('label'=> 'Brand / public name', 'value' => $asCompanyData['corporate_name']));
