@@ -3115,13 +3115,59 @@ var_dump($query);*/
     }
   }
 
+  function companyDuplicateEscapeWords()
+  {
+    $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group');
+
+    return $escapeWords;
+  }
+
   function getDuplicateCompanies($company_name)
   {
     $oDB = CDependency::getComponentByName('database');
     $company_name = strtolower($company_name);
 
-    $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
-               FROM sl_company slc WHERE name_lev < 5";
+    $escapeWords = companyDuplicateEscapeWords();
+
+    $explodedCompanyName = explode(' ',$company_name);
+    $nameCount = count($explodedCompanyName);
+    if($nameCount == 1)
+    {
+      $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+               FROM sl_company slc
+               WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
+               OR slc.name == '".$company_name."'";
+    }
+    else
+    {
+      foreach ($explodedCompanyName as $key => $value)
+      {
+        if (in_array($value, $escapeWords))
+        {
+          unset($explodedCompanyName[$key]);
+        }
+      }
+      $nameCount = count($explodedCompanyName);
+      if($nameCount == 1)
+      {
+        $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+               FROM sl_company slc
+               WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
+               OR slc.name == '".$company_name."'";
+      }
+      else
+      {
+        $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+               FROM sl_company slc
+               WHERE ";
+        foreach ($explodedCompanyName as $key => $value)
+        {
+          $addWhere = "levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
+        }
+      }
+
+    }
+    $sQuery = trim($sQuery, "OR");
 
     ChromePhp::log($sQuery);
   }
