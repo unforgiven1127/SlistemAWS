@@ -6929,6 +6929,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $company_name = $asData['name'];
       getDuplicateCompanies($company_name);
+      exit();
 
       $nLoginFk = (int)getValue('loginfk');
 
