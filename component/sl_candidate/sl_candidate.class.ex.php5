@@ -6935,13 +6935,13 @@ class CSl_candidateEx extends CSl_candidate
 
         if(isset($possibleDuplicates) && !empty($possibleDuplicates))
         {
-          $message = "There are possible duplicates;";
+          $message = "There are possible duplicates:";
           foreach ($possibleDuplicates as $key => $value)
           {
-            $message .= '* '.$value['name']."<br>"
+            $message .= '* '.$value['name']."<br>";
           }
           $message .= "If you still want to add this company please click Save company again.";
-          //return array('error' => $message);
+          return array('error' => $message);
         }
       }
 
