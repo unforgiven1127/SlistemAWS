@@ -3154,7 +3154,7 @@ var_dump($query);*/
         $sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                FROM sl_company slc
                WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
-               OR slc.name = '".$explodedCompanyName[0]."'  OR LIKE '%".$explodedCompanyName[0]."%'";
+               OR slc.name = '".$explodedCompanyName[0]."'  OR slc.name LIKE '%".$explodedCompanyName[0]."%'";
       }
       else
       {
@@ -3167,7 +3167,7 @@ var_dump($query);*/
         }
       }
       $sQuery .= $addWhere;
-      $sQuery .= " OR LIKE '%".$company_name."%'";
+      $sQuery .= " OR slc.name LIKE '%".$company_name."%'";
 
     }
     $sQuery = trim($sQuery, "OR");
