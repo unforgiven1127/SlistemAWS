@@ -3165,8 +3165,9 @@ var_dump($query);*/
         {
           $addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
         }
+        $sQuery .= $addWhere;
       }
-      $sQuery .= $addWhere;
+
       $sQuery = trim($sQuery, "OR");
 
       //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
