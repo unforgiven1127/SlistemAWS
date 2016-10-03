@@ -2,9 +2,10 @@
  * Comment
  */
 
-$('#addcompanyId').submit(function() {
+function beforeCompanyAdd()
+{
   alert('test');
-});
+}
 
 function toggleSection(poTitle, psSectionId)
 {
