@@ -6850,7 +6850,7 @@ class CSl_candidateEx extends CSl_candidate
           }
        }
 
-       $oForm->addField('input', 'company_name', array('label'=> 'Company name','value' => $asCompanyData['name']));
+       $oForm->addField('input', 'company_name', array('class'=> 'companyNameClass','label'=> 'Company name','value' => $asCompanyData['name']));
        $oForm->setFieldControl('company_name', array('jsFieldNotEmpty' => '', 'jsFieldMinSize' => '2'));
 
        $oForm->addField('input', 'corporate_name', array('label'=> 'Brand / public name', 'value' => $asCompanyData['corporate_name']));
