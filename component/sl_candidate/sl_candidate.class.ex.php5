@@ -6641,12 +6641,13 @@ class CSl_candidateEx extends CSl_candidate
       //url
       //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
       $company_name = $_POST['cname'];
-      return $company_name;
-      ChromePhp::log($company_name);
+      //return $company_name;
+      //ChromePhp::log($company_name);
 
       if(isset($company_name) && !empty($company_name))
       {
         $possibleDuplicates = getDuplicateCompanies($company_name);
+        return $possibleDuplicate;
 //ChromePhp::log($possibleDuplicates);
         if(isset($possibleDuplicates) && !empty($possibleDuplicates))
         {

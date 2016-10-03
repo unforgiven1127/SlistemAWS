@@ -3179,7 +3179,7 @@ var_dump($query);*/
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-
+    return 'STRING RESULT';
     return $result;
   }
 
