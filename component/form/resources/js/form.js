@@ -4,7 +4,7 @@
 
 function beforeCompanyAdd()
 {
-  alert('test');
+  alert('TEST');
   return false;
 }
 
