@@ -23,6 +23,15 @@ function beforeCompanyAdd(form)
         //console.log(data);
       //$(psToPrepend).append(oJsonData.data);
     },
+    complete: function(oJsonData)
+    {
+        alert('COMPLETE');
+        console.log(oJsonData);
+        //var data = oJsonData.data;
+        //alert(data);
+        //console.log(data);
+      //$(psToPrepend).append(oJsonData.data);
+    },
     async: false,
     dataType: "JSON"
   });
