@@ -6704,7 +6704,7 @@ class CSl_candidateEx extends CSl_candidate
 
       $result = $db_result->getAll();
       ChromePhp::log($result);
-      return 'STRING RESULT';
+      return 'RESULT';
 
       //$possibleDuplicates = getDuplicateCompanies($company_name);
       //ChromePhp::log($possibleDuplicates);
