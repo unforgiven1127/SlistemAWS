@@ -6927,6 +6927,9 @@ class CSl_candidateEx extends CSl_candidate
       $asData['num_employee_japan'] = (int)getValue('num_employee_japan', 0);
       $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
 
+      $company_name = $asData['name'];
+      getDuplicateCompanies($company_name);
+
       $nLoginFk = (int)getValue('loginfk');
 
       if(empty($pnPk))
@@ -10521,8 +10524,8 @@ die();*/
           {
             $asWords[0] = trim($asWords[0]);
 
-            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", TRIM(LOWER(scan.lastname))) AS lastname_lev ');
-            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'", TRIM(LOWER(scan.firstname))) AS firstname_lev ');
+            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'",TRIM(LOWER(scan.lastname))) AS lastname_lev ');
+            $this->coQb->addSelect(' levenshtein("'.$asWords[0].'",TRIM(LOWER(scan.firstname))) AS firstname_lev ');
 
             $this->coQb->addSelect(' 100-(levenshtein("'.($asWords[0]).'", LOWER(scan.'.$sFirstField.'))*100/LENGTH(scan.'.$sFirstField.')) AS ratio ');
 

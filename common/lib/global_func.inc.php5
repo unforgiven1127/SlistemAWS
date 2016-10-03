@@ -3115,6 +3115,17 @@ var_dump($query);*/
     }
   }
 
+  function getDuplicateCompanies($company_name)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $company_name = strtolower($company_name);
+
+    $sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
+               FROM sl_company slc";
+
+    ChromePhp::log($sQuery);
+  }
+
   function getOwnerRow($id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3207,7 +3218,7 @@ var_dump($query);*/
   }
 
   function getLastContactSeen($candidate_id,$user_id)
-  {
+  {// gunde 1 kereye dusurduk
     //$action = 'Contacts viewed';
     $oDB = CDependency::getComponentByName('database');
 
