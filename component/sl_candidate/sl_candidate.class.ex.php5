@@ -6703,8 +6703,10 @@ class CSl_candidateEx extends CSl_candidate
       $db_result = $oDB->executeQuery($sQuery);
 
       $result = $db_result->getAll();
-      ChromePhp::log($result);
-      return 'RESULT';
+      $jsonData = json_encode($result);
+      return $jsonData
+      //ChromePhp::log($result);
+      //return 'RESULT';
 
       //$possibleDuplicates = getDuplicateCompanies($company_name);
       //ChromePhp::log($possibleDuplicates);
