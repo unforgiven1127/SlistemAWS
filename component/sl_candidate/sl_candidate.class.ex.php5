@@ -199,6 +199,10 @@ class CSl_candidateEx extends CSl_candidate
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->mailAjax($this->cnPk)))));
             break;
 
+          case COMPANY_DUPLI_CONTROL:
+            return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->controlCompanyDuplicate($this->cnPk)))));
+            break;
+
           case CONST_ACTION_LIST:
             return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCandidateList(true)))));
             break;
@@ -6632,10 +6636,17 @@ class CSl_candidateEx extends CSl_candidate
       return $sHTML;
     }
 
+    public function controlCompanyDuplicate()
+    {
 
+    }
 
     private function _getCompanyForm($pnPk = 0)
     {
+      $testUrl = $this->_oPage->getAjaxUrl($this->csUid, COMPANY_DUPLI_CONTROL, CONST_CANDIDATE_TYPE_CANDI);
+      ChromePhp::log($testUrl);
+
+
       if(!assert('is_integer($pnPk)'))
         return '';
 

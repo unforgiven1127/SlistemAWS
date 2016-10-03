@@ -4,10 +4,31 @@
 
 function beforeCompanyAdd(form)
 {
+
+  console.log(psUrl);
+  $.ajax({
+    type: 'POST',
+    url: psUrl,
+    scriptCharset: "utf-8" ,
+    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+    success: function(oJsonData)
+    {
+      if(oJsonData.error)
+        console.log(oJsonData.error);
+
+      //$(psToPrepend).append(oJsonData.data);
+    },
+    async: false,
+    dataType: "JSON"
+  });
+
+  //return false;
+
+
   alert('TEST');
   console.log(form);
   var newUrl = form.action+'TEST';
-  $('#addcompanyId').attr('action',newUrl);
+  $('#addcompanyId').attr('action',newUrl);// burada bakmamasi icin yeni bir alan ekleyecegiz...
   event.preventDefault();
   return false;
 }
