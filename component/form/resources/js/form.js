@@ -7,6 +7,7 @@ function beforeCompanyAdd(form)
   var companyName = $('.companyNameClass').val();
   //alert(companyName);
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
+  mngAjaxScreen(psLoadingScreen, true);
   //console.log(psUrl);
   $.ajax({
     type: 'POST',
@@ -16,13 +17,14 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
+        mngAjaxScreen(psLoadingScreen, false);
         alert('Success');
         console.log(oJsonData);
         var data = oJsonData.data;
         var parsedData = jQuery.parseJSON(data);
         if(parsedData != "none")
         {
-          var msg = "There are possible duplications: "+parsedData+" do you still want to add a new company?";
+          var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
           if (confirm(msg))
           {
               alert("add and send mail");
