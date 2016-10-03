@@ -6708,7 +6708,7 @@ class CSl_candidateEx extends CSl_candidate
       $company_list = "";
       foreach ($result as $key => $value)
       {
-        $company_list.= $value['id']"-".$value['name']."_";
+        $company_list.= $value['id']."-".$value['name']."_";
       }
       $company_list = trim($company_list, "_");
       $jsonData = json_encode($company_list);
