@@ -1,6 +1,11 @@
 /**
  * Comment
  */
+
+$('#addcompanyId').submit(function() {
+  alert('test');
+});
+
 function toggleSection(poTitle, psSectionId)
 {
   if($(poTitle).hasClass('sectionClosed'))
