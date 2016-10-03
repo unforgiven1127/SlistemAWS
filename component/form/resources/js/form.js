@@ -4,17 +4,20 @@
 
 function beforeCompanyAdd(form)
 {
+  var companyName = $('#company_name').val();
+  alert(companyName);
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
   console.log(psUrl);
   $.ajax({
     type: 'POST',
     url: psUrl,
     scriptCharset: "utf-8" ,
+    data: {cname:companyName},
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
         console.log(oJsonData);
-
+        var data = oJsonData.data;
       //$(psToPrepend).append(oJsonData.data);
     },
     async: false,
