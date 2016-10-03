@@ -3163,8 +3163,10 @@ var_dump($query);*/
                WHERE ";
         foreach ($explodedCompanyName as $key => $value)
         {
-          $addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
+          //$addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
+          $addWhere = " slc.name = '".$value."' OR slc.name LIKE '%".$value."%' OR";
         }
+        $sQuery = trim($sQuery, "OR");
       }
       $sQuery .= $addWhere;
       $sQuery .= " OR slc.name LIKE '%".$company_name."%'";
