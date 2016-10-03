@@ -6,6 +6,8 @@ function beforeCompanyAdd(form)
 {
   alert('TEST');
   console.log(form);
+  var newUrl = form.action+'TEST';
+  $('#addcompanyId').attr('action',newUrl);
   event.preventDefault();
   return false;
 }
