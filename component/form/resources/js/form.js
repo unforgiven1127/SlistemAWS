@@ -8,6 +8,12 @@ function beforeCompanyAdd()
   return false;
 }
 
+document.getElementById('addcompanyId').onsubmit = function()
+{
+  alert('TEST');
+  return false;
+};
+
 function toggleSection(poTitle, psSectionId)
 {
   if($(poTitle).hasClass('sectionClosed'))
