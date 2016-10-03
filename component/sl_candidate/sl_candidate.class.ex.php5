@@ -6938,6 +6938,7 @@ class CSl_candidateEx extends CSl_candidate
           $message .= '* '.$value['name']."<br>"
         }
         $message .= "If you still want to add this company please click Save company again.";
+        return array('error' => $message);
       }
 
       $nLoginFk = (int)getValue('loginfk');
