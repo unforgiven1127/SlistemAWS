@@ -6941,6 +6941,7 @@ ChromePhp::log($possibleDuplicates);
             $message .= '* '.$value['name']."<br>";
           }
           $message .= "If you still want to add this company please click Save company again.";
+          ChromePhp::log($message);
           return array('error' => $message);
         }
       }
