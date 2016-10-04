@@ -12,8 +12,10 @@ function loading()
 function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
-    $('.ui-dialog').attr('id', 'companyAddNewId')
-    $('.ui-dialog').addClass("loadClass");
+    //$('.ui-dialog').attr('id', 'companyAddNewId')
+    //$('.ui-dialog').addClass("loadClass");
+
+    $('.ui-dialog').append("<div style='z-index: 99999;' id='loadingDiv' class='loadClass'></div>");
     //alert(companyName);
     //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
