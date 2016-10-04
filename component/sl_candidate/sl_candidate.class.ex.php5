@@ -6662,7 +6662,7 @@ class CSl_candidateEx extends CSl_candidate
                  FROM sl_company slc
                  WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
                  OR slc.name = '".$company_name."'";*/
-        $sQuery = "SELECT * FROM sl_company slc WHERE slc.name LIKE '%".$company_name."%'";
+        $sQuery = "SELECT * FROM sl_company slc WHERE slc.name = ".$company_name." OR slc.name LIKE '%".$company_name."%'";
       }
       else
       {
@@ -6680,7 +6680,7 @@ class CSl_candidateEx extends CSl_candidate
                  FROM sl_company slc
                  WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
                  OR slc.name = '".$explodedCompanyName[0]."' ";*/
-          $sQuery = "SELECT * FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%'";
+          $sQuery = "SELECT * FROM sl_company slc WHERE slc.name = ".$explodedCompanyName[0]." OR slc.name LIKE '%".$explodedCompanyName[0]."%'";
         }
         else
         {
@@ -6703,7 +6703,7 @@ class CSl_candidateEx extends CSl_candidate
       }
       $sQuery = trim($sQuery, "OR ");
       $sQuery = trim($sQuery, "OR");
-      $sQuery .= " LIMIT 10";
+      $sQuery .= " LIMIT 3";
       //ChromePhp::log($sQuery);
 
       $db_result = $oDB->executeQuery($sQuery);
