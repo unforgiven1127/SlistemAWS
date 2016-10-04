@@ -14,6 +14,8 @@ function beforeCompanyAdd(form)
   var actionUrl = $('#addcompanyId').attr('action');
   if (actionUrl.indexOf("mailFlg") >= 0)
   {
+    alert('mailFlg var');
+    $('#addcompanyId').submit();
     return true;
   }
   else
