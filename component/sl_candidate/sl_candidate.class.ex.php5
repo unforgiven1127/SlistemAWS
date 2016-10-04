@@ -7013,7 +7013,7 @@ class CSl_candidateEx extends CSl_candidate
        $customHtml = '<div id="dialog" title="Alert message" style="display: none">
             <div class="ui-dialog-content ui-widget-content">
                 <p>
-                    <span style="float: left; margin: 0 7px 20px 0"></span>
+                    <span style="float: left; "></span>
                     <label id="lblMessage">
                     </label>
                 </p>
