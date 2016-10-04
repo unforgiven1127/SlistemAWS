@@ -47,6 +47,7 @@ function beforeCompanyAdd(form)
                 return true;
                 var newUrl = form.action+'&mailFlg=yes';
                 $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+                alert($('#addcompanyId').attr('action'));
             }
             else
             {
