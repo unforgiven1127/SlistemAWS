@@ -6751,6 +6751,7 @@ class CSl_candidateEx extends CSl_candidate
       //$company_list = "test (#123456), Test (#123456)";
 
       $jsonData = json_encode($company_list);
+      ChromePhp::log($jsonData);
       return $jsonData;
       //ChromePhp::log($result);
       //return 'RESULT';
