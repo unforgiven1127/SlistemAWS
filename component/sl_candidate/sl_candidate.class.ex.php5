@@ -6660,12 +6660,15 @@ class CSl_candidateEx extends CSl_candidate
       if($nameCount == 1)
       {
         $stringCount = strlen($company_name);
+        $stringCount2 = $stringCount;
         $stringCount = $stringCount-2;
         /*$sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                  FROM sl_company slc
                  WHERE levenshtein('".$company_name."', TRIM(LOWER(slc.name))) < 2
                  OR slc.name = '".$company_name."'";*/
-        $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$company_name."', 1, 0) as exact_name2, slc.* FROM sl_company slc WHERE slc.name LIKE '%".$company_name."%' ORDER BY exact_name2 DESC";
+        $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$company_name."', 1, 0) as exact_name2,
+        IF(LEFT(slc.name , '".$stringCount2."') LIKE '".$company_name."', 1, 0) as exact_name3,
+        slc.* FROM sl_company slc WHERE slc.name LIKE '%".$company_name."%' ORDER BY exact_name2 DESC,exact_name3 DESC";
       }
       else if($nameCount > 1)
       {
@@ -6686,7 +6689,8 @@ class CSl_candidateEx extends CSl_candidate
                  WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
                  OR slc.name = '".$explodedCompanyName[0]."' ";*/
           //$sQuery = "SELECT * FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%'";
-          $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$explodedCompanyName[0]."', 1, 0) as exact_name2, slc.* FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%' ORDER BY exact_name2 DESC";
+          $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$explodedCompanyName[0]."', 1, 0) as exact_name2, IF(LEFT(slc.name , '".$stringCount2."') LIKE '".$explodedCompanyName[0]."', 1, 0) as exact_name3,
+          slc.* FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%' ORDER BY exact_name2 DESC,exact_name3 DESC";
         }
         else
         {
