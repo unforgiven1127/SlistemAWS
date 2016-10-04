@@ -86,7 +86,7 @@ function beforeCompanyAdd(form)
           var parsedData = jQuery.parseJSON(data);
           if(parsedData != "none")
           {
-            ShowDialogBox('Warning','Record updated successfully.','Ok','', 'GoToAssetList',null);
+            ShowDialogBox('Warning','Record updated successfully.','Yes','No', 'GoToAssetList',null);
             var newUrl = form.action+'&mailFlg=no';
             $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
             /*var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
