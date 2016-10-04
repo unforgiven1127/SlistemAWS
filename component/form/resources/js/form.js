@@ -29,7 +29,7 @@ function beforeCompanyAdd(form)
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(oJsonData)
       {
-          //alert('Success');
+          alert('Success');
           $('#slLoadingScreen').attr('id', 'slLoadingScreen_');
           $('#slLoadingScreen').attr('style', '');
 
