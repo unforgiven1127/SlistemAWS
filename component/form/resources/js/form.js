@@ -2,7 +2,7 @@
  * Comment
  */
 
-$('input[name=Save_company]').type = 'button';
+$('input[name=Save_company]').prop('type', 'button');
 
 function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList) {
                 var btn1css;
