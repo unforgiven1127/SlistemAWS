@@ -6795,7 +6795,7 @@ class CSl_candidateEx extends CSl_candidate
       $oForm = $this->_oDisplay->initForm('companyAddForm');
       $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SAVEADD, CONST_CANDIDATE_TYPE_COMP, $pnPk);
 
-      $oForm->setFormParams('addcompany', true, array('action' => $sURL, 'class' => 'companyAddForm', 'submitLabel'=>'Save company','onBeforeSubmit' => "return beforeCompanyAdd(this);"));
+      $oForm->setFormParams('addcompany', true, array('action' => $sURL, 'class' => 'companyAddForm', 'submitLabel'=>'Save company','onBeforeSubmit' => "beforeCompanyAdd(this);"));
       $oForm->setFormDisplayParams(array('class' => 'CompanyAddBtn','noCancelButton' => true, /*'noSubmitButton' => 1,*/ 'columns' => 1));
 
 
