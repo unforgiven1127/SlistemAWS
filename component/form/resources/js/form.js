@@ -57,7 +57,7 @@ function loading()
     $('body').append("<div id='overlay' class='overlay'></div>");
 }
 
-function beforeCompanyAdd(form)
+function beforeCompanyAdd()
 {
 
     var companyName = $('.companyNameClass').val();
