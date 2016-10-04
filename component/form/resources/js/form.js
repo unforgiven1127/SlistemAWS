@@ -33,7 +33,6 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                                         text: btn1text,
                                         "class": btn1css,
                                         click: function () {
-                                                                                    
                                             $("#dialog").dialog('close');
 
                                         }
