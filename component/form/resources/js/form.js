@@ -36,7 +36,7 @@ function beforeCompanyAdd(form)
           if (confirm(msg))
           {
               alert('yes');
-              event.preventDefault();
+              //event.preventDefault();
               return true;
               //var newUrl = form.action+'&mailFlg=yes';
               //$('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
@@ -44,7 +44,7 @@ function beforeCompanyAdd(form)
           else
           {
               alert('no');
-              event.preventDefault();
+              //event.preventDefault();
               return false;
           }
         }
