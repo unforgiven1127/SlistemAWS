@@ -33,7 +33,7 @@ function beforeCompanyAdd(form)
       success: function(oJsonData)
       {
           //alert('Success');
-          $('#slLoadingScreen').remove();
+          //$('#slLoadingScreen').remove();
 
           //console.log(oJsonData);
           var data = oJsonData.data;
