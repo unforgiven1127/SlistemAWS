@@ -601,10 +601,11 @@ class CFormEx extends CForm
       $sHtml.= $this->coHTML->getBloc('','&nbsp;',array('class'=>'formFieldLinebreaker formFieldWidth1'));
       $sHtml.= ' <div class="submitBtnClass formFieldWidth1">';
 
+      $replacedValue = str_replace(' ','_',$sSubmitLabel);
       if($this->cbSubmitHidden)
-        $sHtml.= ' <input type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" class="hidden"/>';
+        $sHtml.= ' <input name="'.$replacedValue.'" type="submit" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" class="hidden"/>';
       else
-        $sHtml.= ' <input type="submit" id="formSubmitButton" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
+        $sHtml.= ' <input name="'.$replacedValue.'" type="submit" id="formSubmitButton" value="'.$sSubmitLabel.'" onclick="'.$sOnClick.'" />';
 
       if($this->cbFormCancelButton)
         $sHtml.= ' <input type="button" value="Cancel" onclick="window.history.go(-1)" />';
