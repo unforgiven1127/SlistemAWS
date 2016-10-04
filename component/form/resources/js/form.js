@@ -11,58 +11,65 @@ function loading()
 
 function beforeCompanyAdd(form)
 {
-  var companyName = $('.companyNameClass').val();
-  //alert(companyName);
-  loading();
-  psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
+  var actionUrl = $('#addcompanyId').attr('action');
+  if (actionUrl.indexOf("mailFlg") >= 0)
+  {
+    return true;
+  }
+  else
+  {
+    var companyName = $('.companyNameClass').val();
+    //alert(companyName);
+    loading();
+    psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
-  console.log(psUrl);
-  $.ajax({
-    type: 'POST',
-    url: psUrl,
-    scriptCharset: "utf-8" ,
-    data: {cname:companyName},
-    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-    success: function(oJsonData)
-    {
-        $('#slLoadingScreen').remove();
-        alert('Success');
-        //console.log(oJsonData);
-        var data = oJsonData.data;
-        var parsedData = jQuery.parseJSON(data);
-        if(parsedData != "none")
-        {
-          var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
-          if (confirm(msg))
+    console.log(psUrl);
+    $.ajax({
+      type: 'POST',
+      url: psUrl,
+      scriptCharset: "utf-8" ,
+      data: {cname:companyName},
+      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+      success: function(oJsonData)
+      {
+          $('#slLoadingScreen').remove();
+          alert('Success');
+          //console.log(oJsonData);
+          var data = oJsonData.data;
+          var parsedData = jQuery.parseJSON(data);
+          if(parsedData != "none")
           {
-              alert('yes');
-              //event.preventDefault();
-              return true;
-              //var newUrl = form.action+'&mailFlg=yes';
-              //$('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+            var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
+            if (confirm(msg))
+            {
+                alert('yes');
+                //event.preventDefault();
+                return true;
+                var newUrl = form.action+'&mailFlg=yes';
+                $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+            }
+            else
+            {
+                alert('no');
+                //event.preventDefault();
+                return false;
+            }
           }
           else
           {
-              alert('no');
-              //event.preventDefault();
-              return false;
+            //do nothing
           }
-        }
-        else
-        {
-          //do nothing
-        }
 
-        //alert(parsedData);
-        //var data = oJsonData.data;
-        //alert(data);
-        //console.log(data);
-      //$(psToPrepend).append(oJsonData.data);
-    },
-    async: false,
-    dataType: "JSON"
-  });
-
+          //alert(parsedData);
+          //var data = oJsonData.data;
+          //alert(data);
+          //console.log(data);
+        //$(psToPrepend).append(oJsonData.data);
+      },
+      async: false,
+      dataType: "JSON"
+    });
+  }
   //return false;
 
   //alert('END');
