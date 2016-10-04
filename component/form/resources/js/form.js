@@ -35,8 +35,8 @@ function beforeCompanyAdd(form)
           if (confirm(msg))
           {
               alert('yes');
-              var newUrl = form.action+'&mailFlg=yes';
-              $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+              //var newUrl = form.action+'&mailFlg=yes';
+              //$('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
           }
           else
           {

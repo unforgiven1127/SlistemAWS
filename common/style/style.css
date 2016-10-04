@@ -1,3 +1,56 @@
+#slLoadingScreen
+{
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#slLoadingScreen .bg
+{
+  opacity: 0.3;
+  z-index: 999991;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: inherit;
+}
+#slLoadingScreen .ani
+{
+  z-index: 9999992;
+  position: absolute;
+  top: 25%;
+  left: 0;
+  background: transparent url('/component/portal/resources/pictures/slistem/home_loading.gif') no-repeat center 46%;
+  width: 100%;
+  min-height: 200px;
+}
+
+#slLoadingScreen.light .bg
+{
+  background-color: #aaa;
+}
+#slLoadingScreen.dark .bg
+{
+  background-color: #333;
+}
+
+#slLoadingScreen.no_animation .ani
+{
+  background-image: none;
+}
+#slLoadingScreen.light_animation .ani
+{
+  background: transparent url('/common/pictures/slistem/loading_home_small.gif') no-repeat center;
+}
+#slLoadingScreen.invisible .bg,
+#slLoadingScreen.invisible .ani
+{
+  background-image: none;
+  background-color: transparent;
+}
+
 body
 {
   font-family: Verdana, Arial;
