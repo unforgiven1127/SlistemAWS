@@ -20,7 +20,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
     } else {
         btn2css = "showcss";
     }
-    content = "There are possible duplicates:<br><br>"+content+"<br><br>Do you still want to add a new company?";
+    content = "There are possible duplicates<br><br>Do you still want to add a new company?<br><br>"+content;
     $("#lblMessage").html(content);
 
     $("#dialog").dialog({
@@ -59,6 +59,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                     }
                 ]
     });
+
 }
 
 function loading()
