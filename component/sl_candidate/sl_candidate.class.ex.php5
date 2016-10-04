@@ -7009,7 +7009,17 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('input', 'website', array('label'=> 'website', 'value' => $asCompanyData['website']));
        $oForm->closeSection();
 
+       $customHtml = '<div id="dialog" title="Alert message" style="display: none">
+            <div class="ui-dialog-content ui-widget-content">
+                <p>
+                    <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0"></span>
+                    <label id="lblMessage">
+                    </label>
+                </p>
+            </div>
+        </div>';
 
+      $oForm->addCustomHtml($customHtml);
 
       return $oForm->getDisplay();
     }
