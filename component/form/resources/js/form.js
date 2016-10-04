@@ -131,6 +131,13 @@ function beforeCompanyAdd()
           //console.log(data);
         //$(psToPrepend).append(oJsonData.data);
       },
+      complete: function(oJsonData)
+      {
+          console.log(oJsonData);
+          var data = oJsonData.data;
+          var parsedData = jQuery.parseJSON(data);
+          alert(parsedData);
+      },
       async: false,
       dataType: "JSON"
     });

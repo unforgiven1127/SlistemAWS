@@ -6696,7 +6696,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery = "SELECT slc.* FROM sl_company slc WHERE ";
           foreach ($explodedCompanyName as $key => $value)
           {
-            $addWhere .= "slc.name LIKE '%".$value."%' OR ";
+            $addWhere .= " slc.name LIKE '%".$value."%' OR ";
             //$addWhere = " levenshtein('".$value."', TRIM(LOWER(slc.name))) < 2 OR slc.name == '".$value."' OR";
           }
           $sQuery .= $addWhere;
