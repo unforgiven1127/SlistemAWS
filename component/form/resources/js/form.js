@@ -11,17 +11,8 @@ function loading()
 
 function beforeCompanyAdd(form)
 {
-  var actionUrl = $('#addcompanyId').attr('action');
-  if (actionUrl.indexOf("mailFlg") >= 0)
-  {
-    alert('mailFlg var');
-    $('#addcompanyId').submit();
-    return true;
-  }
-  else
-  {
     var companyName = $('.companyNameClass').val();
-    //alert(companyName);
+    alert(companyName);
     //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
@@ -72,7 +63,6 @@ function beforeCompanyAdd(form)
       async: false,
       dataType: "JSON"
     });
-  }
   //return false;
 
   //alert('END');
