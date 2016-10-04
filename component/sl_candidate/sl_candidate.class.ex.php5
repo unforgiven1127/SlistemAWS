@@ -6722,7 +6722,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         foreach ($result as $key => $value)
         {
-          $company_list.= $value['name']." (#".$value['sl_companypk'].")".", ";
+          $company_list.= $value['name']." (#".$value['sl_companypk'].")".",<br>";
           //$company_list.= $value['sl_companypk']."-".$value['name']."_";
         }
         $company_list = trim($company_list, ", ");
