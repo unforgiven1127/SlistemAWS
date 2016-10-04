@@ -14,7 +14,7 @@ function beforeCompanyAdd(form)
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
     //$('.ui-dialog').addClass("loadClass");
-    $(".ui-dialog").wrapAll('<div id="slLoadingScreen"  style="z-index: 99999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; "><div class="bg"></div><div class="ani"></div></div>');
+    $(".ui-dialog").wrapAll('<div id="slLoadingScreen"  style="z-index: 102; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; "><div class="bg"></div><div class="ani"></div></div>');
 
     //alert(companyName);
     //loading();
