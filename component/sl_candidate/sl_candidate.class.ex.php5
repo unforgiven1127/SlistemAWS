@@ -7019,7 +7019,10 @@ class CSl_candidateEx extends CSl_candidate
                 </p>
             </div>
         </div>
-        <script>$("input[name=Save_company]").prop("type", "button");</script>';
+        <script>
+          $("input[name=Save_company]").prop("type", "button");
+          $("input[name=Save_company]").attr("onclick", "beforeCompanyAdd();");
+        </script>';
 
       $oForm->addCustomHtml($customHtml);
 
