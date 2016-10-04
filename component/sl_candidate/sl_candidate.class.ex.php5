@@ -6733,7 +6733,6 @@ class CSl_candidateEx extends CSl_candidate
             //$company_list.= $value['sl_companypk']."-".$value['name']."_";
           }
           $company_list = trim($company_list, ",<br>");
-          $company_list.= "...";
         }
         else
         {
