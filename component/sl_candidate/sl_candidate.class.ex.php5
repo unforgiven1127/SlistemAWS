@@ -7008,10 +7008,13 @@ ChromePhp::log('_saveCompany');
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
-      $mailFlag = $_GET['mailFlg'];
-      if(isset($mailFlag))
+      if(isset($_GET['mailFlg']))
       {
-        ChromePhp::log($mailFlag);
+        $mailFlag = $_GET['mailFlg'];
+        if(isset($mailFlag))
+        {
+          ChromePhp::log($mailFlag);
+        }
       }
 
       $asData = array();
