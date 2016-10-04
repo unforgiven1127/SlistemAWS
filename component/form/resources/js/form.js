@@ -17,7 +17,7 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
-        //alert('Success');
+        alert('Success');
         //console.log(oJsonData);
         var data = oJsonData.data;
         var parsedData = jQuery.parseJSON(data);
