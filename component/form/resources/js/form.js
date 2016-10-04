@@ -32,7 +32,7 @@ function beforeCompanyAdd(form)
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(oJsonData)
       {
-          $('#slLoadingScreen').remove();
+          //$('#slLoadingScreen').remove();
           alert('Success');
           //console.log(oJsonData);
           var data = oJsonData.data;
@@ -44,10 +44,10 @@ function beforeCompanyAdd(form)
             {
                 alert('yes');
                 //event.preventDefault();
-                return true;
                 var newUrl = form.action+'&mailFlg=yes';
                 $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
-                alert($('#addcompanyId').attr('action'));
+                $('#addcompanyId').submit();
+                return true;
             }
             else
             {
