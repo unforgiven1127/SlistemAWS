@@ -8,7 +8,7 @@ function beforeCompanyAdd(form)
   //alert(companyName);
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
-  //console.log(psUrl);
+  console.log(psUrl);
   $.ajax({
     type: 'POST',
     url: psUrl,
