@@ -4,60 +4,61 @@
 
 
 
-function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList) {
-                var btn1css;
-                var btn2css;
+function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList)
+{
+    var btn1css;
+    var btn2css;
 
-                if (btn1text == '') {
-                    btn1css = "hidecss";
-                } else {
-                    btn1css = "showcss";
-                }
+    if (btn1text == '') {
+        btn1css = "hidecss";
+    } else {
+        btn1css = "showcss";
+    }
 
-                if (btn2text == '') {
-                    btn2css = "hidecss";
-                } else {
-                    btn2css = "showcss";
-                }
-                content = "There are possible duplicates:<br><br>"+content+"<br><br>Do you still want to add a new company?";
-                $("#lblMessage").html(content);
+    if (btn2text == '') {
+        btn2css = "hidecss";
+    } else {
+        btn2css = "showcss";
+    }
+    content = "There are possible duplicates:<br><br>"+content+"<br><br>Do you still want to add a new company?";
+    $("#lblMessage").html(content);
 
-                $("#dialog").dialog({
-                    resizable: false,
-                    title: title,
-                    modal: true,
-                    width: '500px',
-                    height: 'auto',
-                    bgiframe: false,
-                    hide: { effect: 'scale', duration: 400 },
+    $("#dialog").dialog({
+        resizable: false,
+        title: title,
+        modal: true,
+        width: '500px',
+        height: 'auto',
+        bgiframe: false,
+        hide: { effect: 'scale', duration: 400 },
 
-                    buttons: [
-                                    {
-                                        text: btn1text,
-                                        "class": btn1css,
-                                        click: function () {
-                                            var oldUrl = $('#addcompanyId').attr('action');
-                                            var newUrl = oldUrl+'&mailFlg=yes';
-                                            $('#addcompanyId').attr('action',newUrl);
-                                            $('#addcompanyId').submit();
-                                            $("#dialog").dialog('close');
+        buttons: [
+                    {
+                      text: btn1text,
+                      "class": btn1css,
+                      click: function () {
+                          var oldUrl = $('#addcompanyId').attr('action');
+                          var newUrl = oldUrl+'&mailFlg=yes';
+                          $('#addcompanyId').attr('action',newUrl);
+                          $('#addcompanyId').submit();
+                          $("#dialog").dialog('close');
 
-                                        }
-                                    },
-                                    {
-                                        text: btn2text,
-                                        "class": btn2css,
-                                        click: function () {
-                                            var oldUrl = $('#addcompanyId').attr('action');
-                                            var newUrl = oldUrl+'&mailFlg=no';
-                                            $('#addcompanyId').attr('action',newUrl);
-                                            $('#addcompanyId').submit();
-                                            $("#dialog").dialog('close');
-                                        }
-                                    }
-                                ]
-                });
-            }
+                      }
+                    },
+                    {
+                      text: btn2text,
+                      "class": btn2css,
+                      click: function () {
+                          var oldUrl = $('#addcompanyId').attr('action');
+                          var newUrl = oldUrl+'&mailFlg=no';
+                          $('#addcompanyId').attr('action',newUrl);
+                          $('#addcompanyId').submit();
+                          $("#dialog").dialog('close');
+                      }
+                    }
+                ]
+    });
+}
 
 function loading()
 {
@@ -71,7 +72,7 @@ function beforeCompanyAdd()
 
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
-    $('.ui-dialog').addClass("loadClass");
+    //$('.ui-dialog').addClass("loadClass");
 
     //alert(companyName);
     //loading();
@@ -86,7 +87,7 @@ function beforeCompanyAdd()
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(oJsonData)
       {
-          $('.ui-dialog').removeClass("loadClass");
+          //$('.ui-dialog').removeClass("loadClass");
           //alert('Success');
           //$('#slLoadingScreen').remove();
 
