@@ -14,7 +14,7 @@ function beforeCompanyAdd(form)
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
     //$('.ui-dialog').addClass("loadClass");
-    $(".ui-dialog").wrapAll('<div class="loadClass" id="set-1" />');
+    $(".ui-dialog").wrapAll('<div class="loadClass" id="set-1" ></div>');
 
     //alert(companyName);
     //loading();
