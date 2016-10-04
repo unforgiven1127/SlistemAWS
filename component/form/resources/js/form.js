@@ -54,7 +54,7 @@ function beforeCompanyAdd(form)
             else
             {
                 alert('no');
-                //event.preventDefault();
+                event.preventDefault();
                 return false;
             }
           }
