@@ -6735,6 +6735,10 @@ class CSl_candidateEx extends CSl_candidate
           $company_list = trim($company_list, ",<br>");
           $company_list.= "...";
         }
+        else
+        {
+          $company_list = "none";
+        }
       }
       else
       {
