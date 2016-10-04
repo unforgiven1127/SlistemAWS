@@ -6648,7 +6648,7 @@ class CSl_candidateEx extends CSl_candidate
       //url
       //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
       $company_name = $_POST['cname'];
-
+      ChromePhp::log($company_name);
       $oDB = CDependency::getComponentByName('database');
 
       $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
@@ -6721,6 +6721,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $company_list = "none";
       }
+      ChromePhp::log($company_list);
       $jsonData = json_encode($company_list);
       return $jsonData;
       //ChromePhp::log($result);
