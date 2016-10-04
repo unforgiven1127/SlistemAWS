@@ -7014,7 +7014,7 @@ ChromePhp::log('_saveCompany');
         $mailFlag = $_GET['mailFlg'];
       }
 ChromePhp::log($mailFlag);
-      if($mailFlag == 'yes' || $mailFlag = 'normal')
+      if($mailFlag == 'yes' || $mailFlag == 'normal')
       {
         ChromePhp::log('ICERDE');
         $asData = array();
