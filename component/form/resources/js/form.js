@@ -118,7 +118,7 @@ function beforeCompanyAdd()
           }
           else
           {
-            //do nothing
+            $('#addcompanyId').submit();
           }
 
           //alert(parsedData);
