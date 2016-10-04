@@ -16,62 +16,63 @@ function beforeCompanyAdd(form)
     //$('.ui-dialog').addClass("loadClass");
     $(".ui-dialog").wrapAll('<div id="slLoadingScreen"  style="z-index: 99999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; "><div class="bg"></div><div class="ani"></div></div>');
 
-    setTimeout(function(){
-    //do what you need here
-    }, 6000);
-    //alert(companyName);
-    //loading();
-    psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
+    setTimeout(function()
+    {
+      //alert(companyName);
+      //loading();
+      psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
-    console.log(psUrl);
-    $.ajax({
-      type: 'POST',
-      url: psUrl,
-      scriptCharset: "utf-8" ,
-      data: {cname:companyName},
-      contentType: "application/x-www-form-urlencoded; charset=UTF-8",
-      success: function(oJsonData)
-      {
-          //alert('Success');
-          //$('#slLoadingScreen').remove();
+      console.log(psUrl);
+      $.ajax({
+        type: 'POST',
+        url: psUrl,
+        scriptCharset: "utf-8" ,
+        data: {cname:companyName},
+        contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+        success: function(oJsonData)
+        {
+            //alert('Success');
+            //$('#slLoadingScreen').remove();
 
-          //console.log(oJsonData);
-          var data = oJsonData.data;
-          var parsedData = jQuery.parseJSON(data);
-          if(parsedData != "none")
-          {
-            var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
-            if (confirm(msg))
+            //console.log(oJsonData);
+            var data = oJsonData.data;
+            var parsedData = jQuery.parseJSON(data);
+            if(parsedData != "none")
             {
-                //alert('yes');
-                //event.preventDefault();
-                var newUrl = form.action+'&mailFlg=yes';
-                $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
-                //$('#addcompanyId').submit();
-                return true;
+              var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
+              if (confirm(msg))
+              {
+                  //alert('yes');
+                  //event.preventDefault();
+                  var newUrl = form.action+'&mailFlg=yes';
+                  $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+                  //$('#addcompanyId').submit();
+                  return true;
+              }
+              else
+              {
+                  //alert('no');
+                  var newUrl = form.action+'&mailFlg=no';
+                  $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+                  return false;
+              }
             }
             else
             {
-                //alert('no');
-                var newUrl = form.action+'&mailFlg=no';
-                $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
-                return false;
+              //do nothing
             }
-          }
-          else
-          {
-            //do nothing
-          }
 
-          //alert(parsedData);
-          //var data = oJsonData.data;
-          //alert(data);
-          //console.log(data);
-        //$(psToPrepend).append(oJsonData.data);
-      },
-      async: false,
-      dataType: "JSON"
-    });
+            //alert(parsedData);
+            //var data = oJsonData.data;
+            //alert(data);
+            //console.log(data);
+          //$(psToPrepend).append(oJsonData.data);
+        },
+        async: false,
+        dataType: "JSON"
+      });
+    }, 6000);
+
   //return false;
 
   //alert('END');
