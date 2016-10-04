@@ -20,7 +20,7 @@ function beforeCompanyAdd(form)
   {
     var companyName = $('.companyNameClass').val();
     //alert(companyName);
-    loading();
+    //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
     console.log(psUrl);
