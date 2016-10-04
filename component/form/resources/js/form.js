@@ -2,6 +2,8 @@
  * Comment
  */
 
+$('button[name=Save_company]').type = 'button';
+
 function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList) {
                 var btn1css;
                 var btn2css;
