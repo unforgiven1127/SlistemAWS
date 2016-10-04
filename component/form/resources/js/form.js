@@ -2,7 +2,7 @@
  * Comment
  */
 
-$('input[name=Save_company]').prop('type', 'button');
+
 
 function ShowDialogBox(title, content, btn1text, btn2text, functionText, parameterList) {
                 var btn1css;
@@ -59,6 +59,7 @@ function loading()
 
 function beforeCompanyAdd(form)
 {
+  $('input[name=Save_company]').prop('type', 'button');
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
     $('.ui-dialog').addClass("loadClass");
