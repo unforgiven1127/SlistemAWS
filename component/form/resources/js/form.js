@@ -14,7 +14,7 @@ function beforeCompanyAdd(form)
     var companyName = $('.companyNameClass').val();
     $('.ui-dialog').attr('id', 'companyAddNewId')
     //alert(companyName);
-    loading();
+    //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
     console.log(psUrl);
