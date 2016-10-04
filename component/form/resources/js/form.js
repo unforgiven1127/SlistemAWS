@@ -12,7 +12,7 @@ function loading()
 function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
-    alert(companyName);
+    //alert(companyName);
     //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
@@ -45,7 +45,8 @@ function beforeCompanyAdd(form)
             else
             {
                 alert('no');
-                event.preventDefault();
+                var newUrl = form.action+'&mailFlg=no';
+                $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
                 return false;
             }
           }

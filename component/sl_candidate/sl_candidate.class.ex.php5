@@ -7008,6 +7008,7 @@ ChromePhp::log('_saveCompany');
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
+      $mailFlag = 'normal';
       if(isset($_GET['mailFlg']))
       {
         $mailFlag = $_GET['mailFlg'];
@@ -7017,142 +7018,149 @@ ChromePhp::log('_saveCompany');
         }
       }
 
-      $asData = array();
-      $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
-      $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
-      $asData['description'] = filter_var(getValue('description'), FILTER_SANITIZE_STRING);
-      $asData['level'] = (int)getValue('level');
-      $asData['is_client'] = (int)getValue('is_client');
-
-      $asData['phone'] = filter_var(getValue('phone', null), FILTER_SANITIZE_STRING);
-      $asData['fax'] = filter_var(getValue('fax', null), FILTER_SANITIZE_STRING);
-      $asData['email'] = filter_var(getValue('email', null), FILTER_SANITIZE_EMAIL);
-      $asData['website'] = filter_var(getValue('website', null), FILTER_SANITIZE_URL);
-
-      $asData['revenue'] = getValue('revenue');
-      $asData['hq'] = filter_var(getValue('hq', null), FILTER_SANITIZE_STRING);
-      $asData['hq_japan'] = filter_var(getValue('hq_japan', null), FILTER_SANITIZE_STRING);
-
-      $asData['num_employee_world'] = (int)getValue('num_employee', 0);
-      $asData['num_branch_world'] = (int)getValue('num_branch_world', 0);
-
-      $asData['num_employee_japan'] = (int)getValue('num_employee_japan', 0);
-      $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
-
-
-      $nLoginFk = (int)getValue('loginfk');
-
-      if(empty($pnPk))
+      if($mailFlag == 'yes' || $mailFlag = 'normal')
       {
-        $bUpdate = false;
+        $asData = array();
+        $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
+        $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
+        $asData['description'] = filter_var(getValue('description'), FILTER_SANITIZE_STRING);
+        $asData['level'] = (int)getValue('level');
+        $asData['is_client'] = (int)getValue('is_client');
 
-        $asData['date_created'] = date('Y-m-d H:i:s');
-        $asData['created_by'] = $nLoginFk;
-        $asData['company_owner'] = $nLoginFk;
-        $pnPk = $this->_getModel()->add($asData, 'sl_company');
+        $asData['phone'] = filter_var(getValue('phone', null), FILTER_SANITIZE_STRING);
+        $asData['fax'] = filter_var(getValue('fax', null), FILTER_SANITIZE_STRING);
+        $asData['email'] = filter_var(getValue('email', null), FILTER_SANITIZE_EMAIL);
+        $asData['website'] = filter_var(getValue('website', null), FILTER_SANITIZE_URL);
+
+        $asData['revenue'] = getValue('revenue');
+        $asData['hq'] = filter_var(getValue('hq', null), FILTER_SANITIZE_STRING);
+        $asData['hq_japan'] = filter_var(getValue('hq_japan', null), FILTER_SANITIZE_STRING);
+
+        $asData['num_employee_world'] = (int)getValue('num_employee', 0);
+        $asData['num_branch_world'] = (int)getValue('num_branch_world', 0);
+
+        $asData['num_employee_japan'] = (int)getValue('num_employee_japan', 0);
+        $asData['num_branch_japan'] = (int)getValue('num_branch_japan', 0);
+
+
+        $nLoginFk = (int)getValue('loginfk');
+
         if(empty($pnPk))
-          return array('error' => 'Could not save the company.');
+        {
+          $bUpdate = false;
+
+          $asData['date_created'] = date('Y-m-d H:i:s');
+          $asData['created_by'] = $nLoginFk;
+          $asData['company_owner'] = $nLoginFk;
+          $pnPk = $this->_getModel()->add($asData, 'sl_company');
+          if(empty($pnPk))
+            return array('error' => 'Could not save the company.');
+        }
+        else
+        {
+          $bUpdate = true;
+
+          $asData['date_updated'] = date('Y-m-d H:i:s');
+          $asData['updated_by'] = $nLoginFk;
+          $asData['company_owner'] = (int)getValue('company_owner');
+          $asData['is_nc_ok'] = (int)getValue('is_nc_ok');
+          $bUpdated = $this->_getModel()->update($asData, 'sl_company', 'sl_companypk = '.$pnPk);
+          if(!$bUpdated)
+            return array('error' => 'Could not update the company.');
+
+          //$company_owners = array();
+          $i=1;
+          $field_name = "company_owner_".$i;
+          $company_owner = getValue($field_name);
+
+          while(isset($company_owner) && !empty($company_owner))
+          {
+            $company_owner = explode('_',$company_owner);
+            $newOwner = $company_owner[0];
+            $changeID = $company_owner[1];
+
+            if($newOwner == '000')//DELETE
+            {
+              deleteClientOwner($changeID, $user_id);
+            }
+            else
+            {
+              updateCompanyOwner($newOwner,$user_id,$changeID);
+            }
+
+            $i++;
+            $field_name = "company_owner_".$i;
+            $company_owner = getValue($field_name);
+          }
+
+          $newCompanyOwner = getValue('company_owner_new');
+          if(isset($newCompanyOwner) && !empty($newCompanyOwner) && $newCompanyOwner != '0')
+          {
+            $newCompanyOwner = explode('_',$newCompanyOwner);
+            $newOwner = $newCompanyOwner[0];
+            $company_id = $newCompanyOwner[1];
+            insertNewOwner($newOwner,$user_id,$company_id);
+          }
+          //ChromePhp::log($company_owners);
+        }
+
+
+        $asIndustry = explode(',', getValue('industrypk'));
+        $asInsertIndus = array();
+        $sNow = date('Y-m-d H:i:s');
+        foreach($asIndustry as $nKey => $sIndustryKey)
+        {
+          $sIndustryKey = (int)$sIndustryKey;
+          if(!empty($sIndustryKey))
+          {
+            $asInsertIndus['itemfk'][$nKey] = $pnPk;
+            $asInsertIndus['attributefk'][$nKey] = (int)$sIndustryKey;
+            $asInsertIndus['type'][$nKey] ='cp_indus';
+            $asInsertIndus['loginfk'][$nKey] = $nLoginFk;
+            $asInsertIndus['date_created'][$nKey] = $sNow;
+          }
+        }
+
+        //if the array ios not empty, we need to save the industry
+        if(!empty($asInsertIndus))
+        {
+          if($bUpdate)
+            $this->_getModel()->deleteByWhere('sl_attribute', '`type` = \'cp_indus\' AND itemfk='.$pnPk);
+
+          $nInserted = $this->_getModel()->add($asInsertIndus, 'sl_attribute');
+          if(empty($nInserted))
+            return array('error' => 'Could not save the company industry.');
+        }
+
+        //form opened from candidate form,
+        //need to update the company field in the form when when the company is saved
+        $sUpdateField = getValue('update_field', '');
+        if($sUpdateField)
+        {
+          if(isset($asInsertIndus['attributefk']))
+          {
+            $anPK = array_values($asInsertIndus['attributefk']);
+            $sPreSelectJs = '
+            if($(\'.fieldNameindustrypk input[name=industrypk]\').val()<= 0)
+            {
+              $(\'.fieldNameindustrypk li[sl_industrypk='.$anPK[0].']\').click();
+            }';
+          }
+          else
+            $sPreSelectJs = '';
+
+          return array('data' => 'ok',
+            'action' => '$(\''.$sUpdateField.'\').val('.$pnPk.');
+            $(\''.$sUpdateField.'\').tokenInput(\'clear\').tokenInput(\'add\', {id: \''.$pnPk.'\', name: \''.addslashes($asData['name']).'\'}); '.$sPreSelectJs.' goPopup.removeLastByType(\'layer\'); ');
+        }
+
+        $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $pnPk);
+        return array('notice' => 'Company saved.', 'action' => 'view_comp(\''.$sURL.'\'); goPopup.removeLastByType(\'layer\'); ');
       }
       else
       {
-        $bUpdate = true;
-
-        $asData['date_updated'] = date('Y-m-d H:i:s');
-        $asData['updated_by'] = $nLoginFk;
-        $asData['company_owner'] = (int)getValue('company_owner');
-        $asData['is_nc_ok'] = (int)getValue('is_nc_ok');
-        $bUpdated = $this->_getModel()->update($asData, 'sl_company', 'sl_companypk = '.$pnPk);
-        if(!$bUpdated)
-          return array('error' => 'Could not update the company.');
-
-        //$company_owners = array();
-        $i=1;
-        $field_name = "company_owner_".$i;
-        $company_owner = getValue($field_name);
-
-        while(isset($company_owner) && !empty($company_owner))
-        {
-          $company_owner = explode('_',$company_owner);
-          $newOwner = $company_owner[0];
-          $changeID = $company_owner[1];
-
-          if($newOwner == '000')//DELETE
-          {
-            deleteClientOwner($changeID, $user_id);
-          }
-          else
-          {
-            updateCompanyOwner($newOwner,$user_id,$changeID);
-          }
-
-          $i++;
-          $field_name = "company_owner_".$i;
-          $company_owner = getValue($field_name);
-        }
-
-        $newCompanyOwner = getValue('company_owner_new');
-        if(isset($newCompanyOwner) && !empty($newCompanyOwner) && $newCompanyOwner != '0')
-        {
-          $newCompanyOwner = explode('_',$newCompanyOwner);
-          $newOwner = $newCompanyOwner[0];
-          $company_id = $newCompanyOwner[1];
-          insertNewOwner($newOwner,$user_id,$company_id);
-        }
-        //ChromePhp::log($company_owners);
+        return array('error' => 'You cancelled adding a new company.');
       }
-
-
-      $asIndustry = explode(',', getValue('industrypk'));
-      $asInsertIndus = array();
-      $sNow = date('Y-m-d H:i:s');
-      foreach($asIndustry as $nKey => $sIndustryKey)
-      {
-        $sIndustryKey = (int)$sIndustryKey;
-        if(!empty($sIndustryKey))
-        {
-          $asInsertIndus['itemfk'][$nKey] = $pnPk;
-          $asInsertIndus['attributefk'][$nKey] = (int)$sIndustryKey;
-          $asInsertIndus['type'][$nKey] ='cp_indus';
-          $asInsertIndus['loginfk'][$nKey] = $nLoginFk;
-          $asInsertIndus['date_created'][$nKey] = $sNow;
-        }
-      }
-
-      //if the array ios not empty, we need to save the industry
-      if(!empty($asInsertIndus))
-      {
-        if($bUpdate)
-          $this->_getModel()->deleteByWhere('sl_attribute', '`type` = \'cp_indus\' AND itemfk='.$pnPk);
-
-        $nInserted = $this->_getModel()->add($asInsertIndus, 'sl_attribute');
-        if(empty($nInserted))
-          return array('error' => 'Could not save the company industry.');
-      }
-
-      //form opened from candidate form,
-      //need to update the company field in the form when when the company is saved
-      $sUpdateField = getValue('update_field', '');
-      if($sUpdateField)
-      {
-        if(isset($asInsertIndus['attributefk']))
-        {
-          $anPK = array_values($asInsertIndus['attributefk']);
-          $sPreSelectJs = '
-          if($(\'.fieldNameindustrypk input[name=industrypk]\').val()<= 0)
-          {
-            $(\'.fieldNameindustrypk li[sl_industrypk='.$anPK[0].']\').click();
-          }';
-        }
-        else
-          $sPreSelectJs = '';
-
-        return array('data' => 'ok',
-          'action' => '$(\''.$sUpdateField.'\').val('.$pnPk.');
-          $(\''.$sUpdateField.'\').tokenInput(\'clear\').tokenInput(\'add\', {id: \''.$pnPk.'\', name: \''.addslashes($asData['name']).'\'}); '.$sPreSelectJs.' goPopup.removeLastByType(\'layer\'); ');
-      }
-
-      $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_COMP, $pnPk);
-      return array('notice' => 'Company saved.', 'action' => 'view_comp(\''.$sURL.'\'); goPopup.removeLastByType(\'layer\'); ');
     }
 
 
