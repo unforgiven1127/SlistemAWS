@@ -27,7 +27,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
         resizable: true,
         title: title,
         modal: true,
-        width: '500px',
+        width: '500px;',
         height: 'auto',
         bgiframe: false,
         id: 'modelID',
