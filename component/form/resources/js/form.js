@@ -2,10 +2,17 @@
  * Comment
  */
 
+function loading()
+{
+    $('body').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
+    $('body').append("<div id='overlay' class='overlay'></div>");
+}
+
 function beforeCompanyAdd(form)
 {
   var companyName = $('.companyNameClass').val();
   //alert(companyName);
+  loading();
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
   console.log(psUrl);
@@ -17,6 +24,7 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
+        $('#slLoadingScreen').remove();
         alert('Success');
         //console.log(oJsonData);
         var data = oJsonData.data;
