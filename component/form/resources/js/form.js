@@ -26,11 +26,13 @@ function beforeCompanyAdd(form)
           var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
           if (confirm(msg))
           {
+              alert('yes');
               var newUrl = form.action+'&mailFlg=yes';
               $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
           }
           else
           {
+              alert('no');
               event.preventDefault();
               return false;
           }
