@@ -69,7 +69,7 @@
   width: 100%;
   background: transparent url('/common/pictures/slistem/loading_home_small.gif') no-repeat center;
   pointer-events: none;
-  opacity: 0.4;
+  /*opacity: 0.4;*/
 }
 body
 {
