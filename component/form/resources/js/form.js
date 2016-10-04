@@ -35,6 +35,9 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                                         text: btn1text,
                                         "class": btn1css,
                                         click: function () {
+                                            var newUrl = form.action+'&mailFlg=yes';
+                                            $('#addcompanyId').attr('action',newUrl);
+                                            $('#addcompanyId').submit();
                                             $("#dialog").dialog('close');
 
                                         }
@@ -43,6 +46,9 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                                         text: btn2text,
                                         "class": btn2css,
                                         click: function () {
+                                            var newUrl = form.action+'&mailFlg=no';
+                                            $('#addcompanyId').attr('action',newUrl);
+                                            $('#addcompanyId').submit();
                                             $("#dialog").dialog('close');
                                         }
                                     }
@@ -86,7 +92,7 @@ function beforeCompanyAdd()
           var parsedData = jQuery.parseJSON(data);
           if(parsedData != "none")
           {
-            ShowDialogBox('Warning','Record updated successfully.','Yes','No', 'GoToAssetList',null);
+            ShowDialogBox('Warning',parsedData,'Yes','No', 'GoToAssetList',null);
             var newUrl = form.action+'&mailFlg=no';
             $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
             /*var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
