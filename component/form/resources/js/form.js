@@ -28,7 +28,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
         title: title,
         modal: true,
         width: '500px;',
-        height: 'auto',
+        height: '800px important;',
         bgiframe: false,
         id: 'modelID',
         hide: { effect: 'scale', duration: 400 },
