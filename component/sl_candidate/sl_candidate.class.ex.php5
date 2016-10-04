@@ -7012,14 +7012,11 @@ ChromePhp::log('_saveCompany');
       if(isset($_GET['mailFlg']))
       {
         $mailFlag = $_GET['mailFlg'];
-        if(isset($mailFlag))
-        {
-          ChromePhp::log($mailFlag);
-        }
       }
-
+ChromePhp::log($mailFlag);
       if($mailFlag == 'yes' || $mailFlag = 'normal')
       {
+        ChromePhp::log('ICERDE');
         $asData = array();
         $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
         $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
@@ -7159,6 +7156,7 @@ ChromePhp::log('_saveCompany');
       }
       else
       {
+        ChromePhp::log('ELSE');
         return array('error' => 'You cancelled adding a new company.');
       }
     }
