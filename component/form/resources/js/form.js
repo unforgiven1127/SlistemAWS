@@ -16,6 +16,9 @@ function beforeCompanyAdd(form)
     //$('.ui-dialog').addClass("loadClass");
     $(".ui-dialog").wrapAll('<div id="slLoadingScreen"  style="z-index: 99999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; "><div class="bg"></div><div class="ani"></div></div>');
 
+    setTimeout(function(){
+    //do what you need here
+    }, 6000);
     //alert(companyName);
     //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
