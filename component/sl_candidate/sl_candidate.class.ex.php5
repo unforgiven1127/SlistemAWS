@@ -6694,6 +6694,7 @@ class CSl_candidateEx extends CSl_candidate
                  FROM sl_company slc
                  WHERE ";*/
           $sQuery = "SELECT slc.* FROM sl_company slc WHERE ";
+          $addWhere = '';
           foreach ($explodedCompanyName as $key => $value)
           {
             $addWhere .= " slc.name LIKE '%".$value."%' OR ";
