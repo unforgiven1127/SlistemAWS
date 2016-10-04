@@ -6726,10 +6726,11 @@ class CSl_candidateEx extends CSl_candidate
           //$company_list.= $value['sl_companypk']."-".$value['name']."_";
         }
         $company_list = trim($company_list, ", ");
+        $company_list.= "...";
       }
       else
       {
-        $company_list = "none 12";
+        $company_list = "none";
       }
       ChromePhp::log($company_list);
 

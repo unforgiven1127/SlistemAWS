@@ -38,7 +38,7 @@ function beforeCompanyAdd(form)
           if(parsedData != "none")
           {
             var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
-            if (confirm(msg))
+            if(ShowDialogBox(msg))
             {
                 //alert('yes');
                 //event.preventDefault();
