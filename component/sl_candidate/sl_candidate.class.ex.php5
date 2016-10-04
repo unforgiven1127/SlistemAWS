@@ -6715,7 +6715,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
-        $sQuery .= " LIMIT 3";
+        //$sQuery .= " LIMIT 3";
         ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
