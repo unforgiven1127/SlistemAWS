@@ -96,6 +96,7 @@ function beforeCompanyAdd()
           //console.log(oJsonData);
           var data = oJsonData.data;
           var parsedData = jQuery.parseJSON(data);
+          alert(parsedData);
           if(parsedData != "none")
           {
             ShowDialogBox('Warning',parsedData,'Yes','No', 'GoToAssetList',null);
