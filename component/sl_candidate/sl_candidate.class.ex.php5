@@ -6718,7 +6718,7 @@ class CSl_candidateEx extends CSl_candidate
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         //$sQuery .= " LIMIT 90";
-        ChromePhp::log($sQuery);
+        //ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
 
@@ -6726,7 +6726,7 @@ class CSl_candidateEx extends CSl_candidate
 
         $company_list = "";
         $adet = count($result);
-        ChromePhp::log($adet);
+        //ChromePhp::log($adet);
         if($adet > 0)
         {
           foreach ($result as $key => $value)
@@ -6745,13 +6745,13 @@ class CSl_candidateEx extends CSl_candidate
       {
         $company_list = "none";
       }
-      ChromePhp::log($company_list);
+      //ChromePhp::log($company_list);
 
 
       //$company_list = "test (#123456), Test (#123456)";
 
       $jsonData = json_encode($company_list);
-      ChromePhp::log($jsonData);
+      //ChromePhp::log($jsonData);
       return $jsonData;
       //ChromePhp::log($result);
       //return 'RESULT';

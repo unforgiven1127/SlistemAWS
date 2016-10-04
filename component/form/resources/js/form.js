@@ -133,6 +133,7 @@ function beforeCompanyAdd()
       },
       complete: function(oJsonData)
       {
+          alert('complete');
           console.log(oJsonData);
           var data = oJsonData.data;
           var parsedData = jQuery.parseJSON(data);
