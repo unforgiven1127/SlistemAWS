@@ -13,7 +13,8 @@ function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
-    $('body').addClass("loadClass");
+    //$('.ui-dialog').addClass("loadClass");
+    $(".ui-dialog").wrapAll('<div class="loadClass" id="set-1" />');
 
     //alert(companyName);
     //loading();
