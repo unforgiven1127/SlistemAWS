@@ -62,12 +62,12 @@
 
 .loadClass
 {
-  /*background: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #706b6b;
+  background: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0)) repeat scroll 0 0 / 10px 10px #706b6b;
   color: red;
   display: inline-block;
-  line-height: 20px;*/
+  line-height: 20px;
   width: 100%;
-  background: url('/common/pictures/slistem/loading_home_small.gif') no-repeat center;
+  /*background: url('/common/pictures/slistem/loading_home_small.gif') no-repeat center;*/
   pointer-events: none;
   /*opacity: 0.4;*/
 }

@@ -13,8 +13,7 @@ function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
-    //$('.ui-dialog').addClass("loadClass");
-    $(".ui-dialog").wrapAll('<div id="slLoadingScreen"  style="z-index: 102; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; "><div class="bg"></div><div class="ani"></div></div>');
+    $('.ui-dialog').addClass("loadClass");
 
     //alert(companyName);
     //loading();
@@ -30,8 +29,7 @@ function beforeCompanyAdd(form)
       success: function(oJsonData)
       {
           alert('Success');
-          $('#slLoadingScreen').attr('id', 'slLoadingScreen_');
-          $('#slLoadingScreen').attr('style', '');
+          //$('#slLoadingScreen').remove();
 
           //console.log(oJsonData);
           var data = oJsonData.data;
