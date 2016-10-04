@@ -24,11 +24,12 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
     $("#lblMessage").html(content);
 
     $("#dialog").dialog({
-        resizable: false,
+        resizable: true,
         title: title,
         modal: true,
         width: '500px',
-        height: 'auto',
+        height: '400px',
+        overflow: 'auto',
         bgiframe: false,
         hide: { effect: 'scale', duration: 400 },
 
