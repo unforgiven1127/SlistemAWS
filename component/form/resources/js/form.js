@@ -39,7 +39,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                                             var oldUrl = $('#addcompanyId').attr('action');
                                             var newUrl = oldUrl+'&mailFlg=yes';
                                             $('#addcompanyId').attr('action',newUrl);
-                                            //$('#addcompanyId').submit();
+                                            $('#addcompanyId').submit();
                                             $("#dialog").dialog('close');
 
                                         }
@@ -51,7 +51,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                                             var oldUrl = $('#addcompanyId').attr('action');
                                             var newUrl = oldUrl+'&mailFlg=no';
                                             $('#addcompanyId').attr('action',newUrl);
-                                            //$('#addcompanyId').submit();
+                                            $('#addcompanyId').submit();
                                             $("#dialog").dialog('close');
                                         }
                                     }
