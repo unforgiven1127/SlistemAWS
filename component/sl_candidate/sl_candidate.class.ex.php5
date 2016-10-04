@@ -6693,7 +6693,7 @@ class CSl_candidateEx extends CSl_candidate
           /*$sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                  FROM sl_company slc
                  WHERE ";*/
-          $sQuery = "SELECT * FROM sl_company slc WHERE ";
+          $sQuery = "SELECT slc.* FROM sl_company slc WHERE ";
           foreach ($explodedCompanyName as $key => $value)
           {
             $addWhere .= "slc.name LIKE '%".$value."%' OR ";
@@ -6717,7 +6717,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
-        $sQuery .= " LIMIT 90";
+        //$sQuery .= " LIMIT 90";
         ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
