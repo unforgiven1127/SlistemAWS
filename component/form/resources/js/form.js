@@ -59,7 +59,7 @@ function loading()
 
 function beforeCompanyAdd(form)
 {
-  $('input[name=Save_company]').prop('type', 'button');
+
     var companyName = $('.companyNameClass').val();
     //$('.ui-dialog').attr('id', 'companyAddNewId')
     $('.ui-dialog').addClass("loadClass");

@@ -7017,7 +7017,8 @@ class CSl_candidateEx extends CSl_candidate
                     </label>
                 </p>
             </div>
-        </div>';
+        </div>
+        <script>$("input[name=Save_company]").prop("type", "button");</script>';
 
       $oForm->addCustomHtml($customHtml);
 
