@@ -7001,7 +7001,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _saveCompany($pnPk)
     {
-ChromePhp::log('_saveCompany');
       if(!assert('is_integer($pnPk)'))
         return array('error' => 'bad parameters.');
 
@@ -7013,10 +7012,10 @@ ChromePhp::log('_saveCompany');
       {
         $mailFlag = $_GET['mailFlg'];
       }
-ChromePhp::log($mailFlag);
+
       if($mailFlag == 'yes' || $mailFlag == 'normal')
       {
-        ChromePhp::log('ICERDE');
+
         $asData = array();
         $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
         $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);
@@ -7156,7 +7155,6 @@ ChromePhp::log($mailFlag);
       }
       else
       {
-        ChromePhp::log('ELSE');
         return array('error' => 'You cancelled adding a new company.');
       }
     }

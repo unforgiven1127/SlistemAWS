@@ -5,15 +5,16 @@
 function loading()
 {
   alert('loading');
-    $('.ui-dialog').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
-    $('.ui-dialog').append("<div id='overlay' class='overlay'></div>");
+    $('#companyAddNewId').addClass('noScroll').append('<div id="slLoadingScreen"  style="z-index: 999; width: '+ ($(document).innerWidth() + 100) +'px; height: '+ ($(document).innerHeight() + 100) +'px; position: absolute; top: 0; left: 0; ">      <div class="bg"></div><div class="ani"></div></div>');
+    $('#companyAddNewId').append("<div id='overlay' class='overlay'></div>");
 }
 
 function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
+    $('.ui-dialog').attr('id', 'companyAddNewId')
     //alert(companyName);
-    //loading();
+    loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
 
     console.log(psUrl);
@@ -25,7 +26,7 @@ function beforeCompanyAdd(form)
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(oJsonData)
       {
-          //$('#slLoadingScreen').remove();
+          $('#slLoadingScreen').remove();
           alert('Success');
           //console.log(oJsonData);
           var data = oJsonData.data;
@@ -35,7 +36,7 @@ function beforeCompanyAdd(form)
             var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
             if (confirm(msg))
             {
-                alert('yes');
+                //alert('yes');
                 //event.preventDefault();
                 var newUrl = form.action+'&mailFlg=yes';
                 $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
@@ -44,7 +45,7 @@ function beforeCompanyAdd(form)
             }
             else
             {
-                alert('no');
+                //alert('no');
                 var newUrl = form.action+'&mailFlg=no';
                 $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
                 return false;
