@@ -19,7 +19,7 @@ function ShowDialogBox(title, content, btn1text, btn2text, functionText, paramet
                 } else {
                     btn2css = "showcss";
                 }
-                content = "There are possible duplicates:<br><br>"+content+"<br><br>do you still want to add a new company?";
+                content = "There are possible duplicates:<br><br>"+content+"<br><br>Do you still want to add a new company?";
                 $("#lblMessage").html(content);
 
                 $("#dialog").dialog({
