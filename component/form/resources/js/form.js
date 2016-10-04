@@ -29,8 +29,8 @@ function beforeCompanyAdd(form)
       contentType: "application/x-www-form-urlencoded; charset=UTF-8",
       success: function(oJsonData)
       {
-          alert('Success');
-          //$('#slLoadingScreen').remove();
+          //alert('Success');
+          $('#slLoadingScreen').remove();
 
           //console.log(oJsonData);
           var data = oJsonData.data;

@@ -6651,7 +6651,7 @@ class CSl_candidateEx extends CSl_candidate
       ChromePhp::log($company_name);
       $oDB = CDependency::getComponentByName('database');
 
-      /*$escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
+      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
 
       $explodedCompanyName = explode(' ',$company_name);
       $nameCount = count($explodedCompanyName);
@@ -6721,10 +6721,10 @@ class CSl_candidateEx extends CSl_candidate
       {
         $company_list = "none";
       }
-      ChromePhp::log($company_list);*/
+      ChromePhp::log($company_list);
 
 
-      $company_list = "test (#123456), Test (#123456)";
+      //$company_list = "test (#123456), Test (#123456)";
 
       $jsonData = json_encode($company_list);
       return $jsonData;
