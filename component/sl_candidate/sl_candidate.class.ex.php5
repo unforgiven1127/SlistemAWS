@@ -7007,6 +7007,12 @@ class CSl_candidateEx extends CSl_candidate
       $oLogin = CDependency::getCpLogin();
       $user_id = $oLogin->getUserPk();
 
+      $mailFlag = $_GET['mailFlg'];
+      if(isset($mailFlag))
+      {
+        ChromePhp::log($mailFlag);
+      }
+
       $asData = array();
       $asData['name'] = filter_var(getValue('company_name'), FILTER_SANITIZE_STRING);
       $asData['corporate_name'] = filter_var(getValue('corporate_name'), FILTER_SANITIZE_STRING);

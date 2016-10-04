@@ -7,7 +7,7 @@ function beforeCompanyAdd(form)
   var companyName = $('.companyNameClass').val();
   //alert(companyName);
   psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
-  mngAjaxScreen('', true);
+
   //console.log(psUrl);
   $.ajax({
     type: 'POST',
@@ -17,9 +17,8 @@ function beforeCompanyAdd(form)
     contentType: "application/x-www-form-urlencoded; charset=UTF-8",
     success: function(oJsonData)
     {
-        mngAjaxScreen('', false);
-        alert('Success');
-        console.log(oJsonData);
+        //alert('Success');
+        //console.log(oJsonData);
         var data = oJsonData.data;
         var parsedData = jQuery.parseJSON(data);
         if(parsedData != "none")
@@ -27,15 +26,18 @@ function beforeCompanyAdd(form)
           var msg = "There are possible duplicates: "+parsedData+" do you still want to add a new company?";
           if (confirm(msg))
           {
-              alert("add and send mail");
-          } else
+              var newUrl = form.action+'&mailFlg=yes';
+              $('#addcompanyId').attr('action',newUrl);// mail gondermesi icin alan ekledik
+          }
+          else
           {
-              alert("do nothing");
+              event.preventDefault();
+              return false;
           }
         }
         else
         {
-
+          //do nothing
         }
 
         //alert(parsedData);
@@ -50,12 +52,8 @@ function beforeCompanyAdd(form)
 
   //return false;
 
-  alert('END');
+  //alert('END');
   //console.log(form);
-  //var newUrl = form.action+'TEST';
-  //$('#addcompanyId').attr('action',newUrl);// burada bakmamasi icin yeni bir alan ekleyecegiz...
-  event.preventDefault();
-  return false;
 }
 
 function toggleSection(poTitle, psSectionId)
