@@ -13,7 +13,7 @@ function beforeCompanyAdd(form)
 {
     var companyName = $('.companyNameClass').val();
     $('.ui-dialog').attr('id', 'companyAddNewId')
-    $('#companyAddNewId').addClass("deleted");
+    $('#companyAddNewId').addClass("deletedClass");
     //alert(companyName);
     //loading();
     psUrl = 'index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx';
