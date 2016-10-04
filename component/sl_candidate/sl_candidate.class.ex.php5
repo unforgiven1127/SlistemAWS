@@ -6650,6 +6650,7 @@ class CSl_candidateEx extends CSl_candidate
       $company_name = $_POST['cname'];
       ChromePhp::log($company_name);
       $oDB = CDependency::getComponentByName('database');
+      $somthing = true;
 
       $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
 
@@ -6666,7 +6667,7 @@ class CSl_candidateEx extends CSl_candidate
                  OR slc.name = '".$company_name."'";*/
         $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$company_name."', 1, 0) as exact_name2, slc.* FROM sl_company slc WHERE slc.name LIKE '%".$company_name."%' ORDER BY exact_name2 DESC";
       }
-      else
+      else if($nameCount > 1)
       {
         foreach ($explodedCompanyName as $key => $value)
         {
@@ -6706,27 +6707,34 @@ class CSl_candidateEx extends CSl_candidate
         //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
 
       }
-      $sQuery = trim($sQuery, "OR ");
-      $sQuery = trim($sQuery, "OR");
-      $sQuery .= " LIMIT 3";
-      ChromePhp::log($sQuery);
-
-      $db_result = $oDB->executeQuery($sQuery);
-
-      $result = $db_result->getAll();
-
-      $company_list = "";
-      $adet = count($result);
-      ChromePhp::log($adet);
-      if($adet > 0)
+      else
       {
-        foreach ($result as $key => $value)
+        $somthing = false;
+      }
+      if($somthing)
+      {
+        $sQuery = trim($sQuery, "OR ");
+        $sQuery = trim($sQuery, "OR");
+        $sQuery .= " LIMIT 3";
+        ChromePhp::log($sQuery);
+
+        $db_result = $oDB->executeQuery($sQuery);
+
+        $result = $db_result->getAll();
+
+        $company_list = "";
+        $adet = count($result);
+        ChromePhp::log($adet);
+        if($adet > 0)
         {
-          $company_list.= "&#x25cf; ".$value['name']." (#".$value['sl_companypk'].")".",<br>";
-          //$company_list.= $value['sl_companypk']."-".$value['name']."_";
+          foreach ($result as $key => $value)
+          {
+            $company_list.= "&#x25cf; ".$value['name']." (#".$value['sl_companypk'].")".",<br>";
+            //$company_list.= $value['sl_companypk']."-".$value['name']."_";
+          }
+          $company_list = trim($company_list, ",<br>");
+          $company_list.= "...";
         }
-        $company_list = trim($company_list, ",<br>");
-        $company_list.= "...";
       }
       else
       {
