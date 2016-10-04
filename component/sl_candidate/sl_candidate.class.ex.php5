@@ -6679,7 +6679,7 @@ class CSl_candidateEx extends CSl_candidate
         if($nameCount == 1 && isset($explodedCompanyName[0]))
         {
           $stringCount = strlen($explodedCompanyName[0]);
-          $stringCount = $stringCount-2;
+          $stringCount = $stringCount+1;
           /*$sQuery = "SELECT levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                  FROM sl_company slc
                  WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
