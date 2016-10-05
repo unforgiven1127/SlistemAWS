@@ -7100,7 +7100,6 @@ class CSl_candidateEx extends CSl_candidate
           }
           if(isset($mailFlag) && $mailFlag == 'yes')
           {
-            ChromePhp::log('SEND MAIL');
             $to = "rkiyamu@slate.co.jp";
             $subject = "Possible duplication!";
             $message = "Possible duplication for company id #".$pnPk;
