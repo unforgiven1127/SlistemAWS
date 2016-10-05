@@ -217,7 +217,7 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('CONST_PHPMAILER_SMTP_PASSWORD', 'Slate!7000ics');
 
     //to send emails using IMAP instead of smtp
-    define('CONST_MAIL_IMAP_SEND', true);
+    define('CONST_MAIL_IMAP_SEND', false);//true idi false yaptik MCA
     //Log a copy of all emails sent by the platform a in the sent folder
     define('CONST_MAIL_IMAP_LOG_SENT', true);
 
