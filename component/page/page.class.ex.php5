@@ -265,7 +265,15 @@ class CPageEx extends CPage
     $bIsLogged = $oLogin->isLogged();
     $this->cbIsLogged = $bIsLogged;
 
-    $logout = check_session_expiry();
+    $user_id = $oLogin->getUserPk();
+    if($user_id == 2)
+    {//watercooler does not expire
+      $logout = false;
+    }
+    else
+    {
+      $logout = check_session_expiry();
+    }
 
     if ($logout)
     {
