@@ -4870,6 +4870,17 @@ function sort_multi_array_by_value($field, $order = 'natural')
   };
 }
 
+function get_revenue_chart_loop()
+{
+  $loop = array();
+  $loop[0] = '2016-consultant';
+  $loop[1] = '2016-researcher';
+  $loop[2] = '2017-consultant';
+  $loop[3] = '2017-researcher';
+
+  return $loop;
+}
+
 function check_session_expiry()
 {
   $expiry_time = 60 * 60 * 3; // 3 hour
