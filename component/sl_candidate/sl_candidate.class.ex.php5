@@ -7096,6 +7096,13 @@ class CSl_candidateEx extends CSl_candidate
           $pnPk = $this->_getModel()->add($asData, 'sl_company');
           if(empty($pnPk))
             return array('error' => 'Could not save the company.');
+          if($mailFlag == 'yes')
+          {
+            $to = "rkiyamu@slate.co.jp";
+            $subject = "Possible duplication!";
+            $message = "Possible duplication for company id #".$pnPk;
+            sendHtmlMail($to,$subject, $message);
+          }
         }
         else
         {
@@ -7144,7 +7151,6 @@ class CSl_candidateEx extends CSl_candidate
           }
           //ChromePhp::log($company_owners);
         }
-
 
         $asIndustry = explode(',', getValue('industrypk'));
         $asInsertIndus = array();
