@@ -168,6 +168,10 @@ class CSl_statEx extends CSl_stat
         return $this->get_revenue_chart();
         break;
 
+      case ACTION_SELECTED_REVENUE_CHART:
+        return $this->getSelectedRevenueChart();
+        break;
+
       case ACTION_CCM_CHART:
         return $this->get_ccm_chart();
         break;
@@ -4020,7 +4024,18 @@ class CSl_statEx extends CSl_stat
      return $sHTML;
     }
 
-    private function get_revenue_chart()
+    private function getSelectedRevenueChart()
+    {
+      // '/index.php5?uid=555-006&ppa=asrc&ppt=revenue&ppk=0&watercooler=1'
+      //$year = $_GET['year'];
+      //$chartName = $_GET['name'];
+
+      //$url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&year='.$next_year;
+
+      $this->get_revenue_chart();
+    }
+
+    private function get_revenue_chart($year = '',$chartName = '')
     {
       //echo 'test'; // mca MCA
       //exit;

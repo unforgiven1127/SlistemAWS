@@ -371,6 +371,7 @@ define('CONST_ACTION_SEARCH', 'ppasea');
 define('CONST_ACTION_RESULTS', 'ppares');
 define('CONST_ACTION_MANAGE', 'ppam');
 define('ACTION_REVENUE_CHART', 'pprev');
+define('ACTION_SELECTED_REVENUE_CHART', 'asrc');
 define('ACTION_CCM_CHART', 'ppccm');
 define('ACTION_TOTALS_CHART', 'ppttc');
 define('ACTION_CALL_LOG_CHART', 'vclc');
