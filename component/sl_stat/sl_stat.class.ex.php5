@@ -4026,6 +4026,7 @@ class CSl_statEx extends CSl_stat
 
     private function getSelectedRevenueChart()
     {
+      ChromePhp::log('getSelectedRevenueChart');
       // '/index.php5?uid=555-006&ppa=asrc&ppt=revenue&ppk=0&watercooler=1'
       //$year = $_GET['year'];
       //$chartName = $_GET['name'];
