@@ -4071,7 +4071,6 @@ class CSl_statEx extends CSl_stat
 
       if (!is_numeric($year))
       {
-        ChromePhp::log('numerik degil dede buraya girdi');
         $year = date('Y');
       }
 
