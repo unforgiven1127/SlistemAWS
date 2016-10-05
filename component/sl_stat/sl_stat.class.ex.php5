@@ -4093,7 +4093,8 @@ class CSl_statEx extends CSl_stat
         'swap_time' => $swap_time
         );
 
-      $html = $this->_oDisplay->render('revenue_chart', $data);
+      //$html = $this->_oDisplay->render('revenue_chart', $data);
+      $html = $this->_oDisplay->render($loopChart, $data);
 
       return $html;
     }
