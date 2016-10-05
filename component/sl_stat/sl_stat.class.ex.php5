@@ -4058,7 +4058,7 @@ class CSl_statEx extends CSl_stat
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
       //$year = $next_year = getValue('year', date('Y'));
-      $year = $next_year = $loopYear;
+      $year = $next_year = (int)$loopYear;
 
       $swap_time = 1000 * 60; // 1 minute
       $url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&year='.$next_year;
@@ -4070,7 +4070,10 @@ class CSl_statEx extends CSl_stat
       }
 
       if (!is_numeric($year))
+      {
+        ChromePhp::log('numerik degil dede buraya girdi');
         $year = date('Y');
+      }
 
       $revenue_data = $this->_getModel()->get_revenue_data($year);
       //var_dump($revenue_data);
