@@ -6690,10 +6690,13 @@ class CSl_candidateEx extends CSl_candidate
         }
         else
         {
+          $implodedName = implode(' ',$explodedCompanyName);
+          $stringCount = strlen($implodedName);
+          $stringCount = $stringCount;
           /*$sQuery = "SELECT levenshtein('".$company_name."', TRIM(LOWER(slc.name))) AS name_lev, slc.*
                  FROM sl_company slc
                  WHERE ";*/
-          $sQuery = "SELECT slc.* FROM sl_company slc WHERE ";
+          $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$implodedName."', 1, 0) as exact_name2,slc.* FROM sl_company slc WHERE ";
           $addWhere = '';
           foreach ($explodedCompanyName as $key => $value)
           {
