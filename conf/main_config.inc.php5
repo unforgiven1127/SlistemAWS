@@ -217,12 +217,11 @@ switch(trim($_SERVER['SERVER_NAME']))
     define('CONST_PHPMAILER_SMTP_PASSWORD', 'Slate!7000ics');
 
     //to send emails using IMAP instead of smtp
-    define('CONST_MAIL_IMAP_SEND', false);//true idi false yaptik MCA
+    define('CONST_MAIL_IMAP_SEND', false);
     //Log a copy of all emails sent by the platform a in the sent folder
     define('CONST_MAIL_IMAP_LOG_SENT', true);
-
     //--------------------------------------
-    //required parameters if one of the above are true
+    //required if of of the above are true
     define('CONST_MAIL_IMAP_PORT', 993);  //imap
     define('CONST_MAIL_IMAP_LOG_PARAM_INBOX', '{'.CONST_PHPMAILER_SMTP_HOST.':'.CONST_MAIL_IMAP_PORT.'/debug/readonly/imap/ssl/novalidate-cert}inbox');
     define('CONST_MAIL_IMAP_LOG_PARAM_SENT', '{'.CONST_PHPMAILER_SMTP_HOST.':'.CONST_MAIL_IMAP_PORT.'/imap/ssl/novalidate-cert}sent');
