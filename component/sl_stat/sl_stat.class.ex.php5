@@ -4041,6 +4041,7 @@ class CSl_statEx extends CSl_stat
     {
       //echo 'test'; // mca MCA
       //exit;
+      ChromePhp::log('get_revenue_chart');
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
       $year = $next_year = getValue('year', date('Y'));
