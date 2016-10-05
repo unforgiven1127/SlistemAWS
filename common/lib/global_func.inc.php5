@@ -4873,10 +4873,10 @@ function sort_multi_array_by_value($field, $order = 'natural')
 function get_revenue_chart_loop()
 {
   $loop = array();
-  $loop[0] = '2016-consultant';
-  $loop[1] = '2016-researcher';
-  $loop[2] = '2017-consultant';
-  $loop[3] = '2017-researcher';
+  $loop[0] = '2016-consultant_revenue_chart';
+  $loop[1] = '2016-researcher_revenue_chart';
+  $loop[2] = '2017-consultant_revenue_chart';
+  $loop[3] = '2017-researcher_revenue_chart';
 
   return $loop;
 }

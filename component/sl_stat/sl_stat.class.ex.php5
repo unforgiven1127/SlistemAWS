@@ -4049,9 +4049,16 @@ class CSl_statEx extends CSl_stat
       {
         $nextloop = $_GET['nextloop'];
       }
+
+      $loopInformation = $revenueChartLoop[$nextloop];
+      $loopInformation = explode('-',$loopInformation);
+      $loopYear = $loopInformation[0];
+      $loopChart = $loopInformation[1];
+
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
-      $year = $next_year = getValue('year', date('Y'));
+      //$year = $next_year = getValue('year', date('Y'));
+      $year = $next_year = $loopYear;
 
       $swap_time = 1000 * 60; // 1 minute
       $url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&year='.$next_year;
