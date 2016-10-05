@@ -7095,7 +7095,9 @@ class CSl_candidateEx extends CSl_candidate
           $asData['company_owner'] = $nLoginFk;
           $pnPk = $this->_getModel()->add($asData, 'sl_company');
           if(empty($pnPk))
+          {
             return array('error' => 'Could not save the company.');
+          }
           if(isset($mailFlag) && $mailFlag == 'yes')
           {
             $to = "rkiyamu@slate.co.jp";
