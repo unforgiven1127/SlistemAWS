@@ -23,7 +23,7 @@
 	    if(loopFlag == true || loopFlag == 'true')
 		{
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
-			document.getElementById('bottomCandidateSection').setAttribute("style","margin-top:-20px");
+			document.getElementById('body').setAttribute("style","margin-top:-20px");
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
 		}
