@@ -4877,6 +4877,7 @@ function get_revenue_chart_loop()
   $loop[1] = '2016-researcher_revenue_chart';
   $loop[2] = '2017-consultant_revenue_chart';
   $loop[3] = '2017-researcher_revenue_chart';
+  $loop[4] = '2016-totals_chart_ordered';
 
   return $loop;
 }

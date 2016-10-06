@@ -4056,7 +4056,7 @@ class CSl_statEx extends CSl_stat
       $loopChart = $loopInformation[1];
 
       $nextloop++;
-      if($nextloop > 3)
+      if($nextloop > 4)
       {
         $nextloop = 0;
       }
@@ -4080,7 +4080,16 @@ class CSl_statEx extends CSl_stat
         $year = date('Y');
       }
 
-      $revenue_data = $this->_getModel()->get_revenue_data($year);
+      $isRevenue = true;
+      if($nextloop < 4)
+      {
+        $revenue_data = $this->_getModel()->get_revenue_data($year);
+      }
+      else
+      {
+        $isRevenue = false;
+        $html = $this->get_general_total_chart();
+      }
       //var_dump($revenue_data);
       //exit;
       /*foreach ($revenue_data as $key => $inside)
@@ -4099,7 +4108,10 @@ class CSl_statEx extends CSl_stat
         );
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
-      $html = $this->_oDisplay->render($loopChart, $data);
+      if($isRevenue)
+      {
+        $html = $this->_oDisplay->render($loopChart, $data);
+      }
 
       return $html;
     }
