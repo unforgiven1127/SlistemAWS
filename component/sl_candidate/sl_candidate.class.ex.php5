@@ -6638,7 +6638,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _companyDuplicateEscapeWords()
     {
-      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)');
+      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)','enterprise'),'enterprises';
 
       return $escapeWords;
     }
