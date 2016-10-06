@@ -7029,6 +7029,8 @@ class CSl_candidateEx extends CSl_candidate
        $oForm->addField('input', 'website', array('label'=> 'website', 'value' => $asCompanyData['website']));
        $oForm->closeSection();
 
+       ChromePhp::log($pnPk);
+
        $customHtml = '<div id="dialog" title="Alert message" style="display: none">
             <div class="ui-dialog-content ui-widget-content">
                 <p>
