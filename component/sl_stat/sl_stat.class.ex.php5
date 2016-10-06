@@ -4082,14 +4082,14 @@ class CSl_statEx extends CSl_stat
 
       $isRevenue = true;
       //ChromePhp::log($nextloop);
-      if($nextloop < 4)
-      {
-        $revenue_data = $this->_getModel()->get_revenue_data($year);
-      }
-      else
+      if($loopChart == 'totals_chart_ordered')
       {
         $isRevenue = false;
         $html = $this->get_general_total_chart($nextloop);
+      }
+      else
+      {
+        $revenue_data = $this->_getModel()->get_revenue_data($year);
       }
       //var_dump($revenue_data);
       //exit;
