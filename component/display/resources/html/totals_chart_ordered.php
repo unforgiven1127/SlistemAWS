@@ -9,15 +9,6 @@
 	//alert(loopFlag);
 	if(loopFlag == true || loopFlag == 'true')
 	{
-		alert('ICERIDE');
-		//$('#getKpiForm').hide();
-		//$('#closeThis').hide();
-		//document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
-		//document.getElementById('getKpiForm').setAttribute("style","display:none;");
-		//document.getElementById('getKpiForm').style.display = 'none';
-		//document.getElementById('footerId').remove();
-		//$('#componentContainerId').css('margin-top','-48px;');
-
 		setTimeout(function()
 		{
 			var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
@@ -34,7 +25,7 @@
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
 			document.getElementById('totals_table_id').setAttribute("style","margin-top:-20px");
 			//$('#totals_table_id').css('margin-top','-48px;');
-			alert('GIZLEME SONRASI ALERT');
+			//alert('GIZLEME SONRASI ALERT');
 		}
 	});
 </script>
