@@ -1,4 +1,6 @@
 <script>
+var nextloop = <?php echo $nextloop; ?>
+alert(nextloop);
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });

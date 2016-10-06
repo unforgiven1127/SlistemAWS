@@ -4088,7 +4088,7 @@ class CSl_statEx extends CSl_stat
       else
       {
         $isRevenue = false;
-        $html = $this->get_general_total_chart();
+        $html = $this->get_general_total_chart($nextloop);
       }
       //var_dump($revenue_data);
       //exit;
@@ -4247,11 +4247,10 @@ class CSl_statEx extends CSl_stat
       return $html;
     }
 
-    private function get_general_total_chart()
+    private function get_general_total_chart($nextloop = '')
     {
       $start_date = $start_date_original = getValue('start_date', '');
       $end_date = $end_date_original = getValue('end_date', '');
-
 
       if(empty($start_date))
       {
@@ -4275,6 +4274,14 @@ class CSl_statEx extends CSl_stat
       $generatedKPIs = getGeneratedKpi($dateNow);
       $generatedKPIsCount = count($generatedKPIs);
       $data = array();
+      if(!empty($nextloop))
+      {
+        $data['nextloop'] = $nextloop;
+      }
+      else
+      {
+        $data['nextloop'] = '666';
+      }
       $submit_totals = getValue('submit_totals');
 
       if($submit_totals == 'Get totals' || $generatedKPIsCount == 0)
