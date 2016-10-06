@@ -1,12 +1,22 @@
 <script>
 var nextloop = <?php echo $nextloop; ?>;
-alert(nextloop);
+var loopFlag = false;
+if(nextloop < 666)
+{
+	var loopFlag = true;
+}
+
+if(loopFlag)
+{
+	$('#getKpiForm').hide();
+}
+
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
 
-<form action="" method="post">
+<form id="getKpiForm" action="" method="post">
 	<div class="general_form_row" style="font-size: 16px;">
 		<div class="general_form_column">Start date: </div>
 		<div class="general_form_column">
