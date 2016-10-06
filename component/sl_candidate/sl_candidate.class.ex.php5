@@ -6638,7 +6638,7 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _companyDuplicateEscapeWords()
     {
-      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','europe','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','and','&','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)','enterprise','enterprises');
+      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)','Nippon','Nihon','Kabushiki Kaisha','Kabushiki Gaisha','enterprise','enterprises');
 
       return $escapeWords;
     }
@@ -6653,7 +6653,7 @@ class CSl_candidateEx extends CSl_candidate
       $oDB = CDependency::getComponentByName('database');
       $somthing = true;
 
-      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)','Nippon','Nihon','Kabushiki Kaisha','Kabushiki Gaisha');//,'and','&' cikarttim
+      $escapeWords = array('k.k.','kk','kk.','k.k','inc','inc.','co','co.','co.,','co.,ltd','ltd','ltd.','contracting','consulting','entertainment','japan','tokyo','services','limited','consultants','services','corporation','technologies','systems','company','international','construction','group','engineering','(japan)','ex','(ex','( ex','corp','corp.','(group)','(x)','(ex)','branch','(K.K)','(old)','( old )','(tokyo)','Nippon','Nihon','Kabushiki Kaisha','Kabushiki Gaisha','enterprise','enterprises');//,'and','&' cikarttim
 
       $explodedCompanyName = explode(' ',$company_name);
       $nameCount = count($explodedCompanyName);
