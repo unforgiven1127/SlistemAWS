@@ -79,7 +79,7 @@
 	//var swap_time = <?php echo $swap_time; ?>;
 
 	//$('.scrollingContainer').css('overflow', 'auto');
-	//document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
+	document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
 
 	//document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');

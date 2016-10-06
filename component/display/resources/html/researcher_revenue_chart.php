@@ -115,5 +115,19 @@
 
 
 <script>
+	//var url = '<?php echo $url; ?>';
+	//var swap_time = <?php echo $swap_time; ?>;
+
+	//$('.scrollingContainer').css('overflow', 'auto');
+	document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
+
+	//document.getElementById('footerId').remove();
+	//$('#componentContainerId').css('margin-top','-48px;');
+	setTimeout(function() {
+		var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop=2';
+		alert('test');
+		window.location.replace(url);
+	}, 5000);
+
 
 </script>
