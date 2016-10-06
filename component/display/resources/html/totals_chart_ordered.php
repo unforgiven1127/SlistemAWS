@@ -5,7 +5,7 @@ if(nextloop < 666)
 {
 	var loopFlag = true;
 }
-
+alert(loopFlag)
 if(loopFlag)
 {
 	$('#getKpiForm').hide();
