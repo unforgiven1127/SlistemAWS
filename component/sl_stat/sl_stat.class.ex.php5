@@ -4081,7 +4081,7 @@ class CSl_statEx extends CSl_stat
       }
 
       $isRevenue = true;
-      ChromePhp::log($nextloop);
+      //ChromePhp::log($nextloop);
       if($nextloop < 4)
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
