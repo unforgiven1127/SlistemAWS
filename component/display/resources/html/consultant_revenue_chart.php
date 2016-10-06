@@ -1,3 +1,5 @@
+
+
 <?php $total_consultant_count = 0 ?>
 <table style="width:100%;" valign="top">
 	<tr>
@@ -85,4 +87,11 @@
 	/*setTimeout(function() {
 		window.location.replace(url);
 	}, (swap_time));*/
+
+	setTimeout(
+	  function()
+	  {
+	    alert();
+	  }, 5000);
+
 </script>
