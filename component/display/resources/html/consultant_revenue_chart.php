@@ -10,7 +10,7 @@
 						<th style="overflow:hidden; width:100%; font-size:390%; white-space: nowrap;" class="text_center" colspan="6"><?php echo ucfirst($location); ?> - Individual Revenue Consultants <?php echo $year; ?></th>
 					</tr>
 					<tr>
-						<th style="overflow:hidden;height: 50px; font-size: 350%; overflow:none;" class="text_center">Rank</th>
+						<th style="overflow:hidden;height: 50px; font-size: 350%;" class="text_center">Rank</th>
 						<th style="overflow:hidden;height: 50px; font-size: 350%;" class="text_center">Flag</th>
 						<th style="overflow:hidden;height: 50px; font-size: 350%;" class="text_center">Name</th>
 						<th style="overflow:hidden;height: 50px; font-size: 350%;" class="text_center">Signed</th>

@@ -7061,7 +7061,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $mailFlag = $_GET['mailFlg'];
       }
-
+ChromePhp::log($mailFlag);
       if($mailFlag == 'yes' || $mailFlag == 'normal')
       {
 
