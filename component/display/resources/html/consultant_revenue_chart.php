@@ -75,23 +75,17 @@
 
 
 <script>
-	var url = '<?php echo $url; ?>';
-	var swap_time = <?php echo $swap_time; ?>;
+	//var url = '<?php echo $url; ?>';
+	//var swap_time = <?php echo $swap_time; ?>;
 
-	$('.scrollingContainer').css('overflow', 'auto');
-	document.getElementById('componentContainerId').setAttribute("style",
-                                        "margin-top:-40px");
+	//$('.scrollingContainer').css('overflow', 'auto');
+	//document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
 
-	document.getElementById('footerId').remove();
+	//document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');
 	/*setTimeout(function() {
 		window.location.replace(url);
 	}, (swap_time));*/
-	alert('test')
-	setTimeout(
-	  function()
-	  {
-	    alert('test');
-	  }, 5000);
+	alert('test');
 
 </script>
