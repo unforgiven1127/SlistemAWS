@@ -32,6 +32,8 @@
 	    if(loopFlag == true || loopFlag == 'true')
 		{
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
+			document.getElementById('totals_table_id').setAttribute("style","margin-top:-40px");
+			//$('#totals_table_id').css('margin-top','-48px;');
 			alert('GIZLEME SONRASI ALERT');
 		}
 	});
@@ -63,7 +65,7 @@
 	$total_o = 0;
 	$total_p = 0;
 	 ?>
-<table class="totals_table">
+<table id="totals_table_id" class="totals_table">
 	<tr>
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
