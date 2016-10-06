@@ -4248,7 +4248,7 @@ class CSl_statEx extends CSl_stat
       return $html;
     }
 
-    private function get_general_total_chart($nextloop = '')
+    private function get_general_total_chart($nextloop = '666')
     {
       $start_date = $start_date_original = getValue('start_date', '');
       $end_date = $end_date_original = getValue('end_date', '');
@@ -4277,7 +4277,7 @@ class CSl_statEx extends CSl_stat
       $data = array();
       $submit_totals = getValue('submit_totals');
 
-      if(!empty($nextloop))
+      if($nextloop != '666')
       {
         $generatedKPIsCount = 0;
       }
@@ -5485,14 +5485,9 @@ class CSl_statEx extends CSl_stat
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,
         'end_date_original' => $end_date_original, 'start_date' => $start_date,'page_obj' => $this->_oPage);
 ChromePhp::log($nextloop);
-      if($nextloop != '')
-      {
-        $data['nextloop'] = $nextloop;
-      }
-      else
-      {
-        $data['nextloop'] = '666';
-      }
+
+      $data['nextloop'] = $nextloop;
+
 
       $data['allCanidatesArray'] = $allCanidatesArray;
       header_remove('Set-Cookie');
