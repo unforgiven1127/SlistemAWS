@@ -3,7 +3,7 @@ var nextloop = <?php echo $nextloop; ?>;
 var loopFlag = false;
 if(nextloop < 666)
 {
-	var loopFlag = true;
+	loopFlag = true;
 }
 alert(nextloop);
 alert(loopFlag);
