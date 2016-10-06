@@ -7,7 +7,7 @@
 			<td style="width:50%;" valign="top" >
 			<table class="revenue_table">
 					<tr style="width:100%;">
-						<th style="width:100% font-size: 390%; white-space: nowrap;"  class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
+						<th style="overflow:hidden;width:100% font-size: 390%; white-space: nowrap;"  class="text_center" colspan="7"><?php echo ucfirst($location); ?> - Individual Revenue Researchers <?php echo $year; ?></th>
 					</tr>
 					<tr>
 						<th style="overflow:hidden;height: 50px; font-size: 350%;" class="text_center">Rank</th>
