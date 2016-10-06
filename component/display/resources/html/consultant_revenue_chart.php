@@ -87,7 +87,7 @@
 	/*setTimeout(function() {
 		window.location.replace(url);
 	}, (swap_time));*/
-
+	alert('test')
 	setTimeout(
 	  function()
 	  {
