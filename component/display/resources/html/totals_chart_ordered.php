@@ -9,6 +9,7 @@ if(nextloop < 666)
 if(loopFlag)
 {
 	$('#getKpiForm').hide();
+	$('#closeThis').hide();
 	document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
 
 	//document.getElementById('footerId').remove();
@@ -27,7 +28,7 @@ $(document).ready(function(){
 </script>
 
 <form id="getKpiForm" action="" method="post">
-	<div class="general_form_row" style="font-size: 16px;">
+	<div id="closeThis" class="general_form_row" style="font-size: 16px;">
 		<div class="general_form_column">Start date: </div>
 		<div class="general_form_column">
 			<input id="start_date" style="width: 90px" type="text" name="start_date"
