@@ -7031,21 +7031,24 @@ class CSl_candidateEx extends CSl_candidate
 
        ChromePhp::log($pnPk);
 
-       $customHtml = '<div id="dialog" title="Alert message" style="display: none">
-            <div class="ui-dialog-content ui-widget-content">
-                <p>
-                    <span style="float: left; "></span>
-                    <label id="lblMessage">
-                    </label>
-                </p>
-            </div>
-        </div>
-        <script>
-          $("input[name=Save_company]").prop("type", "button");
-          $("input[name=Save_company]").attr("onclick", "beforeCompanyAdd();");
-        </script>';
+       if($pnPk == 0)// sadece new company ise bakiorz
+       {
+        $customHtml = '<div id="dialog" title="Alert message" style="display: none">
+              <div class="ui-dialog-content ui-widget-content">
+                  <p>
+                      <span style="float: left; "></span>
+                      <label id="lblMessage">
+                      </label>
+                  </p>
+              </div>
+          </div>
+          <script>
+            $("input[name=Save_company]").prop("type", "button");
+            $("input[name=Save_company]").attr("onclick", "beforeCompanyAdd();");
+          </script>';
 
-      $oForm->addCustomHtml($customHtml);
+        $oForm->addCustomHtml($customHtml);
+       }
 
       return $oForm->getDisplay();
     }
