@@ -5479,13 +5479,13 @@ class CSl_statEx extends CSl_stat
         $this->_oPage->addJsFile(CONST_PATH_JS_JQUERYUI);
         $this->_oPage->addCSSFile(CONST_PATH_CSS_JQUERYUI);
 
-        $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart_ordered.css');
+        $this->_oPage->addCssFile($this->getResourcePath().'/css/totals_chart.css');
       }
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,
         'end_date_original' => $end_date_original, 'start_date' => $start_date,'page_obj' => $this->_oPage);
 ChromePhp::log($nextloop);
-      if(!empty($nextloop))
+      if($nextloop != '')
       {
         $data['nextloop'] = $nextloop;
       }
