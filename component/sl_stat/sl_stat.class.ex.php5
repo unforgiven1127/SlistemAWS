@@ -4058,7 +4058,7 @@ class CSl_statEx extends CSl_stat
       $nextloop++;
       if($nextloop > 3)
       {
-        $nextloop = 0
+        $nextloop = 0;
       }
 
       $this->cbWatercooler = (bool)getValue('watercooler');
