@@ -91,7 +91,7 @@
 	setTimeout(
 	  function()
 	  {
-	    alert();
+	    alert('test');
 	  }, 5000);
 
 </script>
