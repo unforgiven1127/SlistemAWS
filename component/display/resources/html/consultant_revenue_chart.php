@@ -83,9 +83,10 @@
 
 	//document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');
-	/*setTimeout(function() {
-		window.location.replace(url);
-	}, (swap_time));*/
-	alert('test');
+	setTimeout(function() {
+		alert('test');
+		//window.location.replace(url);
+	}, 5000);
+
 
 </script>
