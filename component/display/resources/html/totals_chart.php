@@ -69,6 +69,7 @@
 	{
 		$flag = true;
 	}
+	echo $value.'<br>'
 	if($value['kpi_flag'] == "p")
 	{
 		$flag = false;
