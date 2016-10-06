@@ -24,7 +24,11 @@
 		{
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
 			document.getElementById('body').setAttribute("style","margin-top:-40px;");
-			document.getElementById('head').setAttribute("style","font-size:150% !important;");
+			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
+			var cols = document.getElementsByClassName('revenueSize');
+			for(i=0; i<cols.length; i++) {
+			    cols[i].style.fontWeight = 'font-size:150% !important;';
+			 }
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
 		}
@@ -62,21 +66,21 @@
 		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
 	<tr id="head">
-		<th class="name_column">Name</th>
-		<th>Set</th>
-		<th>Met</th>
-		<th>Resumes sent</th>
-		<th>CCM1 set</th>
-		<th>CCM1 done</th>
-		<th>CCM2 set</th>
-		<th>CCM2 done</th>
-		<th>MCCM set</th>
-		<th>MCCM done</th>
-		<th>New candidates met</th>
-		<th>New candidates<br>in play</th>
-		<th>New positions<br>in play</th>
-		<th>Offer</th>
-		<th>Placement</th>
+		<th class="name_column revenueSize">Name</th>
+		<th class="revenueSize">Set</th>
+		<th class="revenueSize">Met</th>
+		<th class="revenueSize">Resumes sent</th>
+		<th class="revenueSize">CCM1 set</th>
+		<th class="revenueSize">CCM1 done</th>
+		<th class="revenueSize">CCM2 set</th>
+		<th class="revenueSize">CCM2 done</th>
+		<th class="revenueSize">MCCM set</th>
+		<th class="revenueSize">MCCM done</th>
+		<th class="revenueSize">New candidates met</th>
+		<th class="revenueSize">New candidates<br>in play</th>
+		<th class="revenueSize">New positions<br>in play</th>
+		<th class="revenueSize">Offer</th>
+		<th class="revenueSize">Placement</th>
 	</tr>
 
 	<?php $row_number_rank = 1; ?>
@@ -116,7 +120,7 @@
 	<tr class="hover_row<?php echo $even; ?>">
 	<!--<td><?php echo $arrayPosition ?></td>-->
 	<!--<td><?php echo $value['position'] ?></td>-->
-		<td class="name_column"><?php echo $value['name']; ?></td>
+		<td class="name_column revenueSize"><?php echo $value['name']; ?></td>
 		<td>
 			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['set']; ?>
