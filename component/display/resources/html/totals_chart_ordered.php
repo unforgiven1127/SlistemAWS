@@ -5,7 +5,8 @@ if(nextloop < 666)
 {
 	var loopFlag = true;
 }
-alert(loopFlag)
+
+alert(loopFlag);
 if(loopFlag)
 {
 	$('#getKpiForm').hide();
@@ -14,6 +15,8 @@ if(loopFlag)
 
 	//document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');
+	//
+	alert(nextloop);
 	setTimeout(function()
 	{
 		var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
