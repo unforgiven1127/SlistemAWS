@@ -5,7 +5,7 @@ if(nextloop < 666)
 {
 	var loopFlag = true;
 }
-
+alert(nextloop);
 alert(loopFlag);
 if(loopFlag == true || loopFlag == 'true')
 {
