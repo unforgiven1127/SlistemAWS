@@ -23,7 +23,7 @@
 	    if(loopFlag == true || loopFlag == 'true')
 		{
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
-			document.getElementById('body').setAttribute("style","margin-top:-40px;");
+			document.getElementById('body').setAttribute("style","margin-top:-40px; margin-left:10px;");
 			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
 			var cols = document.getElementsByClassName('revenueSize');
 			for(i=0; i<cols.length; i++) {
