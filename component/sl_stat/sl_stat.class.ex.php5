@@ -4055,6 +4055,12 @@ class CSl_statEx extends CSl_stat
       $loopYear = $loopInformation[0];
       $loopChart = $loopInformation[1];
 
+      $nextloop++;
+      if($nextloop > 3)
+      {
+        $nextloop = 0
+      }
+
       $this->cbWatercooler = (bool)getValue('watercooler');
       $location = getValue('location', 'All');
       //$year = $next_year = getValue('year', date('Y'));
@@ -4089,8 +4095,7 @@ class CSl_statEx extends CSl_stat
       $this->_oPage->addCssFile($this->getResourcePath().'/css/revenue.css');
 
       $data = array('revenue_data' => $revenue_data, 'location' => $location, 'year' => $year, 'row_number_rank' => 1, 'total_paid' => 0,
-        'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,
-        'swap_time' => $swap_time
+        'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,'swap_time' => $swap_time,'nextloop' => $nextloop
         );
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
