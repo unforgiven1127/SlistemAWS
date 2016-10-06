@@ -7,7 +7,7 @@ if(nextloop < 666)
 }
 
 alert(loopFlag);
-if(loopFlag)
+if(loopFlag == true || loopFlag == 'true')
 {
 	//$('#getKpiForm').hide();
 	//$('#closeThis').hide();
