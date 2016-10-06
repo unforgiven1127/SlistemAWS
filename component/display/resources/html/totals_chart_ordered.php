@@ -1,33 +1,34 @@
 <script>
-var nextloop = <?php echo $nextloop; ?>;
-var loopFlag = false;
-if(nextloop < 666)
-{
-	loopFlag = true;
-}
-alert(nextloop);
-alert(loopFlag);
-if(loopFlag == true || loopFlag == 'true')
-{
-	//$('#getKpiForm').hide();
-	//$('#closeThis').hide();
-	//document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
-	//document.getElementById('getKpiForm').style.display = 'none';
-	//document.getElementById('footerId').remove();
-	//$('#componentContainerId').css('margin-top','-48px;');
-	//
-	alert(nextloop);
-	setTimeout(function()
+	var nextloop = <?php echo $nextloop; ?>;
+	var loopFlag = false;
+	if(nextloop < 666)
 	{
-		var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
-		//alert('test');
-		window.location.replace(url);
-	}, 30000);
-}
+		loopFlag = true;
+	}
+	alert(nextloop);
+	alert(loopFlag);
+	if(loopFlag == true || loopFlag == 'true')
+	{
+		//$('#getKpiForm').hide();
+		//$('#closeThis').hide();
+		//document.getElementById('componentContainerId').setAttribute("style","margin-top:-40px");
+		//document.getElementById('getKpiForm').style.display = 'none';
+		//document.getElementById('footerId').remove();
+		//$('#componentContainerId').css('margin-top','-48px;');
+		//
+		alert(nextloop);
+		setTimeout(function()
+		{
+			var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
+			//alert('test');
+			window.location.replace(url);
+		}, 30000);
+	}
 
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
+	$(document).ready(function()
+	{
+	    $('[data-toggle="tooltip"]').tooltip();
+	});
 </script>
 
 <form id="getKpiForm" action="" method="post">

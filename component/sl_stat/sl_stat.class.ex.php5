@@ -5483,10 +5483,8 @@ class CSl_statEx extends CSl_stat
       }
 
       $data = array('stats_data' => $stats_data, 'start_date_original' => $start_date_original,
-        'end_date_original' => $end_date_original, 'start_date' => $start_date,
-        'page_obj' => $this->_oPage
-        );
-
+        'end_date_original' => $end_date_original, 'start_date' => $start_date,'page_obj' => $this->_oPage);
+ChromePhp::log($nextloop);
       if(!empty($nextloop))
       {
         $data['nextloop'] = $nextloop;
