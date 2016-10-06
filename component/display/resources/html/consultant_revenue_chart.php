@@ -84,8 +84,9 @@
 	//document.getElementById('footerId').remove();
 	//$('#componentContainerId').css('margin-top','-48px;');
 	setTimeout(function() {
+		var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop=1';
 		alert('test');
-		//window.location.replace(url);
+		window.location.replace(url);
 	}, 5000);
 
 
