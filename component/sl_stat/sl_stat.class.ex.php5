@@ -4274,14 +4274,6 @@ class CSl_statEx extends CSl_stat
       $generatedKPIs = getGeneratedKpi($dateNow);
       $generatedKPIsCount = count($generatedKPIs);
       $data = array();
-      if(!empty($nextloop))
-      {
-        $data['nextloop'] = $nextloop;
-      }
-      else
-      {
-        $data['nextloop'] = '666';
-      }
       $submit_totals = getValue('submit_totals');
 
       if($submit_totals == 'Get totals' || $generatedKPIsCount == 0)
@@ -5488,6 +5480,15 @@ class CSl_statEx extends CSl_stat
         'end_date_original' => $end_date_original, 'start_date' => $start_date,
         'page_obj' => $this->_oPage
         );
+
+      if(!empty($nextloop))
+      {
+        $data['nextloop'] = $nextloop;
+      }
+      else
+      {
+        $data['nextloop'] = '666';
+      }
 
       $data['allCanidatesArray'] = $allCanidatesArray;
       header_remove('Set-Cookie');
