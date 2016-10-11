@@ -1676,7 +1676,7 @@ class CSharedspaceEx extends CSharedspace
   */
   private function _saveDocument($pnPk = 0, $pbExternalFile = false, $pasDocData = array())
   {
-ChromePhp::log('_saveDocument');
+
     if(!assert('is_integer($pnPk)'))
       return array( 'error' => __LINE__.' - Can\'t save the document: bad parameters.');
 
