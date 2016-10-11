@@ -1352,7 +1352,7 @@ $asArray = array();
         'pk' => 0,
         'embedLink' => 0,
         'onclick' => "
-          var sURL = '/index.php5?uid=555-003&ppa=&ppt=email&pg=ajx';
+          var sURL = 'https://mail.slate.co.jp/zimbra/?view=compose&to=#1';
           var oItem = $('.candiTopSectLeft:visible .itemDataDescription');
           if(oItem.length)
           {
