@@ -1759,7 +1759,7 @@ class CSharedspaceEx extends CSharedspace
       $oDocument = $this->_getModel()->getByFk($pnPk, 'document_link', 'document');
       $asDocument['has_cp_link'] = $oDocument->readFirst();
     }
-
+//test
     // Uploading the file
     if(isset($_FILES['document']['name']) && !empty($_FILES['document']['name']))
     {
