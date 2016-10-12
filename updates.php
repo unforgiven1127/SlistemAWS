@@ -13,7 +13,7 @@ else
 {
   echo 'Chrome vs';
 }*/
-$sDate = date('Y-m-d H:i:s');
+/*$sDate = date('Y-m-d H:i:s');
 $to = "munir@slate-ghc.com, rkiyamu@slate.co.jp";
 $subject = "Test email";
 
@@ -47,7 +47,7 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 $headers .= 'From: <slistem@slate.co.jp>' . "\r\n";
 $headers .= 'Cc: munir_anameric@hotmail.com' . "\r\n";
 
-mail($to,$subject,$message,$headers);
+mail($to,$subject,$message,$headers);*/
 echo 'mail send...';
 	/*define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
