@@ -6688,7 +6688,7 @@ class CSl_candidateEx extends CSl_candidate
                  WHERE levenshtein('".$explodedCompanyName[0]."', TRIM(LOWER(slc.name))) < 2
                  OR slc.name = '".$explodedCompanyName[0]."' ";*/
           //$sQuery = "SELECT * FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%'";
-          $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$explodedCompanyName[0]."', 1, 0) as exact_name2, slc.* FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%' slc.merged_company_id > 0 ORDER BY  slc.name ASC";
+          $sQuery = "SELECT IF(LEFT(slc.name , '".$stringCount."') LIKE '".$explodedCompanyName[0]."', 1, 0) as exact_name2, slc.* FROM sl_company slc WHERE slc.name LIKE '%".$explodedCompanyName[0]."%' AND slc.merged_company_id > 0 ORDER BY  slc.name ASC";
         }
         else
         {
