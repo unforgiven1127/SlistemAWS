@@ -6649,7 +6649,8 @@ class CSl_candidateEx extends CSl_candidate
       //https://beta.slate.co.jp/index.php5?uid=555-001&ppa=cdc&ppt=candi&ppk=0&pg=ajx
       $company_name = $_POST['cname'];
       $company_name = TRIM($company_name);
-      //ChromePhp::log($company_name);
+      $company_name = strtolower($company_name);
+      ChromePhp::log($company_name);
       $oDB = CDependency::getComponentByName('database');
       $somthing = true;
 
@@ -6723,7 +6724,7 @@ class CSl_candidateEx extends CSl_candidate
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         //$sQuery .= " LIMIT 90";
-        //ChromePhp::log($sQuery);
+        ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
 
