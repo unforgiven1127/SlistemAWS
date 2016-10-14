@@ -379,7 +379,13 @@ app.controller("myCtrl", function($scope) {
   <div class="w3-container w3-light-grey w3-padding-16">
     <div class="w3-row w3-margin-top">
       <div class="w3-col s5">
-        <input placeholder="Add shopping items here" ng-model="addMe" class="w3-input w3-border w3-padding">
+        <select>
+          <option>Email</option>
+          <option>Phone</option>
+          <option>Linkedin</option>
+          <option>Web</option>
+        </select>
+        <input placeholder="Add shopping items here" ng-model="contactType" class="w3-input w3-border w3-padding">
       </div>
       <div class="w3-col s5">
         <input placeholder="Add shopping items here" ng-model="addMe" class="w3-input w3-border w3-padding">
