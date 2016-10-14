@@ -1473,7 +1473,7 @@ order by m.candidatefk
 
       if($group == 'researcher')
       {
-        if($temp['min_date'] != $temp['sl_meetingpk'])
+        if(isset($row['min_date']) && isset($row['sl_meetingpk']) && $row['min_date'] != $row['sl_meetingpk'])
         {
             $researcher_date_flag = false;
         }
