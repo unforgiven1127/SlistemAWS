@@ -524,7 +524,7 @@ order by m.candidatefk
           $data[$meeting[$group_switch]] = array('set' => 0, 'met' => 0, 'set_meeting_info' => array(),
             'met_meeting_info' => array());
         }
-        if($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date ) )
+        if(!isset($meeting['meeting_done']) || ($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date )) )
         {
           # bir sonraki ayin 5 ini gecmis oluyor o nedenle cancel sayiyoruz
         }
@@ -1450,7 +1450,7 @@ order by m.candidatefk
         $ccm_data[$row['created_by']]['ccm_info']['ccm2'] = array();
         $ccm_data[$row['created_by']]['ccm_info']['mccm'] = array();
       }
-      if (!isset($ccm_data[$row['meeting_created_by']]['ccm1']))
+      if (!isset($row['meeting_created_by']) || !isset($ccm_data[$row['meeting_created_by']]['ccm1']))
       {
         $ccm_data[$row['meeting_created_by']]['ccm1'] = 0;
         $ccm_data[$row['meeting_created_by']]['ccm1_done'] = 0;
