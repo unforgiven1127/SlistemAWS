@@ -67,7 +67,7 @@
 	 ?>
 <table id="totals_table_id" class="totals_table">
 	<tr>
-		<th colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
+		<th class='revenueSize' colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
 	<tr id="head">
 		<th class="name_column revenueSize">Name</th>
