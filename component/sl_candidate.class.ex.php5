@@ -7479,9 +7479,6 @@ class CSl_candidateEx extends CSl_candidate
         $poQB->addOrder('exact_name DESC, scom.name ASC');
       }
 
-$sql = $poQB->getSql();
-ChromePhp::log($sql);
-
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
