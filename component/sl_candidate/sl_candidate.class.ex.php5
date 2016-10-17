@@ -9544,6 +9544,7 @@ die();*/
       {
         $poQB->addSelect('scom.*');
         $poQB->addWhere('scom.sl_companypk = '.(int)$sRefId);
+        $poQB->addWhere(" scom.merged_company_id = '0' ");
       }
       else
       {
