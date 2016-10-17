@@ -2472,10 +2472,9 @@ ChromePhp::log('_getCompanyView');
         if(!assert('is_key($pnPk)'))
         return '';
       }
-      
-
 
       $asCompany = $this->_getModel()->getCompanyData($pnPk, true);
+      ChromePhp::log($asCompany);
       if(empty($asCompany))
         return '';
 
