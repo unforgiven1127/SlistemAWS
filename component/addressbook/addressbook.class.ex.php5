@@ -123,7 +123,6 @@ class CAddressbookEx extends CAddressbook
   */
   public function getItemDescription($pvItemPk, $psAction = '', $psItemType = 'cp')
   {
-    ChromePhp::log('getItemDescription 1');
     if(!assert('is_arrayOfInt($pvItemPk) || is_key($pvItemPk)'))
       return array();
 

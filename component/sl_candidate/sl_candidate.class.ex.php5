@@ -2455,6 +2455,8 @@ class CSl_candidateEx extends CSl_candidate
       if(!assert('is_key($pnPk)'))
         return '';
 
+ChromePhp::log('_getCompanyView');
+
       $asCompany = $this->_getModel()->getCompanyData($pnPk, true);
       if(empty($asCompany))
         return '';
