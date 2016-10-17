@@ -2777,9 +2777,23 @@ var_dump($query);*/
     $in_play = get_objectives_in_play($user_id, $start_date, $end_date);
 
     //$in_play_candidate = $in_play[$user_id]['new_candidates'];
-    $count_in_play_candidate = count($in_play[$user_id]['new_candidates']);
+    if(isset($in_play[$user_id]['new_candidates']))
+    {
+      $count_in_play_candidate = count($in_play[$user_id]['new_candidates']);
+    }
+    else
+    {
+      $count_in_play_candidate = 0;
+    }
 
-    $count_in_play_position = count($in_play[$user_id]['new_positions']);
+    if(isset($in_play[$user_id]['new_positions']))
+    {
+      $count_in_play_position = count($in_play[$user_id]['new_positions']);
+    }
+    else
+    {
+      $count_in_play_position = 0;
+    }
     //$in_play_position = $in_play[$user_id]['new_positions'];
 
     $new_met = get_objectives_new_candidate_met($user_id, $start_date, $end_date);
