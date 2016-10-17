@@ -7225,7 +7225,7 @@ ChromePhp::log($mailFlag);
     private function _getCompanyList($poQB = null)
     {
       global $gbNewSearch;
-ChromePhp::log('_getCompanyList');
+
       $oLogin = CDependency::getCpLogin();
 
       $asListMsg = array();
@@ -7305,6 +7305,10 @@ ChromePhp::log('_getCompanyList');
 
       $sSortField = getValue('sortfield');
       $sSortOrder = getValue('sortorder', 'DESC');
+
+ChromePhp::log($sSortField);
+ChromePhp::log($sSortOrder);
+
       if(!empty($sSortField))
       {
         if ($sSortField == 'industry_list')
