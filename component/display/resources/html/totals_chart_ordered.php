@@ -31,7 +31,7 @@
 			}
 			var cols = document.getElementsByClassName('revenueSize2');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","font-size:180% !important;");
+			    cols[i].setAttribute("style","font-size:150% !important;");
 			}
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
@@ -740,22 +740,22 @@
 	<tr class="totals_table_footer">
 	<!--<td colspan="15">&nbsp;</td></tr>-->
 	<!--<tr bgcolor="#58FAAC"> -->
-		<td colspan="10" class="text_right">
+		<td class='revenueSize2' colspan="10" class="text_right">
 			Total :
 		</td>
-		<td>
+		<td class='revenueSize2'>
 			<?php echo $total_ncm; ?>
 		</td>
-		<td>
+		<td class='revenueSize2'>
 			<?php echo $total_ncip; ?>
 		</td>
-		<td>
+		<td class='revenueSize2'>
 			<?php echo $total_npip; ?>
 		</td>
-		<td>
+		<td class='revenueSize2'>
 			<?php echo $total_o; ?>
 		</td>
-		<td>
+		<td class='revenueSize2'>
 			<?php echo $total_p; ?>
 		</td>
 	</tr>
