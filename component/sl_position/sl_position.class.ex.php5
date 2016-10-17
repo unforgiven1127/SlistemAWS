@@ -420,7 +420,7 @@ class CSl_positionEx extends CSl_position
       $oForm->setFieldControl('industryfk', array('jsFieldNotEmpty'));
 
 
-      $oForm->addField('input', 'contact_number', array('label' => 'Contact number', 'value' => $oDbResult->getFieldValue('contact_number')));
+      $oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
       $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
 
       $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
@@ -606,7 +606,7 @@ class CSl_positionEx extends CSl_position
 
 
 
-      $oForm->addField('input', 'contact_number', array('label' => 'Contact number', 'value' => $oDbResult->getFieldValue('contact_number')));
+      $oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
       $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
 
       $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
@@ -2403,7 +2403,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sDetail.= $this->_oDisplay->getBlocEnd();
 
           $sDetail.= $this->_oDisplay->getBlocStart('pos_detail_'.$asPosition['language'], array('class' => 'position_detail_row'));
-          $sDetail.= $this->_oDisplay->getBloc('', 'Contact number', array('class' => 'label'));
+          $sDetail.= $this->_oDisplay->getBloc('', 'Contact', array('class' => 'label'));
           $sDetail.= $this->_oDisplay->getBloc('', $asPosition['contact_number'], array('class' => 'value'));
           $sDetail.= $this->_oDisplay->getBlocEnd();
 
