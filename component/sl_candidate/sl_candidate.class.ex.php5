@@ -7310,7 +7310,7 @@ ChromePhp::log($sSortField);
 ChromePhp::log($sSortOrder);
 
       if(!empty($sSortField))
-      {
+      {// calismiyor gibi...
         if ($sSortField == 'industry_list')
         {
           $oQb->addOrder("sind.label $sSortOrder");
@@ -7326,6 +7326,13 @@ ChromePhp::log($sSortOrder);
 
       //ChromePhp::log($oQb->getSql());
       $sql = $oQb->getSql();
+
+      if(!empty($sSortField))
+      {
+        $sql = str_replace('ORDER BY  ratio DESC','',$sql);
+
+        $sql.= " ORDER BY scom.".$sSortField." ".$sSortOrder;
+      }
 
       $sql = str_replace('AND  sind.label LIKE "%Industry%"','',$sql);
 
