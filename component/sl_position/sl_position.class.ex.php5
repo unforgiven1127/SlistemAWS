@@ -2388,7 +2388,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sDetail.= $this->_oDisplay->getBlocEnd();
 
           $sDetail.= $this->_oDisplay->getBlocStart('pos_detail_'.$asPosition['language'], array('class' => 'position_detail_row'));
-          $sDetail.= $this->_oDisplay->getBloc('', 'Company/Job description', array('class' => 'label'));
+          $sDetail.= $this->_oDisplay->getBloc('', 'Company/Job description', array('style' => 'height:100px !important;','class' => 'label'));
           $sDetail.= $this->_oDisplay->getBloc('', $asPosition['description'], array('class' => 'value'));
           $sDetail.= $this->_oDisplay->getBlocEnd();
 
@@ -2452,7 +2452,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'position_detail_row'));
-          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl.', array('class' => 'label'));
+          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl', array('class' => 'label'));
           $sHTML.= $this->_oDisplay->getBloc('', 'english: '.$asPosition['lvl_english'].'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;japanese: '.$asPosition['lvl_japanese'], array('class' => 'value'));
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
@@ -3035,7 +3035,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'position_detail_row'));
-          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl..', array('class' => 'label'));
+          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl', array('class' => 'label'));
           $sHTML.= $this->_oDisplay->getBloc('', 'english: '.$asPosition['lvl_english'].'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;japanese: '.$asPosition['lvl_japanese'], array('class' => 'value'));
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
