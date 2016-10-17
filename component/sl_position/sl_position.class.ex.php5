@@ -84,6 +84,7 @@ class CSl_positionEx extends CSl_position
   */
   public function getItemDescription($pvItemPk, $psAction = '', $psItemType = 'jd')
   {
+    ChromePhp::log('getItemDescription 4');
     if(!assert('is_arrayOfInt($pvItemPk) || is_key($pvItemPk)'))
       return array();
 
