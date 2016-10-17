@@ -7225,7 +7225,7 @@ ChromePhp::log($mailFlag);
     private function _getCompanyList($poQB = null)
     {
       global $gbNewSearch;
-
+ChromePhp::log('_getCompanyList');
       $oLogin = CDependency::getCpLogin();
 
       $asListMsg = array();

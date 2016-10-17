@@ -184,7 +184,6 @@ class CTemplateList extends CTemplate
           $sAction = '';
           if(!empty($asColumnData['sort']) || !empty($asColumnData['filter']))
           {
-            ChromePhp::log('HERE');
             $sPictAsc = $oDisplay->getPicture($oDisplay->getResourcePath().'/pictures/sort_asc.png');
             $sPictDesc = $oDisplay->getPicture($oDisplay->getResourcePath().'/pictures/sort_desc.png');
 
