@@ -2000,7 +2000,6 @@ form.candiAddForm .formSection .formFieldContainer.full_width_msg
 {
   line-height: 20px;
   padding-left: 5px;
-  padding-right: 10px;
 }
 .note_content
 {
@@ -2008,6 +2007,7 @@ form.candiAddForm .formSection .formFieldContainer.full_width_msg
     line-height: 20px;
     margin-left: 20px;
     padding-top: 3px;
+    margin-right: 10px;
 }
 
 .no-candidate
