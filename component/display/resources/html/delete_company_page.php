@@ -93,7 +93,7 @@
   <table style='width:100%;'>
     <tr>
       <td align="right" style='padding-top: 30px; padding-right: 55px;'>
-        <button onclick="$('.ui-dialog').remove();" type="button" class="log-btn_ ui-dialog-titlebar-close" >No</button>
+        <button type="button" class="log-btn_ ui-dialog-titlebar-close" >No</button>
         <button onclick="
           var selctedCompany = document.getElementsByName('company_id');
           $('.ui-dialog').remove();
