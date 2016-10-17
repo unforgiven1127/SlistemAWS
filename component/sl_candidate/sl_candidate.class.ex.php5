@@ -553,6 +553,7 @@ class CSl_candidateEx extends CSl_candidate
   //remove if the interface is not used
   public function getHtml()
   {
+    ChromePhp::log('getHtml 2');
     $this->_processUrl();
 
     //================================================================

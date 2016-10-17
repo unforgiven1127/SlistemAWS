@@ -456,7 +456,6 @@ class CLoginEx extends CLogin
 
   public function getHtml()
   {
-    ChromePhp::log('getHtml');
     $this->_processUrl();
 
     if($this->isLogged())
