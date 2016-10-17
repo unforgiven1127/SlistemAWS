@@ -2464,6 +2464,7 @@ ChromePhp::log('_getCompanyView');
 
       if(isset($_GET['ppk']) && $_GET['ppk'] != 0)
       {
+        ChromePhp::log($_GET['ppk']);
         $pnPk = $_GET['ppk'];
       }
 
