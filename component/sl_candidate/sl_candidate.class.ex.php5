@@ -7317,6 +7317,7 @@ ChromePhp::log($sSortOrder);
         }
         else
         {
+          ChromePhp::log('HERE');
           $oQb->addOrder("scom.$sSortField $sSortOrder");
         }
       }
@@ -7325,7 +7326,7 @@ ChromePhp::log($sSortOrder);
 
       //ChromePhp::log($oQb->getSql());
       $sql = $oQb->getSql();
-ChromePhp::log($sql);
+
       $sql = str_replace('AND  sind.label LIKE "%Industry%"','',$sql);
 
       $explodeLimit = explode('LIMIT',$sql);
@@ -7341,6 +7342,7 @@ ChromePhp::log($sql);
 
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
+ChromePhp::log($sql);
       $oDbResult = $this->_getModel()->executeQuery($sql);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
