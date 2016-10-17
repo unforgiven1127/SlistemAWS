@@ -799,6 +799,7 @@ class CSl_positionEx extends CSl_position
       $asPosition['contact_number'] = (int)getValue('contact_number');
       $asPosition['email'] = (int)getValue('email');
 
+      ChromePhp::log($asPosition['email']);
 
       if(empty($pnPositionPk))
       {
