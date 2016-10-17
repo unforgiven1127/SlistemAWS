@@ -93,7 +93,7 @@
   <table style='width:100%;'>
     <tr>
       <td align="right" style='padding-top: 30px; padding-right: 55px;'>
-        <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-dialog-titlebar-close ui-button-icon-only" >No</button>
+        <button onclick="$('#HeatNameDiv').dialog('close');" type="button" class="log-btn_" >No</button>
         <button onclick="
           var selctedCompany = document.getElementsByName('company_id');
           $('.ui-dialog').remove();
