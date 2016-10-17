@@ -562,12 +562,13 @@ class CSl_candidateEx extends CSl_candidate
 
     if(getValue('contact_sheet'))
     {
+      ChromePhp::log('HERE 1');
       $oLogin = CDependency::getComponentByName('login');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       return $oLogin->displayList(false);
     }
 
-
+    ChromePhp::log($this->csType);
     switch($this->csType)
     {
       case CONST_CANDIDATE_TYPE_CANDI:
