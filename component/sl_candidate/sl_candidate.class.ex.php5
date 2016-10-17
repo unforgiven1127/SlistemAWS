@@ -569,6 +569,7 @@ class CSl_candidateEx extends CSl_candidate
     }
 
     ChromePhp::log($this->csType);
+    ChromePhp::log($this->csAction));
     switch($this->csType)
     {
       case CONST_CANDIDATE_TYPE_CANDI:
