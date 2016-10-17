@@ -591,8 +591,6 @@ ChromePhp::log($sComponentHtml);
 
   public function getHtml()
   {
-    
-    ChromePhp::log('getHtml');
     $oHTML = CDependency::getCpHtml();
     return $oHTML->getBlocMessage('Wrong parameters / component !! <br /> This url leads nowhere: '.$_SERVER['REQUEST_URI']);
   }
