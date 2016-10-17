@@ -631,7 +631,7 @@ class CSl_candidateEx extends CSl_candidate
               break;
 
             case CONST_ACTION_VIEW:
-              return json_encode($oPage->getAjaxExtraContent(array('data' => convertToUtf8($this->_getCompanyView($this->cnPk)))));
+              return $this->_getCompanyView($this->cnPk);
               break;
           }
           break;
