@@ -93,15 +93,15 @@
   <table style='width:100%;'>
     <tr>
       <td align="right" style='padding-top: 30px; padding-right: 55px;'>
-        <button onclick="$('#HeatNameDiv').dialog('close');" type="button" class="log-btn_" >No</button>
+        <button onclick="$('.ui-icon-closethick').click();" type="button" class="log-btn_" >Cancel</button>
         <button onclick="
           var selctedCompany = document.getElementsByName('company_id');
-          $('.ui-dialog').remove();
+          $('.ui-icon-closethick').click();
           var oConf = goPopup.getConfig();
           oConf.width = 400;
           oConf.height = 200;
           goPopup.setLayerFromAjax(oConf, <?php echo "'".$delete_url."'"; ?>+'&newId='+selctedCompany[0].value);"
-        style='margin-right: 10px !important;' type="button" class="log-btn_" >Yes</button>
+        style='margin-right: 10px !important;' type="button" class="log-btn_" >Merge/Delete</button>
       </td>
     </tr>
   </table>
