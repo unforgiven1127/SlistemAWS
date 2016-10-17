@@ -410,6 +410,9 @@ class CNotificationEx extends CNotification
 
     //Add a reference to the source component
     $asAdd = array_merge($this->casInitId[$psId], array('notificationfk' => $nNotificationPk, 'linked_to' => 'source'));
+
+    ChromePhp::log($asAdd);
+
     $oDbResult = $this->_getModel()->add($asAdd, 'notification_link');
     if(!$oDbResult)
     {
