@@ -2462,19 +2462,11 @@ class CSl_candidateEx extends CSl_candidate
 
 ChromePhp::log('_getCompanyView');
 
-      if(isset($_GET['ppk']) && $_GET['ppk'] != 0)
-      {
-        ChromePhp::log($_GET['ppk']);
-        $pnPk = $_GET['ppk'];
-      }
-      else
-      {
-        if(!assert('is_key($pnPk)'))
+      if(!assert('is_key($pnPk)'))
         return '';
-      }
-ChromePhp::log($pnPk);
+
+
       $asCompany = $this->_getModel()->getCompanyData($pnPk, true);
-      ChromePhp::log($asCompany);
       if(empty($asCompany))
         return '';
 
