@@ -419,6 +419,15 @@ class CSl_positionEx extends CSl_position
       $oForm->addoption('industryfk', $this->oCandidate->_getTreeData('industry'));
       $oForm->setFieldControl('industryfk', array('jsFieldNotEmpty'));
 
+
+      $oForm->addField('input', 'contact_number', array('label' => 'Contact number', 'value' => $oDbResult->getFieldValue('contact_number')));
+      $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
+
+      $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
+      $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));
+
+
+
       $oForm->addField('input', 'age_from', array('label' => 'Age from', 'value' => $oDbResult->getFieldValue('age_from')));
       $oForm->setFieldDisplayparams('age_from', array('class' => 'position_inline', 'keepNextInline' => 1));
 
@@ -597,10 +606,10 @@ class CSl_positionEx extends CSl_position
 
 
 
-      $oForm->addField('input', 'contact_number', array('label' => 'Contact number', 'value' => $oDbResult->getFieldValue('age_from')));
+      $oForm->addField('input', 'contact_number', array('label' => 'Contact number', 'value' => $oDbResult->getFieldValue('contact_number')));
       $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
 
-      $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('age_to')));
+      $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
       $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));
 
 
