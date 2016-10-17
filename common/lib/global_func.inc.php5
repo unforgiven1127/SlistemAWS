@@ -3950,6 +3950,19 @@ var_dump($query);*/
 
   }
 
+  function addSecutrityAlert($user_id,$type ='')
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $dNow = date('Y-m-d H:i:s'); // Japan time
+    $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`)
+                 VALUES('".$user_id."','".$type."','".$dNow."')";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    return true;
+  }
+
   function securityCheckSearch($user_id)
   {
     // if user do more than 5 search in 5 minutes

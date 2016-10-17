@@ -1136,6 +1136,8 @@ class CSl_candidateEx extends CSl_candidate
 
           sendHtmlMail($toEmail,$subject, $message);
 
+          addSecutrityAlert($user_id,'contact_mail');
+
         }
       }
 
@@ -9588,7 +9590,7 @@ die();*/
       }
 
       $createdSql = $poQB->getSql();
-      ChromePhp::log($createdSql);
+      //ChromePhp::log($createdSql);
 
       $oDbResult = $this->_getModel()->executeQuery($poQB->getSql());
       $bRead = $oDbResult->readFirst();
