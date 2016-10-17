@@ -3963,12 +3963,23 @@ var_dump($query);*/
     return true;
   }
 
-  function checkSecurityAlert($user_id,$type ='')
+  function checkSecurityAlert($user_id,$type = '',$company_id = 0)
   {
     $oDB = CDependency::getComponentByName('database');
 
     $today = date('Y-m-d');
     $today.= " 00:00:00";
+
+    $sQuery = "SELECT COUNT(*) as count
+               FROM login_system_history lsh
+               WHERE lsh.table = '".$type."' AND user_id = '".$user_id."' AND action_date > '".$today."' AND company_id = '".$company_id."' ";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+    $count = $result[0]['count'];
+
+    return $count;
   }
 
   function securityCheckSearch($user_id)
