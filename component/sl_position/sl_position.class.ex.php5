@@ -2402,6 +2402,16 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
           $sDetail.= $this->_oDisplay->getBloc('', $asPosition['requirements'], array('class' => 'value'));
           $sDetail.= $this->_oDisplay->getBlocEnd();
 
+          $sDetail.= $this->_oDisplay->getBlocStart('pos_detail_'.$asPosition['language'], array('class' => 'position_detail_row'));
+          $sDetail.= $this->_oDisplay->getBloc('', 'Contact number', array('class' => 'label'));
+          $sDetail.= $this->_oDisplay->getBloc('', $asPosition['contact_number'], array('class' => 'value'));
+          $sDetail.= $this->_oDisplay->getBlocEnd();
+
+          $sDetail.= $this->_oDisplay->getBlocStart('pos_detail_'.$asPosition['language'], array('class' => 'position_detail_row'));
+          $sDetail.= $this->_oDisplay->getBloc('', 'Email', array('class' => 'label'));
+          $sDetail.= $this->_oDisplay->getBloc('', $asPosition['email'], array('class' => 'value'));
+          $sDetail.= $this->_oDisplay->getBlocEnd();
+
         $sDetail.= $this->_oDisplay->getBlocEnd();
 
         $bRead = $oDbResult->readNext();
