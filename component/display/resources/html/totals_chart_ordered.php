@@ -27,7 +27,7 @@
 			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
 			var cols = document.getElementsByClassName('revenueSize');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","font-size:150% !important;");
+			    cols[i].setAttribute("style","font-size:200% !important;");
 			 }
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');

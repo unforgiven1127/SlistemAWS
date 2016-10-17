@@ -379,7 +379,7 @@ app.controller("myCtrl", function($scope) {
   <div class="w3-container w3-light-grey w3-padding-16">
     <div class="w3-row w3-margin-top">
       <div class="w3-col s5">
-        <select>
+        <select ng-model="contactType">
           <option>Email</option>
           <option>Phone</option>
           <option>Linkedin</option>
