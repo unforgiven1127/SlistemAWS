@@ -7306,8 +7306,6 @@ ChromePhp::log($mailFlag);
       $sSortField = getValue('sortfield');
       $sSortOrder = getValue('sortorder', 'DESC');
 
-ChromePhp::log($sSortField);
-ChromePhp::log($sSortOrder);
 
       if(!empty($sSortField))
       {// calismiyor gibi...
@@ -7348,7 +7346,7 @@ ChromePhp::log($sSortOrder);
 
       // multi industries --> we need to group by companypk --> number result = numrows
       //$oDbResult = $this->_getModel()->executeQuery($oQb->getCountSql());
-ChromePhp::log($sql);
+
       $oDbResult = $this->_getModel()->executeQuery($sql);
       $bRead = $oDbResult->readFirst();
       if(!$bRead)
