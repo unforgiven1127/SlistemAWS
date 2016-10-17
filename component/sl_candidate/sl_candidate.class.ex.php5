@@ -553,7 +553,6 @@ class CSl_candidateEx extends CSl_candidate
   //remove if the interface is not used
   public function getHtml()
   {
-    ChromePhp::log('getHtml 2');
     $this->_processUrl();
 
     //================================================================
@@ -562,14 +561,12 @@ class CSl_candidateEx extends CSl_candidate
 
     if(getValue('contact_sheet'))
     {
-      ChromePhp::log('HERE 1');
       $oLogin = CDependency::getComponentByName('login');
       $this->_oPage->addJsFile(self::getResourcePath().'js/sl_candidate.js');
       return $oLogin->displayList(false);
     }
 
-    ChromePhp::log($this->csType);
-    ChromePhp::log($this->csAction);
+
     switch($this->csType)
     {
       case CONST_CANDIDATE_TYPE_CANDI:
@@ -631,10 +628,6 @@ class CSl_candidateEx extends CSl_candidate
           {
             case CONST_ACTION_LIST:
               return $this->_getNoScoutList();
-              break;
-
-            case CONST_ACTION_VIEW:
-              return $this->_getCompanyView();
               break;
           }
           break;
@@ -2459,12 +2452,10 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyView($pnPk)
     {
-
-ChromePhp::log('_getCompanyView');
-
       if(!assert('is_key($pnPk)'))
         return '';
 
+ChromePhp::log('_getCompanyView');
 
       $asCompany = $this->_getModel()->getCompanyData($pnPk, true);
       if(empty($asCompany))
