@@ -2048,7 +2048,6 @@ class CSl_candidateEx extends CSl_candidate
 
     private function _getCompanyView($pnPk)
     {
-      ChromePhp::log('_getCompanyView ???????');
       if(!assert('is_key($pnPk)'))
         return '';
 

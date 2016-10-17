@@ -265,7 +265,7 @@ class CNotificationEx extends CNotification
     }
 
     $asItemData = $asItemData[$pasItem[CONST_CP_PK]];
-ChromePhp::log($asItemData);
+
     $sSender = $this->coLogin->getUserLink($this->coLogin->getuserPk());
     if(empty($sSender))
     {
@@ -275,8 +275,13 @@ ChromePhp::log($asItemData);
 
     $this->casInitId[$psId]['user_msg'] = $psMessage;
 
+    $company_id = $pasItem[CONST_CP_PK];
+    $link = CONST_CRM_DOMAIN."/index.php5?uid=555-001&ppa=ppav&ppt=comp&ppk=".$company_id."&pg=ajx";
+    ChromePhp::log($link);
+    ChromePhp::log($asItemData['link']);
+
     $sMessage = '<div style="border-left: 1px solid #888888; padding: 2px 10px; margin: 5px 0 15px 0; line-height: 20px;" >';
-    $sMessage.= 'This DBA concerns "'.$asItemData['link'].'"<br /><br />';
+    $sMessage.= 'This concerns "'.$asItemData['link'].'"<br /><br />';
 
     if(!empty($asItemData['description']))
     {
