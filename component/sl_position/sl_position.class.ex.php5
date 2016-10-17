@@ -799,8 +799,6 @@ class CSl_positionEx extends CSl_position
       $asPosition['contact_number'] = getValue('contact_number');
       $asPosition['email'] = getValue('email');
 
-      ChromePhp::log($asPosition['email']);
-
       if(empty($pnPositionPk))
       {
         $nPositionPk = $this->_getModel()->add($asPosition, 'sl_position');
@@ -2454,7 +2452,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'position_detail_row'));
-          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl', array('class' => 'label'));
+          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl.', array('class' => 'label'));
           $sHTML.= $this->_oDisplay->getBloc('', 'english: '.$asPosition['lvl_english'].'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;japanese: '.$asPosition['lvl_japanese'], array('class' => 'value'));
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
@@ -3037,7 +3035,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
         $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'position_detail_row'));
-          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl', array('class' => 'label'));
+          $sHTML.= $this->_oDisplay->getBloc('', 'Language lvl..', array('class' => 'label'));
           $sHTML.= $this->_oDisplay->getBloc('', 'english: '.$asPosition['lvl_english'].'&nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;japanese: '.$asPosition['lvl_japanese'], array('class' => 'value'));
         $sHTML.= $this->_oDisplay->getBlocEnd();
 
