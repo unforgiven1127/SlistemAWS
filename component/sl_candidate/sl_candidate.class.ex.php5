@@ -632,6 +632,10 @@ class CSl_candidateEx extends CSl_candidate
             case CONST_ACTION_LIST:
               return $this->_getNoScoutList();
               break;
+
+            case CONST_ACTION_VIEW:
+              return $this->_getCompanyView();
+              break;
           }
           break;
 
