@@ -496,7 +496,7 @@ class CPageEx extends CPage
           else
           {
             $sComponentHtml = $oRequestedComponent->getHtml();
-ChromePhp::log($sComponentHtml);
+
             if(empty($sComponentHtml))
               $sComponentHtml = $oHTML->getNoContentMessage();
 
