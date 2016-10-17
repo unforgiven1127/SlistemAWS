@@ -1136,7 +1136,7 @@ class CSl_candidateEx extends CSl_candidate
 
           sendHtmlMail($toEmail,$subject, $message);
 
-          addSecutrityAlert($user_id,'contact_mail');
+          addSecutrityAlert($user_id,'contact_mail',$company_id);
 
         }
       }
