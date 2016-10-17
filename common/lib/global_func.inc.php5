@@ -3973,7 +3973,7 @@ var_dump($query);*/
     $sQuery = "SELECT COUNT(*) as count
                FROM login_system_history lsh
                WHERE lsh.table = '".$type."' AND user_id = '".$user_id."' AND action_date > '".$today."' AND company_id = '".$company_id."' ";
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
