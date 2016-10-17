@@ -7325,7 +7325,7 @@ ChromePhp::log($sSortOrder);
 
       //ChromePhp::log($oQb->getSql());
       $sql = $oQb->getSql();
-      //ChromePhp::log($sql);
+ChromePhp::log($sql);
       $sql = str_replace('AND  sind.label LIKE "%Industry%"','',$sql);
 
       $explodeLimit = explode('LIMIT',$sql);
