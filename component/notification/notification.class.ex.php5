@@ -255,8 +255,6 @@ class CNotificationEx extends CNotification
     $oComponent = CDependency::getComponentByUid($sUid);
     $asItemData = $oComponent->getItemDescription($pasItem[CONST_CP_PK], $pasItem[CONST_CP_ACTION], $pasItem[CONST_CP_TYPE]);
 
-ChromePhp::log($asItemData);
-
     if(!assert('!empty($asItemData)'))
       return 0;
 
@@ -267,7 +265,7 @@ ChromePhp::log($asItemData);
     }
 
     $asItemData = $asItemData[$pasItem[CONST_CP_PK]];
-
+ChromePhp::log($asItemData);
     $sSender = $this->coLogin->getUserLink($this->coLogin->getuserPk());
     if(empty($sSender))
     {
