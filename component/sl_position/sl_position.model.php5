@@ -45,7 +45,8 @@ class CSl_positionModel extends CModel
     $this->_tableMap['sl_position_detail']['display_salary'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
     $this->_tableMap['sl_position_detail']['display_date'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
     $this->_tableMap['sl_position_detail']['moderation'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
-
+    $this->_tableMap['sl_position_detail']['contact_number'] = array();
+    $this->_tableMap['sl_position_detail']['email'] = array();
 
     $this->_tableMap['sl_position_link']['sl_position_linkpk'] = array('controls'=>array('is_null(%) || is_key(%)'),'type'=>'int','index' => 'pk');
     $this->_tableMap['sl_position_link']['positionfk'] = array('controls'=>array('is_integer(%)'),'type'=>'int');
