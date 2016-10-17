@@ -54,7 +54,7 @@
   </head>
 
 
-  <body>
+  <body id='deleteCompany'>
 
   <script language="javascript">
 
