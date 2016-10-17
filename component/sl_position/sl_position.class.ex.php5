@@ -796,6 +796,9 @@ class CSl_positionEx extends CSl_position
       $asPosition['display_date'] = (int)getValue('display_date');
       $asPosition['moderation'] = (int)getValue('moderation');
 
+      $asPosition['contact_number'] = (int)getValue('contact_number');
+      $asPosition['email'] = (int)getValue('email');
+
 
       if(empty($pnPositionPk))
       {
