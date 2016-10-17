@@ -27,8 +27,12 @@
 			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
 			var cols = document.getElementsByClassName('revenueSize');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","font-size:200% !important;");
-			 }
+			    cols[i].setAttribute("style","font-size:180% !important;");
+			}
+			var cols = document.getElementsByClassName('revenueSize2');
+			for(i=0; i<cols.length; i++) {
+			    cols[i].setAttribute("style","font-size:180% !important;");
+			}
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
 		}
@@ -122,7 +126,7 @@
 	<!--<td><?php echo $value['position'] ?></td>-->
 		<td class="name_column revenueSize"><?php echo $value['name']; ?></td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['set']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -164,7 +168,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['met']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -205,7 +209,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['resumes_sent']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -246,7 +250,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -287,7 +291,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm1_done']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -329,7 +333,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -371,7 +375,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['ccm2_done']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -413,7 +417,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -455,7 +459,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php echo $value['mccm_done']; ?>
 			</div>
 			<div class="stat_candi_info <?php echo $value['user_id']; ?>">
@@ -497,7 +501,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_ncm  = $total_ncm + $value['new_candidate_met_count'];
 				echo $value['new_candidate_met_count'];
@@ -542,7 +546,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_ncip = $total_ncip + $value['new_candidates'];
 				echo $value['new_candidates'];
@@ -587,7 +591,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_npip = $total_npip + $value['new_positions'];
 				echo $value['new_positions'];
@@ -633,7 +637,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php
 				$total_o = $total_o + $value['offers_sent'];
 				echo $value['offers_sent'];
@@ -678,7 +682,7 @@
 			</div>
 		</td>
 		<td>
-			<div class="stat_holder" id="<?php echo $value['user_id']; ?>">
+			<div class="stat_holder revenueSize2" id="<?php echo $value['user_id']; ?>">
 			<?php
 				if($value['position'] == "Researcher")
 				{
