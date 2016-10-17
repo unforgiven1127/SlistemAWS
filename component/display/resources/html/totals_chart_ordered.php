@@ -7,15 +7,6 @@
 	}
 	//alert(nextloop);
 	//alert(loopFlag);
-	if(loopFlag == true || loopFlag == 'true')
-	{
-		setTimeout(function()
-		{
-			var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
-			//alert('test');
-			window.location.replace(url);
-		}, 30000);
-	}
 
 	$(document).ready(function()
 	{
@@ -37,6 +28,17 @@
 			//alert('GIZLEME SONRASI ALERT');
 		}
 	});
+
+	if(loopFlag == true || loopFlag == 'true')
+	{
+		setTimeout(function()
+		{
+			var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
+			//alert('test');
+			window.location.replace(url);
+		}, 30000);
+	}
+
 </script>
 
 <form id="getKpiForm" action="" method="post">
