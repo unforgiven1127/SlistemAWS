@@ -7327,12 +7327,11 @@ ChromePhp::log($sSortOrder);
       //ChromePhp::log($oQb->getSql());
       $sql = $oQb->getSql();
 
-      /*if(!empty($sSortField))
+      if(!empty($sSortField))
       {
-        $sql = str_replace('ORDER BY  ratio DESC','',$sql);
+        $sql = str_replace('ratio DESC ,','',$sql);
 
-        $sql.= " ORDER BY scom.".$sSortField." ".$sSortOrder;
-      }*/
+      }
 
       $sql = str_replace('AND  sind.label LIKE "%Industry%"','',$sql);
 
