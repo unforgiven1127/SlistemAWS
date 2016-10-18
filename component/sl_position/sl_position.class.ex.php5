@@ -420,11 +420,11 @@ class CSl_positionEx extends CSl_position
       $oForm->setFieldControl('industryfk', array('jsFieldNotEmpty'));
 
 
-      $oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
+      /*$oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
       $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
 
       $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
-      $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));
+      $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));*/
 
 
 
@@ -606,11 +606,11 @@ class CSl_positionEx extends CSl_position
 
 
 
-      $oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
+      /*$oForm->addField('input', 'contact_number', array('label' => 'Contact', 'value' => $oDbResult->getFieldValue('contact_number')));
       $oForm->setFieldDisplayparams('contact_number', array('class' => 'position_inline', 'keepNextInline' => 1));
 
       $oForm->addField('input', 'email', array('label' => 'Email', 'value' => $oDbResult->getFieldValue('email')));
-      $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));
+      $oForm->setFieldDisplayparams('email', array('class' => 'position_inline position_inline2'));*/
 
 
 
