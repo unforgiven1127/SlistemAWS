@@ -212,7 +212,7 @@ class CPageEx extends CPage
 
   public function getPage($psUid = '', $psAction = '', $psType = '', $pnPK = 0, $psMode = 'pg')
   {
-    ChromePhp::log('getPage');
+    //ChromePhp::log('getPage');
     if(!assert('is_string($psUid)'))
       return '';
     if(!assert('is_string($psAction)'))
@@ -418,7 +418,8 @@ class CPageEx extends CPage
           echo 'Cron started at '.date('Y-m-d H:i:s').' '. microtime(true).'<br /><br />';
 
         $asComponentUid = CDependency::getComponentUidByInterface('has_cron');
-
+ChromePhp::log($asComponentUid);
+ChromePhp::log($bSilent);
         foreach($asComponentUid as $sUid)
         {
           if(empty($sCpUid) || $sCpUid == $sUid)
