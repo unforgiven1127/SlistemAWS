@@ -421,7 +421,12 @@ Reminder linked to item', '2013-10-05 08:00:00');
       }
       else
       {
-        $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$asActivity['cp_pk']);
+        $cp_pk = 0;
+        if(isset($asActivity['cp_pk']))
+        {
+          $cp_pk = (int)$asActivity['cp_pk'];
+        }
+        $sURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, $cp_pk);
         $onclick = 'view_candi(\''.$sURL.'\');';
       }
 
