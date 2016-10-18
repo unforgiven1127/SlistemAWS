@@ -369,7 +369,7 @@ class CPageEx extends CPage
         return  $this->_getPageHTML($this->csUid, $sComponentFullHtml, $bIsLogged, $asMeta, $asPageParam);
       }
     }
-ChromePhp::log($this->csMode); //revenue board da pn geliyor
+//ChromePhp::log($this->csMode); //revenue board da pn geliyor
 //ChromePhp::log(CONST_URL_PARAM_PAGE_CRON); // cron isteniyor
     switch($this->csMode)
     {
@@ -419,8 +419,8 @@ ChromePhp::log($this->csMode); //revenue board da pn geliyor
           echo 'Cron started at '.date('Y-m-d H:i:s').' '. microtime(true).'<br /><br />';
 
         $asComponentUid = CDependency::getComponentUidByInterface('has_cron');
-ChromePhp::log($asComponentUid);
-ChromePhp::log($bSilent);
+//ChromePhp::log($asComponentUid);
+//ChromePhp::log($bSilent);
         foreach($asComponentUid as $sUid)
         {
           if(empty($sCpUid) || $sCpUid == $sUid)
