@@ -369,7 +369,7 @@ class CPageEx extends CPage
         return  $this->_getPageHTML($this->csUid, $sComponentFullHtml, $bIsLogged, $asMeta, $asPageParam);
       }
     }
-//ChromePhp::log($this->csMode); //revenue board da pn geliyor
+ChromePhp::log($this->csMode); //revenue board da pn geliyor
 //ChromePhp::log(CONST_URL_PARAM_PAGE_CRON); // cron isteniyor
     switch($this->csMode)
     {
