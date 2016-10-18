@@ -212,6 +212,7 @@ class CPageEx extends CPage
 
   public function getPage($psUid = '', $psAction = '', $psType = '', $pnPK = 0, $psMode = 'pg')
   {
+    ChromePhp::log('getPage');
     if(!assert('is_string($psUid)'))
       return '';
     if(!assert('is_string($psAction)'))
