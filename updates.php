@@ -25,16 +25,7 @@ $message = "
 </head>
 <body>
 <p>TEST FOR CRONJOB</p>
-<table>
-<tr>
-<th>Firstname</th>
-<th>Lastname</th>
-</tr>
-<tr>
-<td>John</td>
-<td>Testova</td>
-</tr>
-</table>
+
 </body>
 </html>
 ";
