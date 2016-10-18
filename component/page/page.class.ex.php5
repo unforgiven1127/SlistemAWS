@@ -370,6 +370,7 @@ class CPageEx extends CPage
       }
     }
 ChromePhp::log($this->csMode);
+ChromePhp::log(CONST_URL_PARAM_PAGE_CRON);
     switch($this->csMode)
     {
 
