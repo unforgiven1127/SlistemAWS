@@ -20,7 +20,7 @@ $subject = "Test email";
 $message = "
 <html>
 <head>Date&Time:
-".$sDate."
+".$sDate." (JAPAN)
 <title>Test email</title>
 </head>
 <body>
