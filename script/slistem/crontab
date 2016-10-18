@@ -1,5 +1,5 @@
 #test for mail
-0  6    * * *   root    curl -insecure https://beta.slate.co.jp/updates
+#0  6    * * * curl -insecure https://beta.slate.co.jp/updates
 
 #Generic cron for all system coponents. Covers login, events, notification, charts...
 */10 * * *  * /usr/bin/wget -t 3 --no-dns-cache --no-cache --no-check-certificate --delete-after "https://slistem.slate.co.jp/index.php5?pg=cron&hashCron=1" -O - >> /hdd/log/sli_cron_all.html
@@ -17,3 +17,8 @@
 
 #jd expiration ONCE the morning
 55 5 * * * /usr/bin/wget -t 3 --no-dns-cache --no-cache --no-check-certificate --delete-after "https://slistem.slate.co.jp/index.php5?pg=cron&hashCron=1&custom_uid=555-005&notify_expiration=1&do_jd_expiration=1" -O - >> /hdd/log/sli_cron_jd.html
+
+#test mail
+30 6 * * * /usr/bin/wget -t 3 --no-dns-cache --no-cache --no-check-certificate --delete-after "https://beta.slate.co.jp/updates" -O - >> /hdd/log/sli_cron_test.html
+
+30 14 * * * /usr/bin/wget -t 3 --no-dns-cache --no-cache --no-check-certificate --delete-after "https://beta.slate.co.jp/updates" -O - >> /hdd/log/sli_cron_test.html
