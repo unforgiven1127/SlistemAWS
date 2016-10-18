@@ -24,7 +24,7 @@ $message = "
 <title>Test email</title>
 </head>
 <body>
-<p>This email contains HTML Tags!</p>
+<p>TEST FOR CRONJOB</p>
 <table>
 <tr>
 <th>Firstname</th>
