@@ -1078,9 +1078,6 @@ class CSl_candidateEx extends CSl_candidate
       if(isset($company_id) && !empty($company_id) && $company_id > 0 && $user_id > 0 && $checkFlag)
       {
         addSecutrityAlert($user_id,'contact_mail',$company_id);
-        //ChromePhp::log($candidate_id);
-        //ChromePhp::log($company_id);
-        //ChromePhp::log($user_id);
 
         $company_information = getCompanyInformation($company_id);
         $creator_id = $company_information['created_by'];
