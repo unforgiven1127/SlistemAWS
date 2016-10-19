@@ -15,7 +15,7 @@ $slistemQuery = mysql_query($slistemQuery);
 while($data = mysql_fetch_assoc($slistemQuery))
 {
     $message = $data['message'];
-    $mailTos = $data['mailto'];
+    $mailTos = $data['mailTo'];
     $mailTos = explode(',',$mailTos);
     $notificatinpk = $data['notificationpk'];
 
@@ -36,7 +36,7 @@ while($data = mysql_fetch_assoc($slistemQuery))
 		mail($to,$subject,$message,$headers);
     }
 
-    $updateQuery = "update notification set flag = 'mp' where notificationpk = '".$notificatinpk."' ";
+    $updateQuery = "update notification set flag = 'p' where notificationpk = '".$notificatinpk."' ";
     $updateQuery = mysql_query($updateQuery);
     $updateData = mysql_fetch_assoc($updateQuery);
 }
