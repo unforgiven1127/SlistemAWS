@@ -151,7 +151,10 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
           mngAjaxScreen(psLoadingScreen);
 
           if(oJsonData.error)
+          {
+            alert('test1');
             goPopup.setErrorMessage(oJsonData.error, true);
+          }
 
           if(sURL)
             return $(document).load(sURL);
@@ -193,6 +196,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
 
           if(oJsonData.error)
           {
+            alert('test2');
             goPopup.setErrorMessage(oJsonData.error, true);
             $(document).ajaxSuccess().unbind();
 
