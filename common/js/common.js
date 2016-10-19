@@ -164,7 +164,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
 
           return window.location.reload();
         },
-        error: function(){  mngAjaxScreen(psLoadingScreen); }
+        error: function(){ alert('test1');  mngAjaxScreen(psLoadingScreen); }
       });
 
     }
