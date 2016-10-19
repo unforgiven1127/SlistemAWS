@@ -632,6 +632,9 @@
 		//$('#saveCandi').prop('disabled', false);
 		return false;
     });
+    frmThemeOverride_frmAfterSubmit(formReturned, pageOrder, errObj, object){
+		alert('complete zxc');
+	}
 	$("#saveCandi").bind('ajax:complete', function() {
 		alert('complete');
 		$('#saveCandi').prop('disabled', false);
