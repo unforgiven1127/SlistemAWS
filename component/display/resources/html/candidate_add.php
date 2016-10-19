@@ -622,11 +622,8 @@
 		date_field_obj.show();
 	}
 
-	$('#saveCandi').click(function(){
-		$('#saveCandi').prop('disabled', true);
-	});
-
 	$('form[name=addcandidate]').submit(function(event){
+		$('#saveCandi').prop('disabled', true);
 		event.preventDefault();
 
 		var sURL = $('form[name=addcandidate]').attr('action');
