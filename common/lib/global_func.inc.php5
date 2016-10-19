@@ -3978,7 +3978,7 @@ var_dump($query);*/
 
     $sQuery = "SELECT COUNT(*) as count
                FROM security_alert lsh
-               WHERE lsh.type = '".$type."' AND user_id = '".$user_id."' AND action_date > '".$today."' AND company_id = '".$company_id."' ";
+               WHERE lsh.type = '".$type."' AND user_id = '".$user_id."' AND action_date >= '".$today."' AND company_id = '".$company_id."' ";
 
     $db_result = $oDB->executeQuery($sQuery);
 
