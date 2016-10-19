@@ -622,9 +622,13 @@
 		date_field_obj.show();
 	}
 
+	$('#saveCandi').click(function(){
+		$('#saveCandi').prop('disabled', true);
+	});
+
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
-		$('#saveCandi').prop('disabled', true);
+
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
