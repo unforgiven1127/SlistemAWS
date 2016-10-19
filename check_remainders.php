@@ -38,7 +38,7 @@ while($data = mysql_fetch_assoc($slistemQuery))
 
     $updateQuery = "update notification set flag = 'p' where notificationpk = '".$notificatinpk."' ";
     $updateQuery = mysql_query($updateQuery);
-    $updateData = mysql_fetch_assoc($updateQuery);
+    //$updateData = mysql_fetch_assoc($updateQuery);
 }
 
 
