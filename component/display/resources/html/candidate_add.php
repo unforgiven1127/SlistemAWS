@@ -466,7 +466,7 @@
 	</div>
 
 	<div class="general_form_row add_margin_top_10" style="text-align: center;">
-		<input type="submit" value="Save candidate" />
+		<input id='saveCandi' type="submit" value="Save candidate" />
 	</div>
 </form>
 
@@ -624,7 +624,7 @@
 
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
-
+		$('#saveCandi').prop('disabled', true);
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
