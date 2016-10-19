@@ -466,7 +466,7 @@
 	</div>
 
 	<div class="general_form_row add_margin_top_10" style="text-align: center;">
-		<input type="submit" value="Save candidate" />
+		<input id="saveCandi" type="submit" value="Save candidate" />
 	</div>
 </form>
 
@@ -621,6 +621,12 @@
 			$('.general_form_column .ui-datepicker-trigger').show();
 		date_field_obj.show();
 	}
+
+	$('#saveCandi').click(function(){
+		setTimeout(function(){
+		  $('#saveCandi').prop('disabled', true);
+		}, 10);
+	});
 
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
