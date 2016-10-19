@@ -405,6 +405,14 @@ class CNotificationEx extends CNotification
 
       // TODO: add options form messages
     }
+    $mailTo = "";
+    foreach ($pvRecipientfk as $key => $value)
+    {
+      $mailTo.= $value.",";
+    }
+    $mailTo = rtrim($mailTo, ",");
+    $asAdd['mailTo'] = $mailTo;
+    $asAdd['flag'] = 'a';
 
     $nNotificationPk = $this->_getModel()->add($asAdd, 'notification');
     if(!$nNotificationPk)

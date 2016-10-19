@@ -26,6 +26,8 @@ class CNotificationModel extends CModel
     $this->_tableMap['notification']['message_format'] = array ('controls' => array('!empty(%)'));
     $this->_tableMap['notification']['type'] = array ('controls' => array('!empty(%)'));
     $this->_tableMap['notification']['delivered'] = array ('controls' => array('is_integer(%)'));
+    $this->_tableMap['notification']['mailTo'] = array ('controls' => array());
+    $this->_tableMap['notification']['flag'] = array ('controls' => array());
 
 
     $this->_tableMap['notification_link']['notification_linkpk'] = array ('controls' => array('is_key(%) || is_null(%)'));
