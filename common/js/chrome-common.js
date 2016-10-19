@@ -243,7 +243,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
           mngAjaxScreen('', false);
         },
         error: function(oJsonData, jqXhr, ajaxSettings, thrownError)
-        {
+        {alert('test1');
           mngAjaxScreen(psLoadingScreen);
 
           if(!bUnloading && (!jqXhr || jqXhr.status != 0))
@@ -251,6 +251,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
             //send the result to the error report form, and display the error message
             $('#dumpId').val('['+ sExtraParams +'] ['+psUrl +'] ['+pbSynch +'] ['+ajaxSettings +'] ['+jqXhr +']');
             $('#ajaxErrorContainerId').show();
+            alert('test2');
             $('#saveCandi').prop('disabled', false);
           }
         }
@@ -345,7 +346,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
         }
       },
       error: function(oJsonData, jqXhr, oAjaxSetting)
-      {
+      {alert('test 3');
         mngAjaxScreen(psLoadingScreen);
 
         if(!bUnloading && jqXhr.status != 0)
@@ -353,6 +354,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
           //send the result to the error report form, and display the error message
           $('#dumpId').val('['+ sExtraParams +'] ['+psUrl +'] ['+pbSynch +'] ['+oAjaxSetting +'] ['+jqXhr +']');
           $('#ajaxErrorContainerId').show();
+          alert('test 4');
 
         }
       }
