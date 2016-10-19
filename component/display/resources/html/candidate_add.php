@@ -624,13 +624,13 @@
 
 	$("#saveCandi").click(function (event) {
 		$('#saveCandi').prop('disabled', true);
-        /*event.preventDefault();
+        //event.preventDefault();
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 		$('#saveCandi').prop('disabled', false);
-		return false;*/
+		return false;
      });
 
 	/*$('form[name=addcandidate]').submit(function(event){
