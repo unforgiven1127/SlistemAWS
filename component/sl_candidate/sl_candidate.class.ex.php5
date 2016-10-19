@@ -1075,8 +1075,9 @@ class CSl_candidateEx extends CSl_candidate
         $checkFlag = true;
       }
 
-      if($user_id > 0 && $checkFlag)
+      if(isset($company_id) && !empty($company_id) && $company_id > 0 && $user_id > 0 && $checkFlag)
       {
+        addSecutrityAlert($user_id,'contact_mail',$company_id);
         //ChromePhp::log($candidate_id);
         //ChromePhp::log($company_id);
         //ChromePhp::log($user_id);
@@ -1144,7 +1145,6 @@ class CSl_candidateEx extends CSl_candidate
           $subject = "Contact Information Access";
           $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
 
-          addSecutrityAlert($user_id,'contact_mail',$company_id);
 
           sendHtmlMail($toEmail,$subject, $message);
 
