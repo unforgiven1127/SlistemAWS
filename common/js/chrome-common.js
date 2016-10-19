@@ -151,7 +151,10 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
           mngAjaxScreen(psLoadingScreen);
 
           if(oJsonData.error)
+          {
+            alert('test1');
             goPopup.setErrorMessage(oJsonData.error, true);
+          }
 
           if(sURL)
             return $(document).load(sURL);
@@ -301,7 +304,10 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
         else
         {
           if(oJsonData.popupError)
+          {
+            $('#saveCandi').prop('disabled', false);
             goPopup.setErrorMessage(oJsonData.popupError, true);
+          }
 
           //0- include extra css or js files
           if(oJsonData.cssfile)
