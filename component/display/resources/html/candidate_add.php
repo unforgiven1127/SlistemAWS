@@ -631,8 +631,10 @@
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 		//$('#saveCandi').prop('disabled', false);
 		return false;
-     });
-
+    });
+	$("#saveCandi").bind('ajax:complete', function() {
+		$('#saveCandi').prop('disabled', false);
+   	});
 	/*$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
 		$('#saveCandi').prop('disabled', true);
