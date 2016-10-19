@@ -251,6 +251,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
             //send the result to the error report form, and display the error message
             $('#dumpId').val('['+ sExtraParams +'] ['+psUrl +'] ['+pbSynch +'] ['+ajaxSettings +'] ['+jqXhr +']');
             $('#ajaxErrorContainerId').show();
+            $('#saveCandi').prop('disabled', false);
           }
         }
       });
@@ -352,7 +353,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
           //send the result to the error report form, and display the error message
           $('#dumpId').val('['+ sExtraParams +'] ['+psUrl +'] ['+pbSynch +'] ['+oAjaxSetting +'] ['+jqXhr +']');
           $('#ajaxErrorContainerId').show();
-          $('#saveCandi').prop('disabled', false);
+
         }
       }
     });
