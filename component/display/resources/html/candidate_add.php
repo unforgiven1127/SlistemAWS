@@ -466,7 +466,7 @@
 	</div>
 
 	<div class="general_form_row add_margin_top_10" style="text-align: center;">
-		<input id='saveCandi' type="submit" value="Save candidate" />
+		<input type="submit" value="Save candidate" />
 	</div>
 </form>
 
@@ -622,31 +622,16 @@
 		date_field_obj.show();
 	}
 
-	$("#saveCandi").click(function (event) {
-		$('#saveCandi').prop('disabled', true);
-        event.preventDefault();
-		var sURL = $('form[name=addcandidate]').attr('action');
-		var sFormId = $('form[name=addcandidate]').attr('id');
-		var sAjaxTarget = 'candi_duplicate';
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-		//$('#saveCandi').prop('disabled', false);
-		return false;
-    });
-    
-	$("#saveCandi").bind('ajax:complete', function() {
-		alert('complete');
-		$('#saveCandi').prop('disabled', false);
-   	});
-	/*$('form[name=addcandidate]').submit(function(event){
+	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
-		$('#saveCandi').prop('disabled', true);
+
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-		$('#saveCandi').prop('disabled', false);
+
 		return false;
-	});*/
+	});
 
 	function check_dom_change()
 	{
