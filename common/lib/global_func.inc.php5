@@ -2830,7 +2830,7 @@ var_dump($query);*/
   }
 
   function createNewRemainder($cp_id,$type,$recipients,$message,$psDate,$user_id)
-  {
+  {// ip degistirince notificationlar calisti o nedenle biraktim
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
   }

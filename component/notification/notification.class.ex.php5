@@ -234,12 +234,12 @@ class CNotificationEx extends CNotification
   public function addItemReminder($psId, $pvRecipientfk, $pasItem, $psMessage = '', $psTitle = '', $psDate = null, $pnNaggy = 0, $psNagFreq = '')
   {
 
-    $oLogin_ = CDependency::getCpLogin();
+    /*$oLogin_ = CDependency::getCpLogin();
     $user_id = $oLogin_->getUserPk();
     $type = $pasItem['cp_type'];
     $cp_id = $pasItem['cp_id'];
 
-    createNewRemainder($cp_id,$type,$pvRecipientfk,$psMessage,$psDate,$user_id);
+    createNewRemainder($cp_id,$type,$pvRecipientfk,$psMessage,$psDate,$user_id);*/
 
     if(!assert('!empty($psId) && (is_key($pvRecipientfk) || is_arrayOfInt($pvRecipientfk))'))
     {

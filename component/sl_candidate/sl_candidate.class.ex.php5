@@ -1065,7 +1065,17 @@ class CSl_candidateEx extends CSl_candidate
       $company_id = $_GET['cid'];
       $user_id = $oLogin->getUserPk();
 
-      if($user_id > 0)
+      $checkCount = checkSecurityAlert($user_id, 'contact_mail',$company_id);
+      if($checkCount > 0)
+      {
+        $checkFlag = false;
+      }
+      else
+      {
+        $checkFlag = true;
+      }
+
+      if($user_id > 0 && $checkFlag)
       {
         //ChromePhp::log($candidate_id);
         //ChromePhp::log($company_id);
@@ -1134,9 +1144,9 @@ class CSl_candidateEx extends CSl_candidate
           $subject = "Contact Information Access";
           $message = $user_name." (#".$user_id.") has accessed the contact information of ".$candidate_name." (#".$candidate_id."), who works at ".$company_name." (#".$company_id.") Date: ".$sDate;
 
-          sendHtmlMail($toEmail,$subject, $message);
-
           addSecutrityAlert($user_id,'contact_mail',$company_id);
+
+          sendHtmlMail($toEmail,$subject, $message);
 
         }
       }
