@@ -414,6 +414,8 @@ class CNotificationEx extends CNotification
     $asAdd['mailTo'] = $mailTo;
     $asAdd['flag'] = 'a';
 
+    ChromePhp::log($asAdd);
+
     $nNotificationPk = $this->_getModel()->add($asAdd, 'notification');
     if(!$nNotificationPk)
     {
