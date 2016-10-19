@@ -3964,7 +3964,6 @@ var_dump($query);*/
     $sQuery = "INSERT INTO `security_alert` (`user_id`,`type`,`action_date`,`company_id`)
                  VALUES('".$user_id."','".$type."','".$dNow."','".$company_id."')";
 
-    ChromePhp::log($sQuery);
 
     $db_result = $oDB->executeQuery($sQuery);
 

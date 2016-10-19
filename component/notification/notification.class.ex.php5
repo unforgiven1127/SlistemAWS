@@ -1850,7 +1850,7 @@ class CNotificationEx extends CNotification
         break;*/
 
       case '1h':
-        $nTime = strtotime('-1 hour', strtotime($asReminder['date_notification']));
+        $nTime = strtotime('-1 hours', strtotime($asReminder['date_notification']));
         $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime);
         $sErrorLabel = '1 hour before';
         break;
