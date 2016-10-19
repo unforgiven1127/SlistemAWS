@@ -406,9 +406,9 @@ class CNotificationEx extends CNotification
       // TODO: add options form messages
     }
     $mailTo = "";
-    foreach ($pvRecipientfk as $key => $value)
+    foreach ($asRecipient as $key => $value)
     {
-      $mailTo.= $value.",";
+      $mailTo.= $value['email'].",";
     }
     $mailTo = rtrim($mailTo, ",");
     $asAdd['mailTo'] = $mailTo;
