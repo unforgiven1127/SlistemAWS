@@ -622,31 +622,27 @@
 		date_field_obj.show();
 	}
 
-	$('#saveCandi').click(function(){
+	$("#saveCandi").one('click', function (event) {
+        event.preventDefault();
 		$('#saveCandi').prop('disabled', true);
-		submitForm();
-		//$('form[name=addcandidate]').submit();
-	});
+		var sURL = $('form[name=addcandidate]').attr('action');
+		var sFormId = $('form[name=addcandidate]').attr('id');
+		var sAjaxTarget = 'candi_duplicate';
+		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
+		$('#saveCandi').prop('disabled', false);
+		return false;
+     });
 
-	function submitForm(event)
-	{
+	/*$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
+		$('#saveCandi').prop('disabled', true);
 		var sURL = $('form[name=addcandidate]').attr('action');
 		var sFormId = $('form[name=addcandidate]').attr('id');
 		var sAjaxTarget = 'candi_duplicate';
 		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
 		$('#saveCandi').prop('disabled', false);
 		return false;
-	}
-	$('form[name=addcandidate]').submit(function(event){
-		event.preventDefault();
-		var sURL = $('form[name=addcandidate]').attr('action');
-		var sFormId = $('form[name=addcandidate]').attr('id');
-		var sAjaxTarget = 'candi_duplicate';
-		setTimeout(" AjaxRequest('"+sURL+"', '.body.', '"+sFormId+"', '"+sAjaxTarget+"', '', '', 'setCoverScreen(false);  '); ", 350);
-		$('#saveCandi').prop('disabled', false);
-		return false;
-	});
+	});*/
 
 	function check_dom_change()
 	{
