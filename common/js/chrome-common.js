@@ -196,7 +196,6 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
 
           if(oJsonData.error)
           {
-            $('#saveCandi').prop('disabled', false);
             goPopup.setErrorMessage(oJsonData.error, true);
             $(document).ajaxSuccess().unbind();
 
@@ -306,7 +305,7 @@ function AjaxRequest(psUrl, psLoadingScreen, psFormToSerialize, psZoneToRefresh,
         {
           if(oJsonData.popupError)
           {
-            alert('test2');
+            $('#saveCandi').prop('disabled', false);
             goPopup.setErrorMessage(oJsonData.popupError, true);
           }
 
