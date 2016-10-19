@@ -2829,6 +2829,12 @@ var_dump($query);*/
     return $result;
   }
 
+  function createNewRemainder($cp_id,$type,$recipients,$message,$psDate,$user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+  }
+
   function suggestCandidate($array)
   {
     $oDB = CDependency::getComponentByName('database');

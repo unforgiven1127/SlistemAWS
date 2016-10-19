@@ -14,13 +14,13 @@ else
   echo 'Chrome vs';
 }*/
 $sDate = date('Y-m-d H:i:s');
-$to = "munir@slate-ghc.com";
+$to = "rkiyamu@slate.co.jp";
 $subject = "Test email";
 
 $message = "
 <html>
 <head>Date&Time:
-".$sDate." (JAPAN)
+".$sDate."
 <title>Test email</title>
 </head>
 <body>
