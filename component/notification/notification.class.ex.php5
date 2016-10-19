@@ -233,6 +233,10 @@ class CNotificationEx extends CNotification
    */
   public function addItemReminder($psId, $pvRecipientfk, $pasItem, $psMessage = '', $psTitle = '', $psDate = null, $pnNaggy = 0, $psNagFreq = '')
   {
+    ChromePhp::log($psId);
+    ChromePhp::log($pvRecipientfk);
+    ChromePhp::log($psDate);
+
     if(!assert('!empty($psId) && (is_key($pvRecipientfk) || is_arrayOfInt($pvRecipientfk))'))
     {
       assert('false; /* debug =>  id: '.var_export($psId, true).', recipient: '.var_export($pvRecipientfk, true).' */');
