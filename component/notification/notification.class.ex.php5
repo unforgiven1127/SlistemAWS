@@ -1814,7 +1814,31 @@ class CNotificationEx extends CNotification
         $sErrorLabel = 'in the morning';
         break;
 
-      case 'half':
+      case 'on':
+        $nTime = $asReminder['date_notification'];
+        $asReminder['date_notification'] = $nTime;
+        $sErrorLabel = 'on time before';
+        break;
+
+      case '5m':
+        $nTime = strtotime('-5 minutes', strtotime($asReminder['date_notification']));
+        $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime);
+        $sErrorLabel = '5 min before';
+        break;
+
+      case '10m':
+        $nTime = strtotime('-10 minutes', strtotime($asReminder['date_notification']));
+        $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime);
+        $sErrorLabel = '10 min before';
+        break;
+
+      case '30m':
+        $nTime = strtotime('-30 minutes', strtotime($asReminder['date_notification']));
+        $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime);
+        $sErrorLabel = '30 min before';
+        break;
+
+      /*case 'half':
         $nTime = strtotime($asReminder['date_notification']);
         $nHour = date('H', $nTime);
         if($nHour >= 13)
@@ -1823,7 +1847,7 @@ class CNotificationEx extends CNotification
           $asReminder['date_notification'] = date('Y-m-d', $nTime).' 06:00:00';
 
         $sErrorLabel = 'half a day before';
-        break;
+        break;*/
 
       case '1h':
         $nTime = strtotime('-1 hour', strtotime($asReminder['date_notification']));
@@ -1831,7 +1855,7 @@ class CNotificationEx extends CNotification
         $sErrorLabel = '1 hour before';
         break;
 
-      case '2h':
+      /*case '2h':
         $nTime = strtotime('-2 hours', strtotime($asReminder['date_notification']));
         $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime);
         $sErrorLabel = '2 hours before';
@@ -1847,7 +1871,7 @@ class CNotificationEx extends CNotification
         $nTime = strtotime('-1 week', strtotime($asReminder['date_notification']));
         $asReminder['date_notification'] = date('Y-m-d H:i:s', $nTime).' 06:00:00';
         $sErrorLabel = '1 week before';
-        break;
+        break;*/
     }
 
 
