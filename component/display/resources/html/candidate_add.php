@@ -624,7 +624,7 @@
 
 	$('#saveCandi').click(function(){
 		$('#saveCandi').prop('disabled', true);
-		$('form[name=addcandidate]').submit();
+		//$('form[name=addcandidate]').submit();
 	});
 
 	$('form[name=addcandidate]').submit(function(event){
