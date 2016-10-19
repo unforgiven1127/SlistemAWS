@@ -1673,14 +1673,21 @@ class CNotificationEx extends CNotification
       $oForm->addField('input', 'date_notification', array('type' => 'datetime', 'label'=> 'Reminder date', 'value' => $sDate));
 
       $oForm->addField('select', 'trigger', array('label'=> 'in/on'));
-      $oForm->addOption('trigger', array('value' => 'morning', 'label' => 'in the morning', 'group' => 'On the reminder day'));
-      $oForm->addOption('trigger', array('value' => 'half', 'label' => 'morning or noon before the date above', 'group' => 'On the reminder day'));
+        /*$oForm->addOption('trigger', array('value' => 'morning', 'label' => 'in the morning', 'group' => 'On the reminder day'));
+        $oForm->addOption('trigger', array('value' => 'half', 'label' => 'morning or noon before the date above', 'group' => 'On the reminder day'));
 
-      $oForm->addOption('trigger', array('value' => '1h', 'label' => '1 hour before', 'group' => 'On time'));
-      $oForm->addOption('trigger', array('value' => '2h', 'label' => '2 hours before', 'group' => 'On time'));
+        $oForm->addOption('trigger', array('value' => '1h', 'label' => '1 hour before', 'group' => 'On time'));
+        $oForm->addOption('trigger', array('value' => '2h', 'label' => '2 hours before', 'group' => 'On time'));
 
-      $oForm->addOption('trigger', array('value' => '1d', 'label' => '1 day before', 'group' => 'Early'));
-      $oForm->addOption('trigger', array('value' => '1w', 'label' => '1 week before', 'group' => 'Early'));
+        $oForm->addOption('trigger', array('value' => '1d', 'label' => '1 day before', 'group' => 'Early'));
+        $oForm->addOption('trigger', array('value' => '1w', 'label' => '1 week before', 'group' => 'Early'));*/
+
+        $oForm->addOption('trigger', array('value' => 'morning', 'label' => 'in the morning'));
+        $oForm->addOption('trigger', array('value' => 'on', 'label' => 'on time'));
+        $oForm->addOption('trigger', array('value' => '5m', 'label' => '5 min before'));
+        $oForm->addOption('trigger', array('value' => '10m', 'label' => '10 min before'));
+        $oForm->addOption('trigger', array('value' => '30m', 'label' => '30 min before'));
+        $oForm->addOption('trigger', array('value' => '1h', 'label' => '1 hour before'));
 
       $oForm->addField('misc', '', array('type' => 'text', 'text'=> ''));
       if(empty($nRecipient))

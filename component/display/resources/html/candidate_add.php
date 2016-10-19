@@ -622,11 +622,11 @@
 		date_field_obj.show();
 	}
 
-	$('#saveCandi').click(function(){
+	/*$('#saveCandi').click(function(){
 		setTimeout(function(){
 		  $('#saveCandi').prop('disabled', true);
 		}, 10);
-	});
+	});*/
 
 	$('form[name=addcandidate]').submit(function(event){
 		event.preventDefault();
