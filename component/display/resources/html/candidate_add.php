@@ -633,6 +633,7 @@
 		return false;
     });
 	$("#saveCandi").bind('ajax:complete', function() {
+		alert('complete');
 		$('#saveCandi').prop('disabled', false);
    	});
 	/*$('form[name=addcandidate]').submit(function(event){
