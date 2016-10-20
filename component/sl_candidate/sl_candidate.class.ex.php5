@@ -8467,8 +8467,7 @@ die();*/
 
       if(empty($sCharacter) && empty($sNote))
       {
-        $asError[] = '-';
-        //$asError[] = 'You have to input at least a note or a character note.';
+        $asError[] = 'You have to input at least a note or a character note.';
       }
 
       if(!empty($asError))
