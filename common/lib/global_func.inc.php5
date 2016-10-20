@@ -1720,10 +1720,12 @@ var_dump($query);*/
     }
 
     $count = 0;
-    foreach ($asData[$user_id] as $key => $value) {
-      $count++;
+    if(isset($asData[$user_id]))
+    {
+      foreach ($asData[$user_id] as $key => $value) {
+        $count++;
+      }
     }
-
 
     //$count = count($asData[$user_id]);
 
