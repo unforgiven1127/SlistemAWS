@@ -5948,18 +5948,6 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
-      foreach($_POST['contact_value'] as $nRow => $sValue)
-      {
-        if(!empty($sValue) && $nCandidatePk != 999)
-        {
-          $bEmpty = false;
-          break;
-        }
-      }
-
-      if($bEmpty)
-        return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
-
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
@@ -5996,7 +5984,17 @@ class CSl_candidateEx extends CSl_candidate
       }
 
 
-      
+      foreach($_POST['contact_value'] as $nRow => $sValue)
+      {
+        if(!empty($sValue) && $nCandidatePk != 999)
+        {
+          $bEmpty = false;
+          break;
+        }
+      }
+
+      if($bEmpty)
+        return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
 
       $bAdmin = $this->_oLogin->isAdmin();
 
@@ -7839,28 +7837,6 @@ die();*/
           $asError[] = 'Company is empty.';
         if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
-
-
-        // buraya tasidik-------
-        $sCharacter = getValue('character_note');
-        $sNote = getValue('note');
-
-        if(empty($sCharacter) && empty($sNote))
-          $asError[] = 'You have to input at least a note or a character note.';
-
-        /*foreach($_POST['contact_value'] as $nRow => $sValue)
-        {
-          if(!empty($sValue) && $nCandidatePk != 999)
-          {
-            $bEmpty = false;
-            break;
-          }
-        }
-        if($bEmpty)
-          $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';*/
-          //return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
-
-        // buraya tasidik-------
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
