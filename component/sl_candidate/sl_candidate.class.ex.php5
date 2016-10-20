@@ -7848,7 +7848,7 @@ die();*/
         if(empty($sCharacter) && empty($sNote))
           $asError[] = 'You have to input at least a note or a character note.';
 
-        foreach($_POST['contact_value'] as $nRow => $sValue)
+        /*foreach($_POST['contact_value'] as $nRow => $sValue)
         {
           if(!empty($sValue) && $nCandidatePk != 999)
           {
@@ -7857,7 +7857,7 @@ die();*/
           }
         }
         if($bEmpty)
-          $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';
+          $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';*/
           //return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
 
         // buraya tasidik-------
