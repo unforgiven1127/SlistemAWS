@@ -6469,10 +6469,10 @@ class CSl_candidateEx extends CSl_candidate
           $sLegend = ' candidates met';
 
         $asStatus = '
-          <option value="2"> Contacted </option>
+          <option value="2" '.(($nStatus === 2)? ' selected ':'').'> Contacted </option>
           <option value="3" class="unavailable"> Interview set</option>
-          <option value="5"> Phone assessed </option>
-          <option value="6" selected="selected"> Assessed - [ '.$sLegend.' ] </option>';
+          <option value="5" '.(($nStatus === 5)? ' selected ':'').'> Phone assessed </option>
+          <option value="6" '.(($nStatus != 2 && $nStatus != 5)? ' selected ':'').'> Assessed - [ '.$sLegend.' ] </option>';
       }
       else
       {
