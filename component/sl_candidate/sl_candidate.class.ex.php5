@@ -7683,7 +7683,11 @@ die();*/
           }
           else
           {
-            if(!in_array($value, $asError))
+            if(in_array($value, $asError))
+            {
+              #do nthng
+            }
+            else
             {
               $asError2[] = $value;
             }
