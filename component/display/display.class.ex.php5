@@ -935,7 +935,7 @@ class CDisplayEx extends CDisplay
     $selfUrl = CONST_CRM_DOMAIN;
     $sHTML.= "<script type='text/javascript'>
 
-                  var sessionStatus = ".$sessionStatus."
+                  var sessionStatus = ".$sessionStatus.";
                   if(sessionStatus != 2)
                   {
                     window.location.href = '".$selfUrl."';
