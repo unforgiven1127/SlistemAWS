@@ -5948,6 +5948,18 @@ class CSl_candidateEx extends CSl_candidate
         }
       }
 
+      foreach($_POST['contact_value'] as $nRow => $sValue)
+      {
+        if(!empty($sValue) && $nCandidatePk != 999)
+        {
+          $bEmpty = false;
+          break;
+        }
+      }
+
+      if($bEmpty)
+        return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
+
       $candidateContactInfoArray = getCandidateContactInfo($nCandidatePk);
       $contactValuesArray = array();
 
@@ -5984,17 +5996,7 @@ class CSl_candidateEx extends CSl_candidate
       }
 
 
-      foreach($_POST['contact_value'] as $nRow => $sValue)
-      {
-        if(!empty($sValue) && $nCandidatePk != 999)
-        {
-          $bEmpty = false;
-          break;
-        }
-      }
-
-      if($bEmpty)
-        return array('error' => 'No contact details (work,mobile or e-mail) input in the form.');
+      
 
       $bAdmin = $this->_oLogin->isAdmin();
 
