@@ -7671,6 +7671,26 @@ die();*/
 
         $asError = array_merge($asError, $this->_saveNotes(true, false, $asData));
         $asError = array_merge($asError, $this->_saveResume(true, false, $asData));
+
+        $asError2 = array();
+        $i = 0;
+        foreach ($asError as $key => $value)
+        {
+          if($i == 0)
+          {
+            $asError2[] = $value;
+            $i = 1;
+          }
+          else
+          {
+            if(!in_array($value, $asError))
+            {
+              $asError2[] = $value;
+            }
+          }
+        }
+
+        $asError = $asError2;
       }
 
       // - - - - - - - - - - - - - - - - - - - - - - - -
