@@ -7846,6 +7846,21 @@ die();*/
           $asError[] = 'You have to input at least a note or a character note.';
         }
 
+        $bEmpty = true;
+        foreach($_POST['contact_value'] as $nRow => $sValue)
+        {
+          if(!empty($sValue) && $pnCandidatePk != 999)
+          {
+            $bEmpty = false;
+            break;
+          }
+        }
+
+        if($bEmpty)
+        {
+          $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';
+        }
+
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
           $asData['date_birth'] = 'NULL';
@@ -8431,7 +8446,10 @@ die();*/
 
 
       if(empty($sCharacter) && empty($sNote))
-        $asError[] = 'You have to input at least a note or a character note.';
+      {
+        $asError[] = '-';
+        //$asError[] = 'You have to input at least a note or a character note.';
+      }
 
       if(!empty($asError))
         return $asError;
