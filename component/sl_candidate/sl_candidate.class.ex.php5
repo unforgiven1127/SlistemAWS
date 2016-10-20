@@ -2126,6 +2126,8 @@ class CSl_candidateEx extends CSl_candidate
           );
       $asHistory = $this->_oLogin->getSystemHistoryItem($asComponent, $sLimit);
 
+ChromePhp::log($asHistory);
+
       $sId = 'activity_feed_'.$pnPk.'_'.$pnPage;
       $sHTML = $this->_oDisplay->getSpanStart($sId);
       $nCount = 0;

@@ -484,7 +484,7 @@ class CNotificationEx extends CNotification
      *
     */
 
-    //We'd rather be 15 minutes early than 15minute late, right ?
+    //We'd rather be 15 minutes early than 15minute late, right ? NO
     $sDate = date('Y-m-d H:i:s', strtotime('+1 minutes'));
     $sNow = date('Y-m-d H:i:s');
 
