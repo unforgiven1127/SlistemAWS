@@ -48,7 +48,7 @@ $(function () {
         },
         series: [{
             name: 'MCCM',
-            color: '#90EE90',//green
+            color: 'rgba(28, 176, 28,0.5)',//green
             opacity: '.4',
             data: [5, 3, 2, 1, 0]
         }, {
@@ -58,7 +58,7 @@ $(function () {
             data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
-            color: '#4000ff',//blue
+            color: 'rgba(64, 0, 255,0.5)',//blue
             opacity: '.4',
             data: [19, 13, 10, 4, 2]
         }]
