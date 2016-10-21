@@ -30,6 +30,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET',
+                        size: '50px',
                         align: 'bottom'
                       }
             }]
