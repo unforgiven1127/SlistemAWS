@@ -53,7 +53,7 @@ $(function () {
             data: [5, 3, 2, 1, 0]
         }, {
             name: 'CCM1',
-            color: '#b30000',//red
+            color: 'rgba(179, 0, 0,0.5)',//red
             opacity: '.4',
             data: [7, 5, 3, 2, 1]
         }, {
