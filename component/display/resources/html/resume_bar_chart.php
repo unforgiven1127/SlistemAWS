@@ -36,7 +36,7 @@ $(function () {
         },
         series: [{
             name: 'John',
-            color: 'blue',
+            color: 'green',
             data: [5, 3, 4, 7, 2]
         }, {
             name: 'Jane',
@@ -44,7 +44,7 @@ $(function () {
             data: [2, 2, 3, 2, 1]
         }, {
             name: 'Joe',
-            color: 'green',
+            color: 'blue',
             data: [3, 4, 4, 2, 5]
         }]
     });
@@ -55,7 +55,7 @@ $(function () {
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
 
 	</body>
 </html>
