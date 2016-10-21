@@ -22,6 +22,7 @@ $(function () {
         yAxis: {
             min: 0,
             title: {
+                text:'',
                 style: {
                     color: 'red'
                 }
