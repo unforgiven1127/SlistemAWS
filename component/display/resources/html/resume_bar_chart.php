@@ -24,14 +24,14 @@ $(function () {
             plotLines:[{
                 value:5,
                 color: 'black',
-                width:5,
+                width:3,
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET',
                         verticalAlign: 'middle',
                         textAlign: 'center',
                         style: {
-                            fontSize: '50px',
+                            fontSize: '20px',
                             fontWeight: 'bold'
                         }
                       }
