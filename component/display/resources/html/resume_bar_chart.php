@@ -49,14 +49,17 @@ $(function () {
         series: [{
             name: 'MCCM',
             color: '#90EE90',//green
+            opacity: '.4',
             data: [5, 3, 2, 1, 0]
         }, {
             name: 'CCM1',
             color: '#b30000',//red
+            opacity: '.4',
             data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
             color: '#4000ff',//blue
+            opacity: '.4',
             data: [19, 13, 10, 4, 2]
         }]
 
