@@ -24,7 +24,7 @@ $(function () {
             plotLines:[{
                 value:5,
                 color: 'black',
-                width:2,
+                width:5,
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET'
