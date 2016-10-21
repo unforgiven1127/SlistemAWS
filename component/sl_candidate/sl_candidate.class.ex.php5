@@ -7858,28 +7858,36 @@ die();*/
         if(empty($asData['occupationfk']))
           $asError[] = 'Occupation is empty.';
 
-        $sCharacter = getValue('character_note');
-        $sNote = getValue('note');
-
-        if(empty($sCharacter) && empty($sNote) && $pnCandidatePk == 0)
+        if($pnCandidatePk == 0)
         {
-          $asError[] = 'You have to input at least a note or a character note.';
-        }
+          $sCharacter = getValue('character_note');
+          $sNote = getValue('note');
 
-        $bEmpty = true;
-        foreach($_POST['contact_value'] as $nRow => $sValue)
-        {
-          if(!empty($sValue) && $pnCandidatePk != 999)
+          if(empty($sCharacter) && empty($sNote))
           {
-            $bEmpty = false;
-            break;
+            $asError[] = 'You have to input at least a note or a character note.';
           }
         }
 
-        if($bEmpty && $pnCandidatePk == 0)
+
+        if($pnCandidatePk == 0)
         {
-          $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';
+          $bEmpty = true;
+          foreach($_POST['contact_value'] as $nRow => $sValue)
+          {
+            if(!empty($sValue) && $pnCandidatePk != 999)
+            {
+              $bEmpty = false;
+              break;
+            }
+          }
+
+          if($bEmpty)
+          {
+            $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';
+          }
         }
+
 
         if(empty($asData['date_birth']) || $asData['date_birth'] == '0000-00-00')
         {
