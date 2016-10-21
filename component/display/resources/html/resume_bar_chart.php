@@ -26,7 +26,7 @@ $(function () {
                 text: 'Total fruit consumption'
             }
         },
-        yAxis: {
+        xAxis: {
             plotLines:[{
                 value:5,
                 color: 'black',
