@@ -21,8 +21,10 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            label: {
-                text:'-'
+            title: {
+                style: {
+                    color: 'red'
+                }
             },
             plotLines:[{
                 value:5,
