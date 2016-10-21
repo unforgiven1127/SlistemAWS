@@ -29,7 +29,11 @@ $(function () {
                 label:{
                         text:'CUSTOM TARGET',
                         verticalAlign: 'middle',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        style: {
+                            fontSize: '50px',
+                            fontWeight: 'bold'
+                        }
                       }
             }]
         },
