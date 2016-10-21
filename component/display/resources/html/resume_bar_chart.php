@@ -34,7 +34,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET',
-                        align: 'center'
+                        align: 'middle'
                       }
             }]
         },
