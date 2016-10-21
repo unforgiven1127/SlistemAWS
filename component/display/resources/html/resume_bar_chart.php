@@ -71,10 +71,6 @@ $(function () {
             data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
-            style: {
-                        fontSize: '50px',
-                        fontWeight: 'bold'
-                    },
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
             data: [19, 13, 10, 4, 2]
