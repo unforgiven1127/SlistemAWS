@@ -28,7 +28,7 @@ $(function () {
         },
         yAxis: {
             plotLines:[{
-                value:450,
+                value:5,
                 color: '#ff0000',
                 width:2,
                 zIndex:4,
@@ -56,13 +56,7 @@ $(function () {
             color: 'blue',
             data: [3, 4, 4, 2, 5]
         }]
-        ,
-        plotLines: [{
-            color: 'red', // Color value
-            dashStyle: 'longdashdot', // Style of the plot line. Default to solid
-            value: 10, // Value of where the line will appear
-            width: 2 // Width of the line
-          }]
+
     });
 });
 		</script>
