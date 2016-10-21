@@ -27,7 +27,9 @@ $(function () {
                 width:5,
                 zIndex:4,
                 label:{
-                        text:'CUSTOM TARGET'
+                        text:'CUSTOM TARGET',
+                        verticalAlign: 'middle',
+                        textAlign: 'center'
                       }
             }]
         },
