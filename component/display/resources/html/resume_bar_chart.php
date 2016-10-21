@@ -26,6 +26,15 @@ $(function () {
                 text: 'Total fruit consumption'
             }
         },
+        yAxis: {
+            plotLines:[{
+                value:450,
+                color: '#ff0000',
+                width:2,
+                zIndex:4,
+                label:{text:'goal'}
+            }]
+        },
         legend: {
             reversed: true
         },
