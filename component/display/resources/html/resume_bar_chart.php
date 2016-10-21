@@ -22,9 +22,9 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            /*title: {
-                text: 'Total fruit consumption'
-            }*/
+            title: {
+                text: 'Counts'
+            }
         },
         yAxis: {
             plotLines:[{
@@ -48,15 +48,15 @@ $(function () {
         },
         series: [{
             name: 'MCCM',
-            color: 'green',
+            color: '#90EE90',//green
             data: [5, 3, 2, 1, 0]
         }, {
             name: 'CCM1',
-            color: 'red',
+            color: '#b30000',//red
             data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
-            color: 'blue',
+            color: '#4000ff',//blue
             data: [19, 13, 10, 4, 2]
         }]
 
