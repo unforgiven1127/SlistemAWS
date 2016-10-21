@@ -17,7 +17,11 @@ $(function () {
             text: 'Resume sent / CCM1 / MCCM'
         },
         xAxis: {
-            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
+            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young'],
+            title: {
+                style: {
+                    color: 'red'
+                }
         },
         yAxis: {
             min: 0,
