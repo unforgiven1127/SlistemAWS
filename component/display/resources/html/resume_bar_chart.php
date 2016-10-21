@@ -29,10 +29,10 @@ $(function () {
         yAxis: {
             plotLines:[{
                 value:5,
-                color: '#ff0000',
+                color: 'black',
                 width:2,
                 zIndex:4,
-                label:{text:'goal'}
+                label:{text:'target'}
             }]
         },
         legend: {
