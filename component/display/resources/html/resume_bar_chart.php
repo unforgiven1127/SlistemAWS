@@ -18,7 +18,7 @@ $(function () {
             text: 'Resume sent / CCM1 / MCCM'
         },
         xAxis: {
-            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
         },
         yAxis: {
             min: 0,
@@ -32,7 +32,7 @@ $(function () {
                 color: 'black',
                 width:2,
                 zIndex:4,
-                label:{text:'target'}
+                label:{text:'CUSTOM TARGET'}
             }]
         },
         legend: {
@@ -46,7 +46,7 @@ $(function () {
         series: [{
             name: 'John',
             color: 'green',
-            data: [5, 3, 4, 7, 2]
+            data: [19, 13, 10, 4, 2]
         }, {
             name: 'Jane',
             color: 'red',
