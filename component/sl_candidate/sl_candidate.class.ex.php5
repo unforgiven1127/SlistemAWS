@@ -7861,7 +7861,7 @@ die();*/
         $sCharacter = getValue('character_note');
         $sNote = getValue('note');
 
-        if(empty($sCharacter) && empty($sNote))
+        if(empty($sCharacter) && empty($sNote) && $pnCandidatePk == 0)
         {
           $asError[] = 'You have to input at least a note or a character note.';
         }
@@ -7876,7 +7876,7 @@ die();*/
           }
         }
 
-        if($bEmpty)
+        if($bEmpty && $pnCandidatePk == 0)
         {
           $asError[] = 'No contact details (work,mobile or e-mail) input in the form.';
         }
