@@ -44,15 +44,15 @@ $(function () {
             }
         },
         series: [{
-            name: 'John',
+            name: 'MCCM',
             color: 'green',
             data: [19, 13, 10, 4, 2]
         }, {
-            name: 'Jane',
+            name: 'CCM1',
             color: 'red',
             data: [2, 2, 3, 2, 1]
         }, {
-            name: 'Joe',
+            name: 'Resume sent',
             color: 'blue',
             data: [3, 4, 4, 2, 5]
         }]
