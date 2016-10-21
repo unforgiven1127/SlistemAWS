@@ -15,7 +15,7 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: 'Stacked bar chart'
+            text: 'Resume sent / CCM1 / MCCM'
         },
         xAxis: {
             categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
@@ -47,6 +47,13 @@ $(function () {
             color: 'blue',
             data: [3, 4, 4, 2, 5]
         }]
+        ,
+        plotLines: [{
+            color: 'red', // Color value
+            dashStyle: 'longdashdot', // Style of the plot line. Default to solid
+            value: 27, // Value of where the line will appear
+            width: 2 // Width of the line
+          }]
     });
 });
 		</script>
