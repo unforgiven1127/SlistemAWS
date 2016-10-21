@@ -81,8 +81,10 @@ $(function () {
 		</script>
 	</head>
 	<body>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+
+<script src="/common/lib/highcharts5/js/highcharts.js" ></script>
+<script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
 
 <div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
 
