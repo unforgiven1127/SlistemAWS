@@ -53,16 +53,28 @@ $(function () {
         },
         series: [{
             name: 'MCCM',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
             color: 'rgba(28, 176, 28,0.5)',//green
             opacity: '.4',
             data: [5, 3, 2, 1, 0]
         }, {
             name: 'CCM1',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
             color: 'rgba(179, 0, 0,0.5)',//red
             opacity: '.4',
             data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
             data: [19, 13, 10, 4, 2]
