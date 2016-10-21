@@ -72,7 +72,7 @@ $(function () {
         }, {
             name: 'Resume sent',
             style: {
-                        fontSize: '20px',
+                        fontSize: '50px',
                         fontWeight: 'bold'
                     },
             color: 'rgba(28, 139, 176,0.5)',//blue
