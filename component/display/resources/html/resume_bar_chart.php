@@ -32,7 +32,10 @@ $(function () {
                 color: 'black',
                 width:2,
                 zIndex:4,
-                label:{text:'CUSTOM TARGET'}
+                label:{
+                        text:'CUSTOM TARGET',
+                        align: 'center'
+                      }
             }]
         },
         legend: {
