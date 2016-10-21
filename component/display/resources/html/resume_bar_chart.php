@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Highcharts Example</title>
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<style type="text/css">
@@ -18,16 +17,10 @@ $(function () {
             text: 'Resume sent / CCM1 / MCCM'
         },
         xAxis: {
-            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young'],
-            title: {
-                text: 'Counts'
-            }
+            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
         },
         yAxis: {
-            min: 0,
-            title: {
-                text: 'Counts'
-            }
+            min: 0
         },
         yAxis: {
             plotLines:[{
