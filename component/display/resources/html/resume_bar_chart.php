@@ -20,9 +20,7 @@ $(function () {
             categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
         },
         yAxis: {
-            min: 0
-        },
-        yAxis: {
+            min: 0,
             plotLines:[{
                 value:5,
                 color: 'black',
