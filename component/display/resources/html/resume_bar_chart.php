@@ -14,7 +14,7 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: 'Resume sent / CCM1 / MCCM'
+            text: 'Resume sent / CCM1 / MCCM (between xxx - xxx)'
         },
         xAxis: {
             categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
