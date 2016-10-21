@@ -36,12 +36,15 @@ $(function () {
         },
         series: [{
             name: 'John',
+            color: 'blue',
             data: [5, 3, 4, 7, 2]
         }, {
             name: 'Jane',
+            color: 'red',
             data: [2, 2, 3, 2, 1]
         }, {
             name: 'Joe',
+            color: 'green',
             data: [3, 4, 4, 2, 5]
         }]
     });
