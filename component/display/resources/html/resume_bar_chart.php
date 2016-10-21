@@ -46,15 +46,15 @@ $(function () {
         series: [{
             name: 'MCCM',
             color: 'green',
-            data: [19, 13, 10, 4, 2]
+            data: [5, 3, 2, 1, 0]
         }, {
             name: 'CCM1',
             color: 'red',
-            data: [2, 2, 3, 2, 1]
+            data: [7, 5, 3, 2, 1]
         }, {
             name: 'Resume sent',
             color: 'blue',
-            data: [3, 4, 4, 2, 5]
+            data: [19, 13, 10, 4, 2]
         }]
 
     });
