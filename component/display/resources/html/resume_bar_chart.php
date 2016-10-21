@@ -22,11 +22,11 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            title: {
+            /*title: {
                 text: 'Total fruit consumption'
-            }
+            }*/
         },
-        xAxis: {
+        yAxis: {
             plotLines:[{
                 value:5,
                 color: 'black',
