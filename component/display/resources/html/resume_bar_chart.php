@@ -21,8 +21,8 @@ $(function () {
         },
         yAxis: {
             min: 0,
-            labels: {
-                align: 'left'
+            label: {
+                text:'-'
             },
             plotLines:[{
                 value:5,
