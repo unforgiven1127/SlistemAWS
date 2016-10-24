@@ -5,9 +5,9 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <style type="text/css">
-    .highcharts-xaxis-labels.text
+    .highcharts-xaxis-labels
     {
-        font-size: 20px !important;
+        font-size: 200% !important;
         font-weight: bold !important;
     }
 </style>
