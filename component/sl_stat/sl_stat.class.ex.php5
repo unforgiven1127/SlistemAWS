@@ -4039,7 +4039,7 @@ class CSl_statEx extends CSl_stat
 
     private function get_revenue_chart($year = '',$chartName = '')
     {
-      ChromePhp::log('get_revenue_chart');
+      //ChromePhp::log('get_revenue_chart');
       //echo 'test'; // mca MCA
       //exit;
       //ChromePhp::log('get_revenue_chart');
@@ -4092,18 +4092,21 @@ class CSl_statEx extends CSl_stat
       {
         //0000-00-00 00:00:00
         $user_ids = array();
+        $new_candidate_met = array();
         $thisYear = date('Y');
         $start_date = $thisYear.'-01-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
-ChromePhp::log('candidates_met_bar_chart');
+//ChromePhp::log('candidates_met_bar_chart');
         $consultants = get_active_consultants();
         foreach ($consultants as $key => $value)
         {
-          $user_ids[] = $value['loginpk'];
+          $consultant_id = $value['loginpk'];
+          $new_candidate_met[$consultant_id][] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+          //$user_ids[] = $value['loginpk'];
         }
-        $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
-ChromePhp::log($user_ids);
-ChromePhp::log($new_candidate_met);
+        //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
+//ChromePhp::log($user_ids);
+//ChromePhp::log($new_candidate_met);
       }
       else
       {
