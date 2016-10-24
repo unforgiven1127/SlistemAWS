@@ -2846,7 +2846,7 @@
                     style: {
                         color: "#666666",
                         cursor: "default",
-                        fontSize: "11px"
+                        fontSize: "17px"
                     },
                     x: 0
                 },
