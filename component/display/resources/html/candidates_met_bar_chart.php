@@ -28,8 +28,6 @@ $(function () {
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
-    alert(php_var);
-
 
     $('#container').highcharts({
         chart: {
