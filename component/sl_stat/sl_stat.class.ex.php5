@@ -4101,7 +4101,8 @@ class CSl_statEx extends CSl_stat
         foreach ($consultants as $key => $value)
         {
           $consultant_id = $value['loginpk'];
-          $new_candidate_met[$consultant_id][] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+          $new_candidate_met[$consultant_id]['count'] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+          $new_candidate_met[$consultant_id]['consultant_name'] = substr($value['firstname'],0,1).".".$value['lastname'];
           //$user_ids[] = $value['loginpk'];
         }
         //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
@@ -4128,6 +4129,11 @@ ChromePhp::log($new_candidate_met);
       $data = array('revenue_data' => $revenue_data, 'location' => $location, 'year' => $year, 'row_number_rank' => 1, 'total_paid' => 0,
         'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,'swap_time' => $swap_time,'nextloop' => $nextloop
         );
+
+      if(isset($new_candidate_met))
+      {
+        $data['new_candidate_met'] = $new_candidate_met;
+      }
 
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);

@@ -20,7 +20,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|']
+            categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
             //tickInterval:2,
@@ -60,7 +60,7 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [19, 13, 10, 4, 2]
+            data: [19, 13, 10, 4, 2,]
         },
         {
                 name: 'Goal',
