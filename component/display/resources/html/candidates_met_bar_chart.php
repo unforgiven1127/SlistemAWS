@@ -13,7 +13,7 @@
 <script type="text/javascript">
 $(function () {
 
-    var new_candidate_met_json = "<?php $new_candidate_met_json; ?>";
+    var new_candidate_met_json = "<?php $new_candidate_met_json ?>";
 
     alert(new_candidate_met_json);
 
