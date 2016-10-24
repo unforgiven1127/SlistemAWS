@@ -13,7 +13,21 @@
 <script type="text/javascript">
 $(function () {
 
-    var php_var = "<?php echo $new_candidate_met[130]['formatted']; ?>";
+    var user_130 = "<?php echo $new_candidate_met[130]['formatted']; ?>";
+    var user_276 = "<?php echo $new_candidate_met[276]['formatted']; ?>";
+    var user_314 = "<?php echo $new_candidate_met[314]['formatted']; ?>";
+    var user_343 = "<?php echo $new_candidate_met[343]['formatted']; ?>";
+    var user_347 = "<?php echo $new_candidate_met[347]['formatted']; ?>";
+    var user_345 = "<?php echo $new_candidate_met[345]['formatted']; ?>";
+    var user_374 = "<?php echo $new_candidate_met[374]['formatted']; ?>";
+    var user_388 = "<?php echo $new_candidate_met[388]['formatted']; ?>";
+    var user_431 = "<?php echo $new_candidate_met[431]['formatted']; ?>";
+    var user_433 = "<?php echo $new_candidate_met[433]['formatted']; ?>";
+    var user_459 = "<?php echo $new_candidate_met[459]['formatted']; ?>";
+    var user_466 = "<?php echo $new_candidate_met[466]['formatted']; ?>";
+    var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
+    var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
+
     alert(php_var);
 
 
@@ -25,7 +39,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: [  ]
+            categories: [user_130,user_276,user_314,user_343,user_347,user_345,user_374,user_388,user_431,user_433,user_459,user_466,user_481,user_493 ]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
@@ -66,7 +80,7 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [19, 13, 10, 4, 2,]
+            data: [19, 13, 10, 4, 2,0,0,0,0,0,0,0,0,0]
         },
         {
                 name: 'Goal',
