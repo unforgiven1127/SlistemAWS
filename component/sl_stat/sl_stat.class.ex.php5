@@ -4135,12 +4135,10 @@ ChromePhp::log($new_candidate_met);
       if(isset($new_candidate_met))
       {
         $data['new_candidate_met'] = $new_candidate_met;
-        $data['formatted_json'] = json_encode($new_candidate_met['formatted']);
-        $data['count_json'] = json_encode($new_candidate_met['count']);
+        $data['new_candidate_met_json'] = json_encode($new_candidate_met);
         $data['test1'] = 'test123455';
       }
-ChromePhp::log($data['formatted_json']);
-ChromePhp::log($data['count_json']);
+ChromePhp::log($data['new_candidate_met_json']);
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)
