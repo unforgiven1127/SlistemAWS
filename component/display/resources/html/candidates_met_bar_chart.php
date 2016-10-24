@@ -35,6 +35,8 @@ $(function () {
     var user_formatted_array = "<?php echo $tes; ?>";
     alert(user_formatted_array);
 
+    var asd = "['asd','asasdd','asdd','asda','assdd','asdsd','asdgfh','aserd','aswed','assd','absd']";
+
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
     var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
@@ -59,7 +61,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: user_formatted_array.join()
+            categories: asd
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
