@@ -4106,7 +4106,7 @@ class CSl_statEx extends CSl_stat
         }
         //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
 //ChromePhp::log($user_ids);
-//ChromePhp::log($new_candidate_met);
+ChromePhp::log($new_candidate_met);
       }
       else
       {
