@@ -15,10 +15,10 @@ $(function () {
     alert( <?php echo "\"Hello\""; ?> );
 
     <?php
-        $data = array();
+        $data = "";
         foreach ($new_candidate_met as $key => $value)
         {
-            $data[] = $value['consultant_name']."|".$value['count']."|";
+            $data.= $value['consultant_name']."|".$value['count']."| ,";
         }
 
     ?>
