@@ -4138,6 +4138,7 @@ ChromePhp::log($new_candidate_met);
       if(isset($new_candidate_met))
       {
         $data['new_candidate_met'] = $new_candidate_met;
+        $data['tes'] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         //$data['new_candidate_met_json'] = json_encode($new_candidate_met);
         $data['test1'] = 'test123455';
       }
