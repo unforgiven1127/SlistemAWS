@@ -1709,11 +1709,11 @@ ChromePhp::log($users);
         AND m.date_met < "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
-
+ChromePhp::log($query);
 
     $oDbResult = array();
 
-    $oDbResult = $oDB->executeQuery($query);
+    /*$oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 
     while($read)
@@ -1734,7 +1734,7 @@ ChromePhp::log($users);
       $read = $oDbResult->readNext();
     }
 
-    return $asData;
+    return $asData;*/
   }
 
   function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
