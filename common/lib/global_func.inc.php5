@@ -4938,11 +4938,11 @@ function get_revenue_chart_loop()
   $loop[3] = '2017-researcher_revenue_chart';
   $loop[4] = '2016-totals_chart_ordered';*/
 
-  $loop[0] = '2016-resume_bar_chart';
-  $loop[1] = '2016-resume_bar_chart';
-  $loop[2] = '2017-resume_bar_chart';
-  $loop[3] = '2017-resume_bar_chart';
-  $loop[4] = '2016-resume_bar_chart';
+  $loop[0] = '2016-candidates_met_bar_chart';
+  $loop[1] = '2016-candidates_met_bar_chart';
+  $loop[2] = '2017-candidates_met_bar_chart';
+  $loop[3] = '2017-candidates_met_bar_chart';
+  $loop[4] = '2016-candidates_met_bar_chart';
 
   return $loop;
 }
