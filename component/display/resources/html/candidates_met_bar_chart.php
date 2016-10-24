@@ -12,7 +12,10 @@
 </style>
 <script type="text/javascript">
 $(function () {
-    
+
+var php_var = "<?php echo $test1; ?>";
+    alert(php_var);
+
     $('#container').highcharts({
         chart: {
             type: 'bar'
