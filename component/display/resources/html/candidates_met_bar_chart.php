@@ -12,7 +12,7 @@
 </style>
 <script type="text/javascript">
 $(function () {
-    if(<?php isset($new_candidate_met){} ?>)
+    alert($new_candidate_met);
     $('#container').highcharts({
         chart: {
             type: 'bar'
