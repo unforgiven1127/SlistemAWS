@@ -24,6 +24,7 @@ $(function () {
             categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|']
         },
         yAxis: {
+            tickInterval:2,
             min: 0,
             title: {
                 text:'',
