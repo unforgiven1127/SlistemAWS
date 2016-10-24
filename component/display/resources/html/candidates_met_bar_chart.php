@@ -16,7 +16,7 @@ $(function () {
     var php_var = "<?php echo $test1; ?>";
     alert(php_var);
 
-    var $temp = "<?php echo $new_candidate_met['formatted']; ?>";
+    var $temp = "<?php echo $new_candidate_met; ?>";
     alert(temp);
 
     $('#container').highcharts({
