@@ -32,10 +32,6 @@ $(function () {
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
-    var user_formatted_array = "<?php $new_candidate_met_json; ?>";
-    obj = JSON.parse(user_formatted_array);
-    alert(user_formatted_array);
-    alert(obj);
 
     var asd = " ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]";
 
@@ -56,9 +52,7 @@ $(function () {
 
 
      var distroDates = [
-        {
-            name: 'exShortDate',
-            data: [
+        
                 '06/2013',
                 '12/2012',
                 '06/2012',
@@ -77,7 +71,6 @@ $(function () {
                 '12/2003',
                 '12/2002',
             ]
-        }]
 
     $('#container').highcharts({
         chart: {
@@ -87,7 +80,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: distroDates[0].data
+            categories: distroDates
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
