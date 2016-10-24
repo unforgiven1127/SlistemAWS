@@ -32,7 +32,7 @@ $(function () {
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
-    var user_formatted_array = "<?php echo $new_candidate_met_json; ?>";
+    var user_formatted_array = "<?php $new_candidate_met_json; ?>";
 
     alert(user_formatted_array);
 
