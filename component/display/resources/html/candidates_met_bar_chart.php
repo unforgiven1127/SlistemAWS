@@ -15,16 +15,16 @@ $(function () {
     alert( <?php echo "\"Hello\""; ?> );
 
     <?php
-        $data = "";
+        $data = array();
         foreach ($new_candidate_met as $key => $value)
         {
-            $data.= $value['consultant_name']."|".$value['count']."| ,";
+            $category = $value['consultant_name']."|".$value['count']."|";
+            array_push($data,$category);
         }
 
     ?>
 
     alert( <?php echo "\"Hello2\""; ?> );
-    alert( <?php echo "\"$data\""; ?> );
     //var test = <?php echo implode(',', $data); ?>;
     //alert(test);
 
@@ -36,7 +36,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: [<?php echo "\"$data\""; ?>]
+            categories: [<?php foreach($data as $key => $value){ echo "\"$value\""; } ?>]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
