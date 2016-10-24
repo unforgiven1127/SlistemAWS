@@ -24,7 +24,7 @@ $(function () {
             categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|']
         },
         yAxis: {
-            tickInterval:2,
+            //tickInterval:2,
             min: 0,
             title: {
                 text:'',
@@ -62,7 +62,15 @@ $(function () {
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
             data: [19, 13, 10, 4, 2]
-        }]
+        },
+        {
+                name: 'Goal',
+                        type: 'scatter',
+                        marker: {
+                    enabled: false
+                },
+                data: [27]
+            }]
 
     });
 });
