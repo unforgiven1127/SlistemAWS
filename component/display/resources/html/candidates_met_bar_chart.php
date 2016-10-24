@@ -12,7 +12,7 @@
 </style>
 <script type="text/javascript">
 $(function () {
-    
+    alert( <?php echo "\"Hello\""; ?> );
     $('#container').highcharts({
         chart: {
             type: 'bar'
