@@ -18,7 +18,7 @@ $(function () {
         $data = array();
         foreach ($new_candidate_met as $key => $value)
         {
-            $category = $value['consultant_name']."|".$value['count']."|";
+            $category = $value['consultant_name'];
             array_push($data,$category);
         }
 
