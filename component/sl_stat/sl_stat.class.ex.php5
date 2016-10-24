@@ -4136,7 +4136,7 @@ ChromePhp::log($new_candidate_met);
         $data['new_candidate_met'] = $new_candidate_met;
         $data['test1'] = 'test1';
       }
-
+ChromePhp::log($data['test1']);
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)
