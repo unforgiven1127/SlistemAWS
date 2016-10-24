@@ -13,8 +13,11 @@
 <script type="text/javascript">
 $(function () {
 
-var php_var = "<?php echo $test1; ?>";
+    var php_var = "<?php echo $test1; ?>";
     alert(php_var);
+
+    $temp = array_map('js_str', $new_candidate_met['formatted']);
+    alert(temp);
 
     $('#container').highcharts({
         chart: {
