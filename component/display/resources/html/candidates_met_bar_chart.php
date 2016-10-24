@@ -36,7 +36,8 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: [<?php echo join($data, ',') ?>]
+            categories: [<?php echo "\"$new_candidate_met[130][formatted]\""; ?>,
+                         <?php echo "\"$new_candidate_met[276][formatted]\"" ?>,]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
