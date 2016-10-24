@@ -22,11 +22,11 @@ $(function () {
     var user_314 = "<?php echo $new_candidate_met[314]['formatted']; ?>";
     var user_343 = "<?php echo $new_candidate_met[343]['formatted']; ?>";
     var user_347 = "<?php echo $new_candidate_met[347]['formatted']; ?>";
-    var user_345 = "<?php echo $new_candidate_met[345]['formatted']; ?>";
+    var user_354 = "<?php echo $new_candidate_met[354]['formatted']; ?>";
     var user_374 = "<?php echo $new_candidate_met[374]['formatted']; ?>";
     var user_388 = "<?php echo $new_candidate_met[388]['formatted']; ?>";
     var user_431 = "<?php echo $new_candidate_met[431]['formatted']; ?>";
-    var user_433 = "<?php echo $new_candidate_met[433]['formatted']; ?>";
+    var user_443 = "<?php echo $new_candidate_met[443]['formatted']; ?>";
     var user_459 = "<?php echo $new_candidate_met[459]['formatted']; ?>";
     var user_466 = "<?php echo $new_candidate_met[466]['formatted']; ?>";
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
@@ -37,11 +37,11 @@ $(function () {
     var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
     var user_343_count = parseInt("<?php echo $new_candidate_met[343]['count']; ?>");
     var user_347_count = parseInt("<?php echo $new_candidate_met[347]['count']; ?>");
-    var user_345_count = parseInt("<?php echo $new_candidate_met[345]['count']; ?>");
+    var user_354_count = parseInt("<?php echo $new_candidate_met[354]['count']; ?>");
     var user_374_count = parseInt("<?php echo $new_candidate_met[374]['count']; ?>");
     var user_388_count = parseInt("<?php echo $new_candidate_met[388]['count']; ?>");
     var user_431_count = parseInt("<?php echo $new_candidate_met[431]['count']; ?>");
-    var user_433_count = parseInt("<?php echo $new_candidate_met[433]['count']; ?>");
+    var user_443_count = parseInt("<?php echo $new_candidate_met[443]['count']; ?>");
     var user_459_count = parseInt("<?php echo $new_candidate_met[459]['count']; ?>");
     var user_466_count = parseInt("<?php echo $new_candidate_met[466]['count']; ?>");
     var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
