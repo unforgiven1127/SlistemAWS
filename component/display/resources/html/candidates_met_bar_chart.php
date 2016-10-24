@@ -50,13 +50,13 @@ $(function () {
     var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
     var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
 
-    var distroDates = [];
+    var distroDates = []
 
     <?php
         $data = array();
         foreach ($new_candidate_met as $key => $value)
         {?>
-            distroDates.push(<?php $value['formatted'] ?>);
+            distroDates.push(<?php echo $value['formatted'] ?>);
         <?php}
 
     ?>
