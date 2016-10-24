@@ -13,6 +13,12 @@
 <script type="text/javascript">
 $(function () {
 
+    var formatted_json = "<?php echo $formatted_json; ?>";
+    var count_json = "<?php echo $count_json; ?>";
+
+    alert(formatted_json);
+    alert(count_json);
+
     var user_130 = "<?php echo $new_candidate_met[130]['formatted']; ?>";
     var user_276 = "<?php echo $new_candidate_met[276]['formatted']; ?>";
     var user_314 = "<?php echo $new_candidate_met[314]['formatted']; ?>";
