@@ -35,7 +35,7 @@ $(function () {
     var user_formatted_array = "<?php echo $tes; ?>";
     alert(user_formatted_array);
 
-    var asd = "asdasd,asdasasd,asdsdasad";
+    var asd = "'asda'sd,asdasasd,asdsdasad";
 
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
