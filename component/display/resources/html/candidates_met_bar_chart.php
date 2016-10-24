@@ -17,6 +17,11 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
+            style: {
+                color: '#525151',
+                font: '25px Helvetica',
+                fontWeight: 'bold'
+            },
             categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
         },
         yAxis: {
