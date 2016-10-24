@@ -12,6 +12,7 @@
 </style>
 <script type="text/javascript">
 $(function () {
+    if(<?php isset($new_candidate_met){} ?>)
     $('#container').highcharts({
         chart: {
             type: 'bar'
@@ -20,7 +21,8 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
+            categories: [  ]
+            //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
             //tickInterval:2,
