@@ -43,6 +43,8 @@ $(function () {
     var user_481_count = "<?php echo $new_candidate_met[481]['count']; ?>";
     var user_493_count = "<?php echo $new_candidate_met[493]['count']; ?>";
 
+    user_130_count = parseInt(user_130_count);
+
 alert(user_130_count);
 
     $('#container').highcharts({
