@@ -56,7 +56,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: [user_130,user_276,user_314,user_343,user_347,user_345,user_374,user_388,user_431,user_433,user_459,user_466,user_481,user_493 ]
+            categories: [user_130,user_276,user_314,user_343,user_347,user_354,user_374,user_388,user_431,user_433,user_459,user_466,user_481,user_493 ]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
@@ -97,7 +97,7 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [user_130_count, user_276_count, user_314_count, user_343_count, user_347_count,user_345_count,user_374_count,user_388_count,user_431_count,user_433_count,user_459_count,user_466_count,user_481_count,user_493_count]
+            data: [user_130_count, user_276_count, user_314_count, user_343_count, user_347_count,user_354_count,user_374_count,user_388_count,user_431_count,user_433_count,user_459_count,user_466_count,user_481_count,user_493_count]
         },
         {
                 name: 'Goal',
