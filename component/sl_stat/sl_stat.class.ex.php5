@@ -4087,6 +4087,17 @@ class CSl_statEx extends CSl_stat
         $isRevenue = false;
         $html = $this->get_general_total_chart($nextloop);
       }
+      else if($loopChart == 'candidates_met_bar_chart')
+      {
+        //0000-00-00 00:00:00
+        $thisYear = date('Y');
+        $start_date = $thisYear.'-01-01 00:00:00';
+        $end_date = date('Y-m-d H:i:s');
+
+        $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
+
+        ChromePhp::log($new_candidate_met);
+      }
       else
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
@@ -4108,7 +4119,6 @@ class CSl_statEx extends CSl_stat
         'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,'swap_time' => $swap_time,'nextloop' => $nextloop
         );
 
-ChromePhp::log($data);
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)

@@ -1675,6 +1675,53 @@ var_dump($query);*/
     return $new_in_play_info;
   }
 
+  function get_new_candidate_met($user_ids, $start_date, $end_date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    //$user_ids = array($user_id);
+
+    //$user_info = getUserInformaiton($user_id);
+    //$group = strtolower($user_info['position']);
+
+    //$asData = array();
+
+    $query = 'SELECT m.*, min(m2.sl_meetingpk) as min_date, slc._sys_status as candidate_status
+        FROM sl_meeting m
+        INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk and m2.meeting_done = 1
+        INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
+        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        AND m.date_met >= "'.$start_date.'"
+        AND m.date_met < "'.$end_date.'"
+        group by m.sl_meetingpk
+        order by m.candidatefk';
+
+
+    $oDbResult = array();
+
+    $oDbResult = $oDB->executeQuery($query);
+    $read = $oDbResult->readFirst();
+
+    while($read)
+    {
+      $temp = $oDbResult->getData();
+
+      if(!isset($asData[$temp['created_by']]))
+      {
+        $asData[$temp['created_by']] = array();
+      }
+
+      if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
+      {
+        array_push($asData[$temp['created_by']], $temp);
+
+        //$asData[$temp['created_by']] = $temp;
+      }
+      $read = $oDbResult->readNext();
+    }
+
+    return $asData;
+  }
+
   function get_objectives_new_candidate_met($user_id, $start_date, $end_date)
   {
     $oDB = CDependency::getComponentByName('database');
