@@ -23,7 +23,7 @@ $(function () {
         }
 
     ?>
-    var test1 = <?php echo $new_candidate_met[130][formatted]; ?>;
+    var test1 = <?php echo $new_candidate_met[130]['formatted']; ?>;
     alert( <?php echo "\"Hello2\""; ?> );
     //var test = <?php echo implode(',', $data); ?>;
     //alert(test);
