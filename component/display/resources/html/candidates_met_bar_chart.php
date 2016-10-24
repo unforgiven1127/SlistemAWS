@@ -5,7 +5,7 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <style type="text/css">
-    .highcharts-xaxis-labels
+    .highcharts-xaxis-labels.text
     {
         font-size: 20px !important;
         font-weight: bold !important;
@@ -21,11 +21,6 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            style: {
-                color: '#525151',
-                font: '25px Helvetica',
-                fontWeight: 'bold'
-            },
             categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
         },
         yAxis: {
