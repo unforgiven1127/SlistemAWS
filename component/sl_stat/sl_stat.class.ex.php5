@@ -4103,6 +4103,7 @@ class CSl_statEx extends CSl_stat
           $consultant_id = $value['loginpk'];
           $new_candidate_met[$consultant_id]['count'] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
           $new_candidate_met[$consultant_id]['consultant_name'] = substr($value['firstname'],0,1).".".$value['lastname'];
+          $new_candidate_met[$consultant_id]['formatted'] = $new_candidate_met[$consultant_id]['consultant_name']."|".$new_candidate_met[$consultant_id]['count'."|";
           //$user_ids[] = $value['loginpk'];
         }
         //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
