@@ -22,8 +22,10 @@ $(function () {
         }
 
     ?>
-    var test = <?php echo implode(',', $data); ?>;
-    alert(test);
+
+    alert( <?php echo "hello"; ?> );
+    //var test = <?php echo implode(',', $data); ?>;
+    //alert(test);
 
     $('#container').highcharts({
         chart: {
