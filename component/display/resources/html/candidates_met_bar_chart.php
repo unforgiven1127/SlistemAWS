@@ -23,10 +23,9 @@ $(function () {
         }
 
     ?>
-    alert( <?php echo $test1 ?> );
-    var test1 = <?php echo $test1 ?>;
+    var test1 = <?php echo $test1 ?>
     alert(test1);
-    alert( <?php echo "\"Hello2\""; ?> );
+    //alert( <?php echo "\"Hello2\""; ?> );
     //var test = <?php echo implode(',', $data); ?>;
     //alert(test);
 
