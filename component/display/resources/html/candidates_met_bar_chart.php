@@ -33,8 +33,8 @@ $(function () {
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
     var user_formatted_array = "<?php echo $new_candidate_met_json; ?>";
-    obj = JSON.parse(user_formatted_array);
-    alert(obj);
+
+    alert(user_formatted_array);
 
     var asd = " ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]";
 
