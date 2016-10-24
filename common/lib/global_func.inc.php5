@@ -1791,7 +1791,7 @@ ChromePhp::log($query);
 
     //$count = count($asData[$user_id]);
 
-    return $count;
+    return (int)$count;
   }
 
   function get_not_happened_meetings($user_id, $start_date, $end_date)
