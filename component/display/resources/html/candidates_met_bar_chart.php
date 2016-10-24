@@ -28,24 +28,21 @@ $(function () {
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
-    var user_130_count = "<?php echo $new_candidate_met[130]['count']; ?>";
-    var user_276_count = "<?php echo $new_candidate_met[276]['count']; ?>";
-    var user_314_count = "<?php echo $new_candidate_met[314]['count']; ?>";
-    var user_343_count = "<?php echo $new_candidate_met[343]['count']; ?>";
-    var user_347_count = "<?php echo $new_candidate_met[347]['count']; ?>";
-    var user_345_count = "<?php echo $new_candidate_met[345]['count']; ?>";
-    var user_374_count = "<?php echo $new_candidate_met[374]['count']; ?>";
-    var user_388_count = "<?php echo $new_candidate_met[388]['count']; ?>";
-    var user_431_count = "<?php echo $new_candidate_met[431]['count']; ?>";
-    var user_433_count = "<?php echo $new_candidate_met[433]['count']; ?>";
-    var user_459_count = "<?php echo $new_candidate_met[459]['count']; ?>";
-    var user_466_count = "<?php echo $new_candidate_met[466]['count']; ?>";
-    var user_481_count = "<?php echo $new_candidate_met[481]['count']; ?>";
-    var user_493_count = "<?php echo $new_candidate_met[493]['count']; ?>";
+    var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
+    var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
+    var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
+    var user_343_count = parseInt("<?php echo $new_candidate_met[343]['count']; ?>");
+    var user_347_count = parseInt("<?php echo $new_candidate_met[347]['count']; ?>");
+    var user_345_count = parseInt("<?php echo $new_candidate_met[345]['count']; ?>");
+    var user_374_count = parseInt("<?php echo $new_candidate_met[374]['count']; ?>");
+    var user_388_count = parseInt("<?php echo $new_candidate_met[388]['count']; ?>");
+    var user_431_count = parseInt("<?php echo $new_candidate_met[431]['count']; ?>");
+    var user_433_count = parseInt("<?php echo $new_candidate_met[433]['count']; ?>");
+    var user_459_count = parseInt("<?php echo $new_candidate_met[459]['count']; ?>");
+    var user_466_count = parseInt("<?php echo $new_candidate_met[466]['count']; ?>");
+    var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
+    var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
 
-    user_130_count = parseInt(user_130_count);
-
-alert(user_130_count);
 
     $('#container').highcharts({
         chart: {
