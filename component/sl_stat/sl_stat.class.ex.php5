@@ -4087,7 +4087,7 @@ class CSl_statEx extends CSl_stat
         $isRevenue = false;
         $html = $this->get_general_total_chart($nextloop);
       }
-      else if($loopChart == 'candidates_met_bar_chart')
+     /* else if($loopChart == 'candidates_met_bar_chart')
       {
         //0000-00-00 00:00:00
         $user_ids = array();
@@ -4103,7 +4103,7 @@ ChromePhp::log('candidates_met_bar_chart');
         $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
 
         ChromePhp::log($new_candidate_met);
-      }
+      }*/
       else
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
