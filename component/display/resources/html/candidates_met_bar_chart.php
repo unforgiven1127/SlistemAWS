@@ -33,7 +33,7 @@ $(function () {
             }
             ,
             plotLines:[{
-                value:5,
+                value:27,
                 color: 'black',
                 width:3,
                 zIndex:4,
