@@ -96,6 +96,7 @@ $(function () {
 	</head>
 	<body>
 
+<input><?php echo $test1 ?></input>
 
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
 <script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
