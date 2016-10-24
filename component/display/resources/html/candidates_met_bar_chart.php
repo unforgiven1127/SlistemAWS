@@ -32,7 +32,22 @@ $(function () {
     var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
-    var user_formatted_array = [user_130,user_276,user_314,user_343,user_347,user_354,user_374,user_388,user_374,user_388,user_431,user_443,user_459,user_466,user_481,user_493];
+    var user_formatted_array = ["'"+user_130+"',",
+                                user_276,
+                                user_314,
+                                user_343,
+                                user_347,
+                                user_354,
+                                user_374,
+                                user_388,
+                                user_374,
+                                user_388,
+                                user_431,
+                                user_443,
+                                user_459,
+                                user_466,
+                                user_481,
+                                user_493];
 
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
