@@ -1675,6 +1675,19 @@ var_dump($query);*/
     return $new_in_play_info;
   }
 
+  function get_active_consultants()
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * from login l where l.kpi_flag = 'a' AND position = 'Consultant'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
   function get_new_candidate_met($user_ids, $start_date, $end_date)
   {
     $oDB = CDependency::getComponentByName('database');

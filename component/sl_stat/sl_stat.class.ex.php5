@@ -4090,10 +4090,16 @@ class CSl_statEx extends CSl_stat
       else if($loopChart == 'candidates_met_bar_chart')
       {
         //0000-00-00 00:00:00
+        $user_ids = array();
         $thisYear = date('Y');
         $start_date = $thisYear.'-01-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
 
+        $consultants = get_active_consultants();
+        foreach ($consultants as $key => $value)
+        {
+          $user_ids[] = $value['loginpk'];
+        }
         $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
 
         ChromePhp::log($new_candidate_met);
