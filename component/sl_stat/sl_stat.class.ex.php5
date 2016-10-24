@@ -4094,7 +4094,7 @@ class CSl_statEx extends CSl_stat
         $user_ids = array();
         $new_candidate_met = array();
         $thisYear = date('Y');
-        $thisMonth = date('M');
+        $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
 ChromePhp::log($start_date);
