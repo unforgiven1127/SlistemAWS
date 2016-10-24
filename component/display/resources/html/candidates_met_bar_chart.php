@@ -13,6 +13,17 @@
 <script type="text/javascript">
 $(function () {
     alert( <?php echo "\"Hello\""; ?> );
+
+    <?php
+        $data = array();
+        foreach ($new_candidate_met as $key => $value)
+        {
+            $data[] = $value['consultant_name']."|".$value['count']."|";
+        }
+
+    ?>
+
+
     $('#container').highcharts({
         chart: {
             type: 'bar'
@@ -21,7 +32,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: [  ]
+            categories: [<?php echo join($data, ',') ?>]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
