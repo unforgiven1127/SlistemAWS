@@ -4039,6 +4039,7 @@ class CSl_statEx extends CSl_stat
 
     private function get_revenue_chart($year = '',$chartName = '')
     {
+      ChromePhp::log('get_revenue_chart');
       //echo 'test'; // mca MCA
       //exit;
       //ChromePhp::log('get_revenue_chart');
@@ -4087,7 +4088,7 @@ class CSl_statEx extends CSl_stat
         $isRevenue = false;
         $html = $this->get_general_total_chart($nextloop);
       }
-     /* else if($loopChart == 'candidates_met_bar_chart')
+      elseif($loopChart == 'candidates_met_bar_chart')
       {
         //0000-00-00 00:00:00
         $user_ids = array();
@@ -4103,7 +4104,7 @@ ChromePhp::log('candidates_met_bar_chart');
         $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
 
         ChromePhp::log($new_candidate_met);
-      }*/
+      }
       else
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
