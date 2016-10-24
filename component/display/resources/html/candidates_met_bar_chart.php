@@ -14,17 +14,10 @@
 $(function () {
     alert( <?php echo "\"Hello\""; ?> );
 
-    <?php
-        $data = array();
-        foreach ($new_candidate_met as $key => $value)
-        {
-            $category = $value['consultant_name'];
-            array_push($data,$category);
-        }
+    var php_var = "<?php echo $test1; ?>";
+    alert(php_var);
 
-    ?>
-    var test1 = <?php echo $test1 ?>
-    alert(test1);
+
     //alert( <?php echo "\"Hello2\""; ?> );
     //var test = <?php echo implode(',', $data); ?>;
     //alert(test);
