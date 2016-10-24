@@ -53,6 +53,30 @@ $(function () {
     var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
 
 
+     var distroDates = [
+        {
+            name: 'exShortDate',
+            data: [
+                '06/2013',
+                '12/2012',
+                '06/2012',
+                '12/2011',
+                '06/2011',
+                '12/2010',
+                '06/2010',
+                '12/2009',
+                '06/2009',
+                '12/2008',
+                '06/2008',
+                '12/2007',
+                '12/2006',
+                '12/2005',
+                '12/2004',
+                '12/2003',
+                '12/2002',
+            ]
+        }]
+
     $('#container').highcharts({
         chart: {
             type: 'bar'
@@ -61,7 +85,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories:[asd.split(',')]
+            categories: distroDates[0].data
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
