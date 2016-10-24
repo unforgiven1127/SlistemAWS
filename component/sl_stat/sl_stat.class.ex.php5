@@ -4139,7 +4139,8 @@ ChromePhp::log($new_candidate_met);
         $data['count_json'] = json_encode($new_candidate_met['count']);
         $data['test1'] = 'test123455';
       }
-ChromePhp::log($data['test1']);
+ChromePhp::log($data['formatted_json']);
+ChromePhp::log($data['count_json']);
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)
