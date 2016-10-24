@@ -93,8 +93,16 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [user_130_count,2,3,4,5,6,7,8,9,1,2,3,4,5]
-        }]
+            data: [user_130_count, user_276_count, user_314_count, user_343_count, user_347_count,user_345_count,user_374_count,user_388_count,user_431_count,user_433_count,user_459_count,user_466_count,user_481_count,user_493_count]
+        },
+        {
+                name: 'Goal',
+                        type: 'scatter',
+                        marker: {
+                    enabled: false
+                },
+                data: [27]
+            }]
 
     });
 });
