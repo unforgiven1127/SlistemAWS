@@ -94,7 +94,7 @@ alert(user_130_count);
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [1,2,3,4,5,6,7,8,9,1,2,3,4,5]
+            data: [user_130_count,2,3,4,5,6,7,8,9,1,2,3,4,5]
         }]
 
     });
