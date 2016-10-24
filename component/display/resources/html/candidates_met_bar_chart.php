@@ -56,7 +56,7 @@ $(function () {
         $data = array();
         foreach ($new_candidate_met as $key => $value)
         { ?>
-            distroDates.push(<?php echo $value['formatted'] ?>);
+            distroDates.push(<?php echo "$value['formatted']"; ?>);
         <?php }
 
     ?>
