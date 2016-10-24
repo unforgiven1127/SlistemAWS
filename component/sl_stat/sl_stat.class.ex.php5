@@ -4094,7 +4094,8 @@ class CSl_statEx extends CSl_stat
         $user_ids = array();
         $new_candidate_met = array();
         $thisYear = date('Y');
-        $start_date = $thisYear.'-01-01 00:00:00';
+        $thisMonth = date('M');
+        $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
 //ChromePhp::log('candidates_met_bar_chart');
         $consultants = get_active_consultants();
