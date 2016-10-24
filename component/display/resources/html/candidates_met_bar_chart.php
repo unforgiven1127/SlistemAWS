@@ -12,10 +12,10 @@
 </style>
 <script type="text/javascript">
 $(function () {
-    alert( <?php echo "\"Hello\""; ?> );
 
-    var php_var = "<?php echo $test1; ?>";
-    alert(php_var);
+
+    //var php_var = "<?php echo $test1; ?>";
+    //alert(php_var);
 
 
     //alert( <?php echo "\"Hello2\""; ?> );
