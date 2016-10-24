@@ -50,9 +50,20 @@ $(function () {
     var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
     var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
 
+    var distroDates = [];
 
-     var distroDates = [
-        
+    <?php
+        $data = array();
+        foreach ($new_candidate_met as $key => $value)
+        {?>
+            distroDates.push(<?php $value['formatted'] ?>);
+        <?php}
+
+    ?>
+
+
+    /* var distroDates = [
+
                 '06/2013',
                 '12/2012',
                 '06/2012',
@@ -70,7 +81,7 @@ $(function () {
                 '12/2004',
                 '12/2003',
                 '12/2002',
-            ]
+            ]*/
 
     $('#container').highcharts({
         chart: {
