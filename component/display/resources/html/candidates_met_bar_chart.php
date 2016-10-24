@@ -35,7 +35,7 @@ $(function () {
     var user_formatted_array = "<?php echo $tes; ?>";
     alert(user_formatted_array);
 
-    var asd = " ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]";
+    var asd = " ['R.Pedersen |19|'"+, +"'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]";
 
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
