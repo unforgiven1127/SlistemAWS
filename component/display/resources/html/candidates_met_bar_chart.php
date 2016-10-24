@@ -7,7 +7,6 @@
 <style type="text/css">
     .highcharts-xaxis-labels
     {
-        font-size: 200% !important;
         font-weight: bold !important;
     }
 </style>

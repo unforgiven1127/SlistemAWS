@@ -4108,6 +4108,8 @@ class CSl_statEx extends CSl_stat
         'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,'swap_time' => $swap_time,'nextloop' => $nextloop
         );
 
+ChromePhp::log($data);
+
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)
       {
