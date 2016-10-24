@@ -12,16 +12,7 @@
 </style>
 <script type="text/javascript">
 $(function () {
-
-
-    //var php_var = "<?php echo $test1; ?>";
-    //alert(php_var);
-
-
-    //alert( <?php echo "\"Hello2\""; ?> );
-    //var test = <?php echo implode(',', $data); ?>;
-    //alert(test);
-
+    
     $('#container').highcharts({
         chart: {
             type: 'bar'
@@ -30,7 +21,7 @@ $(function () {
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: []
+            categories: [  ]
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
@@ -88,7 +79,6 @@ $(function () {
 	</head>
 	<body>
 
-<input><?php echo $test1 ?></input>
 
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
 <script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
