@@ -43,6 +43,7 @@ $(function () {
     var user_481_count = "<?php echo $new_candidate_met[481]['count']; ?>";
     var user_493_count = "<?php echo $new_candidate_met[493]['count']; ?>";
 
+alert(user_130_count);
 
     $('#container').highcharts({
         chart: {
