@@ -24,7 +24,7 @@ $(function () {
     ?>
 
     alert( <?php echo "\"Hello2\""; ?> );
-    alert(<?php echo $data ?> );
+    alert( <?php echo $data; ?> );
     //var test = <?php echo implode(',', $data); ?>;
     //alert(test);
 
