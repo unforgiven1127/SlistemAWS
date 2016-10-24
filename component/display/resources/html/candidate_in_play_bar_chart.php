@@ -17,7 +17,7 @@ $(function () {
             text: 'Candidates In Play vs Resumes Sent 01.05.2016 to Present'
         },
         xAxis: {
-            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
+            categories: ['R.Pedersen |19| |7|', 'P.Thai |13| |5|', 'M.Moir |10| |4|', 'Y.Takagi |4| |2|', 'G.Young |2| |1|']
         },
         yAxis: {
             min: 0,
