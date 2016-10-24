@@ -4099,11 +4099,11 @@ ChromePhp::log('candidates_met_bar_chart');
         $consultants = get_active_consultants();
         foreach ($consultants as $key => $value)
         {
-          $user_ids[] = $value['loginpk'];
+          //$user_ids[] = $value['loginpk'];
         }
-        $new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
+        //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
 
-        ChromePhp::log($new_candidate_met);
+        //ChromePhp::log($new_candidate_met);
       }
       else
       {
