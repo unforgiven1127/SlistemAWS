@@ -4150,7 +4150,7 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname'];
         }
-        uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
+        uasort($rs_ccm1_mccm['resume_sent'], sort_multi_array_by_value('count', 'reverse'));
         foreach ($rs_ccm1_mccm as $key => $value)
         {
           $rs_ccm1_mccm_formatted.= $value['formatted'].";";
@@ -4158,10 +4158,7 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_ccm1.=$value['ccm1']['count'].";";
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
-        //ChromePhp::log($rs_ccm1_mccm_formatted);
-        //ChromePhp::log($rs_ccm1_mccm_rsc);
-        //ChromePhp::log($rs_ccm1_mccm_ccm1);
-        //ChromePhp::log($rs_ccm1_mccm_mccm);
+
       }
       else
       {
