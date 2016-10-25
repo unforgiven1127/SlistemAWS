@@ -5,7 +5,10 @@
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<style type="text/css">
-
+            .highcharts-xaxis-labels
+            {
+                font-weight: bold !important;
+            }
 		</style>
 		<script type="text/javascript">
 $(function () {
