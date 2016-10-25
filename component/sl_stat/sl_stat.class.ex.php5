@@ -4158,9 +4158,9 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
         //ChromePhp::log($rs_ccm1_mccm_formatted);
-        //ChromePhp::log($rs_ccm1_mccm_rsc);
-        //ChromePhp::log($rs_ccm1_mccm_ccm1);
-        //ChromePhp::log($rs_ccm1_mccm_mccm);
+        ChromePhp::log($rs_ccm1_mccm_rsc);
+        ChromePhp::log($rs_ccm1_mccm_ccm1);
+        ChromePhp::log($rs_ccm1_mccm_mccm);
       }
       else
       {

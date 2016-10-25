@@ -41,6 +41,7 @@ $(function () {
             categories: users
         },
         yAxis: {
+            tickInterval:1,
             min: 0,
             title: {
                 text:'',
