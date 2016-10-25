@@ -4145,7 +4145,6 @@ ChromePhp::log($start_date);
         $data['new_candidate_met_json'] = $new_candidate_met_json;
         $data['new_candidate_count'] = $new_candidate_count;
       }
-ChromePhp::log($data['new_candidate_met_json']);
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
       if($isRevenue)

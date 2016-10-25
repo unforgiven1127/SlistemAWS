@@ -16,42 +16,9 @@ $(function () {
     var users = "<?php echo $new_candidate_met_json; ?>";
     users = users.split(';');
 
-    var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
-    var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
-    var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
-    var user_343_count = parseInt("<?php echo $new_candidate_met[343]['count']; ?>");
-    var user_347_count = parseInt("<?php echo $new_candidate_met[347]['count']; ?>");
-    var user_354_count = parseInt("<?php echo $new_candidate_met[354]['count']; ?>");
-    var user_374_count = parseInt("<?php echo $new_candidate_met[374]['count']; ?>");
-    var user_388_count = parseInt("<?php echo $new_candidate_met[388]['count']; ?>");
-    var user_431_count = parseInt("<?php echo $new_candidate_met[431]['count']; ?>");
-    var user_443_count = parseInt("<?php echo $new_candidate_met[443]['count']; ?>");
-    var user_459_count = parseInt("<?php echo $new_candidate_met[459]['count']; ?>");
-    var user_466_count = parseInt("<?php echo $new_candidate_met[466]['count']; ?>");
-    var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
-    var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
+    var count = "<?php echo $new_candidate_count; ?>";
+    count = count.split(';');
 
-
-     var distroDates = [
-
-                '06/2013',
-                '12/2012',
-                '06/2012',
-                '12/2011',
-                '06/2011',
-                '12/2010',
-                '06/2010',
-                '12/2009',
-                '06/2009',
-                '12/2008',
-                '06/2008',
-                '12/2007',
-                '12/2006',
-                '12/2005',
-                '12/2004',
-                '12/2003',
-                '12/2002',
-            ]
 
     $('#container').highcharts({
         chart: {
@@ -102,7 +69,7 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [user_130_count, user_276_count, user_314_count, user_343_count, user_347_count,user_354_count,user_374_count,user_388_count,user_431_count,user_443_count,user_459_count,user_466_count,user_481_count,user_493_count]
+            data: count
         },
         {
                 name: 'Goal',
