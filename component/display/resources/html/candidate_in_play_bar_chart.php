@@ -49,6 +49,16 @@ $(function () {
                     color: 'red'
                 }
             }
+        },{
+            tickInterval:1,
+            opposite: false,
+            min: 0,
+            title: {
+                text:'',
+                style: {
+                    color: 'red'
+                }
+            }
         }],
         legend: {
             reversed: true
