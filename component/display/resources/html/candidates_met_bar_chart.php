@@ -74,7 +74,7 @@ $(function () {
             data: count
         },
         {
-                name: '',
+                name: ' ',
                         type: 'scatter',
                         marker: {
                     enabled: false
