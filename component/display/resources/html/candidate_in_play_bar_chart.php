@@ -41,19 +41,10 @@ $(function () {
         },
         yAxis: [{
             tickInterval:1,
-            min: 0,
-            title: {
-                text:'',
-                style: {
-                    color: 'red'
-                }
-            }
-        }, {
-            tickInterval:1,
             opposite: true,
             min: 0,
             title: {
-                text:'test',
+                text:'',
                 style: {
                     color: 'red'
                 }
