@@ -1692,7 +1692,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status = '51' AND active = '0' AND date_created > '".$start_date."'";
+    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status = '51' AND active = '0' AND date_completed > '".$start_date."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
@@ -1705,7 +1705,7 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status > '51' AND status < '70' AND active = '0' AND date_created > '".$start_date."'";
+    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status > '51' AND status < '70' AND active = '0' AND date_completed > '".$start_date."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
