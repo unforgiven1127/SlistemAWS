@@ -4146,6 +4146,7 @@ class CSl_statEx extends CSl_stat
           $consultant_id = $value['loginpk'];
           $rs_ccm1_mccm[$consultant_id]['resume_sent'] = get_resume_sent_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['ccm1'] = get_ccm1_count($consultant_id, $start_date);
+          ChromePhp::log($rs_ccm1_mccm[$consultant_id]['ccm1']);
           $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname'];
         }
@@ -4158,9 +4159,9 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
         //ChromePhp::log($rs_ccm1_mccm_formatted);
-        ChromePhp::log($rs_ccm1_mccm_rsc);
-        ChromePhp::log($rs_ccm1_mccm_ccm1);
-        ChromePhp::log($rs_ccm1_mccm_mccm);
+        //ChromePhp::log($rs_ccm1_mccm_rsc);
+        //ChromePhp::log($rs_ccm1_mccm_ccm1);
+        //ChromePhp::log($rs_ccm1_mccm_mccm);
       }
       else
       {
