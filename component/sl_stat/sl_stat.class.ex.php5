@@ -4099,7 +4099,7 @@ class CSl_statEx extends CSl_stat
         $start_date_title = $thisYear.'-'.$thisMonth.'-01';
         $end_date = date('Y-m-d H:i:s');
 
-        $title = "Candidates Met ".$start_date." to Present";
+        $title = "Candidates Met ".$start_date_title." to Present";
 
         $consultants = get_active_consultants();
         $new_candidate_met_json = '';
