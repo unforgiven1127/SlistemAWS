@@ -4096,6 +4096,7 @@ class CSl_statEx extends CSl_stat
         $thisYear = date('Y');
         $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
+        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
         $end_date = date('Y-m-d H:i:s');
 
         $title = "Candidates Met ".$start_date." to Present";
