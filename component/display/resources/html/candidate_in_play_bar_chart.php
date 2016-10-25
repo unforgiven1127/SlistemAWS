@@ -39,7 +39,7 @@ $(function () {
         xAxis: {
             categories: users
         },
-        yAxis: {
+        yAxis: [{
             tickInterval:1,
             min: 0,
             title: {
@@ -48,7 +48,13 @@ $(function () {
                     color: 'red'
                 }
             }
-        },
+        }, {
+            lineWidth: 1,
+            opposite: true,
+            title: {
+                text: 'Secondary Axis'
+            }
+        }],
         legend: {
             reversed: true
         },
