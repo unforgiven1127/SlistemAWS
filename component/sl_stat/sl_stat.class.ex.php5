@@ -4157,22 +4157,16 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_ccm1.=$value['ccm1'].";";
           $rs_ccm1_mccm_mccm.=$value['mccm'].";";
         }
+        ChromePhp::log($rs_ccm1_mccm_formatted);
+        ChromePhp::log($rs_ccm1_mccm_rsc);
+        ChromePhp::log($rs_ccm1_mccm_ccm1);
+        ChromePhp::log($rs_ccm1_mccm_mccm);
       }
       else
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
       }
-      //var_dump($revenue_data);
-      //exit;
-      /*foreach ($revenue_data as $key => $inside)
-      {
-        foreach ($inside as $key => $value)
-        {
-          var_dump($value);
-          echo "<br><br>";
-        }
 
-      }*/
       $this->_oPage->addCssFile($this->getResourcePath().'/css/revenue.css');
 
       $data = array('revenue_data' => $revenue_data, 'location' => $location, 'year' => $year, 'row_number_rank' => 1, 'total_paid' => 0,
