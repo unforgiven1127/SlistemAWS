@@ -19,6 +19,8 @@ $(function () {
     var count = "<?php echo $new_candidate_count; ?>";
     count = count.split(';');
 
+    for(var i=0; i<count.length; i++) { count[i] = parseInt(count[i], 10); }
+
 
     $('#container').highcharts({
         chart: {
