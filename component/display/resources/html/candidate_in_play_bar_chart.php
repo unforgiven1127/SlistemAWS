@@ -53,7 +53,7 @@ $(function () {
             opposite: true,
             min: 0,
             title: {
-                text:'',
+                text:'test',
                 style: {
                     color: 'red'
                 }
