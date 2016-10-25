@@ -4133,7 +4133,7 @@ class CSl_statEx extends CSl_stat
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $start_date_title = $thisYear.'-'.$thisMonth.'-01';
 
-        $title = "Resume sent / CCM1 / MCCM ".$start_date_title."to Present";
+        $title = "Resume sent / CCM1 / MCCM ".$start_date_title." to Present";
 
         foreach ($consultants as $key => $value)
         {
@@ -4144,7 +4144,7 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname'];
         }
         uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
-        foreach ($new_candidate_met as $key => $value)
+        foreach ($rs_ccm1_mccm as $key => $value)
         {
           $rs_ccm1_mccm_formatted.= $rs_ccm1_mccm[$consultant_id]['formatted'].";";
           $rs_ccm1_mccm_rsc.=$rs_ccm1_mccm[$consultant_id]['resume_sent'].";";
