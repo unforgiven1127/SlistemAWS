@@ -4096,7 +4096,7 @@ class CSl_statEx extends CSl_stat
         $thisYear = date('Y');
         $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
-        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
+        $start_date_title = $date('M').' 01 '.$thisYear;
         $end_date = date('Y-m-d H:i:s');
 
         $title = "Candidates Met ".$start_date_title." to Present";
@@ -4137,7 +4137,7 @@ class CSl_statEx extends CSl_stat
         $thisYear = date('Y');
         $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
-        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
+        $start_date_title = $date('M').' 01 '.$thisYear;
 
         $title = "Resume sent / CCM1 / MCCM ".$start_date_title." to Present";
 
@@ -4173,7 +4173,7 @@ class CSl_statEx extends CSl_stat
         $thisYear = date('Y');
         $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
-        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
+        $start_date_title = $date('M').' 01 '.$thisYear;
 
         $title = "Candidates in play / Resume sent ".$start_date_title." to Present";
 
