@@ -4183,7 +4183,7 @@ class CSl_statEx extends CSl_stat
           $resume_sent_temp = get_resume_sent_count($consultant_id, $start_date);
           $inplay[$consultant_id]['resume_sent'] = $resume_sent_temp['count'];
 
-          $candidate_inplay_temp = get_candidate_in_play($user_id, $start_date);
+          $candidate_inplay_temp = get_candidate_in_play($consultant_id, $start_date);
           $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp['count'];
 
           $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|";
