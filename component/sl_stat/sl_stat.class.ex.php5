@@ -4123,6 +4123,35 @@ class CSl_statEx extends CSl_stat
         }
 
       }
+      elseif($loopChart == 'resume_bar_chart')
+      {
+        $consultants = get_active_consultants();
+        $rs_ccm1_mccm = array();
+
+        $thisYear = date('Y');
+        $thisMonth = date('m');
+        $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
+        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
+
+        $title = "Resume sent / CCM1 / MCCM ".$start_date_title."to Present";
+
+        foreach ($consultants as $key => $value)
+        {
+          $consultant_id = $value['loginpk'];
+          $rs_ccm1_mccm[$consultant_id]['resume_sent'] = get_resume_sent_count($consultant_id, $start_date);
+          $rs_ccm1_mccm[$consultant_id]['ccm1'] = get_ccm1_count($consultant_id, $start_date);
+          $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
+          $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname'];
+        }
+        uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
+        foreach ($new_candidate_met as $key => $value)
+        {
+          $rs_ccm1_mccm_formatted.= $rs_ccm1_mccm[$consultant_id]['formatted'].";";
+          $rs_ccm1_mccm_rsc.=$rs_ccm1_mccm[$consultant_id]['resume_sent'].";";
+          $rs_ccm1_mccm_ccm1.=$rs_ccm1_mccm[$consultant_id]['ccm1'].";";
+          $rs_ccm1_mccm_mccm.=$rs_ccm1_mccm[$consultant_id]['mccm'].";";
+        }
+      }
       else
       {
         $revenue_data = $this->_getModel()->get_revenue_data($year);
@@ -4144,11 +4173,19 @@ class CSl_statEx extends CSl_stat
         'total_signed' => 0, 'total_placed' => 0, 'decimals' => 0, 'display_object' => $this->_oDisplay, 'url' => $url,'swap_time' => $swap_time,'nextloop' => $nextloop
         );
 
-      if(isset($new_candidate_met))
+      if(isset($new_candidate_met) && !empty($new_candidate_met))
       {
         $data['new_candidate_met'] = $new_candidate_met;
         $data['new_candidate_met_json'] = $new_candidate_met_json;
         $data['new_candidate_count'] = $new_candidate_count;
+        $data['title'] = $title;
+      }
+      if(isset($rs_ccm1_mccm) && !empty($rs_ccm1_mccm))
+      {
+        $data['rs_ccm1_mccm_formatted'] = $rs_ccm1_mccm_formatted;
+        $data['rs_ccm1_mccm_rsc'] = $rs_ccm1_mccm_rsc;
+        $data['rs_ccm1_mccm_ccm1'] = $rs_ccm1_mccm_ccm1;
+        $data['rs_ccm1_mccm_mccm'] = $rs_ccm1_mccm_mccm;
         $data['title'] = $title;
       }
 
