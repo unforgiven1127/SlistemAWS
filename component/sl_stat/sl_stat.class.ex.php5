@@ -4152,7 +4152,7 @@ class CSl_statEx extends CSl_stat
         uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
         foreach ($rs_ccm1_mccm as $key => $value)
         {
-          $rs_ccm1_mccm_formatted.= $value['formatted']['count'].";";
+          $rs_ccm1_mccm_formatted.= $value['formatted'].";";
           $rs_ccm1_mccm_rsc.=$value['resume_sent']['count'].";";
           $rs_ccm1_mccm_ccm1.=$value['ccm1']['count'].";";
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
