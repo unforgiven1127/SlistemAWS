@@ -49,10 +49,11 @@ $(function () {
                 }
             }
         }, {
-            lineWidth: 1,
+            tickInterval:1,
+            min: 0,
             opposite: true,
             title: {
-                text: 'Secondary Axis'
+                text: ''
             }
         }],
         legend: {
