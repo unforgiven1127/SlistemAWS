@@ -4149,7 +4149,7 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm[$consultant_id]['ccm1'] = get_ccm1_count($consultant_id, $start_date);
           //ChromePhp::log($rs_ccm1_mccm[$consultant_id]['ccm1']);
           $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
-          $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']."|".$resume_sent_temp['count']."|";
+          $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|";
         }
         uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
         foreach ($rs_ccm1_mccm as $key => $value)
@@ -4160,6 +4160,41 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
 
+      }
+      elseif($loopChart == 'candidate_id_play_bar_chart')
+      {
+        $inplay_formatted = "";
+        $inplay_count = "";
+        $inplay_rsc = "";
+
+        $consultants = get_active_consultants();
+        $inplay = array();
+
+        $thisYear = date('Y');
+        $thisMonth = date('m');
+        $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
+        $start_date_title = $thisYear.'-'.$thisMonth.'-01';
+
+        $title = "Candidates in play / Resume sent ".$start_date_title." to Present";
+
+        foreach ($consultants as $key => $value)
+        {
+          $consultant_id = $value['loginpk'];
+          $resume_sent_temp = get_resume_sent_count($consultant_id, $start_date);
+          $inplay[$consultant_id]['resume_sent'] = $resume_sent_temp['count'];
+
+          $candidate_inplay_temp = get_candidate_in_play($user_id, $start_date);
+          $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp['count'];
+
+          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|";
+        }
+        uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
+        foreach ($inplay as $key => $value)
+        {
+          $inplay_formatted.= $value['formatted'].";";
+          $inplay_count.=$value['candidate_inplay'].";";
+          $inplay_rsc.=$value['resume_sent'].";";
+        }
       }
       else
       {
@@ -4185,6 +4220,13 @@ class CSl_statEx extends CSl_stat
         $data['rs_ccm1_mccm_rsc'] = $rs_ccm1_mccm_rsc;
         $data['rs_ccm1_mccm_ccm1'] = $rs_ccm1_mccm_ccm1;
         $data['rs_ccm1_mccm_mccm'] = $rs_ccm1_mccm_mccm;
+        $data['title'] = $title;
+      }
+      if(isset($inplay) && !empty($inplay))
+      {
+        $data['inplay_formatted'] = $inplay_formatted;
+        $data['inplay_count'] = $inplay_count;
+        $data['inplay_rsc'] = $inplay_rsc;
         $data['title'] = $title;
       }
 

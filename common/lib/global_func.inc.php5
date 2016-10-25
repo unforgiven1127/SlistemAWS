@@ -1727,6 +1727,19 @@ var_dump($query);*/
     return $result;
   }
 
+  function get_candidate_in_play($user_id, $start_date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND in_play = '1' AND date_created > '".$start_date."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+    $result = $result[0];
+    return $result;
+  }
+
   function get_new_candidate_met($user_ids, $start_date, $end_date)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -5041,7 +5054,7 @@ function get_revenue_chart_loop()
 
   $loop[0] = '2016-resume_bar_chart';
   $loop[1] = '2016-candidates_met_bar_chart';
-  $loop[2] = '2017-candidates_met_bar_chart';
+  $loop[2] = '2017-candidate_in_play_bar_chart';
   $loop[3] = '2017-candidates_met_bar_chart';
   $loop[4] = '2016-candidates_met_bar_chart';
 
