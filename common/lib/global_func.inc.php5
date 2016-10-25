@@ -1720,7 +1720,7 @@ var_dump($query);*/
 
     $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status = '2' AND date_created > '".$start_date."'";
 
-    $result = $oDB->executeQuery($sQuery);
+    $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
     $result = $result[0];
