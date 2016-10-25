@@ -13,26 +13,6 @@
 <script type="text/javascript">
 $(function () {
 
-    //var new_candidate_met_json = "<?php $new_candidate_met_json ?>";
-
-    //alert(new_candidate_met_json);
-
-    var user_130 = "<?php echo $new_candidate_met[130]['formatted']; ?>";
-    var user_276 = "<?php echo $new_candidate_met[276]['formatted']; ?>";
-    var user_314 = "<?php echo $new_candidate_met[314]['formatted']; ?>";
-    var user_343 = "<?php echo $new_candidate_met[343]['formatted']; ?>";
-    var user_347 = "<?php echo $new_candidate_met[347]['formatted']; ?>";
-    var user_354 = "<?php echo $new_candidate_met[354]['formatted']; ?>";
-    var user_374 = "<?php echo $new_candidate_met[374]['formatted']; ?>";
-    var user_388 = "<?php echo $new_candidate_met[388]['formatted']; ?>";
-    var user_431 = "<?php echo $new_candidate_met[431]['formatted']; ?>";
-    var user_443 = "<?php echo $new_candidate_met[443]['formatted']; ?>";
-    var user_459 = "<?php echo $new_candidate_met[459]['formatted']; ?>";
-    var user_466 = "<?php echo $new_candidate_met[466]['formatted']; ?>";
-    var user_481 = "<?php echo $new_candidate_met[481]['formatted']; ?>";
-    var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
-
-
     var users = "<?php echo $new_candidate_met_json; ?>";
     users = users.split(';');
 

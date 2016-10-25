@@ -4100,6 +4100,7 @@ class CSl_statEx extends CSl_stat
 ChromePhp::log($start_date);
         $consultants = get_active_consultants();
         $new_candidate_met_json = '';
+        $new_candidate_count = '';
         foreach ($consultants as $key => $value)
         {
           if(isset($value['firstname']))
@@ -4109,6 +4110,7 @@ ChromePhp::log($start_date);
             $new_candidate_met[$consultant_id]['consultant_name'] = substr($value['firstname'],0,1).".".$value['lastname'];
             $new_candidate_met[$consultant_id]['formatted'] = $new_candidate_met[$consultant_id]['consultant_name']." |".$new_candidate_met[$consultant_id]['count']."|";
             $new_candidate_met_json.= $new_candidate_met[$consultant_id]['formatted'].";";
+            $new_candidate_count .=$new_candidate_met[$consultant_id]['count'].";";
             //$user_ids[] = $value['loginpk'];
           }
         }
@@ -4140,9 +4142,8 @@ ChromePhp::log($start_date);
       if(isset($new_candidate_met))
       {
         $data['new_candidate_met'] = $new_candidate_met;
-        $data['tes']=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $data['new_candidate_met_json'] = $new_candidate_met_json;
-        $data['test1'] = 'test123455';
+        $data['new_candidate_count'] = $new_candidate_count;
       }
 ChromePhp::log($data['new_candidate_met_json']);
 
