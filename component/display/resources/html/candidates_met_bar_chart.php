@@ -33,8 +33,8 @@ $(function () {
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
 
-    var asd = " ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]";
-
+    var asd = "<?php echo $new_candidate_met; ?>";
+alert(asd);
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
     var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
@@ -50,19 +50,8 @@ $(function () {
     var user_481_count = parseInt("<?php echo $new_candidate_met[481]['count']; ?>");
     var user_493_count = parseInt("<?php echo $new_candidate_met[493]['count']; ?>");
 
-    var distroDates = []
 
-    <?php
-        $data = array();
-        foreach ($new_candidate_met as $key => $value)
-        { ?>
-            alert(<?php echo $value['formatted']; ?>);
-        <?php }
-
-    ?>
-
-
-    /* var distroDates = [
+     var distroDates = [
 
                 '06/2013',
                 '12/2012',
@@ -81,7 +70,7 @@ $(function () {
                 '12/2004',
                 '12/2003',
                 '12/2002',
-            ]*/
+            ]
 
     $('#container').highcharts({
         chart: {
