@@ -4125,6 +4125,12 @@ class CSl_statEx extends CSl_stat
       }
       elseif($loopChart == 'resume_bar_chart')
       {
+
+        $rs_ccm1_mccm_formatted = "";
+        $rs_ccm1_mccm_rsc = "";
+        $rs_ccm1_mccm_ccm1 = "";
+        $rs_ccm1_mccm_mccm = "";
+
         $consultants = get_active_consultants();
         $rs_ccm1_mccm = array();
 
