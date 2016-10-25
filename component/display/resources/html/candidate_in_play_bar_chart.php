@@ -50,6 +50,7 @@ $(function () {
             }
         }, {
             tickInterval:1,
+            min: 0,
             lineWidth: 1,
             opposite: true,
             title: {
