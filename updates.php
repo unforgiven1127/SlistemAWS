@@ -13,8 +13,8 @@ else
 {
   echo 'Chrome vs';
 }*/
-/*$sDate = date('Y-m-d H:i:s');
-$to = "rkiyamu@slate.co.jp";
+$sDate = date('Y-m-d H:i:s');
+$to = "munir@slate-ghc.com";
 $subject = "Test email";
 
 $message = "
@@ -36,9 +36,9 @@ $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
 // More headers
 $headers .= 'From: <slistem@slate.co.jp>' . "\r\n";
-$headers .= 'Cc: munir_anameric@hotmail.com' . "\r\n";*/
-print_r(PDO::getAvailableDrivers());
-//mail($to,$subject,$message,$headers);
+$headers .= 'Cc: munir_anameric@hotmail.com' . "\r\n";
+//print_r(PDO::getAvailableDrivers());
+mail($to,$subject,$message,$headers);
 
 	/*define('DB_NAME_SLISTEM','slistem');
     define('DB_SERVER_SLISTEM', '127.0.0.1');
