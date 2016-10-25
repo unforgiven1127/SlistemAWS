@@ -33,7 +33,7 @@ $(function () {
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
 
-    var asd = "<?php echo $new_candidate_met; ?>";
+    var asd = "<?php echo $new_candidate_met_json; ?>";
 alert(asd);
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
