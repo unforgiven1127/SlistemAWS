@@ -4161,7 +4161,7 @@ class CSl_statEx extends CSl_stat
         }
 
       }
-      elseif($loopChart == 'candidate_id_play_bar_chart')
+      elseif($loopChart == 'candidate_in_play_bar_chart')
       {
         $inplay_formatted = "";
         $inplay_count = "";
