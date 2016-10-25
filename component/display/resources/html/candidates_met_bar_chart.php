@@ -33,8 +33,9 @@ $(function () {
     var user_493 = "<?php echo $new_candidate_met[493]['formatted']; ?>";
 
 
-    var asd = "<?php echo $new_candidate_met_json; ?>";
-alert(asd);
+    var users = "<?php echo $new_candidate_met_json; ?>";
+    users = users.split(';');
+
     var user_130_count = parseInt("<?php echo $new_candidate_met[130]['count']; ?>");
     var user_276_count = parseInt("<?php echo $new_candidate_met[276]['count']; ?>");
     var user_314_count = parseInt("<?php echo $new_candidate_met[314]['count']; ?>");
@@ -80,7 +81,7 @@ alert(asd);
             text: 'Candidates Met 01.05.2016 to Present'
         },
         xAxis: {
-            categories: distroDates
+            categories: users
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
         yAxis: {
