@@ -4097,26 +4097,28 @@ class CSl_statEx extends CSl_stat
         $thisMonth = date('m');
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
-ChromePhp::log($start_date);
+
         $consultants = get_active_consultants();
         $new_candidate_met_json = '';
         $new_candidate_count = '';
         foreach ($consultants as $key => $value)
         {
-          if(isset($value['firstname']))
-          {
-            $consultant_id = $value['loginpk'];
-            $new_candidate_met[$consultant_id]['count'] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
-            $new_candidate_met[$consultant_id]['consultant_name'] = substr($value['firstname'],0,1).".".$value['lastname'];
-            $new_candidate_met[$consultant_id]['formatted'] = $new_candidate_met[$consultant_id]['consultant_name']." |".$new_candidate_met[$consultant_id]['count']."|";
-            $new_candidate_met_json.= $new_candidate_met[$consultant_id]['formatted'].";";
-            $new_candidate_count .=$new_candidate_met[$consultant_id]['count'].";";
-            //$user_ids[] = $value['loginpk'];
-          }
+          $consultant_id = $value['loginpk'];
+          $new_candidate_met[$consultant_id]['count'] = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+          $new_candidate_met[$consultant_id]['consultant_name'] = substr($value['firstname'],0,1).".".$value['lastname'];
+          $new_candidate_met[$consultant_id]['formatted'] = $new_candidate_met[$consultant_id]['consultant_name']." |".$new_candidate_met[$consultant_id]['count']."|";
+          //$new_candidate_met_json.= $new_candidate_met[$consultant_id]['formatted'].";";
+          //$new_candidate_count .=$new_candidate_met[$consultant_id]['count'].";";
         }
-        //$new_candidate_met = get_new_candidate_met($user_ids, $start_date, $end_date);
-//ChromePhp::log($user_ids);
-//ChromePhp::log($new_candidate_met);
+
+        uasort($new_candidate_met, sort_multi_array_by_value('count', 'reverse'));
+
+        foreach ($new_candidate_met as $key => $value)
+        {
+          $new_candidate_met_json.= $value['formatted'].";";
+          $new_candidate_count .=$value['count'].";";
+        }
+
       }
       else
       {
