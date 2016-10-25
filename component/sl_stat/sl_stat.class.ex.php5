@@ -4146,10 +4146,10 @@ class CSl_statEx extends CSl_stat
         uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
         foreach ($rs_ccm1_mccm as $key => $value)
         {
-          $rs_ccm1_mccm_formatted.= $rs_ccm1_mccm[$consultant_id]['formatted'].";";
-          $rs_ccm1_mccm_rsc.=$rs_ccm1_mccm[$consultant_id]['resume_sent'].";";
-          $rs_ccm1_mccm_ccm1.=$rs_ccm1_mccm[$consultant_id]['ccm1'].";";
-          $rs_ccm1_mccm_mccm.=$rs_ccm1_mccm[$consultant_id]['mccm'].";";
+          $rs_ccm1_mccm_formatted.= $value['formatted'].";";
+          $rs_ccm1_mccm_rsc.=$value['resume_sent'].";";
+          $rs_ccm1_mccm_ccm1.=$value['ccm1'].";";
+          $rs_ccm1_mccm_mccm.=$value['mccm'].";";
         }
       }
       else
