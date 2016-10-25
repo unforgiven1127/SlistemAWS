@@ -4144,17 +4144,18 @@ class CSl_statEx extends CSl_stat
         foreach ($consultants as $key => $value)
         {
           $consultant_id = $value['loginpk'];
-          $rs_ccm1_mccm[$consultant_id]['resume_sent'] = get_resume_sent_count($consultant_id, $start_date);
+          $resume_sent_temp = get_resume_sent_count($consultant_id, $start_date);
+          $rs_ccm1_mccm[$consultant_id]['resume_sent'] = $resume_sent_temp['count'];
           $rs_ccm1_mccm[$consultant_id]['ccm1'] = get_ccm1_count($consultant_id, $start_date);
           //ChromePhp::log($rs_ccm1_mccm[$consultant_id]['ccm1']);
           $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname'];
         }
-        uasort($rs_ccm1_mccm['resume_sent'], sort_multi_array_by_value('count', 'reverse'));
+        uasort($rs_ccm1_mccm, sort_multi_array_by_value('resume_sent', 'reverse'));
         foreach ($rs_ccm1_mccm as $key => $value)
         {
           $rs_ccm1_mccm_formatted.= $value['formatted'].";";
-          $rs_ccm1_mccm_rsc.=$value['resume_sent']['count'].";";
+          $rs_ccm1_mccm_rsc.=$value['resume_sent'].";";
           $rs_ccm1_mccm_ccm1.=$value['ccm1']['count'].";";
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
