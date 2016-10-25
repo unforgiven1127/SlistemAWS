@@ -50,11 +50,13 @@ $(function () {
             }
         }, {
             tickInterval:1,
-            min: 0,
-            lineWidth: 1,
             opposite: true,
+            min: 0,
             title: {
-                text: 'Secondary Axis'
+                text:'',
+                style: {
+                    color: 'red'
+                }
             }
         }],
         legend: {
