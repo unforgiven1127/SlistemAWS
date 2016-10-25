@@ -4098,6 +4098,8 @@ class CSl_statEx extends CSl_stat
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $end_date = date('Y-m-d H:i:s');
 
+        $title = "Candidates Met ".$start_date." to Present";
+
         $consultants = get_active_consultants();
         $new_candidate_met_json = '';
         $new_candidate_count = '';
@@ -4146,6 +4148,7 @@ class CSl_statEx extends CSl_stat
         $data['new_candidate_met'] = $new_candidate_met;
         $data['new_candidate_met_json'] = $new_candidate_met_json;
         $data['new_candidate_count'] = $new_candidate_count;
+        $data['title'] = $title;
       }
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);

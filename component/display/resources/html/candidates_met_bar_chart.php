@@ -13,6 +13,8 @@
 <script type="text/javascript">
 $(function () {
 
+    var title = "<?php echo $title; ?>";
+
     var users = "<?php echo $new_candidate_met_json; ?>";
     users = users.split(';');
 
@@ -27,7 +29,7 @@ $(function () {
             type: 'bar'
         },
         title: {
-            text: 'Candidates Met 01.05.2016 to Present'
+            text: title
         },
         xAxis: {
             categories: users
