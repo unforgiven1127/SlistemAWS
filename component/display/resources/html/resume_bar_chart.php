@@ -9,15 +9,36 @@
 		</style>
 		<script type="text/javascript">
 $(function () {
+
+    var title = "<?php echo $title; ?>";
+
+    var users = "<?php echo $rs_ccm1_mccm_formatted; ?>";
+    users = users.split(';');
+
+    var rs_count = "<?php echo $rs_ccm1_mccm_rsc; ?>";
+    rs_count = rs_count.split(';');
+
+    for(var i=0; i<rs_count.length; i++) { rs_count[i] = parseInt(rs_count[i], 10); }
+
+    var ccm1_count = "<?php echo $rs_ccm1_mccm_ccm1; ?>";
+    ccm1_count = ccm1_count.split(';');
+
+    for(var i=0; i<ccm1_count.length; i++) { ccm1_count[i] = parseInt(ccm1_count[i], 10); }
+
+    var mccm_count = "<?php echo $rs_ccm1_mccm_mccm; ?>";
+    mccm_count = mccm_count.split(';');
+
+    for(var i=0; i<mccm_count.length; i++) { mccm_count[i] = parseInt(mccm_count[i], 10); }
+
     $('#container').highcharts({
         chart: {
             type: 'bar'
         },
         title: {
-            text: 'Resume sent / CCM1 / MCCM (between xxx - xxx)'
+            text: title
         },
         xAxis: {
-            categories: ['R.Pedersen', 'P.Thai', 'M.Moir', 'Y.Takagi', 'G.Young']
+            categories: users
         },
         yAxis: {
             min: 0,
@@ -44,7 +65,7 @@ $(function () {
                     },
             color: 'rgba(28, 176, 28,0.5)',//green
             opacity: '.4',
-            data: [5, 3, 2, 1, 0]
+            data: mccm_count
         }, {
             name: 'CCM1',
             style: {
@@ -53,12 +74,12 @@ $(function () {
                     },
             color: 'rgba(179, 0, 0,0.5)',//red
             opacity: '.4',
-            data: [7, 5, 3, 2, 1]
+            data: ccm1_count
         }, {
             name: 'Resume sent',
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
-            data: [19, 13, 10, 4, 2]
+            data: rs_count
         }]
 
     });
