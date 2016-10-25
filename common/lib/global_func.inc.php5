@@ -1732,7 +1732,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
 
     $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND in_play = '1'";
-
+ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
