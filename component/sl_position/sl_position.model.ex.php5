@@ -352,6 +352,8 @@ class CSl_positionModelEx extends CSl_positionModel
     if (!empty($filter['revenue']))
         $query.= ' WHERE '.implode(' AND ', $filter['revenue']);
 
+ChromePhp::log($query);
+
     $raw_revenue_data = $this->executeQuery($query);
 
     $read = $raw_revenue_data->readFirst();
