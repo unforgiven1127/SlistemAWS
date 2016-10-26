@@ -52,7 +52,7 @@ $(function () {
             // default options
         }, {
             tickInterval:1,
-            linkedTo: 0,
+            linkedTo: 1,
             opposite: true,
             title: {
                 text:'',
