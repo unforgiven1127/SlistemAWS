@@ -152,7 +152,7 @@ $(function () {
         },
         series: [ {
             name: 'Candidate met',
-            color: 'rgba(28, 139, 176,0.5)',//blue
+            color: 'rgba(0, 32, 194,0.8)',//blue
             opacity: '.4',
             data: count
         }/*,
