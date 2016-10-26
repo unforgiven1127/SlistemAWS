@@ -4123,7 +4123,7 @@ class CSl_statEx extends CSl_stat
         }
 
         $new_candidate_met_json = " ;".$new_candidate_met_json;
-        $new_candidate_count = "27;".$new_candidate_count;
+        $new_candidate_count = "0;".$new_candidate_count;
 
         $new_candidate_met_json = rtrim($new_candidate_met_json,';');
         $new_candidate_count = rtrim($new_candidate_count,';');
