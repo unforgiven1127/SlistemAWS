@@ -1818,15 +1818,22 @@ var_dump($query);*/
     while($read)
     {
       $temp = $oDbResult->getData();
+      $user_info = getUserInformaiton($temp['created_by']);
 
       if(!isset($asData[$temp['created_by']]))
       {
-        $asData[$temp['created_by']] = array();
+        if($user_info['position'] != 'Consultant')
+        {
+          $asData[$temp['attendeefk']] = array();
+        }
+        else
+        {
+          $asData[$temp['created_by']] = array();
+        }
       }
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        $user_info = getUserInformaiton($temp['created_by']);
         if($user_info['position'] != 'Consultant')
         {
           array_push($asData[$temp['attendeefk']], $temp);
