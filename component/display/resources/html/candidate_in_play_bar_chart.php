@@ -31,6 +31,9 @@ $(function () {
 
     var title = "<?php echo $title; ?>";
 
+    var max_rabbit_1 = "<?php echo $max_rabbit_1; ?>";
+    var max_rabbit_2 = "<?php echo $max_rabbit_2; ?>";
+
     var users = "<?php echo $inplay_formatted; ?>";
     users = users.split(';');
 
