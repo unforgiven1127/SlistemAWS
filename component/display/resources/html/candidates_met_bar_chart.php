@@ -69,7 +69,7 @@ $(function () {
                 label:{
                         useHTML: true,
                         text:'<img src="/component/sl_candidate/resources/pictures/tabs/finish_40.png"/>',
-                        verticalAlign: 'middle',
+                        verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
                             fontSize: '20px',
