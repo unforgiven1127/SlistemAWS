@@ -4223,13 +4223,13 @@ class CSl_statEx extends CSl_stat
           //$inplay_count.= $cp.";";
           $inplay_rsc.= $value['resume_sent'].";";
         }
-        $inplay_formatted = " ;".$inplay_formatted;
-        $inplay_count = "0;".$inplay_count;
-        $inplay_rsc = "0;".$inplay_rsc;
+        //$inplay_formatted = " ;".$inplay_formatted;
+        //$inplay_count = "0;".$inplay_count;
+        //$inplay_rsc = "0;".$inplay_rsc;
 
-        //$inplay_formatted = rtrim($inplay_formatted,';');
-        //$inplay_count = rtrim($inplay_count,';');
-        //$inplay_rsc = rtrim($inplay_rsc,';');
+        $inplay_formatted = rtrim($inplay_formatted,';');
+        $inplay_count = rtrim($inplay_count,';');
+        $inplay_rsc = rtrim($inplay_rsc,';');
       }
       else
       {
