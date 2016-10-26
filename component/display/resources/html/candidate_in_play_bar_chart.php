@@ -9,10 +9,6 @@
             {
                 font-weight: bold !important;
             }
-            .highcharts-axis-title
-            {
-                visibility: hidden;
-            }
             .highcharts-title
             {
                 padding-bottom: 30px;
@@ -49,10 +45,16 @@ $(function () {
             categories: users
         },
         yAxis: [{
-            // default options
+            tickInterval:1,
+            title: {
+                text:'',
+                style: {
+                    color: 'black'
+                }
+            }
         }, {
             tickInterval:1,
-            linkedTo: 1,
+            linkedTo: 0,
             opposite: true,
             title: {
                 text:'',
