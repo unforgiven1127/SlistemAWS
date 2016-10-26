@@ -1,3 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <style type="text/css">
+            .highcharts-xaxis-labels
+            {
+                font-weight: bold !important;
+            }
+        </style>
+        <script type="text/javascript">
 $(function () {
     $('#container').highcharts({
         chart: {
@@ -23,3 +36,15 @@ $(function () {
         }]
     });
 });
+        </script>
+    </head>
+    <body>
+
+
+<script src="/common/lib/highcharts5/js/highcharts.js" ></script>
+<script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
+
+<div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
+
+    </body>
+</html>
