@@ -70,7 +70,7 @@ $(function () {
                         useHTML: true,
                         text:'<img src="/component/sl_candidate/resources/pictures/tabs/finish_40.png"/>',
                         verticalAlign: 'top',
-                        textAlign: 'center',
+                        textAlign: 'left',
                         style: {
                             fontSize: '20px',
                             fontWeight: 'bold'
