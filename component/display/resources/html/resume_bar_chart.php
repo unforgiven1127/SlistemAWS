@@ -100,7 +100,7 @@ $(function () {
                         fontSize: '20px',
                         fontWeight: 'bold'
                     },
-            color: 'rgba(28, 176, 28,0.5)',//green
+            color: 'rgba(0, 153, 135,0.8)',//green
             opacity: '.4',
             data: mccm_count
         }, {
