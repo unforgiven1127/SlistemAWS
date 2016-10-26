@@ -85,16 +85,12 @@ $(function () {
             itemMarginBottom: 50
         },
         plotOptions: {
-            groupPadding: 0.5,   // Exactly overlap
-                pointWidth: 20,
             bar: {
+                groupPadding: 0.5,   // Exactly overlap
+                pointWidth: 20,
                 dataLabels: {
                     enabled: false
                 }
-            },
-            column: {
-                groupPadding: 0.5,   // Exactly overlap
-                pointWidth: 20
             }
         },
         series: [
