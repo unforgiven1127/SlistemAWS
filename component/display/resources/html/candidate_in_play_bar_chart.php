@@ -56,6 +56,21 @@ $(function () {
             categories: users
         },
         yAxis: [{
+            plotLines:[{
+                value:27,
+                color: 'black',
+                width:3,
+                zIndex:4,
+                label:{
+                        text:'CUSTOM TARGET',
+                        verticalAlign: 'middle',
+                        textAlign: 'center',
+                        style: {
+                            fontSize: '20px',
+                            fontWeight: 'bold'
+                        }
+                      }
+            }],
             tickInterval:1,
             title: {
                 text:'',
