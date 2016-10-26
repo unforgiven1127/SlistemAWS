@@ -14,7 +14,7 @@
                 padding-bottom: 30px;
                 font-weight: bold !important;
             }
-            .highcharts-bar-series text
+            .highcharts-legend-item
             {
                 font-size: 20px !important;
                 margin-top: 2cm !important;
