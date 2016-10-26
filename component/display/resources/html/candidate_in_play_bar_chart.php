@@ -14,7 +14,12 @@
                 padding-bottom: 30px;
                 font-weight: bold !important;
             }
-            .highcharts-legend-item
+            .highcharts-legend-item text
+            {
+                font-size: 20px !important;
+                margin-top: 2cm !important;
+            }
+            .highcharts-legend-item rect
             {
                 font-size: 20px !important;
                 margin-top: 2cm !important;
