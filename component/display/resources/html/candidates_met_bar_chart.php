@@ -63,6 +63,22 @@ $(function () {
             },
             {
                 value:met_target,
+                color: 'black',
+                width:1,
+                zIndex:4,
+                label:{
+                        useHTML: true,
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/rabbit_40.png"/>',
+                        verticalAlign: 'middle',
+                        textAlign: 'center',
+                        style: {
+                            fontSize: '20px',
+                            fontWeight: 'bold'
+                        }
+                      }
+            },
+            {
+                value:met_target,
                 color: 'grey',
                 dashStyle: 'shortdash',
                 width:1,
