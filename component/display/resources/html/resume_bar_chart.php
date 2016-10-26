@@ -114,7 +114,7 @@ $(function () {
             data: ccm1_count
         }, {
             name: 'Resume sent',
-            color: 'rgba(21, 27, 141,0.5)',//blue
+            color: 'rgba(21, 27, 141,0.9)',//blue
             opacity: '.4',
             data: rs_count
         }]
