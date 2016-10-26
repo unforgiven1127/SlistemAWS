@@ -62,6 +62,7 @@ $(function () {
                 width:3,
                 zIndex:4,
                 label:{
+                        useHTML: true,
                         text:'<img src="/component/sl_candidate/resources/pictures/tabs/note_24.png"/>',
                         verticalAlign: 'top',
                         textAlign: 'center',
