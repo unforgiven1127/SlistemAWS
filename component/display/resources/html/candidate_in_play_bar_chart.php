@@ -40,6 +40,7 @@ $(function () {
             categories: users
         },
         yAxis: {
+            reversed: true,
             tickInterval:1,
             min: 0,
             title: {
