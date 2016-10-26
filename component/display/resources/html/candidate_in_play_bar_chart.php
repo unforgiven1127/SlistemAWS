@@ -86,7 +86,7 @@ $(function () {
         },
         plotOptions: {
             bar: {
-                pointWidth: 17,
+                pointWidth: 16,
                 dataLabels: {
                     enabled: false
                 }
