@@ -75,7 +75,6 @@ $(function () {
         }],
         legend: {
             reversed: true,
-            itemMarginTop: '30px',
             verticalAlign: 'top'
         },
         plotOptions: {
