@@ -4192,10 +4192,10 @@ class CSl_statEx extends CSl_stat
         foreach ($inplay as $key => $value)
         {
           $cp = $value['candidate_inplay'] - $value['resume_sent'];
-          /*if($cp < 0)
+          if($cp < 0)
           {
-            $cp = 0;
-          }*/
+            $cp = -$value['candidate_inplay'];
+          }
 
           $inplay_formatted.= $value['formatted'].";";
           //$inplay_count.= $value['candidate_inplay'].";";
