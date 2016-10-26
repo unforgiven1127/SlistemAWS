@@ -109,7 +109,7 @@ $(function () {
                         fontSize: '20px',
                         fontWeight: 'bold'
                     },
-            color: 'rgba(179, 0, 0,0.5)',//red
+            color: 'rgba(153, 0, 18,0.8)',//red
             opacity: '.4',
             data: ccm1_count
         }, {
