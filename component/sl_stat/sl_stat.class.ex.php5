@@ -4125,6 +4125,9 @@ class CSl_statEx extends CSl_stat
         $new_candidate_met_json = " ;".$new_candidate_met_json;
         $new_candidate_count = "0;".$new_candidate_count;
 
+        $new_candidate_met_json = rtrim($new_candidate_met_json,';');
+        $new_candidate_count = rtrim($new_candidate_count,';');
+
       }
       elseif($loopChart == 'resume_bar_chart')
       {
@@ -4218,6 +4221,10 @@ class CSl_statEx extends CSl_stat
         $inplay_formatted = " ;".$inplay_formatted;
         $inplay_count = "0;".$inplay_count;
         $inplay_rsc = "0;".$inplay_rsc;
+
+        $inplay_formatted = rtrim($inplay_formatted,';');
+        $inplay_count = rtrim($inplay_count,';');
+        $inplay_rsc = rtrim($inplay_rsc,';');
       }
       else
       {
