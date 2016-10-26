@@ -25,6 +25,10 @@
                 font-size: 20px !important;
                 margin-top: 2cm !important;
             }
+            .highcharts-point
+            {
+                margin-top: -10px;
+            }
         </style>
         <script type="text/javascript">
 $(function () {
