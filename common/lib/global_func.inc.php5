@@ -1819,36 +1819,21 @@ var_dump($query);*/
     {
       $temp = $oDbResult->getData();
       $user_info = getUserInformaiton($temp['created_by']);
-//ChromePhp::log($user_info);
 
-      if(!isset($asData[$temp['created_by']]))
+      $array_user = $temp['created_by'];
+      if($user_info['position'] != 'Consultant')
       {
-        if($user_info['position'] != 'Consultant')
-        {
-          if($temp['attendeefk'] == '459')
-          {
-            ChromePhp::log($temp);
-          }
+        $array_user = $temp['attendeefk'];
+      }
 
-          $asData[$temp['attendeefk']] = array();
-        }
-        else
-        {
-          $asData[$temp['created_by']] = array();
-        }
+      if(!isset($asData[$array_user]))
+      {
+        $asData[$array_user] = array();
       }
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        if($user_info['position'] != 'Consultant')
-        {
-          array_push($asData[$temp['attendeefk']], $temp);
-        }
-        else
-        {
-          array_push($asData[$temp['created_by']], $temp);
-        }
-
+        array_push($asData[$array_user], $temp);
         //$asData[$temp['created_by']] = $temp;
       }
       $read = $oDbResult->readNext();
