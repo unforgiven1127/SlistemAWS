@@ -151,7 +151,7 @@ $(function () {
             color: 'rgba(28, 139, 176,0.5)',//blue
             opacity: '.4',
             data: count
-        },
+        }/*,
         {
                 name: ' ',
                         type: 'scatter',
@@ -159,7 +159,7 @@ $(function () {
                     enabled: false
                 },
                 data: [27]
-            }]
+            }*/]
 
     });
 });
