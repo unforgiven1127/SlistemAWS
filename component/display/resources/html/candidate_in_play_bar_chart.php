@@ -47,7 +47,7 @@ $(function () {
 
     $('#container').highcharts({
         chart: {
-            type: 'bar-basic'
+            type: 'bar'
         },
         title: {
             text: title
@@ -81,8 +81,10 @@ $(function () {
             itemMarginBottom: 50
         },
         plotOptions: {
-            series: {
-                stacking: 'normal'
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
             }
         },
         series: [ {
