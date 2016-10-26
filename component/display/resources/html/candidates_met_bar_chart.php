@@ -14,6 +14,7 @@
 $(function () {
 
     var title = "<?php echo $title; ?>";
+    var met_target = "<?php echo $met_target; ?>";
 
     var users = "<?php echo $new_candidate_met_json; ?>";
     users = users.split(';');
@@ -61,7 +62,7 @@ $(function () {
                       }
             },
             {
-                value:13,
+                value:met_target,
                 color: 'grey',
                 dashStyle: 'shortdash',
                 width:1,

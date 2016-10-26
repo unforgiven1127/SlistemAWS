@@ -4233,6 +4233,8 @@ class CSl_statEx extends CSl_stat
         $data['new_candidate_met_json'] = $new_candidate_met_json;
         $data['new_candidate_count'] = $new_candidate_count;
         $data['title'] = $title;
+        $targets = get_target_to_date();
+        $data['met_target'] = $targets['met_target'];
       }
       if(isset($rs_ccm1_mccm) && !empty($rs_ccm1_mccm))
       {
