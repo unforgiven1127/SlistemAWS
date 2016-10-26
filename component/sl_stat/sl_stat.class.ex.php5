@@ -4198,14 +4198,14 @@ class CSl_statEx extends CSl_stat
           }*/
 
           $inplay_formatted.= $value['formatted'].";";
-          $inplay_formatted = " ;".$inplay_formatted;
 
           $inplay_count.= $value['candidate_inplay'].";";
-          $inplay_count = "0;".$inplay_count;
           //$inplay_count.= $cp.";";
           $inplay_rsc.= $value['resume_sent'].";";
-          $inplay_rsc = "0;".$inplay_rsc;
         }
+        $inplay_formatted = " ;".$inplay_formatted;
+        $inplay_count = "0;".$inplay_count;
+        $inplay_rsc = "0;".$inplay_rsc;
       }
       else
       {
