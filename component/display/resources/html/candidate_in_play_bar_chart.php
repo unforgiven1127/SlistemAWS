@@ -14,7 +14,7 @@
 $(function () {
     $('#container').highcharts({
         chart: {
-            type: 'column'
+            type: 'bar'
         },
 
         xAxis: {
