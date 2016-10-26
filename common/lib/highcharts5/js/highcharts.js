@@ -2895,7 +2895,7 @@
                         return a.numberFormat(this.total, -1)
                     },
                     style: {
-                        fontSize: "13px",
+                        fontSize: "11px",
                         fontWeight: "bold",
                         color: "#000000",
                         textShadow: "1px 1px contrast, -1px -1px contrast, -1px 1px contrast, 1px -1px contrast"
@@ -5828,7 +5828,7 @@
                     return null === this.y ? "" : a.numberFormat(this.y, -1)
                 },
                 style: {
-                    fontSize: "11px",
+                    fontSize: "15px",
                     fontWeight: "bold",
                     color: "contrast",
                     textShadow: "1px 1px contrast, -1px -1px contrast, -1px 1px contrast, 1px -1px contrast"
