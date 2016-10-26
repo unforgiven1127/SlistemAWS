@@ -17,7 +17,7 @@
             .highcharts-bar-series text
             {
                 font-size: 30px !important;
-                margin-top: 30px !important;
+                margin-top: 2cm !important;
             }
         </style>
         <script type="text/javascript">
