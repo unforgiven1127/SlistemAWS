@@ -76,7 +76,12 @@ $(function () {
         }],
         legend: {
             reversed: true,
-            verticalAlign: 'top'
+            verticalAlign: 'top',
+            itemStyle: {
+                color: 'red',
+                fontWeight: 'bold',
+                marginTop: '50'
+            }
         },
         plotOptions: {
             series: {
