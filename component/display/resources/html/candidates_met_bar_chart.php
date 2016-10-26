@@ -166,17 +166,19 @@ $(function () {
 		</script>
 	</head>
 	<body>
-<table>
-        <tr>
-            <td style='height:50px;'>TEST
-            </td>
-        </tr>
-    </table>
+
 
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
 <script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
 
 <div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
+
+<table>
+    <tr>
+        <td style='height:50px;'>TEST
+        </td>
+    </tr>
+</table>
 
 	</body>
 </html>
