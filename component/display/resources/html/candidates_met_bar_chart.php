@@ -68,7 +68,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         useHTML: true,
-                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/finish_40.png"/>',
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/finishflag.png"/>',
                         verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
