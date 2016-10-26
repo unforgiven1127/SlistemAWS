@@ -4204,7 +4204,7 @@ class CSl_statEx extends CSl_stat
           //$inplay_count.= $value['candidate_inplay'].";";
           $inplay_count.= $cp.";";
           //$inplay_rsc.= $value['resume_sent'].";";
-          $inplay_rsc.= $ip ;
+          $inplay_rsc.= $ip.";";
         }
       }
       else
