@@ -43,7 +43,13 @@ $(function () {
             // default options
         }, {
             linkedTo: 0,
-            opposite: true
+            opposite: true,
+            title: {
+                text:'',
+                style: {
+                    color: 'black'
+                }
+            }
         }],
         legend: {
             reversed: true
