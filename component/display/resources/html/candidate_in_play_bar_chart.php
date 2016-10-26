@@ -77,11 +77,7 @@ $(function () {
         legend: {
             reversed: true,
             verticalAlign: 'top',
-            itemStyle: {
-                color: 'red',
-                fontWeight: 'bold',
-                marginTop: '50'
-            }
+            margin: 30
         },
         plotOptions: {
             series: {
