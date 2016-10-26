@@ -59,7 +59,23 @@ $(function () {
             plotLines:[{
                 value:27,
                 color: 'black',
-                width:3,
+                width:1,
+                zIndex:4,
+                label:{
+                        useHTML: true,
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/note_24.png"/>',
+                        verticalAlign: 'top',
+                        textAlign: 'center',
+                        style: {
+                            fontSize: '20px',
+                            fontWeight: 'bold'
+                        }
+                      }
+            },
+            {
+                value:13,
+                color: 'black',
+                width:1,
                 zIndex:4,
                 label:{
                         useHTML: true,
