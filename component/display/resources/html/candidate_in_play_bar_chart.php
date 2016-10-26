@@ -86,7 +86,7 @@ $(function () {
         },
         plotOptions: {
             bar: {
-                groupPadding: 2,   // Exactly overlap
+                groupPadding: 0,   // Exactly overlap
                 pointWidth: 20,
                 dataLabels: {
                     enabled: false
