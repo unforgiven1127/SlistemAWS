@@ -63,7 +63,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         useHTML: true,
-                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/rabbit_48.png"/>',
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/rabbit_40.png"/>',
                         verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
@@ -79,7 +79,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         useHTML: true,
-                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/rabbit_48.png"/>',
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/rabbit_40.png"/>',
                         verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
