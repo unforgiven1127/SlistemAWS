@@ -81,8 +81,12 @@ $(function () {
             itemMarginBottom: 50
         },
         plotOptions: {
-            series: {
+            /*series: {
                 stacking: 'normal'
+            }*/
+            column: {
+                groupPadding: 0.5,  // Exactly overlap
+                pointWidth: 20
             }
         },
         series: [ {
