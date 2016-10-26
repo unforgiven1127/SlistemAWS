@@ -75,7 +75,7 @@ $(function () {
             }
         }],
         legend: {
-            reversed: true,
+            //reversed: true,
             verticalAlign: 'top',
             itemMarginTop: 50,
             itemMarginBottom: 50
