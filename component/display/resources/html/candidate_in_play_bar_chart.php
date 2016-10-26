@@ -62,8 +62,8 @@ $(function () {
                 width:3,
                 zIndex:4,
                 label:{
-                        text:'CUSTOM TARGET',
-                        verticalAlign: 'middle',
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/note_24.png"/>',
+                        verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
                             fontSize: '20px',
