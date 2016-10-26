@@ -9,6 +9,22 @@
     {
         font-weight: bold !important;
     }
+    .highcharts-title
+    {
+        padding-bottom: 30px;
+        padding-top: -20px;
+        font-weight: bold !important;
+    }
+    .highcharts-legend-item text
+    {
+        font-size: 20px !important;
+        margin-top: 2cm !important;
+    }
+    .highcharts-legend-item rect
+    {
+        font-size: 20px !important;
+        margin-top: 2cm !important;
+    }
 </style>
 <script type="text/javascript">
 $(function () {
