@@ -42,13 +42,7 @@ $(function () {
         yAxis: {
             tickInterval:1,
             opposite: true,
-            min: 0,
-            title: {
-                text:'',
-                style: {
-                    color: 'red'
-                }
-            }
+            min: 0
         },
         legend: {
             reversed: true
