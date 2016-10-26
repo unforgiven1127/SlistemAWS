@@ -2377,7 +2377,7 @@
                 margin: 15,
                 style: {
                     color: "#333333",
-                    fontSize: "18px"
+                    fontSize: "20px"
                 },
                 widthAdjust: -44
             },

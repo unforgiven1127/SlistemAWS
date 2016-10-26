@@ -9,10 +9,6 @@
             {
                 font-weight: bold !important;
             }
-            .highcharts-xaxis-labels text
-            {
-                font-size: 20px !important;
-            }
             .highcharts-title
             {
                 padding-bottom: 30px;
