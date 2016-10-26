@@ -935,7 +935,7 @@
                             height: 0
                         }
                     } else x = this.htmlGetBBox();
-                    z.isSVG && (z = x.width, u = x.height, f && D && "20px" === D.fontSize && "16.9" === u.toPrecision(3) && (x.height = u = 14), e && (x.width = Math.abs(u * Math.sin(b)) + Math.abs(z * Math.cos(b)), x.height = Math.abs(u * Math.cos(b)) + Math.abs(z * Math.sin(b))));
+                    z.isSVG && (z = x.width, u = x.height, f && D && "11px" === D.fontSize && "16.9" === u.toPrecision(3) && (x.height = u = 14), e && (x.width = Math.abs(u * Math.sin(b)) + Math.abs(z * Math.cos(b)), x.height = Math.abs(u * Math.cos(b)) + Math.abs(z * Math.sin(b))));
                     if (n && 0 < x.height) {
                         for (; 250 < H.length;) delete w[H.shift()];
                         w[n] || H.push(n);
@@ -3188,7 +3188,7 @@
                 y = F(e.userMin,
                     l.min);
                 A = F(e.userMax, l.max);
-                p ? (e.linkedParent = h[e.coll][l.linkedTo], h = e.linkedParent.getExtremes(), e.min = F(h.min, h.dataMin), e.max = F(h.max, h.dataMax), l.type !== e.linkedParent.options.type && k(11, 1)) : (!M && r(m) && (e.dataMin >= m ? (t = m, g = 0) : e.dataMax <= m && (I = m, v = 0)), e.min = F(y, t, e.dataMin), e.max = F(A, I, e.dataMax));
+                p ? (e.linkedParent = h[e.coll][l.linkedTo], h = e.linkedParent.getExtremes(), e.min = F(h.min, h.dataMin), e.max = F(h.max, h.dataMax), l.type !== e.linkedParent.options.type && k(20, 1)) : (!M && r(m) && (e.dataMin >= m ? (t = m, g = 0) : e.dataMax <= m && (I = m, v = 0)), e.min = F(y, t, e.dataMin), e.max = F(A, I, e.dataMax));
                 q && (!a && 0 >= Math.min(e.min, F(e.dataMin, e.min)) && k(10, 1), e.min = d(u(e.min), 15), e.max = d(u(e.max), 15));
                 e.range && r(e.max) && (e.userMin = e.min = y = Math.max(e.min, e.minFromRange()), e.userMax = A = e.max, e.range = null);
                 B(e, "foundExtremes");
