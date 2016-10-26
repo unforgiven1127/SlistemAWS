@@ -3486,7 +3486,7 @@
                 }).addClass("highcharts-" + this.coll.toLowerCase() + " " + (t || "")).add(I), a.labelGroup = e.g("axis-labels").attr({
                     zIndex: D.zIndex || 7
                 }).addClass("highcharts-" +
-                    a.coll.toLowerCase() + "-labels " + (t || "")).add(I));
+                    a.coll.toLowerCase() + "-labels test" + (t || "")).add(I));
                 if (k || a.isLinked) b(h, function(c) {
                     l[c] ? l[c].addLabel() : l[c] = new M(a, c)
                 }), a.renderUnsquish(), !1 === D.reserveSpace || 0 !== q && 2 !== q && {
