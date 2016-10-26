@@ -84,7 +84,7 @@ $(function () {
             /*series: {
                 stacking: 'normal'
             }*/
-            column: {
+            series: {
                 groupPadding: 0.5,  // Exactly overlap
                 pointWidth: 20
             }
