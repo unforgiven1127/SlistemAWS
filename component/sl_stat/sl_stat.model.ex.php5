@@ -427,15 +427,22 @@ order by m.candidatefk
     while($read)
     {
       $temp = $oDbResult->getData();
+      $user_info = getUserInformaiton($temp['created_by']);
 
-      if(!isset($asData[$temp['created_by']]))
+      $array_user = $temp['created_by'];
+      if($user_info['position'] != 'Consultant')
       {
-        $asData[$temp['created_by']] = array();
+        $array_user = $temp['attendeefk'];
+      }
+
+      if(!isset($asData[$array_user]))
+      {
+        $asData[$array_user] = array();
       }
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        array_push($asData[$temp['created_by']], $temp);
+        array_push($asData[$array_user], $temp);
 
         //$asData[$temp['created_by']] = $temp;
       }
