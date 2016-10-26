@@ -935,7 +935,7 @@
                             height: 0
                         }
                     } else x = this.htmlGetBBox();
-                    z.isSVG && (z = x.width, u = x.height, f && D && "11px" === D.fontSize && "16.9" === u.toPrecision(3) && (x.height = u = 14), e && (x.width = Math.abs(u * Math.sin(b)) + Math.abs(z * Math.cos(b)), x.height = Math.abs(u * Math.cos(b)) + Math.abs(z * Math.sin(b))));
+                    z.isSVG && (z = x.width, u = x.height, f && D && "20px" === D.fontSize && "16.9" === u.toPrecision(3) && (x.height = u = 14), e && (x.width = Math.abs(u * Math.sin(b)) + Math.abs(z * Math.cos(b)), x.height = Math.abs(u * Math.cos(b)) + Math.abs(z * Math.sin(b))));
                     if (n && 0 < x.height) {
                         for (; 250 < H.length;) delete w[H.shift()];
                         w[n] || H.push(n);
@@ -5828,7 +5828,7 @@
                     return null === this.y ? "" : a.numberFormat(this.y, -1)
                 },
                 style: {
-                    fontSize: "15px",
+                    fontSize: "11px",
                     fontWeight: "bold",
                     color: "contrast",
                     textShadow: "1px 1px contrast, -1px -1px contrast, -1px 1px contrast, 1px -1px contrast"
