@@ -74,7 +74,18 @@ $(function () {
             }
         }],
         legend: {
-            reversed: true
+            layout: 'vertical',
+            backgroundColor: 'white',
+            align: 'right',
+            verticalAlign: 'top',
+            y: 165,
+            x: -220,
+            borderWidth: 1,
+            borderRadius: 5,
+
+            floating: true,
+            draggable: true,
+            zIndex: 20
         },
         plotOptions: {
             series: {
