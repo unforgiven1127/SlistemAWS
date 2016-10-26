@@ -68,7 +68,7 @@ $(function () {
             data: inplay_rsc
         }, {
             name: 'Candidate in play',
-            color: 'rgba(124,181,236,0.8)',//blue
+            color: 'rgba(124,181,236,0.6)',//blue
             opacity: '.4',
             data: inplay_count
         }]
