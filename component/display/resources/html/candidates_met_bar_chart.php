@@ -161,7 +161,7 @@ $(function () {
             name: 'Candidate met',
             color: 'rgba(0, 32, 194,0.8)',//blue
             opacity: '.4',
-            data: count
+            data: [1,2,3,4,5,6,7,8,9]
         }/*,
         {
                 name: ' ',
