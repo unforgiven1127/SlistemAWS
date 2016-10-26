@@ -16,6 +16,7 @@
             .highcharts-title
             {
                 padding-bottom: 30px;
+                font-weight: bold !important;
             }
         </style>
         <script type="text/javascript">
@@ -50,6 +51,7 @@ $(function () {
         yAxis: [{
             // default options
         }, {
+            tickInterval:1,
             linkedTo: 0,
             opposite: true,
             title: {
