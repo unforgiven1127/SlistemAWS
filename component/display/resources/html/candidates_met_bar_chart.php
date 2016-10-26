@@ -120,6 +120,7 @@ $(function () {
             tickInterval:1,
             title: {
                 text:'',
+                itemMarginBottom: 50,
                 style: {
                     color: 'black'
                 }
@@ -173,12 +174,6 @@ $(function () {
 
 <div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
 
-<table>
-    <tr>
-        <td style='height:250px;'>TEST
-        </td>
-    </tr>
-</table>
 
 	</body>
 </html>
