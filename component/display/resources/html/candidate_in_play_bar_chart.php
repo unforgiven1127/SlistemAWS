@@ -81,13 +81,13 @@ $(function () {
             itemMarginBottom: 50
         },
         plotOptions: {
-            /*series: {
-                stacking: 'normal'
-            }*/
             series: {
+                stacking: 'normal'
+            }
+            /*series: {
                 groupPadding: 0.5,  // Exactly overlap
                 pointWidth: 20
-            }
+            }*/
         },
         series: [ {
             name: 'Resume sent',
