@@ -62,14 +62,14 @@ $(function () {
             },
             {
                 value:13,
-                color: 'black',
+                color: 'grey',
+                dashStyle: 'shortdash',
                 width:1,
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET',
                         verticalAlign: 'middle',
                         textAlign: 'center',
-                        dashStyle: 'shortdash',
                         style: {
                             fontSize: '20px',
                             fontWeight: 'bold'
