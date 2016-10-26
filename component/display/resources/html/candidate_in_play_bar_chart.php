@@ -75,17 +75,26 @@ $(function () {
             }
         }],
         legend: {
-            reversed: true,
+            //reversed: true,
             verticalAlign: 'top',
             itemMarginTop: 50,
             itemMarginBottom: 50
         },
         plotOptions: {
-            series: {
-                stacking: 'normal'
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
             }
         },
-        series: [ {
+        series: [
+        {
+            name: 'Candidate in play',
+            color: 'rgba(28, 139, 176,0.5)',//blue
+            opacity: '.4',
+            data: inplay_count
+        },
+        {
             name: 'Resume sent',
             style: {
                         fontSize: '20px',
@@ -94,11 +103,6 @@ $(function () {
             color: 'rgba(179, 0, 0,0.5)',//red
             opacity: '.4',
             data: inplay_rsc
-        }, {
-            name: 'Candidate in play',
-            color: 'rgba(28, 139, 176,0.5)',//blue
-            opacity: '.4',
-            data: inplay_count
         }]
 
     });
