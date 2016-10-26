@@ -13,6 +13,10 @@
             {
                 visibility: hidden;
             }
+            .highcharts-title
+            {
+                margin-bottom: 30px;
+            }
         </style>
         <script type="text/javascript">
 $(function () {
