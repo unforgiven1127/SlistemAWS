@@ -2895,7 +2895,7 @@
                         return a.numberFormat(this.total, -1)
                     },
                     style: {
-                        fontSize: "11px",
+                        fontSize: "13px",
                         fontWeight: "bold",
                         color: "#000000",
                         textShadow: "1px 1px contrast, -1px -1px contrast, -1px 1px contrast, 1px -1px contrast"
