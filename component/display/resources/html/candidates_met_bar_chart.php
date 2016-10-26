@@ -72,7 +72,7 @@ $(function () {
                         textAlign: 'center',
                         style: {
                             fontSize: '20px',
-                            fontWeight: 'bold'
+                            color: 'grey',
                         }
                       }
             }]
