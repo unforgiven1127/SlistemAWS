@@ -413,7 +413,7 @@ order by m.candidatefk
         FROM sl_meeting m
         INNER JOIN sl_meeting m2 on m2.candidatefk = m.candidatefk and m2.meeting_done = 1
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
-        WHERE m.created_by IN ('.implode(',', $user_ids).')
+        WHERE (m.created_by IN ('.implode(',', $user_ids).') OR m.attendeefk IN ('.implode(',', $user_ids).'))
         AND m.date_met >= "'.$start_date.'"
         AND m.date_met < "'.$end_date.'"
         group by m.sl_meetingpk
