@@ -4191,16 +4191,16 @@ class CSl_statEx extends CSl_stat
         uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
         foreach ($inplay as $key => $value)
         {
-          /*$cp = $value['candidate_inplay'] - $value['resume_sent'];
+          $cp = $value['candidate_inplay'] - $value['resume_sent'];
           if($cp < 0)
           {
-            $cp = 0;
-          }*/
+            $cp = $value['resume_sent'];
+          }
 
           $inplay_formatted.= $value['formatted'].";";
           $inplay_count.= $value['candidate_inplay'].";";
-          //$inplay_count.= $cp.";";
-          $inplay_rsc.= $value['resume_sent'].";";
+          $inplay_count.= $cp.";";
+          //$inplay_rsc.= $value['resume_sent'].";";
         }
       }
       else
