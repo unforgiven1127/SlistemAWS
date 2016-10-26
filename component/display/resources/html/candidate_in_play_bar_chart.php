@@ -49,7 +49,9 @@ $(function () {
                 }
             }
         },
-        
+        legend: {
+            reversed: true
+        },
         plotOptions: {
             series: {
                 stacking: 'normal'
