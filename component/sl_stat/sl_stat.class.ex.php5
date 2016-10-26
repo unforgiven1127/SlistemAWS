@@ -4166,6 +4166,11 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
 
+        $rs_ccm1_mccm_formatted = rtrim($rs_ccm1_mccm_formatted,';');
+        $rs_ccm1_mccm_rsc = rtrim($rs_ccm1_mccm_rsc,';');
+        $rs_ccm1_mccm_ccm1 = rtrim($rs_ccm1_mccm_ccm1,';');
+        $rs_ccm1_mccm_mccm = rtrim($rs_ccm1_mccm_mccm,';');
+
       }
       elseif($loopChart == 'candidate_in_play_bar_chart')
       {
