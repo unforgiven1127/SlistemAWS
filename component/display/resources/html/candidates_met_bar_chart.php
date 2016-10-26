@@ -67,7 +67,7 @@ $(function () {
                 width:1,
                 zIndex:4,
                 label:{
-                        text:'CUSTOM TARGET',
+                        text:'DAILY TARGET',
                         verticalAlign: 'middle',
                         textAlign: 'center',
                         style: {
