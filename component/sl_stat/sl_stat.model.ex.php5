@@ -430,7 +430,7 @@ order by m.candidatefk
       $user_info = getUserInformaiton($temp['created_by']);
 
       $array_user = $temp['created_by'];
-      if($user_info['position'] != 'Consultant')
+      if($user_info['position'] != 'Consultant' && $temp['created_by'] != $temp['attendeefk'])
       {
         $array_user = $temp['attendeefk'];
       }
