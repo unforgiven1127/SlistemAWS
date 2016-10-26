@@ -12,28 +12,63 @@
         </style>
         <script type="text/javascript">
 $(function () {
+
+    var title = "<?php echo $title; ?>";
+
+    var users = "<?php echo $inplay_formatted; ?>";
+    users = users.split(';');
+
+    var inplay_count = "<?php echo $inplay_count; ?>";
+    inplay_count = inplay_count.split(';');
+
+    for(var i=0; i<inplay_count.length; i++) { inplay_count[i] = parseInt(inplay_count[i], 10); }
+
+    var inplay_rsc = "<?php echo $inplay_rsc; ?>";
+    inplay_rsc = inplay_rsc.split(';');
+
+    for(var i=0; i<inplay_rsc.length; i++) { inplay_rsc[i] = parseInt(inplay_rsc[i], 10); }
+
+
     $('#container').highcharts({
         chart: {
             type: 'bar'
         },
-
-        xAxis: {
-            type: 'datetime',
-            tickInterval: 24 * 3600 * 1000
+        title: {
+            text: title
         },
-
+        xAxis: {
+            categories: users
+        },
         yAxis: [{
             // default options
         }, {
             linkedTo: 0,
             opposite: true
         }],
-
-        series: [{
-            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4],
-            pointStart: Date.UTC(2010, 0, 1),
-            pointInterval: 24 * 3600 * 1000 // one day
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series: [ {
+            name: 'Resume sent',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
+            color: 'rgba(179, 0, 0,0.5)',//red
+            opacity: '.4',
+            data: inplay_rsc
+        }, {
+            name: 'Candidate in play',
+            color: 'rgba(28, 139, 176,0.5)',//blue
+            opacity: '.4',
+            data: inplay_count
         }]
+
     });
 });
         </script>
