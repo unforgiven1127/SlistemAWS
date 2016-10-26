@@ -77,7 +77,8 @@ $(function () {
         legend: {
             reversed: true,
             verticalAlign: 'top',
-            margin: -20
+            itemMarginTop: 50,
+            itemMarginBottom: 50
         },
         plotOptions: {
             series: {
