@@ -9,6 +9,26 @@
             {
                 font-weight: bold !important;
             }
+            .highcharts-title
+            {
+                padding-bottom: 30px;
+                padding-top: -20px;
+                font-weight: bold !important;
+            }
+            .highcharts-legend-item text
+            {
+                font-size: 20px !important;
+                margin-top: 2cm !important;
+            }
+            .highcharts-legend-item rect
+            {
+                font-size: 20px !important;
+                margin-top: 2cm !important;
+            }
+            .menunav1pos_top
+            {
+                margin-top: -40px !important;
+            }
 		</style>
 		<script type="text/javascript">
 $(function () {
@@ -43,16 +63,26 @@ $(function () {
         xAxis: {
             categories: users
         },
-        yAxis: {
+        yAxis: [{
+
             tickInterval:1,
-            min: 0,
             title: {
                 text:'',
                 style: {
-                    color: 'red'
+                    color: 'black'
                 }
             }
-        },
+        }, {
+            tickInterval:1,
+            linkedTo: 0,
+            opposite: true,
+            title: {
+                text:'',
+                style: {
+                    color: 'black'
+                }
+            }
+        }],
         legend: {
             reversed: true
         },
