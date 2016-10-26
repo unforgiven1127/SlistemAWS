@@ -57,7 +57,7 @@ $(function () {
         },
         yAxis: [{
             plotLines:[{
-                value:27,
+                value:inplay_rsc[1]+inplay_count[1],
                 color: 'black',
                 width:1,
                 zIndex:4,
