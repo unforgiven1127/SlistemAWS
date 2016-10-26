@@ -14,6 +14,10 @@
                 padding-bottom: 30px;
                 font-weight: bold !important;
             }
+            .highcharts-bar-series
+            {
+                font-size: 50px !important;
+            }
         </style>
         <script type="text/javascript">
 $(function () {
