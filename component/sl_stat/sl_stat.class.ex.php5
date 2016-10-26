@@ -4189,6 +4189,8 @@ class CSl_statEx extends CSl_stat
           $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$candidate_inplay_temp['count']."|"." |".$resume_sent_temp['count']."|";
         }
         uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
+        $max_rabbit_1 = 0;
+        $max_rabbit_2 = 0;
         foreach ($inplay as $key => $value)
         {
           /*$cp = $value['candidate_inplay'] - $value['resume_sent'];
@@ -4196,7 +4198,14 @@ class CSl_statEx extends CSl_stat
           {
             $cp = 0;
           }*/
-
+          if($value['candidate_inplay'] > $max_rabbit_1)
+          {
+            $max_rabbit_1 = $value['candidate_inplay'];
+          }
+          if($value['candidate_inplay'] + $value['resume_sent'] > $max_rabbit_2)
+          {
+            $max_rabbit_2 = $value['candidate_inplay'] + $value['resume_sent'];
+          }
           $inplay_formatted.= $value['formatted'].";";
 
           $inplay_count.= $value['candidate_inplay'].";";
@@ -4239,6 +4248,8 @@ class CSl_statEx extends CSl_stat
         $data['inplay_count'] = $inplay_count;
         $data['inplay_rsc'] = $inplay_rsc;
         $data['title'] = $title;
+        $data['max_rabbit_1'] = $max_rabbit_1;
+        $data['max_rabbit_2'] = $max_rabbit_2;
       }
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);

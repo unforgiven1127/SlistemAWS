@@ -57,7 +57,7 @@ $(function () {
         },
         yAxis: [{
             plotLines:[{
-                value:inplay_rsc[1]+inplay_count[1],
+                value:max_rabbit_2,
                 color: 'black',
                 width:1,
                 zIndex:4,
@@ -73,7 +73,7 @@ $(function () {
                       }
             },
             {
-                value:13,
+                value:max_rabbit_1,
                 color: 'black',
                 width:1,
                 zIndex:4,
