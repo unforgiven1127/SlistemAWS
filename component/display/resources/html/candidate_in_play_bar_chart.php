@@ -139,7 +139,7 @@ $(function () {
             data: inplay_rsc
         }, {
             name: 'Candidate in play',
-            color: 'rgba(72, 99, 160,0.8)',//blue
+            color: 'rgba(43, 101, 236,0.8)',//blue
             opacity: '.4',
             data: inplay_count
         }]
