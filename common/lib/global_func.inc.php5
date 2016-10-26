@@ -1820,11 +1820,12 @@ var_dump($query);*/
       $temp = $oDbResult->getData();
       $user_info = getUserInformaiton($temp['created_by']);
 //ChromePhp::log($user_info);
-ChromePhp::log($temp);
+
       if(!isset($asData[$temp['created_by']]))
       {
         if($user_info['position'] != 'Consultant')
         {
+          ChromePhp::log($temp);
           $asData[$temp['attendeefk']] = array();
         }
         else
