@@ -4194,7 +4194,7 @@ class CSl_statEx extends CSl_stat
           $cp = $value['candidate_inplay'] - $value['resume_sent'];
           if($cp < 0)
           {
-            $cp = $value['resume_sent'];
+            $cp = $value['candidate_inplay'];
           }
 
           $inplay_formatted.= $value['formatted'].";";
