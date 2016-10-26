@@ -14,7 +14,7 @@
                 padding-bottom: 30px;
                 font-weight: bold !important;
             }
-            .highcharts-bar-series
+            .highcharts-bar-series text
             {
                 font-size: 50px !important;
             }
