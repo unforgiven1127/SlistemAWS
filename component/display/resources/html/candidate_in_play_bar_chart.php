@@ -9,6 +9,10 @@
             {
                 font-weight: bold !important;
             }
+            .highcharts-axis-title
+            {
+                visibility: hidden;
+            }
         </style>
         <script type="text/javascript">
 $(function () {
