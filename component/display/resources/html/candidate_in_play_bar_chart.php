@@ -15,7 +15,7 @@
             }
             .highcharts-title
             {
-                margin-bottom: 30px;
+                padding-bottom: 30px;
             }
         </style>
         <script type="text/javascript">
