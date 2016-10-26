@@ -1825,7 +1825,11 @@ var_dump($query);*/
       {
         if($user_info['position'] != 'Consultant')
         {
-          ChromePhp::log($temp);
+          if($temp['attendeefk'] == '459')
+          {
+            ChromePhp::log($temp);
+          }
+
           $asData[$temp['attendeefk']] = array();
         }
         else
