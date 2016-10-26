@@ -4192,15 +4192,19 @@ class CSl_statEx extends CSl_stat
         foreach ($inplay as $key => $value)
         {
           $cp = $value['candidate_inplay'] - $value['resume_sent'];
+          $ip = $value['candidate_inplay'];
           if($cp < 0)
           {
             $cp = $value['candidate_inplay'];
+            $ip = $value['resume_sent'] - $value['candidate_inplay'];
           }
+
 
           $inplay_formatted.= $value['formatted'].";";
           //$inplay_count.= $value['candidate_inplay'].";";
           $inplay_count.= $cp.";";
-          $inplay_rsc.= $value['resume_sent'].";";
+          //$inplay_rsc.= $value['resume_sent'].";";
+          $inplay_rsc.= $ip ;
         }
       }
       else
