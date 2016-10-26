@@ -1826,7 +1826,15 @@ var_dump($query);*/
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
-        array_push($asData[$temp['created_by']], $temp);
+        $user_info = getUserInformaiton($temp['created_by']);
+        if($user_info['position'] != 'Consultant')
+        {
+          array_push($asData[$temp['attendeefk']], $temp);
+        }
+        else
+        {
+          array_push($asData[$temp['created_by']], $temp);
+        }
 
         //$asData[$temp['created_by']] = $temp;
       }
