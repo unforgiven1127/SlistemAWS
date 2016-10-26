@@ -11,7 +11,7 @@
             }
             .highcharts-title
             {
-                margin-bottom: 30px;
+                padding-bottom: 30px;
                 font-weight: bold !important;
             }
             .highcharts-legend-item text
