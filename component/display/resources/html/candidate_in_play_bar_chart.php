@@ -25,6 +25,10 @@
                 font-size: 20px !important;
                 margin-top: 2cm !important;
             }
+            .menunav1pos_top
+            {
+                margin-top: -40px !important;
+            }
         </style>
         <script type="text/javascript">
 $(function () {
@@ -113,7 +117,7 @@ $(function () {
             reversed: true,
             verticalAlign: 'top',
             itemMarginTop: 50,
-            itemMarginBottom: 50
+            //itemMarginBottom: 50
         },
         plotOptions: {
             series: {
