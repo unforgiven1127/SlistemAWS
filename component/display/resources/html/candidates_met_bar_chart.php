@@ -25,6 +25,10 @@
         font-size: 20px !important;
         margin-top: 2cm !important;
     }
+    .menunav1pos_top
+    {
+        margin-top: -40px !important;
+    }
 </style>
 <script type="text/javascript">
 $(function () {
@@ -120,7 +124,6 @@ $(function () {
             tickInterval:1,
             title: {
                 text:'',
-                itemMarginBottom: 50,
                 style: {
                     color: 'black'
                 }
