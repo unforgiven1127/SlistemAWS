@@ -63,7 +63,7 @@ $(function () {
             categories: users
         },
         yAxis: [{
-            plotLines:[{
+            /*plotLines:[{
                 value:max_rabbit_2,
                 color: 'black',
                 width:1,
@@ -94,7 +94,7 @@ $(function () {
                             fontWeight: 'bold'
                         }
                       }
-            }],
+            }],*/
             tickInterval:1,
             title: {
                 text:'',
