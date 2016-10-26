@@ -41,6 +41,7 @@ $(function () {
         },
         yAxis: {
             tickInterval:1,
+            linkedTo: 0,
             opposite: true,
             min: 0,
             title: {
