@@ -151,6 +151,13 @@ $(function () {
             }
         },
         series: [ {
+                name: ' ',
+                        type: 'scatter',
+                        marker: {
+                    enabled: false
+                },
+                data: [27]
+            },{
             name: 'Candidate met',
             color: 'rgba(0, 32, 194,0.8)',//blue
             opacity: '.4',
