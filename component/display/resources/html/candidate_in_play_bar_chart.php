@@ -47,7 +47,7 @@ $(function () {
 
     $('#container').highcharts({
         chart: {
-            type: 'bar'
+            type: 'bar-basic'
         },
         title: {
             text: title
