@@ -63,7 +63,8 @@ $(function () {
             },
             {
                 value:met_target,
-                color: 'black',
+                color: 'grey',
+                dashStyle: 'shortdash',
                 width:1,
                 zIndex:4,
                 label:{
@@ -73,7 +74,7 @@ $(function () {
                         textAlign: 'center',
                         style: {
                             fontSize: '20px',
-                            fontWeight: 'bold'
+                            color: 'grey',
                         }
                       }
             },
