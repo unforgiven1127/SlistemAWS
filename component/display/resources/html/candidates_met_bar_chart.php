@@ -36,8 +36,7 @@ $(function () {
             categories: users
             //categories: ['R.Pedersen |19|', 'P.Thai |13|', 'M.Moir |10|', 'Y.Takagi |4|', 'G.Young |2|',]
         },
-        yAxis: {
-
+        yAxis: [{
             plotLines:[{
                 value:27,
                 color: 'black',
@@ -101,14 +100,25 @@ $(function () {
                             color: 'grey',
                         }
                       }
-            }],tickInterval:1,
+            }],
+            tickInterval:1,
             title: {
                 text:'',
                 style: {
                     color: 'black'
                 }
             }
-        },
+        }, {
+            tickInterval:1,
+            linkedTo: 0,
+            opposite: true,
+            title: {
+                text:'',
+                style: {
+                    color: 'black'
+                }
+            }
+        }],
         legend: {
             reversed: true
         },
@@ -130,17 +140,7 @@ $(function () {
                     enabled: false
                 },
                 data: [27]
-            },{
-            tickInterval:1,
-            linkedTo: 0,
-            opposite: true,
-            title: {
-                text:'',
-                style: {
-                    color: 'black'
-                }
-            }
-        }]
+            }]
 
     });
 });
