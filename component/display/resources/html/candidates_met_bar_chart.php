@@ -48,12 +48,28 @@ $(function () {
             plotLines:[{
                 value:27,
                 color: 'black',
-                width:3,
+                width:1,
                 zIndex:4,
                 label:{
                         text:'CUSTOM TARGET',
                         verticalAlign: 'middle',
                         textAlign: 'center',
+                        style: {
+                            fontSize: '20px',
+                            fontWeight: 'bold'
+                        }
+                      }
+            },
+            {
+                value:13,
+                color: 'black',
+                width:1,
+                zIndex:4,
+                label:{
+                        text:'CUSTOM TARGET',
+                        verticalAlign: 'middle',
+                        textAlign: 'center',
+                        dashStyle: 'shortdash',
                         style: {
                             fontSize: '20px',
                             fontWeight: 'bold'
