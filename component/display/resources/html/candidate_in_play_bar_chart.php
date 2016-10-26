@@ -12,23 +12,17 @@
             .highcharts-title
             {
                 padding-bottom: 30px;
+                padding-top: -20px;
                 font-weight: bold !important;
-            }
-            .highcharts-legend-item
-            {
-                margin-top: 2cm !important;
-                padding-top: 2cm !important;
             }
             .highcharts-legend-item text
             {
                 font-size: 20px !important;
-                padding-top: 2cm !important;
                 margin-top: 2cm !important;
             }
             .highcharts-legend-item rect
             {
                 font-size: 20px !important;
-                padding-top: 2cm !important;
                 margin-top: 2cm !important;
             }
         </style>
