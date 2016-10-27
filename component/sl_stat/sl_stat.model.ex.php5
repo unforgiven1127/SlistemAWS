@@ -430,7 +430,8 @@ order by m.candidatefk
       $user_info = getUserInformaiton($temp['created_by']);
 
       $array_user = $temp['created_by'];
-      if($user_info['position'] != 'Consultant' && $temp['created_by'] != $temp['attendeefk'])
+      $array_user2 = $temp['created_by'];
+      if($user_info['position'] != 'Consultant')
       {
         $array_user = $temp['attendeefk'];
       }
@@ -438,11 +439,19 @@ order by m.candidatefk
       if(!isset($asData[$array_user]))
       {
         $asData[$array_user] = array();
+        if($array_user != $array_user2)
+        {
+          $asData[$array_user2] = array();
+        }
       }
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
         array_push($asData[$array_user], $temp);
+        if($array_user != $array_user2)
+        {
+          array_push($asData[$array_user2], $temp);
+        }
 
         //$asData[$temp['created_by']] = $temp;
       }
