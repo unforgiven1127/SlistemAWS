@@ -1649,7 +1649,7 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
         {
           if($asCurrentPhase['status'] != 2)
           {
-            return array('error' => __LINE__.' - To be able to select CCM1, you should send the resume firts.');
+            return array('error' => __LINE__.' - To be able to select CCM1, you should send the resume first.');
           }
           $level = 2;
         }
