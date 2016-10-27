@@ -26,8 +26,7 @@
 			}
 			var cols = document.getElementsByClassName('totals_table');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","width:90% !important;");
-			    cols[i].setAttribute("style","height:90% !important;");
+			    cols[i].setAttribute("style","width:100% !important;");
 			}
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
