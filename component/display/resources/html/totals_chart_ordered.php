@@ -24,6 +24,10 @@
 			for(i=0; i<cols.length; i++) {
 			    cols[i].setAttribute("style","font-size:150% !important;");
 			}
+			var cols = document.getElementsByClassName('totals_table');
+			for(i=0; i<cols.length; i++) {
+			    cols[i].setAttribute("style","width:100% !important;");
+			}
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
 		}
