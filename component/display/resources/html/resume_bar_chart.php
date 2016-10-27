@@ -127,7 +127,7 @@ $(function () {
             data: ccm1_count
         },
         {
-            name: 'CCM1',
+            name: 'CCM2',
             style: {
                         fontSize: '20px',
                         fontWeight: 'bold'
