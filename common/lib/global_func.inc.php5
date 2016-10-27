@@ -1736,7 +1736,7 @@ var_dump($query);*/
     $sQuery = "SELECT min(sl2.sl_position_linkpk) as first_ccm1 ,sl1.*
               FROM sl_position_link sl1
               INNER JOIN sl_position_link sl2 on sl2.candidatefk = sl1.candidatefk AND sl2.status = '51'
-              WHERE sl1.created_by = '".$user_id."' AND sl1.status = '51' AND sl1.date_completed >= '".$start_date."'
+              WHERE sl1.created_by = '".$user_id."' AND sl1.status = '51' AND sl1.date_created >= '".$start_date."'
               group by sl1.sl_position_linkpk";
 
     $db_result = $oDB->executeQuery($sQuery);
