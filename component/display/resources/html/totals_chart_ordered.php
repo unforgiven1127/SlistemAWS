@@ -22,6 +22,10 @@
 			}
 			var cols = document.getElementsByClassName('revenueSize2');
 			for(i=0; i<cols.length; i++) {
+			    cols[i].setAttribute("style","font-size:150% !important;");
+			}
+			var cols = document.getElementsByClassName('revenueSize3');
+			for(i=0; i<cols.length; i++) {
 			    cols[i].setAttribute("style","font-size:180% !important;");
 			}
 			var cols = document.getElementsByClassName('totals_table');
@@ -746,22 +750,22 @@
 	<tr class="totals_table_footer">
 	<!--<td colspan="15">&nbsp;</td></tr>-->
 	<!--<tr bgcolor="#58FAAC"> -->
-		<td class='revenueSize2' colspan="10" class="text_right">
+		<td class='revenueSize3' colspan="10" class="text_right">
 			Total :
 		</td>
-		<td class='revenueSize2'>
+		<td class='revenueSize3'>
 			<?php echo $total_ncm; ?>
 		</td>
-		<td class='revenueSize2'>
+		<td class='revenueSize3'>
 			<?php echo $total_ncip; ?>
 		</td>
-		<td class='revenueSize2'>
+		<td class='revenueSize3'>
 			<?php echo $total_npip; ?>
 		</td>
-		<td class='revenueSize2'>
+		<td class='revenueSize3'>
 			<?php echo $total_o; ?>
 		</td>
-		<td class='revenueSize2'>
+		<td class='revenueSize3'>
 			<?php echo $total_p; ?>
 		</td>
 	</tr>
