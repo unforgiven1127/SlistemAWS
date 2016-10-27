@@ -1645,7 +1645,14 @@ $GLOBALS['redis']->set('savedPositionTitle', $asPosition['positionfk']);
       if($asData['status'] == 2 || $asData['status'] == 51 || $asData['status'] == 101 )
       {//company level update
         if($asData['status'] == 2){$level = 3;}
-        if($asData['status'] == 51){$level = 2;}
+        if($asData['status'] == 51)
+        {
+          if($asCurrentPhase['status'] != 2)
+          {
+            return array('error' => __LINE__.' - To be able to select CCM1, you should send the resume firts.');
+          }
+          $level = 2;
+        }
         if($asData['status'] == 101){$level = 1;}
 
         $oLogin = CDependency::getCpLogin();
