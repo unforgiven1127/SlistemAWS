@@ -37,20 +37,20 @@ $(function () {
 
     var max_rabbit_1 = "<?php echo $max_rabbit_1; ?>";
     var max_rabbit_2 = "<?php echo $max_rabbit_2; ?>";
-
+//-----------------------------------------------------------------------------------------//
     var users = "<?php echo $inplay_formatted; ?>";
     users = users.split(';');
-
+//-----------------------------------------------------------------------------------------//
     var inplay_count = "<?php echo $inplay_count; ?>";
     inplay_count = inplay_count.split(';');
 
     for(var i=0; i<inplay_count.length; i++) { inplay_count[i] = parseInt(inplay_count[i], 10); }
-
+//-----------------------------------------------------------------------------------------//
     var inplay_rsc = "<?php echo $inplay_rsc; ?>";
     inplay_rsc = inplay_rsc.split(';');
 
     for(var i=0; i<inplay_rsc.length; i++) { inplay_rsc[i] = parseInt(inplay_rsc[i], 10); }
-
+//-----------------------------------------------------------------------------------------//
 
     $('#container').highcharts({
         chart: {
