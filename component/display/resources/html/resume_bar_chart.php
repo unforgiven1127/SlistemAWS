@@ -37,21 +37,27 @@ $(function () {
 
     var users = "<?php echo $rs_ccm1_mccm_formatted; ?>";
     users = users.split(';');
-
+//-----------------------------------------------------------------------------------------//
     var rs_count = "<?php echo $rs_ccm1_mccm_rsc; ?>";
     rs_count = rs_count.split(';');
 
     for(var i=0; i<rs_count.length; i++) { rs_count[i] = parseInt(rs_count[i], 10); }
-
+//-----------------------------------------------------------------------------------------//
     var ccm1_count = "<?php echo $rs_ccm1_mccm_ccm1; ?>";
     ccm1_count = ccm1_count.split(';');
 
     for(var i=0; i<ccm1_count.length; i++) { ccm1_count[i] = parseInt(ccm1_count[i], 10); }
+//-----------------------------------------------------------------------------------------//
+    var ccm2_count = "<?php echo $rs_ccm1_mccm_ccm2; ?>";
+    ccm2_count = ccm2_count.split(';');
 
+    for(var i=0; i<ccm2_count.length; i++) { ccm2_count[i] = parseInt(ccm2_count[i], 10); }
+//-----------------------------------------------------------------------------------------//
     var mccm_count = "<?php echo $rs_ccm1_mccm_mccm; ?>";
     mccm_count = mccm_count.split(';');
 
     for(var i=0; i<mccm_count.length; i++) { mccm_count[i] = parseInt(mccm_count[i], 10); }
+//-----------------------------------------------------------------------------------------//
 
     $('#container').highcharts({
         chart: {
@@ -84,7 +90,7 @@ $(function () {
             }
         }],
         legend: {
-            reversed: true,
+            //reversed: true,
             verticalAlign: 'top',
             itemMarginTop: 50,
             //itemMarginBottom: 50
@@ -98,16 +104,14 @@ $(function () {
                 pointWidth: 20
             }
         },
-        series: [{
-            name: 'MCCM',
-            style: {
-                        fontSize: '20px',
-                        fontWeight: 'bold'
-                    },
-            color: 'rgba(45, 185, 68,1)',//green
+        series: [
+        {
+            name: 'Resume sent',
+            color: 'rgba(32, 115, 204,1)',//blue
             opacity: '.4',
-            data: mccm_count
-        }, {
+            data: rs_count
+        },
+        {
             name: 'CCM1',
             style: {
                         fontSize: '20px',
@@ -116,12 +120,27 @@ $(function () {
             color: 'rgba(137, 40, 40,1)',//red
             opacity: '.4',
             data: ccm1_count
-        }, {
-            name: 'Resume sent',
-            color: 'rgba(32, 115, 204,1)',//blue
+        },
+        {
+            name: 'CCM1',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
+            color: 'rgba(237, 218, 116 ,1)',//yellow
             opacity: '.4',
-            data: rs_count
-        }]
+            data: ccm2_count
+        },
+        {
+            name: 'MCCM',
+            style: {
+                        fontSize: '20px',
+                        fontWeight: 'bold'
+                    },
+            color: 'rgba(45, 185, 68,1)',//green
+            opacity: '.4',
+            data: mccm_count
+        }  ]
 
     });
 });

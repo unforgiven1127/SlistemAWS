@@ -4259,6 +4259,7 @@ class CSl_statEx extends CSl_stat
         $data['rs_ccm1_mccm_formatted'] = $rs_ccm1_mccm_formatted;
         $data['rs_ccm1_mccm_rsc'] = $rs_ccm1_mccm_rsc;
         $data['rs_ccm1_mccm_ccm1'] = $rs_ccm1_mccm_ccm1;
+        $data['rs_ccm1_mccm_ccm2'] = $rs_ccm1_mccm_ccm2;
         $data['rs_ccm1_mccm_mccm'] = $rs_ccm1_mccm_mccm;
         $data['title'] = $title;
       }
