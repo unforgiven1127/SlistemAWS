@@ -1701,11 +1701,24 @@ var_dump($query);*/
     return $result;
   }
 
-  function get_mccm_count($user_id, $start_date)
+  function get_ccm2_count($user_id, $start_date)
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status > '51' AND status < '70' AND active = '0' AND date_completed > '".$start_date."'";
+    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status = '52' AND active = '0' AND date_completed > '".$start_date."'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+    $result = $result[0];
+    return $result;
+  }
+
+  function get_mccm_count($user_id, $start_date)
+  {
+    $oDB = CDependency::getComponentByName('database');
+//ccm2 ve ustunu aliyoruz
+    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND status > '52' AND status < '70' AND active = '0' AND date_completed > '".$start_date."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 

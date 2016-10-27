@@ -4153,6 +4153,7 @@ class CSl_statEx extends CSl_stat
           $resume_sent_temp = get_resume_sent_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['resume_sent'] = $resume_sent_temp['count'];
           $rs_ccm1_mccm[$consultant_id]['ccm1'] = get_ccm1_count($consultant_id, $start_date);
+          $rs_ccm1_mccm[$consultant_id]['ccm2'] = get_ccm2_count($consultant_id, $start_date);
           //ChromePhp::log($rs_ccm1_mccm[$consultant_id]['ccm1']);
           $rs_ccm1_mccm[$consultant_id]['mccm'] = get_mccm_count($consultant_id, $start_date);
           $rs_ccm1_mccm[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|"." |".$rs_ccm1_mccm[$consultant_id]['ccm1']['count']."|"." |".$rs_ccm1_mccm[$consultant_id]['mccm']['count']."|";
@@ -4163,12 +4164,14 @@ class CSl_statEx extends CSl_stat
           $rs_ccm1_mccm_formatted.= $value['formatted'].";";
           $rs_ccm1_mccm_rsc.=$value['resume_sent'].";";
           $rs_ccm1_mccm_ccm1.=$value['ccm1']['count'].";";
+          $rs_ccm1_mccm_ccm2.=$value['ccm2']['count'].";";
           $rs_ccm1_mccm_mccm.=$value['mccm']['count'].";";
         }
 
         $rs_ccm1_mccm_formatted = rtrim($rs_ccm1_mccm_formatted,';');
         $rs_ccm1_mccm_rsc = rtrim($rs_ccm1_mccm_rsc,';');
         $rs_ccm1_mccm_ccm1 = rtrim($rs_ccm1_mccm_ccm1,';');
+        $rs_ccm1_mccm_ccm2 = rtrim($rs_ccm1_mccm_ccm2,';');
         $rs_ccm1_mccm_mccm = rtrim($rs_ccm1_mccm_mccm,';');
 
       }
