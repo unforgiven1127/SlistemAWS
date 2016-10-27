@@ -22,7 +22,7 @@
 			}
 			var cols = document.getElementsByClassName('revenueSize2');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","font-size:150% !important;");
+			    cols[i].setAttribute("style","font-size:180% !important;");
 			}
 			var cols = document.getElementsByClassName('totals_table');
 			for(i=0; i<cols.length; i++) {
