@@ -35,15 +35,15 @@ $(function () {
 
     var title = "<?php echo $title; ?>";
     var met_target = "<?php echo $met_target; ?>";
-
+//-----------------------------------------------------------------------------------------//
     var users = "<?php echo $new_candidate_met_json; ?>";
     users = users.split(';');
-
+//-----------------------------------------------------------------------------------------//
     var count = "<?php echo $new_candidate_count; ?>";
     count = count.split(';');
 
     for(var i=0; i<count.length; i++) { count[i] = parseInt(count[i], 10); }
-
+//-----------------------------------------------------------------------------------------//
 
     $('#container').highcharts({
         chart: {
