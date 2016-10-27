@@ -5062,7 +5062,7 @@ function get_revenue_chart_loop()
   $loop[1] = '2016-candidates_met_bar_chart';
   $loop[2] = '2017-candidate_in_play_bar_chart';
   $loop[3] = '2016-totals_chart_ordered';
-  $loop[4] = '2016-candidates_met_bar_chart';
+  $loop[4] = '2016-consultant_revenue_chart';
 
   return $loop;
 }
