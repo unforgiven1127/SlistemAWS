@@ -30,7 +30,7 @@
                 margin-top: -40px !important;
             }
         </style>
-        <script type="text/javascript">
+<script type="text/javascript">
 $(function () {
 
     var title = "<?php echo $title; ?>";
@@ -146,9 +146,9 @@ $(function () {
 
     });
 });
-        </script>
-    </head>
-    <body>
+</script>
+</head>
+<body>
 
 
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
@@ -156,5 +156,5 @@ $(function () {
 
 <div id="container" style="width:99%; height: 99%; margin: 0 auto"></div>
 
-    </body>
+</body>
 </html>
