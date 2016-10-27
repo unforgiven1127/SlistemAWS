@@ -442,7 +442,7 @@ order by m.candidatefk
       }
       if($array_user != $array_user2)
       {
-        if(!isset($asData[$array_user]))
+        if(!isset($asData[$array_user2]))
         {
           $asData[$array_user2] = array();
         }
