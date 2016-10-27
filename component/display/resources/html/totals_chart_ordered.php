@@ -16,6 +16,10 @@
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
 			document.getElementById('body').setAttribute("style","margin-top:-40px; margin-left:10px;margin-right:10px;");
 			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
+			var cols = document.getElementsByClassName('revenueSize0');
+			for(i=0; i<cols.length; i++) {
+			    cols[i].setAttribute("style","font-size:200% !important;");
+			}
 			var cols = document.getElementsByClassName('revenueSize');
 			for(i=0; i<cols.length; i++) {
 			    cols[i].setAttribute("style","font-size:180% !important;");
@@ -77,7 +81,7 @@
 	 ?>
 <table id="totals_table_id" class="totals_table">
 	<tr>
-		<th class='revenueSize' colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
+		<th class='revenueSize0' colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
 	<tr id="head">
 		<th class="name_column revenueSize">Name</th>
