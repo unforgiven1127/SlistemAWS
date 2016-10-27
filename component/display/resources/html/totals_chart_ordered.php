@@ -84,7 +84,7 @@
 		<th class='revenueSize0' colspan="15"><?php echo ucfirst($key); ?> totals - <?php echo date('M Y', strtotime($start_date)); ?></th>
 	</tr>
 	<tr id="head">
-		<th class="name_column revenueSize">Name</th>
+		<th class="name_column revenueSize0">Name</th>
 		<th class="revenueSize">Set</th>
 		<th class="revenueSize">Met</th>
 		<th class="revenueSize">Resumes sent</th>
