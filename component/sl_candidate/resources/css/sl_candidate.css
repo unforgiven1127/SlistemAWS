@@ -1569,6 +1569,7 @@ div.position_row > div:nth-child(2)
 #candiTab9 span.note_date
 {
   float: right;
+  margin-right: 10px;
 }
 .position_separator
 {
