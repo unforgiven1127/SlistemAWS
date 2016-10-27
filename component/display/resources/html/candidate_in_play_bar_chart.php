@@ -121,7 +121,7 @@ $(function () {
         },
         plotOptions: {
             series: {
-                stacking: 'normal'
+                //stacking: 'normal'
             }
             /*series: {
                 groupPadding: 0.5,  // Exactly overlap
