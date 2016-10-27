@@ -4195,9 +4195,9 @@ class CSl_statEx extends CSl_stat
           $inplay[$consultant_id]['resume_sent'] = $resume_sent_temp['count'];
 
           $candidate_inplay_temp = get_candidate_in_play($consultant_id, $start_date);
-          $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp['count'];
+          $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp;
 
-          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$candidate_inplay_temp['count']."|"." |".$resume_sent_temp['count']."|";
+          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$candidate_inplay_temp."|"." |".$resume_sent_temp['count']."|";
         }
         uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
         $max_rabbit_1 = 0;

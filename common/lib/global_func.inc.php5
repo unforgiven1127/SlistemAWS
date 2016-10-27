@@ -1731,13 +1731,29 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND in_play = '1' AND date_completed >= '".$start_date."'";
+    /*$sQuery = "SELECT created_by as user_id, COUNT(*) as count FROM sl_position_link WHERE created_by = '".$user_id."' AND in_play = '1' AND date_completed >= '".$start_date."'";*/
+
+    $sQuery = "SELECT min(sl2.sl_position_linkpk) as first_ccm1 ,sl1.*
+              FROM sl_position_link sl1
+              INNER JOIN sl_position_link sl2 on sl2.candidatefk = sl1.candidatefk AND sl2.status = '51'
+              WHERE sl1.created_by = '".$user_id."' AND sl1.status = '51' AND sl1.date_completed >= '".$start_date."'
+              group by sl1.sl_position_linkpk";
 
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
-    $result = $result[0];
-    return $result;
+
+    $count = 0;
+
+    foreach ($result as $key => $value)
+    {
+      if($value['first_ccm1'] == $value['sl_position_linkpk'])
+      {
+        $count++;
+      }
+    }
+
+    return $count;
   }
 
   function get_new_candidate_met($user_ids, $start_date, $end_date)

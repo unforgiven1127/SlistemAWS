@@ -129,6 +129,11 @@ $(function () {
             }*/
         },
         series: [ {
+            name: 'Candidate in play',
+            color: 'rgba(43, 101, 236,1)',//blue
+            opacity: '.4',
+            data: inplay_count
+        },{
             name: 'Resume sent',
             style: {
                         fontSize: '20px',
@@ -137,11 +142,6 @@ $(function () {
             color: 'rgba(179, 0, 0,1)',//red
             opacity: '.4',
             data: inplay_rsc
-        }, {
-            name: 'Candidate in play',
-            color: 'rgba(43, 101, 236,1)',//blue
-            opacity: '.4',
-            data: inplay_count
         }]
 
     });
