@@ -1,35 +1,35 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-		<style type="text/css">
-            .highcharts-xaxis-labels
-            {
-                font-weight: bold !important;
-            }
-            .highcharts-title
-            {
-                padding-bottom: 30px;
-                padding-top: -20px;
-                font-weight: bold !important;
-            }
-            .highcharts-legend-item text
-            {
-                font-size: 20px !important;
-                margin-top: 2cm !important;
-            }
-            .highcharts-legend-item rect
-            {
-                font-size: 20px !important;
-                margin-top: 2cm !important;
-            }
-            .menunav1pos_top
-            {
-                margin-top: -40px !important;
-            }
-		</style>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<style type="text/css">
+    .highcharts-xaxis-labels
+    {
+        font-weight: bold !important;
+    }
+    .highcharts-title
+    {
+        padding-bottom: 30px;
+        padding-top: -20px;
+        font-weight: bold !important;
+    }
+    .highcharts-legend-item text
+    {
+        font-size: 20px !important;
+        margin-top: 2cm !important;
+    }
+    .highcharts-legend-item rect
+    {
+        font-size: 20px !important;
+        margin-top: 2cm !important;
+    }
+    .menunav1pos_top
+    {
+        margin-top: -40px !important;
+    }
+</style>
 		<script type="text/javascript">
 $(function () {
 
@@ -157,7 +157,7 @@ $(function () {
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
 <script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
 
-<div id="container" style="width:100%; height: 100%; margin: 0 auto"></div>
+<div id="container" style="width:99%; height: 99%; margin: 0 auto"></div>
 
 	</body>
 </html>
