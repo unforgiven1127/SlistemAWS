@@ -14,7 +14,7 @@
 	    if(loopFlag == true || loopFlag == 'true')
 		{
 			document.getElementById('getKpiForm').setAttribute("style","display:none;");
-			document.getElementById('body').setAttribute("style","margin-top:-40px; margin-left:10px;");
+			document.getElementById('body').setAttribute("style","margin-top:-40px; margin-left:10px;margin-right:10px;");
 			//document.getElementById('head').setAttribute("style","font-size:150% !important;");
 			var cols = document.getElementsByClassName('revenueSize');
 			for(i=0; i<cols.length; i++) {
@@ -26,7 +26,8 @@
 			}
 			var cols = document.getElementsByClassName('totals_table');
 			for(i=0; i<cols.length; i++) {
-			    cols[i].setAttribute("style","width:100% !important;");
+			    cols[i].setAttribute("style","width:90% !important;");
+			    cols[i].setAttribute("style","height:90% !important;");
 			}
 			//$('#totals_table_id').css('margin-top','-48px;');
 			//alert('GIZLEME SONRASI ALERT');
