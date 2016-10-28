@@ -8020,7 +8020,7 @@ die();*/
             $asNote = $oNote->getNotes($pnCandidatePk, CONST_CANDIDATE_TYPE_CANDI, 'character');
             $newCharacterNotes = getSlNotes($pnCandidatePk);
 
-            if(empty($asNote) && empty($newCharacterNotes))
+            /*if(empty($asNote) && empty($newCharacterNotes))
             {
               //index.php5?uid=555-004&ppa=ppaa&ppt=event&ppk=0&cp_uid=555-001&cp_action=ppav&cp_type=candi&cp_pk=400006&default_type=note&pg=ajx
               $asItem = array('cp_uid' => '555-001', 'cp_action' => CONST_ACTION_VIEW, 'cp_type' => CONST_CANDIDATE_TYPE_CANDI, 'cp_pk' => $pnCandidatePk, 'default_type' =>'character', 'no_candi_refresh' => 1);
@@ -8028,7 +8028,7 @@ die();*/
               $sURL.= "&simpleCharacter=1";
               $asError[] = 'Character note is required for any assessed candidate.<br />
                 Add a <a href="javascript:;" style="color: red;" onclick="goPopup.removeActive(\'message\'); var oConf = goPopup.getConfig(); oConf.width = 950; oConf.height = 550; goPopup.setLayerFromAjax(oConf, \''.$sURL.'\');" >character note now</a> or change back the candidate status. ';
-            }
+            }*/
           }
         }
 
