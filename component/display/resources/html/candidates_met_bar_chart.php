@@ -89,7 +89,7 @@ $(function () {
                       }
             },
             {
-                value:5,
+                value:met_target,
                 color: 'grey',
                 dashStyle: 'shortdash',
                 width:1,
