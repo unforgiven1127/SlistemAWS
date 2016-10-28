@@ -79,7 +79,7 @@ $(function () {
                 zIndex:4,
                 label:{
                         useHTML: true,
-                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/finishflag.png"/>',
+                        text:'<img src="/component/sl_candidate/resources/pictures/tabs/doubleflag.png"/>',
                         verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
