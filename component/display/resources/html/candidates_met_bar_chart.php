@@ -76,7 +76,7 @@ $(function () {
                 value:27,
                 color: 'black',
                 width:1,
-                zIndex:5,
+                zIndex:56,
                 label:{
                         useHTML: true,
                         text:'<img src="/component/sl_candidate/resources/pictures/tabs/doubleflag.png"/>',
