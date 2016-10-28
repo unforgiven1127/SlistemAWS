@@ -664,8 +664,8 @@ class CSl_eventEx extends CSl_event
       }
 
       $simpleCharacterFlag = false;
-      $simpleCharacterUrl = $_GET['simpleCharacter'];
-      if(isset($simpleCharacterUrl))
+      //$simpleCharacterUrl = $_GET['simpleCharacter'];
+      if(isset($_GET['simpleCharacter']))
       {
         $simpleCharacterFlag = true;
       }
