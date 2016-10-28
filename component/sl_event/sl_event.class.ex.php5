@@ -663,7 +663,14 @@ class CSl_eventEx extends CSl_event
         $data['EditTheNotes'] = rtrim($data['EditTheNotes'], "-");
       }
 
-      if($characterNoteControlFlag && !$adminEdit)
+      $simpleCharacterFlag = false;
+      $simpleCharacterUrl = $_GET['simpleCharacter'];
+      if(isset($simpleCharacterUrl))
+      {
+        $simpleCharacterFlag = true;
+      }
+
+      if($simpleCharacterFlag || ($characterNoteControlFlag && !$adminEdit))
       {
         $oForm->addField('textarea', 'character', array('style'=>'height:350px','label'=>'Character note', 'value' => $oDbResult->getFieldValue('content'), 'isTinymce' => 1));
         $oForm->setFieldControl('character', array('jsFieldMinSize' => '2','jsFieldMaxSize' => 9000));
