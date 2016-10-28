@@ -4057,7 +4057,7 @@ class CSl_statEx extends CSl_stat
       $loopChart = $loopInformation[1];
 
       $nextloop++;
-      if($nextloop > 4)// burasi duzelecek
+      if($nextloop > 7)// burasi duzelecek
       {
         $nextloop = 0;
       }

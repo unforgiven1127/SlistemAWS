@@ -5081,17 +5081,15 @@ function sort_multi_array_by_value($field, $order = 'natural')
 function get_revenue_chart_loop()
 {
   $loop = array();
-  /*$loop[0] = '2016-consultant_revenue_chart';
+  $loop[0] = '2016-consultant_revenue_chart';
   $loop[1] = '2016-researcher_revenue_chart';
   $loop[2] = '2017-consultant_revenue_chart';
   $loop[3] = '2017-researcher_revenue_chart';
-  $loop[4] = '2016-totals_chart_ordered';*/
+  $loop[4] = '2016-totals_chart_ordered';
+  $loop[5] = '2016-candidates_met_bar_chart';
+  $loop[6] = '2017-candidate_in_play_bar_chart';
+  $loop[7] = '2016-resume_bar_chart';
 
-  $loop[0] = '2016-resume_bar_chart';
-  $loop[1] = '2016-candidates_met_bar_chart';
-  $loop[2] = '2017-candidate_in_play_bar_chart';
-  $loop[3] = '2016-totals_chart_ordered';
-  $loop[4] = '2016-consultant_revenue_chart';
 
   return $loop;
 }

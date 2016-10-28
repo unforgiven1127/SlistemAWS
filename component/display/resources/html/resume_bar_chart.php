@@ -157,6 +157,18 @@ $(function () {
 <script src="/common/lib/highcharts5/js/highcharts.js" ></script>
 <script src="/common/lib/highcharts5/js/modules/exporting.js" ></script>
 
+<script>
+
+    setTimeout(function() {
+        var nextloop = '<?php echo $nextloop; ?>';
+        var url = '/index.php5?uid=555-006&ppa=pprev&ppt=revenue&ppk=0&watercooler=1&nextloop='+nextloop;
+        //alert('test');
+        window.location.replace(url);
+    }, 30000);
+
+
+</script>
+
 <div id="container" style="width:99%; height: 99%; margin: 0 auto"></div>
 
 	</body>
