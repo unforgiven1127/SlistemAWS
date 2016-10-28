@@ -83,8 +83,8 @@ $(function () {
                         verticalAlign: 'top',
                         textAlign: 'center',
                         style: {
-                            fontSize: '20px',
-                            fontWeight: 'bold'
+                            //fontSize: '20px',
+                            //fontWeight: 'bold'
                         }
                       }
             },
