@@ -1834,7 +1834,7 @@ var_dump($query);*/
         INNER JOIN sl_candidate slc on slc.sl_candidatepk = m.candidatefk AND slc._sys_status = 0
         WHERE (m.created_by IN ('.implode(',', $user_ids).') OR m.attendeefk IN ('.implode(',', $user_ids).'))
         AND m.date_met >= "'.$start_date.'"
-        AND m.date_met < "'.$end_date.'"
+        AND m.date_met <= "'.$end_date.'"
         group by m.sl_meetingpk
         order by m.candidatefk';
 
