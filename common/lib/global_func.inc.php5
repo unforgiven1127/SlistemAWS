@@ -1838,6 +1838,10 @@ var_dump($query);*/
         group by m.sl_meetingpk
         order by m.candidatefk';
 
+if($user_id == '480')
+{
+  ChromePhp::log($query);
+}
 
     $oDbResult = array();
 
@@ -5089,7 +5093,6 @@ function get_revenue_chart_loop()
   $loop[5] = '2016-candidates_met_bar_chart';//OK
   $loop[6] = '2016-candidate_in_play_bar_chart';//OK
   $loop[7] = '2016-resume_bar_chart';//OK
-
 
   return $loop;
 }
