@@ -5610,9 +5610,13 @@ class CSl_statEx extends CSl_stat
             {
               if(isset($candidate['ccm_done_candidate']))
               {
-                $candidate_id = $candidate['ccm_done_candidate']; // MCCM done
-                ChromePhp::log($candidate_id);
-                ChromePhp::log($candidate_id[0]);
+                foreach ($candidate['ccm_done_candidate'] as $key => $value)
+                {
+                  $candidate_id = $value;
+                }
+                //$candidate_id = $candidate['ccm_done_candidate']; // MCCM done
+                //ChromePhp::log($candidate_id);
+                //ChromePhp::log($candidate_id[0]);
                 $allCanidatesArray['researcher'][$id][$candidate_id]['mccmDoneFlag'] = '1';
               }
             }
