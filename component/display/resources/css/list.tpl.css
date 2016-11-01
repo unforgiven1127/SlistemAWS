@@ -59,7 +59,7 @@ ul li.tplListRowFloat
 
 li.tplListHeaderContainer div.tplListRow div
 {
-  height: 20px;
+  min-height: 20px;
   padding: 10px 0;
   font-size: 14px;
   text-align: center;
