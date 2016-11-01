@@ -5056,7 +5056,12 @@ class CSl_statEx extends CSl_stat
             //$stats_data['researcher'][$id]['met_meeting_info'] = $temp_set_vs_met[$id]['met_meeting_info'];
 
   // NOTE: researcher larda met ile new candidate met ayni olsun istendi !!!!!!
-            $count = count($temp_new_candidate_met[$id]);
+            $count = 0;
+            if(isset($temp_new_candidate_met[$id]))
+            {
+              $count = count($temp_new_candidate_met[$id]);
+            }
+
 
             $stats_data['researcher'][$id]['met'] = $count;
             $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
