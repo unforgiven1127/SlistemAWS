@@ -145,7 +145,16 @@ class CCandi_row extends CTemplate
         $nValue = 2;
       }
 
-      $sValue.= "<div style='margin-top:5px;'><img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt=''></div>";
+      $alreadyPlaced = true;
+      if (strpos($asOption['class'], 'tplCandi_status_placed') !== false)
+      {
+          $alreadyPlaced = false;
+      }
+      if($alreadyPlaced)
+      {
+        $sValue.= "<div style='margin-top:5px;'><img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt=''></div>";
+      }
+
     }
     else
       $nValue = 0;
