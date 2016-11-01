@@ -2905,10 +2905,10 @@ if($user_id == '480')
     $end_date3 = date('Y-m-d H:i:s',$end_date3);
 
     $start_date2 = date('Y-m-d H:i:s',$start_date2);
-    $end_date2 = date('Y-m-d H:i:s',$end_date2);
+    //$end_date2 = date('Y-m-d H:i:s',$end_date2);
 
     $start_date1 = date('Y-m-d H:i:s',$start_date1);
-    $end_date1 = date('Y-m-d H:i:s',$end_date1);
+    //$end_date1 = date('Y-m-d H:i:s',$end_date1);
 
 
 
