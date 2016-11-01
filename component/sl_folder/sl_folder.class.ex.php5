@@ -404,7 +404,7 @@ class CSl_FolderEx extends CSl_Folder
 
       $asActivity = $oLogin->getUserActivity($nUserPk, $this->csUid, CONST_ACTION_SEARCH, CONST_FOLDER_TYPE_FOLDER, 0, 1);
 //ChromePhp::log($asActivity[0]['data']);
-//ChromePhp::log($_SERVER[HTTP_HOST]);
+ChromePhp::log($_SERVER[HTTP_HOST]);
 
       $host = $_SERVER[HTTP_HOST];
       if($host == 'beta1.slate.co.jp' || $host == 'beta.slate.co.jp')
