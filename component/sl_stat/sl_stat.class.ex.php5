@@ -5484,29 +5484,32 @@ class CSl_statEx extends CSl_stat
               }
             }
 
-            foreach ($stats_data['researcher'][$id]['met_meeting_info'] as $key => $candidate)
+            if(isset($stats_data['researcher'][$id]['met_meeting_info']) && !empty($stats_data['researcher'][$id]['met_meeting_info']))
             {
-              if(isset($candidate['candidate']))
+              foreach ($stats_data['researcher'][$id]['met_meeting_info'] as $key => $candidate)
               {
-                $candidate_id = $candidate['candidate'];
-                $candidateInfo = getCandidateInformation($candidate_id);
-                $candidateNotes = getCandidateNotes($candidate_id);
-              }
-              else if(isset($candidate['candidatefk']))
-              {
-                $candidate_id = $candidate['candidatefk'];
-                $candidateInfo = getCandidateInformation($candidate_id);
-                $candidateNotes = getCandidateNotes($candidate_id);
-              }
-              if(isset($candidate_id))
-              {
-                $candiNotes = "";
-                if(isset($candidateNotes['content']))
+                if(isset($candidate['candidate']))
                 {
-                  $candiNotes = $candidateNotes['content'];
+                  $candidate_id = $candidate['candidate'];
+                  $candidateInfo = getCandidateInformation($candidate_id);
+                  $candidateNotes = getCandidateNotes($candidate_id);
                 }
-                $allCanidatesArray['researcher'][$id][$candidate_id]['metFlag'] = '1';
-                $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candiNotes."</i>";
+                else if(isset($candidate['candidatefk']))
+                {
+                  $candidate_id = $candidate['candidatefk'];
+                  $candidateInfo = getCandidateInformation($candidate_id);
+                  $candidateNotes = getCandidateNotes($candidate_id);
+                }
+                if(isset($candidate_id))
+                {
+                  $candiNotes = "";
+                  if(isset($candidateNotes['content']))
+                  {
+                    $candiNotes = $candidateNotes['content'];
+                  }
+                  $allCanidatesArray['researcher'][$id][$candidate_id]['metFlag'] = '1';
+                  $allCanidatesArray['researcher'][$id][$candidate_id]['hoverTooltip'] = $candidateInfo['firstname']." ".$candidateInfo['lastname']." (".$candidateInfo['age'].")<br>".$candidateInfo['title']."<br>".$candidateInfo['company_name']."<br><br><i>".$candiNotes."</i>";
+                }
               }
             }
 
