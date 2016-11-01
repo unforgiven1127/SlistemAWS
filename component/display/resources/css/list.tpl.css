@@ -73,7 +73,7 @@ li.tplListHeaderContainer div.tplListRow div
   margin: 0 2px;
   font-size: 12px;
   float: left;
-  border-right: 1px solid #cfcfcf;
+  border-right: 1px solid red;
   position: relative;
 }
 
