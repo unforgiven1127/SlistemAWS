@@ -1863,6 +1863,18 @@ if($user_id == '480')
       {
         $asData[$array_user] = array();
       }
+      if($array_user != $temp['created_by'])
+      {
+        if(!isset($asData[$user_id]))
+        {
+          $asData[$user_id] = array();
+        }
+        if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
+        {
+          array_push($asData[$user_id], $temp);
+          //$asData[$temp['created_by']] = $temp;
+        }
+      }
 
       if($temp['min_date'] == $temp['sl_meetingpk'] && $temp['meeting_done'] == 1)
       {
