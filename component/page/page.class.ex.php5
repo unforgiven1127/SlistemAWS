@@ -713,6 +713,7 @@ ChromePhp::log($bSilent);
       return false;
 
     $sURL = $this->getAjaxUrl($this->csUid, CONST_ACTION_ADD, CONST_PAGE_TYPE_SETTING);
+    $sURL = str_replace('&','&amp;',$sURL);
     $this->addCustomJs(
     '
         function updatePhpWindowSize()
