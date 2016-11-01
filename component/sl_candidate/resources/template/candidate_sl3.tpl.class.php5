@@ -363,7 +363,7 @@ class CCandidate_sl3 extends CTemplate
           $CandidatePlacedFlag = getCandidatePlacedFlag($candidate_id);
           if($CandidatePlacedFlag)
           {
-            $sStatusLabel .= "| <img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt='' />";
+            $sStatusLabel .= " | <img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt='' />";
           }
 
           if($pasCandidateData['_in_play'])
