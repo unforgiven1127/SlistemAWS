@@ -3010,6 +3010,7 @@ var_dump($query);*/
 
   }
 
+
   function getCandidateNotes($candidate_id)
   {
     $oDB = CDependency::getComponentByName('database');
@@ -3056,6 +3057,25 @@ var_dump($query);*/
 
     $db_result = $oDB->executeQuery($sQuery);
 
+  }
+
+
+  function getCandidatePlacedFlag($candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM sl_position_link slpl WHERE slpl.candidatefk = '".$candidate_id."' AND status = '101'";
+
+    $db_result = $oDB->executeQuery($sQuery);
+
+    $result = $db_result->getAll();
+
+    $count = count($result);
+
+    if($count > 0)
+      {return true;}
+    else
+      {return false;}
   }
 
   function getClientUsers()
