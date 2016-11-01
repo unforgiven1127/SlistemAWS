@@ -2864,7 +2864,7 @@ var_dump($query);*/
     else
     {$count_in_play_candidate1 = 0;}
 
-    if(isset($in_play1[$in_play2]['new_positions']))
+    if(isset($in_play2[$user_id]['new_positions']))
     {$count_in_play_candidate2 = count($in_play2[$user_id]['new_positions']);}
     else
     {$count_in_play_candidate2 = 0;}
