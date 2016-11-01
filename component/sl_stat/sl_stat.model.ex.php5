@@ -543,7 +543,7 @@ order by m.candidatefk
           $data[$meeting[$group_switch]] = array('set' => 0, 'met' => 0, 'set_meeting_info' => array(),
             'met_meeting_info' => array());
         }
-        if(!isset($meeting['meeting_done']) || ($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date )) )
+        if(isset($meeting['date_updated']) && (!isset($meeting['meeting_done']) || ($meeting['meeting_done'] == 0  && $meeting['date_updated'] == NULL && strtotime($today) >= strtotime($control_date )) ))
         {
           # bir sonraki ayin 5 ini gecmis oluyor o nedenle cancel sayiyoruz
         }
