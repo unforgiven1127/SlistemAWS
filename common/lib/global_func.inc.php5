@@ -2873,10 +2873,11 @@ if($user_id == '480')
     $end_date3 = strtotime($end_date_3);
 
     $start_date2 = strtotime($start_date_3.' -1 months');
-    $last_date = date(t,$start_date2);
-    $end_date2 = strtotime($end_date_3.' -1 months');
+    $last_date2 = date(t,$start_date2);
+    $end_date2 = date(y,$start_date2)."-".date('m',$start_date2)."-".$last_date2.' 23:59:59';
+    //$end_date2 = strtotime($end_date_3.' -1 months');
 
-ChromePhp::log($last_date);
+ChromePhp::log($end_date2);
     //ChromePhp::log(date('m',$start_date2));
     //ChromePhp::log(date('m',$end_date2));
 
