@@ -406,6 +406,7 @@ class CSl_FolderEx extends CSl_Folder
 //ChromePhp::log($asActivity[0]['data']);
 //ChromePhp::log($_SERVER[HTTP_HOST]);
       $srv = HTTP_HOST;
+      ChromePhp::log($srv);
       $host = $_SERVER[$srv];
       if($host == 'beta1.slate.co.jp' || $host == 'beta.slate.co.jp')
       {
