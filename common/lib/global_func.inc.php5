@@ -2883,6 +2883,7 @@ if($user_id == '480')
       ChromePhp::log('IN');
       $end_date2 = strtotime(date('Y-m-d H:i:s',$end_date2).' -1 days');
     }
+    ChromePhp::log($end_date2);
 
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
