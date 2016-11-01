@@ -2873,17 +2873,19 @@ if($user_id == '480')
     $end_date3 = strtotime($end_date_3);
 
     $start_date2 = strtotime($start_date_3.' -1 months');
+    $last_date = date(t,$start_date2);
     $end_date2 = strtotime($end_date_3.' -1 months');
 
-    ChromePhp::log(date('m',$start_date2));
-    ChromePhp::log(date('m',$end_date2));
+ChromePhp::log($last_date);
+    //ChromePhp::log(date('m',$start_date2));
+    //ChromePhp::log(date('m',$end_date2));
 
     if(date('m',$start_date2) != date('m',$end_date2))
     {
       ChromePhp::log('IN');
       $end_date2 = strtotime(date('Y-m-d H:i:s',$end_date2).' -1 days');
     }
-    ChromePhp::log(date('Y-m-d H:i:s',$end_date2));
+    //ChromePhp::log(date('Y-m-d H:i:s',$end_date2));
 
     $start_date1 = strtotime($start_date_3.' -2 months');
     $end_date1 = strtotime($end_date_3.' -2 months');
