@@ -2875,8 +2875,8 @@ if($user_id == '480')
     $start_date2 = strtotime($start_date_3.' -1 months');
     $end_date2 = strtotime($end_date_3.' -1 months');
 
-    ChromePhp::log(date('m',$start_date1));
-    ChromePhp::log(date('m',$end_date1));
+    ChromePhp::log(date('m',$start_date2));
+    ChromePhp::log(date('m',$end_date2));
 
     if(date('m',$start_date2) != date('m',$end_date2))
     {
