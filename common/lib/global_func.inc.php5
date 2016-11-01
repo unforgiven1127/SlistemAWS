@@ -1840,7 +1840,7 @@ var_dump($query);*/
 
 if($user_id == '480')
 {
-  ChromePhp::log($query);
+  //ChromePhp::log($query);
 }
 
     $oDbResult = array();
@@ -2887,6 +2887,7 @@ if($user_id == '480')
 
     if(date('m',$start_date1) != date('m',$end_date1))
     {
+      ChromePhp::log('IN');
       $end_date1 = strtotime(date('Y-m-d H:i:s',$end_date1).' -1 days');
     }
 
