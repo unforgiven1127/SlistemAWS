@@ -1469,7 +1469,7 @@ order by m.candidatefk
         $ccm_data[$row['created_by']]['ccm_info']['ccm2'] = array();
         $ccm_data[$row['created_by']]['ccm_info']['mccm'] = array();
       }
-      if (!isset($row['meeting_created_by']) || !isset($ccm_data[$row['meeting_created_by']]['ccm1']))
+      /*if (!isset($row['meeting_created_by']) || !isset($ccm_data[$row['meeting_created_by']]['ccm1']))
       {
         $ccm_data[$row['meeting_created_by']]['ccm1'] = 0;
         $ccm_data[$row['meeting_created_by']]['ccm1_done'] = 0;
@@ -1480,7 +1480,7 @@ order by m.candidatefk
         $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm1'] = array();
         $ccm_data[$row['meeting_created_by']]['ccm_info']['ccm2'] = array();
         $ccm_data[$row['meeting_created_by']]['ccm_info']['mccm'] = array();
-      }
+      }*/
 
       $array_key = '';
 
