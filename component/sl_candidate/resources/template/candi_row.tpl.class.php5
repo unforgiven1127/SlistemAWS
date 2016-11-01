@@ -38,7 +38,7 @@ class CCandi_row extends CTemplate
     $sViewJS = 'view_candi(\''.$sViewURL.'\');';
 
     $sHTML = '';
-    $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow tplCandiRow','style'=>'min-height: 30px !important;'));
+    $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow tplCandiRow'));
 
 
     //get the uniq column id from the column param for js sort features
