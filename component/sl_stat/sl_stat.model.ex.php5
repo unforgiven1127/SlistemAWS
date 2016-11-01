@@ -1662,6 +1662,10 @@ order by m.candidatefk
         {
             $previous_ccm_key = $row['positionfk'].$row['candidatefk'].'_placed_revenue';
 
+            if(!isset($ccm_data[$row['created_by']]['placedRevenue']))
+            {
+              $ccm_data[$row['created_by']]['placedRevenue'] = 0;
+            }
             $ccm_data[$row['created_by']]['placedRevenue'] += 1;
             //$ccm_data[$row['created_by']]['placedRevenue_info']['placedRevenue'][$previous_ccm_key]['candidate'][$row['status']] = $row['candidatefk'];
 
