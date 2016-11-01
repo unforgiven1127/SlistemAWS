@@ -2873,30 +2873,27 @@ if($user_id == '480')
     $end_date3 = strtotime($end_date_3);
 
     $start_date2 = strtotime($start_date_3.' -1 months');
-    $last_date2 = date(t,$start_date2);
-    $end_date2 = date(y,$start_date2)."-".date('m',$start_date2)."-".$last_date2.' 23:59:59';
     //$end_date2 = strtotime($end_date_3.' -1 months');
-
-ChromePhp::log($end_date2);
-    //ChromePhp::log(date('m',$start_date2));
-    //ChromePhp::log(date('m',$end_date2));
-
-    if(date('m',$start_date2) != date('m',$end_date2))
+    $d2Y = date('Y',$start_date2);
+    $d2M = date('m',$start_date2);
+    $end_date2 = $d2Y."-".$d2M."-31 23:59:59";
+    /*if(date('m',$start_date2) != date('m',$end_date2))
     {
-      ChromePhp::log('IN');
       $end_date2 = strtotime(date('Y-m-d H:i:s',$end_date2).' -1 days');
-    }
-    //ChromePhp::log(date('Y-m-d H:i:s',$end_date2));
+    }*/
+
 
     $start_date1 = strtotime($start_date_3.' -2 months');
-    $end_date1 = strtotime($end_date_3.' -2 months');
+    //$end_date1 = strtotime($end_date_3.' -2 months');
 
+    $d1Y = date('Y',$start_date1);
+    $d1M = date('m',$start_date1);
+    $end_date1 = $d1Y."-".$d1M."-31 23:59:59";
 
-
-    if(date('m',$start_date1) != date('m',$end_date1))
+    /*if(date('m',$start_date1) != date('m',$end_date1))
     {
       $end_date1 = strtotime(date('Y-m-d H:i:s',$end_date1).' -1 days');
-    }
+    }*/
 
 
     $monthName3 = date('M',$start_date3);
