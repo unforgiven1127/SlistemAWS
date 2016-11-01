@@ -144,6 +144,8 @@ class CCandi_row extends CTemplate
         $asOption['title'] = 'Candidate inactive: expired, stalled, fallen';
         $nValue = 2;
       }
+
+      $sValue.= "<div><img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt=''></div>";
     }
     else
       $nValue = 0;
