@@ -474,7 +474,7 @@ order by m.candidatefk
     if ($group == 'consultant')
       $group_switch = 'attendeefk';
 
-    $query = 'SELECT sl_meetingpk, candidatefk , created_by, date_created, date_met, attendeefk, meeting_done';
+    $query = 'SELECT sl_meetingpk, candidatefk , created_by, date_created, date_met, attendeefk, meeting_done, date_updated';
     $query .= ' FROM sl_meeting';
     $query .= ' WHERE meeting_done != -1';
     $query .= ' ORDER BY '.$group_switch.', date_met ASC';
