@@ -3026,8 +3026,12 @@ var_dump($query);*/
     $read = $db_result->readFirst();
     $result = $db_result->getData();
 
-    $result['content'] = str_replace("'","",$result['content']);
-    $result['content'] = str_replace('"',"",$result['content']);
+    if(isset($result['content']))
+    {
+      $result['content'] = str_replace("'","",$result['content']);
+      $result['content'] = str_replace('"',"",$result['content']);
+    }
+
     return $result;
   }
 
