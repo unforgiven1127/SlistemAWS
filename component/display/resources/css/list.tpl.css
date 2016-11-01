@@ -66,14 +66,20 @@ li.tplListHeaderContainer div.tplListRow div
 }
 
 
-.tplListRow
+.tplListRowContainer div.tplListRow2 > div
 {
-  min-height: 20px;
+  min-height: 30px;
+  padding: 5px 0;
+  margin: 0 2px;
+  font-size: 12px;
+  float: left;
+  border-right: 1px solid #cfcfcf;
+  position: relative;
 }
 
 .tplListRowContainer div.tplListRow > div
 {
-  min-height: 40px;
+  min-height: 20px;
   padding: 5px 0;
   margin: 0 2px;
   font-size: 12px;
