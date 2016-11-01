@@ -2786,9 +2786,23 @@ var_dump($query);*/
     $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
     $in_play3 = get_objectives_in_play($user_id, $start_date3, $end_date3);
 
-    $count_in_play_candidate1 = count($in_play1[$user_id]['new_candidates']);
-    $count_in_play_candidate2 = count($in_play2[$user_id]['new_candidates']);
-    $count_in_play_candidate3 = count($in_play3[$user_id]['new_candidates']);
+    if(isset($in_play1[$user_id]['new_candidates']))
+    {$count_in_play_candidate1 = count($in_play1[$user_id]['new_candidates']);}
+    else
+    {$count_in_play_candidate1 = 0;}
+
+    if(isset($in_play2[$user_id]['new_candidates']))
+    {$count_in_play_candidate2 = count($in_play2[$user_id]['new_candidates']);}
+    else
+    {$count_in_play_candidate2 = 0;}
+
+    if(isset($in_play3[$user_id]['new_candidates']))
+    {$count_in_play_candidate3 = count($in_play3[$user_id]['new_candidates']);}
+    else
+    {$count_in_play_candidate3 = 0;}
+
+    //$count_in_play_candidate2 = count($in_play2[$user_id]['new_candidates']);
+    //$count_in_play_candidate3 = count($in_play3[$user_id]['new_candidates']);
 
     $candidate_in_plays = array($count_in_play_candidate1,$count_in_play_candidate2,$count_in_play_candidate3);
 
@@ -2845,9 +2859,23 @@ var_dump($query);*/
     $in_play2 = get_objectives_in_play($user_id, $start_date2, $end_date2);
     $in_play3 = get_objectives_in_play($user_id, $start_date3, $end_date3);
 
-    $count_in_play_candidate1 = count($in_play1[$user_id]['new_positions']);
-    $count_in_play_candidate2 = count($in_play2[$user_id]['new_positions']);
-    $count_in_play_candidate3 = count($in_play3[$user_id]['new_positions']);
+    if(isset($in_play1[$user_id]['new_positions']))
+    {$count_in_play_candidate1 = count($in_play1[$user_id]['new_positions']);}
+    else
+    {$count_in_play_candidate1 = 0;}
+
+    if(isset($in_play1[$in_play2]['new_positions']))
+    {$count_in_play_candidate2 = count($in_play2[$user_id]['new_positions']);}
+    else
+    {$count_in_play_candidate2 = 0;}
+
+    if(isset($in_play3[$user_id]['new_positions']))
+    {$count_in_play_candidate3 = count($in_play3[$user_id]['new_positions']);}
+    else
+    {$count_in_play_candidate3 = 0;}
+    //$count_in_play_candidate1 = count($in_play1[$user_id]['new_positions']);
+    //$count_in_play_candidate2 = count($in_play2[$user_id]['new_positions']);
+    //$count_in_play_candidate3 = count($in_play3[$user_id]['new_positions']);
 
     $positions_in_plays = array($count_in_play_candidate1,$count_in_play_candidate2,$count_in_play_candidate3);
 
