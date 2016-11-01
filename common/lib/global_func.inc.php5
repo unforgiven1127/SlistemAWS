@@ -1424,7 +1424,7 @@ function _live_dump($pvTrace, $psTitle = null)
     }
 
     //We subtract the holidays
-    if(isset($holidays))
+    if(isset($holidays) && !empty($holidays))
     {
       foreach($holidays as $holiday){
           $time_stamp=strtotime($holiday);
