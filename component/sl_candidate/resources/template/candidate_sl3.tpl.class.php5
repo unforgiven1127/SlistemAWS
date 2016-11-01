@@ -358,6 +358,7 @@ class CCandidate_sl3 extends CTemplate
             $sStatusLabel .= " | ".$oCandidate->getVars()->get_var_info_by_label("play_status", $slPositionLinkStatus);
 
           }
+          $sStatusLabel .= "<img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt='' />";
 
           if($pasCandidateData['_in_play'])
           {
