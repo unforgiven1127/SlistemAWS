@@ -49,7 +49,7 @@ class CCandi_row extends CTemplate
 
 
     $alreadyPlaced = true;
-    if ($lastStatus_ == 101)
+    if($lastStatus_ == 101)
     {
         $alreadyPlaced = false;
     }
