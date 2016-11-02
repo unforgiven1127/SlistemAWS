@@ -77,7 +77,7 @@ li.tplListHeaderContainer div.tplListRow div
   position: relative;
 }
 
-.highClass div.tplListRow > div
+.highClass > div
 {
   height: 50px !important;
 }
