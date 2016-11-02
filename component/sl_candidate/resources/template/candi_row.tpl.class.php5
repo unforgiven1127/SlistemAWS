@@ -38,6 +38,7 @@ class CCandi_row extends CTemplate
     $sViewJS = 'view_candi(\''.$sViewURL.'\');';
 
     $asOption = array('class' => $pasColumnParam[0]['tag']);
+    $candidate_id = $pasData['sl_candidatepk'];
 
     $alreadyPlaced = true;
     if (strpos($asOption['class'], 'tplCandi_status_placed') !== false)
@@ -96,7 +97,7 @@ class CCandi_row extends CTemplate
     //priority to in_ply: dynamic status, he's in play now !!
     $sValue = '';
 
-    $candidate_id = $pasData['sl_candidatepk'];
+
     $candidateLastStatus = getLastStatus($candidate_id);
     if(isset($candidateLastStatus[0]))
     {
