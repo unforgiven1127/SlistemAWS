@@ -37,14 +37,29 @@ class CCandi_row extends CTemplate
     $sViewURL = $oPage->getAjaxUrl('sl_candidate', CONST_ACTION_VIEW, CONST_CANDIDATE_TYPE_CANDI, (int)$pasData['PK']);
     $sViewJS = 'view_candi(\''.$sViewURL.'\');';
 
+    $asOption = array('class' => $pasColumnParam[0]['tag']);
+
+    $alreadyPlaced = true;
+    if (strpos($asOption['class'], 'tplCandi_status_placed') !== false)
+    {
+        $alreadyPlaced = false;
+    }
+    $CandidatePlacedFlag = getCandidatePlacedFlag($candidate_id);
+
+    $newClass = "";
+    if($alreadyPlaced && $CandidatePlacedFlag)
+    {
+      $newClass = " highClass ";
+    }
+
     $sHTML = '';
-    $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow highClass tplCandiRow'));
+    $sHTML.= $oDisplay->getBlocStart('', array('class' => 'tplListRow '.$newClass.' tplCandiRow'));
 
 
     //get the uniq column id from the column param for js sort features
     //inherit the column style/class
     set_array($pasColumnParam[0]['tag'], '');
-    $asOption = array('class' => $pasColumnParam[0]['tag']);
+
     $sHTML.= $oDisplay->getBloc('', '<input name="listBox[]" value="'.$nCandidatePk.'" id="listBox_'.$nCandidatePk.'" class="listBox" type="checkbox" onchange="listBoxClicked(this);" />', $asOption);
 
 
@@ -145,12 +160,7 @@ class CCandi_row extends CTemplate
         $nValue = 2;
       }
 
-      $alreadyPlaced = true;
-      if (strpos($asOption['class'], 'tplCandi_status_placed') !== false)
-      {
-          $alreadyPlaced = false;
-      }
-      $CandidatePlacedFlag = getCandidatePlacedFlag($candidate_id);
+
       if($alreadyPlaced && $CandidatePlacedFlag)
       {
         $sValue.= "<div style='margin-top:5px;'><img src='/component/sl_candidate/resources/pictures/status/list_placed.png' alt=''></div>";
