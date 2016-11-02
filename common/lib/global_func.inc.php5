@@ -1889,7 +1889,9 @@ var_dump($query);*/
     $count = 0;
     if(isset($asData[$user_id]))
     {
-      foreach ($asData[$user_id] as $key => $value) {
+      foreach ($asData[$user_id] as $key => $value)
+      {
+        ChromePhp::log($value);
         $count++;
       }
     }
