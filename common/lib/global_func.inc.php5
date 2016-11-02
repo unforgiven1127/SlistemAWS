@@ -1893,6 +1893,10 @@ var_dump($query);*/
         $count++;
       }
     }
+    if($user_id == 388)
+    {
+      $count;
+    }
 
     //$count = count($asData[$user_id]);
 
