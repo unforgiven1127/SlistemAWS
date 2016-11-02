@@ -1887,12 +1887,16 @@ var_dump($query);*/
     }
 
     $count = 0;
+    $meetingPKarray = array();
     if(isset($asData[$user_id]))
     {
       foreach ($asData[$user_id] as $key => $value)
       {
-        ChromePhp::log($value);
-        $count++;
+        if(!in_array($value,$meetingPKarray))
+        {
+          $meetingPKarray[] = $value;
+          $count++;
+        }
       }
     }
     if($user_id == 388)
