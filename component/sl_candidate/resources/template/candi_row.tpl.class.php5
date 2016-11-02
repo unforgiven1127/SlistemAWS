@@ -39,6 +39,8 @@ class CCandi_row extends CTemplate
 
     $asOption = array('class' => $pasColumnParam[0]['tag']);
     $candidate_id = $pasData['sl_candidatepk'];
+    $candidateLastStatus = getLastStatus($candidate_id);
+    $lastStatus = $candidateLastStatus[0]['status'];
 
     $alreadyPlaced = true;
     if ($lastStatus == 101)
