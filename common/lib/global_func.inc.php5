@@ -5169,7 +5169,7 @@ function get_revenue_chart_loop()
   $loop[4] = '2016-totals_chart_ordered';//OK
   $loop[5] = '2016-candidates_met_bar_chart';//OK
   $loop[6] = '2016-candidate_in_play_bar_chart';//OK
-  $loop[7] = '2016-resume_bar_chart';//OK
+  //$loop[7] = '2016-resume_bar_chart';//OK
 
   return $loop;
 }

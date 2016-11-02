@@ -4057,7 +4057,7 @@ class CSl_statEx extends CSl_stat
       $loopChart = $loopInformation[1];
 
       $nextloop++;
-      if($nextloop > 7)// burasi duzelecek
+      if($nextloop > 6)// burasi duzelecek
       {
         $nextloop = 0;
       }
@@ -4099,7 +4099,7 @@ class CSl_statEx extends CSl_stat
         $start_date_title = date('F').' 01, '.$thisYear;
         $end_date = date('Y-m-d H:i:s');
 
-        $title = "Candidates Met ".$start_date_title." to Present";
+        $title = "New Candidates Met ".$start_date_title." to Present";
 
         $consultants = get_active_consultants();
         $new_candidate_met_json = '';
@@ -4190,6 +4190,10 @@ class CSl_statEx extends CSl_stat
         $start_date_title = date('F').' 01, '.$thisYear;
 
         $title = "Candidates in play / Resume sent ".$start_date_title." to Present";
+
+        $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
+
+        ChromePhp::log($temp_in_play);
 
         foreach ($consultants as $key => $value)
         {
