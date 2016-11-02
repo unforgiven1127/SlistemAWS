@@ -6940,6 +6940,9 @@ class CSl_candidateEx extends CSl_candidate
       {
         $is_ns1N = 'selected';
         $is_ns2N = 'selected';
+
+        $select01 = "selected";
+        $select0 = "selected";
       }
 
        $oForm->addField('select', 'level', array('label'=> 'Level'));
