@@ -1842,10 +1842,6 @@ var_dump($query);*/
         order by m.candidatefk';
 
     $oDbResult = array();
-    if($user_id == 388)
-    {
-      ChromePhp::log($query);
-    }
 
     $oDbResult = $oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
@@ -1898,10 +1894,6 @@ var_dump($query);*/
           $count++;
         }
       }
-    }
-    if($user_id == 388)
-    {
-      ChromePhp::log($count);
     }
 
     //$count = count($asData[$user_id]);
