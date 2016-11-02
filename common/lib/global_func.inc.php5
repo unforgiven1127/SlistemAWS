@@ -1895,7 +1895,7 @@ var_dump($query);*/
     }
     if($user_id == 388)
     {
-      $count;
+      ChromePhp::log($count);
     }
 
     //$count = count($asData[$user_id]);
