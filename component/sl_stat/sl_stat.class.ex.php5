@@ -4191,6 +4191,7 @@ class CSl_statEx extends CSl_stat
 
         $title = "Candidates in play / Resume sent ".$start_date_title." to Present";
 
+        $end_date = date('Y-m-t').' 23:59:59';
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
 
         ChromePhp::log($temp_in_play);
