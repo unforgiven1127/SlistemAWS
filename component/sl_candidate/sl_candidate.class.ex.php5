@@ -6938,8 +6938,8 @@ class CSl_candidateEx extends CSl_candidate
 
       if(empty($pnPk))
       {
-        $is_client1Y = 'selected';
-        $is_client2Y = 'selected';
+        $is_ns1Y = 'selected';
+        $is_ns2Y = 'selected';
 
         $select01 = "selected";
         $select0 = "selected";
