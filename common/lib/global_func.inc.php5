@@ -1892,9 +1892,9 @@ var_dump($query);*/
     {
       foreach ($asData[$user_id] as $key => $value)
       {
-        if(!in_array($value,$meetingPKarray))
+        if(!in_array($value['sl_meetingpk'],$meetingPKarray))
         {
-          $meetingPKarray[] = $value;
+          $meetingPKarray[] = $value['sl_meetingpk'];
           $count++;
         }
       }
