@@ -1846,7 +1846,7 @@ order by m.candidatefk
 //echo '<br><br>';
 
     $oDbResult = array();
-ChromePhp::log($query);
+//ChromePhp::log($query);
     $oDbResult = $this->oDB->executeQuery($query);
     $read = $oDbResult->readFirst();
 

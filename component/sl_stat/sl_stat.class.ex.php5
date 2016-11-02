@@ -4194,6 +4194,14 @@ class CSl_statEx extends CSl_stat
         $end_date = date('Y-m-t').' 23:59:59';
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
 
+        $new_in_plays = array();
+        foreach ($temp_in_play as $key => $value)
+        {
+          //key = user_id
+          $temp_in_play[$key]['new_candi_count'] = count($value['new_candidates']);
+          $temp_in_play[$key]['new_posi_count'] = count($value['new_positions']);
+        }
+
         ChromePhp::log($temp_in_play);
 
         foreach ($consultants as $key => $value)
