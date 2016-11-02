@@ -41,15 +41,15 @@ class CCandi_row extends CTemplate
     $candidate_id = $pasData['sl_candidatepk'];
     $candidateLastStatus = getLastStatus($candidate_id);
 
-    ChromePhp::log($candidateLastStatus);
-
     $lastStatus_ = 0;
     if(isset($candidateLastStatus[0]))
     {
       $lastStatus_ = $candidateLastStatus[0]['status'];
+      if($lastStatus_ == 200 && isset($candidateLastStatus[1]['status']) && $candidateLastStatus[1]['status'] == 101)
+      {
+        $lastStatus_ =$candidateLastStatus[1]['status'];
+      }
     }
-
-ChromePhp::log($lastStatus_);
 
     $alreadyPlaced = true;
     if($lastStatus_ == 101)
