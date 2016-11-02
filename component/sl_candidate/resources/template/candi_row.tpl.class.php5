@@ -41,7 +41,7 @@ class CCandi_row extends CTemplate
     $candidate_id = $pasData['sl_candidatepk'];
 
     $alreadyPlaced = true;
-    if (strpos($asOption['class'], 'tplCandi_status_placed') !== false)
+    if ($lastStatus == 101)
     {
         $alreadyPlaced = false;
     }
