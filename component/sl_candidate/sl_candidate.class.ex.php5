@@ -2149,7 +2149,7 @@ ChromePhp::log($asHistoryData['userfk']);*/
           {
             $user_info = getUserInformaiton($asHistoryData['userfk']);
           }
-
+ChromePhp::log($user_info);
           if(empty($user_info))
             continue;
 
