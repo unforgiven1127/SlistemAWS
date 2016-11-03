@@ -1544,7 +1544,7 @@ class CSl_candidateEx extends CSl_candidate
       $is_owner = true;
 
       $latestFlag = checkSecurityAlert($user_id,'contact_mail',$company_id);
-ChromePhp::log($latestFlag);
+
       if($latestFlag > 0)
       {
         $is_owner = false;
@@ -1610,7 +1610,7 @@ ChromePhp::log($latestFlag);
 
       $asCompanyFeed = $this->_getCompanyFeedTab($pasCandidateData);
 
-      $asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']); //HATA BURADA
+      //$asActivity = $this->_getRecentActivity($pasCandidateData['sl_candidatepk']); //HATA BURADA
       $asPosition = $this->_getPositionTab($pasCandidateData);
       $sActionTab = $this->_getActionTab($pasCandidateData);
 
@@ -1681,7 +1681,7 @@ ChromePhp::log($latestFlag);
           $sHTML.= $this->_oDisplay->getBloc('candiTab3', $asDocument['content'], array('class' => 'aTabContent hidden '.$sDocSelected));
           $sHTML.= $this->_oDisplay->getBloc('candiTab4', $asCompanyFeed['content'], array('class' => 'aTabContent hidden'));
 
-          $sHTML.= $this->_oDisplay->getBloc('candiTab6', $asActivity['content'], array('class' => 'aTabContent hidden'));
+          //$sHTML.= $this->_oDisplay->getBloc('candiTab6', $asActivity['content'], array('class' => 'aTabContent hidden'));
           $sHTML.= $this->_oDisplay->getBloc('candiTab7', $asCpHistory['content'], array('class' => 'aTabContent hidden'));
           $sHTML.= $this->_oDisplay->getBloc('candiTab8', $asPosition['content'], array('class' => 'aTabContent hidden '.$sJdSelected));
 
