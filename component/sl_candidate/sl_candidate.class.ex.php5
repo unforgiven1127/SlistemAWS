@@ -1544,7 +1544,7 @@ class CSl_candidateEx extends CSl_candidate
       $is_owner = true;
 
       $latestFlag = checkSecurityAlert($user_id,'contact_mail',$company_id);
-
+ChromePhp::log($latestFlag);
       if($latestFlag)
       {
         $is_owner = false;
