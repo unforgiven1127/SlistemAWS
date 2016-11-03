@@ -1305,7 +1305,7 @@ class CSl_candidateEx extends CSl_candidate
       $sHTML.= $this->_oDisplay->getBlocEnd();
 
       $sHTML.= $this->_oDisplay->getBlocStart('', array('class' => 'candiTopSectRight candiTabContainer'));
-      //$sHTML.= $this->_getCandidateRightTabs($asCandidate);
+      $sHTML.= $this->_getCandidateRightTabs($asCandidate);
       $sHTML.= $this->_oDisplay->getBlocEnd();
       $sHTML.= $this->_oDisplay->getFloatHack();
 
