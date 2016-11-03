@@ -2150,7 +2150,7 @@ ChromePhp::log($asHistoryData['userfk']);*/
             $user_info = getUserInformaiton($asHistoryData['userfk']);
           }
 ChromePhp::log($user_info);
-          if($user_info == null)
+          if(!isset($user_info['loginpk']))
             continue;
 
           if(isset($user_info['phone_ext']))
