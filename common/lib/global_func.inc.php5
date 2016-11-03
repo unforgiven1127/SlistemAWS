@@ -4737,6 +4737,19 @@ var_dump($query);*/
 
     $db_result = $oDB->executeQuery($sQuery);
 
+    $result = $db_result->getAll();
+
+    return $result;
+  }
+
+  function _getUserInformaiton($user_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+
+    $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
+
+    $db_result = $oDB->executeQuery($sQuery);
+
     $read = $db_result->readFirst();
 
     while ($read)

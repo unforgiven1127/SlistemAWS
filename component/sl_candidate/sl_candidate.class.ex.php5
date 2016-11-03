@@ -2142,9 +2142,9 @@ class CSl_candidateEx extends CSl_candidate
         {
           if (in_array($asHistoryData['action'], $skip_activity))
             continue;
-          if($asHistoryData['userfk'] == '234')
+          if($asHistoryData['userfk'] == '234')//BOYLE BIR USER YOK
             continue;
-ChromePhp::log($asHistoryData['userfk']);
+//ChromePhp::log($asHistoryData['userfk']);
           if(isset($asHistoryData['userfk']) && $asHistoryData['userfk'] > 0)
           {
             $user_info = getUserInformaiton($asHistoryData['userfk']);
