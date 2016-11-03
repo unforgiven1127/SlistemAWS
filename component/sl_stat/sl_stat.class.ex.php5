@@ -4195,12 +4195,12 @@ class CSl_statEx extends CSl_stat
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
 
         $new_in_plays = array();
-        foreach ($temp_in_play as $key => $value)
+        /*foreach ($temp_in_play as $key => $value)
         {
           //key = user_id
           $temp_in_play[$key]['new_candi_count'] = count($value['new_candidates']);
           $temp_in_play[$key]['new_posi_count'] = count($value['new_positions']);
-        }
+        }*/
 
         ChromePhp::log($temp_in_play);
 
@@ -4213,18 +4213,28 @@ class CSl_statEx extends CSl_stat
           $candidate_inplay_temp = get_candidate_in_play($consultant_id, $start_date);
           $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp;
 
+          if(isset($temp_in_play[$consultant_id]['new_candi_count']))
+          {
+            $inplay[$consultant_id]['new_candi_count'] = count($temp_in_play[$consultant_id]['new_candi_count']);
+
+            $inplay[$consultant_id]['new_posi_count'] = count($temp_in_play[$consultant_id]['new_posi_count']);
+          }
+          else
+          {
+            $inplay[$consultant_id]['new_candi_count'] = 0;
+            $inplay[$consultant_id]['new_posi_count'] = 0;
+          }
+
+          $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+
           $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|"." |".$candidate_inplay_temp."|";
+
         }
         uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
         $max_rabbit_1 = 0;
         $max_rabbit_2 = 0;
-        foreach ($inplay as $key => $value)
+        /*foreach ($inplay as $key => $value)
         {
-          /*$cp = $value['candidate_inplay'] - $value['resume_sent'];
-          if($cp < 0)
-          {
-            $cp = 0;
-          }*/
           if($value['candidate_inplay'] > $max_rabbit_1)
           {
             $max_rabbit_1 = $value['candidate_inplay'];
@@ -4238,7 +4248,7 @@ class CSl_statEx extends CSl_stat
           $inplay_count.= $value['candidate_inplay'].";";
           //$inplay_count.= $cp.";";
           $inplay_rsc.= $value['resume_sent'].";";
-        }
+        }*/
         //$inplay_formatted = " ;".$inplay_formatted;
         //$inplay_count = "0;".$inplay_count;
         //$inplay_rsc = "0;".$inplay_rsc;
