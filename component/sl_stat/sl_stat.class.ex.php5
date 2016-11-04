@@ -4194,7 +4194,9 @@ class CSl_statEx extends CSl_stat
         $end_date = date('Y-m-t').' 23:59:59';
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
 
-        $new_in_plays = array();
+        $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+
+        //$new_in_plays = array();
         /*foreach ($temp_in_play as $key => $value)
         {
           //key = user_id
