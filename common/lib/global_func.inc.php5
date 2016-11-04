@@ -4733,13 +4733,20 @@ var_dump($query);*/
   {
     $oDB = CDependency::getComponentByName('database');
 
-    $sQuery = "SELECT * FROM login l WHERE l.loginpk = ".$user_id;
+    $sQuery = "SELECT * FROM login l WHERE l.loginpk = '".$user_id."'";
 
     $db_result = $oDB->executeQuery($sQuery);
 
     $result = $db_result->getAll();
 
-    $result = $result[0];
+    if(isset($result[0]))
+    {
+      $result = $result[0];
+    }
+    else
+    {
+      $result = '';
+    }
 
     return $result;
   }
