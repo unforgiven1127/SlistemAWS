@@ -2155,6 +2155,8 @@ class CSl_candidateEx extends CSl_candidate
 }*/
           if(is_null($user_info) || empty($user_info))
           {
+            ChromePhp::log('NULL');
+            ChromePhp::log($user_info);
             continue;
           }
           if(isset($user_info['phone_ext']))
