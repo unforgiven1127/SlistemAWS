@@ -2155,35 +2155,39 @@ class CSl_candidateEx extends CSl_candidate
 }*/
           if(is_null($user_info) || empty($user_info))
           {
-            ChromePhp::log('NULL');
-            ChromePhp::log($user_info);
-            continue;
-          }
-          if(isset($user_info['phone_ext']))
-          {
-            $phone_ext = $user_info['phone_ext'];
+            //ChromePhp::log('NULL');
+            //ChromePhp::log($user_info);
+            //continue;
           }
           else
           {
-            $phone_ext = '';
+            if(isset($user_info['phone_ext']))
+            {
+              $phone_ext = $user_info['phone_ext'];
+            }
+            else
+            {
+              $phone_ext = '';
+            }
+            $sHTML.= '<div class="entry">';
+              $sHTML.= '<div class="note_header">';
+              $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$phone_ext.'</span>';
+              $sHTML.= '<span class="note_date"> : '.$asHistoryData['date'].'</span>';
+              $sHTML.= '</div>';
+
+              $sHTML.= ' <div class="note_content">'.$asHistoryData['action'];
+
+              if(!empty($asHistoryData['description']))
+                 $sHTML.= '<br />'.$asHistoryData['description'];
+
+              $sHTML.= '</div>';
+            $sHTML.= '</div>';
+
+            $nCount++;
+            if($nCount > $nActivityToDisplay)
+              break;
           }
-          $sHTML.= '<div class="entry">';
-            $sHTML.= '<div class="note_header">';
-            $sHTML.= '&rarr;&nbsp;&nbsp; <span>  '.$this->_oLogin->getUserLink((int)$asHistoryData['userfk'], true).' - '.$phone_ext.'</span>';
-            $sHTML.= '<span class="note_date"> : '.$asHistoryData['date'].'</span>';
-            $sHTML.= '</div>';
 
-            $sHTML.= ' <div class="note_content">'.$asHistoryData['action'];
-
-            if(!empty($asHistoryData['description']))
-               $sHTML.= '<br />'.$asHistoryData['description'];
-
-            $sHTML.= '</div>';
-          $sHTML.= '</div>';
-
-          $nCount++;
-          if($nCount > $nActivityToDisplay)
-            break;
         }
 
         $sHTML.= $this->_oDisplay->getSpanEnd();
