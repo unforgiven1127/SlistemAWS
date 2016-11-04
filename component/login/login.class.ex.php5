@@ -2028,7 +2028,6 @@ ChromePhp::log($clientFlag);
     $oDB = CDependency::getComponentByName('database');
     $oSetting = CDependency::getComponentByName('settings');
 
-ChromePhp::log($pnCookiePk);
 
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
        $sQuery = 'SELECT * FROM `login` WHERE loginpk = '.$pnCookiePk.' AND status = 1 ';
@@ -2048,7 +2047,7 @@ ChromePhp::log($pnCookiePk);
       //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
       $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
     }
-ChromePhp::log($sQuery);
+
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 
@@ -2080,12 +2079,12 @@ ChromePhp::log($sQuery);
     $sHash = sha1($_SESSION['userData']['pk'].'|@|'.uniqid('cook_', true).'|@|'.rand(1000000, 1000000000));
     $sQuery = 'UPDATE login SET date_last_log = "'.date('Y-m-d H:i:s').'", log_hash = "'.$sHash.'" WHERE loginpk = '.$_SESSION['userData']['pk'];
     $oDB->ExecuteQuery($sQuery);
-ChromePhp::log('HERE 1');
+
     //Create a 3 hour cookie (will be refresh as long as user browse pages)
     //@setcookie('login_userdata', serialize(array('pk' => $_SESSION['userData']['pk'], 'hash' => $sHash)), mktime(date('H')+3, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y')), '/');
     @setcookie('login_userdata', serialize(array('pk' => $_SESSION['userData']['pk'], 'hash' => $sHash)), time()+3600*3, '/');
     //redirections
-ChromePhp::log('HERE 2');
+
     $sRedirectUrl = getValue('redirect');
     if(!empty($sRedirectUrl))
     {
@@ -2109,7 +2108,7 @@ ChromePhp::log('HERE 2');
       $oPage = CDependency::getCpPage();
       $sUrl = $oPage->getUrlHome();
     }
-ChromePhp::log('HERE 3');
+
     if($pbIsAjax)
       return array('url' => $sUrl);
 

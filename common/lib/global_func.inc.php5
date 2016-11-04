@@ -4739,6 +4739,8 @@ var_dump($query);*/
 
     $result = $db_result->getAll();
 
+    $result = $result[0];
+
     return $result;
   }
 
