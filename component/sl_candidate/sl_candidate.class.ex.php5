@@ -2149,11 +2149,11 @@ class CSl_candidateEx extends CSl_candidate
           {
             $user_info = getUserInformaiton($asHistoryData['userfk']);
           }
-if($asHistoryData['userfk'] == '234')
+/*if($asHistoryData['userfk'] == '234')
 {
   ChromePhp::log($user_info);
-}
-          if(empty($user_info))
+}*/
+          if(is_null($user_info) || empty($user_info))
           {
             continue;
           }
