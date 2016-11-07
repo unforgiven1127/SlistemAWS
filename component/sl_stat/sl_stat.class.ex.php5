@@ -4181,6 +4181,10 @@ class CSl_statEx extends CSl_stat
         $inplay_count = "";
         $inplay_rsc = "";
 
+        $inplay_new_candi_met = '';
+        $inplay_new_candi_ip = '';
+        $inplay_new_position_ip = '';
+
         $consultants = get_active_consultants();
         $inplay = array();
 
@@ -4242,7 +4246,7 @@ class CSl_statEx extends CSl_stat
         uasort($inplay, sort_multi_array_by_value('new_candi_met', 'reverse'));
         $max_rabbit_1 = 0;
         $max_rabbit_2 = 0;
-        /*foreach ($inplay as $key => $value)
+        foreach ($inplay as $key => $value)
         {
           if($value['candidate_inplay'] > $max_rabbit_1)
           {
@@ -4255,9 +4259,14 @@ class CSl_statEx extends CSl_stat
           $inplay_formatted.= $value['formatted'].";";
 
           $inplay_count.= $value['candidate_inplay'].";";
+
           //$inplay_count.= $cp.";";
           $inplay_rsc.= $value['resume_sent'].";";
-        }*/
+
+          $inplay_new_candi_met .= $value['new_candi_met'].";";
+          $inplay_new_candi_ip .= $value['new_candi_count'].";";
+          $inplay_new_position_ip .= $value['new_posi_count'].";";
+        }
         //$inplay_formatted = " ;".$inplay_formatted;
         //$inplay_count = "0;".$inplay_count;
         //$inplay_rsc = "0;".$inplay_rsc;
@@ -4265,6 +4274,10 @@ class CSl_statEx extends CSl_stat
         $inplay_formatted = rtrim($inplay_formatted,';');
         $inplay_count = rtrim($inplay_count,';');
         $inplay_rsc = rtrim($inplay_rsc,';');
+
+        $inplay_new_candi_met = rtrim($inplay_new_candi_met,';');
+        $inplay_new_candi_ip = rtrim($inplay_new_candi_ip,';');
+        $inplay_new_position_ip = rtrim($inplay_new_position_ip,';');
       }
       else
       {
@@ -4304,9 +4317,9 @@ class CSl_statEx extends CSl_stat
         $data['max_rabbit_1'] = $max_rabbit_1;
         $data['max_rabbit_2'] = $max_rabbit_2;
 
-        $data['new_candi_met'] = $inplay[$consultant_id]['new_candi_met'];
-        $data['new_candi_count'] = $inplay[$consultant_id]['new_candi_count'];
-        $data['new_posi_count'] = $inplay[$consultant_id]['new_posi_count'];
+        $data['new_candi_met'] = $inplay_new_candi_met;
+        $data['new_candi_count'] = $inplay_new_candi_ip;
+        $data['new_posi_count'] = $inplay_new_position_ip;
 
         ChromePhp::log($data['new_candi_met']);
         ChromePhp::log($data['new_candi_count']);
