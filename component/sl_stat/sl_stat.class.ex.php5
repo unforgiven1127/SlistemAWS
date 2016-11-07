@@ -4193,7 +4193,7 @@ class CSl_statEx extends CSl_stat
         $start_date = $thisYear.'-'.$thisMonth.'-01 00:00:00';
         $start_date_title = date('F').' 01, '.$thisYear;
 
-        $title = "Candidates in play / Resume sent ".$start_date_title." to Present";
+        $title = "New candidates met / New candidates in play / New positions in play ".$start_date_title." to Present";
 
         $end_date = date('Y-m-t').' 23:59:59';
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
