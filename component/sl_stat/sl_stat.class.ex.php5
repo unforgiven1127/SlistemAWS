@@ -4208,7 +4208,7 @@ class CSl_statEx extends CSl_stat
           $temp_in_play[$key]['new_posi_count'] = count($value['new_positions']);
         }*/
 
-        //ChromePhp::log($temp_in_play);
+        ChromePhp::log($temp_in_play);
 
         foreach ($consultants as $key => $value)
         {
