@@ -149,7 +149,7 @@ $(function () {
             }*/
             series: {
                 //groupPadding: 0.5,  // Exactly overlap
-                pointWidth: 20
+                pointWidth: 12
             }
         },
         series: [ {

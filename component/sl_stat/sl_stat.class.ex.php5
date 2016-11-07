@@ -4323,10 +4323,6 @@ class CSl_statEx extends CSl_stat
         $data['new_candi_count'] = $inplay_new_candi_ip;
         $data['new_posi_count'] = $inplay_new_position_ip;
 
-        ChromePhp::log($data['new_candi_met']);
-        ChromePhp::log($data['new_candi_count']);
-        ChromePhp::log($data['new_posi_count']);
-
       }
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);
