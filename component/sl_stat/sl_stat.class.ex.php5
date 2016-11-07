@@ -4219,18 +4219,20 @@ class CSl_statEx extends CSl_stat
           $candidate_inplay_temp = get_candidate_in_play($consultant_id, $start_date);
           $inplay[$consultant_id]['candidate_inplay'] = $candidate_inplay_temp;
 
-          if(isset($temp_in_play[$consultant_id]['new_candi_count']))
+          if(isset($temp_in_play[$consultant_id]['new_candidates']))
           {
-            $inplay[$consultant_id]['new_candi_count'] = count($temp_in_play[$consultant_id]['new_candi_count']);
+            $new_candi_count_temp = count($temp_in_play[$consultant_id]['new_candidates']);
+            $inplay[$consultant_id]['new_candi_count'] = $new_candi_count_temp;
           }
           else
           {
             $inplay[$consultant_id]['new_candi_count'] = 0;
           }
 
-          if(isset($temp_in_play[$consultant_id]['new_posi_count']))
+          if(isset($temp_in_play[$consultant_id]['new_positions']))
           {
-            $inplay[$consultant_id]['new_posi_count'] = count($temp_in_play[$consultant_id]['new_posi_count']);
+            $new_position_count_temp = count($temp_in_play[$consultant_id]['new_positions']);
+            $inplay[$consultant_id]['new_posi_count'] = $new_position_count_temp;
           }
           else
           {
