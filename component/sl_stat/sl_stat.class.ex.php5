@@ -4242,7 +4242,7 @@ class CSl_statEx extends CSl_stat
           $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
           $inplay[$consultant_id]['new_candi_met'] = $new_candi_met;
 
-          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$new_candi_met."|"." |".$inplay[$consultant_id]['new_candi_count']."|".$inplay[$consultant_id]['new_posi_count']."|";
+          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$new_candi_met."|"." |".$inplay[$consultant_id]['new_candi_count']." |".$inplay[$consultant_id]['new_posi_count']."|";
 
         }
         uasort($inplay, sort_multi_array_by_value('new_candi_met', 'reverse'));
