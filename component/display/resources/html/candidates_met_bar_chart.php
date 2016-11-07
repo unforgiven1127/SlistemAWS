@@ -158,7 +158,7 @@ $(function () {
                 },
                 data: [27]
             },{
-            name: 'Candidate met',
+            name: 'New Candidates Met',
             color: 'rgba(0, 32, 194,0.8)',//blue
             opacity: '.4',
             data: count
