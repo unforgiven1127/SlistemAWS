@@ -4194,7 +4194,7 @@ class CSl_statEx extends CSl_stat
         $end_date = date('Y-m-t').' 23:59:59';
         $temp_in_play = $this->_getModel()->get_new_in_play($consultants, $start_date, $end_date, 'consultant');
 
-        $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+        //$new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
 
         //$new_in_plays = array();
         /*foreach ($temp_in_play as $key => $value)
@@ -4204,7 +4204,7 @@ class CSl_statEx extends CSl_stat
           $temp_in_play[$key]['new_posi_count'] = count($value['new_positions']);
         }*/
 
-        ChromePhp::log($temp_in_play);
+        //ChromePhp::log($temp_in_play);
 
         foreach ($consultants as $key => $value)
         {
@@ -4228,6 +4228,7 @@ class CSl_statEx extends CSl_stat
           }
 
           $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
+          $inplay[$consultant_id]['new_candi_met'] = $new_candi_met;
 
           $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|"." |".$candidate_inplay_temp."|";
 
@@ -4296,6 +4297,11 @@ class CSl_statEx extends CSl_stat
         $data['title'] = $title;
         $data['max_rabbit_1'] = $max_rabbit_1;
         $data['max_rabbit_2'] = $max_rabbit_2;
+
+        $data['new_candi_met'] = $inplay[$consultant_id]['new_candi_met'];
+        $data['new_candi_count'] = $inplay[$consultant_id]['new_candi_count'];
+        $data['new_posi_count'] = $inplay[$consultant_id]['new_posi_count'];
+
       }
 
       //$html = $this->_oDisplay->render('revenue_chart', $data);

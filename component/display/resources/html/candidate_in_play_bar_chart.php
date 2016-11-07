@@ -41,15 +41,39 @@ $(function () {
     var users = "<?php echo $inplay_formatted; ?>";
     users = users.split(';');
 //-----------------------------------------------------------------------------------------//
-    var inplay_count = "<?php echo $inplay_count; ?>";
+/*    var inplay_count = "<?php echo $inplay_count; ?>";
     inplay_count = inplay_count.split(';');
 
-    for(var i=0; i<inplay_count.length; i++) { inplay_count[i] = parseInt(inplay_count[i], 10); }
+    for(var i=0; i<inplay_count.length; i++) { inplay_count[i] = parseInt(inplay_count[i], 10); }*/
 //-----------------------------------------------------------------------------------------//
-    var inplay_rsc = "<?php echo $inplay_rsc; ?>";
+/*    var inplay_rsc = "<?php echo $inplay_rsc; ?>";
     inplay_rsc = inplay_rsc.split(';');
 
-    for(var i=0; i<inplay_rsc.length; i++) { inplay_rsc[i] = parseInt(inplay_rsc[i], 10); }
+    for(var i=0; i<inplay_rsc.length; i++) { inplay_rsc[i] = parseInt(inplay_rsc[i], 10); }*/
+//-----------------------------------------------------------------------------------------//
+//
+//
+//
+//
+//-----------------------------------------------------------------------------------------//
+    var new_candi_met = "<?php echo $new_candi_met; ?>";
+    new_candi_met = new_candi_met.split(';');
+
+    for(var i=0; i<new_candi_met.length; i++) { new_candi_met[i] = parseInt(new_candi_met[i], 10); }
+//-----------------------------------------------------------------------------------------//
+
+//-----------------------------------------------------------------------------------------//
+    var new_candi_count = "<?php echo $new_candi_count; ?>";
+    new_candi_count = new_candi_count.split(';');
+
+    for(var i=0; i<new_candi_count.length; i++) { new_candi_count[i] = parseInt(new_candi_count[i], 10); }
+//-----------------------------------------------------------------------------------------//
+//
+//-----------------------------------------------------------------------------------------//
+    var new_posi_count = "<?php echo $new_posi_count; ?>";
+    new_posi_count = new_posi_count.split(';');
+
+    for(var i=0; i<new_posi_count.length; i++) { new_posi_count[i] = parseInt(new_posi_count[i], 10); }
 //-----------------------------------------------------------------------------------------//
 
     $('#container').highcharts({
@@ -129,19 +153,24 @@ $(function () {
             }
         },
         series: [ {
-            name: 'Resume sent',
+            name: 'New candidates met',
             style: {
                         fontSize: '20px',
                         fontWeight: 'bold'
                     },
             color: 'rgba(179, 0, 0,1)',//red
             opacity: '.4',
-            data: inplay_rsc
+            data: new_candi_met
         },{
-            name: 'Candidate in play',
+            name: 'New candidates in play',
             color: 'rgba(43, 101, 236,1)',//blue
             opacity: '.4',
-            data: inplay_count
+            data: new_candi_count
+        },{
+            name: 'New positions in play',
+            color: 'rgba(45, 185, 68,1)',//green
+            opacity: '.4',
+            data: new_posi_count
         }]
 
     });
