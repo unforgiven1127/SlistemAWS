@@ -4218,22 +4218,28 @@ class CSl_statEx extends CSl_stat
           if(isset($temp_in_play[$consultant_id]['new_candi_count']))
           {
             $inplay[$consultant_id]['new_candi_count'] = count($temp_in_play[$consultant_id]['new_candi_count']);
-
-            $inplay[$consultant_id]['new_posi_count'] = count($temp_in_play[$consultant_id]['new_posi_count']);
           }
           else
           {
             $inplay[$consultant_id]['new_candi_count'] = 0;
+          }
+
+          if(isset($temp_in_play[$consultant_id]['new_posi_count']))
+          {
+            $inplay[$consultant_id]['new_posi_count'] = count($temp_in_play[$consultant_id]['new_posi_count']);
+          }
+          else
+          {
             $inplay[$consultant_id]['new_posi_count'] = 0;
           }
 
           $new_candi_met = get_objectives_new_candidate_met($consultant_id, $start_date, $end_date);
           $inplay[$consultant_id]['new_candi_met'] = $new_candi_met;
 
-          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$resume_sent_temp['count']."|"." |".$candidate_inplay_temp."|";
+          $inplay[$consultant_id]['formatted'] = substr($value['firstname'],0,1).".".$value['lastname']." |".$new_candi_met."|"." |".$inplay[$consultant_id]['new_candi_count']."|";
 
         }
-        uasort($inplay, sort_multi_array_by_value('candidate_inplay', 'reverse'));
+        uasort($inplay, sort_multi_array_by_value('new_candi_met', 'reverse'));
         $max_rabbit_1 = 0;
         $max_rabbit_2 = 0;
         /*foreach ($inplay as $key => $value)
@@ -4301,6 +4307,10 @@ class CSl_statEx extends CSl_stat
         $data['new_candi_met'] = $inplay[$consultant_id]['new_candi_met'];
         $data['new_candi_count'] = $inplay[$consultant_id]['new_candi_count'];
         $data['new_posi_count'] = $inplay[$consultant_id]['new_posi_count'];
+
+        ChromePhp::log($data['new_candi_met']);
+        ChromePhp::log($data['new_candi_count']);
+        ChromePhp::log($data['new_posi_count']);
 
       }
 
