@@ -5115,10 +5115,15 @@ ChromePhp::log($temp_set_vs_met);
               $count = count($temp_new_candidate_met[$id]);
             }
 
-            if(isset($temp_new_candidate_met[$id]))//$stats_data['researcher'][$id]['met']
+            if($count > 0)//$stats_data['researcher'][$id]['met']
             {
               $stats_data['researcher'][$id]['met'] = $count;
               $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
+            }
+            else
+            {
+              $stats_data['researcher'][$id]['met'] = 0;
+              $stats_data['researcher'][$id]['met_meeting_info'] = array();
             }
             //var_dump($stats_data['researcher'][$id]['met_meeting_info']);
           //}
