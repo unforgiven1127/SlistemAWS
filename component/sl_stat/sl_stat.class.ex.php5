@@ -5115,7 +5115,7 @@ ChromePhp::log($temp_set_vs_met);
               $count = count($temp_new_candidate_met[$id]);
             }
 
-            if(isset($stats_data['researcher'][$id]['met']))
+            if(isset($temp_new_candidate_met[$id]))//$stats_data['researcher'][$id]['met']
             {
               $stats_data['researcher'][$id]['met'] = $count;
               $stats_data['researcher'][$id]['met_meeting_info'] = $temp_new_candidate_met[$id];
