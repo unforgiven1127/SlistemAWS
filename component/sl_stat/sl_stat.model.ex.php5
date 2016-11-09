@@ -1457,7 +1457,7 @@ order by m.candidatefk
           $repeating_info[$row['created_by']][$status][$row['candidatefk']] = '';
       }
 
-      if (!isset($ccm_data[$row['created_by']]['ccm1']))
+      if(!isset($ccm_data[$row['created_by']]['ccm1']))
       {
         $ccm_data[$row['created_by']]['ccm1'] = 0;
         $ccm_data[$row['created_by']]['ccm1_done'] = 0;
