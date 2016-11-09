@@ -4781,31 +4781,31 @@ class CSl_statEx extends CSl_stat
             $stats_data['consultant'][$id]['ccm1_info'] = array();
           }
 
-          //if (!empty($temp_ccm[$id]['ccm2']))
-          //{
+          if (!empty($temp_ccm[$id]['ccm2']))
+          {
             $stats_data['consultant'][$id]['ccm2'] = $temp_ccm[$id]['ccm2'];
             $stats_data['consultant'][$id]['ccm2_done'] = $temp_ccm[$id]['ccm2_done'];
             $stats_data['consultant'][$id]['ccm2_info'] = $temp_ccm[$id]['ccm_info']['ccm2'];
-          //}
-          /*else
+          }
+          else
           {
             $stats_data['consultant'][$id]['ccm2'] = 0;
             $stats_data['consultant'][$id]['ccm2_done'] = 0;
             $stats_data['consultant'][$id]['ccm2_info'] = array();
-          }*/
+          }
 
-          //if (!empty($temp_ccm[$id]['mccm']))
-          //{
+          if (!empty($temp_ccm[$id]['mccm']))
+          {
             $stats_data['consultant'][$id]['mccm'] = $temp_ccm[$id]['mccm'];
             $stats_data['consultant'][$id]['mccm_done'] = $temp_ccm[$id]['mccm_done'];
             $stats_data['consultant'][$id]['mccm_info'] = $temp_ccm[$id]['ccm_info']['mccm'];
-          //}
-          /*else
+          }
+          else
           {
             $stats_data['consultant'][$id]['mccm'] = 0;
             $stats_data['consultant'][$id]['mccm_done'] = 0;
             $stats_data['consultant'][$id]['mccm_info'] = array();
-          }*/
+          }
 
   //----------------------------------------------------------------------------------
           if (!empty($temp_in_play[$id]['new_candidates']))
