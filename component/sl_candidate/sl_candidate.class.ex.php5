@@ -6761,7 +6761,7 @@ class CSl_candidateEx extends CSl_candidate
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         $sQuery .= " LIMIT 300";
-        ChromePhp::log($sQuery);
+        //ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
 
@@ -6788,7 +6788,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $company_list = "none";
       }
-      //ChromePhp::log($company_list);
+      ChromePhp::log($company_list);
 
 
       //$company_list = "test (#123456), Test (#123456)";
