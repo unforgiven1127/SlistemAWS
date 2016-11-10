@@ -3209,6 +3209,16 @@ var_dump($query);*/
     return $result;
   }
 
+  function mergeCharacterAssassments($candidate_id, $target_candidate_id)
+  {
+    $oDB = CDependency::getComponentByName('database');
+    $sDate = date('Y-m-d H:i:s');
+
+    $sQuery = "UPDATE sl_notes set candidate_id = '".$target_candidate_id."', last_activity = '".$sDate."', old_candidate_id = '".$candidate_id."' WHERE candidate_id = '".$candidate_id."'";
+    //ChromePhp::log($sQuery);
+    $db_result = $oDB->executeQuery($sQuery);
+  }
+
   function updateMergedCompanies($id,$id_name,$company_id,$company_id_name,$table_name)
   {
     $oDB = CDependency::getComponentByName('database');

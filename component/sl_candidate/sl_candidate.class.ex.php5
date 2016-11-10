@@ -10248,6 +10248,7 @@ die();*/
 
       //1. merge profile data
       $adjusted_candidate_ids = $this->merge_candidate_profiles($candidate_id, $target_candidate_id);
+      mergeCharacterAssassments($candidate_id, $target_candidate_id);
 
       /*$asTarget = $this->_getModel()->getCandidateData($adjusted_candidate_ids['target'], true);
       if(empty($asTarget))
