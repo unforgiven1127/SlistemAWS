@@ -1803,7 +1803,7 @@ class CSearchEx extends CSearch
     // -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=- -=-
     if($pasFieldType['type'] == 'text')
     {
-      if(strlen(trim($pvValue)) < 2)
+      if(strlen(trim($pvValue)) < 2 && !is_numeric ($pvValue))
       {
         $this->_addError('line '.__LINE__.' - text field, value is less than 2 characters ['.$pvValue.']');
         return ' <[ IS NULL '.__LINE__.' / '.$pasFieldType['type'].' / '.$psOperator.' ]> ';
