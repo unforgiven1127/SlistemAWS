@@ -1530,7 +1530,8 @@ class CSearchEx extends CSearch
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
-
+                ChromePhp::log($vValue);
+                ChromePhp::log($sFieldName);
                 if(!empty($vValue))
                 {
                   if($sFieldName == 'company_prev')
