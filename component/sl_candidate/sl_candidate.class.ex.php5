@@ -3181,7 +3181,7 @@ class CSl_candidateEx extends CSl_candidate
         }
 //ChromePhp::log($sQuery);
 //
-      $sQuery = str_replace('"','\'',$sQuery);
+      //$sQuery = str_replace('"','\'',$sQuery);
 
 
       $user_id = $oLogin->getUserPk();
