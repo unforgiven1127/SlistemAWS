@@ -1430,6 +1430,7 @@ ChromePhp::log($asFieldData);
 
           if(!empty($asFieldData['sql']['select']))
           {
+            ChromePhp::log($asFieldData['sql']['select']);
             $oQB->addSelect($asFieldData['sql']['select']);
           }
 
