@@ -708,7 +708,7 @@ class CQueryBuilder
 
   public function setNote($psNote)
   {
-    if(!empty($note))
+    if(!empty($psNote))
       $this->note = $psNote;
   }
   public function getNote()
