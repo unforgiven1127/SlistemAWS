@@ -6748,7 +6748,7 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $sQuery = trim($sQuery, "OR ");
-ChromePhp::log($sQuery);
+
         //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
 
       }
@@ -6761,7 +6761,7 @@ ChromePhp::log($sQuery);
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         $sQuery .= " LIMIT 500";
-        //ChromePhp::log($sQuery);
+        ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
 
