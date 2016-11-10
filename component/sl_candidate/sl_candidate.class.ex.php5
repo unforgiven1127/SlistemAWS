@@ -6756,8 +6756,10 @@ ChromePhp::log($sQuery);
       {
         $somthing = false;
       }
+ChromePhp::log($somthing);
       if($somthing)
       {
+ChromePhp::log('here');
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         $sQuery .= " LIMIT 500";
