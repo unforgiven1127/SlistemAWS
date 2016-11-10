@@ -779,11 +779,12 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       )
     );
 
+    $sURL = $this->_oPage->getAjaxUrl($this->csUid, CONST_ACTION_SEARCH, CONST_CANDIDATE_TYPE_COMP);
     $asFields[CONST_CANDIDATE_TYPE_CANDI]['company_prev'] = array(
       'display' => array
       (
         'fts_type'=> null,
-        'type' => array('input', ''),
+        'type' => array('selector', $sURL),
         'label' => 'Previous company ',
         'group' => 'Company',
         'operator' => $oSearch->getFieldOperators('in'),
