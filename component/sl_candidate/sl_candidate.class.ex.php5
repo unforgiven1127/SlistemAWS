@@ -2824,7 +2824,7 @@ class CSl_candidateEx extends CSl_candidate
       $bDisplayPositionField = false;
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
-
+ChromePhp::log('_getCandidateList');
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
 //BURADAN
