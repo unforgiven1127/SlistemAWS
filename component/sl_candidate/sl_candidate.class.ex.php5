@@ -3182,7 +3182,7 @@ class CSl_candidateEx extends CSl_candidate
 //ChromePhp::log($sQuery);
 //
       $sQuery = str_replace('"','\'',$sQuery);
-      ChromePhp::log($sQuery);
+
 
       $user_id = $oLogin->getUserPk();
 
@@ -3199,7 +3199,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $desc = "";
       }
-      if(isset($searchTitle[0]))
+      /*if(isset($searchTitle[0]))
       {
         $searchTitle = $searchTitle[0];
         if($searchTitle == "QuickSearch")
@@ -3214,8 +3214,8 @@ class CSl_candidateEx extends CSl_candidate
         {
           insertLog($user_id, '-1', $limitlessQuery,"other_search",$desc);
         }
-      }
-
+      }*/
+      ChromePhp::log($sQuery);
       /*if(getValue('pipe_filter')) // met icin tekrar yazacaktim ama dogru calisiyor gibi kontrol
       {
         $pipe_filter = getValue('pipe_filter');
