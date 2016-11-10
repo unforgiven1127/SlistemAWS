@@ -1407,7 +1407,11 @@ class CSearchEx extends CSearch
           if(empty($asFieldData))
             return array('error' => 'Could not find the field ['.$sFieldName.'] description');
 
-
+          /*if($sFieldName == 'company_prev')
+          {
+            $oQB->addWhere("");
+          }*/
+ChromePhp::log($asFieldData);
 
           if(!empty($asFieldData['sql']['join']))
           {
