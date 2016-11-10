@@ -3019,6 +3019,7 @@ ChromePhp::log('_getCandidateList');
       }
       else
       {
+        ChromePhp::log($sQuery);
         $oDbResult = $oDb->ExecuteQuery($sQuery);
         $bRead = $oDbResult->readFirst();
         $nResult = (int)$oDbResult->getFieldValue('nCount');
