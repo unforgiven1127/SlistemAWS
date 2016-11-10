@@ -7,6 +7,7 @@ class CQueryBuilder
   private $cbIsAdmin = false;
   private $csSearchTitle = '';
   private $csDataType = '';
+  private $note = '';
 
   private $casSQL = array('select' => array(), 'inner' => array(), 'left' => array(), 'outer' => array(), 'group' => array(), 'limit' => array());
   private $casAddedRight = array();
@@ -703,5 +704,15 @@ class CQueryBuilder
   public function getTitle()
   {
     return $this->csSearchTitle;
+  }
+
+  public function setNote($psNote)
+  {
+    if(!empty($note))
+      $this->note = $psNote;
+  }
+  public function getNote()
+  {
+    return $this->note;
   }
 }
