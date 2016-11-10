@@ -3215,7 +3215,7 @@ var_dump($query);*/
     $sDate = date('Y-m-d H:i:s');
 
     $sQuery = "UPDATE sl_notes set candidate_id = '".$candidate_id."', last_activity = '".$sDate."', old_candidate_id = '".$target_candidate_id."' WHERE candidate_id = '".$target_candidate_id."'";
-    //ChromePhp::log($sQuery);
+    ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
   }
 
