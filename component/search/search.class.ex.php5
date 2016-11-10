@@ -1253,7 +1253,7 @@ class CSearchEx extends CSearch
       $asCondition = array();
       foreach($_POST['field_selector'][$nGroup] as $nRowNumber => $sFieldName)
       {
-        ChromePhp::log($sFieldName);
+        //ChromePhp::log($sFieldName);
         insertAILog("complex_search",$sFieldName,$user_id);
         $vFieldValue = @$_POST[$sFieldName][$nGroup][$nRowNumber];
         $allSalesFlag = false;
@@ -1411,7 +1411,7 @@ class CSearchEx extends CSearch
           {
             $oQB->addWhere("");
           }*/
-ChromePhp::log($asFieldData);
+//ChromePhp::log($asFieldData);
 
           if(!empty($asFieldData['sql']['join']))
           {
@@ -1430,7 +1430,6 @@ ChromePhp::log($asFieldData);
 
           if(!empty($asFieldData['sql']['select']))
           {
-            ChromePhp::log($asFieldData['sql']['select']);
             $oQB->addSelect($asFieldData['sql']['select']);
           }
 
@@ -1531,9 +1530,15 @@ ChromePhp::log($asFieldData);
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
-ChromePhp::log($vValue);
+
                 if(!empty($vValue))
+                {
+                  if($sFieldName == 'company_prev')
+                  {
+                    ChromePhp::log(' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ');
+                  }
                   $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
+                }
               }
 
               if(!empty($asArrayCondition))
@@ -1630,8 +1635,8 @@ ChromePhp::log($vValue);
       $oQB->setTitle('CpxSearch: '.implode(' , ', $asMessage['long']));
     else
       $oQB->setTitle('CpxSearch: Some data is missing');
-$asSql = $oQB->getSqlArray();
-ChromePhp::log($asSql);
+//$asSql = $oQB->getSqlArray();
+//ChromePhp::log($asSql);
 
     return $oQB;
   }
