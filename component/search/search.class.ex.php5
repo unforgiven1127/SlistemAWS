@@ -1531,7 +1531,7 @@ ChromePhp::log($asFieldData);
               $asArrayCondition = array();
               foreach($vFieldValue as $vValue)
               {
-
+ChromePhp::log($vValue);
                 if(!empty($vValue))
                   $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
               }
