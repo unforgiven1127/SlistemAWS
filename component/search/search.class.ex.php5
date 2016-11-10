@@ -1407,10 +1407,11 @@ class CSearchEx extends CSearch
           if(empty($asFieldData))
             return array('error' => 'Could not find the field ['.$sFieldName.'] description');
 
-          /*if($sFieldName == 'company_prev')
+          if($sFieldName == 'company_prev')
           {
-            $oQB->addWhere("");
-          }*/
+            ChromePhp::log($vFieldValue);
+            //$oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vValue."'");
+          }
 //ChromePhp::log($asFieldData);
 
           if(!empty($asFieldData['sql']['join']))
@@ -1538,7 +1539,7 @@ class CSearchEx extends CSearch
                   {
                     $company_information = getCompanyInformation($vValue);
                     $company_name = $company_information['name'];
-                    $oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vValue."'");
+
                     //ChromePhp::log($vValue);
 
                     //$asArrayCondition[] = " ( even.content LIKE '%slate%') ";
