@@ -3180,6 +3180,8 @@ class CSl_candidateEx extends CSl_candidate
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 //ChromePhp::log($sQuery);
+//
+      $sQuery = str_replace('"','\'',$sQuery);
 
       $user_id = $oLogin->getUserPk();
 
@@ -3187,8 +3189,6 @@ class CSl_candidateEx extends CSl_candidate
       $limitlessQuery = $limitlessQuery[0];
 
       $searchTitle = explode(':',$poQB->getTitle());
-
-ChromePhp::log($sQuery);
 
       if(isset($searchTitle[1]))
       {
