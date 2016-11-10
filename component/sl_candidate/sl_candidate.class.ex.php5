@@ -3184,9 +3184,8 @@ class CSl_candidateEx extends CSl_candidate
       $user_id = $oLogin->getUserPk();
 
       $limitlessQuery = explode('LIMIT', $sQuery);
-ChromePhp::log($limitlessQuery);
       $limitlessQuery = $limitlessQuery[0];
-ChromePhp::log($limitlessQuery);
+
       $searchTitle = explode(':',$poQB->getTitle());
       if(isset($searchTitle[1]))
       {
@@ -3212,7 +3211,7 @@ ChromePhp::log($limitlessQuery);
           insertLog($user_id, '-1', $limitlessQuery,"other_search",$desc);
         }
       }
-
+ChromePhp::log($sQuery);
       /*if(getValue('pipe_filter')) // met icin tekrar yazacaktim ama dogru calisiyor gibi kontrol
       {
         $pipe_filter = getValue('pipe_filter');
