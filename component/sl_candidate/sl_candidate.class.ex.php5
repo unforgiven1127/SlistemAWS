@@ -3005,6 +3005,20 @@ ChromePhp::log('_getCandidateList');
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
 
+      ChromePhp::log($sQuery);
+      $notes = $poQB->getNote();
+      if(isset($notes) && !empty($notes))
+      {
+        $notes = explode(';',$notes);
+        $unionTable = $notes[0];
+        $unionValue = $notes[1];
+
+        $newJoin = ' LEFT JOIN '.$unionTable.' unTa on unTa.company_id = "'.$unionValue.'" WHERE ';
+
+        $sQuery = str_replace('WHERE',$newJoin,$sQuery);
+        ChromePhp::log($sQuery);
+      }
+
       if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
         $searchID = $exploded[1];
@@ -3077,19 +3091,7 @@ ChromePhp::log('_getCandidateList');
         $limit = $limit[1];
 
         $sQuery = $sQuery[0];
-ChromePhp::log($sQuery);
-        $notes = $poQB->getNote();
-        if(isset($notes) && !empty($notes))
-        {
-          $notes = explode(';',$notes);
-          $unionTable = $notes[0];
-          $unionValue = $notes[1];
 
-          $newJoin = ' LEFT JOIN '.$unionTable.' unTa on unTa.company_id = "'.$unionValue.'" WHERE ';
-
-          $sQuery = str_replace('WHERE',$newJoin,$sQuery);
-          ChromePhp::log($sQuery);
-        }
 
         $sSortOrder = getValue('sortorder');
 
