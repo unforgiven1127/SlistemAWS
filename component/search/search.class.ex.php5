@@ -1542,7 +1542,7 @@ class CSearchEx extends CSearch
                     $company_information = getCompanyInformation($vValue);
                     $company_name = $company_information['name'];
 
-                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).') ';
+                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR unTa.company_id = "'.$vValue.'") ';
                   }
                   else
                   {
