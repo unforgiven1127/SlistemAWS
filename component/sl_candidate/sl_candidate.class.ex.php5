@@ -6766,7 +6766,7 @@ class CSl_candidateEx extends CSl_candidate
         $db_result = $oDB->executeQuery($sQuery);
 
         $result = $db_result->getAll();
-
+ChromePhp::log($result);
         $company_list = "";
         $adet = count($result);
         //ChromePhp::log($adet);
