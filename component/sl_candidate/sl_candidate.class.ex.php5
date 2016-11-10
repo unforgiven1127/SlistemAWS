@@ -3076,7 +3076,7 @@ class CSl_candidateEx extends CSl_candidate
         $limit = $limit[1];
 
         $sQuery = $sQuery[0];
-
+ChromePhp::log($sQuery);
         $notes = $poQB->getNote();
         if(isset($notes) && !empty($notes))
         {
