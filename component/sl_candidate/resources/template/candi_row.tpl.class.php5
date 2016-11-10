@@ -122,7 +122,7 @@ class CCandi_row extends CTemplate
     {
       $lastStatus = 0;
     }
-    ChromePhp::log($lastStatus);
+    //ChromePhp::log($lastStatus);
     //if(!empty($pasData['_pos_status']))
     if($lastStatus > 0)
     {
