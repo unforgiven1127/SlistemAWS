@@ -3080,12 +3080,13 @@ class CSl_candidateEx extends CSl_candidate
         $notes = $poQB->getNote();
         if(isset($notes) && !empty($notes))
         {
-          ChromePhp::log($notes);
           $notes = explode(';',$notes);
           $unionTable = $notes[0];
           $unionValue = $notes[1];
 
-          $sQuery.= " LEFT JOIN ".$unionTable." unTa WHERE unTa.company_id = '".$unionValue."'";
+          $newJoin = " LEFT JOIN ".$unionTable." unTa WHERE unTa.company_id = '".$unionValue."' WHERE";
+
+          $sQuery = str_replace('WHERE',$newJoin,$sQuery);
         }
 
         $sSortOrder = getValue('sortorder');
