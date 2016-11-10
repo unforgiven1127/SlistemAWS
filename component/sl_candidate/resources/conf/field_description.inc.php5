@@ -786,8 +786,8 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
         'type' => array('input', ''),
         'label' => 'Previous company ',
         'group' => 'Company',
-        'operator' => $oSearch->getFieldOperators('string'),
-        'default_operator' => 'start',
+        'operator' => $oSearch->getFieldOperators('in'),
+        'default_operator' => 'equals',
         'option' => array(),
         'value' => array(),
         'default_value' => array(),
@@ -798,7 +798,7 @@ $asFields[CONST_CANDIDATE_TYPE_CANDI]['keyword'] = array(
       ),
       'data' => array
       (
-        'type' => 'text',
+        'type' => 'intList',
         'control' => ''
       ),
       'sql' => array
