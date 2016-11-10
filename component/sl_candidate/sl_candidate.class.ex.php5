@@ -6760,7 +6760,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
-        $sQuery .= " LIMIT 100";
+        $sQuery .= " LIMIT 200";
 ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
