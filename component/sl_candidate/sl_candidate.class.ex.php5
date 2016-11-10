@@ -2881,6 +2881,7 @@ ChromePhp::log('_getCandidateList');
       $poQB->addJoin('left', 'sl_company', 'scom', 'scom.sl_companypk = scpr.companyfk');
       $poQB->addJoin('left', 'sl_industry', 'sind', 'sind.sl_industrypk = scpr.industryfk');
       $poQB->addJoin('left', 'sl_occupation', 'socc', 'socc.sl_occupationpk = scpr.occupationfk');
+      $poQB->addJoin('left', 'sl_candidate_old_companies', 'slcoc', 'slcoc.candidate_id = scan.sl_candidatepk');
 
       $sNow = date('Y-m-d H:i:s');
       $poQB->addSelect('scan.*,
@@ -3004,20 +3005,6 @@ ChromePhp::log('_getCandidateList');
 
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
-
-      ChromePhp::log($sQuery);
-      $notes = $poQB->getNote();
-      if(isset($notes) && !empty($notes))
-      {
-        $notes = explode(';',$notes);
-        $unionTable = $notes[0];
-        $unionValue = $notes[1];
-
-        $newJoin = ' LEFT JOIN '.$unionTable.' unTa on unTa.company_id = "'.$unionValue.'" WHERE ';
-
-        $sQuery = str_replace('WHERE',$newJoin,$sQuery);
-        ChromePhp::log($sQuery);
-      }
 
       if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
