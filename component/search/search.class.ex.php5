@@ -1538,12 +1538,13 @@ class CSearchEx extends CSearch
                   {
                     $company_information = getCompanyInformation($vValue);
                     $company_name = $company_information['name'];
+                    $oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vValue."'");
                     //ChromePhp::log($vValue);
 
                     //$asArrayCondition[] = " ( even.content LIKE '%slate%') ";
                     //$vValue = 'slate';
-                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR sl_candidate_old_companies.company_id = "'.$vValue.'") ';
-                    ChromePhp::log(' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR sl_candidate_old_companies.company_id = "'.$vValue.'") ');
+                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR slcoc.company_id = "'.$vValue.'") ';
+                    ChromePhp::log(' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR slcoc.company_id = "'.$vValue.'") ');
                   }
                   else
                   {
