@@ -6761,15 +6761,15 @@ class CSl_candidateEx extends CSl_candidate
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
         $sQuery .= " LIMIT 300";
-        ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
 
-        //$db_result = $oDB->executeQuery($sQuery);
+        $db_result = $oDB->executeQuery($sQuery);
 
-        //$result = $db_result->getAll();
-ChromePhp::log('here');
+        $result = $db_result->getAll();
+ChromePhp::log($result);
         $company_list = "";
         $adet = count($result);
-        //ChromePhp::log($adet);
+ChromePhp::log($adet);
         if($adet > 0)
         {
           foreach ($result as $key => $value)
