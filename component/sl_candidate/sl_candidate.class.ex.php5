@@ -6760,16 +6760,15 @@ ChromePhp::log($somthing);
       if($somthing)
       {
 ChromePhp::log('here');
-ChromePhp::log($sQuery);
         $sQuery = trim($sQuery, "OR ");
         $sQuery = trim($sQuery, "OR");
-        $sQuery .= " LIMIT 300";
+        $sQuery .= " LIMIT 500";
         //ChromePhp::log($sQuery);
 
         $db_result = $oDB->executeQuery($sQuery);
 
         $result = $db_result->getAll();
-ChromePhp::log($result);
+
         $company_list = "";
         $adet = count($result);
         //ChromePhp::log($adet);
