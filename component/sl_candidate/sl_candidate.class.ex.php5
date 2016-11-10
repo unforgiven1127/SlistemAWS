@@ -3084,10 +3084,10 @@ class CSl_candidateEx extends CSl_candidate
           $unionTable = $notes[0];
           $unionValue = $notes[1];
 
-          //$newJoin = " LEFT JOIN ".$unionTable." unTa on unTa.company_id = '".$unionValue."' WHERE ";
+          $newJoin = " LEFT JOIN ".$unionTable." unTa on unTa.company_id = '".$unionValue."' WHERE ";
 
-          //$sQuery = str_replace('WHERE',$newJoin,$sQuery);
-          ChromePhp::log($sQuery);
+          $sQuery = str_replace('WHERE',$newJoin,$sQuery);
+          //ChromePhp::log($sQuery);
         }
 
         $sSortOrder = getValue('sortorder');
@@ -3179,7 +3179,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-ChromePhp::log($sQuery);
+
 
       $user_id = $oLogin->getUserPk();
 
@@ -3227,7 +3227,7 @@ ChromePhp::log($sQuery);
           $rmResult = $rmResultDB->getAll();
         }
       }*/
-
+ChromePhp::log($sQuery);
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
