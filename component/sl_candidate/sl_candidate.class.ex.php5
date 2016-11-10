@@ -3084,7 +3084,7 @@ class CSl_candidateEx extends CSl_candidate
           $unionTable = $notes[0];
           $unionValue = $notes[1];
 
-          $newJoin = " LEFT JOIN ".$unionTable." unTa WHERE unTa.company_id = '".$unionValue."' WHERE";
+          $newJoin = " LEFT JOIN ".$unionTable." unTa on unTa.company_id = '".$unionValue."' WHERE";
 
           $sQuery = str_replace('WHERE',$newJoin,$sQuery);
         }
