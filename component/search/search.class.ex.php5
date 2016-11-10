@@ -1410,7 +1410,7 @@ class CSearchEx extends CSearch
           if($sFieldName == 'company_prev' && isset($vFieldValue[0]))
           {
             ChromePhp::log($vFieldValue);
-            $oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vFieldValue[0]."'");
+            $oQB->addJoin('left','sl_candidate_old_companies','slcoc',"slcoc.company_id = '".$vFieldValue[0]."'");
           }
 //ChromePhp::log($asFieldData);
 
