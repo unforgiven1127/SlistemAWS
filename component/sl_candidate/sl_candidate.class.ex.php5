@@ -3004,6 +3004,7 @@ class CSl_candidateEx extends CSl_candidate
 
       //dump($poQB);
       $sQuery = $poQB->getCountSql();
+      ChromePhp::log($sQuery);
 
       if(isset($exploded[1]) && !isset($exploded[2]) && $exploded[1] == "QuickSearch")
       {
