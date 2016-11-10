@@ -1407,10 +1407,10 @@ class CSearchEx extends CSearch
           if(empty($asFieldData))
             return array('error' => 'Could not find the field ['.$sFieldName.'] description');
 
-          if($sFieldName == 'company_prev')
+          if($sFieldName == 'company_prev' && isset($vFieldValue[0]))
           {
             ChromePhp::log($vFieldValue);
-            //$oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vValue."'");
+            $oQB->addJoin(" LEFT JOIN sl_candidate_old_companies slcoc on slcoc.company_id = '".$vFieldValue[0]."'");
           }
 //ChromePhp::log($asFieldData);
 
