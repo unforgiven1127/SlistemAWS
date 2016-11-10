@@ -854,7 +854,7 @@ class CSl_candidateEx extends CSl_candidate
   */
   public function getItemDescription($pvItemPk, $psAction = '', $psItemType = 'candi')
   {
-    ChromePhp::log('getItemDescription 3');
+    //ChromePhp::log('getItemDescription 3');
     if(!assert('is_arrayOfInt($pvItemPk) || is_key($pvItemPk)'))
       return array();
 
@@ -2824,7 +2824,7 @@ class CSl_candidateEx extends CSl_candidate
       $bDisplayPositionField = false;
       //$bLogged = false;
       $bFilteredList = (bool)getValue('__filtered');
-ChromePhp::log('_getCandidateList');
+//ChromePhp::log('_getCandidateList');
       //replay candoidate searches  (filters, sorting...)
       $nHistoryPk = (int)getValue('replay_search');
 //BURADAN
@@ -3020,7 +3020,7 @@ ChromePhp::log('_getCandidateList');
       }
       else
       {
-        ChromePhp::log($sQuery);
+        //ChromePhp::log($sQuery);
         $oDbResult = $oDb->ExecuteQuery($sQuery);
         $bRead = $oDbResult->readFirst();
         $nResult = (int)$oDbResult->getFieldValue('nCount');
@@ -3178,7 +3178,7 @@ ChromePhp::log('_getCandidateList');
 
       $limitlessQuery = explode('LIMIT', $sQuery);
       $limitlessQuery = $limitlessQuery[0];
-ChromePhp::log($limitlessQuery);
+//ChromePhp::log($limitlessQuery);
       $searchTitle = explode(':',$poQB->getTitle());
 
       if(isset($searchTitle[1]))
@@ -6816,7 +6816,7 @@ ChromePhp::log($limitlessQuery);
     private function _getCompanyForm($pnPk = 0)
     {
       $testUrl = $this->_oPage->getAjaxUrl($this->csUid, COMPANY_DUPLI_CONTROL, CONST_CANDIDATE_TYPE_CANDI);
-      ChromePhp::log($testUrl);
+      //ChromePhp::log($testUrl);
 
 
       if(!assert('is_integer($pnPk)'))
@@ -7119,7 +7119,7 @@ ChromePhp::log($limitlessQuery);
       {
         $mailFlag = $_GET['mailFlg'];
       }
-ChromePhp::log($mailFlag);
+//ChromePhp::log($mailFlag);
       if($mailFlag == 'yes' || $mailFlag == 'normal')
       {
 
@@ -7368,7 +7368,7 @@ ChromePhp::log($mailFlag);
         }
         else
         {
-          ChromePhp::log('HERE');
+          //ChromePhp::log('HERE');
           $oQb->addOrder("scom.$sSortField $sSortOrder");
         }
       }
