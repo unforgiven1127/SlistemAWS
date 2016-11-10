@@ -3165,7 +3165,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-
+ChromePhp::log($sQuery);
       $user_id = $oLogin->getUserPk();
 
       $limitlessQuery = explode('LIMIT', $sQuery);
@@ -3212,7 +3212,7 @@ class CSl_candidateEx extends CSl_candidate
           $rmResult = $rmResultDB->getAll();
         }
       }*/
-ChromePhp::log($sQuery);
+
       $oDbResult = $oDb->ExecuteQuery($sQuery);
       $bRead = $oDbResult->readFirst();
 
