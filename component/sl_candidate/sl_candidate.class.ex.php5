@@ -6748,7 +6748,7 @@ class CSl_candidateEx extends CSl_candidate
         }
 
         $sQuery = trim($sQuery, "OR ");
-
+ChromePhp::log($sQuery);
         //$sQuery .= " OR slc.name LIKE '%".$company_name."%'";
 
       }
