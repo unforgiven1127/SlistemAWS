@@ -3214,7 +3214,7 @@ var_dump($query);*/
     $oDB = CDependency::getComponentByName('database');
     $sDate = date('Y-m-d H:i:s');
 
-    $sQuery = "UPDATE sl_notes set candidate_id = '".$candidate_id."', last_activity = '".$sDate."', old_candidate_id = '".$target_candidate_id."' WHERE candidate_id = '".$target_candidate_id."'";
+    $sQuery = "UPDATE sl_notes set candidate_id = '".$target_candidate_id."', last_activity = '".$sDate."', old_candidate_id = '".$candidate_id."' WHERE candidate_id = '".$candidate_id."'";
     ChromePhp::log($sQuery);
     $db_result = $oDB->executeQuery($sQuery);
   }
