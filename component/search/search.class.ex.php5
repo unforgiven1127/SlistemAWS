@@ -1542,7 +1542,7 @@ class CSearchEx extends CSearch
 
                     //$asArrayCondition[] = " ( even.content LIKE '%slate%') ";
                     //$vValue = 'slate';
-                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR sl_candidate_old_companies = "'.$vValue.'") ';
+                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR sl_candidate_old_companies.company_id = "'.$vValue.'") ';
                     ChromePhp::log(' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR sl_candidate_old_companies.company_id = "'.$vValue.'") ');
                   }
                   else
