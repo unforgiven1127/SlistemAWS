@@ -3166,6 +3166,9 @@ class CSl_candidateEx extends CSl_candidate
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 ChromePhp::log($sQuery);
+$notes = $poQB->getNote();
+ChromePhp::log($notes);
+
       $user_id = $oLogin->getUserPk();
 
       $limitlessQuery = explode('LIMIT', $sQuery);
