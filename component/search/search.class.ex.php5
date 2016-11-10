@@ -1537,22 +1537,17 @@ class CSearchEx extends CSearch
                 //ChromePhp::log($sFieldName);
                 if(!empty($vValue))
                 {
-                  /*if($sFieldName == 'company_prev')
+                  if($sFieldName == 'company_prev')
                   {
                     $company_information = getCompanyInformation($vValue);
                     $company_name = $company_information['name'];
 
-                    //ChromePhp::log($vValue);
-
-                    //$asArrayCondition[] = " ( even.content LIKE '%slate%') ";
-                    //$vValue = 'slate';
-                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR slcoc.company_id = "'.$vValue.'") ';
-                    ChromePhp::log(' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).' OR slcoc.company_id = "'.$vValue.'") ');
-                  }*/
-                  //else
-                  //{
+                    $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $company_name).') ';
+                  }
+                  else
+                  {
                     $asArrayCondition[] = ' ('.$asFieldData['sql']['field'].' '.$this->_getSqlFromOperator($asFieldData['data'], $sFieldOperator, $vValue).') ';
-                  //}
+                  }
                 }
               }
 
