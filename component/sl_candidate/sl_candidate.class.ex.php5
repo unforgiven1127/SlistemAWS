@@ -3087,7 +3087,7 @@ class CSl_candidateEx extends CSl_candidate
           $newJoin = ' LEFT JOIN '.$unionTable.' unTa on unTa.company_id = "'.$unionValue.'" WHERE ';
 
           $sQuery = str_replace('WHERE',$newJoin,$sQuery);
-          //ChromePhp::log($sQuery);
+          ChromePhp::log($sQuery);
         }
 
         $sSortOrder = getValue('sortorder');
