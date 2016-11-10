@@ -3077,6 +3077,17 @@ class CSl_candidateEx extends CSl_candidate
 
         $sQuery = $sQuery[0];
 
+        $notes = $poQB->getNote();
+        if(isset($notes) && !empty($notes))
+        {
+          ChromePhp::log($notes);
+          $notes = explode(';',$notes);
+          $unionTable = $notes[0];
+          $unionValue = $notes[1];
+
+          $sQuery.= " LEFT JOIN ".$unionTable." unTa WHERE unTa.company_id = '".$unionValue."'";
+        }
+
         $sSortOrder = getValue('sortorder');
 
 
@@ -3157,6 +3168,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery.= ' ORDER BY TRIM(scan.lastname) ASC, TRIM(scan.firstname) ASC ';
         }
 
+
         if(!empty($limit))
           $sQuery.= " LIMIT ".$limit;
         else
@@ -3166,8 +3178,6 @@ class CSl_candidateEx extends CSl_candidate
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
 ChromePhp::log($sQuery);
-$notes = $poQB->getNote();
-ChromePhp::log($notes);
 
       $user_id = $oLogin->getUserPk();
 
