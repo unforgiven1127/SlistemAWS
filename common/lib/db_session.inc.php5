@@ -5,8 +5,7 @@ class CDbSessionHandler
 
   function _session_open()
   {
-     $conn = new mysqli("127.0.0.1", "munir", "can1127", "php_session");
-     ChromePhp::log($conn);
+
     if(trim($_SERVER['SERVER_NAME']) == "slistemlocal.com")
     {
       if ($this->coSessDb = mysqli_connect('localhost', 'slistem', '7088762')) // MCA ADDED FOR LOCAL VERSION !!!!!
@@ -19,7 +18,7 @@ class CDbSessionHandler
     }
     else
     {
-      if($this->coSessDb = mysqli_connect('127.0.0.1', 'munir', 'can1127', "php_session"))
+      if($this->coSessDb = mysqli_connect('127.0.0.1', 'slistem', 'smwXN2RTDm6Zz3hR'))
       //if($this->coSessDb = mysqli_connect('172.31.29.60', 'slistem', 'smwXN2RTDm6Zz3hR'))
       {
         return (bool)mysqli_select_db($this->coSessDb, 'php_session');
