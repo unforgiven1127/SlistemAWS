@@ -2869,8 +2869,6 @@ class CSl_candidateEx extends CSl_candidate
         $poQB->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
       }
 
-
-
       // =============================================================
       //TODO: to be moved when the search arrives
 
