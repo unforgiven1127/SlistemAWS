@@ -2031,9 +2031,13 @@ ChromePhp::log($clientFlag);
 
     ChromePhp::log('_getIdentification');
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
+    {
+      ChromePhp::log('IF');
        $sQuery = 'SELECT * FROM `login` WHERE loginpk = '.$pnCookiePk.' AND status = 1 ';
+    }
     else
     {
+      ChromePhp::log('else');
       if(empty($_POST) || !isset($_POST['login']) || !isset($_POST['password']))
         return array('error' => __LINE__.' - '.$this->casText['LOGIN_PASSWORD_REQD']);
 
