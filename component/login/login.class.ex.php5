@@ -2091,7 +2091,7 @@ ChromePhp::log($clientFlag);
     //redirections
 
     $sRedirectUrl = getValue('redirect');
-
+ChromePhp::log($sRedirectUrl);
     if(!empty($sRedirectUrl))
     {
       //To connect to multiplateforms
@@ -2114,6 +2114,7 @@ ChromePhp::log($clientFlag);
       //no redirection => homepage
       $oPage = CDependency::getCpPage();
       $sUrl = $oPage->getUrlHome();
+      ChromePhp::log($sUrl);
     }
 ChromePhp::log($pbIsAjax);
     if($pbIsAjax)
