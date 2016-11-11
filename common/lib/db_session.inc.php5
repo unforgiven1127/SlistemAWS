@@ -18,7 +18,7 @@ class CDbSessionHandler
     }
     else
     {
-      if($this->coSessDb = mysqli_connect('127.0.0.1', 'nopass', 'smwXN2RTDm6Zz3hR'))
+      if($this->coSessDb = mysqli_connect('127.0.0.1', 'nopasss', 'smwXN2RTDm6Zz3hR'))
       //if($this->coSessDb = mysqli_connect('172.31.29.60', 'slistem', 'smwXN2RTDm6Zz3hR'))
       {
         return (bool)mysqli_select_db($this->coSessDb, 'php_session');
