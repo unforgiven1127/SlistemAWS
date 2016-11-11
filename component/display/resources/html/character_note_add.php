@@ -379,7 +379,7 @@
 	<tr>
 		<td>Salary</td>
 		<td><div class="general_form_column">
-						<input class="salary_field" type="text" name="salary" value="<?php echo $candidate_salary; ?>" />
+						<input class="salary_field" type="text" name="salary" value="<?php if(isset($candidate_salary)){ echo $candidate_salary; }?>" />
 						<select id="salary_unit" class="salary_manipulation" name="salary_unit">
 							<option value=""></option>
 							<option value="K" <?php if ($money_unit == 'K') echo 'selected'; ?>>K</option>
