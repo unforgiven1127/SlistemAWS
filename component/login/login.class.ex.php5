@@ -2029,7 +2029,7 @@ ChromePhp::log($clientFlag);
     $oDB = CDependency::getComponentByName('database');
     $oSetting = CDependency::getComponentByName('settings');
 
-    ChromePhp::log('_getIdentification');
+
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
     {
       ChromePhp::log('IF');
@@ -2037,7 +2037,7 @@ ChromePhp::log($clientFlag);
     }
     else
     {
-      ChromePhp::log('else');
+
       if(empty($_POST) || !isset($_POST['login']) || !isset($_POST['password']))
         return array('error' => __LINE__.' - '.$this->casText['LOGIN_PASSWORD_REQD']);
 
@@ -2052,7 +2052,7 @@ ChromePhp::log($clientFlag);
       //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
       $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
     }
-    ChromePhp::log('2');
+
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 
@@ -2091,7 +2091,7 @@ ChromePhp::log($clientFlag);
     //redirections
 
     $sRedirectUrl = getValue('redirect');
-    ChromePhp::log($sRedirectUrl);
+
     if(!empty($sRedirectUrl))
     {
       //To connect to multiplateforms
@@ -2108,14 +2108,12 @@ ChromePhp::log($clientFlag);
     {
       //manage automatic redirection after login
        $sUrl = $_SESSION['urlRedirect'];
-       ChromePhp::log($sUrl);
     }
     else
     {
       //no redirection => homepage
       $oPage = CDependency::getCpPage();
       $sUrl = $oPage->getUrlHome();
-      ChromePhp::log($sUrl);
     }
 
     if($pbIsAjax)
@@ -2309,6 +2307,7 @@ ChromePhp::log($clientFlag);
 
   private function _redirectUser($psUrl = '')
   {
+    ChromePhp::log($psUrl);
     $oPage = CDependency::getCpPage();
     if(empty($psUrl))
     {
