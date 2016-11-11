@@ -2091,6 +2091,7 @@ ChromePhp::log($clientFlag);
     //redirections
 
     $sRedirectUrl = getValue('redirect');
+    ChromePhp::log($sRedirectUrl);
     if(!empty($sRedirectUrl))
     {
       //To connect to multiplateforms
