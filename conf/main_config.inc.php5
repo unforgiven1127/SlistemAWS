@@ -182,8 +182,12 @@ switch(trim($_SERVER['SERVER_NAME']))
     case 'beta2.slate.co.jp':
 
     define('DB_NAME', 'slistem');
+    //define('DB_SERVER', '127.0.0.1');
+    //define('DB_USER', 'slistem');
+    //define('DB_PASSWORD', 'smwXN2RTDm6Zz3hR');
+
     define('DB_SERVER', '127.0.0.1');
-    define('DB_USER', 'slistem');
+    define('DB_USER', 'nopasss');
     define('DB_PASSWORD', 'smwXN2RTDm6Zz3hR');
 
     define('CONST_WEBSITE', 'slistem');
