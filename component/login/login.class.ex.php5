@@ -2025,11 +2025,11 @@ ChromePhp::log($clientFlag);
 
   private function _getIdentification($pbIsAjax = false, $pnCookiePk = 0, $bRedirect = true)
   {
-    ChromePhp::log('_getIdentification');
+
     $oDB = CDependency::getComponentByName('database');
     $oSetting = CDependency::getComponentByName('settings');
 
-
+    ChromePhp::log('_getIdentification');
     if(!empty($pnCookiePk) && is_integer($pnCookiePk))
        $sQuery = 'SELECT * FROM `login` WHERE loginpk = '.$pnCookiePk.' AND status = 1 ';
     else
@@ -2048,7 +2048,7 @@ ChromePhp::log($clientFlag);
       //$sQuery.= ' AND BINARY `password` = '.$oDB->dbEscapeString($_POST['password']).') ';
       $sQuery.= ' AND `password_crypted` = '.$oDB->dbEscapeString($encrypted_password).') ';
     }
-
+    ChromePhp::log('2');
     $oDbResult = $oDB->ExecuteQuery($sQuery);
     $bRead = $oDbResult->readFirst();
 
