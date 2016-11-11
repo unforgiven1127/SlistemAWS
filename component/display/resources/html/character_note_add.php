@@ -375,7 +375,7 @@
 	</tr>
 </table>
 
-<table class="box" align="center">
+<table class="box" align="center" style='margin-top: 50px;'>
 	<tr>
 		<td><b>Salary</b></td>
 		<td >
