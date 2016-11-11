@@ -2115,7 +2115,7 @@ ChromePhp::log($clientFlag);
       $oPage = CDependency::getCpPage();
       $sUrl = $oPage->getUrlHome();
     }
-
+ChromePhp::log($pbIsAjax);
     if($pbIsAjax)
       return array('url' => $sUrl);
 
