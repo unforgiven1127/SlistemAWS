@@ -854,7 +854,7 @@ class CSl_candidateEx extends CSl_candidate
   */
   public function getItemDescription($pvItemPk, $psAction = '', $psItemType = 'candi')
   {
-    //ChromePhp::log('getItemDescription 3');
+    ChromePhp::log('getItemDescription 3');
     if(!assert('is_arrayOfInt($pvItemPk) || is_key($pvItemPk)'))
       return array();
 
@@ -2869,6 +2869,8 @@ class CSl_candidateEx extends CSl_candidate
         $poQB->addLimit(($nPagerOffset*$nLimit).' ,'. $nLimit);
       }
 
+
+
       // =============================================================
       //TODO: to be moved when the search arrives
 
@@ -3167,7 +3169,7 @@ class CSl_candidateEx extends CSl_candidate
           $sQuery = $sQuery[0];
           //$sQuery.= 'ORDER BY scan.firstname DESC';
         }
-//ChromePhp::log($sQuery);
+ChromePhp::log($sQuery);
 //
       //$sQuery = str_replace('"','\'',$sQuery);
 
@@ -6814,7 +6816,7 @@ class CSl_candidateEx extends CSl_candidate
     private function _getCompanyForm($pnPk = 0)
     {
       $testUrl = $this->_oPage->getAjaxUrl($this->csUid, COMPANY_DUPLI_CONTROL, CONST_CANDIDATE_TYPE_CANDI);
-      //ChromePhp::log($testUrl);
+      ChromePhp::log($testUrl);
 
 
       if(!assert('is_integer($pnPk)'))
@@ -7117,7 +7119,7 @@ class CSl_candidateEx extends CSl_candidate
       {
         $mailFlag = $_GET['mailFlg'];
       }
-//ChromePhp::log($mailFlag);
+ChromePhp::log($mailFlag);
       if($mailFlag == 'yes' || $mailFlag == 'normal')
       {
 
@@ -7366,7 +7368,7 @@ class CSl_candidateEx extends CSl_candidate
         }
         else
         {
-          //ChromePhp::log('HERE');
+          ChromePhp::log('HERE');
           $oQb->addOrder("scom.$sSortField $sSortOrder");
         }
       }
