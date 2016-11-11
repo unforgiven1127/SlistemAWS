@@ -3048,7 +3048,7 @@ class CSl_candidateEx extends CSl_candidate
           $oPager->setOffset(1);
         }
       }
-ChromePhp::log($sQuery);
+//ChromePhp::log($sQuery);
       //Some joins are too heavy to make (notes, contacts...)
       //So we put the main query in a subquery, and join with the filtered / size-limited result
       if($bHeavyJoin)
