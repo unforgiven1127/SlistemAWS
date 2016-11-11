@@ -2087,7 +2087,7 @@ ChromePhp::log($clientFlag);
 
     //Create a 3 hour cookie (will be refresh as long as user browse pages)
     //@setcookie('login_userdata', serialize(array('pk' => $_SESSION['userData']['pk'], 'hash' => $sHash)), mktime(date('H')+3, 0, 0, (int)date('m'), (int)date('d'), (int)date('Y')), '/');
-    @setcookie('login_userdata', serialize(array('pk' => $_SESSION['userData']['pk'], 'hash' => $sHash)), time()+3600*3, '/');
+    //@setcookie('login_userdata', serialize(array('pk' => $_SESSION['userData']['pk'], 'hash' => $sHash)), time()+3600*3, '/');
     //redirections
 
     $sRedirectUrl = getValue('redirect');
