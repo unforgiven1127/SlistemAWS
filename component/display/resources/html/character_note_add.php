@@ -379,40 +379,8 @@
 	<tr>
 		<td>Salary</td>
 		<td >
-						<input class="salary_field" type="text" name="salary" value="<?php if(isset($candidate_salary)){ echo $candidate_salary; }?>" />
-						<select id="salary_unit" class="salary_manipulation" name="salary_unit">
-							<option value=""></option>
-							<option value="K" <?php if ($money_unit == 'K') echo 'selected'; ?>>K</option>
-							<option value="M" <?php if ($money_unit == 'M') echo 'selected'; ?>>M</option>
-						</select>
-						<select id="salary_currency" class="salary_manipulation" name="salary_currency">
-						<?php
-						$list = array('aud','cad','eur','hkd','jpy','php','usd');
-
-						//foreach ($currency_list as $currency => $rate)
-						foreach ($list as $key => $value)
-						{
-							$currency = $value;
-							$rate = $currency_list[$value];
-
-							if ($currency == $currencyCode)
-							{
-								$selected = ' selected ';
-							}
-							else
-							{
-								$selected = '';
-							}
-
-							$rateNew = 1/$rate;
-							echo "<option value='".$currency."' ";
-							echo $selected;
-							echo "title='Rate: 1 ".$currency." = ".$rateNew." &yen'>";
-							echo $currency;
-							echo "</option>";
-						} ?>
-						</select>
-					</td>
+			<input type="text" name="salary" />
+		</td>
 	</tr>
 </table>
 
