@@ -2097,6 +2097,7 @@ ChromePhp::log($clientFlag);
       //To connect to multiplateforms
       //manage requested redirection after login
       $asUrl = parse_url($sRedirectUrl);
+      ChromePhp::log($asUrl);
 
       if(empty($asUrl['query']))
         $sUrl = $sRedirectUrl.'?pk='.$_SESSION['userData']['pk'];
