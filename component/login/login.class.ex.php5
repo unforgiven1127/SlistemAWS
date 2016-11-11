@@ -2097,7 +2097,7 @@ ChromePhp::log($clientFlag);
       //To connect to multiplateforms
       //manage requested redirection after login
       $asUrl = parse_url($sRedirectUrl);
-      ChromePhp::log($asUrl);
+
 
       if(empty($asUrl['query']))
         $sUrl = $sRedirectUrl.'?pk='.$_SESSION['userData']['pk'];
@@ -2108,12 +2108,14 @@ ChromePhp::log($clientFlag);
     {
       //manage automatic redirection after login
        $sUrl = $_SESSION['urlRedirect'];
+       ChromePhp::log($sUrl);
     }
     else
     {
       //no redirection => homepage
       $oPage = CDependency::getCpPage();
       $sUrl = $oPage->getUrlHome();
+      ChromePhp::log($sUrl);
     }
 
     if($pbIsAjax)
