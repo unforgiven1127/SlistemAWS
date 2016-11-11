@@ -377,9 +377,16 @@
 
 <table class="box" align="center">
 	<tr>
-		<td>Salary</td>
+		<td><b>Salary</b></td>
 		<td >
 			<input type="text" name="salary" />
+		</td>
+		<td>
+			<select id="salary_unit" class="salary_manipulation" name="salary_unit">
+				<option value=""></option>
+				<option value="K" <?php if ($money_unit == 'K') echo 'selected'; ?>>K</option>
+				<option value="M" <?php if ($money_unit == 'M') echo 'selected'; ?>>M</option>
+			</select>
 		</td>
 	</tr>
 </table>
